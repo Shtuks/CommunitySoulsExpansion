@@ -1,18 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "OTK18iCyj4E=",
-  "success": false,
-  "projectFilePath": "C:\\Users\\kolot\\OneDrive\\Документы\\My Games\\Terraria\\tModLoader\\ModSources\\ssm\\ssm.csproj",
-  "expectedPackageFiles": [],
-  "logs": [
-    {
-      "code": "NU1101",
-      "level": "Error",
-      "message": "Не удалось найти пакет tModLoader.CodeAssist. Пакеты с таким идентификатором отсутствуют в следующих источниках пакетов: Microsoft Visual Studio Offline Packages",
-      "libraryId": "tModLoader.CodeAssist",
-      "targetGraphs": [
-        "net8.0"
-      ]
-    }
-  ]
+  "dgSpecHash": "/d8XxZRbj4g=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\rcber\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\CommunitySoulsExpansion\\ssm.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\rcber\\.nuget\\packages\\tmodloader.codeassist\\0.1.5\\tmodloader.codeassist.0.1.5.nupkg.sha512"
+  ],
+  "logs": []
 }
