@@ -22,7 +22,7 @@ namespace ssm.Calamity.Addons
             Item.accessory = true;
             ItemID.Sets.ItemNoGravity[Item.type] = true;
             Item.rare = 10;
-            Item.value = 500000;
+            Item.value = 50000;
         }
 
         public override void UpdateAccessory(Player player, bool hideVisual)

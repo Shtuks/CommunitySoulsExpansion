@@ -54,7 +54,7 @@ namespace ssm
                     recipe.AddIngredient<EmberOfOmen>(5);
                 }
 
-                if (recipe.HasResult<EternitySoul>() && !recipe.HasIngredient<SoASoul>())
+                if (!ShtunConfig.Instance.ExperimentalContent && recipe.HasResult<EternitySoul>() && !recipe.HasIngredient<SoASoul>())
                 {
                     recipe.AddIngredient<SoASoul>();
                 }
@@ -91,11 +91,11 @@ namespace ssm
                     recipe.AddIngredient<RageSuppressor>();
                 }
 
-                if (recipe.HasResult<MasochistSoul>() && !recipe.HasIngredient<YataMirror>())
-                {
-                    recipe.AddIngredient<YataMirror>();
-                    recipe.AddIngredient<PrimordialCore>();
-                }
+                //if (recipe.HasResult<MasochistSoul>() && !recipe.HasIngredient<YataMirror>())
+                //{
+                //    recipe.AddIngredient<YataMirror>();
+                //    recipe.AddIngredient<PrimordialCore>();
+                //}
 
                 if (recipe.HasResult<BerserkerSoul>() && !recipe.HasIngredient<FloraFist>())
                 {

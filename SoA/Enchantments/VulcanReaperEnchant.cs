@@ -1,21 +1,16 @@
 ﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria.Localization;
-using SacredTools;
-using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using FargowiltasSouls.Content.Items.Accessories.Enchantments;
 using FargowiltasSouls.Core.AccessoryEffectSystem;
 using ssm.Content.SoulToggles;
-using Microsoft.Xna.Framework.Graphics;
-using SacredTools.Content.Items.Armor.Oblivion;
-using SacredTools.Items.Weapons.Special;
 using SacredTools.Content.Items.Armor.Vulcan;
 using SacredTools.Items.Potions;
 using SacredTools.Items.Weapons.Flarium;
 using SacredTools.Items.Placeable.Paintings;
 using ssm.Core;
+using FargowiltasSouls;
 
 namespace ssm.SoA.Enchantments
 {
@@ -27,9 +22,6 @@ namespace ssm.SoA.Enchantments
         {
             return ShtunConfig.Instance.SacredTools;
         }
-
-        private readonly Mod soa = ModLoader.GetMod("SacredTools");
-
         public override void SetDefaults()
         {
             Item.width = 20;
@@ -44,9 +36,11 @@ namespace ssm.SoA.Enchantments
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            ModdedPlayer modPlayer = player.GetModPlayer<ModdedPlayer>();
-            player.buffImmune[ModContent.Find<ModBuff>(this.soa.Name, "SerpentWrath").Type] = true;
-            player.buffImmune[ModContent.Find<ModBuff>(this.soa.Name, "ObsidianCurse").Type] = true;
+            if (player.AddEffect<VulcanReaperEffect>(Item))
+            {
+                player.GetModPlayer<SoAPlayer>().frosthunterEnchant = player.ForceEffect<VulcanReaperEffect>() ? 2 : 1;
+            }
+            player.buffImmune[ModContent.Find<ModBuff>(ModCompatibility.SacredTools.Name, "ObsidianCurse").Type] = true;
         }
 
         public class VulcanReaperEffect : AccessoryEffect

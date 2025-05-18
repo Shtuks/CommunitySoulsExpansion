@@ -54,6 +54,7 @@ namespace ssm.Thorium.Enchantments
             ModContent.GetModItem(ModContent.ItemType<BallnChain>()).UpdateAccessory(player, hideVisual);
             ModContent.GetModItem(ModContent.ItemType<SpikedBracer>()).UpdateAccessory(player, hideVisual);
             ModContent.GetModItem(ModContent.ItemType<ThoriumShield>()).UpdateAccessory(player, hideVisual);
+            ModContent.GetModItem(ModContent.ItemType<SteelEnchant>()).UpdateAccessory(player, hideVisual);
 
             if (player.AddEffect<IncandescentSparkEffect>(Item))
             {
@@ -78,7 +79,7 @@ namespace ssm.Thorium.Enchantments
             recipe.AddIngredient(ModContent.ItemType<DurasteelHelmet>());
             recipe.AddIngredient(ModContent.ItemType<DurasteelChestplate>());
             recipe.AddIngredient(ModContent.ItemType<DurasteelGreaves>());
-            recipe.AddIngredient(ModContent.ItemType<DarksteelEnchant>());
+            recipe.AddIngredient(ModContent.ItemType<SteelEnchant>());
             recipe.AddIngredient(ModContent.ItemType<IncandescentSpark>());
             recipe.AddIngredient(ModContent.ItemType<DurasteelBlade>());
 

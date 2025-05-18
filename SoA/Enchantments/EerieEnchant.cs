@@ -1,19 +1,15 @@
 ﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria.Localization;
-using SacredTools;
-using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using FargowiltasSouls.Content.Items.Accessories.Enchantments;
 using FargowiltasSouls.Core.AccessoryEffectSystem;
 using ssm.Content.SoulToggles;
 using ssm.Core;
-using SacredTools.Content.Items.Accessories;
-using SacredTools.Content.Items.Armor.Dreadfire;
-using SacredTools.Content.Items.Weapons.Dreadfire;
 using SacredTools.Content.Items.Armor.Eerie;
 using SacredTools.Items.Weapons;
+using FargowiltasSouls;
+using ssm.Content.Projectiles.Minions;
 
 namespace ssm.SoA.Enchantments
 {
@@ -25,9 +21,6 @@ namespace ssm.SoA.Enchantments
         {
             return ShtunConfig.Instance.SacredTools;
         }
-
-        private readonly Mod soa = ModLoader.GetMod("SacredTools");
-
         public override void SetDefaults()
         {
             Item.width = 20;
@@ -42,15 +35,35 @@ namespace ssm.SoA.Enchantments
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            ModdedPlayer modPlayer = player.GetModPlayer<ModdedPlayer>();
-            //set bonus
-            modPlayer.EerieEffect = true;
+            if (player.AddEffect<EerieEffect>(Item))
+            {
+                player.GetModPlayer<SoAPlayer>().eerieEnchant = player.ForceEffect<EerieEffect>() ? 2 : 1;
+            }
         }
 
         public class EerieEffect : AccessoryEffect
         {
             public override Header ToggleHeader => Header.GetHeader<GenerationsForceHeader>();
             public override int ToggleItemType => ModContent.ItemType<EerieEnchant>();
+
+            public override void PreUpdate(Player player)
+            {
+                if (player.whoAmI == Main.myPlayer)
+                {
+                    int minionType = ModContent.ProjectileType<EerieMinion>();
+                    if (player.ownedProjectileCounts[minionType] < 1)
+                    {
+                        Projectile.NewProjectile(
+                            player.GetSource_FromThis(),
+                            player.Center,
+                            Vector2.Zero,
+                            minionType,
+                            30,
+                            2f, 
+                            player.whoAmI);
+                    }
+                }
+            }
         }
 
         public override void AddRecipes()

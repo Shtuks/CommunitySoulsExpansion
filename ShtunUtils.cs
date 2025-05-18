@@ -22,7 +22,6 @@ namespace ssm
 
             return distance;
         }
-
         public static float ProjGetDistanceToNPC(Projectile player, NPC targetNPC)
         {
             if (targetNPC == null || !targetNPC.active)

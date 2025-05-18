@@ -1,6 +1,4 @@
-﻿using BombusApisBee.Projectiles;
-using Microsoft.Xna.Framework;
-using ssm.Content.Projectiles.Enchantments;
+﻿using Microsoft.Xna.Framework;
 using ssm.Core;
 using Terraria;
 using Terraria.ID;
@@ -13,7 +11,7 @@ namespace ssm.SoA
     public class SoAPlayer : ModPlayer
     {
         //Bismuth Enchant
-        public int bismuthEnchant; //int to handle wiz effect
+        public int bismuthEnchant; 
         public int bismuthCrystalStage = 0;
         public int bismuthFormationTimer = 0;
         public const int FormationTime = 300;
@@ -39,16 +37,32 @@ namespace ssm.SoA
 
         //Blightbone Enchant
         public int blightboneEnchant;
+
+        //Eerie Enchant
+        public int eerieEnchant;
+
+        //Vulkan Reaper Enchant
+        public int vulkanReaperEnchant = 0;
+        public int vulkanKillCount = 0;
+        public int vulkanBuffTimer = 0;
+        public float vulkanDamageBonus = 0f;
         public override void ResetEffects()
         {
-            lapisEnchant =0;
+            vulkanReaperEnchant = 0;
+            eerieEnchant = 0;
+            blightboneEnchant = 0;
+            lapisEnchant = 0;
             frosthunterEnchant = 0;
             bismuthEnchant = 0;
             hasPhoenixBlessing = false;
         }
-
         public override void UpdateDead()
         {
+            phoenixWrathCooldown = 0;
+            frosthunterCooldown = 0;
+            vulkanDamageBonus = 0f;
+            vulkanBuffTimer = 0;
+            vulkanKillCount = 0;
             currentDamageAbsorbed = 0;
             bismuthCrystalStage = 0;
             phoenixBlessingActive = false;
@@ -57,6 +71,16 @@ namespace ssm.SoA
         }
         public override void PostUpdateEquips()
         {
+            if (vulkanBuffTimer > 0)
+            {
+                vulkanBuffTimer--;
+                if (vulkanBuffTimer <= 0)
+                {
+                    vulkanDamageBonus = 0f;
+                    vulkanKillCount = 0;
+                }
+            }
+
             if (phoenixWrathCooldown > 0)
             {
                 phoenixWrathCooldown--;
@@ -88,6 +112,13 @@ namespace ssm.SoA
             }
         }
 
+        public void ModifyDamageWithVulkan(ref float damage)
+        {
+            if (vulkanBuffTimer > 0)
+            {
+                damage = damage * (1f + vulkanDamageBonus);
+            }
+        }
         public override void OnHitNPCWithProj(Projectile proj, NPC target, NPC.HitInfo hit, int damageDone)
         {
             if (frosthunterEnchant > 0) 
@@ -101,23 +132,20 @@ namespace ssm.SoA
                     frosthunterCooldown = 120;
                 }
             }
-            if (blightboneEnchant > 0 && proj.CountsAsClass(DamageClass.Throwing))
+            if (blightboneEnchant == 1 && IsBoneWeapon(proj))
             {
-                if (Main.rand.NextFloat() < 0.1f)
-                {
-                    Projectile.NewProjectile(Player.GetSource_OnHit(target), proj.Center, proj.velocity * 0.8f,
-                        ModContent.ProjectileType<Blightbone>(), (int)(damageDone * 0.5f), hit.Knockback, Player.whoAmI);
-                }
+                target.AddBuff(BuffID.OnFire, 180);
+            }
 
-                if (IsBoneWeapon(proj))
-                {
-                    target.AddBuff(BuffID.OnFire, 180); 
-                }
+            if (blightboneEnchant == 2 && IsBoneWeapon(proj))
+            {
+                target.AddBuff(BuffID.OnFire, 360);
             }
         }
 
         private bool IsBoneWeapon(Projectile proj)
         {
+            //...
             return proj.type == ProjectileID.Bone ||
                    proj.type == ProjectileID.BoneJavelin ||
                    proj.type == ProjectileID.BoneGloveProj;
@@ -135,7 +163,7 @@ namespace ssm.SoA
                 if (npc.active && !npc.friendly && npc.Distance(pos) <= radius)
                 {
                     Player.ApplyDamageToNPC(npc, damage, knockback, Player.direction);
-                    npc.AddBuff(BuffID.Frostburn2, 180);
+                    npc.AddBuff(frosthunterEnchant > 1 ? BuffID.Frostburn2 : BuffID.Frostburn, 180);
                 }
             }
 
@@ -168,7 +196,7 @@ namespace ssm.SoA
                 if (npc.active && !npc.friendly && npc.Distance(pos) <= radius)
                 {
                     Player.ApplyDamageToNPC(npc, damage, knockback, Player.direction);
-                    npc.AddBuff(BuffID.Frostburn2, 180);
+                    npc.AddBuff(frosthunterEnchant > 1 ? BuffID.Frostburn2 : BuffID.Frostburn, 180);
                 }
             }
 
@@ -229,7 +257,7 @@ namespace ssm.SoA
                 }
             }
 
-            if (bismuthEnchant > 1)
+            if (bismuthEnchant > 0)
             {
                 if (bismuthCrystalStage > 0 && currentDamageAbsorbed < MaxDamageAbsorption)
                 {

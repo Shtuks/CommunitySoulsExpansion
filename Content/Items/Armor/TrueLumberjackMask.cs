@@ -3,17 +3,15 @@ using Terraria.ModLoader;
 using Terraria.Localization;
 using ssm.CrossMod.CraftingStations;
 using Fargowiltas.Items.Vanity;
-using FargowiltasSouls.Content.Items.Accessories.Souls;
 using ssm.Content.Items.Accessories;
 using ssm.Content.Items.Consumables;
-using FargowiltasSouls.Content.Projectiles.Minions;
 using FargowiltasSouls.Core.AccessoryEffectSystem;
-using FargowiltasSouls.Core.Toggler.Content;
 using FargowiltasSouls;
 using Microsoft.Xna.Framework;
 using ssm.Content.SoulToggles;
-using FargowiltasSouls.Content.Items.Armor;
 using ssm.Content.Projectiles;
+using Luminance.Core.Graphics;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace ssm.Content.Items.Armor
 {
@@ -30,6 +28,23 @@ namespace ssm.Content.Items.Armor
             Item.defense = int.MaxValue/1000;
         }
 
+        public override bool PreDrawTooltipLine(DrawableTooltipLine line, ref int yOffset)
+        {
+            if ((line.Mod == "Terraria" && line.Name == "ItemName") || line.Name == "FlavorText")
+            {
+                Main.spriteBatch.End();
+                Main.spriteBatch.Begin(SpriteSortMode.Immediate, null, null, null, null, null, Main.UIScaleMatrix);
+                ManagedShader shader = ShaderManager.GetShader("FargowiltasSouls.Text");
+                shader.TrySetParameter("mainColor", new Color(42, 66, 99));
+                shader.TrySetParameter("secondaryColor", Main.DiscoColor);
+                shader.Apply("PulseUpwards");
+                Utils.DrawBorderString(Main.spriteBatch, line.Text, new Vector2(line.X, line.Y), Color.White, 1);
+                Main.spriteBatch.End();
+                Main.spriteBatch.Begin(SpriteSortMode.Deferred, null, null, null, null, null, Main.UIScaleMatrix);
+                return false;
+            }
+            return true;
+        }
         public override void UpdateEquip(Player player)
         {
             player.GetDamage(DamageClass.Generic) += int.MaxValue / 1000;

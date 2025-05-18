@@ -40,7 +40,7 @@ namespace ssm.SoA.Enchantments
             Item.value = 100000;
         }
 
-        public override Color nameColor => new(70, 10, 10);
+        public override Color nameColor => new(242, 208, 114);
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {

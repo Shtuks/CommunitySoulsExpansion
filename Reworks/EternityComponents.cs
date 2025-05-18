@@ -1,6 +1,4 @@
 using FargowiltasSouls.Content.Items.Accessories.Souls;
-using ssm.Calamity.Addons;
-using ssm.Calamity.Souls;
 using ssm.Content.Items.Accessories;
 using ssm.Core;
 using Terraria;
@@ -14,80 +12,46 @@ namespace ssm.Reworks
 
         public override void UpdateAccessory(Item Item, Player player, bool hideVisual)
         {
-            if (Item.type == ModContent.ItemType<UniverseSoul>() || Item.type == ModContent.ItemType<EternitySoul>())
+            //SoU
+            if (ModCompatibility.SacredTools.Loaded && (Item.type == ModContent.ItemType<UniverseSoul>() || Item.type == ModContent.ItemType<EternitySoul>() || Item.type == ModContent.ItemType<StargateSoul>()))
             {
-                if (ModLoader.TryGetMod("ThoriumMod", out Mod tor) && ShtunConfig.Instance.Thorium)
+                if (!ModCompatibility.Calamity.Loaded && !ModCompatibility.SacredTools.Loaded)
                 {
-                    ModContent.Find<ModItem>(((ModType)this).Mod.Name, "GuardianAngelsSoul").UpdateAccessory(player, false);
-                    ModContent.Find<ModItem>(((ModType)this).Mod.Name, "BardSoul").UpdateAccessory(player, false);
-
-                    if (!ModLoader.HasMod(ModCompatibility.Calamity.Name))
-                    {
-                        ModContent.Find<ModItem>(((ModType)this).Mod.Name, "OlympiansSoul").UpdateAccessory(player, false);
-                    }
-                }
-                if (ModLoader.TryGetMod("SacredTools", out Mod soa) && ShtunConfig.Instance.SacredTools)
-                {
-                    if (!ModLoader.HasMod(ModCompatibility.Calamity.Name) && !ModLoader.HasMod(ModCompatibility.Thorium.Name))
-                    {
-                        ModContent.Find<ModItem>(((ModType)this).Mod.Name, "StalkerSoul").UpdateAccessory(player, false);
-                    }
-                }
-                //if (ModCompatibility.ClikerClass.Loaded)
-                //{
-                //    ModContent.Find<ModItem>(((ModType)this).Mod.Name, "ClickerSoul").UpdateAccessory(player, false);
-                //}
-                if (ModCompatibility.BeekeeperClass.Loaded && ShtunConfig.Instance.Beekeeper)
-                {
-                    ModContent.Find<ModItem>(((ModType)this).Mod.Name, "BeekeeperSoul").UpdateAccessory(player, false);
+                    ModContent.Find<ModItem>(this.Mod.Name, "StalkerSoul").UpdateAccessory(player, hideVisual);
                 }
             }
-            if (Item.type == ModContent.ItemType<MicroverseSoul>())
+            if (ModCompatibility.Thorium.Loaded && (Item.type == ModContent.ItemType<UniverseSoul>() || Item.type == ModContent.ItemType<EternitySoul>() || Item.type == ModContent.ItemType<StargateSoul>()))
             {
-                if (ModLoader.TryGetMod("Spooky", out Mod tor) && ShtunConfig.Instance.Spooky)
-                {
-                    ModContent.Find<ModItem>(((ModType)this).Mod.Name, "HorrorForce").UpdateAccessory(player, false);
-                    ModContent.Find<ModItem>(((ModType)this).Mod.Name, "TerrorForce").UpdateAccessory(player, false);
-                }
-                if (ModLoader.TryGetMod("Polarities", out Mod soa) && ShtunConfig.Instance.Polarities)
-                {
-                    ModContent.Find<ModItem>(((ModType)this).Mod.Name, "WildernessForce").UpdateAccessory(player, false);
-                    ModContent.Find<ModItem>(((ModType)this).Mod.Name, "SpacetimeForce").UpdateAccessory(player, false);
-                }
+                ModContent.Find<ModItem>(this.Mod.Name, "BardSoul").UpdateAccessory(player, hideVisual);
+                ModContent.Find<ModItem>(this.Mod.Name, "GuardianAngelsSoul").UpdateAccessory(player, hideVisual);
             }
-            if (/*Item.type == ModContent.ItemType<EternitySoul>() || */ Item.type == ModContent.ItemType<MacroverseSoul>() || Item.type == ModContent.ItemType<CalamitySoul>())
+
+            //SoE
+            if (ModCompatibility.SacredTools.Loaded && (Item.type == ModContent.ItemType<EternitySoul>() || Item.type == ModContent.ItemType<StargateSoul>()))
             {
-                if (ModCompatibility.Entropy.Loaded && ModCompatibility.Clamity.Loaded && ModCompatibility.Goozma.Loaded && ModCompatibility.Catalyst.Loaded)
-                {
-                    ModContent.Find<ModItem>(this.Mod.Name, "AddonsForce").UpdateAccessory(player, false);
-                }
-                if (ModCompatibility.WrathoftheGods.Loaded)
-                {
-                    ModContent.GetInstance<SolynsSigil>().UpdateAccessory(player, hideVisual);
-                }
-                if (ModCompatibility.Crossmod.Loaded)
-                {
-                    ModContent.Find<ModItem>(ModCompatibility.Crossmod.Name, "BrandoftheBrimstoneWitch").UpdateAccessory(player, hideVisual);
-                    ModContent.Find<ModItem>(ModCompatibility.Crossmod.Name, "TitanHeartEnchant").UpdateAccessory(player, hideVisual);
-                    ModContent.Find<ModItem>(ModCompatibility.Crossmod.Name, "WulfrumEnchant").UpdateAccessory(player, hideVisual);
-                }
+                ModContent.Find<ModItem>(this.Mod.Name, "SoASoul").UpdateAccessory(player, hideVisual);
             }
-            if (Item.type == ModContent.ItemType<MacroverseSoul>())
+            if (ModCompatibility.Calamity.Loaded && (Item.type == ModContent.ItemType<EternitySoul>() || Item.type == ModContent.ItemType<StargateSoul>()))
             {
-                if (ModLoader.TryGetMod("SacredTools", out Mod SoA) && ShtunConfig.Instance.SacredTools)
-                {
-                    ModContent.Find<ModItem>(((ModType)this).Mod.Name, "SoASoul").UpdateAccessory(player, false);
-                }
-
-                if (ModLoader.TryGetMod("CalamityMod", out Mod kal) && ModLoader.TryGetMod("FargowiltasCrossmod", out Mod FargoIhateYou))
-                {
-                    ModContent.Find<ModItem>(((ModType)this).Mod.Name, "CalamitySoul").UpdateAccessory(player, false);
-                }
-
-                if (ModLoader.TryGetMod("ThoriumMod", out Mod tor) && ShtunConfig.Instance.Thorium)
-                {
-                    ModContent.Find<ModItem>(((ModType)this).Mod.Name, "ThoriumSoul").UpdateAccessory(player, false);
-                }
+                ModContent.Find<ModItem>(this.Mod.Name, "CalamitySoul").UpdateAccessory(player, hideVisual);
+            }
+            if (ModCompatibility.Thorium.Loaded && (Item.type == ModContent.ItemType<EternitySoul>() || Item.type == ModContent.ItemType<StargateSoul>()))
+            {
+                ModContent.Find<ModItem>(this.Mod.Name, "ThoriumSoul").UpdateAccessory(player, hideVisual);
+            }
+            if (ModCompatibility.Polarities.Loaded && (Item.type == ModContent.ItemType<EternitySoul>() || Item.type == ModContent.ItemType<StargateSoul>()))
+            {
+                ModContent.Find<ModItem>(this.Mod.Name, "WildernessForce").UpdateAccessory(player, hideVisual);
+                ModContent.Find<ModItem>(this.Mod.Name, "SpacetimeForce").UpdateAccessory(player, hideVisual);
+            }
+            if (ModCompatibility.Spooky.Loaded && (Item.type == ModContent.ItemType<EternitySoul>() || Item.type == ModContent.ItemType<StargateSoul>()))
+            {
+                ModContent.Find<ModItem>(this.Mod.Name, "TerrorForce").UpdateAccessory(player, hideVisual);
+                ModContent.Find<ModItem>(this.Mod.Name, "HorrorForce").UpdateAccessory(player, hideVisual);
+            }
+            if (ModCompatibility.Redemption.Loaded && (Item.type == ModContent.ItemType<EternitySoul>() || Item.type == ModContent.ItemType<StargateSoul>()))
+            {
+                ModContent.Find<ModItem>(this.Mod.Name, "AdvancementForce").UpdateAccessory(player, hideVisual);
             }
         }
     }

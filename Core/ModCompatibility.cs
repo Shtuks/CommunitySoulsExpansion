@@ -5,6 +5,12 @@ namespace ssm.Core;
 
 public static class ModCompatibility
 {
+    public static class DBZ
+    {
+        public const string Name = "DBZMODPORT";
+        public static bool Loaded => ModLoader.HasMod(Name);
+        public static Mod Mod => ModLoader.GetMod(Name);
+    }
     public static class SoulsCompat
     {
         public const string Name = "FargoMoreSoulsCompat";
@@ -61,7 +67,7 @@ public static class ModCompatibility
         public static bool Loaded => ModLoader.HasMod(Name);
         public static Mod Mod => ModLoader.GetMod(Name);
     }
-    public static class QualityOfCheatingChinese
+    public static class QualityOfCheating2
     {
         public const string Name = "ImproveGame";
         public static bool Loaded => ModLoader.HasMod(Name);

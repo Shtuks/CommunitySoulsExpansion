@@ -69,9 +69,6 @@
 	  <Reference Include="DragonLens">
 	    <HintPath>lib\DragonLens.dll</HintPath>
 	  </Reference>
-	  <Reference Include="EbonianMod">
-	    <HintPath>lib\EbonianMod.dll</HintPath>
-	  </Reference>
 	  <Reference Include="FargoMoreSoulsCompat">
 	    <HintPath>Libraries\FargoMoreSoulsCompat_v0.4.2.dll</HintPath>
 	  </Reference>
@@ -105,9 +102,6 @@
 	  <Reference Include="MagicStorage">
 	    <HintPath>lib\MagicStorage.dll</HintPath>
 	  </Reference>
-	  <Reference Include="MMHOOK_MagicStorage">
-	    <HintPath>lib\MMHOOK_MagicStorage.dll</HintPath>
-	  </Reference>
 	  <Reference Include="NoxusBoss">
 	    <HintPath>lib\NoxusBoss.dll</HintPath>
 	  </Reference>
@@ -122,9 +116,6 @@
 	  </Reference>
 	  <Reference Include="SacredTools">
 	    <HintPath>Libraries\SacredTools.dll</HintPath>
-	  </Reference>
-	  <Reference Include="sl">
-	    <HintPath>..\..\ModReader\sl\sl.dll</HintPath>
 	  </Reference>
 	  <Reference Include="Spooky">
 	    <HintPath>lib\Spooky.dll</HintPath>

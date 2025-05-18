@@ -62,7 +62,7 @@ namespace ssm.Thorium.Enchantments
             recipe.AddIngredient(ModContent.ItemType<DarksteelFaceGuard>());
             recipe.AddIngredient(ModContent.ItemType<DarksteelBreastPlate>());
             recipe.AddIngredient(ModContent.ItemType<DarksteelGreaves>());
-            recipe.AddIngredient(ModContent.ItemType<SteelEnchant>());
+           // recipe.AddIngredient(ModContent.ItemType<SteelEnchant>());
             recipe.AddIngredient(ModContent.ItemType<BallnChain>());
             recipe.AddIngredient(ModContent.ItemType<StrongestLink>());
 

@@ -12,6 +12,7 @@ using ThoriumMod.Items.BossFallenBeholder;
 using FargowiltasSouls.Core.AccessoryEffectSystem;
 using FargowiltasSouls.Core.Toggler.Content;
 using FargowiltasSouls.Content.Items.Accessories.Souls;
+using ThoriumMod.Items.Misc;
 
 namespace ssm.Thorium.Souls
 {
@@ -35,22 +36,20 @@ namespace ssm.Thorium.Souls
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            Thorium(player);
-        }
-
-        private void Thorium(Player player)
-        {
             ThoriumPlayer thoriumPlayer = player.GetModPlayer<ThoriumPlayer>();
 
-            player.GetDamage<UnitedModdedThrower>() += 0.22f;
-            player.GetCritChance<UnitedModdedThrower>() += 10f;
-            player.GetAttackSpeed<UnitedModdedThrower>() += 0.15f;
-            player.Shtun().throwerVelocity += 0.20f;
+            player.GetDamage<ThrowingDamageClass>() += 0.22f;
+            player.GetCritChance<ThrowingDamageClass>() += 10f;
+            player.GetAttackSpeed<ThrowingDamageClass>() += 10f;
+            player.Shtun().throwerVelocity += 0.15f;
             player.GetModPlayer<ThoriumPlayer>().throwerExhaustionRegenBonus += 10;
+            player.GetModPlayer<ThoriumPlayer>().throwerExhaustionMax += 1000;
             player.GetModPlayer<ThoriumPlayer>().throwGuide3 = true;
+            player.GetModPlayer<ThoriumPlayer>().canteenCadet = true;
+
             if (player.AddEffect<ThiefsWalletEffect>(Item))
             {
-                player.GetModPlayer<ThoriumPlayer>().accThiefsWallet = true;
+                player.GetModPlayer<ThoriumPlayer>().accPiratesPurse = true;
             }
             player.GetModPlayer<ThoriumPlayer>().throwConsume = 0.5f;
         }
@@ -61,8 +60,9 @@ namespace ssm.Thorium.Souls
 
             recipe.AddIngredient<SlingerEssence>();
 
-            recipe.AddIngredient<ThiefsWallet>();
-            recipe.AddIngredient<Wreath>();
+            recipe.AddIngredient<MermaidCanteen>();
+            recipe.AddIngredient<MagnetoGrip>();
+            recipe.AddIngredient<PiratesPurse>();
             recipe.AddIngredient<ThrowingGuideVolume3>();
             recipe.AddIngredient<TidalWave>();
             recipe.AddIngredient<AngelsEnd>();
@@ -79,7 +79,7 @@ namespace ssm.Thorium.Souls
         public class ThiefsWalletEffect : AccessoryEffect
         {
             public override Header ToggleHeader => Header.GetHeader<UniverseHeader>();
-            public override int ToggleItemType => ModContent.ItemType<ThiefsWallet>();
+            public override int ToggleItemType => ModContent.ItemType<PiratesPurse>();
         }
     }
 }

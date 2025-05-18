@@ -58,7 +58,7 @@ namespace ssm.Calamity
                     }
                 }
 
-                if (!recipe.HasIngredient<Rock>() && recipe.HasResult<MacroverseSoul>())
+                if (ShtunConfig.Instance.ExperimentalContent && !recipe.HasIngredient<Rock>() && recipe.HasResult<MacroverseSoul>())
                 {
                     recipe.AddIngredient<Rock>(1);
                 }

@@ -1,20 +1,16 @@
 ﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria.Localization;
-using SacredTools;
-using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using FargowiltasSouls.Content.Items.Accessories.Enchantments;
 using FargowiltasSouls.Core.AccessoryEffectSystem;
 using ssm.Content.SoulToggles;
 using ssm.Core;
-using SacredTools.Content.Items.Armor.Bismuth;
-using SacredTools.Items.Weapons.Herbs;
-using SacredTools.Items.Weapons;
 using SacredTools.Content.Items.Armor.Blightbone;
 using SacredTools.Content.Items.Accessories;
 using SacredTools.Content.Items.Weapons.Dreadfire;
+using FargowiltasSouls;
+using static ssm.SoA.Enchantments.BismuthEnchant;
 
 namespace ssm.SoA.Enchantments
 {
@@ -46,15 +42,10 @@ namespace ssm.SoA.Enchantments
         {
             ModContent.Find<ModItem>(this.soa.Name, "FeatherHairpin").UpdateAccessory(player, false);
 
-            ModdedPlayer modPlayer = player.GetModPlayer<ModdedPlayer>();
-            //set bonus
-            modPlayer.blightEmpowerment = true;
-
-            //pumpkin amulet
-            modPlayer.pumpkinAmulet = true;
-
-            //dreadflame emblem
-            modPlayer.dreadEmblem = true;
+            if (player.AddEffect<BlightboneEffect>(Item))
+            {
+                player.GetModPlayer<SoAPlayer>().bismuthEnchant = player.ForceEffect<BismuthEffect>() ? 2 : 1;
+            }
         }
 
         public class BlightboneEffect : AccessoryEffect

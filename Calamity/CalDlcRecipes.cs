@@ -22,11 +22,13 @@ namespace ssm.Calamity
                 #region other
                 //if (ShtunConfig.Instance.OldCalDlcBalance)
                 //{
-                    if (recipe.HasResult<BrandoftheBrimstoneWitch>() && !recipe.HasIngredient<ShadowspecBar>() && recipe.HasIngredient<AbomEnergy>())
-                    {
-                        if (recipe.RemoveIngredient(ModContent.ItemType<AbomEnergy>()))
-                            recipe.AddIngredient<ShadowspecBar>(5);
-                    }
+                    //if (recipe.HasResult<BrandoftheBrimstoneWitch>() && !recipe.HasIngredient<ShadowspecBar>() && recipe.HasIngredient<AbomEnergy>())
+                    //{
+                    //    if (recipe.RemoveIngredient(ModContent.ItemType<AbomEnergy>()))
+                    //        recipe.AddIngredient<ShadowspecBar>(5);
+                    //}
+
+                    //FUCK PERSON WHO PUT ETERNAL ENERGY IN THAT DUMB BAR
                     if (recipe.HasResult(ModContent.ItemType<ShadowspecBar>()) && recipe.HasIngredient<EternalEnergy>())
                     {
                         recipe.RemoveIngredient(ModContent.ItemType<EternalEnergy>());
@@ -35,7 +37,7 @@ namespace ssm.Calamity
                 #endregion
 
                 #region souls
-                if (recipe.HasResult<EternitySoul>() && !recipe.HasIngredient<CalamitySoul>() && recipe.HasIngredient<BrandoftheBrimstoneWitch>())
+                if (!ShtunConfig.Instance.ExperimentalContent && recipe.HasResult<EternitySoul>() && !recipe.HasIngredient<CalamitySoul>() && recipe.HasIngredient<BrandoftheBrimstoneWitch>())
                 {
                     if (recipe.RemoveIngredient(ModContent.ItemType<BrandoftheBrimstoneWitch>()))
                         recipe.AddIngredient<CalamitySoul>();

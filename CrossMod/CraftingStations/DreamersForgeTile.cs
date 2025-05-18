@@ -21,6 +21,8 @@ namespace ssm.CrossMod.CraftingStations
             TileObjectData.newTile.Origin = new Point16(0, 2);
             TileObjectData.newTile.DrawFlipHorizontal = false;
             TileObjectData.newTile.DrawFlipVertical = false;
+            TileObjectData.newTile.CoordinatePadding = 2;
+            AnimationFrameHeight = 54;
 
             Main.tileLighted[Type] = true;
 			Main.tileFrameImportant[Type] = true;
@@ -54,10 +56,10 @@ namespace ssm.CrossMod.CraftingStations
 
         public override void AnimateTile(ref int frame, ref int frameCounter)
         {
-            if (++frameCounter >= 10)
+            if (++frameCounter >= 16)
             {
                 frameCounter = 0;
-                frame = (frame + 1) % 6;
+                frame = (frame + 1) % 7;
             }
         }
 

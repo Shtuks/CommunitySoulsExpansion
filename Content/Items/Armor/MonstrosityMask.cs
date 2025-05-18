@@ -1,5 +1,3 @@
-using Microsoft.Xna.Framework;
-using System.Collections.Generic;
 using Terraria;
 using Terraria.ModLoader;
 
@@ -12,8 +10,7 @@ namespace ssm.Content.Items.Armor
         {
             ((Entity)this.Item).width = 18;
             ((Entity)this.Item).height = 18;
-            this.Item.rare = 11;
-            this.Item.expert = true;
+            this.Item.rare = 10;
             this.Item.value = Item.sellPrice(0, 10, 0, 0);
         }
 

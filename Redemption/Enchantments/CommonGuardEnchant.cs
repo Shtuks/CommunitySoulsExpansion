@@ -64,7 +64,7 @@ namespace ssm.Redemption.Enchantments
         {
             Recipe recipe = this.CreateRecipe();
 
-            recipe.AddRecipeGroup("ssm:CommonGuardHelm");
+            recipe.AddRecipeGroup("ssm:CommonGuardHelms");
             recipe.AddIngredient(ModContent.ItemType<CommonGuardPlateMail>());
             recipe.AddIngredient(ModContent.ItemType<CommonGuardGreaves>());
             recipe.AddIngredient(ModContent.ItemType<Wardbreaker>());

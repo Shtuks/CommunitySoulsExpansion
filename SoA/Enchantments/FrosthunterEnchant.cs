@@ -48,7 +48,7 @@ namespace ssm.SoA.Enchantments
         {
             public override Header ToggleHeader => Header.GetHeader<FoundationsForceHeader>();
             public override int ToggleItemType => ModContent.ItemType<FrosthunterEnchant>();
-
+            public override bool ExtraAttackEffect => true;
         }
 
         public override void AddRecipes()

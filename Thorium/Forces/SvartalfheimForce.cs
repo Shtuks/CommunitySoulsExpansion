@@ -37,6 +37,7 @@ namespace ssm.Thorium.Forces
             ModContent.Find<ModItem>(((ModType)this).Mod.Name, "ConduitEnchant").UpdateAccessory(player, hideVisual);
             ModContent.Find<ModItem>(((ModType)this).Mod.Name, "TitanEnchant").UpdateAccessory(player, hideVisual);
             ModContent.Find<ModItem>(((ModType)this).Mod.Name, "AstroEnchant").UpdateAccessory(player, hideVisual);
+            ModContent.Find<ModItem>(((ModType)this).Mod.Name, "DarksteelEnchant").UpdateAccessory(player, hideVisual);
         }
 
         public override void AddRecipes()
@@ -49,6 +50,7 @@ namespace ssm.Thorium.Forces
             recipe.AddIngredient(null, "ConduitEnchant");
             recipe.AddIngredient(null, "TitanEnchant");
             recipe.AddIngredient(null, "AstroEnchant");
+            recipe.AddIngredient(null, "DarksteelEnchant");
 
             recipe.AddTile<CrucibleCosmosSheet>();
 

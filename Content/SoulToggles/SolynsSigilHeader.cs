@@ -8,7 +8,7 @@ namespace ssm.Content.SoulToggles
 {
     public class SolynsSigilHeader : SoulHeader
     {
-        public override float Priority => 6.3f;
+        public override float Priority => 9f;
         public override int Item => ModContent.ItemType<SolynsSigil>();
     }
 }

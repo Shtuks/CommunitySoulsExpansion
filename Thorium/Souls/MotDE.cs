@@ -1,6 +1,4 @@
-﻿using Clamity.Content.Items.Weapons.Rogue;
-using FargowiltasSouls.Core.AccessoryEffectSystem;
-using ssm.Content.Items.Accessories;
+﻿using FargowiltasSouls.Core.AccessoryEffectSystem;
 using ssm.Content.SoulToggles;
 using ssm.Core;
 using Terraria;
@@ -19,11 +17,9 @@ namespace ssm.Thorium.Souls
     [JITWhenModsEnabled(ModCompatibility.Thorium.Name)]
     public class MotDE : ModItem
     {
-
-        private readonly Mod FargoSoul = Terraria.ModLoader.ModLoader.GetMod("FargowiltasSouls");
         public override void SetDefaults()
         {
-            Item.value = Item.buyPrice(1, 0, 0, 0);
+            Item.value = Item.buyPrice(0, 50, 0, 0);
             Item.rare = 10;
             Item.accessory = true;
             Item.defense = 5;
@@ -44,10 +40,12 @@ namespace ssm.Thorium.Souls
             ModContent.GetInstance<HexingTalisman>().UpdateAccessory(player, hideVisual);
             ModContent.GetInstance<FlawlessChrysalis>().UpdateAccessory(player, hideVisual);
             ModContent.GetInstance<TheRing>().UpdateAccessory(player, hideVisual);
+            ModContent.GetInstance<SteamkeeperWatch>().UpdateAccessory(player, hideVisual);
 
-            ModContent.GetInstance<CapeoftheSurvivor>().UpdateAccessory(player, hideVisual);
-            ModContent.GetInstance<MonsterCharm>().UpdateAccessory(player, hideVisual);
-            ModContent.GetInstance<HexingTalisman>().UpdateAccessory(player, hideVisual);
+            if (player.AddEffect<CapeoftheSurvivorEffect>(Item))
+                ModContent.GetInstance<CapeoftheSurvivor>().UpdateAccessory(player, hideVisual);
+            if (player.AddEffect<CrystalScorpionEffect>(Item))
+                ModContent.GetInstance<CrystalScorpion>().UpdateAccessory(player, hideVisual);
         }
 
         public override void AddRecipes()
@@ -79,13 +77,24 @@ namespace ssm.Thorium.Souls
             public override int ToggleItemType => ModContent.ItemType<InfernoLordsFocus>();
             public override Header ToggleHeader => Header.GetHeader<MotDEHeader>();
         }
+        public class CapeoftheSurvivorEffect : AccessoryEffect
+        {
+            public override int ToggleItemType => ModContent.ItemType<CapeoftheSurvivor>();
+
+            public override Header ToggleHeader => Header.GetHeader<MotDEHeader>();
+        }
         public class PocketFusionGeneratorEffect : AccessoryEffect
         {
             public override int ToggleItemType => ModContent.ItemType<PocketFusionGenerator>();
 
             public override Header ToggleHeader => Header.GetHeader<MotDEHeader>();
         }
+        public class CrystalScorpionEffect : AccessoryEffect
+        {
+            public override int ToggleItemType => ModContent.ItemType<CrystalScorpion>();
 
+            public override Header ToggleHeader => Header.GetHeader<MotDEHeader>();
+        }
         public class LihzahrdTailEffect : AccessoryEffect
         {
             public override int ToggleItemType => ModContent.ItemType<LihzahrdTail>();

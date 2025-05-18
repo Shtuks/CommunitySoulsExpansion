@@ -60,14 +60,26 @@ namespace ssm.Redemption
                         recipe.AddIngredient<RoboBrain>();
                 }
 
-                if (recipe.HasResult<FlightMasterySoul>() && !recipe.HasResult<NebWings>())
+                if (recipe.HasResult<FlightMasterySoul>() && !recipe.HasIngredient<NebWings>())
                 {
                     recipe.AddIngredient<NebWings>();
                     recipe.AddIngredient<XenomiteJetpack>();
                 }
 
+                if (recipe.HasResult<ColossusSoul>() && !recipe.HasIngredient<HEVSuit>())
+                {
+                    recipe.AddIngredient<HEVSuit>();
+                }
+
+                if (recipe.HasResult<SupersonicSoul>() && !recipe.HasIngredient<InfectionShield>())
+                {
+                    recipe.RemoveIngredient(ItemID.EoCShield);
+                    recipe.AddIngredient<InfectionShield>();
+                }
+
                 //emblem -> essence -> mutagen -> soul
                 //Where clamity post dog acc? I dont know.
+                //Where are soa sigils? In anthraltite enchant
 
                 if (recipe.HasResult<MutagenMagic>() && !recipe.HasResult<ApprenticesEssence>())
                 {
@@ -92,8 +104,8 @@ namespace ssm.Redemption
 
                 if (recipe.HasResult<ArchWizardsSoul>() && !recipe.HasResult<MutagenMagic>())
                 {
-                    recipe.AddIngredient<MutagenMagic>();
                     recipe.RemoveIngredient(ModContent.ItemType<ApprenticesEssence>());
+                    recipe.AddIngredient<MutagenMagic>();
                 }
                 if (recipe.HasResult<BerserkerSoul>() && !recipe.HasResult<MutagenMelee>())
                 {

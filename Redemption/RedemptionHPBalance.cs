@@ -20,30 +20,26 @@ namespace ssm.Redemption
             {
                 if (npc.type == ModContent.NPCType<Nebuleus>())
                 {
-                    npc.lifeMax = 2800000;
-                    npc.life = npc.lifeMax;
-                    npc.damage = 380;
+                    npc.lifeMax = 2700000;
+                    npc.damage = 790;
                 }
 
                 if (npc.type == ModContent.NPCType<Nebuleus2>())
                 {
-                    npc.lifeMax = 4300000;
-                    npc.life = npc.lifeMax;
-                    npc.damage = 420;
+                    npc.lifeMax = 4100000;
+                    npc.damage = 890;
                 }
 
                 if (npc.type == ModContent.NPCType<Akka>())
                 {
-                    npc.lifeMax = 1900000;
-                    npc.life = npc.lifeMax;
-                    npc.damage = 320;
+                    npc.lifeMax = 1700000;
+                    npc.damage = 420;
                 }
 
                 if (npc.type == ModContent.NPCType<Ukko>())
                 {
-                    npc.lifeMax = 2100000;
-                    npc.life = npc.lifeMax;
-                    npc.damage = 370;
+                    npc.lifeMax = 1900000;
+                    npc.damage = 470;
                 }
                 if (!fullHP) { npc.life = npc.lifeMax; fullHP = true; }
             }

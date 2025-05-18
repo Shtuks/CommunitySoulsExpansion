@@ -25,13 +25,14 @@ namespace ssm.Calamity.Souls
 
         public override void SetDefaults()
         {
-            this.Item.value = Item.buyPrice(10, 0, 0, 0);
-            this.Item.rare = 11;
-            this.Item.accessory = true;
-            this.Item.defense = 30;
+            Item.value = Item.buyPrice(3, 0, 0, 0);
+            Item.rare = 11;
+            Item.accessory = true;
+            Item.defense = 30;
         }
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
+            ModContent.GetInstance<BrandoftheBrimstoneWitch>().UpdateAccessory(player, hideVisual);
             ModContent.GetInstance<DemonShadeEnchant>().UpdateAccessory(player, hideVisual);
             ModContent.GetInstance<GaleForce>().UpdateAccessory(player, hideVisual);
             ModContent.GetInstance<ElementsForce>().UpdateAccessory(player, hideVisual);

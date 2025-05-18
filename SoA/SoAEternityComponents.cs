@@ -41,17 +41,17 @@ namespace ssm.SoA
                     ModContent.Find<ModItem>(ModCompatibility.SacredTools.Name, "HeartOfThePlough").UpdateAccessory(player, hideVisual);
                 }
 			}
-            if (item.type == ModContent.ItemType<MasochistSoul>() || item.type == ModContent.ItemType<EternitySoul>() || item.type == ModContent.ItemType<StargateSoul>())
-            {
-				if (player.AddEffect<YataMirrorEffect>(item))
-                {
-                    ModContent.Find<ModItem>(ModCompatibility.SacredTools.Name, "YataMirror").UpdateAccessory(player, hideVisual);
-                }
-                if (player.AddEffect<PrimordialCoreEffect>(item))
-                {
-                    ModContent.Find<ModItem>(ModCompatibility.SacredTools.Name, "PrimordialCore").UpdateAccessory(player, hideVisual);
-                }
-            }
+    //        if (item.type == ModContent.ItemType<MasochistSoul>() || item.type == ModContent.ItemType<EternitySoul>() || item.type == ModContent.ItemType<StargateSoul>())
+    //        {
+				//if (player.AddEffect<YataMirrorEffect>(item))
+    //            {
+    //                ModContent.Find<ModItem>(ModCompatibility.SacredTools.Name, "YataMirror").UpdateAccessory(player, hideVisual);
+    //            }
+    //            if (player.AddEffect<PrimordialCoreEffect>(item))
+    //            {
+    //                ModContent.Find<ModItem>(ModCompatibility.SacredTools.Name, "PrimordialCore").UpdateAccessory(player, hideVisual);
+    //            }
+    //        }
             if (item.type == ModContent.ItemType<BerserkerSoul>() || item.type == ModContent.ItemType<UniverseSoul>() || item.type == ModContent.ItemType<EternitySoul>() || item.type == ModContent.ItemType<StargateSoul>())
             {
                 if (player.AddEffect<FloraFistEffect>(item))

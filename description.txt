@@ -7,6 +7,7 @@ Discord Server: https://discord.gg/frUcz2dQAy
 
 Official Wiki: https://terrariamods.wiki.gg/wiki/Community_Souls_Expansion
 
+SoA enchantments and forces was reworked and no longer give armor set bonuses.
 
 All things mod doing for now:
 
@@ -16,14 +17,14 @@ All things mod doing for now:
 
 - Reworked boots and shields progression
 
-- Adds SoA and Thorium items to 1st tier souls recepies and effects
+- Adds SoA, Thorium, Redemption items to 1st tier souls recepies and effects
 
 - Redemption, Thorium, SoA caught NPCs
 
-- Thorium / SoA / Polarities / Spooky enchantments, forces, souls
+- SoA / Thorium / Redemption / Polarities / Spooky enchantments, forces, souls
 
 Full list of supported mods: Calamity, Shadows of Abaddon, Thorium, Redemption, Spooky, Polarities, Bombus Apis, Magic Storage
-Coming soon compatibility: Homeward Journey, Spirit, Consolaria
+Coming soon compatibility: Homeward Journey, Spirit, Consolaria, TerMerica, Orchid
 
 Coding: StarlightCat, Ropro0923
 Sprites: ma3allim, DanHameln
@@ -32,4 +33,4 @@ Testing: cheesenuggets, Mr.Puzzles, Wild Mayo
 
 Special thanks to Fargowilta, Javyz, Terry N Muse, Blushiemagic, DanYami, Jopojelly, ChickenBones, Jofairden, DivermanSam.
 
-Thanks to active members of Discord Server: Mith Moonwalker, AwesomeSavage777, GodzilaJedi, vergeneu
+Thanks to active members of Discord Server: Mith Moonwalker, AwesomeSavage777, GodzilaJedi, vergeneum

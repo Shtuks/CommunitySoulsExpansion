@@ -88,7 +88,7 @@ namespace ssm.CrossMod.CraftingStations
         public override void AnimateTile(ref int frame, ref int frameCounter)
         {
             ++frameCounter;
-            if (frameCounter < 8)
+            if (frameCounter < 16)
                 return;
             frame = (frame + 1) % 8;
             frameCounter = 0;

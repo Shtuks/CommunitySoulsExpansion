@@ -18,8 +18,13 @@ namespace ssm.Content.Buffs
 
         public override void Update(Player player, ref int buffIndex)
         {
-            player.GetDamage<SummonDamageClass>() += player.ForceEffect<DreadfireEffect>() ? 0.3f : 0.2f;
-            player.GetDamage<MagicDamageClass>() += player.ForceEffect<DreadfireEffect>() ? 0.3f : 0.2f;
+            player.GetDamage<SummonDamageClass>() += player.ForceEffect<DreadfireEffect>() ? 0.3f : 0.1f;
+            player.GetDamage<MagicDamageClass>() += player.ForceEffect<DreadfireEffect>() ? 0.3f : 0.1f;
+        }
+
+        public override void Update(NPC npc, ref int buffIndex)
+        {
+            npc.lifeRegen -= Main.LocalPlayer.ForceEffect<DreadfireEffect>() ? 30 : 5;
         }
     }
 }

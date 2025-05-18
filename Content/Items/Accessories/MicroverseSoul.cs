@@ -4,15 +4,16 @@ using Terraria.ID;
 using ssm.Core;
 using Fargowiltas.Items.Tiles;
 using FargowiltasSouls.Content.Items.Materials;
-using ssm.Calamity.Souls;
-using ssm.Thorium.Souls;
-using ssm.SoA.Souls;
 using Terraria.ModLoader;
 
 namespace ssm.Content.Items.Accessories
 {
     public class MacroverseSoul : BaseSoul
     {
+        public override bool IsLoadingEnabled(Mod mod)
+        {
+            return ShtunConfig.Instance.ExperimentalContent;
+        }
         public override void SetStaticDefaults()
         {
             ItemID.Sets.ItemNoGravity[Type] = true;

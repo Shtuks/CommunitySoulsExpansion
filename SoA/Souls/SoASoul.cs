@@ -42,6 +42,8 @@ namespace ssm.SoA.Souls
             ModContent.Find<ModItem>(((ModType)this).Mod.Name, "GenerationsForce").UpdateAccessory(player, hideVisual);
             ModContent.Find<ModItem>(((ModType)this).Mod.Name, "SoranForce").UpdateAccessory(player, hideVisual);
             ModContent.Find<ModItem>(((ModType)this).Mod.Name, "SyranForce").UpdateAccessory(player, hideVisual);
+
+            player.buffImmune[ModContent.Find<ModBuff>(this.Mod.Name, "NihilityPresenceBuff").Type] = true;
         }
 
         public override void AddRecipes()

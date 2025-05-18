@@ -1,13 +1,13 @@
-using Fargowiltas.Common.Systems.Recipes;
 using Microsoft.Xna.Framework;
-using System.Collections.Generic;
 using Terraria;
 using Terraria.GameContent.Creative;
 using Terraria.ModLoader;
 using Fargowiltas.Items.Tiles;
-using ssm.Content.Tiles;
 using FargowiltasSouls.Content.Items.Materials;
-using ssm.Core;
+using Terraria.DataStructures;
+using Terraria.ID;
+using Luminance.Core.Graphics;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace ssm.CrossMod.CraftingStations
 {
@@ -17,21 +17,32 @@ namespace ssm.CrossMod.CraftingStations
         public override void SetStaticDefaults()
         {
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
+            Main.RegisterItemAnimation(Item.type, new DrawAnimationVertical(4, 8));
+            ItemID.Sets.AnimatesAsSoul[Item.type] = true;
         }
 
-        public override void ModifyTooltips(List<TooltipLine> list)
+        public override bool PreDrawTooltipLine(DrawableTooltipLine line, ref int yOffset)
         {
-            foreach (TooltipLine tooltipLine in list)
+            if ((line.Mod == "Terraria" && line.Name == "ItemName") || line.Name == "FlavorText")
             {
-                if (tooltipLine.Mod == "Terraria" && tooltipLine.Name == "ItemName")
-                    tooltipLine.OverrideColor = new Color?(new Color(Main.DiscoR, Main.DiscoG, Main.DiscoB));
+                Main.spriteBatch.End();
+                Main.spriteBatch.Begin(SpriteSortMode.Immediate, null, null, null, null, null, Main.UIScaleMatrix);
+                ManagedShader shader = ShaderManager.GetShader("FargowiltasSouls.Text");
+                shader.TrySetParameter("mainColor", new Color(42, 66, 99));
+                shader.TrySetParameter("secondaryColor", Main.DiscoColor);
+                shader.Apply("PulseUpwards");
+                Utils.DrawBorderString(Main.spriteBatch, line.Text, new Vector2(line.X, line.Y), Color.White, 1);
+                Main.spriteBatch.End();
+                Main.spriteBatch.Begin(SpriteSortMode.Deferred, null, null, null, null, null, Main.UIScaleMatrix);
+                return false;
             }
+            return true;
         }
 
         public override void SetDefaults()
         {
-            Item.width = 28;
-            Item.height = 14;
+            Item.width = 110;
+            Item.height = 80;
             Item.rare = 10;
             Item.maxStack = 99;
             Item.useTurn = true;
@@ -53,7 +64,7 @@ namespace ssm.CrossMod.CraftingStations
                 recipe.AddIngredient<DemonshadeWorkbenchItem>();
             }
 
-            if (ModLoader.HasMod("SacredTools") && ShtunConfig.Instance.ExperimentalContent)
+            if (ModLoader.HasMod("SacredTools"))
             {
                 recipe.AddIngredient<SyranCraftingStationItem>();
             }

@@ -2491,9 +2491,10 @@ Mods: {
 				Tooltip:
 					'''
 					22% increased thrower damage
-					10% increased thrower projectile velocity
-					10% increased thrower critical chance
-					Effects of Deadman's Patch and Pirate's Purse
+					15% increased thrower projectile velocity
+					10% increased thrower critical chance and attack speed
+					Increased exhaustion regeneration and maximum exhaustion
+					Effects of Magneto Grip and Pirate's Purse
 					'''
 			}
 
@@ -2905,7 +2906,7 @@ Mods: {
 				DisplayName: Soul
 				Tooltip:
 					'''
-					Effects of [i:FargowiltasSouls/EternitySoul], [i:ssm/EternityForce], [i:ssm/MacroverseSoul], [i:ssm/CyclonicFin]
+					Effects of [i:FargowiltasSouls/EternitySoul], [i:ssm/EternityForce], [i:ssm/CyclonicFin]
 					Immunity to all possible debuffs.
 					'The feeling of [c/FF0000:HIS] gaze does not leave you.'
 					'''
@@ -2919,6 +2920,16 @@ Mods: {
 			MacroverseSoul: {
 				Tooltip: ""
 				DisplayName: Macroverse Soul
+			}
+
+			ILoveStarlightCat: {
+				DisplayName: I Love Starlight Cat
+				Tooltip: ""
+			}
+
+			LivingWoodEnchant2: {
+				DisplayName: Living Wood Enchant2
+				Tooltip: ""
 			}
 		}
 
@@ -3077,7 +3088,7 @@ Mods: {
 			SpectralFishEffect: Spectral Fishron Support
 			CuteFishEXEffect: Fishron Ritual
 			GraniteEffect: Shock Absorber
-			ThiefsWalletEffect: Thief's Wallet
+			ThiefsWalletEffect: Pirate's Purse
 			BlastShieldEffect: Blast Shield
 			SpeedCapEffect: Movement Speed Cap
 			MariviumEffect: Marivium Shields
@@ -3260,6 +3271,8 @@ Mods: {
 			SquirrelMinion.DisplayName: Squirrel Minion
 			SquirrelRing.DisplayName: Squirrel Ring
 			Blightbone.DisplayName: Blightbone
+			EerieMinion.DisplayName: Eerie Minion
+			DreadfireAuraProj.DisplayName: Dreadfire Aura Proj
 		}
 
 		Bestiary: {

@@ -1,9 +1,12 @@
-using Fargowiltas.NPCs;
-using System;
-using System.Collections.Generic;
+using FargowiltasSouls.Content.Bosses.MutantBoss;
+using FargowiltasSouls.Content.Items.Accessories.Enchantments;
+using FargowiltasSouls.Content.Items.Accessories.Forces;
+using FargowiltasSouls.Content.Items.Accessories.Souls;
+using ssm.Content.NPCs;
 using System.Linq;
 using Terraria;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace ssm
@@ -11,50 +14,17 @@ namespace ssm
     public partial class ShtunNpcs : GlobalNPC
     {
         public override bool InstancePerEntity => true;
+
         public bool isWaterEnemy;
         public int chtuxlagorInferno;
         public static int ECH = -1;
         public static int DukeEX = -1;
         public static int boss = -1;
         public static int mutantEX = -1;
-        public bool CelestialPower;
-
-        public override void ModifyShop(NPCShop shop)
+        public override void SetStaticDefaults()
         {
-            void AddItem(int ItemID, int customPrice = -1, Condition condition = null, Condition[] conditions = null)
-            {
-                if (condition != (Condition)null)
-                {
-                    conditions = (Condition[])(object)new Condition[1] { condition };
-                }
-                if (conditions != null)
-                {
-                    if (customPrice != -1)
-                    {
-                        shop.Add(new Item(ItemID, 1, 0)
-                        {
-                            shopCustomPrice = customPrice
-                        }, conditions);
-                    }
-                    else
-                    {
-                        shop.Add(ItemID, conditions);
-                    }
-                }
-                else if (customPrice != -1)
-                {
-                    shop.Add(new Item(ItemID, 1, 0)
-                    {
-                        shopCustomPrice = customPrice
-                    }, Array.Empty<Condition>());
-                }
-                else
-                {
-                    shop.Add(ItemID, Array.Empty<Condition>());
-                }
-            }
+            NPCID.Sets.ImmuneToRegularBuffs[ModContent.NPCType<MutantBoss>()] = true;
         }
-
         public override void UpdateLifeRegen(NPC npc, ref int damage)
         {
             if (chtuxlagorInferno > 0)

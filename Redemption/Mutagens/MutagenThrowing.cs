@@ -5,6 +5,8 @@ using ThoriumMod.Items.ThrownItems;
 using ssm.Thorium.Essences;
 using ssm.Content.DamageClasses;
 using ssm.Core;
+using ThoriumMod.Utilities;
+using ThoriumMod;
 
 namespace ssm.Redemption.Mutagens
 {
@@ -36,6 +38,7 @@ namespace ssm.Redemption.Mutagens
             player.GetCritChance<UnitedModdedThrower>() += 10f;
             player.GetAttackSpeed<UnitedModdedThrower>() += 0.10f;
             player.Shtun().throwerVelocity += 0.10f;
+            player.GetModPlayer<ThoriumPlayer>().throwerExhaustionRegenBonus += 5;
         }
 
         public override void AddRecipes()

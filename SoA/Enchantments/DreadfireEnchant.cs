@@ -14,6 +14,9 @@ using SacredTools.Content.Items.Weapons.Dreadfire;
 using ssm.Content.Buffs;
 using BombusApisBee;
 using FargowiltasSouls;
+using FargowiltasSouls.Content.Buffs.Souls;
+using FargowiltasSouls.Content.Projectiles;
+using ssm.Content.Projectiles;
 
 namespace ssm.SoA.Enchantments
 {
@@ -25,8 +28,6 @@ namespace ssm.SoA.Enchantments
         {
             return ShtunConfig.Instance.SacredTools;
         }
-
-        private readonly Mod soa = ModLoader.GetMod("SacredTools");
 
         public override void SetDefaults()
         {
@@ -52,12 +53,44 @@ namespace ssm.SoA.Enchantments
             public override bool ActiveSkill => true;
             public override void ActiveSkillJustPressed(Player player, bool stunned)
             {
-                player.AddBuff(ModContent.BuffType<DreadflameAura>(), 600);
+                if (!player.HasBuff<DreadflameAuraCD>())
+                {
+                    player.AddBuff(ModContent.BuffType<DreadflameAura>(), 600);
 
-                player.AddBuff(ModContent.BuffType<DreadflameAuraCD>(), player.ForceEffect<DreadfireEffect>() ? 3000 : 2700);
+                    player.AddBuff(ModContent.BuffType<DreadflameAuraCD>(), player.ForceEffect<DreadfireEffect>() ? 3000 : 2700);
+                }
+            }
+            public static int Range(Player player, bool forceEffect) => (int)((forceEffect ? 450f : 250f) * (1f + player.FargoSouls().AuraSizeBonus));
+            public override void PostUpdateEquips(Player player)
+            {
+                FargoSoulsPlayer modPlayer = player.FargoSouls();
+
+                if (player.whoAmI != Main.myPlayer)
+                    return;
+
+                int visualProj = ModContent.ProjectileType<DreadfireAuraProj>();
+                if (player.ownedProjectileCounts[visualProj] <= 0)
+                {
+                    Projectile.NewProjectile(GetSource_EffectItem(player), player.Center, Vector2.Zero, visualProj, 0, 0, Main.myPlayer);
+                }
+
+                bool forceEffect = modPlayer.ForceEffect<DreadfireEnchant>();
+                int dist = Range(player, forceEffect);
+
+                for (int i = 0; i < Main.maxNPCs; i++)
+                {
+                    NPC npc = Main.npc[i];
+                    if (npc.active && !npc.friendly && npc.lifeMax > 5 && !npc.dontTakeDamage)
+                    {
+                        Vector2 npcComparePoint = FargoSoulsUtil.ClosestPointInHitbox(npc, player.Center);
+                        if (player.Distance(npcComparePoint) < dist && (forceEffect || Collision.CanHitLine(player.Center, 0, 0, npcComparePoint, 0, 0)))
+                        {
+                            npc.AddBuff(ModContent.BuffType<DreadflameAura>(), 120);
+                        }
+                    }
+                }
             }
         }
-
         public override void AddRecipes()
         {
             Recipe recipe = this.CreateRecipe();

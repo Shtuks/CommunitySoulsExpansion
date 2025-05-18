@@ -62,10 +62,10 @@ namespace ssm.Thorium
 			for (int i = 0; i < Recipe.numRecipes; i++)
 			{
 				Recipe recipe = Main.recipe[i];
-				//if (recipe.HasResult<EternitySoul>() && !recipe.HasIngredient<ThoriumSoul>())
-				//{
-				//	recipe.AddIngredient<ThoriumSoul>();
-				//}
+                if (!ShtunConfig.Instance.ExperimentalContent && recipe.HasResult<EternitySoul>() && !recipe.HasIngredient<ThoriumSoul>())
+                {
+                    recipe.AddIngredient<ThoriumSoul>();
+                }
                 if (recipe.HasResult<UniverseSoul>() && !recipe.HasIngredient<BardSoul>())
                 {
                     recipe.AddIngredient<BardSoul>();
@@ -73,6 +73,10 @@ namespace ssm.Thorium
                 if (recipe.HasResult<UniverseSoul>() && !recipe.HasIngredient<GuardianAngelsSoul>())
                 {
                     recipe.AddIngredient<GuardianAngelsSoul>();
+                }
+                if (!ModCompatibility.Calamity.Loaded && recipe.HasResult<UniverseSoul>() && !recipe.HasIngredient<OlympiansSoul>())
+                {
+                    recipe.AddIngredient<OlympiansSoul>();
                 }
                 if (recipe.HasResult<ColossusSoul>() && !recipe.HasIngredient<GuardianAngelsSoul>())
                 {
@@ -83,10 +87,6 @@ namespace ssm.Thorium
                     recipe.RemoveIngredient(ItemID.ManaFlower);
                     recipe.AddIngredient(ItemID.NaturesGift);
                 }
-                //if (recipe.HasResult<ColossusSoul>() && !recipe.HasIngredient<BlastShield>())
-                //{
-                //    recipe.AddIngredient<BlastShield>();
-                //}
             }
 		}
 	}

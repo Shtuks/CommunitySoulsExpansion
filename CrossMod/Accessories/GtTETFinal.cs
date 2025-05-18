@@ -8,6 +8,7 @@ using CalamityMod.Items.Accessories;
 using CalamityMod.Tiles.Furniture.CraftingStations;
 using ThoriumMod.Items.ThrownItems;
 using CalamityMod.Items.Materials;
+using ThoriumMod.Items.NPCItems;
 
 namespace ssm.CrossMod.Accessories
 {
@@ -36,10 +37,11 @@ namespace ssm.CrossMod.Accessories
             Recipe recipe = this.CreateRecipe();
             recipe.AddIngredient<Nanotech>();
             recipe.AddIngredient<ThrowingGuideVolume3>();
-            recipe.AddIngredient<SuspiciousScrap>();
-            //recipe.AddIngredient<SuspiciousScrap>();
+            recipe.AddIngredient<SuspiciousScrap>(5);
+            recipe.AddIngredient<StrangeAlienTech>(5);
+            recipe.AddIngredient<AuricBar>(5);
 
-            recipe.AddTile<DraedonsForge>();
+            recipe.AddTile<CrucibleCosmosSheet>();
 
             recipe.Register();
         }

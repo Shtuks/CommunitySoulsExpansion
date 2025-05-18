@@ -60,13 +60,6 @@ namespace ssm.Redemption.Enchantments
             }
             player.GetModPlayer<EnergyPlayer>().energyRegen += 20;
         }
-
-        public class PureIronCross : AccessoryEffect
-        {
-            public override Header ToggleHeader => Header.GetHeader<AdvancementForceHeader>();
-
-            public override int ToggleItemType => ModContent.ItemType<PureIronEnchant>();
-        }
         public override void AddRecipes()
         {
             Recipe recipe = this.CreateRecipe();
