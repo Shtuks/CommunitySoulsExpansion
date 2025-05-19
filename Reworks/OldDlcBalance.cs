@@ -35,7 +35,7 @@ namespace ssm.Reworks
                 if (npc.type == ModContent.NPCType<MutantBoss>())
                 {
                     npc.damage = WorldSavingSystem.MasochistModeReal ? npc.target.ToPlayer().statLifeMax2/2 :npc.target.ToPlayer().statLifeMax2/3; //(int)(500 + (100 * multiplier * 0.7f));
-                    npc.defense = 300 + (ModCompatibility.Calamity.Loaded ? 500 : 400 * multiplier);
+                    npc.defense = 300 + (ModCompatibility.Calamity.Loaded ? 550 : 400 * multiplier);
                     npc.lifeMax = (int)(mutantBaseHealth + (mutantAddHealth * (!WorldSavingSystem.MasochistModeReal ? multiplier : multiplier *  1.5f)));
                 }
 

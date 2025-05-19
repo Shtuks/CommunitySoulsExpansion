@@ -1,16 +1,19 @@
 ﻿using ssm.Content.Projectiles.Enchantments;
+using ssm.Core;
 using Terraria;
 using Terraria.ModLoader;
 
 namespace ssm.SoA
 {
+    [ExtendsFromMod(ModCompatibility.SacredTools.Name)]
+    [JITWhenModsEnabled(ModCompatibility.SacredTools.Name)]
     public class SoAItem : GlobalItem
     {
         public override bool InstancePerEntity => true;
 
         public override bool? UseItem(Item item, Player player)
         {
-            if (item.DamageType.CountsAsClass<ThrowingDamageClass>())
+            if (item != null && item.DamageType.CountsAsClass<ThrowingDamageClass>())
             {
                 int enchant = player.GetModPlayer<SoAPlayer>().blightboneEnchant;
 
