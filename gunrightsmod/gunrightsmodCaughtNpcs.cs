@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 using ssm.Core;
 using gunrightsmod.Content.NPCs;
 
-namespace ssm.gunrightsmod
+namespace ssm.TerMerica
 {
     [ExtendsFromMod(ModCompatibility.TerMerica.Name)]
     [JITWhenModsEnabled(ModCompatibility.TerMerica.Name)]
