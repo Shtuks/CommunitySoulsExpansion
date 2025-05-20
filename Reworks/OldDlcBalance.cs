@@ -14,34 +14,26 @@ namespace ssm.Reworks
         {
             if (npc.type == ModContent.NPCType<MutantBoss>())
             {
-                int mutantBaseHealth = 1000000;
-                int mutantAddHealth = 1000000;
-                int monstrBaseHealth = 10000000;
-                int monstrAddHealth = 10000000;
-                int multiplier = 0;
+                int mutantHealth = 10000000;
+                int monstrHealth = 100000000;
+                float multiplier = 0;
 
-                if (ModCompatibility.Thorium.Loaded && !ModCompatibility.Calamity.Loaded) {multiplier += 1;}
-                if (ModCompatibility.SacredTools.Loaded && !ModCompatibility.Calamity.Loaded) { multiplier += 1; }
-                if (ModCompatibility.Calamity.Loaded && !ModCompatibility.Thorium.Loaded && !ModCompatibility.SacredTools.Loaded) { multiplier += 2; }
-                if (ModCompatibility.Thorium.Loaded){multiplier+=2;}
-                if (ModCompatibility.Calamity.Loaded) {multiplier+=4;} 
-                if (ModCompatibility.SacredTools.Loaded) {multiplier+=2;}
-                if (ModCompatibility.Homeward.Loaded) {multiplier+=2;}
-                if (ModCompatibility.DBZ.Loaded) { multiplier += 5; }
-                if (ModCompatibility.Redemption.Loaded && !ModCompatibility.Thorium.Loaded && !ModCompatibility.SacredTools.Loaded) {multiplier++;}
-                if (ModCompatibility.Entropy.Loaded) { multiplier++; }
-                if (ModCompatibility.Polarities.Loaded && ModCompatibility.Spooky.Loaded && !ModCompatibility.Calamity.Loaded) { multiplier++;}
+                if (ModCompatibility.Calamity.Loaded && !ModCompatibility.Thorium.Loaded && !ModCompatibility.SacredTools.Loaded) { multiplier += 1; }
+                if (ModCompatibility.Thorium.Loaded){multiplier+=0.5f;}
+                if (ModCompatibility.Calamity.Loaded) {multiplier+=1;} 
+                if (ModCompatibility.SacredTools.Loaded) {multiplier+=0.5f;}
+                if (ModCompatibility.DBZ.Loaded) { multiplier += 1; }
+                if (ModCompatibility.Redemption.Loaded && ModCompatibility.Homeward.Loaded && ModCompatibility.Polarities.Loaded && ModCompatibility.Spooky.Loaded && !ModCompatibility.Calamity.Loaded) { multiplier++;}
 
                 if (npc.type == ModContent.NPCType<MutantBoss>())
                 {
-                    npc.damage = WorldSavingSystem.MasochistModeReal ? npc.target.ToPlayer().statLifeMax2/2 :npc.target.ToPlayer().statLifeMax2/3; //(int)(500 + (100 * multiplier * 0.7f));
-                    npc.defense = 300 + (ModCompatibility.Calamity.Loaded ? 550 : 400 * multiplier);
-                    npc.lifeMax = (int)(mutantBaseHealth + (mutantAddHealth * (!WorldSavingSystem.MasochistModeReal ? multiplier : multiplier *  1.5f)));
+                    npc.damage = (int)(500 + (150 * multiplier));
+                    npc.lifeMax = (int)(mutantHealth + (mutantHealth * multiplier));
                 }
 
                 if (npc.type == ModContent.NPCType<MutantEX>())
                 {
-                    npc.lifeMax = monstrBaseHealth * 3 + (monstrAddHealth * multiplier / 2);
+                    npc.lifeMax = (int)(monstrHealth * 3 + (monstrHealth * multiplier / 2));
                 }
             }
         }

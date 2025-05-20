@@ -97,7 +97,7 @@ namespace ssm.Content.Items.Accessories
         {
             public override Header ToggleHeader => Header.GetHeader<EternityForceHeader>();
             public override int ToggleItemType => ModContent.ItemType<StyxCrown>();
-            public override bool MutantsPresenceAffects => true;
+            //public override bool MutantsPresenceAffects => true;
         }
     }
 }

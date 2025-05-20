@@ -58,9 +58,10 @@ namespace ssm.Content.Items.Accessories
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
+            ModContent.Find<ModItem>(this.FargoSoul.Name, "UniverseCore").UpdateAccessory(player, true);
+
             if (player.AddEffect<EridanusEffect>(Item))
             {
-                ModContent.Find<ModItem>(this.FargoSoul.Name, "UniverseCore").UpdateAccessory(player, true);
                 ModContent.Find<ModItem>(this.FargoSoul.Name, "EridanusBattleplate").UpdateArmorSet(player);
                 ModContent.Find<ModItem>(this.FargoSoul.Name, "EridanusHat").UpdateArmorSet(player);
                 ModContent.Find<ModItem>(this.FargoSoul.Name, "EridanusLegwear").UpdateArmorSet(player);

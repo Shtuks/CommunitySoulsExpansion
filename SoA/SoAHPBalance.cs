@@ -104,8 +104,8 @@ namespace ssm.SoA
                 }
                 if (npc.type == ModContent.NPCType<Nihilus>())
                 {
-                    npc.lifeMax = 7800000;
-                    npc.damage = 680;
+                    npc.lifeMax = ModCompatibility.Calamity.Loaded ? 8200000 : 4300000;
+                    npc.damage = ModCompatibility.Calamity.Loaded ? 680 : 600;
                 }
                 if (npc.type == ModContent.NPCType<RelicShieldNihilus>())
                 {
@@ -113,8 +113,8 @@ namespace ssm.SoA
                 }
                 if (npc.type == ModContent.NPCType<Nihilus2>())
                 {
-                    npc.lifeMax = 11000000;
-                    npc.damage = 700;
+                    npc.lifeMax = ModCompatibility.Calamity.Loaded ? 13000000 : 5700000;
+                    npc.damage = ModCompatibility.Calamity.Loaded ? 700 : 600;
                 }
                 if (!fullHP) { npc.life = npc.lifeMax; fullHP = true; }
             }
