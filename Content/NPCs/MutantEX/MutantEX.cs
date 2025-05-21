@@ -85,7 +85,7 @@ namespace ssm.Content.NPCs.MutantEX
             NPC.width = 140;
             NPC.height = 124;
             NPC.damage = 4000;
-            NPC.defense = 700;
+            //NPC.defense = 700;
             NPC.value = Item.buyPrice(15);
             NPC.lifeMax = Main.expertMode ? 60000000 : 30000000;
             NPC.HitSound = SoundID.NPCHit57;

@@ -1,4 +1,6 @@
-﻿using Microsoft.Xna.Framework;
+﻿using FargowiltasSouls;
+using Microsoft.Xna.Framework;
+using ssm.Content.Projectiles.Enchantments;
 using ssm.Core;
 using Terraria;
 using Terraria.ID;
@@ -46,8 +48,13 @@ namespace ssm.SoA
         public int vulkanKillCount = 0;
         public int vulkanBuffTimer = 0;
         public float vulkanDamageBonus = 0f;
+
+        //Space Junk Enchant
+        public int spaceJunkEnchant = 0;
+        private int spaceJunkCooldown = 0;
         public override void ResetEffects()
         {
+            spaceJunkEnchant = 0;
             vulkanReaperEnchant = 0;
             eerieEnchant = 0;
             blightboneEnchant = 0;
@@ -81,6 +88,11 @@ namespace ssm.SoA
                 }
             }
 
+            if (spaceJunkCooldown > 0)
+            {
+                spaceJunkCooldown--;
+            }
+
             if (phoenixWrathCooldown > 0)
             {
                 phoenixWrathCooldown--;
@@ -112,6 +124,35 @@ namespace ssm.SoA
             }
         }
 
+        public override void OnHitByNPC(NPC npc, Player.HurtInfo hurtInfo)
+        {
+            TryRetaliate(npc);
+        }
+
+        public override void OnHitByProjectile(Projectile proj, Player.HurtInfo hurtInfo)
+        {
+            TryRetaliate(proj.GetSourceNPC());
+        }
+
+        private void TryRetaliate(NPC attacker)
+        {
+            if (spaceJunkEnchant > 0 && attacker != null && Main.rand.NextFloat() < 0.33f)
+            {
+                Vector2 spawnPosition = new Vector2(attacker.Center.X + Main.rand.Next(-100, 100), attacker.Center.Y - 500);
+                Vector2 velocity = Vector2.Normalize(attacker.Center - spawnPosition) * 10f;
+
+                Projectile.NewProjectile(
+                    Player.GetSource_OnHurt(Player),
+                    spawnPosition,
+                    velocity,
+                    ModContent.ProjectileType<SpaceJunkProj>(),
+                    75,
+                    4f,
+                    Player.whoAmI,
+                    attacker.whoAmI
+                );
+            }
+        }
         public void ModifyDamageWithVulkan(ref float damage)
         {
             if (vulkanBuffTimer > 0)
@@ -184,6 +225,29 @@ namespace ssm.SoA
             }
         }
 
+        public override bool CanUseItem(Item item)
+        {
+            if (spaceJunkEnchant > 0 && item.DamageType == DamageClass.Ranged && spaceJunkCooldown <= 0)
+            {
+                spaceJunkCooldown = 600;
+
+                for (int i = 0; i < 5; i++)
+                {
+                    Vector2 velocity = new Vector2(Main.rand.NextFloat(-5f, 5f), Main.rand.NextFloat(-10f, -5f));
+                    Projectile.NewProjectile(
+                        Player.GetSource_FromThis(),
+                        Player.Center,
+                        velocity,
+                        ModContent.ProjectileType<SpaceJunkProj>(),
+                        50,// : 500, force damage will be here later
+                        2f,
+                        Player.whoAmI
+                    );
+                }
+                return false;
+            }
+            return base.CanUseItem(item);
+        }
         public void CreateSmallFrostExplosion(Vector2 pos)
         {
             float radius = 60f;

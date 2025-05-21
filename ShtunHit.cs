@@ -22,7 +22,15 @@ namespace ssm
             }
             if (Player.HasBuff<MutantDesperationBuff>() && NPC.AnyNPCs(ModContent.NPCType<MutantEX>()))
             {
-                Player.AddBuff(ModContent.BuffType<TimeFrozenBuff>(),10);
+                Player.AddBuff(ModContent.BuffType<TimeFrozenBuff>(), 10);
+            }
+            if (NPC.AnyNPCs(ModContent.NPCType<MutantEX>()))
+            {
+                Player.statLife -= Player.statLife / 5;
+            }
+            if (NPC.AnyNPCs(ModContent.NPCType<MutantBoss>()))
+            {
+                Player.statLife -= Player.statLife / 10;
             }
         }
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)

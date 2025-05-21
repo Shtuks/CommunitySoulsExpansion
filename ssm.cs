@@ -132,7 +132,7 @@ namespace ssm
                     
                     Add("Boss",
                     "Nihilus",
-                    26.999f,
+                    27.999f,
                     new List<int> {Nihilus.Type},
                     () => WorldSaveSystem.downedNihilus,
                     () => true,

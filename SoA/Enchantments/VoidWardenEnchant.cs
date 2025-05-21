@@ -1,9 +1,6 @@
 ﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria.Localization;
-using SacredTools;
-using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using FargowiltasSouls.Content.Items.Accessories.Enchantments;
 using FargowiltasSouls.Core.AccessoryEffectSystem;
@@ -12,6 +9,8 @@ using SacredTools.Content.Items.Armor.Oblivion;
 using SacredTools.Items.Weapons.Special;
 using SacredTools.Items.Weapons.Oblivion;
 using ssm.Core;
+using SacredTools;
+using FargowiltasSouls;
 
 namespace ssm.SoA.Enchantments
 {
@@ -40,9 +39,7 @@ namespace ssm.SoA.Enchantments
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            ModdedPlayer modPlayer = player.GetModPlayer<ModdedPlayer>();
-            modPlayer.voidDefense = true;
-            modPlayer.voidOffense = true;
+            player.GetModPlayer<ModdedPlayer>().accuracy += player.ForceEffect<VoidWardenEffect>() ? 20 : 15;
         }
 
         public class VoidWardenEffect : AccessoryEffect

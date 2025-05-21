@@ -6,6 +6,7 @@ using Terraria.ModLoader;
 
 namespace ssm.SoA
 {
+    //:sob:
     [ExtendsFromMod(ModCompatibility.SacredTools.Name)]
     public static class TrueModeManager
     {

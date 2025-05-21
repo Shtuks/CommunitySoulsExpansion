@@ -14,6 +14,8 @@ using SacredTools.Items.Weapons;
 using SacredTools.Content.Items.Armor.SpaceJunk;
 using SacredTools.Content.Items.Weapons.Event;
 using ssm.Core;
+using FargowiltasSouls;
+using static ssm.SoA.Enchantments.FrosthunterEnchant;
 
 namespace ssm.SoA.Enchantments
 {
@@ -42,11 +44,9 @@ namespace ssm.SoA.Enchantments
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            ModdedPlayer modPlayer = player.GetModPlayer<ModdedPlayer>();
             if (player.AddEffect<SpaceJunkEffect>(Item))
             {
-                //set bonus
-                modPlayer.spaceJunk = true;
+                player.GetModPlayer<SoAPlayer>().spaceJunkEnchant = player.ForceEffect<SpaceJunkEffect>() ? 2 : 1;
             }
         }
 

@@ -18,9 +18,9 @@ namespace ssm.Reworks
                 int monstrHealth = 100000000;
                 float multiplier = 0;
 
-                if (ModCompatibility.Calamity.Loaded && !ModCompatibility.Thorium.Loaded && !ModCompatibility.SacredTools.Loaded) { multiplier += 1; }
+                if (ModCompatibility.Calamity.Loaded && !ModCompatibility.Thorium.Loaded && !ModCompatibility.SacredTools.Loaded) { multiplier += 0.5f; }
                 if (ModCompatibility.Thorium.Loaded){multiplier+=0.5f;}
-                if (ModCompatibility.Calamity.Loaded) {multiplier+=1;} 
+                if (ModCompatibility.Calamity.Loaded) {multiplier+=1f;} 
                 if (ModCompatibility.SacredTools.Loaded) {multiplier+=0.5f;}
                 if (ModCompatibility.DBZ.Loaded) { multiplier += 1; }
                 if (ModCompatibility.Redemption.Loaded && ModCompatibility.Homeward.Loaded && ModCompatibility.Polarities.Loaded && ModCompatibility.Spooky.Loaded && !ModCompatibility.Calamity.Loaded) { multiplier++;}
@@ -33,7 +33,7 @@ namespace ssm.Reworks
 
                 if (npc.type == ModContent.NPCType<MutantEX>())
                 {
-                    npc.lifeMax = (int)(monstrHealth * 3 + (monstrHealth * multiplier / 2));
+                    npc.lifeMax = (int)(monstrHealth * 3 + monstrHealth * multiplier);
                 }
             }
         }

@@ -7,60 +7,6 @@ Mods: {
 				All damage is nulified. You one-shot every NPC.
 				Ring of squirrels orbit you and shoot acorns at your enemies.
 				'''
-
-			AuricTeslaHornedVisor: {
-				SetBonus:
-					'''
-					True Tarragon, Bloodflare and Silva armor effects
-					+500 shield capacity and 10 shield regeneration
-					'''
-				DisplayName: Auric Tesla Horned Visor
-				Tooltip: 30% increased true damage, critical strike chance and attack speed
-			}
-
-			TarragonHornedVisor: {
-				SetBonus:
-					'''
-					+100 shield capacity and 5 shield regeneration
-					15% increase true attack speed
-					'''
-				DisplayName: Tarragon Horned Visor
-				Tooltip:
-					'''
-					15% increased true damage and critical strike chance
-					10% damage reduction
-					'''
-			}
-
-			BloodflareHornedVisor: {
-				SetBonus:
-					'''
-					+150 shield capacity and 7 shield regeneration
-					15% increase true attack speed
-					'''
-				DisplayName: Bloodflare Horned Visor
-				Tooltip: 20% increased true damage and 10% critical strike chance
-			}
-
-			SilvaHornedVisor: {
-				SetBonus:
-					'''
-					+200 shield capacity and 8 shield regeneration
-					20% increase true attack speed
-					'''
-				DisplayName: Silva Horned Visor
-				Tooltip: 30% increased true damage and 20% critical strike chance
-			}
-
-			GodslayerHornedVisor: {
-				SetBonus:
-					'''
-					+150 shield capacity and 7 shield regeneration
-					20% increase true attack speed
-					'''
-				DisplayName: God Slayer Horned Visor
-				Tooltip: 20% increased true damage and 15% critical strike chance
-			}
 		}
 
 		Items: {
@@ -660,7 +606,9 @@ Mods: {
 				Tooltip:
 					'''
 					'Creeper? Aw man…'
-					Minion damage grants increased life regeneration
+					Summons an eerie crimson monster
+					Whenever the minion hits an enemy, you get the “Eerie Regeneration” buff
+					The monster lifesteals for 25% of the damage it deals
 					'''
 			}
 
@@ -701,9 +649,8 @@ Mods: {
 				Tooltip:
 					'''
 					'The hunter now hunted, the prey now predator'
-					15% increased ranged damage while in the snow biome
-					Ranged projectiles frostburn enemies
-					Effects of Frigid Pendant
+					When shooting an enemy, cause a small frost explosion that damages enemies in a radius
+					With a 2 second cooldown, the frost explosion becomes a cluster explosion, causing multiple small frost explosions to come after it
 					'''
 			}
 
@@ -745,7 +692,7 @@ Mods: {
 				Tooltip:
 					'''
 					'Subdued Serenity'
-					5% increased kinetic damage
+					Depending on the wind speed all speed stats are increased by 2% to 5%
 					'''
 			}
 
@@ -764,8 +711,8 @@ Mods: {
 				Tooltip:
 					'''
 					'I'm da spaceman!'
-					33% chance to not consume thrown Items
-					Damaging enemies will occasionally call upon a meteor to fall from the sky
+					While standing you will form bismuth crystals that can absorb 5% of damage from enemies and 2% from bosses
+					Crystals takes time to form and has three stages can only absorb up to 90 dmg
 					'''
 			}
 
@@ -3273,6 +3220,7 @@ Mods: {
 			Blightbone.DisplayName: Blightbone
 			EerieMinion.DisplayName: Eerie Minion
 			DreadfireAuraProj.DisplayName: Dreadfire Aura Proj
+			SpaceJunkProj.DisplayName: Space Junk Proj
 		}
 
 		Bestiary: {
