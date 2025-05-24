@@ -169,6 +169,12 @@ public static class ModCompatibility
         public static bool Loaded => ModLoader.HasMod(Name);
         public static Mod Mod => ModLoader.GetMod(Name);
     }
+    public static class gunrightsmod
+    {
+        public const string Name = "gunrightsmod";
+        public static bool Loaded => ModLoader.HasMod(Name);
+        public static Mod Mod => ModLoader.GetMod(Name);
+    }
     public static class Infernum
     {
         public const string Name = "InfernumMode";
