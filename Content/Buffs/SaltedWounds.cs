@@ -4,8 +4,8 @@ using ssm.Core;
 
 namespace ssm.Content.Buffs
 {
-    [ExtendsFromMod(ModCompatibility.TerMerica.Name)]
-    [JITWhenModsEnabled(ModCompatibility.TerMerica.Name)]
+    [ExtendsFromMod(ModCompatibility.gunrightsmod.Name)]
+    [JITWhenModsEnabled(ModCompatibility.gunrightsmod.Name)]
     public class SaltedWounds : ModBuff
     {
         public override void SetStaticDefaults()
