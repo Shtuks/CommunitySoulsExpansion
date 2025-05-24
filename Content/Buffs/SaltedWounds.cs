@@ -17,7 +17,7 @@ namespace ssm.Content.Buffs
 
         public override void Update(Player player, ref int buffIndex)
         {
-            Mod mod = ModLoader.GetMod("TerMerica");
+            Mod mod = ModLoader.GetMod("gunrightsmod");
             player.GetDamage(DamageClass.Generic) += 10 / 100f;
             player.lifeRegen += 5;
         }
