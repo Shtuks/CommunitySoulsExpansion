@@ -26,8 +26,8 @@ All things mod doing for now:
 
 Redemption and SoA Enchantments will be completely reworked soon.
 
-Full list of supported mods: Calamity, Shadows of Abaddon, Thorium, Redemption, Spooky, Polarities, Bombus Apis, Magic Storage
-Coming soon compatibility: Homeward Journey, Spirit, Consolaria, TerMerica, Orchid
+Full list of supported mods: Calamity, Shadows of Abaddon, Thorium, Redemption, Spooky, Polarities, Bombus Apis, Magic Storage, Spirit, Consolaria
+Coming soon compatibility: Homeward Journey, TerMerica, Orchid
 
 Coding: StarlightCat, Ropro0923
 Sprites: ma3allim, DanHameln, Dandel
