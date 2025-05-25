@@ -168,12 +168,24 @@ public static class ModCompatibility
         public static bool Loaded => ModLoader.HasMod(Name);
         public static Mod Mod => ModLoader.GetMod(Name);
     }
+    public static class gunrightsmod
+    {
+        public const string Name = "gunrightsmod";
+        public static bool Loaded => ModLoader.HasMod(Name);
+        public static Mod Mod => ModLoader.GetMod(Name);
+    }
     public static class Infernum
     {
         public const string Name = "InfernumMode";
         public static bool Loaded => ModLoader.HasMod(Name);
         public static Mod Mod => ModLoader.GetMod(Name);
         public static bool InfernumDifficulty => Loaded && (bool)Mod.Call("GetInfernumActive");
+    }
+    public static class SpiritMod
+    {
+        public const string Name = "SpiritMod";
+        public static bool Loaded => ModLoader.HasMod(Name);
+        public static Mod Mod => ModLoader.GetMod(Name);
     }
     public static class WrathoftheGods
     {

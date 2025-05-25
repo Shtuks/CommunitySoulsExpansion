@@ -27,7 +27,6 @@ using ssm.Content.NPCs.MutantEX;
 using ssm.Content.UI;
 using Terraria.UI;
 using ssm.CrossMod.CraftingStations;
-using ssm.Content.NPCs.ECH;
 
 namespace ssm
 {
@@ -202,7 +201,14 @@ namespace ssm
             {
                 RedemptionCaughtNpcs.RedemptionRegisterItems();
             }
-
+            if (ModLoader.TryGetMod("gunrightsmod", out Mod grm))
+            {
+                gunrightsmodCaughtNpcs.gunrightsmodRegisterItems();
+            }
+            if (ModLoader.TryGetMod("SpiritMod", out Mod spr))
+            {
+                SpiritModCaughtNpcs.SpiritModRegisterItems();
+            }
             SkyManager.Instance["ssm:MutantEX"] = new MutantEXSky();
 
             ModLoader.TryGetMod("BossChecklist", out Mod bossChecklist);
