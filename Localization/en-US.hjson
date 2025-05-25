@@ -3307,6 +3307,11 @@ Mods: {
 					Label: Bombus Apis
 					Tooltip: ""
 				}
+
+				TerMerica: {
+					Tooltip: ""
+					Label: TerMerica
+				}
 			}
 		}
 
