@@ -185,6 +185,10 @@ namespace ssm
             {
                 gunrightsmodCaughtNpcs.gunrightsmodRegisterItems();
             }
+            if (ModLoader.TryGetMod("SpiritMod", out Mod spr))
+            {
+                SpiritModCaughtNpcs.SpiritModRegisterItems();
+            }
             SkyManager.Instance["ssm:MutantEX"] = new MutantEXSky();
 
             ModLoader.TryGetMod("BossChecklist", out Mod bossChecklist);
