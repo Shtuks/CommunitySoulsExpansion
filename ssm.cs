@@ -180,7 +180,10 @@ namespace ssm
             {
                 RedemptionCaughtNpcs.RedemptionRegisterItems();
             }
-
+            if (ModLoader.TryGetMod("gunrightsmod", out Mod grm))
+            {
+                gunrightsmodCaughtNpcs.gunrightsmodRegisterItems();
+            }
             SkyManager.Instance["ssm:MutantEX"] = new MutantEXSky();
 
             ModLoader.TryGetMod("BossChecklist", out Mod bossChecklist);
