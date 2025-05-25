@@ -28,6 +28,7 @@ using ssm.Content.UI;
 using Terraria.UI;
 using ssm.CrossMod.CraftingStations;
 using ssm.gunrightsmod;
+using ssm.SpiritMod;
 
 namespace ssm
 {
