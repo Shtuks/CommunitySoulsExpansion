@@ -12,15 +12,15 @@ namespace ssm.Redemption
     [JITWhenModsEnabled(ModCompatibility.Redemption.Name)]
     public class RedemptionHPBalance : GlobalNPC
     {
-        public bool fullHP = false;
+        //public bool fullHP = false;
         public override bool InstancePerEntity => true;
-        public override bool PreAI(NPC npc)
+        public override void SetDefaults(NPC npc)
         {
             if (WorldSavingSystem.EternityMode)
             {
                 if (npc.type == ModContent.NPCType<Nebuleus>())
                 {
-                    npc.lifeMax = 2700000;
+                    npc.lifeMax = 3700000;
                     npc.damage = 790;
                 }
 
@@ -41,9 +41,9 @@ namespace ssm.Redemption
                     npc.lifeMax = 1900000;
                     npc.damage = 470;
                 }
-                if (!fullHP) { npc.life = npc.lifeMax; fullHP = true; }
+                //if (!fullHP) { npc.life = npc.lifeMax; fullHP = true; }
             }
-            return base.PreAI(npc);
+            //return base.PreAI(npc);
         }
     }
 }

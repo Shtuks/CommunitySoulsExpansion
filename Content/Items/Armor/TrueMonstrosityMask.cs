@@ -5,6 +5,8 @@ using ssm.CrossMod.CraftingStations;
 using Luminance.Core.Graphics;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
+using FargowiltasSouls.Content.Items.Materials;
+using ssm.Content.Items.Consumables;
 
 namespace ssm.Content.Items.Armor
 {
@@ -25,12 +27,12 @@ namespace ssm.Content.Items.Armor
 
         public override void UpdateEquip(Player player)
         {
-            player.GetDamage(DamageClass.Generic) += 0.5f;
-            player.GetArmorPenetration(DamageClass.Generic) += 70f;
+            player.GetDamage(DamageClass.Generic) += 1f;
+            player.GetArmorPenetration(DamageClass.Generic) += 700f;
             player.GetCritChance(DamageClass.Generic) += 2f;
             player.maxMinions += 20;
             player.maxTurrets += 20;
-            player.manaCost -= 0.4f;
+            player.manaCost -= 1;
             player.ammoCost75 = true;
         }
 
@@ -86,9 +88,12 @@ namespace ssm.Content.Items.Armor
         {
             Recipe recipe = CreateRecipe();
 
+            recipe.AddIngredient<EternalEnergy>(15);
+            recipe.AddIngredient<Sadism>(15);
             recipe.AddIngredient<MonstrosityMask>();
 
             recipe.AddTile<MutantsForgeTile>();
+            recipe.Register();
         }
     }
 }

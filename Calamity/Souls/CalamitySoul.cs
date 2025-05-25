@@ -56,7 +56,7 @@ namespace ssm.Calamity.Souls
             recipe.AddIngredient<WulfrumEnchant>();
             recipe.AddIngredient<TitanHeartEnchant>();
 
-            if (ModCompatibility.Catalyst.Loaded || ModCompatibility.Goozma.Loaded || ModCompatibility.Clamity.Loaded || ModCompatibility.WrathoftheGods.Loaded || ModCompatibility.Entropy.Loaded)
+            if (ModCompatibility.Catalyst.Loaded || ModCompatibility.Goozma.Loaded || ModCompatibility.Clamity.Loaded || ModCompatibility.WrathoftheGods.Loaded)
             {
                 recipe.AddIngredient<AddonsForce>();
             }

@@ -21,6 +21,7 @@ namespace ssm.Content.Buffs
             player.FargoSouls().noDodge = true;
             player.FargoSouls().noSupersonic = true;
             player.FargoSouls().MutantPresence = true;
+            player.FargoSouls().TinEternityDamage = 0;
             player.FargoSouls().GrazeRadius *= 0.5f;
             player.moonLeech = true;
         }

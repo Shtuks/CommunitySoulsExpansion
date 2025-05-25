@@ -5,6 +5,12 @@ namespace ssm.Core;
 
 public static class ModCompatibility
 {
+    public static class Ragnarok
+    {
+        public const string Name = "RagnarokMod";
+        public static bool Loaded => ModLoader.HasMod(Name);
+        public static Mod Mod => ModLoader.GetMod(Name);
+    }
     public static class DBZ
     {
         public const string Name = "DBZMODPORT";
@@ -17,13 +23,6 @@ public static class ModCompatibility
         public static bool Loaded => ModLoader.HasMod(Name);
         public static Mod Mod => ModLoader.GetMod(Name);
     }
-    public static class Entropy
-    {
-        public const string Name = "CalamityEntropy";
-        public static bool Loaded => ModLoader.HasMod(Name);
-        public static Mod Mod => ModLoader.GetMod(Name);
-    }
-
     public static class Spooky
     {
         public const string Name = "Spooky";

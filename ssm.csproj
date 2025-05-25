@@ -45,9 +45,6 @@
 	  <Reference Include="CalamityBardHealer">
 	    <HintPath>lib\CalamityBardHealer.dll</HintPath>
 	  </Reference>
-	  <Reference Include="CalamityEntropy">
-	    <HintPath>lib\CalamityEntropy.dll</HintPath>
-	  </Reference>
 	  <Reference Include="CalamityHunt">
 	    <HintPath>lib\CalamityHunt.dll</HintPath>
 	  </Reference>

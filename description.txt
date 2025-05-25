@@ -7,9 +7,10 @@ Discord Server: https://discord.gg/frUcz2dQAy
 
 Official Wiki: https://terrariamods.wiki.gg/wiki/Community_Souls_Expansion
 
-SoA enchantments and forces was reworked and no longer give armor set bonuses.
+Some SoA enchantments was reworked and no longer give armor set bonuses.
 
 All things mod doing for now:
+- Balancing part of Post-ML content
 
 - Force for Calamity Addons
 
@@ -23,11 +24,13 @@ All things mod doing for now:
 
 - SoA / Thorium / Redemption / Polarities / Spooky enchantments, forces, souls
 
+Redemption and SoA Enchantments will be completely reworked soon.
+
 Full list of supported mods: Calamity, Shadows of Abaddon, Thorium, Redemption, Spooky, Polarities, Bombus Apis, Magic Storage
 Coming soon compatibility: Homeward Journey, Spirit, Consolaria, TerMerica, Orchid
 
 Coding: StarlightCat, Ropro0923
-Sprites: ma3allim, DanHameln
+Sprites: ma3allim, DanHameln, Dandel
 Wiki: Soltan, magegor11
 Testing: cheesenuggets, Mr.Puzzles, Wild Mayo
 

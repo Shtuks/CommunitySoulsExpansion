@@ -13,6 +13,7 @@ using SacredTools.Content.Items.Placeable.CraftingStations;
 using FargowiltasSouls.Content.Items.Accessories.Forces;
 using SacredTools.Content.Items.Materials;
 using Terraria.ID;
+using SacredTools.Content.Items.Armor.Oblivion;
 
 namespace ssm
 {
@@ -25,6 +26,8 @@ namespace ssm
             RecipeGroup.RegisterGroup("ssm:AsthralHelms", rec);
             RecipeGroup rec2 = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " Flarium Helmet", ModContent.ItemType<FlariumCrown>(), ModContent.ItemType<FlariumMask>(), ModContent.ItemType<FlariumCowl>());
             RecipeGroup.RegisterGroup("ssm:FlariumHelms", rec2);
+            RecipeGroup rec3 = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " Void Warden Chestplate", ModContent.ItemType<VoidChest>(), ModContent.ItemType<VoidChestOffense>());
+            RecipeGroup.RegisterGroup("ssm:VoidWardenChest", rec3);
         }
 
         public override void AddRecipes()
@@ -109,7 +112,7 @@ namespace ssm
                 if (recipe.HasResult<FlightMasterySoul>() && !recipe.HasIngredient<GrandWings>())
                 {
                     recipe.AddIngredient<GrandWings>();
-                    recipe.AddIngredient<AsthraltiteWings>();
+                    //recipe.AddIngredient<AsthraltiteWings>();
                     recipe.AddIngredient<DespairBoosters>();
                     recipe.AddIngredient<AuroraWings>();
                 }

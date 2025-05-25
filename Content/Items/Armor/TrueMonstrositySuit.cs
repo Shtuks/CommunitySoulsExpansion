@@ -4,6 +4,8 @@ using ssm.CrossMod.CraftingStations;
 using Luminance.Core.Graphics;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
+using FargowiltasSouls.Content.Items.Materials;
+using ssm.Content.Items.Consumables;
 
 namespace ssm.Content.Items.Armor
 {
@@ -26,10 +28,10 @@ namespace ssm.Content.Items.Armor
             player.GetCritChance(DamageClass.Generic) += 2f;
             player.statLifeMax2 += 1000;
             player.statManaMax2 += 1000;
-            player.endurance += 0.5f;
-            player.lifeRegen += 7;
-            player.lifeRegenCount += 7;
-            player.lifeRegenTime += 7;
+            player.endurance += 1;
+            player.lifeRegen += 10;
+            player.lifeRegenCount += 10;
+            player.lifeRegenTime += 10;
         }
 
         public override bool PreDrawTooltipLine(DrawableTooltipLine line, ref int yOffset)
@@ -53,9 +55,12 @@ namespace ssm.Content.Items.Armor
         {
             Recipe recipe = CreateRecipe();
 
+            recipe.AddIngredient<EternalEnergy>(15);
+            recipe.AddIngredient<Sadism>(15);
             recipe.AddIngredient<MonstrositySuit>();
 
             recipe.AddTile<MutantsForgeTile>();
+            recipe.Register();
         }
     }
 }

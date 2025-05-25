@@ -8,26 +8,26 @@ namespace ssm.Reworks
 {
     [ExtendsFromMod(ModCompatibility.Crossmod.Name)]
     [JITWhenModsEnabled(ModCompatibility.Crossmod.Name)]
-    internal class EEWeaponsUnnerf : GlobalItem
+    public class EEWeaponsUnnerf : GlobalItem
     {
         public override bool InstancePerEntity => true;
         public override void SetDefaults(Item entity)
         {
             if (entity.type == ModContent.ItemType<GuardianTome>())
             {
-                entity.damage = (int)(entity.damage + (entity.damage * 0.8f));
+                entity.damage = 1500;
             }
             if (entity.type == ModContent.ItemType<TheBiggestSting>())
             {
-                entity.damage = (int)(entity.damage + (entity.damage * 0.7f));
+                entity.damage = 7750;
             }
             if (entity.type == ModContent.ItemType<PhantasmalLeashOfCthulhu>())
             {
-                entity.damage = (int)(entity.damage + (entity.damage * 0.5f));
+                entity.damage = 2800;
             }
             if (entity.type == ModContent.ItemType<SlimeRain>())
             {
-                entity.damage = (int)(entity.damage + (entity.damage * 0.92f));
+                entity.damage = 6000;
             }
         }
     }

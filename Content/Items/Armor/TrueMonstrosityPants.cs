@@ -4,6 +4,8 @@ using ssm.CrossMod.CraftingStations;
 using Luminance.Core.Graphics;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
+using ssm.Content.Items.Consumables;
+using FargowiltasSouls.Content.Items.Materials;
 
 namespace ssm.Content.Items.Armor
 {
@@ -49,9 +51,12 @@ namespace ssm.Content.Items.Armor
         {
             Recipe recipe = CreateRecipe();
 
+            recipe.AddIngredient<EternalEnergy>(15);
+            recipe.AddIngredient<Sadism>(15);
             recipe.AddIngredient<MonstrosityPants>();
 
             recipe.AddTile<MutantsForgeTile>();
+            recipe.Register();
         }
     }
 }

@@ -217,8 +217,8 @@ Mods: {
 				DisplayName: True Monstrosity Mask
 				Tooltip:
 					'''
-					100% increased damage and 50% increased critical strike chance
-					Drastically increases life regen, also increases armor penetration to 70.
+					100% increased damage and 33% increased critical strike chance
+					Drastically increases life regen, also increases armor penetration to 700.
 					'''
 			}
 
@@ -226,7 +226,7 @@ Mods: {
 				DisplayName: True Monstrosity Pants
 				Tooltip:
 					'''
-					100% increased damage and 20% increased critical strike chance
+					100% increased damage and 33% increased critical strike chance
 					50% increased movement and 20% increased attack speed
 					Also increases armor penetration to 70.
 					'''
@@ -236,10 +236,10 @@ Mods: {
 				DisplayName: True Monstrosity Suit
 				Tooltip:
 					'''
-					150% increased damage and 20% increased critical strike chance 
+					150% increased damage and 33% increased critical strike chance 
 					Increases max number of minions and sentries by 20
-					Increases damage reduction by 50%, Increases max life and mana by 1000
-					40% reduced mana usage, 25% chance not to consume ammo, also increases armor penetration to 70.
+					Increases damage reduction by 100%, Increases max life and mana by 1000
+					100% reduced mana usage, 25% chance not to consume ammo.
 					'''
 			}
 
@@ -554,7 +554,8 @@ Mods: {
 				Tooltip:
 					'''
 					'It takes every color to make a rainbow'
-					Hitting enemies has a chance to summon a bismuth hammer for extra damage
+					While standing you will form bismuth crystals that can absorb 5% of damage from enemies, and 2% from bosses 
+					It takes 5 seconds to form and has three stages that can only absorb up to 90 damage
 					'''
 			}
 
@@ -573,8 +574,8 @@ Mods: {
 				Tooltip:
 					'''
 					'Your spooks and scares will send shivers down your enemies' spines'
-					Empowers certain bone-related weapons
-					Effects of Dreadflame Emblem
+					Adds a 10% chance for a blightbone to be thrown out alongside your thrown weapon, applying ‘On Fire!’ for 2 seconds
+					Empowers bone type weapons, making them apply the ‘On Fire!’ debuff for 3 seconds.
 					'''
 			}
 
@@ -594,10 +595,8 @@ Mods: {
 				Tooltip:
 					'''
 					'Ralnek's spirit guides you'
-					Pressing [Ability] will activate 'Dreadfire Aura'.
-					'Dreadfire Aura' increases minion damage greatly for a minute. 
-					3 minute cooldown
-					Effects of Pumpkin Amulet
+					Surrounds player with Dreadfire Aura that inflicting Dreadfire buff
+					Dreadfire buff increases magic and summon damage by 15%
 					'''
 			}
 
@@ -659,8 +658,9 @@ Mods: {
 				Tooltip:
 					'''
 					'Gotta go fast'
-					20% increased movement speed
-					Effects of Lapis Pendant
+					15% increased movement speed
+					Additional 25% movement speed for 2 seconds after being damaged
+					Every 5 attacks, give the Lapis Shield, increasing your defense by 3/6/9, depending on how many stacks you have
 					'''
 			}
 
@@ -711,8 +711,9 @@ Mods: {
 				Tooltip:
 					'''
 					'I'm da spaceman!'
-					While standing you will form bismuth crystals that can absorb 5% of damage from enemies and 2% from bosses
-					Crystals takes time to form and has three stages can only absorb up to 90 dmg
+					Pressing the ability key sends out balls of space junk that deal ranged damage (10 seconds)
+					When being damaged, there is a 33% that space junk from the sky comes crashing down on your attacker
+
 					'''
 			}
 
@@ -730,9 +731,7 @@ Mods: {
 				Tooltip:
 					'''
 					'The ride never ends'
-					Taking damage has a chance to freeze all enemies nearby
-					Bosses and enemies with over 8000 HP are unaffected 
-					Attacking has a 5% chance to make nearby enemies take double damage
+					Increases damage fall off distance by a 15%, and makes bosses aggression go down when taken damage
 					'''
 			}
 
@@ -741,6 +740,7 @@ Mods: {
 				Tooltip:
 					'''
 					'Reap the rewards of your near-endless grind'
+					Allows the player to increase Boss Damage by killing enemies near the boss which increases damage by 5% for 2 seconds per enemies defeated.
 					Provides immunity to Flarium Inferno and Obsidian Curse
 					'''
 			}
@@ -2917,18 +2917,13 @@ Mods: {
 			}
 
 			MonstrocityPresenceBuff: {
-				Description: No soul toggles, no enhanced movement, no dash or dodge, no escape
+				Description: No soul toggles, no eternity crits, no escape.
 				DisplayName: Monstrosity Presence Buff
 			}
 
-			StellarGuardianBuff: {
-				Description: Stellar Guardian protects You
-				DisplayName: Stellar Guardian Buff
-			}
-
 			NihilityPresenceBuff: {
-				DisplayName: Nihility Presence Buff
-				Description: Some of your souls effects are toggled off
+				DisplayName: Nihility Presence
+				Description: Souls effects are disabled
 			}
 
 			DreadflameAura: {
@@ -3019,6 +3014,7 @@ Mods: {
 
 			MutantEX: {
 				DisplayName: Monstrosity
+				DisplayNameApril: LumberJack
 
 				BossChecklistIntegration: {
 					SpawnInfo: Spawned with an Mutants Curse EX anytime anywhere.

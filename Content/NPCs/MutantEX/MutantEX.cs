@@ -85,9 +85,9 @@ namespace ssm.Content.NPCs.MutantEX
             NPC.width = 140;
             NPC.height = 124;
             NPC.damage = 4000;
-            //NPC.defense = 700;
-            NPC.value = Item.buyPrice(15);
-            NPC.lifeMax = Main.expertMode ? 60000000 : 30000000;
+            NPC.defense = Main.expertMode ? 10000 : 5000;
+            NPC.value = Item.buyPrice(150);
+            NPC.lifeMax = Main.expertMode ? 200000000 : 150000000;
             NPC.HitSound = SoundID.NPCHit57;
             NPC.noGravity = true;
             NPC.noTileCollide = true;
@@ -114,7 +114,7 @@ namespace ssm.Content.NPCs.MutantEX
             SceneEffectPriority = SceneEffectPriority.BossHigh;
 
             if (FargoSoulsUtil.AprilFools)
-                NPC.GivenName = Language.GetTextValue("Mods.ssm.NPCs.MutantEX_April.DisplayName");
+                NPC.GivenName = Language.GetTextValue("Mods.ssm.NPCs.MutantEX.DisplayNameApril");
         }
 
         public override void ApplyDifficultyAndPlayerScaling(int numPlayers, float balance, float bossAdjustment)

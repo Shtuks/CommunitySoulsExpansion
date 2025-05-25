@@ -27,6 +27,7 @@ using ssm.Content.NPCs.MutantEX;
 using ssm.Content.UI;
 using Terraria.UI;
 using ssm.CrossMod.CraftingStations;
+using ssm.Content.NPCs.ECH;
 
 namespace ssm
 {
@@ -106,23 +107,44 @@ namespace ssm
                         }
                     );
                 }
+                //Add("Boss",
+                //    "DukeFishronEX",
+                //    int.MaxValue,
+                //    new List<int> { ModContent.NPCType<DukeFishronEX>() },
+                //    () => WorldSaveSystem.downedMutantEX,
+                //    () => true,
+                //    new List<int> {
+                //        ModContent.ItemType<Sadism>(),
+                //    },
+                //    new List<int> { ModContent.ItemType<MutantsForgeItem>() },
+                //    true
+                //);
 
                 Add("Boss",
                     "MutantEX",
-                    float.MaxValue,
+                    float.MaxValue-1,
                     new List<int> { ModContent.NPCType<MutantEX>() },
                     () => WorldSaveSystem.downedMutantEX,
                     () => true,
                     new List<int> {
-                        ModContent.ItemType<MutantMusicBox>(),
                         ModContent.ItemType<Sadism>(),
-                        ModContent.ItemType<MutantTrophy>(),
-                        ModContent.ItemType<SpawnSack>(),
-                        ModContent.ItemType<PhantasmalEnergy>()
                     },
                     new List<int> { ModContent.ItemType<MutantsForgeItem>() },
                     true
                 );
+
+                //Add("Boss",
+                //    "Echdeath",
+                //    float.MaxValue,
+                //    new List<int> { ModContent.NPCType<Echdeath>() },
+                //    () => WorldSaveSystem.downedMutantEX,
+                //    () => true,
+                //    new List<int> {
+                //        ModContent.ItemType<Sadism>(),
+                //    },
+                //    new List<int> { ModContent.ItemType<MutantsForgeItem>() },
+                //    true
+                //);
 
                 if (ModCompatibility.SacredTools.Loaded)
                 {
@@ -215,6 +237,10 @@ namespace ssm
             if (ModCompatibility.Thorium.Loaded)
             {
                 PostSetupContentThorium.PostSetupContent_Thorium();
+            }
+            if (ModCompatibility.SacredTools.Loaded)
+            {
+                PostSetupContentSoA.PostSetupContent_Thorium();
             }
         }
 

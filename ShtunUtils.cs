@@ -3,6 +3,7 @@ using Terraria.Chat;
 using System;
 using Microsoft.Xna.Framework;
 using Terraria.Localization;
+using CalamityMod;
 
 namespace ssm
 {
@@ -35,7 +36,43 @@ namespace ssm
 
             return distance;
         }
-        
+
+        public static void HomeInOnNPC(Projectile projectile, bool ignoreTiles, float distanceRequired, float homingVelocity, float inertia)
+        {
+            if (!projectile.friendly)
+                return;
+
+            Vector2 destination = projectile.Center;
+            float maxDistance = distanceRequired;
+            bool locatedTarget = false;
+
+            float npcDistCompare = 30000f;
+            int index = -1;
+            foreach (NPC n in Main.ActiveNPCs)
+            {
+                float extraDistance = (n.width / 2) + (n.height / 2);
+                if (!n.CanBeChasedBy(projectile, false) || !projectile.WithinRange(n.Center, maxDistance + extraDistance))
+                    continue;
+
+                float currentNPCDist = Vector2.Distance(n.Center, projectile.Center);
+                if ((currentNPCDist < npcDistCompare) && (ignoreTiles || Collision.CanHit(projectile.Center, 1, 1, n.Center, 1, 1)))
+                {
+                    npcDistCompare = currentNPCDist;
+                    index = n.whoAmI;
+                }
+            }
+            if (index != -1)
+            {
+                destination = Main.npc[index].Center;
+                locatedTarget = true;
+            }
+
+            if (locatedTarget)
+            {
+                Vector2 homeDirection = (destination - projectile.Center).SafeNormalize(Vector2.UnitY);
+                projectile.velocity = (projectile.velocity * inertia + homeDirection * homingVelocity) / (inertia + 1f);
+            }
+        }
         public static Player ToPlayer(this int ins)
         {
             if (ins < 0 || !Main.player[ins].active)

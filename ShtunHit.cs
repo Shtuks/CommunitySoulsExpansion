@@ -65,7 +65,7 @@ namespace ssm
 
             if (npc.type == ModContent.NPCType<MutantBoss>())
             {
-                modifiers.SetMaxDamage(50000);
+                modifiers.SetMaxDamage(40000);
             }
         }
         public override void ModifyHitByItem(NPC npc, Player player, Item item, ref NPC.HitModifiers modifiers)
@@ -82,7 +82,7 @@ namespace ssm
 
             if (npc.type == ModContent.NPCType<MutantBoss>())
             {
-                modifiers.SetMaxDamage(50000);
+                modifiers.SetMaxDamage(40000);
             }
         }
         public override void HitEffect(NPC npc, NPC.HitInfo hit)

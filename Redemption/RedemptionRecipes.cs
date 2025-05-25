@@ -77,6 +77,11 @@ namespace ssm.Redemption
                     recipe.AddIngredient<InfectionShield>();
                 }
 
+                if (recipe.HasResult(ItemID.Zenith) && recipe.HasIngredient<LifeFragment>())
+                {
+                    recipe.RemoveIngredient(ModContent.ItemType<LifeFragment>());
+                }
+
                 //emblem -> essence -> mutagen -> soul
                 //Where clamity post dog acc? I dont know.
                 //Where are soa sigils? In anthraltite enchant
