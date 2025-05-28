@@ -102,7 +102,7 @@ Mods: {
 				DisplayName: Force of Hero
 				Tooltip:
 					'''
-					[i:ssm/SpiritMod/Enchantments/OstaraEnchant] Allows wearer to perform up to 5 bunny hops
+					[i:ssm/OstaraEnchant] Allows wearer to perform up to 5 bunny hops
 					[i:ssm/OstaraEnchant] Effects of Ostara's Gift
 					[i:ssm/DragonEnchant] Creates a burst of shadowflames after taking damage	
 					[i:ssm/TitanEnchant] Using ranged weapons triggers a recoil blast

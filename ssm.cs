@@ -23,9 +23,8 @@ using ssm.Content.NPCs.MutantEX;
 using ssm.Content.UI;
 using Terraria.UI;
 using ssm.CrossMod.CraftingStations;
-using ssm.SpiritMod;
 using ssm.gunrightsmod;
-using Humanizer;
+using ssm.SpiritMod;
 
 namespace ssm
 {

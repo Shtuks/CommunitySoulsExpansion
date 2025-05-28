@@ -19,9 +19,9 @@ All things mod doing for now:
 
 - Adds SoA, Thorium, Redemption items to 1st tier souls recepies and effects
 
-- Redemption, Thorium, SoA caught NPCs
+- Redemption, Thorium, SoA, Spirit caught NPCs
 
-- SoA / Thorium / Redemption / Polarities / Spooky enchantments, forces, souls
+- SoA / Thorium / Redemption / Polarities / Spooky / Consolaria / Spirit enchantments, forces, souls
 
 Redemption and SoA Enchantments will be completely reworked soon.
 
