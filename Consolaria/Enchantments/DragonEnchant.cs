@@ -14,7 +14,7 @@ namespace ssm.Consolaria.Enchantments
 {
     [JITWhenModsEnabled(ModCompatibility.Consolaria.Name)]
     [ExtendsFromMod(ModCompatibility.Consolaria.Name)]
-    public class DragonEnchant : BaseEnchant
+    public class DragonEnchant2 : BaseEnchant
     {
         public override Color nameColor => new Color(151, 191, 241);
         public override void SetDefaults()
@@ -47,7 +47,7 @@ namespace ssm.Consolaria.Enchantments
         public class DragonBurst : AccessoryEffect
         {
             public override Header ToggleHeader => Header.GetHeader<HeroHeader>();
-            public override int ToggleItemType => ModContent.ItemType<DragonEnchant>();
+            public override int ToggleItemType => ModContent.ItemType<DragonEnchant2>();
         }
     }
 }

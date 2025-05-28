@@ -83,10 +83,9 @@ namespace ssm
         [DefaultValue(true)]
         public bool Beekeeper { get; set; }
 
-        //WIP
         [ReloadRequired]
         [BackgroundColor(60, 200, 60, 192)]
-        [DefaultValue(false)]
+        [DefaultValue(true)]
         public bool TerMerica { get; set; }
 
         [ReloadRequired]

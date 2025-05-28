@@ -17,7 +17,7 @@ namespace ssm.Consolaria.Enchantments
 {
     [JITWhenModsEnabled(ModCompatibility.Consolaria.Name)]
     [ExtendsFromMod(ModCompatibility.Consolaria.Name)]
-    public class WarlockEnchant : BaseEnchant
+    public class WarlockEnchant2 : BaseEnchant
     {
         public override Color nameColor => new Color(164, 108, 187);
         public override void SetDefaults()

@@ -14,19 +14,19 @@ namespace ssm.Consolaria.Forces
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             ModContent.Find<ModItem>(base.Mod.Name, "OstaraEnchant").UpdateAccessory(player, false);
-            ModContent.Find<ModItem>(base.Mod.Name, "DragonEnchant").UpdateAccessory(player, false);
-            ModContent.Find<ModItem>(base.Mod.Name, "TitanEnchant").UpdateAccessory(player, false);
+            ModContent.Find<ModItem>(base.Mod.Name, "DragonEnchant2").UpdateAccessory(player, false);
+            ModContent.Find<ModItem>(base.Mod.Name, "TitanEnchant2").UpdateAccessory(player, false);
             ModContent.Find<ModItem>(base.Mod.Name, "PhantasmalEnchant").UpdateAccessory(player, false);
-            ModContent.Find<ModItem>(base.Mod.Name, "WarlockEnchant").UpdateAccessory(player, false);
+            ModContent.Find<ModItem>(base.Mod.Name, "WarlockEnchant2").UpdateAccessory(player, false);
         }
         public override void AddRecipes()
         {
             Recipe recipe = CreateRecipe();
             recipe.AddIngredient<OstaraEnchant>(1);
-            recipe.AddIngredient<DragonEnchant>(1);
-            recipe.AddIngredient<TitanEnchant>(1);
+            recipe.AddIngredient<DragonEnchant2>(1);
+            recipe.AddIngredient<TitanEnchant2>(1);
             recipe.AddIngredient<PhantasmalEnchant>(1);
-            recipe.AddIngredient<WarlockEnchant>(1);
+            recipe.AddIngredient<WarlockEnchant2>(1);
             recipe.AddTile(ModContent.Find<ModTile>("Fargowiltas", "CrucibleCosmosSheet"));
             recipe.Register();
         }

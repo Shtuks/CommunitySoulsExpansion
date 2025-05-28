@@ -16,7 +16,7 @@ namespace ssm.Consolaria.Enchantments
 {
     [JITWhenModsEnabled(ModCompatibility.Consolaria.Name)]
     [ExtendsFromMod(ModCompatibility.Consolaria.Name)]
-    public class TitanEnchant : BaseEnchant
+    public class TitanEnchant2 : BaseEnchant
     {
         public override Color nameColor => new Color(107, 135, 135);
         public override void SetDefaults()
@@ -50,7 +50,7 @@ namespace ssm.Consolaria.Enchantments
         public class TitanRecoil : AccessoryEffect
         {
             public override Header ToggleHeader => Header.GetHeader<HeroHeader>();
-            public override int ToggleItemType => ModContent.ItemType<TitanEnchant>();
+            public override int ToggleItemType => ModContent.ItemType<TitanEnchant2>();
         }
     }
 }

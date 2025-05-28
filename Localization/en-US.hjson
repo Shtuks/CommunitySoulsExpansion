@@ -3269,6 +3269,76 @@ Mods: {
 				DisplayName: Starblight Fruit
 				Tooltip: ""
 			}
+
+			DragonEnchant2: {
+				DisplayName: Dragon Enchant2
+				Tooltip: ""
+			}
+
+			TitanEnchant2: {
+				DisplayName: Titan Enchant2
+				Tooltip: ""
+			}
+
+			WarlockEnchant2: {
+				DisplayName: Warlock Enchant2
+				Tooltip: ""
+			}
+
+			AstatineEnchant: {
+				DisplayName: Astatine Enchant
+				Tooltip: ""
+			}
+
+			FaradayEnchant: {
+				DisplayName: Faraday Enchant
+				Tooltip: ""
+			}
+
+			KevlarEnchant: {
+				DisplayName: Kevlar Enchant
+				Tooltip: ""
+			}
+
+			PlasticEnchant: {
+				DisplayName: Plastic Enchant
+				Tooltip: ""
+			}
+
+			PlutoniumEnchant: {
+				DisplayName: Plutonium Enchant
+				Tooltip: ""
+			}
+
+			PurifiedSaltEnchant: {
+				DisplayName: Purified Salt Enchant
+				Tooltip: ""
+			}
+
+			RockSaltEnchant: {
+				DisplayName: Rock Salt Enchant
+				Tooltip: ""
+			}
+
+			SuperCeramicEnchant: {
+				DisplayName: Super Ceramic Enchant
+				Tooltip: ""
+			}
+
+			UraniumEnchant: {
+				DisplayName: Uranium Enchant
+				Tooltip: ""
+			}
+
+			IdeocracyForce: {
+				DisplayName: Ideocracy Force
+				Tooltip: ""
+			}
+
+			RadioactiveForce: {
+				DisplayName: Radioactive Force
+				Tooltip: ""
+			}
 		}
 
 		Buffs: {
