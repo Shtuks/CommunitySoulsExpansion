@@ -1,8 +1,9 @@
-﻿using NoxusBoss.Content.Items;
+﻿using SacredTools.Common.Types;
 using SacredTools.Content.Items.Weapons.Dreamscape.Nihilus;
 using ssm.Content.Projectiles.Enchantments;
 using ssm.Core;
 using System.Collections.Generic;
+using System.Security.Cryptography.X509Certificates;
 using Terraria;
 using Terraria.ModLoader;
 
@@ -22,22 +23,29 @@ namespace ssm.SoA
             }
             if (entity.type == ModContent.ItemType<Malice>())
             {
-                entity.damage = (int)(entity.damage * 1.7f);
+                entity.damage = (int)(entity.damage * 1.8f);
             }
             if (entity.type == ModContent.ItemType<Tenebris>())
             {
-                entity.damage = (int)(entity.damage * 1.2f);
+                entity.damage = (int)(entity.damage * 1.1f);
             }
             if (entity.type == ModContent.ItemType<Desperatio>())
             {
-                entity.damage = (int)(entity.damage * 1.8f);
+                entity.damage = (int)(entity.damage * 1.6f);
             }
             if (entity.type == ModContent.ItemType<Eschaton>())
             {
-                entity.damage = (int)(entity.damage * 1.6f);
+                entity.damage = (int)(entity.damage * 1.7f);
             }
         }
 
+        //public override void UpdateInventory(Item item, Player player)
+        //{
+        //    if (item.ModItem is ReloadWeapon reloadWeapon && item.type == ModContent.ItemType<Desperatio>())
+        //    {
+        //        reloadWeapon.MaxMagazine *= 2;
+        //    }
+        //}
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
         {
             if (item.type == ModContent.ItemType<FlamesOfCondemnation>())
@@ -46,20 +54,21 @@ namespace ssm.SoA
             }
             if (item.type == ModContent.ItemType<Malice>())
             {
-                tooltips.Add(new TooltipLine(Mod, "rebalance", $"[c/00A36C:Cross-Mod Balance:] Damage increased by 70%"));
+                tooltips.Add(new TooltipLine(Mod, "rebalance", $"[c/00A36C:Cross-Mod Balance:] Damage increased by 80%"));
             }
             if (item.type == ModContent.ItemType<Tenebris>())
             {
-                tooltips.Add(new TooltipLine(Mod, "rebalance", $"[c/00A36C:Cross-Mod Balance:] Damage increased by 20%"));
+                tooltips.Add(new TooltipLine(Mod, "rebalance", $"[c/00A36C:Cross-Mod Balance:] Damage increased by 10%"));
                 tooltips.Add(new TooltipLine(Mod, "homing", $"[c/00A36C:Cross-Mod Balance:] Weapon's pojectiles are homing in on enemies"));
             }
             if (item.type == ModContent.ItemType<Desperatio>())
             {
-                tooltips.Add(new TooltipLine(Mod, "rebalance", $"[c/00A36C:Cross-Mod Balance:] Damage increased by 80%"));
+                tooltips.Add(new TooltipLine(Mod, "rebalance", $"[c/00A36C:Cross-Mod Balance:] Damage increased by 60%"));
+                tooltips.Add(new TooltipLine(Mod, "homing", $"[c/00A36C:Cross-Mod Balance:] Weapon's pojectiles are homing in on enemies"));
             }
             if (item.type == ModContent.ItemType<Eschaton>())
             {
-                tooltips.Add(new TooltipLine(Mod, "rebalance", $"[c/00A36C:Cross-Mod Balance:] Damage increased by 60%"));
+                tooltips.Add(new TooltipLine(Mod, "rebalance", $"[c/00A36C:Cross-Mod Balance:] Damage increased by 70%"));
             }
         }
         public override bool? UseItem(Item item, Player player)

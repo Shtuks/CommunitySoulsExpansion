@@ -16,17 +16,16 @@ using ssm.Thorium;
 using System.Collections.Generic;
 using ssm.SoA;
 using ssm.Redemption;
-using FargowiltasSouls.Content.Items.Materials;
-using FargowiltasSouls.Content.Items.Pets;
-using FargowiltasSouls.Content.Items.Placables.MusicBoxes;
 using System.Linq;
 using Terraria.Localization;
-using FargowiltasSouls.Content.Items.Placables.Trophies;
 using ssm.Content.Items.Consumables;
 using ssm.Content.NPCs.MutantEX;
 using ssm.Content.UI;
 using Terraria.UI;
 using ssm.CrossMod.CraftingStations;
+using ssm.SpiritMod;
+using ssm.gunrightsmod;
+using Humanizer;
 
 namespace ssm
 {
@@ -62,7 +61,6 @@ namespace ssm
         public static string filePath = "C:/Users/" + userName + "/Documents/My Games/Terraria/tModLoader/StarlightSouls";
 
         //public override uint ExtraPlayerBuffSlots => 300u;
-
         public static int SwarmMinDamage
         {
             get

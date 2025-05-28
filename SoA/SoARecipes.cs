@@ -14,6 +14,8 @@ using FargowiltasSouls.Content.Items.Accessories.Forces;
 using SacredTools.Content.Items.Materials;
 using Terraria.ID;
 using SacredTools.Content.Items.Armor.Oblivion;
+using SacredTools.Content.Items.Weapons.Relic;
+using FargowiltasSouls.Content.Items.Materials;
 
 namespace ssm
 {
@@ -121,6 +123,28 @@ namespace ssm
                 {
                     if (!recipe.HasIngredient<TraceOfChaos>())
                         recipe.AddIngredient<TraceOfChaos>(4);
+                }
+
+                if ((recipe.HasResult<PaleRuin>() ||
+                        recipe.HasResult<AshenWake>() ||
+                        recipe.HasResult<CeruleanCyclone>() ||
+                        recipe.HasResult<Malevolence>() ||
+                        recipe.HasResult<NightTerror>() ||
+                        recipe.HasResult<RogueWave>() ||
+                        recipe.HasResult<Sharpshooter>() ||
+                        recipe.HasResult<SwordOfGreed>()) && !recipe.HasIngredient<AbomEnergy>())
+                {
+                    recipe.AddIngredient<AbomEnergy>(5);
+                }
+                if ((recipe.HasResult<AsthraltiteHelmetRevenant>() ||
+                    recipe.HasResult<AsthralRanged>() ||
+                    recipe.HasResult<AsthralMelee>() ||
+                    recipe.HasResult<AsthralChest>() ||
+                    recipe.HasResult<AsthralMage>() ||
+                    recipe.HasResult<AsthralLegs>() ||
+                    recipe.HasResult<AsthralSummon>()) && !recipe.HasIngredient<AbomEnergy>())
+                {
+                    recipe.AddIngredient<AbomEnergy>(5);
                 }
             }
         }

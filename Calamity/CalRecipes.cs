@@ -14,7 +14,6 @@ using CalamityMod.Items.Armor.Tarragon;
 using CalamityMod.Items.Armor.Bloodflare;
 using ssm.Content.Items.Accessories;
 using CalamityMod.Items;
-using FargowiltasSouls.Content.Items.BossBags;
 using FargowiltasSouls.Content.Items.Summons;
 
 namespace ssm.Calamity

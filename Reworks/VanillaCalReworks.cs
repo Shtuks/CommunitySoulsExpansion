@@ -15,10 +15,6 @@ namespace ssm.Reworks
             //Zenith
             if (item.type == 4956)
                 item.damage = 260;
-
-            //Reaver shark
-            if (item.type == 2341)
-                item.pick = 64;
         }
     }
 }

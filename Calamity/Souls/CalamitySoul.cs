@@ -28,7 +28,7 @@ namespace ssm.Calamity.Souls
             Item.value = Item.buyPrice(3, 0, 0, 0);
             Item.rare = 11;
             Item.accessory = true;
-            Item.defense = 30;
+            Item.defense = 50;
         }
         public override void UpdateAccessory(Player player, bool hideVisual)
         {

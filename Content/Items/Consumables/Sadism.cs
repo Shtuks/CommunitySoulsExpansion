@@ -19,7 +19,7 @@ namespace ssm.Content.Items.Consumables
             this.Item.useTime = 17;
             this.Item.consumable = true;
             this.Item.buffType = ModContent.BuffType<SadismEX>();
-            this.Item.buffTime = 25200;
+            this.Item.buffTime = int.MaxValue;
             this.Item.UseSound = SoundID.Item3;
             this.Item.value = Item.sellPrice(10, 0, 0, 0);
         }

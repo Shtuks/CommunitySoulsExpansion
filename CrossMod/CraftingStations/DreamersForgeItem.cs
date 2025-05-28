@@ -32,7 +32,7 @@ namespace ssm.CrossMod.CraftingStations
             recipe.AddIngredient(ItemType<ThoriumAnvil>());
             recipe.AddIngredient(ItemType<GuidesFinalGift>());
             recipe.AddIngredient(ItemType<GrimPedestal>());
-            recipe.AddIngredient(ItemType<ThoriumAnvil>());
+            //recipe.AddIngredient(ItemType<ThoriumAnvil>());
             recipe.AddIngredient(ItemType<DeathEssence>(), 5);
             recipe.AddIngredient(ItemType<OceanEssence>(), 5);
             recipe.AddIngredient(ItemType<InfernoEssence>(), 5);

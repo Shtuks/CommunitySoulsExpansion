@@ -8,8 +8,8 @@ using NoxusBoss.Content.NPCs.Bosses.NamelessDeity;
 
 namespace ssm.Calamity
 {
-    [ExtendsFromMod(ModCompatibility.Calamity.Name, ModCompatibility.Crossmod.Name)]
-    [JITWhenModsEnabled(ModCompatibility.Calamity.Name, ModCompatibility.Crossmod.Name)]
+    [ExtendsFromMod(ModCompatibility.Calamity.Name, ModCompatibility.Crossmod.Name, ModCompatibility.WrathoftheGods.Name)]
+    [JITWhenModsEnabled(ModCompatibility.Calamity.Name, ModCompatibility.Crossmod.Name, ModCompatibility.WrathoftheGods.Name)]
     internal class CalDlcItems : GlobalItem
     {
         public override bool InstancePerEntity => true;

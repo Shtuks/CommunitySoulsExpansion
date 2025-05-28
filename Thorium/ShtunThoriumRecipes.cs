@@ -68,11 +68,8 @@ namespace ssm.Thorium
                 }
                 if (recipe.HasResult<UniverseSoul>() && !recipe.HasIngredient<BardSoul>())
                 {
-                    recipe.AddIngredient<BardSoul>();
-                }
-                if (recipe.HasResult<UniverseSoul>() && !recipe.HasIngredient<GuardianAngelsSoul>())
-                {
                     recipe.AddIngredient<GuardianAngelsSoul>();
+                    recipe.AddIngredient<BardSoul>();
                 }
                 if (!ModCompatibility.Calamity.Loaded && recipe.HasResult<UniverseSoul>() && !recipe.HasIngredient<OlympiansSoul>())
                 {

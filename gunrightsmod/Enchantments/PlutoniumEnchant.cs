@@ -48,7 +48,7 @@ namespace ssm.gunrightsmod.Enchantments
             recipe.AddIngredient<PlutoniumPants>();
             recipe.AddIngredient<Needler>();
             recipe.AddIngredient<PlutoniumAutoPistol>();
-            recipe.AddIngredient<MidnightAfterburner>();
+            //recipe.AddIngredient<MidnightAfterburner>();
             recipe.AddTile(TileID.DemonAltar);
             recipe.Register();
         }

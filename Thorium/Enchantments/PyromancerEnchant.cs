@@ -40,10 +40,12 @@ namespace ssm.Thorium.Enchantments
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            ThoriumPlayer modPlayer = player.GetModPlayer<ThoriumPlayer>();
-            modPlayer.setPyromancer = true;
-            modPlayer.napalm = true;
-
+            if (player.AddEffect<PyroEffect>(Item))
+            {
+                ThoriumPlayer modPlayer = player.GetModPlayer<ThoriumPlayer>();
+                modPlayer.setPyromancer = true;
+                modPlayer.napalm = true;
+            }
 
             if (player.AddEffect<PlasmaEffect>(Item))
             {
@@ -67,6 +69,12 @@ namespace ssm.Thorium.Enchantments
         }
 
         public class PlasmaEffect : AccessoryEffect
+        {
+            public override Header ToggleHeader => Header.GetHeader<MuspelheimForceHeader>();
+            public override int ToggleItemType => ModContent.ItemType<PyromancerEnchant>();
+            public override bool MutantsPresenceAffects => true;
+        }
+        public class PyroEffect : AccessoryEffect
         {
             public override Header ToggleHeader => Header.GetHeader<MuspelheimForceHeader>();
             public override int ToggleItemType => ModContent.ItemType<PyromancerEnchant>();

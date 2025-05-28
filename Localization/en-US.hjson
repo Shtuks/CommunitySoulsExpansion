@@ -10,7 +10,6 @@ Mods: {
 		}
 
 		Items: {
-
 			OstaraEnchant: {
 				DisplayName: Ostara Enchantment
 				Tooltip:
@@ -25,12 +24,22 @@ Mods: {
 
 			DragonEnchant: {
 				DisplayName: Dragon Enchantment
-				Tooltip: Creates a burst of shadowflames after taking damage
+				Tooltip:
+					'''
+					'Made from mythical scales'
+					Your attacks have a chance to unleash an explosion of Dragon's Flame
+					Effects of Dragon Talon Necklace and Disco Music Player
+					'''
 			}
 
 			TitanEnchant: {
 				DisplayName: Titan Enchantment
-				Tooltip: Using ranged weapons triggers a recoil blast
+				Tooltip:
+					'''
+					'Infused with primordial energy'
+					15% increased damage
+					Effects of Mask of the Crystal Eye, Abyssal Shell, and Rock Music Player
+					'''
 			}
 
 			PhantasmalEnchant: {
@@ -46,8 +55,10 @@ Mods: {
 				DisplayName: Warlock Enchantment
 				Tooltip:
 					'''
-					Increases health regeneration and jump speed
-					Enemies killed by minions heal the player
+					'Better than a wizard'
+					Critical strikes will generate up to 15 shadow wisps
+					Pressing the 'Special Ability' key will unleash every stored shadow wisp towards your cursor's position
+					Effects of Demon Tongue and Dark Effigy
 					'''
 			}
 
@@ -179,6 +190,11 @@ Mods: {
 					Getting hit grants four seconds of invisibility and 100% increased damage. 25 second cooldown
 					Effects of Rogue's Crest and Swiftness Rune
 					'''
+			}
+
+			Rogue: {
+				DisplayName: Rogue
+				Tooltip: ""
 			}
 
 			MarbleChunkEnchant: {
@@ -347,6 +363,11 @@ Mods: {
 					'''
 			}
 
+			Adventurer: {
+				DisplayName: Adventurer
+				Tooltip: ""
+			}
+
 			HurricaneForce: {
 				DisplayName: Force of Hurricane
 				Tooltip:
@@ -390,6 +411,7 @@ Mods: {
 					[i:ssm/SlagTyrantEnchant] Double tap 'Down' to cause all sentries to release a burst of fireballs
 					'''
 			}
+
 			CommonGuardEnchant: {
 				DisplayName: Common Guard Enchantment
 				Tooltip:
@@ -1441,16 +1463,6 @@ Mods: {
 					'''
 			}
 
-			DragonEnchant: {
-				DisplayName: Dragon Enchantment
-				Tooltip:
-					'''
-					'Made from mythical scales'
-					Your attacks have a chance to unleash an explosion of Dragon's Flame
-					Effects of Dragon Talon Necklace and Disco Music Player
-					'''
-			}
-
 			DreadEnchant: {
 				DisplayName: Dread Enchantment
 				Tooltip:
@@ -1910,16 +1922,6 @@ Mods: {
 					'''
 			}
 
-			TitanEnchant: {
-				DisplayName: Titan Enchantment
-				Tooltip:
-					'''
-					'Infused with primordial energy'
-					15% increased damage
-					Effects of Mask of the Crystal Eye, Abyssal Shell, and Rock Music Player
-					'''
-			}
-
 			ValadiumEnchant: {
 				DisplayName: Valadium Enchantment
 				Tooltip:
@@ -1928,17 +1930,6 @@ Mods: {
 					Reverse gravity by pressing UP
 					While reversed, damage is increased by 12%
 					Effects of Mirror of the Beholder and Beholder's Gaze
-					'''
-			}
-
-			WarlockEnchant: {
-				DisplayName: Warlock Enchantment
-				Tooltip:
-					'''
-					'Better than a wizard'
-					Critical strikes will generate up to 15 shadow wisps
-					Pressing the 'Special Ability' key will unleash every stored shadow wisp towards your cursor's position
-					Effects of Demon Tongue and Dark Effigy
 					'''
 			}
 
@@ -3258,6 +3249,26 @@ Mods: {
 				DisplayName: Living Wood Enchant2
 				Tooltip: ""
 			}
+
+			Politician: {
+				DisplayName: Politician
+				Tooltip: ""
+			}
+
+			Gambler: {
+				DisplayName: Gambler
+				Tooltip: ""
+			}
+
+			RuneWizard: {
+				DisplayName: Rune Wizard
+				Tooltip: ""
+			}
+
+			StarblightFruit: {
+				DisplayName: Starblight Fruit
+				Tooltip: ""
+			}
 		}
 
 		Buffs: {
@@ -3687,6 +3698,11 @@ Mods: {
 				TerMerica: {
 					Tooltip: ""
 					Label: TerMerica
+				}
+
+				SpiritMod: {
+					Label: Spirit Mod
+					Tooltip: ""
 				}
 			}
 		}

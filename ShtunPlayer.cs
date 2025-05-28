@@ -7,10 +7,12 @@ using FargowiltasSouls.Content.Buffs.Masomode;
 using ssm.Content.Projectiles;
 using ssm.Content.NPCs.MutantEX;
 using ssm.Systems;
-using FargowiltasSouls.Content.Bosses.MutantBoss;
-using ssm.Core;
 using FargowiltasSouls;
-using FargowiltasSouls.Core.Globals;
+using FargowiltasSouls.Content.Buffs.Boss;
+using ssm.Content.Buffs;
+using System.Collections.Generic;
+using Terraria.ModLoader.IO;
+using FargowiltasSouls.Content.UI;
 
 namespace ssm
 {
@@ -24,6 +26,7 @@ namespace ssm
         public int CyclonicFinCD;
         public bool MonstrocityPresence;
         public bool lumberjackSet;
+        public bool starlightFruit;
 
         //Enchants
         public bool equippedPhantasmalEnchantment;
@@ -31,7 +34,7 @@ namespace ssm
         public bool equippedNekomiEnchantment;
         public bool equippedMonstrosityEnchantment;
 
-        public override void PreUpdate()
+        public override void PostUpdateBuffs()
         {
             //if (/*(FargoSoulsUtil.BossIsAlive(ref ShtunNpcs.mutantEX, ModContent.NPCType<MutantEX>()) || */FargoSoulsUtil.BossIsAlive(ref EModeGlobalNPC.mutantBoss, ModContent.NPCType<MutantBoss>()) && ModCompatibility.Calamity.Loaded)
             //{
@@ -43,12 +46,121 @@ namespace ssm
             //    Main.LocalPlayer.buffImmune[adrenaline.Type] = true;
             //}
 
+            if(starlightFruit)
+            {
+                Player.accWatch = 3;
+                Player.accDepthMeter = 1;
+                Player.accCompass = 1;
+                Player.accFishFinder = true;
+                Player.accDreamCatcher = true;
+                Player.accOreFinder = true;
+                Player.accStopwatch = true;
+                Player.accCritterGuide = true;
+                Player.accJarOfSouls = true;
+                Player.accThirdEye = true;
+                Player.accCalendar = true;
+                Player.accWeatherRadio = true;
+
+                for (int index = 0; index < BuffLoader.BuffCount; ++index)
+                {
+                    if (Main.debuff[index])
+                    {
+                        Player.buffImmune[index] = true;
+                        Player.buffImmune[ModContent.BuffType<AbomPresenceBuff>()] = false;
+                        Player.buffImmune[ModContent.BuffType<MutantPresenceBuff>()] = false;
+
+                        if (ModLoader.TryGetMod("SacredTools", out Mod soa))
+                        {
+                            Player.buffImmune[ModContent.BuffType<NihilityPresenceBuff>()] = false;
+                        }
+                        if (ModLoader.TryGetMod("CalamityMod", out Mod kal))
+                        {
+                            Player.buffImmune[ModContent.Find<ModBuff>("CalamityMod", "RageMode").Type] = false;
+                            Player.buffImmune[ModContent.Find<ModBuff>("CalamityMod", "AdrenalineMode").Type] = false;
+                        }
+                    }
+                }
+
+                Player.findTreasure = true;
+                Player.nightVision = true;
+                Player.detectCreature = true;
+                Player.pickSpeed -= 0.25f;
+                Player.dangerSense = true;
+                Player.gills = true;
+                Player.waterWalk = true;
+                Player.ignoreWater = true;
+                Player.accFlipper = true;
+                Player.buffImmune[4] = true;
+                Player.buffImmune[15] = true;
+                Player.buffImmune[109] = true;
+                Player.buffImmune[9] = true;
+                Player.buffImmune[11] = true;
+                Player.buffImmune[12] = true;
+                Player.buffImmune[17] = true;
+                Player.buffImmune[104] = true;
+                Player.buffImmune[111] = true;
+                Player.ammoBox = true;
+                Player.pickSpeed -= 0.2f;
+                Player.moveSpeed += 0.2f;
+                Player.GetArmorPenetration(DamageClass.Generic) += 10;
+                Player.moveSpeed += 0.25f;
+                Player.statLifeMax2 += Player.statLifeMax / 5 / 20 * 20;
+                Player.lifeRegen += 3;
+                Player.endurance += 0.1f;
+                Player.statDefense += 8;
+                Player.GetCritChance(DamageClass.Generic) += 0.1f;
+                Player.GetDamage(DamageClass.Generic) += 0.1f;
+                Player.archery = true;
+                Player.ammoPotion = true;
+                Player.lavaImmune = true;
+                Player.fireWalk = true;
+                Player.buffImmune[24] = true;
+                Player.buffImmune[29] = true;
+                Player.buffImmune[39] = true;
+                Player.buffImmune[44] = true;
+                Player.buffImmune[46] = true;
+                Player.buffImmune[47] = true;
+                Player.buffImmune[69] = true;
+                Player.buffImmune[110] = true;
+                Player.buffImmune[112] = true;
+                Player.buffImmune[113] = true;
+                Player.buffImmune[114] = true;
+                Player.buffImmune[115] = true;
+                Player.buffImmune[117] = true;
+                Player.buffImmune[150] = true;
+                Player.buffImmune[348] = true;
+                Player.buffImmune[1] = true;
+                Player.buffImmune[2] = true;
+                Player.buffImmune[5] = true;
+                Player.buffImmune[6] = true;
+                Player.buffImmune[7] = true;
+                Player.buffImmune[14] = true;
+                Player.maxMinions += 2;
+                if (Player.thorns < 1.0)
+                {
+                    Player.thorns = 0.3333333f;
+                }
+            }
 
             if (FargoSoulsUtil.BossIsAlive(ref ShtunNpcs.mutantEX, ModContent.NPCType<MutantEX>()) && Main.player[Main.myPlayer].Shtun().lumberjackSet && WorldSaveSystem.enragedMutantEX)
             {
                 Main.LocalPlayer.statDefense*=0;
                 Main.LocalPlayer.endurance*=0;
             }
+        }
+
+        public override void SaveData(TagCompound tag)
+        {
+            var playerData = new List<string>();
+            if (starlightFruit) playerData.Add("starlightFruit");
+
+            tag.Add($"{Mod.Name}.{Player.name}.Data", playerData);
+        }
+
+        public override void LoadData(TagCompound tag)
+        {
+            var playerData = tag.GetList<string>($"{Mod.Name}.{Player.name}.Data");
+            starlightFruit = playerData.Contains("starlightFruit");
         }
         public override void OnEnterWorld()
         {

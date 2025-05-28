@@ -114,6 +114,9 @@
 	  <Reference Include="SacredTools">
 	    <HintPath>Libraries\SacredTools.dll</HintPath>
 	  </Reference>
+	  <Reference Include="SpiritMod">
+	    <HintPath>..\..\ModReader\SpiritMod\SpiritMod.dll</HintPath>
+	  </Reference>
 	  <Reference Include="Spooky">
 	    <HintPath>lib\Spooky.dll</HintPath>
 	  </Reference>
