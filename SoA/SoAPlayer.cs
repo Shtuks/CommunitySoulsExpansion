@@ -195,7 +195,7 @@ namespace ssm.SoA
         public void CreateFrostExplosion(Vector2 pos, bool isCluster)
         {
             float radius = isCluster ? 100f : 150f;
-            int damage = (int)(Player.GetDamage(DamageClass.Generic).ApplyTo(30));
+            int damage = (int)(Player.GetDamage(DamageClass.Generic).ApplyTo(20));
             float knockback = 3f;
 
             for (int i = 0; i < Main.maxNPCs; i++)
@@ -251,7 +251,7 @@ namespace ssm.SoA
         public void CreateSmallFrostExplosion(Vector2 pos)
         {
             float radius = 60f;
-            int damage = (int)(Player.GetDamage(DamageClass.Generic).ApplyTo(15));
+            int damage = (int)(Player.GetDamage(DamageClass.Generic).ApplyTo(10));
             float knockback = 1.5f;
 
             for (int i = 0; i < Main.maxNPCs; i++)
@@ -283,7 +283,7 @@ namespace ssm.SoA
         public void CreateMiniFrostExplosion(Vector2 pos)
         {
             float radius = 30f;
-            int damage = (int)(Player.GetDamage(DamageClass.Generic).ApplyTo(10));
+            int damage = (int)(Player.GetDamage(DamageClass.Generic).ApplyTo(5));
             float knockback = 1f;
 
             for (int i = 0; i < Main.maxNPCs; i++)

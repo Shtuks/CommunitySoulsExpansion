@@ -11,6 +11,10 @@ namespace ssm.Consolaria.Forces
     [ExtendsFromMod(ModCompatibility.Consolaria.Name)]
     public class HeroForce : BaseForce
     {
+        public override bool IsLoadingEnabled(Mod mod)
+        {
+            return ShtunConfig.Instance.ExperimentalContent;
+        }
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             ModContent.Find<ModItem>(base.Mod.Name, "OstaraEnchant").UpdateAccessory(player, false);
