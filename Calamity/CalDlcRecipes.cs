@@ -31,13 +31,14 @@ namespace ssm.Calamity
                     //FUCK PERSON WHO PUT ETERNAL ENERGY IN THAT DUMB BAR
                     if (recipe.HasResult(ModContent.ItemType<ShadowspecBar>()) && recipe.HasIngredient<EternalEnergy>())
                     {
+                        recipe.AddIngredient<AbomEnergy>();
                         recipe.RemoveIngredient(ModContent.ItemType<EternalEnergy>());
                     }
                 //}
                 #endregion
 
                 #region souls
-                if (!ShtunConfig.Instance.ExperimentalContent && recipe.HasResult<EternitySoul>() && !recipe.HasIngredient<CalamitySoul>() && recipe.HasIngredient<BrandoftheBrimstoneWitch>())
+                if (/*!ShtunConfig.Instance.ExperimentalContent && */recipe.HasResult<EternitySoul>() && !recipe.HasIngredient<CalamitySoul>() && recipe.HasIngredient<BrandoftheBrimstoneWitch>())
                 {
                     if (recipe.RemoveIngredient(ModContent.ItemType<BrandoftheBrimstoneWitch>()))
                         recipe.AddIngredient<CalamitySoul>();

@@ -82,7 +82,7 @@ namespace ssm.Redemption
             }
             if (entity.type == ModContent.ItemType<PiercingNebulaWeapon>())
             {
-                entity.damage = (int)(entity.damage * 1.4f);
+                entity.damage = (int)(entity.damage * 1.5f);
             }
         }
 
@@ -102,7 +102,7 @@ namespace ssm.Redemption
             }
             if (item.type == ModContent.ItemType<PiercingNebulaWeapon>())
             {
-                tooltips.Add(new TooltipLine(Mod, "rebalance", $"[c/00A36C:Cross-Mod Balance:] Damage increased by 40%"));
+                tooltips.Add(new TooltipLine(Mod, "rebalance", $"[c/00A36C:Cross-Mod Balance:] Damage increased by 50%"));
             }
         }
     }

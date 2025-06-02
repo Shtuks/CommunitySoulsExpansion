@@ -59,10 +59,10 @@ namespace ssm.Calamity
                     }
                 }
 
-                if (ShtunConfig.Instance.ExperimentalContent && !recipe.HasIngredient<Rock>() && recipe.HasResult<MacroverseSoul>())
-                {
-                    recipe.AddIngredient<Rock>(1);
-                }
+                //if (ShtunConfig.Instance.ExperimentalContent && !recipe.HasIngredient<Rock>() && recipe.HasResult<MacroverseSoul>())
+                //{
+                //    recipe.AddIngredient<Rock>(1);
+                //}
 
                 if (!recipe.HasIngredient<Rock>() && recipe.HasResult<AbominationnVoodooDoll>())
                 {

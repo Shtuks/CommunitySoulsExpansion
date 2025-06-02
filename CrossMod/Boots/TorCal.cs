@@ -66,10 +66,10 @@ namespace ssm.CrossMod.Boots
                     recipe.AddIngredient<TracersSeraph>(1);
                 }
                 //drew to flight
-                if (recipe.HasResult(ModContent.ItemType<FlightMasterySoul>()) && !recipe.HasIngredient<DrewsWings>())
-                {
-                    recipe.AddIngredient<DrewsWings>(1);
-                }
+                //if (recipe.HasResult(ModContent.ItemType<FlightMasterySoul>()) && !recipe.HasIngredient<WingsofRebirth>())
+                //{
+                //    recipe.AddIngredient<WingsofRebirth>(1);
+                //}
             }
         }
     }

@@ -3717,7 +3717,7 @@ Mods: {
 
 				ExperimentalContent: {
 					Label: Experimental Content
-					Tooltip: This will allow unfinished content to load.
+					Tooltip: This will allow unfinished content to load. WARNING. This can and will break your game. Don't turn on.
 				}
 
 				ThrowerMerge: {

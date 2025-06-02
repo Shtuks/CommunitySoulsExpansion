@@ -220,7 +220,6 @@ namespace ssm
             }
             Instance = null;
         }
-
         public void ShowBossSummonUI()
         {
             if (_bossSummonState == null)

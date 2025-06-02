@@ -26,7 +26,7 @@ namespace ssm.Calamity.Enchantments
             Item.accessory = true;
             ItemID.Sets.ItemNoGravity[Item.type] = true;
             Item.rare = 10;
-            Item.value = 50000000;
+            Item.value = 5000000;
         }
 
         public override Color nameColor => new(173, 52, 70);

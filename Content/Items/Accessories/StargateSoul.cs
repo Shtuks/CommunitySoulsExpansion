@@ -181,7 +181,7 @@ namespace ssm.Content.Items.Accessories
 
             recipe.AddIngredient<EternityForce>(1);
             recipe.AddIngredient<EternitySoul>(1);
-            if (ShtunConfig.Instance.ExperimentalContent) { recipe.AddIngredient<MacroverseSoul>(1); }
+            //if (ShtunConfig.Instance.ExperimentalContent) { recipe.AddIngredient<MacroverseSoul>(1); }
             recipe.AddIngredient<CyclonicFin>(1);
 
             recipe.AddIngredient<Sadism>(30);

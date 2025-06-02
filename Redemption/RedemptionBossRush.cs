@@ -1,14 +1,10 @@
 ﻿using Terraria.ModLoader;
 using ssm.Core;
 using static CalamityMod.Events.BossRushEvent;
-using CalamityMod.NPCs.Providence;
-using CalamityMod.NPCs.SupremeCalamitas;
-using Redemption.NPCs.Bosses.PatientZero;
 using Redemption.NPCs.Bosses.ADD;
 using Redemption.NPCs.Bosses.Neb;
 using Redemption.NPCs.Bosses.Neb.Phase2;
 using CalamityMod.NPCs.Polterghast;
-using Terraria;
 
 namespace ssm.Redemption
 {
@@ -30,10 +26,10 @@ namespace ssm.Redemption
                     Bosses[i].HostileNPCsToNotDelete.Add(ModContent.NPCType<Akka>());
                     Bosses.Insert(i, new Boss(ModContent.NPCType<Ukko>()));
                 }
-                if (Bosses[i].EntityID == ModContent.NPCType<SupremeCalamitas>())
-                {
+                //if (Bosses[i].EntityID == ModContent.NPCType<SupremeCalamitas>())
+                //{
                     Bosses.Add(new Boss(ModContent.NPCType<Nebuleus>(), TimeChangeContext.Night));
-                }
+                //}
             }
 
             BossIDsAfterDeath.Add(ModContent.NPCType<Nebuleus>(), [ModContent.NPCType<Nebuleus2>()]);

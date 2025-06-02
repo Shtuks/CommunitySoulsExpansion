@@ -1,12 +1,12 @@
 using FargowiltasSouls.Core.Toggler.Content;
-using ssm.Calamity.Addons;
+using ssm.Redemption.Forces;
 using Terraria.ModLoader;
 
 namespace ssm.Content.SoulToggles
 {
     public class AdvancementForceHeader : SoulHeader
     {
-        public override float Priority => 6.1f;
-        public override int Item => ModContent.ItemType<AddonsForce>();
+        public override float Priority => 8f;
+        public override int Item => ModContent.ItemType<AdvancementForce>();
     }
 }

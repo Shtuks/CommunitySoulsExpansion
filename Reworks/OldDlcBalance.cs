@@ -4,12 +4,17 @@ using Terraria;
 using FargowiltasSouls.Content.Bosses.MutantBoss;
 using FargowiltasSouls.Core.Systems;
 using FargowiltasSouls.Content.Bosses.AbomBoss;
-using rail;
+using CalamityMod.Events;
 
 namespace ssm.Reworks
 {
     public class OldCalDlcNpcBalance : GlobalNPC
     {
+        [JITWhenModsEnabled(ModCompatibility.Calamity.Name)]
+        bool CheckBossRush()
+        {
+            return BossRushEvent.BossRushActive;
+        }
         public override bool InstancePerEntity => true;
         public override void SetDefaults(NPC npc)
         {
@@ -20,14 +25,14 @@ namespace ssm.Reworks
 
                 if (ModCompatibility.SacredTools.Loaded && !ModCompatibility.Calamity.Loaded) { multiplier += 1f; }
                 if (ModCompatibility.Calamity.Loaded && !ModCompatibility.SacredTools.Loaded) { multiplier += 1f; }
-                if (ModCompatibility.Thorium.Loaded){multiplier+=0.6f;}
-                if (ModCompatibility.Calamity.Loaded) {multiplier+=1.5f;} 
-                if (ModCompatibility.SacredTools.Loaded) {multiplier+=1.5f;}
+                if (ModCompatibility.Thorium.Loaded){multiplier+=0.7f;}
+                if (ModCompatibility.Calamity.Loaded) {multiplier+=1.7f;} 
+                if (ModCompatibility.SacredTools.Loaded) {multiplier+=1.6f;}
 
                 if (npc.type == ModContent.NPCType<MutantBoss>())
                 {
                     npc.damage = Main.getGoodWorld ? 2000 :(int)(500 + (100 * multiplier));
-                    npc.lifeMax = (int)(mutantHealth + (mutantHealth * (WorldSavingSystem.MasochistModeReal ? multiplier * 1.5f : multiplier)));
+                    npc.lifeMax = (int)(mutantHealth + (mutantHealth * multiplier));
                 }
             }
 
@@ -43,10 +48,26 @@ namespace ssm.Reworks
 
                 if (npc.type == ModContent.NPCType<AbomBoss>())
                 {
-                    npc.damage = Main.getGoodWorld ? 500 : (int)(250 + (50 * multiplierA));
-                    npc.lifeMax = (int)(2800000 + (abomHealth * (WorldSavingSystem.MasochistModeReal ? multiplierA * 1.2f : multiplierA)))/2; //like wtf
+                    npc.damage = Main.getGoodWorld ? 1000 : (int)(250 + (20 * multiplierA));
+                    npc.lifeMax = (int)(2800000 + (abomHealth * multiplierA))/2; //like wtf
                 }
             }
         }
+
+        //public override bool PreAI(NPC npc)
+        //{
+        //    bool num = false;
+        //    if (ModCompatibility.Calamity.Loaded)
+        //    {
+        //        num = CheckBossRush();
+        //    }
+
+        //    if (num && npc.type == ModContent.NPCType<MutantBoss>())
+        //    {
+        //        npc.active = false;
+        //    }
+
+        //    return base.PreAI(npc);
+        //}
     }
 }

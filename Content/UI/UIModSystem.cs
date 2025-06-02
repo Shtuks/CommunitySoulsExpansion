@@ -8,6 +8,13 @@ namespace ssm.Content.UI
 {
     public class UIModSystem : ModSystem
     {
+        public override void UpdateUI(GameTime gameTime)
+        {
+            if (ssm.Instance._showBossSummonUI)
+            {
+                ssm.Instance._bossSummonUI?.Update(gameTime);
+            }
+        }
         public override void ModifyInterfaceLayers(List<GameInterfaceLayer> layers)
         {
             int mouseTextIndex = layers.FindIndex(layer => layer.Name.Equals("Vanilla: Mouse Text"));

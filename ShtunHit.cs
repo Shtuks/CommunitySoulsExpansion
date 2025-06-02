@@ -63,10 +63,10 @@ namespace ssm
                 npc.AddBuff(ModContent.BuffType<ChtuxlagorInferno>(), 180);
             }
 
-            if (npc.type == ModContent.NPCType<MutantBoss>())
-            {
-                modifiers.SetMaxDamage(40000);
-            }
+            //if (npc.type == ModContent.NPCType<MutantBoss>())
+            //{
+            //    modifiers.SetMaxDamage(40000);
+            //}
         }
         public override void ModifyHitByItem(NPC npc, Player player, Item item, ref NPC.HitModifiers modifiers)
         {

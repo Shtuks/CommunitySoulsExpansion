@@ -27,7 +27,7 @@ namespace ssm.SoA.Souls
         {
             Item.width = 20;
             Item.height = 20;
-            Item.defense = 35;
+            Item.defense = 40;
             Item.accessory = true;
             ItemID.Sets.ItemNoGravity[Item.type] = true;
             Item.rare = 11;

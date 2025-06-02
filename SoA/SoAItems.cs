@@ -3,7 +3,6 @@ using SacredTools.Content.Items.Weapons.Dreamscape.Nihilus;
 using ssm.Content.Projectiles.Enchantments;
 using ssm.Core;
 using System.Collections.Generic;
-using System.Security.Cryptography.X509Certificates;
 using Terraria;
 using Terraria.ModLoader;
 
@@ -14,12 +13,12 @@ namespace ssm.SoA
     public class SoAItem : GlobalItem
     {
         public override bool InstancePerEntity => true;
-
+        
         public override void SetDefaults(Item entity)
         {
             if(entity.type == ModContent.ItemType<FlamesOfCondemnation>())
             {
-                entity.damage = (int)(entity.damage * 2f);
+                entity.damage = (int)(entity.damage * 2.2f);
             }
             if (entity.type == ModContent.ItemType<Malice>())
             {
@@ -31,11 +30,11 @@ namespace ssm.SoA
             }
             if (entity.type == ModContent.ItemType<Desperatio>())
             {
-                entity.damage = (int)(entity.damage * 1.6f);
+                entity.damage = (int)(entity.damage * 1.5f);
             }
             if (entity.type == ModContent.ItemType<Eschaton>())
             {
-                entity.damage = (int)(entity.damage * 1.7f);
+                entity.damage = (int)(entity.damage * 1.8f);
             }
         }
 
@@ -50,7 +49,7 @@ namespace ssm.SoA
         {
             if (item.type == ModContent.ItemType<FlamesOfCondemnation>())
             {
-                tooltips.Add(new TooltipLine(Mod, "rebalance", $"[c/00A36C:Cross-Mod Balance:] Damage increased by 100%"));
+                tooltips.Add(new TooltipLine(Mod, "rebalance", $"[c/00A36C:Cross-Mod Balance:] Damage increased by 120%"));
             }
             if (item.type == ModContent.ItemType<Malice>())
             {
@@ -63,12 +62,15 @@ namespace ssm.SoA
             }
             if (item.type == ModContent.ItemType<Desperatio>())
             {
-                tooltips.Add(new TooltipLine(Mod, "rebalance", $"[c/00A36C:Cross-Mod Balance:] Damage increased by 60%"));
+                tooltips.Add(new TooltipLine(Mod, "rebalance", $"[c/00A36C:Cross-Mod Balance:] Damage increased by 50%"));
+                tooltips.Add(new TooltipLine(Mod, "nerf", $"[c/00A36C:Cross-Mod Balance:] Fire column deal 70% less damage."));
                 tooltips.Add(new TooltipLine(Mod, "homing", $"[c/00A36C:Cross-Mod Balance:] Weapon's pojectiles are homing in on enemies"));
             }
             if (item.type == ModContent.ItemType<Eschaton>())
             {
-                tooltips.Add(new TooltipLine(Mod, "rebalance", $"[c/00A36C:Cross-Mod Balance:] Damage increased by 70%"));
+                tooltips.Add(new TooltipLine(Mod, "rebalance", $"[c/00A36C:Cross-Mod Balance:] Damage increased by 80%"));
+                tooltips.Add(new TooltipLine(Mod, "velocity", $"[c/00A36C:Cross-Mod Balance:] Projectile velocity increased by 10%"));
+                tooltips.Add(new TooltipLine(Mod, "homing", $"[c/00A36C:Cross-Mod Balance:] Weapon's pojectiles are homing in on enemies"));
             }
         }
         public override bool? UseItem(Item item, Player player)

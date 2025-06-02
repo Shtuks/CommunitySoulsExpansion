@@ -62,7 +62,7 @@ namespace ssm.Thorium
 			for (int i = 0; i < Recipe.numRecipes; i++)
 			{
 				Recipe recipe = Main.recipe[i];
-                if (!ShtunConfig.Instance.ExperimentalContent && recipe.HasResult<EternitySoul>() && !recipe.HasIngredient<ThoriumSoul>())
+                if (/*!ShtunConfig.Instance.ExperimentalContent && */recipe.HasResult<EternitySoul>() && !recipe.HasIngredient<ThoriumSoul>())
                 {
                     recipe.AddIngredient<ThoriumSoul>();
                 }

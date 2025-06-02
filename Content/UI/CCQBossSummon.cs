@@ -70,6 +70,7 @@ namespace ssm.Content.UI
         {
             Player player = Main.LocalPlayer;
             FargoSoulsUtil.SpawnBossNetcoded(player, type);
+            ssm.Instance._showBossSummonUI = false;
         }
     }
 }

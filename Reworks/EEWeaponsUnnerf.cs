@@ -1,6 +1,8 @@
-﻿using FargowiltasSouls.Content.Items.Weapons.FinalUpgrades;
+﻿using FargowiltasSouls.Content.Items.Summons;
+using FargowiltasSouls.Content.Items.Weapons.FinalUpgrades;
 using FargowiltasSouls.Content.Items.Weapons.SwarmDrops;
 using ssm.Core;
+using System.Collections.Generic;
 using Terraria;
 using Terraria.ModLoader;
 
@@ -28,6 +30,14 @@ namespace ssm.Reworks
             if (entity.type == ModContent.ItemType<SlimeRain>())
             {
                 entity.damage = 6000;
+            }
+        }
+
+        public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
+        {
+            if (item.type == ModContent.ItemType<GuardianTome>() || item.type == ModContent.ItemType<TheBiggestSting>() || item.type == ModContent.ItemType<PhantasmalLeashOfCthulhu>() || item.type == ModContent.ItemType<TheBiggestSting>())
+            {
+                tooltips.Add(new TooltipLine(Mod, "balance", $"[c/FF0000:CSE Balance:] No."));
             }
         }
     }

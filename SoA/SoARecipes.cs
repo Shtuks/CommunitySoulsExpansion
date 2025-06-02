@@ -59,7 +59,7 @@ namespace ssm
                     recipe.AddIngredient<EmberOfOmen>(5);
                 }
 
-                if (!ShtunConfig.Instance.ExperimentalContent && recipe.HasResult<EternitySoul>() && !recipe.HasIngredient<SoASoul>())
+                if (/*!ShtunConfig.Instance.ExperimentalContent && */recipe.HasResult<EternitySoul>() && !recipe.HasIngredient<SoASoul>())
                 {
                     recipe.AddIngredient<SoASoul>();
                 }

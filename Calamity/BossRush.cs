@@ -1,7 +1,8 @@
-﻿using Terraria.ModLoader;
+﻿ using Terraria.ModLoader;
 using ssm.Core;
 using static CalamityMod.Events.BossRushEvent;
 using FargowiltasSouls.Content.Bosses.MutantBoss;
+using CalamityMod.Events;
 
 namespace ssm.Calamity
 {
@@ -13,7 +14,11 @@ namespace ssm.Calamity
         {
             for (int i = Bosses.Count - 1; i >= 0; i--)
             {
-                Bosses.Remove(new Boss(ModContent.NPCType<MutantBoss>()));
+                if (i == ModContent.NPCType<MutantBoss>())
+                {
+                    BossRushStage++;
+                    //Bosses.RemoveAt(i);
+                }
             }
         }
     }

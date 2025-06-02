@@ -12,6 +12,11 @@ namespace ssm.Reworks
 
         public override void UpdateAccessory(Item Item, Player player, bool hideVisual)
         {
+            if (Item.type == ModContent.ItemType<UniverseSoul>())
+            {
+                player.maxMinions += 2;
+            }
+
             //SoU
             if (ModCompatibility.SacredTools.Loaded && (Item.type == ModContent.ItemType<UniverseSoul>() || Item.type == ModContent.ItemType<EternitySoul>() || Item.type == ModContent.ItemType<StargateSoul>()))
             {

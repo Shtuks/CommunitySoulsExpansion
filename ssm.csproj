@@ -49,7 +49,7 @@
 	    <HintPath>lib\CalamityHunt.dll</HintPath>
 	  </Reference>
 	  <Reference Include="CalamityMod">
-	    <HintPath>lib\CalamityMod.dll</HintPath>
+	    <HintPath>..\..\ModReader\CalamityMod\CalamityMod.dll</HintPath>
 	  </Reference>
 	  <Reference Include="CatalystMod">
 	    <HintPath>lib\CatalystMod.dll</HintPath>

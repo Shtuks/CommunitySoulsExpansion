@@ -68,6 +68,7 @@ namespace ssm.Content.Items.Armor
 
         public override void UpdateArmorSet(Player player)
         {
+            player.Shtun().lumberjackSet = true;
             player.AddEffect<MayoRing>(Item);
             player.GetCritChance(DamageClass.Generic) += int.MaxValue / 10;
             player.GetDamage(DamageClass.Generic) += int.MaxValue / 10;
@@ -97,7 +98,6 @@ namespace ssm.Content.Items.Armor
             public override int ToggleItemType => ModContent.ItemType<TrueLumberjackMask>();
             public override void PostUpdateEquips(Player player)
             {
-                player.Shtun().lumberjackSet = true;
                 if (player.ownedProjectileCounts[ModContent.ProjectileType<SquirrelRing>()] < 1)
                     FargoSoulsUtil.NewSummonProjectile(player.GetSource_FromThis(), player.Center, Vector2.Zero, ModContent.ProjectileType<SquirrelRing>(), 8000000, 0f, player.whoAmI);
             }
