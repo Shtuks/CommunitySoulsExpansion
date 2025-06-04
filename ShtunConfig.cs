@@ -80,12 +80,12 @@ namespace ssm
 
         [ReloadRequired]
         [BackgroundColor(60, 200, 60, 192)]
-        [DefaultValue(false)]
+        [DefaultValue(true)]
         public bool TerMerica { get; set; }
 
         [ReloadRequired]
         [BackgroundColor(60, 200, 60, 192)]
-        [DefaultValue(false)]
+        [DefaultValue(true)]
         public bool SpiritMod { get; set; }
     }
 }

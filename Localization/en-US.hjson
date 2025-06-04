@@ -3332,12 +3332,12 @@ Mods: {
 			}
 
 			IdeocracyForce: {
-				DisplayName: Ideocracy Force
+				DisplayName: Force of Ideocracy
 				Tooltip: ""
 			}
 
 			RadioactiveForce: {
-				DisplayName: Radioactive Force
+				DisplayName: Force of Radioactivity
 				Tooltip: ""
 			}
 		}
