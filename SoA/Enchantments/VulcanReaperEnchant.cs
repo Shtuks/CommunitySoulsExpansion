@@ -10,6 +10,7 @@ using SacredTools.Items.Potions;
 using SacredTools.Items.Weapons.Flarium;
 using SacredTools.Items.Placeable.Paintings;
 using ssm.Core;
+using SacredTools.Common.Players;
 using FargowiltasSouls;
 
 namespace ssm.SoA.Enchantments
@@ -38,7 +39,7 @@ namespace ssm.SoA.Enchantments
         {
             if (player.AddEffect<VulcanReaperEffect>(Item))
             {
-                player.GetModPlayer<SoAPlayer>().frosthunterEnchant = player.ForceEffect<VulcanReaperEffect>() ? 2 : 1;
+                player.GetModPlayer<SoAPlayer>().vulcanReaperEnchant = player.ForceEffect<VulcanReaperEffect>() ? 2 : 1;
             }
             player.buffImmune[ModContent.Find<ModBuff>(ModCompatibility.SacredTools.Name, "ObsidianCurse").Type] = true;
         }
@@ -47,6 +48,11 @@ namespace ssm.SoA.Enchantments
         {
             public override Header ToggleHeader => Header.GetHeader<SyranForceHeader>();
             public override int ToggleItemType => ModContent.ItemType<VulcanReaperEnchant>();
+
+            public override void PostUpdateEquips(Player player)
+            {
+                player.GetModPlayer<MiscEffectsPlayer>().bossDamage *= 1f + (player.GetModPlayer<SoAPlayer>().vulcanStacks * 0.05f);
+            }
         }
 
         public override void AddRecipes()

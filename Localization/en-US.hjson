@@ -962,12 +962,13 @@ Mods: {
 			}
 
 			BlazingBruteEnchant: {
-				DisplayName: Blazing Brute Enchantment
+				DisplayName: Unrelenting Rival Enchantment
 				Tooltip:
 					'''
 					'Your spirit ignites like the brightest flame. Soon, your enemies will too'
-					Standing still for 5 seconds charges a shield that increases damage reduction by 25% per level (max of 4) 
-					Getting hit or moving resets the counter
+					Killing enemies creates a kill streak
+					The more enemies you kill increases damage by 30% 
+					Maximum streak is limited by 5
 					'''
 			}
 
@@ -1113,9 +1114,9 @@ Mods: {
 				Tooltip:
 					'''
 					'I'm da spaceman!'
-					Pressing the ability key sends out balls of space junk that deal ranged damage (10 seconds)
-					When being damaged, there is a 33% that space junk from the sky comes crashing down on your attacker
-
+					Pressing the ability key sends out a falling satellite that explodes into multiple damaging shrapnels
+					Shrapnels stay on grounds/platforms and disappear after a few seconds
+					When being damaged, there is a 33% chance for 1-2 shrapnels to fall off your armor
 					'''
 			}
 
@@ -3396,6 +3397,16 @@ Mods: {
 				DisplayName: Dreadflame Aura C D
 				Description: Mods.ssm.Buffs.DreadflameAuraCD.Description
 			}
+
+			VulkanReaperBuff: {
+				DisplayName: Vulkan Reaper Buff
+				Description: Mods.ssm.Buffs.VulkanReaperBuff.Description
+			}
+
+			RivalBuff: {
+				Description: Mods.ssm.Buffs.RivalBuff.Description
+				DisplayName: Rival Buff
+			}
 		}
 
 		NPCs: {
@@ -3678,6 +3689,8 @@ Mods: {
 			EerieMinion.DisplayName: Eerie Minion
 			DreadfireAuraProj.DisplayName: Dreadfire Aura Proj
 			SpaceJunkProj.DisplayName: Space Junk Proj
+			FrosthunterExplosion.DisplayName: Frosthunter Explosion
+			SatelliteShard.DisplayName: Satellite Shard
 		}
 
 		Bestiary: {
@@ -3740,11 +3753,6 @@ Mods: {
 					Tooltip: ""
 				}
 
-				Spirit: {
-					Label: Spirit
-					Tooltip: ""
-				}
-
 				Homeward: {
 					Label: Homeward Journey
 					Tooltip: ""
@@ -3777,19 +3785,15 @@ Mods: {
 			}
 		}
 
-		Keybinds: {
-			"Dot Mount.DisplayName": Dot Mount
-			"Teleportation Module.DisplayName": Teleportation Module
-			"Energy charging.DisplayName": Energy Charging
-		}
-
-		DamageClasses.UnitedModdedThrower.DisplayName: thrower Damage
+		DamageClasses.UnitedModdedThrower.DisplayName: thrower damage
 
 		Message: {
 			NoRework: It is recomended to play Thorium with Thorium Bosses Rework to enhance experience.
 			NoSoABardHealer1: We detected that you playing Shadows of Abaddon with Thorium Mod.
 			NoSoABardHealer2: Please install SoA Bard & Healer for better compatibility.
 		}
+
+		"Keybinds.Dot Mount.DisplayName": Dot  Mount
 	}
 
 	Redemption: {
@@ -3843,56 +3847,5 @@ Mods: {
 					'''
 			}
 		}
-	}
-
-	FargowiltasCrossmod: {
-		Items: {
-			AddedEffects: {
-				OutlawsEssence: {
-					DisplayName: Outlaw's Essence
-					Tooltip:
-						'''
-						18% increased thrower damage
-						8% increased thrower projectile velocity
-						5% increased thrower critical chance
-						'''
-				}
-
-				VagabondsSoul: {
-					DisplayName: Vagabond's Soul
-					Tooltip:
-						'''
-						22% increased thrower damage
-						10% increased thrower projectile velocity
-						10% increased thrower critical chance
-						Effects of Nanotech and Eclipse Mirror
-						'''
-				}
-			}
-		}
-	}
-
-	Catalyst: {
-		Items: {
-			IntergelacticHeadRogue: {
-				DisplayName: Intergelactic Headgear
-				Tooltip:
-					'''
-					Increases thrower damage and critical strike chance by 22%
-					12% increased damage reduction
-					'''
-			}
-		}
-
-		AuricTeslaPlusSet.Rogue:
-			'''
-			Thrower Intergelactic, Bloodflare and God Slayer armor effects
-			Press {0} to make the asteroids more transparent
-			All projectiles spawn healing auric orbs on enemy hits
-			Thrower stealth builds while not attacking and slower while moving, up to a max of 130
-			Once you have built max stealth, you will be able to perform a Stealth Strike
-			Throwere stealth only reduces when you attack, it does not reduce while moving
-			The higher your thrower stealth the higher your thrower damage, crit, and movement speed
-			'''
 	}
 }

@@ -43,8 +43,8 @@ namespace ssm.Reworks
 
 
                 if (ModCompatibility.Thorium.Loaded)  {multiplierA += 3f;} //post primoridals
-                if (ModCompatibility.Calamity.Loaded) {multiplierA += 7f;} //post yharon
-                if (ModCompatibility.SacredTools.Loaded) {multiplierA += 2f;} //post lost sibings
+                if (ModCompatibility.Calamity.Loaded) {multiplierA += 6f;} //post yharon
+                if (ModCompatibility.SacredTools.Loaded) {multiplierA += 1f;} //post lost sibings
 
                 if (npc.type == ModContent.NPCType<AbomBoss>())
                 {

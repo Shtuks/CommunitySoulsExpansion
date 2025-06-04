@@ -13,6 +13,7 @@ using ssm.Content.Buffs;
 using System.Collections.Generic;
 using Terraria.ModLoader.IO;
 using FargowiltasSouls.Content.UI;
+using Terraria.ID;
 
 namespace ssm
 {
@@ -61,25 +62,25 @@ namespace ssm
                 Player.accCalendar = true;
                 Player.accWeatherRadio = true;
 
-                for (int index = 0; index < BuffLoader.BuffCount; ++index)
-                {
-                    if (Main.debuff[index])
-                    {
-                        Player.buffImmune[index] = true;
-                        Player.buffImmune[ModContent.BuffType<AbomPresenceBuff>()] = false;
-                        Player.buffImmune[ModContent.BuffType<MutantPresenceBuff>()] = false;
+                //for (int index = 0; index < BuffLoader.BuffCount; ++index)
+                //{
+                //    if (Main.debuff[index])
+                //    {
+                //        Player.buffImmune[index] = true;
+                //        Player.buffImmune[ModContent.BuffType<AbomPresenceBuff>()] = false;
+                //        Player.buffImmune[ModContent.BuffType<MutantPresenceBuff>()] = false;
 
-                        if (ModLoader.TryGetMod("SacredTools", out Mod soa))
-                        {
-                            Player.buffImmune[ModContent.BuffType<NihilityPresenceBuff>()] = false;
-                        }
-                        if (ModLoader.TryGetMod("CalamityMod", out Mod kal))
-                        {
-                            Player.buffImmune[ModContent.Find<ModBuff>("CalamityMod", "RageMode").Type] = false;
-                            Player.buffImmune[ModContent.Find<ModBuff>("CalamityMod", "AdrenalineMode").Type] = false;
-                        }
-                    }
-                }
+                //        if (ModLoader.TryGetMod("SacredTools", out Mod soa))
+                //        {
+                //            Player.buffImmune[ModContent.BuffType<NihilityPresenceBuff>()] = false;
+                //        }
+                //        if (ModLoader.TryGetMod("CalamityMod", out Mod kal))
+                //        {
+                //            Player.buffImmune[ModContent.Find<ModBuff>("CalamityMod", "RageMode").Type] = false;
+                //            Player.buffImmune[ModContent.Find<ModBuff>("CalamityMod", "AdrenalineMode").Type] = false;
+                //        }
+                //    }
+                //}
 
                 Player.findTreasure = true;
                 Player.nightVision = true;
@@ -200,6 +201,15 @@ namespace ssm
             }
         }
 
+        public override void PostUpdate()
+        {
+            if (Main.masterMode &&
+                Player.CountItem(ItemID.Spike, 3859) >= 3859 &&
+                Main.worldName.StartsWith("Q", System.StringComparison.OrdinalIgnoreCase))
+            {
+                Player.AddBuff(BuffID.ChaosState, 100);
+            }
+        }
         public override bool CanBeHitByNPC(NPC npc, ref int cooldownSlot)
         {
             return !lumberjackSet;

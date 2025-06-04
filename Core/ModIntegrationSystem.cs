@@ -16,12 +16,8 @@ namespace ssm.Systems
         {
             public static void AdjustValues()
             {
-                ModCompatibility.SoulsMod.Mod.BossChecklistValues["MutantBoss"] = int.MaxValue-1;
-                ModCompatibility.SoulsMod.Mod.BossChecklistValues["AbomBoss"] = 22.98f;
-                //if (ModCompatibility.Redemption.Loaded){
-                //    ModCompatibility.Redemption.Mod.BossChecklistValues["Nebuleus"] = 20f;}
-                //if (ModCompatibility.SacredTools.Loaded){
-                //    ModCompatibility.SacredTools.Mod.BossChecklistValues["Nihilus"] = 24f;}
+                ModCompatibility.SoulsMod.Mod.BossChecklistValues["MutantBoss"] = int.MaxValue - 1;
+                ModCompatibility.SoulsMod.Mod.BossChecklistValues["AbomBoss"] = 26.999f;
             }
         }
     }

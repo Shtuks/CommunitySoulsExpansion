@@ -16,6 +16,7 @@ using SacredTools.Content.Items.Weapons.Event;
 using ssm.Core;
 using FargowiltasSouls;
 using static ssm.SoA.Enchantments.FrosthunterEnchant;
+using ssm.Content.Projectiles.Enchantments;
 
 namespace ssm.SoA.Enchantments
 {
@@ -48,12 +49,63 @@ namespace ssm.SoA.Enchantments
             {
                 player.GetModPlayer<SoAPlayer>().spaceJunkEnchant = player.ForceEffect<SpaceJunkEffect>() ? 2 : 1;
             }
+            player.AddEffect<SpaceJunkAbilityEffect>(Item);
         }
 
         public class SpaceJunkEffect : AccessoryEffect
         {
             public override Header ToggleHeader => Header.GetHeader<SyranForceHeader>();
             public override int ToggleItemType => ModContent.ItemType<SpaceJunkEnchant>();
+        }
+
+        public class SpaceJunkAbilityEffect : AccessoryEffect
+        {
+            public override Header ToggleHeader => Header.GetHeader<SyranForceHeader>();
+            public override int ToggleItemType => ModContent.ItemType<SpaceJunkEnchant>();
+            public override bool ActiveSkill => true;
+
+            public override void ActiveSkillJustPressed(Player player, bool stunned)
+            {
+                NPC nearestEnemy = null;
+                float closestDistance = float.MaxValue;
+
+                for (int i = 0; i < Main.maxNPCs; i++)
+                {
+                    NPC npc = Main.npc[i];
+                    if (npc.active && npc.CanBeChasedBy() && npc.immune[player.whoAmI] == 0)
+                    {
+                        float distance = Vector2.Distance(player.Center, npc.Center);
+                        if (distance < closestDistance)
+                        {
+                            closestDistance = distance;
+                            nearestEnemy = npc;
+                        }
+                    }
+                }
+
+                if (nearestEnemy != null)
+                {
+                    Vector2 spawnPosition = player.Center - new Vector2(0, Main.screenHeight);
+
+                    Vector2 direction = nearestEnemy.Center - spawnPosition;
+                    direction.Normalize();
+
+                    int damage = 80; 
+                    float speed = 10f; 
+                    int type = ModContent.ProjectileType<SpaceJunkProj>(); 
+                    int knockback = 5; 
+
+                    int projectile = Projectile.NewProjectile(
+                        player.GetSource_FromThis(),
+                        spawnPosition,
+                        direction * speed,
+                        type,
+                        damage,
+                        knockback,
+                        player.whoAmI);
+
+                }
+            }
         }
 
         public override void AddRecipes()

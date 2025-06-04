@@ -43,7 +43,7 @@ namespace ssm
             for (int i = 0; i < Recipe.numRecipes; i++)
             {
                 Recipe recipe = Main.recipe[i];
-                if ((recipe.HasResult<ArchWizardsSoul>() || recipe.HasResult<BerserkerSoul>() || recipe.HasResult<ConjuristsSoul>() || recipe.HasResult<ColossusSoul>()) && !recipe.HasResult<AbomEnergy>())
+                if (!ModCompatibility.Crossmod.Loaded && (recipe.HasResult<ArchWizardsSoul>() || recipe.HasResult<BerserkerSoul>() || recipe.HasResult<ConjuristsSoul>() || recipe.HasResult<ColossusSoul>()) && !recipe.HasResult<AbomEnergy>())
                 {
                     recipe.AddIngredient<AbomEnergy>(10);
                 }

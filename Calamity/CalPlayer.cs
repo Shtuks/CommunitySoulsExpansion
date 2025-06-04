@@ -1,4 +1,5 @@
 ﻿using CalamityMod.Items.SummonItems;
+using ssm.Content.Buffs;
 using ssm.Core;
 using ssm.Items;
 using Terraria;
@@ -19,6 +20,14 @@ namespace ssm.Calamity
                 {
                     item.SetDefaults(ModContent.ItemType<ShtunTerminus>());
                 }
+            }
+        }
+        public override void PostUpdateBuffs()
+        {
+            if (Player.HasBuff<NihilityPresenceBuff>())
+            {
+                ModLoader.GetMod("CalamityMod").TryFind("Enraged", out ModBuff enrage);
+                Main.LocalPlayer.buffImmune[enrage.Type] = true;
             }
         }
     }

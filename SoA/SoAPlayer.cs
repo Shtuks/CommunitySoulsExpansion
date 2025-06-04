@@ -1,5 +1,6 @@
 ﻿using FargowiltasSouls;
 using Microsoft.Xna.Framework;
+using ssm.Content.Buffs;
 using ssm.Content.Projectiles.Enchantments;
 using ssm.Core;
 using Terraria;
@@ -21,14 +22,6 @@ namespace ssm.SoA
         public const int MaxDamageAbsorption = 90;
         public int currentDamageAbsorbed = 0;
 
-        //Blazing Brute Enchant
-        public int blazingBruteEnchant;
-        public bool hasPhoenixBlessing = false;
-        public bool phoenixBlessingActive = false;
-        public bool hasPhoenixWrath = false;
-        public int phoenixWrathCooldown = 0;
-        public const int PhoenixWrathCooldownMax = 300;
-
         //Frosthunter Enchantment
         public int frosthunterEnchant;
         public int frosthunterCooldown = 0;
@@ -43,59 +36,65 @@ namespace ssm.SoA
         //Eerie Enchant
         public int eerieEnchant;
 
-        //Vulkan Reaper Enchant
-        public int vulkanReaperEnchant = 0;
-        public int vulkanKillCount = 0;
-        public int vulkanBuffTimer = 0;
-        public float vulkanDamageBonus = 0f;
+        //Eival Enchant
+        public int rivalEnchant = 0;
+        public int rivalKillCount = 0;
+        public int rivalTimer = 0;
 
         //Space Junk Enchant
         public int spaceJunkEnchant = 0;
-        private int spaceJunkCooldown = 0;
+
+        //Fallen Prince Enchant
+        public int fallenPrinceEnchant = 0;
+
+        //Vulcan Reaper Enchant
+        public int vulcanReaperEnchant;
+        public int vulcanStacks;
+        public int vulcanTime;
         public override void ResetEffects()
         {
+            vulcanReaperEnchant = 0;
+            fallenPrinceEnchant = 0;
             spaceJunkEnchant = 0;
-            vulkanReaperEnchant = 0;
+            rivalEnchant = 0;
             eerieEnchant = 0;
             blightboneEnchant = 0;
             lapisEnchant = 0;
             frosthunterEnchant = 0;
             bismuthEnchant = 0;
-            hasPhoenixBlessing = false;
         }
         public override void UpdateDead()
         {
-            phoenixWrathCooldown = 0;
+            fallenPrinceEnchant = 0;
+            rivalTimer = 0;
+            rivalKillCount = 0;
             frosthunterCooldown = 0;
-            vulkanDamageBonus = 0f;
-            vulkanBuffTimer = 0;
-            vulkanKillCount = 0;
+            rivalKillCount = 0;
             currentDamageAbsorbed = 0;
             bismuthCrystalStage = 0;
-            phoenixBlessingActive = false;
-            hasPhoenixWrath = false;
-            phoenixWrathCooldown = 0;
         }
         public override void PostUpdateEquips()
         {
-            if (vulkanBuffTimer > 0)
+            if (rivalKillCount > 0)
             {
-                vulkanBuffTimer--;
-                if (vulkanBuffTimer <= 0)
-                {
-                    vulkanDamageBonus = 0f;
-                    vulkanKillCount = 0;
-                }
+                rivalTimer++;
             }
 
-            if (spaceJunkCooldown > 0)
+            if (rivalTimer >= 300)
             {
-                spaceJunkCooldown--;
+                rivalKillCount--;
+                rivalTimer=0;
             }
 
-            if (phoenixWrathCooldown > 0)
+            if (vulcanStacks > 0)
             {
-                phoenixWrathCooldown--;
+                vulcanTime++;
+            }
+
+            if (vulcanTime >= 300)
+            {
+                vulcanStacks--;
+                vulcanTime = 0;
             }
 
             if (frosthunterCooldown > 0)
@@ -126,47 +125,56 @@ namespace ssm.SoA
 
         public override void OnHitByNPC(NPC npc, Player.HurtInfo hurtInfo)
         {
-            TryRetaliate(npc);
+            CreateShrapnel();
         }
 
         public override void OnHitByProjectile(Projectile proj, Player.HurtInfo hurtInfo)
         {
-            TryRetaliate(proj.GetSourceNPC());
+            CreateShrapnel();
         }
 
-        private void TryRetaliate(NPC attacker)
+        public void CreateShrapnel()
         {
-            if (spaceJunkEnchant > 0 && attacker != null && Main.rand.NextFloat() < 0.33f)
+            if (spaceJunkEnchant > 0 && Main.rand.NextFloat() < 0.33f)
             {
-                Vector2 spawnPosition = new Vector2(attacker.Center.X + Main.rand.Next(-100, 100), attacker.Center.Y - 500);
-                Vector2 velocity = Vector2.Normalize(attacker.Center - spawnPosition) * 10f;
+                int shardCount = Main.rand.Next(2, 5);
 
-                Projectile.NewProjectile(
-                    Player.GetSource_OnHurt(Player),
-                    spawnPosition,
-                    velocity,
-                    ModContent.ProjectileType<SpaceJunkProj>(),
-                    75,
-                    4f,
-                    Player.whoAmI,
-                    attacker.whoAmI
-                );
+                for (int i = 0; i < shardCount; i++)
+                {
+                    Vector2 position = Player.Center;
+
+                    int shard = Projectile.NewProjectile(
+                        Player.GetSource_FromThis(),
+                        position,
+                        Vector2.Zero,
+                        ModContent.ProjectileType<SatelliteShard>(),
+                        80 / 2,
+                        0,
+                        Player.whoAmI);
+
+                    Main.projectile[shard].rotation = Main.rand.NextFloat(MathHelper.TwoPi);
+                }
             }
         }
-        public void ModifyDamageWithVulkan(ref float damage)
+
+        public override void PostUpdateMiscEffects()
         {
-            if (vulkanBuffTimer > 0)
+            if (rivalEnchant > 0 && rivalKillCount > 0)
             {
-                damage = damage * (1f + vulkanDamageBonus);
+                Player.AddBuff(ModContent.BuffType<RivalBuff>(), 60);
             }
         }
         public override void OnHitNPCWithProj(Projectile proj, NPC target, NPC.HitInfo hit, int damageDone)
         {
+            if (rivalEnchant > 0 && rivalKillCount > 0)
+            {
+                hit.Damage = (int)(hit.Damage * (1f + 0.2f * rivalKillCount));
+            }
             if (frosthunterEnchant > 0) 
             {
                 bool isCluster = frosthunterCooldown <= 0;
 
-                CreateFrostExplosion(target.Center, isCluster);
+                CreateFrostExplosion(target.Center, isCluster, proj);
 
                 if (isCluster)
                 {
@@ -192,7 +200,7 @@ namespace ssm.SoA
                    proj.type == ProjectileID.BoneGloveProj;
         }
 
-        public void CreateFrostExplosion(Vector2 pos, bool isCluster)
+        public void CreateFrostExplosion(Vector2 pos, bool isCluster, Projectile proj)
         {
             float radius = isCluster ? 100f : 150f;
             int damage = (int)(Player.GetDamage(DamageClass.Generic).ApplyTo(20));
@@ -208,47 +216,25 @@ namespace ssm.SoA
                 }
             }
 
-            for (int i = 0; i < 15; i++)
-            {
-                Dust sust = Dust.NewDustPerfect(pos, DustID.Ice, Main.rand.NextVector2Circular(5, 5) * 3f);
-                sust.noGravity = true;
-                sust.scale = 1.5f;
-            }
+            Projectile.NewProjectile(proj.GetSource_FromThis(), pos, Vector2.Zero, ModContent.ProjectileType<FrosthunterExplosion>(), 0, 0);
+            
+            //for (int i = 0; i < 15; i++)
+            //{
+            //    Dust sust = Dust.NewDustPerfect(pos, DustID.Ice, Main.rand.NextVector2Circular(5, 5) * 3f);
+            //    sust.noGravity = true;
+            //    sust.scale = 1.5f;
+            //}
 
             if (isCluster)
             {
                 for (int i = 0; i < 4; i++)
                 {
                     Vector2 clusterPos = pos + Main.rand.NextVector2Circular(radius * 0.5f, radius * 0.5f);
-                    CreateSmallFrostExplosion(pos);
+                    CreateSmallFrostExplosion(pos, proj);
                 }
             }
         }
-
-        public override bool CanUseItem(Item item)
-        {
-            if (spaceJunkEnchant > 0 && item.DamageType == DamageClass.Ranged && spaceJunkCooldown <= 0)
-            {
-                spaceJunkCooldown = 600;
-
-                for (int i = 0; i < 5; i++)
-                {
-                    Vector2 velocity = new Vector2(Main.rand.NextFloat(-5f, 5f), Main.rand.NextFloat(-10f, -5f));
-                    Projectile.NewProjectile(
-                        Player.GetSource_FromThis(),
-                        Player.Center,
-                        velocity,
-                        ModContent.ProjectileType<SpaceJunkProj>(),
-                        50,// : 500, force damage will be here later
-                        2f,
-                        Player.whoAmI
-                    );
-                }
-                return false;
-            }
-            return base.CanUseItem(item);
-        }
-        public void CreateSmallFrostExplosion(Vector2 pos)
+        public void CreateSmallFrostExplosion(Vector2 pos, Projectile proj)
         {
             float radius = 60f;
             int damage = (int)(Player.GetDamage(DamageClass.Generic).ApplyTo(10));
@@ -264,44 +250,14 @@ namespace ssm.SoA
                 }
             }
 
-            for (int i = 0; i < 10; i++)
-            {
-                Dust sust = Dust.NewDustPerfect(pos, DustID.Ice, Main.rand.NextVector2Circular(5, 5) * 3f);
-                sust.noGravity = true;
-                sust.scale = 1.5f;
-            }
+            Projectile.NewProjectile(proj.GetSource_FromThis(), pos, Vector2.Zero, ModContent.ProjectileType<FrosthunterExplosion>(), 0, 0);
 
-            if (frosthunterEnchant > 1)
-            {
-                for (int i = 0; i < 4; i++)
-                {
-                    CreateMiniFrostExplosion(pos);
-                }
-            }
-        }
-
-        public void CreateMiniFrostExplosion(Vector2 pos)
-        {
-            float radius = 30f;
-            int damage = (int)(Player.GetDamage(DamageClass.Generic).ApplyTo(5));
-            float knockback = 1f;
-
-            for (int i = 0; i < Main.maxNPCs; i++)
-            {
-                NPC npc = Main.npc[i];
-                if (npc.active && !npc.friendly && npc.Distance(pos) <= radius)
-                {
-                    Player.ApplyDamageToNPC(npc, damage, knockback, Player.direction);
-                    npc.AddBuff(BuffID.Frostburn2, 180);
-                }
-            }
-
-            for (int i = 0; i < 5; i++)
-            {
-                Dust sust = Dust.NewDustPerfect(pos, DustID.Ice, Main.rand.NextVector2Circular(5, 5) * 3f);
-                sust.noGravity = true;
-                sust.scale = 1f;
-            }
+            //for (int i = 0; i < 10; i++)
+            //{
+            //    Dust sust = Dust.NewDustPerfect(pos, DustID.Ice, Main.rand.NextVector2Circular(5, 5) * 3f);
+            //    sust.noGravity = true;
+            //    sust.scale = 1.5f;
+            //}
         }
 
         public override void OnHurt(Player.HurtInfo info)
@@ -311,16 +267,24 @@ namespace ssm.SoA
                 lapisSpeedTimer = 120;
             }
         }
-        public override void ModifyHurt(ref Player.HurtModifiers modifiers)
+
+        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
-            if (blazingBruteEnchant > 1)
+            
+            if (rivalEnchant > 0 && target.life <= 0 && !target.friendly && target.type != NPCID.TargetDummy)
             {
-                if (phoenixBlessingActive && !hasPhoenixWrath && modifiers.FinalDamage.Flat >= 200)
+                if (rivalKillCount < 5)
                 {
-                    hasPhoenixWrath = true;
+                    rivalKillCount++;
                 }
             }
-
+            if (vulcanReaperEnchant > 0 && target.life <= 0 && !target.friendly && target.type != NPCID.TargetDummy)
+            {
+                vulcanStacks++;
+            }
+        }
+        public override void ModifyHurt(ref Player.HurtModifiers modifiers)
+        {
             if (bismuthEnchant > 0)
             {
                 if (bismuthCrystalStage > 0 && currentDamageAbsorbed < MaxDamageAbsorption)

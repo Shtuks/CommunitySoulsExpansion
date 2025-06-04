@@ -1,13 +1,6 @@
 using FargowiltasSouls.Content.Bosses.MutantBoss;
-using FargowiltasSouls.Content.Items.Accessories.Enchantments;
-using FargowiltasSouls.Content.Items.Accessories.Forces;
-using FargowiltasSouls.Content.Items.Accessories.Souls;
-using Microsoft.Xna.Framework;
-using ssm.Content.NPCs;
-using System.Linq;
 using Terraria;
 using Terraria.ID;
-using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace ssm
@@ -16,7 +9,6 @@ namespace ssm
     {
         public override bool InstancePerEntity => true;
 
-        public bool isWaterEnemy;
         public int chtuxlagorInferno;
         public static int ECH = -1;
         public static int DukeEX = -1;

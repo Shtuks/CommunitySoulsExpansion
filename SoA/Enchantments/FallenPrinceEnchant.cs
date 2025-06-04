@@ -15,6 +15,7 @@ using SacredTools.Content.Items.Armor.Lunar.Quasar;
 using SacredTools.Content.Items.Accessories.ChallengeItems;
 using SacredTools.Items.Weapons.Lunatic;
 using ssm.Core;
+using static ssm.SoA.Enchantments.DreadfireEnchant;
 
 namespace ssm.SoA.Enchantments
 {
@@ -44,18 +45,16 @@ namespace ssm.SoA.Enchantments
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            ModdedPlayer modPlayer = player.GetModPlayer<ModdedPlayer>();
-            if (player.AddEffect<FallenPrinceEffect>(Item))
-            {
-                //set bonus
-                modPlayer.NovanielArmor = true;
-
-                //novaniels resolve
-                ModContent.Find<ModItem>(this.soa.Name, "NovanielResolve").UpdateAccessory(player, false);
-            }
+            player.AddEffect<GravityEffect>(Item);
         }
 
-        public class FallenPrinceEffect : AccessoryEffect
+        public class SupernovaEffect : AccessoryEffect
+        {
+            public override Header ToggleHeader => Header.GetHeader<SoranForceHeader>();
+            public override int ToggleItemType => ModContent.ItemType<FallenPrinceEnchant>();
+        }
+
+        public class GravityEffect : AccessoryEffect
         {
             public override Header ToggleHeader => Header.GetHeader<SoranForceHeader>();
             public override int ToggleItemType => ModContent.ItemType<FallenPrinceEnchant>();

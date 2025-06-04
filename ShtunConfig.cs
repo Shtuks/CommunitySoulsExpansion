@@ -61,11 +61,6 @@ namespace ssm
         [ReloadRequired]
         [BackgroundColor(60, 200, 60, 192)]
         [DefaultValue(true)]
-        public bool Spirit { get; set; }
-
-        [ReloadRequired]
-        [BackgroundColor(60, 200, 60, 192)]
-        [DefaultValue(true)]
         public bool Homeward { get; set; }
 
         [ReloadRequired]

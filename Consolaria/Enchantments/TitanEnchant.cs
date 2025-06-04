@@ -9,7 +9,6 @@ using ssm.Content.SoulToggles;
 using FargowiltasSouls.Core.AccessoryEffectSystem;
 using FargowiltasSouls.Core.Toggler;
 using Consolaria.Content.Items.Armor.Melee;
-using static FargoMoreSoulsCompat.Content.Items.Consolaria.DragonEnchant;
 using ssm.Core;
 
 namespace ssm.Consolaria.Enchantments

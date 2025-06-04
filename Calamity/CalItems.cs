@@ -1,4 +1,6 @@
 ﻿using CalamityMod.Items.Weapons.Melee;
+using CalamityMod.Items.Weapons.Ranged;
+using CalamityMod.Items.Weapons.Magic;
 using ssm.Core;
 using System.Collections.Generic;
 using Terraria;
@@ -14,10 +16,14 @@ namespace ssm.Calamity
 
         public override void SetDefaults(Item entity)
         {
-            //if (entity.type == ModContent.ItemType<Sylvestaff>())
-            //{
-            //    entity.damage = (int)(entity.damage * 0.3f);
-            //}
+            if (entity.type == ModContent.ItemType<Sylvestaff>())
+            {
+                entity.damage = (int)(entity.damage * 0.3f);
+            }
+            if (entity.type == ModContent.ItemType<Voidragon>())
+            {
+                entity.damage = (int)(entity.damage * 0.9f);
+            }
             if (entity.type == ModContent.ItemType<IridescentExcalibur>())
             {
                 entity.damage = (int)(entity.damage * 1.3f);
@@ -29,11 +35,15 @@ namespace ssm.Calamity
             {
                 tooltips.Add(new TooltipLine(Mod, "rebalance", $"[c/FFFF00:CSE Balance:] Increased projectile velocity."));
             }
-            //if (item.type == ModContent.ItemType<Sylvestaff>())
-            //{
-            //    tooltips.Add(new TooltipLine(Mod, "rebalance", $"[c/FFFF00:CSE Balance:] No."));
-            //    tooltips.Add(new TooltipLine(Mod, "rebalance", $"[c/FFFF00:CSE Balance:] Damage decreased by 50%."));
-            //}
+            if (item.type == ModContent.ItemType<Voidragon>())
+            {
+                tooltips.Add(new TooltipLine(Mod, "rebalance", $"[c/FFFF00:CSE Balance:] Canceled DLC buff."));
+            }
+            if (item.type == ModContent.ItemType<Sylvestaff>())
+            {
+                tooltips.Add(new TooltipLine(Mod, "rebalance", $"[c/FFFF00:CSE Balance:] No."));
+                tooltips.Add(new TooltipLine(Mod, "rebalance", $"[c/FFFF00:CSE Balance:] Damage decreased by 50%."));
+            }
         }
     }
 }
