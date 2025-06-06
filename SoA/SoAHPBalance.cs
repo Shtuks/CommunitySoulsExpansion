@@ -93,27 +93,27 @@ namespace ssm.SoA
                 if (npc.type == ModContent.NPCType<Araneas>())
                 {
                     npc.lifeMax = 70000;
-                    npc.damage = 90;
+                    npc.damage = 110;
                 }
                 if (npc.type == ModContent.NPCType<Jensen>() || npc.type == ModContent.NPCType<JensenLegacy>())
                 {
                     npc.lifeMax = 9000;
-                    npc.damage = 60;
+                    npc.damage = 100;
                 }
                 if (npc.type == ModContent.NPCType<Decree>() || npc.type == ModContent.NPCType<DecreeLegacy>())
                 {
                     npc.lifeMax = 15000;
-                    npc.damage = 50;
+                    npc.damage = 70;
                 }
                 if (npc.type == ModContent.NPCType<Ralnek>())
                 {
                     npc.lifeMax = 12000;
-                    npc.damage = 70;
+                    npc.damage = 90;
                 }
                 if (npc.type == ModContent.NPCType<Ralnek2>())
                 {
                     npc.lifeMax = 9000;
-                    npc.damage = 70;
+                    npc.damage = 90;
                 }
                 if (npc.type == ModContent.NPCType<Nihilus>())
                 {

@@ -22,4 +22,20 @@ namespace ssm.Reworks
             } 
         }
     }
+    [ExtendsFromMod(ModCompatibility.Calamity.Name)]
+    [JITWhenModsEnabled(ModCompatibility.Calamity.Name)]
+    public class RogueToUMTProj : GlobalProjectile
+    {
+        public override bool IsLoadingEnabled(Mod mod)
+        {
+            return ShtunConfig.Instance.ThrowerMerge;
+        }
+        public override void SetDefaults(Projectile item)
+        {
+            if (item.DamageType == ModContent.GetInstance<RogueDamageClass>())
+            {
+                item.DamageType = (DamageClass)(object)ModContent.GetInstance<UnitedModdedThrower>();
+            }
+        }
+    }
 }

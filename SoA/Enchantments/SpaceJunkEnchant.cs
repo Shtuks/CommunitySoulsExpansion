@@ -1,21 +1,15 @@
 ﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria.Localization;
-using SacredTools;
-using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using FargowiltasSouls.Content.Items.Accessories.Enchantments;
 using FargowiltasSouls.Core.AccessoryEffectSystem;
 using ssm.Content.SoulToggles;
-using Microsoft.Xna.Framework.Graphics;
-using SacredTools.Content.Items.Armor.Quasar;
 using SacredTools.Items.Weapons;
 using SacredTools.Content.Items.Armor.SpaceJunk;
 using SacredTools.Content.Items.Weapons.Event;
 using ssm.Core;
 using FargowiltasSouls;
-using static ssm.SoA.Enchantments.FrosthunterEnchant;
 using ssm.Content.Projectiles.Enchantments;
 
 namespace ssm.SoA.Enchantments
@@ -28,9 +22,6 @@ namespace ssm.SoA.Enchantments
         {
             return ShtunConfig.Instance.SacredTools;
         }
-
-        private readonly Mod soa = ModLoader.GetMod("SacredTools");
-
         public override void SetDefaults()
         {
             Item.width = 20;
@@ -85,25 +76,7 @@ namespace ssm.SoA.Enchantments
 
                 if (nearestEnemy != null)
                 {
-                    Vector2 spawnPosition = player.Center - new Vector2(0, Main.screenHeight);
-
-                    Vector2 direction = nearestEnemy.Center - spawnPosition;
-                    direction.Normalize();
-
-                    int damage = 80; 
-                    float speed = 10f; 
-                    int type = ModContent.ProjectileType<SpaceJunkProj>(); 
-                    int knockback = 5; 
-
-                    int projectile = Projectile.NewProjectile(
-                        player.GetSource_FromThis(),
-                        spawnPosition,
-                        direction * speed,
-                        type,
-                        damage,
-                        knockback,
-                        player.whoAmI);
-
+                    ShtunUtils.ProjectileRain(Main.LocalPlayer.GetSource_FromThis(), nearestEnemy.Center, 400, 100, 500, 800, 15, ModContent.ProjectileType<SpaceJunkProj>(), (int)Main.LocalPlayer.GetDamage<GenericDamageClass>().ApplyTo(40), 1, Main.LocalPlayer.whoAmI);
                 }
             }
         }

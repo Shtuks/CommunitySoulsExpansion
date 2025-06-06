@@ -45,7 +45,6 @@ namespace ssm.SoA.Enchantments
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             ModdedPlayer modPlayer = player.GetModPlayer<ModdedPlayer>();
-            //set bonus
             if (player.AddEffect<CairoEffect>(Item))
             {
                 modPlayer.cairoCrusader = true;

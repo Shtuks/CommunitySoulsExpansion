@@ -22,4 +22,20 @@ namespace ssm.Reworks
             }
         }
     }
+    [ExtendsFromMod(ModCompatibility.SacredTools.Name)]
+    [JITWhenModsEnabled(ModCompatibility.SacredTools.Name)]
+    public class KineticToUMTProj : GlobalProjectile
+    {
+        public override bool IsLoadingEnabled(Mod mod)
+        {
+            return ShtunConfig.Instance.ThrowerMerge;
+        }
+        public override void SetDefaults(Projectile item)
+        {
+            if (item.DamageType == ModContent.GetInstance<KineticDamageClass>())
+            {
+                item.DamageType = (DamageClass)(object)ModContent.GetInstance<UnitedModdedThrower>();
+            }
+        }
+    }
 }

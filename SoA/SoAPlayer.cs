@@ -1,11 +1,19 @@
-﻿using FargowiltasSouls;
+﻿using CalamityMod;
+using FargowiltasSouls;
+using FargowiltasSouls.Core.AccessoryEffectSystem;
 using Microsoft.Xna.Framework;
+using Mono.Cecil;
+using MonoMod.Utils;
+using SacredTools.Content.Projectiles.Armors.Nuba;
 using ssm.Content.Buffs;
 using ssm.Content.Projectiles.Enchantments;
 using ssm.Core;
+using System;
 using Terraria;
+using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
+using static ssm.SoA.Enchantments.NebulousApprenticeEnchant;
 
 namespace ssm.SoA
 {
@@ -51,6 +59,9 @@ namespace ssm.SoA
         public int vulcanReaperEnchant;
         public int vulcanStacks;
         public int vulcanTime;
+
+        //Flarium Enchant
+        public int flariumEnchant;
         public override void ResetEffects()
         {
             vulcanReaperEnchant = 0;
@@ -137,22 +148,23 @@ namespace ssm.SoA
         {
             if (spaceJunkEnchant > 0 && Main.rand.NextFloat() < 0.33f)
             {
-                int shardCount = Main.rand.Next(2, 5);
+                float spread = 40f * 0.0174f;
+                double startAngle = Math.Atan2(Player.velocity.X, Player.velocity.Y) - spread / 2;
+                double deltaAngle = spread / 4f;
+                double offsetAngle;
 
-                for (int i = 0; i < shardCount; i++)
+                if (Player.whoAmI == Main.myPlayer)
                 {
-                    Vector2 position = Player.Center;
-
-                    int shard = Projectile.NewProjectile(
-                        Player.GetSource_FromThis(),
-                        position,
-                        Vector2.Zero,
-                        ModContent.ProjectileType<SatelliteShard>(),
-                        80 / 2,
-                        0,
-                        Player.whoAmI);
-
-                    Main.projectile[shard].rotation = Main.rand.NextFloat(MathHelper.TwoPi);
+                    for (int i = 0; i < 4; i++)
+                    {
+                        int dmg = (int)Player.GetDamage<GenericDamageClass>().ApplyTo(40);
+                        offsetAngle = startAngle + deltaAngle * (i + i * i) / 2f + 32f * i;
+                        int shard = Projectile.NewProjectile(Player.GetSource_FromThis(), Player.Center.X, Player.Center.Y, (float)(Math.Sin(offsetAngle) * 5f), (float)(Math.Cos(offsetAngle) * 5f), ModContent.ProjectileType<SatelliteShard>(), dmg, 1, Player.whoAmI, 0f, 0f);
+                        if (shard.WithinBounds(Main.maxProjectiles))
+                        {
+                            Main.projectile[shard].DamageType = DamageClass.Generic;
+                        }
+                    }
                 }
             }
         }
@@ -166,6 +178,28 @@ namespace ssm.SoA
         }
         public override void OnHitNPCWithProj(Projectile proj, NPC target, NPC.HitInfo hit, int damageDone)
         {
+            if (Player.HasEffect<NebulousApprenticeEffect>() && !target.immortal && Main.rand.NextBool(10))
+            {
+                float num2 = (float)Main.rand.Next(-35, 36) * 0.02f;
+                float num3 = (float)Main.rand.Next(-35, 36) * 0.02f;
+                num2 *= 10f;
+                num3 *= 10f;
+                int[] array0 = new int[3]
+                {
+                ModContent.ProjectileType<NubaFlameDamage>(),
+                ModContent.ProjectileType<NubaFlameDefense>(),
+                ModContent.ProjectileType<NubaFlameHealth>(),
+                };
+                int[] array = new int[5]
+                {
+                ModContent.ProjectileType<NubaFlameDamage>(),
+                ModContent.ProjectileType<NubaFlameDefense>(),
+                ModContent.ProjectileType<NubaFlameHealth>(),
+                ModContent.ProjectileType<NubaFlameMana>(),
+                ModContent.ProjectileType<NubaFlameSpeed>()
+                };
+                Projectile.NewProjectile(target.GetSource_OnHurt(base.Player), target.Center.X, target.Center.Y, num2, num3, Player.ForceEffect<NebulousApprenticeEffect>() ? array[Main.rand.Next(5)] : array0[Main.rand.Next(3)], 0, 0f, proj.owner);
+            }
             if (rivalEnchant > 0 && rivalKillCount > 0)
             {
                 hit.Damage = (int)(hit.Damage * (1f + 0.2f * rivalKillCount));
@@ -203,7 +237,7 @@ namespace ssm.SoA
         public void CreateFrostExplosion(Vector2 pos, bool isCluster, Projectile proj)
         {
             float radius = isCluster ? 100f : 150f;
-            int damage = (int)(Player.GetDamage(DamageClass.Generic).ApplyTo(20));
+            int damage = (int)(Player.GetDamage(DamageClass.Generic).ApplyTo(15));
             float knockback = 3f;
 
             for (int i = 0; i < Main.maxNPCs; i++)

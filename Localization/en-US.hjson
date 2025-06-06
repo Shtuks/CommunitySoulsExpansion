@@ -1085,7 +1085,7 @@ Mods: {
 				Tooltip:
 					'''
 					'Nuba would be proud'
-					Attacking enemies may sometimes release buff wisps which can be picked up for different stacking buffs
+					Attacking enemies release buff wisps which can be picked up for different stacking buffs
 					Effects of Nuba's Blessing
 					'''
 			}
@@ -3380,7 +3380,7 @@ Mods: {
 
 			MonstrocityPresenceBuff: {
 				Description: No soul toggles, no eternity crits, no escape.
-				DisplayName: Monstrosity Presence Buff
+				DisplayName: Monstrosity Presence
 			}
 
 			NihilityPresenceBuff: {
@@ -3394,7 +3394,7 @@ Mods: {
 			}
 
 			DreadflameAuraCD: {
-				DisplayName: Dreadflame Aura C D
+				DisplayName: Dreadflame Aura Сooldown
 				Description: Mods.ssm.Buffs.DreadflameAuraCD.Description
 			}
 
@@ -3404,7 +3404,7 @@ Mods: {
 			}
 
 			RivalBuff: {
-				Description: Mods.ssm.Buffs.RivalBuff.Description
+				Description: ech
 				DisplayName: Rival Buff
 			}
 		}
@@ -3607,90 +3607,84 @@ Mods: {
 		Tiles: {
 			MutantsForgeTile.MapEntry: Mutants Forge
 			DemonshadeWorkbenchTile.MapEntry: Demonshade Workbench
-			SyranCraftingStationTile.MapEntry: Syran Crafting Station Tile
-			DreamersForgeTile.MapEntry: Dreamers Forge Tile
-			RedemptionCraftingStationTile.MapEntry: Redemption Crafting Station Tile
+			SyranCraftingStationTile.MapEntry: Syran Crafting Station
+			DreamersForgeTile.MapEntry: Dreamers Forge
+			RedemptionCraftingStationTile.MapEntry: Redemption Crafting Station
 			ShtunStorageUnit.MapEntry: Shtun Storage Unit
 		}
 
 		Projectiles: {
-			YharonFireballMinion.DisplayName: Yharon Fireball Minion
-			YharonMinion.DisplayName: Yharon Minion
-			DevianttSoul.DisplayName: Deviantt Soul
-			MutantSoul.DisplayName: Mutant Soul
-			NebulaP.DisplayName: Nebula P
-			SolarP.DisplayName: Solar P
-			StardustP.DisplayName: Stardust P
-			VortexP.DisplayName: Vortex P
-			MutantTyphoon.DisplayName: Mutant Typhoon
-			MutantTrueEyeSphere.DisplayName: Mutant True Eye Sphere
-			MutantTrueEyeS.DisplayName: Mutant True Eye S
-			MutantTrueEyeR.DisplayName: Mutant True Eye R
-			MutantTrueEyeL.DisplayName: Mutant True Eye L
-			MutantTrueEyeDeathray.DisplayName: Mutant True Eye Deathray
-			MutantSword.DisplayName: Mutant Sword
-			MutantSphereSmall.DisplayName: Mutant Sphere Small
-			MutantSpazmarang.DisplayName: Mutant Spazmarang
-			MutantSlimeRain.DisplayName: Mutant Slime Rain
-			MutantSlimeBall.DisplayName: Mutant Slime Ball
-			MutantScythe2.DisplayName: Mutant Scythe2
-			MutantScythe1.DisplayName: Mutant Scythe1
-			MutantRitual.DisplayName: Mutant Ritual
-			MutantRetirang.DisplayName: Mutant Retirang
-			MutantReticle2.DisplayName: Mutant Reticle2
-			MutantReticle.DisplayName: Mutant Reticle
-			MutantPillar.DisplayName: Mutant Pillar
-			MutantNuke.DisplayName: Mutant Nuke
-			MutantMark2.DisplayName: Mutant Mark2
-			MutantMark1.DisplayName: Mutant Mark1
-			MutantHeal.DisplayName: Mutant Heal
-			MutantGuardian.DisplayName: Mutant Guardian
-			MutantGlowything.DisplayName: Mutant Glowything
-			MutantGiantDeathray2.DisplayName: Mutant Giant Deathray2
-			MutantFragment.DisplayName: Mutant Fragment
-			MutantFishronRitual.DisplayName: Mutant Fishron Ritual
-			MutantFishron.DisplayName: Mutant Fishron
-			MutantEyeWavy.DisplayName: Mutant Eye Wavy
-			MutantEyeOfCthulhu.DisplayName: Mutant Eye Of Cthulhu
-			MutantEyeHoming.DisplayName: Mutant Eye Homing
-			MutantEye.DisplayName: Mutant Eye
-			MutantDestroyerTail.DisplayName: Mutant Destroyer Tail
-			MutantDestroyerHead.DisplayName: Mutant Destroyer Head
-			MutantDestroyerBody.DisplayName: Mutant Destroyer Body
-			MutantDeathraySmall.DisplayName: Mutant Deathray Small
-			MutantDeathrayAim.DisplayName: Mutant Deathray Aim
-			MutantDeathray3.DisplayName: Mutant Deathray3
-			MutantDeathray2.DisplayName: Mutant Deathray2
-			MutantDeathray1.DisplayName: Mutant Deathray1
-			MutantCrystalLeaf.DisplayName: Mutant Crystal Leaf
-			MutantBoss.DisplayName: Mutant Boss
-			MutantBombSmall.DisplayName: Mutant Bomb Small
-			MutantBomb.DisplayName: Mutant Bomb
-			MutantSphereRing.DisplayName: Mutant Sphere Ring
-			MutantSpearThrown.DisplayName: Mutant Spear Thrown
-			MutantSpearSpin.DisplayName: Mutant Spear Spin
-			MutantSpearMagical.DisplayName: Mutant Spear Magical
-			MutantSpearDash.DisplayName: Mutant Spear Dash
-			MutantSpearAim.DisplayName: Mutant Spear Aim
-			MutantSlimeSpike.DisplayName: Mutant Slime Spike
-			MutantShadowHand.DisplayName: Mutant Shadow Hand
-			MutantSansHead.DisplayName: Mutant Sans Head
-			MutantSansBeam.DisplayName: Mutant Sans Beam
-			MutantRitual5.DisplayName: Mutant Ritual5
+			TrueAcornProjectile.DisplayName: True Acorn Projectile
 			BossRush.DisplayName: Boss Rush
 			AbomSword.DisplayName: Abom Sword
 			AbomSwordHandle.DisplayName: Abom Sword Handle
-			SpectralFishron.DisplayName: Spectral Fishron
+			MutantRitual5.DisplayName: Mutant Ritual5
+			MutantRitual.DisplayName: Mutant Ritual
+			MutantSansBeam.DisplayName: Mutant Sans Beam
+			MutantSansHead.DisplayName: Mutant Sans Head
+			MutantShadowHand.DisplayName: Mutant Shadow Hand
+			MutantSlimeSpike.DisplayName: Mutant Slime Spike
+			MutantSpearAim.DisplayName: Mutant Spear Aim
+			MutantSpearDash.DisplayName: Mutant Spear Dash
+			MutantSpearMagical.DisplayName: Mutant Spear Magical
+			MutantSpearSpin.DisplayName: Mutant Spear Spin
+			MutantSpearThrown.DisplayName: Mutant Spear Thrown
+			MutantSphereRing.DisplayName: Mutant Sphere Ring
+			MutantBomb.DisplayName: Mutant Bomb
+			MutantBombSmall.DisplayName: Mutant Bomb Small
+			MutantBoss.DisplayName: Mutant Boss
+			MutantCrystalLeaf.DisplayName: Mutant Crystal Leaf
+			MutantDeathray1.DisplayName: Mutant Deathray1
+			MutantDeathray2.DisplayName: Mutant Deathray2
+			MutantDeathray3.DisplayName: Mutant Deathray3
+			MutantDeathrayAim.DisplayName: Mutant Deathray Aim
+			MutantDeathraySmall.DisplayName: Mutant Deathray Small
+			MutantDestroyerBody.DisplayName: Mutant Destroyer Body
+			MutantDestroyerHead.DisplayName: Mutant Destroyer Head
+			MutantDestroyerTail.DisplayName: Mutant Destroyer Tail
+			MutantEye.DisplayName: Mutant Eye
+			MutantEyeHoming.DisplayName: Mutant Eye Homing
+			MutantEyeOfCthulhu.DisplayName: Mutant Eye Of Cthulhu
+			MutantEyeWavy.DisplayName: Mutant Eye Wavy
+			MutantFishron.DisplayName: Mutant Fishron
+			MutantFishronRitual.DisplayName: Mutant Fishron Ritual
+			MutantFragment.DisplayName: Mutant Fragment
+			MutantGiantDeathray2.DisplayName: Mutant Giant Deathray2
+			MutantGlowything.DisplayName: Mutant Glowything
+			MutantGuardian.DisplayName: Mutant Guardian
+			MutantHeal.DisplayName: Mutant Heal
+			MutantMark1.DisplayName: Mutant Mark1
+			MutantMark2.DisplayName: Mutant Mark2
+			MutantNuke.DisplayName: Mutant Nuke
+			MutantPillar.DisplayName: Mutant Pillar
+			MutantReticle.DisplayName: Mutant Reticle
+			MutantReticle2.DisplayName: Mutant Reticle2
+			MutantRetirang.DisplayName: Mutant Retirang
+			MutantScythe1.DisplayName: Mutant Scythe1
+			MutantScythe2.DisplayName: Mutant Scythe2
+			MutantSlimeBall.DisplayName: Mutant Slime Ball
+			MutantSlimeRain.DisplayName: Mutant Slime Rain
+			MutantSpazmarang.DisplayName: Mutant Spazmarang
+			MutantSphereSmall.DisplayName: Mutant Sphere Small
+			MutantSword.DisplayName: Mutant Sword
+			MutantTrueEyeDeathray.DisplayName: Mutant True Eye Deathray
+			MutantTrueEyeL.DisplayName: Mutant True Eye L
+			MutantTrueEyeR.DisplayName: Mutant True Eye R
+			MutantTrueEyeS.DisplayName: Mutant True Eye S
+			MutantTrueEyeSphere.DisplayName: Mutant True Eye Sphere
+			MutantTyphoon.DisplayName: Mutant Typhoon
 			CuteFishronRitual.DisplayName: Cute Fishron Ritual
-			TrueAcornProjectile.DisplayName: True Acorn Projectile
-			SquirrelMinion.DisplayName: Squirrel Minion
-			SquirrelRing.DisplayName: Squirrel Ring
-			Blightbone.DisplayName: Blightbone
-			EerieMinion.DisplayName: Eerie Minion
 			DreadfireAuraProj.DisplayName: Dreadfire Aura Proj
-			SpaceJunkProj.DisplayName: Space Junk Proj
+			Blightbone.DisplayName: Blightbone
 			FrosthunterExplosion.DisplayName: Frosthunter Explosion
 			SatelliteShard.DisplayName: Satellite Shard
+			SpaceJunkProj.DisplayName: Space Junk Proj
+			DevianttSoul.DisplayName: Deviantt Soul
+			EerieMinion.DisplayName: Eerie Minion
+			MutantSoul.DisplayName: Mutant Soul
+			SpectralFishron.DisplayName: Spectral Fishron
+			SquirrelRing.DisplayName: Squirrel Ring
+			FlariumGeyser.DisplayName: Flarium Geyser
 		}
 
 		Bestiary: {

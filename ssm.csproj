@@ -18,9 +18,6 @@
 	  <None Remove="Thorium\Swarm\**" />
 	</ItemGroup>
 	<ItemGroup>
-	  <Compile Remove="Reworks\StyxArmor.cs" />
-	</ItemGroup>
-	<ItemGroup>
 	  <None Remove="Thorium\Enchantments\BerserkerEnchant.cs.sex" />
 	  <None Remove="Thorium\Enchantments\DangerEnchant.cs.sex" />
 	  <None Remove="Thorium\Enchantments\HarbingerEnchant.cs.sex" />
@@ -33,7 +30,6 @@
 	  <None Include="Calamity\Addons\DivineEnchant.cs" />
 	  <None Include="Calamity\Addons\EmptinessEnchant.cs" />
 	  <None Include="MagicStorage\StorageUnits.cs" />
-	  <None Include="Reworks\StyxArmor.cs" />
 	</ItemGroup>
 	<ItemGroup>
 	  <Reference Include="BombusApisBee">

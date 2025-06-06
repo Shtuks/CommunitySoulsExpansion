@@ -1,12 +1,16 @@
 ﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria.Localization;
-using SacredTools;
 using FargowiltasSouls.Content.Items.Accessories.Forces;
 using Fargowiltas.Items.Tiles;
 using ssm.SoA.Enchantments;
 using ssm.Core;
+using FargowiltasSouls.Core.AccessoryEffectSystem;
+using static ssm.SoA.Enchantments.CairoCrusaderEnchant;
+using static ssm.SoA.Enchantments.EerieEnchant;
+using static ssm.SoA.Enchantments.BismuthEnchant;
+using static ssm.SoA.Enchantments.DreadfireEnchant;
+using static ssm.SoA.Enchantments.MarstechEnchant;
 
 namespace ssm.SoA.Forces
 {
@@ -18,9 +22,6 @@ namespace ssm.SoA.Forces
         {
             return ShtunConfig.Instance.SacredTools;
         }
-
-        private readonly Mod soa = ModLoader.GetMod("SacredTools");
-
         public override void SetDefaults()
         {
             Item.width = 20;
@@ -33,13 +34,19 @@ namespace ssm.SoA.Forces
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            ModContent.Find<ModItem>(((ModType)this).Mod.Name, "CairoCrusaderEnchant").UpdateAccessory(player, hideVisual);
-            ModContent.Find<ModItem>(((ModType)this).Mod.Name, "EerieEnchant").UpdateAccessory(player, hideVisual);
-            ModContent.Find<ModItem>(((ModType)this).Mod.Name, "BismuthEnchant").UpdateAccessory(player, hideVisual);
-            ModContent.Find<ModItem>(((ModType)this).Mod.Name, "DreadfireEnchant").UpdateAccessory(player, hideVisual);
-            ModContent.Find<ModItem>(((ModType)this).Mod.Name, "MarstechEnchant").UpdateAccessory(player, hideVisual);
+            player.AddEffect<CairoEffect>(Item);
+            player.AddEffect<EerieEffect>(Item);
+            player.AddEffect<BismuthEffect>(Item);
+            player.AddEffect<DreadfireEffect>(Item);
+            player.AddEffect<MarstechEffect>(Item);
+
+            player.AddEffect<GenerationsEffect>(Item);
         }
 
+        public class GenerationsEffect : AccessoryEffect
+        {
+            public override Header ToggleHeader => null;
+        }
         public override void AddRecipes()
         {
             Recipe recipe = this.CreateRecipe();

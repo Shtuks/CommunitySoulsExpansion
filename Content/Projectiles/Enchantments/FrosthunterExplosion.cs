@@ -12,13 +12,15 @@ namespace ssm.Content.Projectiles.Enchantments
     {
         public override void SetStaticDefaults()
         {
-            Main.projFrames[Projectile.type] = 5;
+            Main.projFrames[Type] = 5;
+            ProjectileID.Sets.TrailCacheLength[Projectile.type] = 5;
+            ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
         }
         public override void SetDefaults() 
         {
-            Projectile.scale = 0.3f;
-            Projectile.width = 353;
-            Projectile.height = 311;
+            Projectile.scale = 1f;
+            Projectile.width = 120;
+            Projectile.height = 120;
             Projectile.aiStyle = -1;
             Projectile.friendly = true;
             Projectile.tileCollide = false;

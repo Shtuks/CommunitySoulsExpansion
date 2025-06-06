@@ -6,6 +6,8 @@ using ssm.Content.Items.Armor;
 using ssm.MagicStorage;
 using FargowiltasSouls.Content.Items.Accessories.Souls;
 using FargowiltasSouls.Content.Items.Materials;
+using ssm.Content.Items.Consumables;
+using FargowiltasSouls.Content.Items.Weapons.FinalUpgrades;
 
 namespace ssm
 {
@@ -43,9 +45,13 @@ namespace ssm
             for (int i = 0; i < Recipe.numRecipes; i++)
             {
                 Recipe recipe = Main.recipe[i];
-                if (!ModCompatibility.Crossmod.Loaded && (recipe.HasResult<ArchWizardsSoul>() || recipe.HasResult<BerserkerSoul>() || recipe.HasResult<ConjuristsSoul>() || recipe.HasResult<ColossusSoul>()) && !recipe.HasResult<AbomEnergy>())
+                if (!ModCompatibility.Crossmod.Loaded && ModCompatibility.SacredTools.Loaded && (recipe.HasResult<ArchWizardsSoul>() || recipe.HasResult<BerserkerSoul>() || recipe.HasResult<ConjuristsSoul>() || recipe.HasResult<ColossusSoul>()) && !recipe.HasResult<AbomEnergy>())
                 {
                     recipe.AddIngredient<AbomEnergy>(10);
+                }
+                if ((recipe.HasResult(ModContent.ItemType<Penetrator>()) || recipe.HasResult(ModContent.ItemType<StyxGazer>()) || recipe.HasResult(ModContent.ItemType<SparklingLove>())) && !recipe.HasIngredient(ModContent.ItemType<Sadism>()))
+                {
+                    recipe.AddIngredient<Sadism>(30);
                 }
             }
         }

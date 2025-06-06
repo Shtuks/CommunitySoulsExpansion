@@ -45,14 +45,8 @@ namespace ssm.SoA.Enchantments
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            ModdedPlayer modPlayer = player.GetModPlayer<ModdedPlayer>();
-            if (player.AddEffect<NebulousApprenticeEffect>(Item))
-            {
-                //set bonus
-                modPlayer.NubaArmor = true;
-
-                ModContent.Find<ModItem>(this.soa.Name, "NubasBlessing").UpdateAccessory(player, false);
-            }
+            player.AddEffect<NebulousApprenticeEffect>(Item);
+            ModContent.Find<ModItem>(this.soa.Name, "NubasBlessing").UpdateAccessory(player, false);
         }
 
         public class NebulousApprenticeEffect : AccessoryEffect

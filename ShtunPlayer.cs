@@ -14,6 +14,9 @@ using System.Collections.Generic;
 using Terraria.ModLoader.IO;
 using FargowiltasSouls.Content.UI;
 using Terraria.ID;
+using FargowiltasSouls.Core.Globals;
+using FargowiltasSouls.Content.Bosses.MutantBoss;
+using ssm.Core;
 
 namespace ssm
 {
@@ -37,17 +40,17 @@ namespace ssm
 
         public override void PostUpdateBuffs()
         {
-            //if (/*(FargoSoulsUtil.BossIsAlive(ref ShtunNpcs.mutantEX, ModContent.NPCType<MutantEX>()) || */FargoSoulsUtil.BossIsAlive(ref EModeGlobalNPC.mutantBoss, ModContent.NPCType<MutantBoss>()) && ModCompatibility.Calamity.Loaded)
-            //{
-            //    ModLoader.GetMod("CalamityMod").TryFind("Enraged", out ModBuff enrage);
-            //    ModLoader.GetMod("CalamityMod").TryFind("RageMode", out ModBuff rage);
-            //    ModLoader.GetMod("CalamityMod").TryFind("AdrenalineMode", out ModBuff adrenaline);
-            //    Main.LocalPlayer.buffImmune[enrage.Type] = true;
-            //    Main.LocalPlayer.buffImmune[rage.Type] = true;
-            //    Main.LocalPlayer.buffImmune[adrenaline.Type] = true;
-            //}
+            if (/*(FargoSoulsUtil.BossIsAlive(ref ShtunNpcs.mutantEX, ModContent.NPCType<MutantEX>()) || */FargoSoulsUtil.BossIsAlive(ref EModeGlobalNPC.mutantBoss, ModContent.NPCType<MutantBoss>()) && ModCompatibility.Calamity.Loaded)
+            {
+                ModLoader.GetMod("CalamityMod").TryFind("Enraged", out ModBuff enrage);
+                ModLoader.GetMod("CalamityMod").TryFind("RageMode", out ModBuff rage);
+                ModLoader.GetMod("CalamityMod").TryFind("AdrenalineMode", out ModBuff adrenaline);
+                Main.LocalPlayer.buffImmune[enrage.Type] = true;
+                Main.LocalPlayer.buffImmune[rage.Type] = true;
+                Main.LocalPlayer.buffImmune[adrenaline.Type] = true;
+            }
 
-            if(starlightFruit)
+            if (starlightFruit)
             {
                 Player.accWatch = 3;
                 Player.accDepthMeter = 1;
@@ -208,6 +211,12 @@ namespace ssm
                 Main.worldName.StartsWith("Q", System.StringComparison.OrdinalIgnoreCase))
             {
                 Player.AddBuff(BuffID.ChaosState, 100);
+            }
+
+            //No "free dps"
+            if(FargoSoulsUtil.BossIsAlive(ref EModeGlobalNPC.mutantBoss, ModContent.NPCType<MutantBoss>()) && Player.HeldItem != null && !Player.HeldItem.IsAir && (Player.HeldItem.DamageType != DamageClass.Summon || Player.HeldItem.DamageType != DamageClass.SummonMeleeSpeed))
+            {
+                Player.maxMinions = 0;
             }
         }
         public override bool CanBeHitByNPC(NPC npc, ref int cooldownSlot)

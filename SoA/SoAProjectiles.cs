@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework;
 using SacredTools.Content.Projectiles.Weapons.Dreamscape.Nihilus;
 using SacredTools.Projectiles.Dreamscape;
+using ssm.Content.Projectiles.Enchantments;
 using ssm.Core;
 using Terraria;
 using Terraria.ModLoader;
@@ -24,14 +25,14 @@ namespace ssm.SoA
         }
         public override void AI(Projectile projectile)
         {
-            if(projectile.type == ModContent.ProjectileType<TenebrisLink2>())
+            if (projectile.type == ModContent.ProjectileType<TenebrisLink2>())
             {
                 if ((projectile.ai[1] += 1f) >= 20f)
                 {
                     ShtunUtils.HomeInOnNPC(projectile, true, 1600, 8, 2);
                 }
             }
-            
+
             if (projectile.type == ModContent.ProjectileType<SpookGrenade>())
             {
                 projectile.velocity *= 1.05f;
@@ -84,33 +85,42 @@ namespace ssm.SoA
             }
         }
 
-        //public override void OnKill(Projectile projectile, int timeLeft)
-        //{
-        //    if (projectile.owner == Main.myPlayer &&
-        //        projectile.velocity.Y != 0 &&
-        //        projectile.tileCollide &&
-        //        projectile.position.Y + projectile.height >= projectile.ai[1])
-        //    {
-        //        Player player = Main.player[projectile.owner];
+        public override void OnKill(Projectile projectile, int timeLeft)
+        {
+            if (projectile.owner == Main.myPlayer &&
+                projectile.friendly &&
+                !projectile.hostile &&
+                projectile.damage > 0 &&
+                projectile.owner == Main.player[projectile.owner].whoAmI)
+            {
+                Player player = Main.player[projectile.owner];
+                if (player.GetModPlayer<SoAPlayer>().flariumEnchant > 0)
+                {
+                    if (projectile.velocity.Y != 0 &&
+                        projectile.position.Y / 16 < Main.worldSurface &&
+                        !projectile.wet &&
+                        !Collision.LavaCollision(projectile.position, projectile.width, projectile.height))
+                    {
+                        if (Main.rand.NextFloat() < 0.15f)
+                        {
+                            int duration = Main.rand.Next(120, 300);
+                            int damage = player.GetModPlayer<SoAPlayer>().flariumEnchant > 1 ? 200 : 100;
+                            Vector2 position = projectile.Center;
 
-        //        if (&&
-        //            Main.rand.NextFloat() < 0.15f)
-        //        {
-        //            int damage = 100;
-        //            int duration = Main.rand.Next(120, 300); 
-        //            Vector2 position = new Vector2(projectile.Center.X, projectile.position.Y + projectile.height);
-
-        //            Projectile.NewProjectile(
-        //                projectile.GetSource_FromThis(),
-        //                position,
-        //                Vector2.Zero,
-        //                ModContent.ProjectileType<FlameGeyserProj>(),
-        //                damage,
-        //                0f,
-        //                player.whoAmI,
-        //                duration);
-        //        }
-        //    }
-        //}
+                            Projectile.NewProjectile(
+                                projectile.GetSource_FromThis(),
+                                position,
+                                Vector2.Zero,
+                                ModContent.ProjectileType<FlariumGeyser>(),
+                                damage,
+                                0f,
+                                projectile.owner,
+                                duration
+                            );
+                        }
+                    }
+                }
+            }
+        }
     }
 }

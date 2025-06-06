@@ -62,7 +62,7 @@ namespace ssm.Redemption
 
                 if (recipe.HasResult<FlightMasterySoul>() && !recipe.HasIngredient<NebWings>())
                 {
-                    recipe.AddIngredient<NebWings>();
+                    //recipe.AddIngredient<NebWings>();
                     recipe.AddIngredient<XenomiteJetpack>();
                 }
 

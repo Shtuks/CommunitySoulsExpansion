@@ -17,6 +17,8 @@ using SacredTools.Items.Weapons.Special;
 using SacredTools.Items.Mount;
 using SacredTools.Content.Items.Pets;
 using ssm.Core;
+using FargowiltasSouls;
+using static ssm.SoA.Enchantments.SpaceJunkEnchant;
 
 namespace ssm.SoA.Enchantments
 {
@@ -28,9 +30,6 @@ namespace ssm.SoA.Enchantments
         {
             return ShtunConfig.Instance.SacredTools;
         }
-
-        private readonly Mod soa = ModLoader.GetMod("SacredTools");
-
         public override void SetDefaults()
         {
             Item.width = 20;
@@ -45,7 +44,10 @@ namespace ssm.SoA.Enchantments
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            
+            if (player.AddEffect<FlariumEffect>(Item))
+            {
+                player.GetModPlayer<SoAPlayer>().flariumEnchant = player.ForceEffect<FlariumEffect>() ? 2 : 1;
+            }
         }
 
         public class FlariumEffect : AccessoryEffect

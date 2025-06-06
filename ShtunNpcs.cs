@@ -1,4 +1,6 @@
+using FargowiltasSouls.Content.Bosses.AbomBoss;
 using FargowiltasSouls.Content.Bosses.MutantBoss;
+using ssm.Core;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -14,6 +16,45 @@ namespace ssm
         public static int DukeEX = -1;
         public static int boss = -1;
         public static int mutantEX = -1;
+
+        public override void SetDefaults(NPC npc)
+        {
+            if (npc.type == ModContent.NPCType<MutantBoss>())
+            {
+                int mutantHealth = 10000000;
+                float multiplier = 0;
+
+                if (ModCompatibility.SacredTools.Loaded && !ModCompatibility.Calamity.Loaded) {multiplier += 0.3f;}
+                if (ModCompatibility.SacredTools.Loaded && !ModCompatibility.Calamity.Loaded) {multiplier += 0.7f;}
+                if (ModCompatibility.Calamity.Loaded && !ModCompatibility.SacredTools.Loaded) {multiplier += 1f;}
+                if (ModCompatibility.Thorium.Loaded) { multiplier += 0.7f; }
+                if (ModCompatibility.Calamity.Loaded) { multiplier += 1.7f; }
+                if (ModCompatibility.SacredTools.Loaded) { multiplier += 1.6f; }
+
+                if (npc.type == ModContent.NPCType<MutantBoss>())
+                {
+                    npc.damage = Main.getGoodWorld ? 2000 : (int)(500 + (100 * multiplier));
+                    npc.lifeMax = (int)(mutantHealth + (mutantHealth * multiplier));
+                }
+            }
+
+            if (npc.type == ModContent.NPCType<AbomBoss>())
+            {
+                int abomHealth = 1000000;
+                float multiplierA = 0;
+
+                if (ModCompatibility.Thorium.Loaded && !ModCompatibility.Calamity.Loaded) { multiplierA += 1f; }
+                if (ModCompatibility.Thorium.Loaded) { multiplierA += 3f; } //post primoridals
+                if (ModCompatibility.Calamity.Loaded) { multiplierA += 6f; } //same tier as cal/exos
+                if (ModCompatibility.SacredTools.Loaded) { multiplierA += 1f; } //post lost sibings
+
+                if (npc.type == ModContent.NPCType<AbomBoss>())
+                {
+                    npc.damage = Main.getGoodWorld ? 1000 : (int)(250 + (20 * multiplierA));
+                    npc.lifeMax = (int)(2800000 + (abomHealth * multiplierA)) / 2; //like wtf
+                }
+            }
+        }
         public override void SetStaticDefaults()
         {
             NPCID.Sets.ImmuneToRegularBuffs[ModContent.NPCType<MutantBoss>()] = true;

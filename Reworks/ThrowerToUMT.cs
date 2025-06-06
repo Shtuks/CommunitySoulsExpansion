@@ -4,7 +4,7 @@ using ssm.Content.DamageClasses;
 
 namespace ssm.Reworks
 {
-    public class ThrowingToRogue : GlobalItem
+    public class ThrowingToUMT : GlobalItem
     {
         public override bool IsLoadingEnabled(Mod mod)
         {
@@ -12,12 +12,24 @@ namespace ssm.Reworks
         }
         public override void SetDefaults(Item item)
         {
-            if (!ModLoader.HasMod("Ragnarok"))
+            if (item.DamageType == DamageClass.Throwing)
             {
-                if (item.DamageType == DamageClass.Throwing)
-                {
-                    item.DamageType = (DamageClass)(object)ModContent.GetInstance<UnitedModdedThrower>();
-                } 
+                item.DamageType = (DamageClass)(object)ModContent.GetInstance<UnitedModdedThrower>();
+            } 
+        }
+    }
+
+    public class ThrowingToUMTProj : GlobalProjectile
+    {
+        public override bool IsLoadingEnabled(Mod mod)
+        {
+            return ShtunConfig.Instance.ThrowerMerge;
+        }
+        public override void SetDefaults(Projectile item)
+        {
+            if (item.DamageType == DamageClass.Throwing)
+            {
+                item.DamageType = (DamageClass)(object)ModContent.GetInstance<UnitedModdedThrower>();
             }
         }
     }
