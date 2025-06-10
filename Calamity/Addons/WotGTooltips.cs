@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using Terraria;
 using Terraria.ModLoader;
 
-namespace ssm.Calamity
+namespace ssm.Calamity.Addons
 {
     [ExtendsFromMod(ModCompatibility.Calamity.Name, ModCompatibility.WrathoftheGods.Name)]
     [JITWhenModsEnabled(ModCompatibility.Calamity.Name, ModCompatibility.WrathoftheGods.Name)]

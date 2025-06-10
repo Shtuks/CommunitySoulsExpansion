@@ -3,8 +3,8 @@ using Terraria.ModLoader;
 using CalamityMod.Items.Accessories;
 using ssm.Core;
 using SacredTools.Content.Items.Accessories;
-using FargowiltasSouls.Content.Items.Accessories.Souls;
-using System;
+using SacredTools.Content.Items.Potions.Recovery;
+using CalamityMod.Items.Potions;
 
 namespace ssm.CrossMod
 {
@@ -22,6 +22,17 @@ namespace ssm.CrossMod
                 {
                     recipe.RemoveIngredient(1613);
                     recipe.AddIngredient<FloraFist>(1);
+                }
+
+                if (recipe.HasResult(ModContent.ItemType<AsthraltiteHealingPotion>()) && !recipe.HasIngredient<OmegaHealingPotion>())
+                {
+                    recipe.AddIngredient<OmegaHealingPotion>(20);
+                }
+
+                if (recipe.HasResult(ModContent.ItemType<OmegaHealingPotion>()) && !recipe.HasIngredient<MegaHealingPotion>())
+                {
+                    recipe.RemoveIngredient(ModContent.ItemType<SupremeHealingPotion>());
+                    recipe.AddIngredient<MegaHealingPotion>(20);
                 }
             }
         }

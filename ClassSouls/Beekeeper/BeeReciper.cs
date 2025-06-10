@@ -16,7 +16,7 @@ namespace ssm.ClassSouls.Beekeeper
             {
                 Recipe recipe = Main.recipe[i];
 
-                if (recipe.HasResult<UniverseSoul>())
+                if (recipe.HasResult<UniverseSoul>() && !recipe.HasIngredient<BeekeeperSoul>())
                 {
                     recipe.AddIngredient<BeekeeperSoul>(1);
                 }

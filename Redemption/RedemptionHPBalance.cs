@@ -12,38 +12,45 @@ namespace ssm.Redemption
     [JITWhenModsEnabled(ModCompatibility.Redemption.Name)]
     public class RedemptionHPBalance : GlobalNPC
     {
-        //public bool fullHP = false;
         public override bool InstancePerEntity => true;
         public override void SetDefaults(NPC npc)
         {
-            if (WorldSavingSystem.EternityMode)
-            {
+            //if (WorldSavingSystem.EternityMode)
+            //{
                 if (npc.type == ModContent.NPCType<Nebuleus>())
                 {
-                    npc.lifeMax = 3700000;
-                    npc.damage = 790;
+                    float multiplier = 0;
+
+                    if (ModCompatibility.Thorium.Loaded) { multiplier += 1f; }
+                    if (ModCompatibility.SacredTools.Loaded) { multiplier += 0.6f; }
+
+                    npc.lifeMax = (int)(3400000 + (1000000 * multiplier));
+                    npc.damage = 730;
                 }
 
                 if (npc.type == ModContent.NPCType<Nebuleus2>())
                 {
-                    npc.lifeMax = 4100000;
-                    npc.damage = 890;
+                    float multiplier = 0;
+
+                    if (ModCompatibility.Thorium.Loaded) { multiplier += 1f; }
+                    if (ModCompatibility.SacredTools.Loaded) { multiplier += 0.6f; }
+
+                    npc.lifeMax = (int)(3700000 + (1000000 * multiplier));
+                    npc.damage = 800;
                 }
 
                 if (npc.type == ModContent.NPCType<Akka>())
                 {
-                    npc.lifeMax = 1700000;
+                    npc.lifeMax = 1600000;
                     npc.damage = 420;
                 }
 
                 if (npc.type == ModContent.NPCType<Ukko>())
                 {
-                    npc.lifeMax = 1900000;
+                    npc.lifeMax = 1800000;
                     npc.damage = 470;
                 }
-                //if (!fullHP) { npc.life = npc.lifeMax; fullHP = true; }
-            }
-            //return base.PreAI(npc);
+            //}
         }
     }
 }

@@ -2,11 +2,13 @@
 using ClickerClass.Utilities;
 using FargowiltasSouls;
 using FargowiltasSouls.Content.Items.Armor;
+using FargowiltasSouls.Content.Items.Summons;
 using FargowiltasSouls.Content.Items.Weapons.FinalUpgrades;
 using FargowiltasSouls.Content.Items.Weapons.SwarmDrops;
 using Microsoft.Xna.Framework;
 using ssm.Content.DamageClasses;
 using ssm.Core;
+using System;
 using System.Collections.Generic;
 using Terraria;
 using Terraria.ModLoader;
@@ -63,6 +65,23 @@ namespace ssm
                 if (item.type == ModContent.ItemType<SlimeRain>() || item.type == ModContent.ItemType<GuardianTome>() || item.type == ModContent.ItemType<TheBiggestSting>() || item.type == ModContent.ItemType<PhantasmalLeashOfCthulhu>() || item.type == ModContent.ItemType<TheBiggestSting>())
                 {
                     tooltips.Add(new TooltipLine(Mod, "balance", $"[c/FF0000:CSE Balance:] No."));
+                }
+            }
+            if (item.type == ModContent.ItemType<MutantsCurse>() || item.type == ModContent.ItemType<AbominationnVoodooDoll>())
+            {
+                tooltips.Add(new TooltipLine(Mod, "1m", "Mutant max life and damage scales with ammount of supported mods."));
+                tooltips.Add(new TooltipLine(Mod, "2m", $"Points: {Math.Round(ShtunNpcs.multiplierM, 1)}, Max Life: {10000000 + Math.Round(ShtunNpcs.multiplierM, 1) * 10000000}, Damage: {500 + Math.Round(ShtunNpcs.multiplierM, 1) * 100}"));
+                tooltips.Add(new TooltipLine(Mod, "3m", "Thorium adds 0.9 points. SoA adds 1.3. Calamity 1.8"));
+                tooltips.Add(new TooltipLine(Mod, "4m", "If olnly one of supported mods active Thorium - 1 SoA - 2 Calamity 2.8"));
+                tooltips.Add(new TooltipLine(Mod, "5m", "If Masochist mode enabled, points multiplied by 1.5"));
+                if (ModCompatibility.Calamity.Loaded)
+                {
+                    tooltips.Add(new TooltipLine(Mod, "6m", "Rage and Adrenaline disabled during fight."));
+                }
+                if (ModCompatibility.SacredTools.Loaded)
+                {
+                    tooltips.Add(new TooltipLine(Mod, "7m", "In first phase Mutant will have Aura of Supression. After destroying aura second phase will start."));
+                    tooltips.Add(new TooltipLine(Mod, "8m", "Aura can be destroyed only with Relic Weapons and makes Mutant immune to damage if active."));
                 }
             }
         }

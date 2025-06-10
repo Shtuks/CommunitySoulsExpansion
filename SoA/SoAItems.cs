@@ -1,4 +1,5 @@
-﻿using SacredTools.Content.Items.Accessories;
+﻿using SacredTools.Common.Types;
+using SacredTools.Content.Items.Accessories;
 using SacredTools.Content.Items.Accessories.Sigils;
 using SacredTools.Content.Items.Armor.Asthraltite;
 using SacredTools.Content.Items.Armor.Blightbone;
@@ -8,6 +9,7 @@ using SacredTools.Content.Items.Armor.Lunar.Quasar;
 using SacredTools.Content.Items.Armor.Marstech;
 using SacredTools.Content.Items.Armor.Quasar;
 using SacredTools.Content.Items.Armor.SpaceJunk;
+using SacredTools.Content.Items.Potions.Recovery;
 using SacredTools.Content.Items.Weapons.Dreamscape.Nihilus;
 using ssm.Content.DamageClasses;
 using ssm.Content.Projectiles.Enchantments;
@@ -50,15 +52,19 @@ namespace ssm.SoA
             {
                 entity.damage = ModCompatibility.Calamity.Loaded ? (int)(entity.damage * 1.9f) : (int)(entity.damage * 1.5);
             }
+            if (entity.type == ModContent.ItemType<AsthraltiteHealingPotion>() && ModCompatibility.Calamity.Loaded)
+            {
+                entity.healLife = 500;
+            }
         }
 
-        //public override void UpdateInventory(Item item, Player player)
-        //{
-        //    if (item.ModItem is ReloadWeapon reloadWeapon && item.type == ModContent.ItemType<Desperatio>())
-        //    {
-        //        reloadWeapon.MaxMagazine *= 2;
-        //    }
-        //}
+        public override void UpdateInventory(Item item, Player player)
+        {
+            if (item.ModItem is ReloadWeapon reloadWeapon && item.type == ModContent.ItemType<Desperatio>())
+            {
+                reloadWeapon.RefillMagazine(player);
+            }
+        }
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
         {
             if (item.type == ModContent.ItemType<YataMirror>())

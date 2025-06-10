@@ -1,7 +1,11 @@
-﻿using FargowiltasSouls.Core.AccessoryEffectSystem;
+﻿using FargowiltasSouls.Content.Bosses.MutantBoss;
+using FargowiltasSouls.Core.AccessoryEffectSystem;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using ReLogic.Content;
 using SacredTools.Content.Projectiles.Weapons.Dreamscape.Nihilus;
 using SacredTools.Projectiles.Dreamscape;
+using ssm.Content.NPCs;
 using ssm.Content.Projectiles.Enchantments;
 using ssm.Core;
 using Terraria;
@@ -14,6 +18,7 @@ namespace ssm.SoA
     [JITWhenModsEnabled(ModCompatibility.SacredTools.Name)]
     public class SoAProjectiles : GlobalProjectile
     {
+        public int auraFrameMutant;
         public override bool InstancePerEntity => true;
 
         public override void SetDefaults(Projectile proj)
@@ -121,6 +126,41 @@ namespace ssm.SoA
                     }
                 }
             }
+        }
+
+        public override bool PreDraw(Projectile npc, ref Color lightColor)
+        {
+            if (npc.type == ModContent.ProjectileType<MutantBossProjectile>())
+            {
+                Vector2 drawCenter = new Vector2(npc.Center.X, npc.Center.Y);
+                if (NPC.AnyNPCs(ModContent.NPCType<MutantAuraOfSupression>()))
+                {
+                    Texture2D suppTexture = ModContent.Request<Texture2D>("ssm/Assets/ExtraTextures/MutantSupression", (AssetRequestMode)2).Value;
+                    Texture2D HexagonTexture = ModContent.Request<Texture2D>("SacredTools/Effects/Hexagons", (AssetRequestMode)2).Value;
+                    int frameHeightSupp = suppTexture.Height / 4;
+                    int startYSupp = frameHeightSupp * auraFrameMutant;
+                    Rectangle suppRect = new Rectangle(0, startYSupp, suppTexture.Width, frameHeightSupp);
+                    Color borderColor = Color.Multiply(new Color(191, 48, 135), 1f);
+                    Color innerColor = Color.Multiply(new Color(252, 98, 119), 0.25f);
+                    Main.spriteBatch.End();
+                    Main.spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, SamplerState.LinearClamp, DepthStencilState.Default, RasterizerState.CullNone, null, Main.GameViewMatrix.ZoomMatrix);
+                    Effect value = ModContent.Request<Effect>("SacredTools/Effects/Shield", (AssetRequestMode)1).Value;
+                    value.Parameters["offset"].SetValue(Vector2.Zero);
+                    value.Parameters["sampleTexture"].SetValue(HexagonTexture);
+                    value.Parameters["time"].SetValue(Main.GlobalTimeWrappedHourly * 6f);
+                    value.Parameters["border"].SetValue(borderColor.ToVector4());
+                    value.Parameters["inner"].SetValue(innerColor.ToVector4());
+                    value.Parameters["sinMult"].SetValue(5f);
+                    value.Parameters["spriteRatio"].SetValue(new Vector2(suppTexture.Width / 2 / HexagonTexture.Width, suppTexture.Height / 16 / HexagonTexture.Height));
+                    value.Parameters["conversion"].SetValue(new Vector2(1f / (float)(suppTexture.Width / 2), 1f / (float)(suppTexture.Height / 2)));
+                    value.Parameters["frameAmount"].SetValue(4f);
+                    value.CurrentTechnique.Passes[0].Apply();
+                    Main.spriteBatch.Draw(suppTexture, drawCenter - new Vector2(2f, 0f) - Main.screenPosition, suppRect, Color.Teal, npc.rotation, suppRect.Size() / 2f, npc.scale * 1.2f, SpriteEffects.None, 0f);
+                    Main.spriteBatch.End();
+                    Main.spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, Main.DefaultSamplerState, DepthStencilState.None, RasterizerState.CullCounterClockwise, null, Main.Transform);
+                }
+            }
+            return base.PreDraw(npc, ref lightColor);
         }
     }
 }

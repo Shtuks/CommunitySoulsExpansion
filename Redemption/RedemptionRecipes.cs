@@ -11,6 +11,7 @@ using Terraria.ID;
 using Terraria.Localization;
 using Redemption.Items.Armor.HM.Hardlight;
 using Redemption.Items.Armor.PreHM.CommonGuard;
+using SacredTools.Content.Items.Materials;
 
 namespace ssm.Redemption
 {
@@ -31,29 +32,6 @@ namespace ssm.Redemption
             for (int i = 0; i < Recipe.numRecipes; i++)
             {
                 Recipe recipe = Main.recipe[i];
-
-                //FIXED
-                //if (recipe.HasResult<MutagenMelee>())
-                //{
-                //    recipe.AddIngredient<LifeFragment>(5);
-                //}
-                //if (recipe.HasResult<MutagenRanged>())
-                //{
-                //    recipe.AddIngredient<LifeFragment>(5);
-                //}
-                //if (recipe.HasResult<MutagenMagic>())
-                //{
-                //    recipe.AddIngredient<LifeFragment>(5);
-                //}
-                //if (recipe.HasResult<MutagenSummon>())
-                //{
-                //    recipe.AddIngredient<LifeFragment>(5);
-                //}
-                //if (recipe.HasResult<MutagenRitualist>())
-                //{
-                //    recipe.AddIngredient<LifeFragment>(5);
-                //}
-
                 if (recipe.createItem.ModItem is BaseForce)
                 {
                     if (!recipe.HasIngredient<RoboBrain>())
@@ -80,6 +58,14 @@ namespace ssm.Redemption
                 if (recipe.HasResult(ItemID.Zenith) && recipe.HasIngredient<LifeFragment>())
                 {
                     recipe.RemoveIngredient(ModContent.ItemType<LifeFragment>());
+                }
+
+                if (!ModCompatibility.Calamity.Loaded && !ModCompatibility.SacredTools.Loaded)
+                {
+                    if ((recipe.HasResult<UniverseSoul>() || recipe.HasResult<TerrariaSoul>() || recipe.HasResult<MasochistSoul>() || recipe.HasResult<DimensionSoul>()) && !recipe.HasIngredient<LifeFragment>())
+                    {
+                        recipe.AddIngredient<LifeFragment>(5);
+                    }
                 }
 
                 //emblem -> essence -> mutagen -> soul
@@ -124,7 +110,7 @@ namespace ssm.Redemption
                 }
                 if (recipe.HasResult<SnipersSoul>() && !recipe.HasResult<MutagenRanged>())
                 {
-                    recipe.AddIngredient<SharpshootersEssence>();
+                    recipe.AddIngredient<MutagenRanged>();
                     recipe.RemoveIngredient(ModContent.ItemType<SharpshootersEssence>());
                 }
             }

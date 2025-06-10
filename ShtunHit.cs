@@ -5,12 +5,12 @@ using FargowiltasSouls.Content.Buffs.Souls;
 using FargowiltasSouls.Content.Bosses.MutantBoss;
 using ssm.Content.NPCs.MutantEX;
 using ssm.Content.Buffs;
+using ssm.Core;
 
 namespace ssm
 {
     public partial class ShtunHit : ModPlayer
     {
-        private readonly Mod FargoSoul = Terraria.ModLoader.ModLoader.GetMod("FargowiltasSouls");
         public override void ModifyHurt(ref Player.HurtModifiers modifiers)
         {
             double damageMult = 1D;
@@ -36,9 +36,9 @@ namespace ssm
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
             if (Player.Shtun().equippedPhantasmalEnchantment)
-                target.AddBuff(ModContent.Find<ModBuff>(this.FargoSoul.Name, "MutantFangBuff").Type, 1000, false);
+                target.AddBuff(ModContent.Find<ModBuff>(ModCompatibility.SoulsCompat.Name, "MutantFangBuff").Type, 1000, false);
             if (Player.Shtun().equippedAbominableEnchantment)
-                target.AddBuff(ModContent.Find<ModBuff>(this.FargoSoul.Name, "AbomFangBuff").Type, 1000, false);
+                target.AddBuff(ModContent.Find<ModBuff>(ModCompatibility.SoulsCompat.Name, "AbomFangBuff").Type, 1000, false);
         }
     }
 
@@ -63,10 +63,10 @@ namespace ssm
                 npc.AddBuff(ModContent.BuffType<ChtuxlagorInferno>(), 180);
             }
 
-            //if (npc.type == ModContent.NPCType<MutantBoss>())
-            //{
-            //    modifiers.SetMaxDamage(40000);
-            //}
+            if (npc.type == ModContent.NPCType<MutantBoss>())
+            {
+                modifiers.SetMaxDamage(50000);
+            }
         }
         public override void ModifyHitByItem(NPC npc, Player player, Item item, ref NPC.HitModifiers modifiers)
         {
@@ -82,7 +82,7 @@ namespace ssm
 
             if (npc.type == ModContent.NPCType<MutantBoss>())
             {
-                modifiers.SetMaxDamage(40000);
+                modifiers.SetMaxDamage(50000);
             }
         }
         public override void HitEffect(NPC npc, NPC.HitInfo hit)

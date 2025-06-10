@@ -17,6 +17,18 @@ public static class ModCompatibility
         public static bool Loaded => ModLoader.HasMod(Name);
         public static Mod Mod => ModLoader.GetMod(Name);
     }
+    public static class BossChecklist
+    {
+        public const string Name = "BossChecklist";
+        public static bool Loaded => ModLoader.HasMod(Name);
+        public static Mod Mod => ModLoader.GetMod(Name);
+    }
+    public static class IEoR
+    {
+        public const string Name = "InfernalEclipseAPI";
+        public static bool Loaded => ModLoader.HasMod(Name);
+        public static Mod Mod => ModLoader.GetMod(Name);
+    }
     public static class SoulsCompat
     {
         public const string Name = "FargoMoreSoulsCompat";
@@ -137,6 +149,8 @@ public static class ModCompatibility
         public const string Name = "CalamityHunt";
         public static bool Loaded => ModLoader.HasMod(Name);
         public static Mod Mod => ModLoader.GetMod(Name);
+        
+        public static ModNPC GooBoss = Mod.Find<ModNPC>("Goozma");
     }
     public static class Redemption
     {

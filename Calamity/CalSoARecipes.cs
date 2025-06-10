@@ -7,6 +7,7 @@ using ssm.SoA.Souls;
 using CalamityMod.Items.Materials;
 using SacredTools.Content.Items.Weapons.Relic;
 using SacredTools.Content.Items.Armor.Asthraltite;
+using SacredTools.Items.Tools;
 
 namespace ssm.Calamity
 {
@@ -49,6 +50,11 @@ namespace ssm.Calamity
                 {
                     recipe.AddIngredient<AuricBar>(1);
                 }
+                //Waiting for erazor rework
+                //if (recipe.HasResult<ShadowspecBar>() && !recipe.HasIngredient<IDontExist>())
+                //{
+                //    recipe.AddIngredient<IDontExist>(5);
+                //}
             }
         }
     }

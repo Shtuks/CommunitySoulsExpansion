@@ -17,6 +17,7 @@ using Terraria.ID;
 using FargowiltasSouls.Core.Globals;
 using FargowiltasSouls.Content.Bosses.MutantBoss;
 using ssm.Core;
+using FargowiltasSouls.Core.Systems;
 
 namespace ssm
 {
@@ -40,7 +41,7 @@ namespace ssm
 
         public override void PostUpdateBuffs()
         {
-            if (/*(FargoSoulsUtil.BossIsAlive(ref ShtunNpcs.mutantEX, ModContent.NPCType<MutantEX>()) || */FargoSoulsUtil.BossIsAlive(ref EModeGlobalNPC.mutantBoss, ModContent.NPCType<MutantBoss>()) && ModCompatibility.Calamity.Loaded)
+            if (FargoSoulsUtil.BossIsAlive(ref EModeGlobalNPC.mutantBoss, ModContent.NPCType<MutantBoss>()) && ModCompatibility.Calamity.Loaded && !WorldSavingSystem.MasochistModeReal)
             {
                 ModLoader.GetMod("CalamityMod").TryFind("Enraged", out ModBuff enrage);
                 ModLoader.GetMod("CalamityMod").TryFind("RageMode", out ModBuff rage);
@@ -171,6 +172,10 @@ namespace ssm
             if (!ModLoader.TryGetMod("ThoriumRework", out Mod _) && ModLoader.TryGetMod("ThoriumMod", out Mod _))
             {
                 Main.NewText(Language.GetTextValue($"Mods.ssm.Message.NoRework"), Color.LimeGreen);
+            }
+            if (ModCompatibility.Calamity.Loaded && ModCompatibility.Thorium.Loaded && !ModLoader.TryGetMod("WHummusMultiModBalancing", out Mod _))
+            {
+                Main.NewText(Language.GetTextValue($"Mods.ssm.Message.NoBalancing"), Color.LimeGreen);
             }
             //if (!ModLoader.TryGetMod("SoABardHealer", out Mod _) && ModLoader.TryGetMod("SoA", out Mod _) && ModLoader.TryGetMod("ThoriumMod", out Mod _))
             //{

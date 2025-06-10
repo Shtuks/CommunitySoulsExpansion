@@ -1,7 +1,6 @@
 ﻿using Terraria.ModLoader;
 using Terraria;
 using ThoriumMod;
-using ssm.Content.DamageClasses;
 using ssm.Core;
 using Fargowiltas.Items.Tiles;
 using ssm.Thorium.Essences;
@@ -12,7 +11,6 @@ using ThoriumMod.Items.BossFallenBeholder;
 using FargowiltasSouls.Core.AccessoryEffectSystem;
 using FargowiltasSouls.Core.Toggler.Content;
 using FargowiltasSouls.Content.Items.Accessories.Souls;
-using ThoriumMod.Items.Misc;
 
 namespace ssm.Thorium.Souls
 {

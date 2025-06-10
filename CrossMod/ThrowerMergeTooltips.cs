@@ -9,12 +9,15 @@ namespace ssm.CrossMod
     {
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
         {
-            for (int i = 0; i < tooltips.Count; i++)
+            if (item.defense > 0 || item.accessory)
             {
-                if (ShtunConfig.Instance.ThrowerMerge)
+                for (int i = 0; i < tooltips.Count; i++)
                 {
-                    tooltips[i].Text = Regex.Replace(tooltips[i].Text, "kinetic", "thrower", RegexOptions.IgnoreCase);
-                    tooltips[i].Text = Regex.Replace(tooltips[i].Text, "rogue", "thrower", RegexOptions.IgnoreCase);
+                    if (ShtunConfig.Instance.ThrowerMerge)
+                    {
+                        tooltips[i].Text = Regex.Replace(tooltips[i].Text, "kinetic", "thrower", RegexOptions.IgnoreCase);
+                        tooltips[i].Text = Regex.Replace(tooltips[i].Text, "rogue", "thrower", RegexOptions.IgnoreCase);
+                    }
                 }
             }
         }

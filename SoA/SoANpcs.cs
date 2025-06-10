@@ -7,6 +7,15 @@ using ssm.Content.Buffs;
 using FargowiltasSouls.Core.Systems;
 using SacredTools.NPCs.Boss.Lunarians;
 using ThoriumMod;
+using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework;
+using ReLogic.Content;
+using ssm.Content.NPCs;
+using FargowiltasSouls.Content.Bosses.MutantBoss;
+using Terraria.DataStructures;
+using System.IO;
+using Terraria.ModLoader.IO;
+using FargowiltasSouls.Core.Globals;
 
 namespace ssm.SoA
 {
@@ -14,7 +23,17 @@ namespace ssm.SoA
     [JITWhenModsEnabled(ModCompatibility.SacredTools.Name)]
     public partial class SoANpcs : GlobalNPC
     {
+        public bool summonedShieldOnce = false;
         public override bool InstancePerEntity => true;
+
+        public override void SendExtraAI(NPC npc, BitWriter bitWriter, BinaryWriter writer)
+        {
+            writer.Write(summonedShieldOnce);
+        }
+        public override void ReceiveExtraAI(NPC npc, BitReader bitReader, BinaryReader reader)
+        {
+            summonedShieldOnce = reader.ReadBoolean();
+        }
         public override void OnKill(NPC npc)
         {
             if(npc.type == ModContent.NPCType<Nihilus>() && !WorldSaveSystem.downedNihilus)
@@ -30,6 +49,20 @@ namespace ssm.SoA
                     Main.LocalPlayer.AddBuff(ModContent.BuffType<NihilityPresenceBuff>(), 2);
             }
             return base.PreAI(npc);
+        }
+        public override void AI(NPC npc)
+        {
+            if (npc.type == ModContent.NPCType<MutantBoss>())
+            {
+                npc.dontTakeDamage = NPC.CountNPCS(ModContent.NPCType<MutantAuraOfSupression>()) > 0;
+                if (!summonedShieldOnce)
+                {
+                    summonedShieldOnce = true;
+                    IEntitySource source = npc.GetSource_FromAI();
+                    int shield = NPC.NewNPC(source, (int)npc.Center.X, (int)npc.position.Y + npc.height, ModContent.NPCType<MutantAuraOfSupression>());
+                    Main.npc[shield].ai[0] = npc.whoAmI;
+                }
+            }
         }
     }
 

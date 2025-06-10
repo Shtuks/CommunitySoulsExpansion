@@ -3340,6 +3340,11 @@ Mods: {
 				DisplayName: Force of Radioactivity
 				Tooltip: ""
 			}
+
+			Catlight: {
+				Tooltip: Becomes stronger with bosses defeated: Mutant, Monstrosity
+				DisplayName: Catlight
+			}
 		}
 
 		Buffs: {
@@ -3496,6 +3501,7 @@ Mods: {
 			}
 
 			MutantIllusion.DisplayName: Monstrosity
+			MutantAuraOfSupression.DisplayName: Mutant Aura Of Supression
 		}
 
 		Toggler: {
@@ -3685,6 +3691,9 @@ Mods: {
 			SpectralFishron.DisplayName: Spectral Fishron
 			SquirrelRing.DisplayName: Squirrel Ring
 			FlariumGeyser.DisplayName: Flarium Geyser
+			CatlightProj.DisplayName: Catlight Proj
+			CatlightExtraProj.DisplayName: Catlight Extra Proj
+			CatlightDeathray.DisplayName: Catlight Deathray
 		}
 
 		Bestiary: {
@@ -3782,6 +3791,7 @@ Mods: {
 		DamageClasses.UnitedModdedThrower.DisplayName: thrower damage
 
 		Message: {
+			NoBalance: If you playing Calamity with Thorium, install WHummus' Calamity/Thorium Balancing
 			NoRework: It is recomended to play Thorium with Thorium Bosses Rework to enhance experience.
 			NoSoABardHealer1: We detected that you playing Shadows of Abaddon with Thorium Mod.
 			NoSoABardHealer2: Please install SoA Bard & Healer for better compatibility.

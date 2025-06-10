@@ -149,7 +149,7 @@ namespace ssm
                     ModCompatibility.SacredTools.Mod.TryFind<ModItem>("NihilusObelisk", out ModItem Obelisk);
                     
                     Add("Boss",
-                    "Nihilus",
+                    "AbyssalShadowflame",
                     27.999f,
                     new List<int> {Nihilus.Type},
                     () => WorldSaveSystem.downedNihilus,
@@ -166,16 +166,6 @@ namespace ssm
 
         public override void Load()
         {
-            //// Load the overlay texture
-            //overlayTexture = ModContent.Request<Texture2D>("ssm/Assets/ModIcon/LifeStar", AssetRequestMode.ImmediateLoad).Value;
-
-            //// Get the UIModItem.Draw method using reflection
-            //Type uiModItemType = typeof(ModLoader).Assembly.GetType("Terraria.ModLoader.UI.UIModItem");
-            //MethodInfo drawMethod = uiModItemType.GetMethod("Draw", BindingFlags.Instance | BindingFlags.Public);
-
-            //// Add the hook with a compatible delegate
-            //MonoModHooks.Add(drawMethod, (Action<object, SpriteBatch>)DrawHook);
-
             _bossSummonUI = new UserInterface();
             ModIntergationSystem.BossChecklist.AdjustValues();
 
@@ -213,11 +203,7 @@ namespace ssm
 
         public override void Unload()
         {
-            //overlayTexture = null;
-            if (_bossSummonUI != null)
-            {
-                _bossSummonUI = null;
-            }
+            _bossSummonUI = null;
             Instance = null;
         }
         public void ShowBossSummonUI()

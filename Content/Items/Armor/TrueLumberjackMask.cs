@@ -16,7 +16,7 @@ using Microsoft.Xna.Framework.Graphics;
 namespace ssm.Content.Items.Armor
 {
     [AutoloadEquip(EquipType.Head)]
-    public class TrueLumberjackMask : AnticheatItem
+    public class TrueLumberjackMask : ModItem
     {
         public override void SetDefaults()
         {

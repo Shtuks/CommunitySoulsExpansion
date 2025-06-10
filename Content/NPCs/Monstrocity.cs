@@ -32,17 +32,16 @@ namespace ssm.Content.NPCs
             "Starlightwilta",
             "Wargofilwta",
             "Mutant",
-            "Senpai",
             "TheLorde",
             "Bakarim",
             "Apotheosis",
             "Thanatos",
             "Spamton"
         };
+        
         public override void SetStaticDefaults()
         {
             Main.npcFrameCount[NPC.type] = 26;
-
             NPCID.Sets.ExtraFramesCount[NPC.type] = 9;
             NPCID.Sets.AttackFrameCount[NPC.type] = 4;
             NPCID.Sets.DangerDetectRange[NPC.type] = 700;

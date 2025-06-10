@@ -89,6 +89,12 @@
 	  <Reference Include="HEROsMod">
 	    <HintPath>lib\HEROsMod.dll</HintPath>
 	  </Reference>
+	  <Reference Include="InfernalEclipseAPI">
+	    <HintPath>..\..\ModReader\InfernalEclipseAPI\InfernalEclipseAPI.dll</HintPath>
+	  </Reference>
+	  <Reference Include="InfernumMode">
+	    <HintPath>..\..\ModReader\InfernumMode\InfernumMode.dll</HintPath>
+	  </Reference>
 	  <Reference Include="Luminance">
 	    <HintPath>lib\Luminance.dll</HintPath>
 	  </Reference>

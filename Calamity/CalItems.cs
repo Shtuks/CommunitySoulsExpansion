@@ -7,6 +7,7 @@ using Terraria;
 using Terraria.ModLoader;
 using Terraria.ID;
 using CalamityMod.Items.Weapons.Rogue;
+using CalamityMod.Items.Potions;
 
 namespace ssm.Calamity
 {
@@ -41,6 +42,10 @@ namespace ssm.Calamity
             if (entity.type == ItemID.Zenith)
             {
                 entity.damage = (int)(entity.damage * 1.3f);
+            }
+            if (entity.type == ModContent.ItemType<OmegaHealingPotion>() && ModCompatibility.SacredTools.Loaded)
+            {
+                entity.healLife = 400;
             }
         }
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)

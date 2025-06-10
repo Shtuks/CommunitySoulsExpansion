@@ -17,7 +17,7 @@ using FargowiltasSouls.Content.Items.Accessories.Enchantments;
 namespace ssm.Content.Items.Accessories
 {
     [AutoloadEquip(EquipType.Wings)]
-    public class StargateSoul : AnticheatItem
+    public class StargateSoul : ModItem
     {
         public override void SetStaticDefaults()
         {

@@ -41,6 +41,8 @@ namespace ssm.Content.NPCs.MutantEX
     [AutoloadBossHead]
     public class MutantEX : ModNPC
     {
+        //lumberjack
+       // public override string Texture => $"ssm/Content/NPCs/MutantEX/MutantEX{FargoSoulsUtil.TryAprilFoolsTexture}";
 
         public SlotId? TelegraphSound = null;
         Player player => Main.player[NPC.target];
