@@ -6,6 +6,7 @@ using FargowiltasSouls.Content.Items.Accessories.Souls;
 using Fargowiltas.Items.Tiles;
 using FargowiltasSouls.Content.Items.Materials;
 using ThoriumMod.Buffs.Bard;
+using ssm.CrossMod.CraftingStations;
 
 namespace ssm.Thorium.Souls
 {
@@ -77,7 +78,7 @@ namespace ssm.Thorium.Souls
             recipe.AddIngredient(null, "AsgardForce");
             recipe.AddIngredient(null, "MotDE");
 
-            recipe.AddTile<CrucibleCosmosSheet>();
+            recipe.AddTile<DreamersForgeTile>();
 
             recipe.Register();
         }

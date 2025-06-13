@@ -135,11 +135,6 @@ namespace ssm.Content.Items.Accessories
                 ModContent.Find<ModItem>(ModCompatibility.Crossmod.Name, "VagabondsSoul").UpdateAccessory(player, false);
             }
 
-            if (ModCompatibility.SoulsCompat.Loaded)
-            {
-                ModContent.Find<ModItem>(ModCompatibility.SoulsCompat.Name, "SoulOfTmod").UpdateAccessory(player, false);
-            }
-
             if (ModCompatibility.Spooky.Loaded)
             {
                 ModContent.Find<ModItem>(Mod.Name, "HorrorForce").UpdateAccessory(player, false);

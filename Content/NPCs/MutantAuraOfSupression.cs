@@ -11,6 +11,8 @@ using Terraria;
 using Microsoft.Xna.Framework;
 using FargowiltasSouls.Core.Systems;
 using ssm.Core;
+using FargowiltasSouls.Content.Items.Armor;
+using FargowiltasSouls.Content.Projectiles;
 
 namespace ssm.Content.NPCs
 {
@@ -32,7 +34,7 @@ namespace ssm.Content.NPCs
         }
         public override void SetDefaults()
         {
-            NPC.boss = true;
+            //NPC.boss = true;
             NPC.scale = 1.3f;
             NPC.width = 182;
             NPC.height = 210;
@@ -60,7 +62,7 @@ namespace ssm.Content.NPCs
         }
         public override bool? CanBeHitByProjectile(Projectile projectile)
         {
-            if (projectile.GetGlobalProjectile<ModGlobalProjectile>().relicProj || SoASets.Projectile.RelicProjectileType[projectile.type] != 0)
+            if (projectile.GetGlobalProjectile<ModGlobalProjectile>().relicProj || SoASets.Projectile.RelicProjectileType[projectile.type] != 0 || projectile.type == ModContent.ProjectileType<StyxGazerArmor>() || projectile.type == ModContent.ProjectileType<StyxArmorScythe>() || projectile.type == ModContent.ProjectileType<StyxArmorScythe2>())
             {
                 return null;
             }

@@ -8,6 +8,7 @@ using Terraria.ModLoader;
 using Terraria.ID;
 using CalamityMod.Items.Weapons.Rogue;
 using CalamityMod.Items.Potions;
+using FargowiltasSouls.Content.Items.Accessories.Souls;
 
 namespace ssm.Calamity
 {
@@ -46,6 +47,10 @@ namespace ssm.Calamity
             if (entity.type == ModContent.ItemType<OmegaHealingPotion>() && ModCompatibility.SacredTools.Loaded)
             {
                 entity.healLife = 400;
+            }
+            if (entity.type == ModContent.ItemType<ColossusSoul>())
+            {
+                entity.defense = 15;
             }
         }
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)

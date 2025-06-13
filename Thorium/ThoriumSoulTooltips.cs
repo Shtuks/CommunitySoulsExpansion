@@ -14,17 +14,20 @@ namespace ssm.SoA
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
         {
             string key = "Mods.ssm.Items.AddedEffects.";
-
-            if (item.type == ModContent.ItemType<ColossusSoul>() && !item.social)
+            
+            if (!ModCompatibility.IEoR.Loaded)
             {
-                tooltips.Insert(8, new TooltipLine(Mod, "ThoriumColossusSoul", Language.GetTextValue(key + "ThoriumColossus")));
-                int index = tooltips.FindIndex((TooltipLine t) => t.Mod.Equals("Terraria") && t.Name.Equals("ItemName"));
-                if (index != -1)
+                if (item.type == ModContent.ItemType<ColossusSoul>() && !item.social)
                 {
-                    tooltips.Insert(index + 1, new TooltipLine(base.Mod, "AccessoryWarning", "-Omni Shield-")
+                    tooltips.Insert(8, new TooltipLine(Mod, "ThoriumColossusSoul", Language.GetTextValue(key + "ThoriumColossus")));
+                    int index = tooltips.FindIndex((TooltipLine t) => t.Mod.Equals("Terraria") && t.Name.Equals("ItemName"));
+                    if (index != -1)
                     {
-                        OverrideColor = new Color(102, 255, 255)
-                    });
+                        tooltips.Insert(index + 1, new TooltipLine(base.Mod, "AccessoryWarning", "-Omni Shield-")
+                        {
+                            OverrideColor = new Color(102, 255, 255)
+                        });
+                    }
                 }
             }
 

@@ -38,7 +38,16 @@ namespace ssm
 
             return distance;
         }
+        public static bool IsModItem(Item item, string mod)
+        {
+            if (item.ModItem is not null)
+            {
+                string modName = item.ModItem.Mod.Name;
+                return modName.Equals(mod);
+            }
 
+            return false;
+        }
         public static Projectile ProjectileRain(IEntitySource source, Vector2 targetPos, float xLimit, float xVariance, float yLimitLower, float yLimitUpper, float projSpeed, int projType, int damage, float knockback, int owner)
         {
             float x = targetPos.X + Main.rand.NextFloat(-xLimit, xLimit);

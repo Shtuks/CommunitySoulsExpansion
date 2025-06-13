@@ -29,12 +29,13 @@ namespace ssm
 
         public override void Load()
         {
-            //if (ModCompatibility.Redemption.Loaded) { multiplierA += 1f; }
+            if (ModCompatibility.IEoR.Loaded) { multiplierM += 5f; }
+            if (ModCompatibility.Redemption.Loaded) { multiplierA += 1f; }
             if (ModCompatibility.Thorium.Loaded && !ModCompatibility.Calamity.Loaded) { multiplierA += 1f; }
             if (ModCompatibility.SacredTools.Loaded && !ModCompatibility.Calamity.Loaded) { multiplierM += 0.7f; }
             if (ModCompatibility.Calamity.Loaded && !ModCompatibility.SacredTools.Loaded) { multiplierM += 1f; }
             if (ModCompatibility.Thorium.Loaded) { multiplierM += 0.9f; multiplierA += 3f; }
-            if (ModCompatibility.Calamity.Loaded) { multiplierM += 1.8f; multiplierA += 6f; }
+            if (ModCompatibility.Calamity.Loaded) { multiplierM += 1.8f; multiplierA += 7f; }
             if (ModCompatibility.SacredTools.Loaded) { multiplierM += 1.3f; multiplierA += 2f; }
         }
         public override void SetDefaults(NPC npc)
@@ -47,20 +48,16 @@ namespace ssm
 
             if (npc.type == ModContent.NPCType<MutantBoss>())
             {
-                int mutantHealth = 10000000;
-
                 multiplierM *= num ? 0.5f : 1f;
 
-                npc.damage = Main.getGoodWorld ? 2000 : (int)(500 + (110 * Math.Round(multiplierM, 1)));
-                npc.lifeMax = (int)(mutantHealth + (mutantHealth * Math.Round(multiplierM, 1)));
+                npc.damage = Main.getGoodWorld ? 2000 : (int)(500 + (125 * (ModCompatibility.IEoR.Loaded ? Math.Round(multiplierM, 1) * 0.5f : Math.Round(multiplierM, 1))));
+                npc.lifeMax = (int)(10000000 + (10000000 * Math.Round(multiplierM, 1)));
             }
 
             if (npc.type == ModContent.NPCType<AbomBoss>())
             {
-                int abomHealth = 1000000;
-
-                npc.damage = Main.getGoodWorld ? 1000 : (int)(250 + (20 * multiplierA));
-                npc.lifeMax = (int)(2800000 + (abomHealth * multiplierA)) / 2;
+                npc.damage = Main.getGoodWorld ? 1000 : (int)(250 + (15 * multiplierA));
+                npc.lifeMax = (int)(2800000 + (1000000 * multiplierA)) / (Main.expertMode ? 2 : 4);
             }
         }
         public override void SetStaticDefaults()

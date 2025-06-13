@@ -31,7 +31,7 @@ namespace ssm.Thorium
         {
             if (item.type == ModContent.ItemType<OmniCannon>())
             {
-                velocity *= 1.2f;
+                velocity *= 1.3f;
             }
         }
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)

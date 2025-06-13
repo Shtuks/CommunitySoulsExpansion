@@ -11,6 +11,7 @@ using ssm.Systems;
 using ssm.Core;
 using FargowiltasSouls.Content.Items.Materials;
 using SacredTools.Content.Items.Materials;
+using ssm.CrossMod.CraftingStations;
 
 namespace ssm.SoA.Souls
 {
@@ -55,7 +56,7 @@ namespace ssm.SoA.Souls
             recipe.AddIngredient<SyranForce>();
             recipe.AddIngredient<AbomEnergy>(10);
             recipe.AddIngredient<EmberOfOmen>(5);
-            recipe.AddTile<CrucibleCosmosSheet>();
+            recipe.AddTile<SyranCraftingStationTile>();
             recipe.Register();
         }
     }

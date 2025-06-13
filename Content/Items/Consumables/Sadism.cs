@@ -1,4 +1,3 @@
-using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -10,18 +9,18 @@ namespace ssm.Content.Items.Consumables
     {
         public override void SetDefaults()
         {
-            ((Entity)this.Item).width = 20;
-            ((Entity)this.Item).height = 20;
-            this.Item.maxStack = 30;
-            this.Item.rare = 11;
-            this.Item.useStyle = 2;
-            this.Item.useAnimation = 17;
-            this.Item.useTime = 17;
-            this.Item.consumable = true;
-            this.Item.buffType = ModContent.BuffType<SadismEX>();
-            this.Item.buffTime = int.MaxValue;
-            this.Item.UseSound = SoundID.Item3;
-            this.Item.value = Item.sellPrice(10, 0, 0, 0);
+            Item.width = 20;
+            Item.height = 20;
+            Item.maxStack = 30;
+            Item.rare = 11;
+            Item.useStyle = 2;
+            Item.useAnimation = 17;
+            Item.useTime = 17;
+            Item.consumable = true;
+            Item.buffType = ModContent.BuffType<SadismEX>();
+            Item.buffTime = int.MaxValue;
+            Item.UseSound = SoundID.Item3;
+            Item.value = Item.sellPrice(10, 0, 0, 0);
         }
     }
 }

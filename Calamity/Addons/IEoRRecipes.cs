@@ -30,29 +30,4 @@ namespace ssm.Calamity.Addons
             }
         }
     }
-
-    [ExtendsFromMod(ModCompatibility.IEoR.Name)]
-    [JITWhenModsEnabled(ModCompatibility.IEoR.Name)]
-    public class IeORItem : GlobalItem
-    {
-        public override bool InstancePerEntity => true;
-
-        public override void ModifyWeaponDamage(Item entity, Player player, ref StatModifier damage)
-        {
-            if (FargoSoulsUtil.BossIsAlive(ref EModeGlobalNPC.mutantBoss, ModContent.NPCType<MutantBoss>())){
-                if (entity.type == ModCompatibility.IEoR.Mod.Find<ModItem>("Swordofthe14thGlitch").Type)
-                {
-                    damage *= 0.1f;
-                }
-                if (entity.type == ModCompatibility.IEoR.Mod.Find<ModItem>("NovaBomb").Type)
-                {
-                    damage *= 0.01f;
-                }
-                if (entity.type == ModLoader.GetMod("InfernumMode").Find<ModItem>("Kevin").Type)
-                {
-                    damage *= 0.1f;
-                }
-            }
-        }
-    }
 }

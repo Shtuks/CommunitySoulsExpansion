@@ -1,10 +1,13 @@
 ﻿using BombusApisBee.BeeDamageClass;
 using ClickerClass.Utilities;
 using FargowiltasSouls;
+using FargowiltasSouls.Content.Bosses.MutantBoss;
 using FargowiltasSouls.Content.Items.Armor;
 using FargowiltasSouls.Content.Items.Summons;
 using FargowiltasSouls.Content.Items.Weapons.FinalUpgrades;
 using FargowiltasSouls.Content.Items.Weapons.SwarmDrops;
+using FargowiltasSouls.Core.Globals;
+using FargowiltasSouls.Core.Systems;
 using Microsoft.Xna.Framework;
 using ssm.Content.DamageClasses;
 using ssm.Core;
@@ -58,6 +61,14 @@ namespace ssm
             }
         }
 
+        public override void ModifyWeaponDamage(Item item, Player player, ref StatModifier damage)
+        {
+            if (FargoSoulsUtil.BossIsAlive(ref EModeGlobalNPC.mutantBoss, ModContent.NPCType<MutantBoss>()) && damage.Flat > 100000 && !ShtunUtils.IsModItem(item, "SacredTools") && !ShtunUtils.IsModItem(item, "FargowiltasSouls"))
+            {
+                damage *= 0.1f;
+            }
+        }
+
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
         {
             if (ModCompatibility.Crossmod.Loaded)
@@ -81,7 +92,7 @@ namespace ssm
                 if (ModCompatibility.SacredTools.Loaded)
                 {
                     tooltips.Add(new TooltipLine(Mod, "7m", "In first phase Mutant will have Aura of Supression. After destroying aura second phase will start."));
-                    tooltips.Add(new TooltipLine(Mod, "8m", "Aura can be destroyed only with Relic Weapons and makes Mutant immune to damage if active."));
+                    tooltips.Add(new TooltipLine(Mod, "8m", "Aura can be destroyed only with Relic Weapons or Styx Armor set bonus. Mutant immune to damage if aura active."));
                 }
             }
         }

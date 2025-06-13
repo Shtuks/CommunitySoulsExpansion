@@ -3268,7 +3268,7 @@ Mods: {
 
 			StarblightFruit: {
 				DisplayName: Starblight Fruit
-				Tooltip: ""
+				Tooltip: Gived permanent accessory slot and some potions effects
 			}
 
 			DragonEnchant2: {

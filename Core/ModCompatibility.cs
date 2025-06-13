@@ -23,15 +23,15 @@ public static class ModCompatibility
         public static bool Loaded => ModLoader.HasMod(Name);
         public static Mod Mod => ModLoader.GetMod(Name);
     }
-    public static class IEoR
+    public static class AlchNPCs
     {
-        public const string Name = "InfernalEclipseAPI";
+        public const string Name = "AlchemistNPCLite";
         public static bool Loaded => ModLoader.HasMod(Name);
         public static Mod Mod => ModLoader.GetMod(Name);
     }
-    public static class SoulsCompat
+    public static class IEoR
     {
-        public const string Name = "FargoMoreSoulsCompat";
+        public const string Name = "InfernalEclipseAPI";
         public static bool Loaded => ModLoader.HasMod(Name);
         public static Mod Mod => ModLoader.GetMod(Name);
     }
