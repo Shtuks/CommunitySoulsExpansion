@@ -5,7 +5,6 @@ using CatalystMod.NPCs.Boss.Astrageldon;
 using ssm.Core;
 using NoxusBoss.Content.NPCs.Bosses.Draedon;
 using CalamityMod.NPCs.ExoMechs;
-using CalamityHunt.Content.NPCs.Bosses.GoozmaBoss;
 
 namespace ssm.Calamity.Addons
 {
@@ -21,27 +20,12 @@ namespace ssm.Calamity.Addons
                 {
                     if (Bosses[i].EntityID == ModContent.NPCType<Providence>())
                     {
-                        Bosses.Add(new Boss(ModContent.NPCType<Astrageldon>(), TimeChangeContext.Night));
+                        Bosses.Insert(i, new Boss(ModContent.NPCType<Astrageldon>(), TimeChangeContext.Night));
                     }
                 }
             }
         }
     }
-    //[ExtendsFromMod(ModCompatibility.Goozma.Name, ModCompatibility.Calamity.Name)]
-    //[JITWhenModsEnabled(ModCompatibility.Goozma.Name, ModCompatibility.Calamity.Name)]
-    //public class HotGBossRush : ModSystem
-    //{
-    //    public override void PostSetupContent()
-    //    {
-    //        for (int i = Bosses.Count - 1; i >= 0; i--)
-    //        {
-    //            if (Bosses[i].EntityID == ModContent.NPCType<Draedon>())
-    //            {
-    //                Bosses.Add(new Boss(ModContent.NPCType<Goozma>(), TimeChangeContext.Night));
-    //            }
-    //        }
-    //    }
-    //}
     [ExtendsFromMod(ModCompatibility.WrathoftheGods.Name, ModCompatibility.Calamity.Name)]
     [JITWhenModsEnabled(ModCompatibility.WrathoftheGods.Name, ModCompatibility.Calamity.Name)]
     public class WotGBossRush : ModSystem
@@ -52,7 +36,7 @@ namespace ssm.Calamity.Addons
             {
                 if (Bosses[i].EntityID == ModContent.NPCType<Draedon>())
                 {
-                    Bosses.Add(new Boss(ModContent.NPCType<MarsBody>(), TimeChangeContext.Night));
+                    Bosses.Insert(i, new Boss(ModContent.NPCType<MarsBody>(), TimeChangeContext.Night));
                 }
             }
         }

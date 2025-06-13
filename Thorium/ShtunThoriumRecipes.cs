@@ -10,6 +10,9 @@ using Terraria.ID;
 using ThoriumMod.Items.Misc;
 using FargowiltasSouls.Content.Items.Summons;
 using ThoriumMod.Items.BossThePrimordials.Rhapsodist;
+using FargowiltasSouls.Content.Items.Armor;
+using ThoriumMod.Items.BossThePrimordials.Omni;
+using ThoriumMod.Items.BossThePrimordials.Aqua;
 
 namespace ssm.Thorium
 {
@@ -83,6 +86,21 @@ namespace ssm.Thorium
                 {
                     recipe.RemoveIngredient(ItemID.ManaFlower);
                     recipe.AddIngredient(ItemID.NaturesGift);
+                }
+                if (recipe.HasResult<StyxCrown>() && !recipe.HasIngredient(549))
+                {
+                    recipe.RemoveIngredient(549);
+                    recipe.AddIngredient(ModContent.ItemType<DeathEssence>(), 10);
+                }
+                if (recipe.HasResult<StyxLeggings>() && !recipe.HasIngredient(547))
+                {
+                    recipe.RemoveIngredient(547);
+                    recipe.AddIngredient(ModContent.ItemType<OceanEssence>(), 10);
+                }
+                if (recipe.HasResult<StyxChestplate>() && !recipe.HasIngredient(548))
+                {
+                    recipe.RemoveIngredient(548);
+                    recipe.AddIngredient(ModContent.ItemType<OceanEssence>(), 10);
                 }
             }
 		}

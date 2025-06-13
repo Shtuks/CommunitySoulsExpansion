@@ -31,7 +31,9 @@ namespace ssm
     public partial class ssm : Mod
     {
         // Swarms
+        public static bool EndgameSwarmActive;
         public static bool PostMLSwarmActive;
+        public static bool LateHardmodeSwarmActive;
         public static bool HardmodeSwarmActive;
         public static bool SwarmNoHyperActive;
         public static int SwarmItemsUsed;
@@ -142,25 +144,25 @@ namespace ssm
                 //    true
                 //);
 
-                if (ModCompatibility.SacredTools.Loaded)
-                {
-                    ModCompatibility.SacredTools.Mod.TryFind<ModNPC>("Nihilus", out ModNPC Nihilus);
-                    ModCompatibility.SacredTools.Mod.TryFind<ModItem>("EmberOfOmen", out ModItem Ember);
-                    ModCompatibility.SacredTools.Mod.TryFind<ModItem>("NihilusObelisk", out ModItem Obelisk);
+                //if (ModCompatibility.SacredTools.Loaded)
+                //{
+                //    ModCompatibility.SacredTools.Mod.TryFind<ModNPC>("Nihilus", out ModNPC Nihilus);
+                //    ModCompatibility.SacredTools.Mod.TryFind<ModItem>("EmberOfOmen", out ModItem Ember);
+                //    ModCompatibility.SacredTools.Mod.TryFind<ModItem>("NihilusObelisk", out ModItem Obelisk);
                     
-                    Add("Boss",
-                    "AbyssalShadowflame",
-                    27.999f,
-                    new List<int> {Nihilus.Type},
-                    () => WorldSaveSystem.downedNihilus,
-                    () => true,
-                    new List<int> {
-                        Ember.Type
-                    },
-                    new List<int> { Obelisk.Type },
-                    true
-                );
-                }
+                //    Add("Boss",
+                //    "AbyssalShadowflame",
+                //    27.999f,
+                //    new List<int> {Nihilus.Type},
+                //    () => WorldSaveSystem.downedNihilus,
+                //    () => true,
+                //    new List<int> {
+                //        Ember.Type
+                //    },
+                //    new List<int> { Obelisk.Type },
+                //    true
+                //);
+                //}
             }
         }
 

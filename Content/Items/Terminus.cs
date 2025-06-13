@@ -22,21 +22,20 @@ public class ShtunTerminus : ModItem, ILocalizedModType, IModType
         Item.useTime = 45;
         Item.channel = true;
         Item.noUseGraphic = true;
-
-        if (!ModCompatibility.WrathoftheGods.Loaded)
-        {
-            Item.shoot = ModContent.ProjectileType<TerminusHoldout>();
-        }
-        else
-        {
-            ModCompatibility.WrathoftheGods.Mod.TryFind<ModProjectile>("TerminusProj", out ModProjectile terminusProj);
-            Item.shoot = terminusProj.Type;
-        }
-
+        Item.shoot = ModContent.ProjectileType<TerminusHoldout>();
         Item.useStyle = 4;
         Item.consumable = false;
     }
 
+    public override bool AltFunctionUse(Player player)
+    {
+        if (ModCompatibility.WrathoftheGods.Loaded)
+        {
+            ModCompatibility.WrathoftheGods.Mod.TryFind<ModProjectile>("TerminusProj", out ModProjectile terminusProj);
+            Item.shoot = terminusProj.Type;
+        }
+        return ModCompatibility.WrathoftheGods.Loaded;
+    }
     public override void UpdateInventory(Player player)
     {
         if (Main.zenithWorld)
@@ -44,7 +43,6 @@ public class ShtunTerminus : ModItem, ILocalizedModType, IModType
             Item.SetNameOverride(this.GetLocalizedValue("GFBName"));
         }
     }
-
     public override bool PreDrawInInventory(SpriteBatch spriteBatch, Vector2 position, Rectangle frameI, Color drawColor, Color itemColor, Vector2 origin, float scale)
     {
         if (Main.zenithWorld)

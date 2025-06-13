@@ -7,15 +7,22 @@ using ssm.Content.Buffs;
 using FargowiltasSouls.Core.Systems;
 using SacredTools.NPCs.Boss.Lunarians;
 using ThoriumMod;
-using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework;
-using ReLogic.Content;
 using ssm.Content.NPCs;
 using FargowiltasSouls.Content.Bosses.MutantBoss;
 using Terraria.DataStructures;
 using System.IO;
 using Terraria.ModLoader.IO;
-using FargowiltasSouls.Core.Globals;
+using SacredTools.Content.NPCs.Boss.Decree;
+using static Terraria.ModLoader.ModContent;
+using CalamityHunt.Common.Players;
+using SacredTools.Content.NPCs.Boss.Jensen;
+using SacredTools.NPCs.Boss.Pumpkin;
+using SacredTools.NPCs.Boss.Jensen;
+using SacredTools.NPCs.Boss.Araneas;
+using SacredTools.NPCs.Boss.Raynare;
+using SacredTools.NPCs.Boss.Primordia;
+using SacredTools.NPCs.Boss.Abaddon;
+using SacredTools.NPCs.Boss.Araghur;
 
 namespace ssm.SoA
 {
@@ -33,6 +40,36 @@ namespace ssm.SoA
         public override void ReceiveExtraAI(NPC npc, BitReader bitReader, BinaryReader reader)
         {
             summonedShieldOnce = reader.ReadBoolean();
+        }
+
+        public override void SetDefaults(NPC npc)
+        {
+            int num1 = 30000;
+            int num2 = 300000;
+            int num3 = 30000000;
+
+            int num12 = 50;
+            int num22 = 100;
+            int num32 = 200;
+
+            if (ssm.SwarmSetDefaults)
+            {
+                if (npc.type == NPCType<DecreeLegacy>() || npc.type == NPCType<JensenLegacy>() || npc.type == NPCType<Ralnek>() || npc.type == NPCType<Ralnek2>())
+                {
+                    npc.lifeMax = num1 * ssm.SwarmItemsUsed;
+                    npc.damage = num12 * ssm.SwarmItemsUsed;
+                }
+                if (npc.type == NPCType<Araneas>() || npc.type == NPCType<Raynare>() || npc.type == NPCType<Primordia>() || npc.type == NPCType<Primordia2>())
+                {
+                    npc.lifeMax = num2 * ssm.SwarmItemsUsed;
+                    npc.damage = num22 * ssm.SwarmItemsUsed;
+                }
+                if (npc.type == NPCType<Abaddon>() || npc.type == NPCType<AraghurHead>() || npc.type == NPCType<Novaniel>() || npc.type == NPCType<SacredTools.NPCs.Boss.Erazor.ErazorBoss>())
+                {
+                    npc.lifeMax = num3 * ssm.SwarmItemsUsed;
+                    npc.damage = num32 * ssm.SwarmItemsUsed;
+                }
+            }
         }
         public override void OnKill(NPC npc)
         {

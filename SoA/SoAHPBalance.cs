@@ -36,7 +36,7 @@ namespace ssm.SoA
                 num = CheckBossRush();
             }
 
-            if (!num && !fullHP)
+            if (!num && !fullHP && !ssm.SwarmActive)
             {
                 if (npc.type == ModContent.NPCType<ErazorBoss>())
                 {

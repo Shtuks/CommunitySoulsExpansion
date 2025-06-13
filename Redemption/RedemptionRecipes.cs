@@ -68,9 +68,8 @@ namespace ssm.Redemption
                     }
                 }
 
-                //emblem -> essence -> mutagen -> soul
-                //Where clamity post dog acc? I dont know.
-                //Where are soa sigils? In anthraltite enchant
+                //emblem -> essence -> mutagen/post-dog acc -> soul
+                //Where are soa sigils? In asthrashite enchant
 
                 if (recipe.HasResult<MutagenMagic>() && !recipe.HasResult<ApprenticesEssence>())
                 {

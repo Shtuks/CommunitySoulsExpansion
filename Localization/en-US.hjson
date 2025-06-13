@@ -3158,7 +3158,7 @@ Mods: {
 
 			ShtunTerminus: {
 				DisplayName: Terminus
-				Tooltip: ""
+				Tooltip: "Summons Boss Rush. If WotG enabled summons Nameless Deity on RMB."
 			}
 
 			BeekeeperEssence: {

@@ -1,4 +1,5 @@
 using CalamityMod.Events;
+using Fargowiltas;
 using FargowiltasSouls.Content.Bosses.AbomBoss;
 using FargowiltasSouls.Content.Bosses.MutantBoss;
 using ssm.Core;
@@ -6,6 +7,7 @@ using System;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Microsoft.Xna.Framework;
 
 namespace ssm
 {
@@ -27,6 +29,9 @@ namespace ssm
         public static float multiplierM = 0;
         public static float multiplierA = 0;
 
+        public bool SwarmActive;
+        public bool SwarmHealth;
+        private int go = 1;
         public override void Load()
         {
             if (ModCompatibility.IEoR.Loaded) { multiplierM += 5f; }
@@ -59,6 +64,21 @@ namespace ssm
                 npc.damage = Main.getGoodWorld ? 1000 : (int)(250 + (15 * multiplierA));
                 npc.lifeMax = (int)(2800000 + (1000000 * multiplierA)) / (Main.expertMode ? 2 : 4);
             }
+
+            if (!ssm.SwarmActive)
+            {
+                return;
+            }
+
+            if (FargoSets.NPCs.SwarmHealth[npc.type] != 0)
+            {
+                npc.lifeMax = FargoSets.NPCs.SwarmHealth[npc.type];
+            }
+
+            if (!npc.townNPC && npc.lifeMax > 10 && npc.damage > 0 && npc.damage < ssm.SwarmMinDamage * 2)
+            {
+                npc.damage = ssm.SwarmMinDamage * 2;
+            }
         }
         public override void SetStaticDefaults()
         {
@@ -76,6 +96,10 @@ namespace ssm
             {
                 chtuxlagorInferno--;
             }
+            if (go == 2)
+            {
+                go = 1;
+            }
         }
         
         public void ApplyDPSDebuff(int lifeRegenValue, int damageValue, ref int lifeRegen, ref int damage)
@@ -90,6 +114,47 @@ namespace ssm
             {
                 damage = damageValue;
             }
+        }
+        public override bool PreAI(NPC npc)
+        {
+            if (ssm.SwarmNoHyperActive)
+            {
+                return true;
+            }
+
+            if (ssm.EndgameSwarmActive && Main.GameUpdateCount % 5 == 0)
+            {
+                return true;
+            }
+
+            if (ssm.PostMLSwarmActive && Main.GameUpdateCount % 4 == 0)
+            {
+                return true;
+            }
+
+            if (ssm.LateHardmodeSwarmActive && Main.GameUpdateCount % 3 == 0)
+            {
+                return true;
+            }
+
+            if (ssm.HardmodeSwarmActive && Main.GameUpdateCount % 2 == 0)
+            {
+                return true;
+            }
+
+            if (ssm.SwarmActive && !npc.townNPC && npc.lifeMax > 1 && go < 2)
+            {
+                go++;
+                npc.AI();
+                float num = 0.5f;
+                Vector2 position = npc.position + npc.velocity * num;
+                if (!Collision.SolidCollision(position, npc.width, npc.height))
+                {
+                    npc.position = position;
+                }
+            }
+
+            return true;
         }
     }
 }

@@ -18,6 +18,8 @@ using FargowiltasSouls.Core.Globals;
 using FargowiltasSouls.Content.Bosses.MutantBoss;
 using ssm.Core;
 using FargowiltasSouls.Core.Systems;
+using CalamityMod.Systems;
+using CalamityMod.Events;
 
 namespace ssm
 {
@@ -177,6 +179,9 @@ namespace ssm
             {
                 Main.NewText(Language.GetTextValue($"Mods.ssm.Message.NoBalancing"), Color.LimeGreen);
             }
+
+            Main.NewText(BossRushEvent.Bosses, Color.LimeGreen);
+
             //if (!ModLoader.TryGetMod("SoABardHealer", out Mod _) && ModLoader.TryGetMod("SoA", out Mod _) && ModLoader.TryGetMod("ThoriumMod", out Mod _))
             //{
             //    Main.NewText(Language.GetTextValue($"Mods.ssm.Message.NoSoABardHealer1"), Color.Purple);

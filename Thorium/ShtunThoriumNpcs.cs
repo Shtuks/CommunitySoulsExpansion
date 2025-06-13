@@ -4,6 +4,18 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using ThoriumMod.NPCs.BossMini;
 using ssm.Core;
+using ThoriumMod.NPCs.BossQueenJellyfish;
+using ThoriumMod.NPCs.BossTheGrandThunderBird;
+using ThoriumMod.NPCs.BossGraniteEnergyStorm;
+using ThoriumMod.NPCs.BossBuriedChampion;
+using static Terraria.ModLoader.ModContent;
+using ThoriumMod.NPCs.BossBoreanStrider;
+using ThoriumMod.NPCs.BossFallenBeholder;
+using ThoriumMod.NPCs.BossLich;
+using ThoriumMod.NPCs.BossForgottenOne;
+using ThoriumMod.NPCs.BossThePrimordials;
+using ThoriumMod.NPCs.BossViscount;
+using ThoriumMod.NPCs.BossStarScouter;
 
 
 namespace ssm.Thorium
@@ -16,7 +28,6 @@ namespace ssm.Thorium
         public override bool InstancePerEntity => true;
         public override bool PreKill(NPC npc)
         {
-            #region newshopitemdisplay
             bool doDeviText = false;
             if (npc.type == ModContent.NPCType<PatchWerk>() && !ThoriumWorldSave.downedPatchWrek)
             {
@@ -37,60 +48,36 @@ namespace ssm.Thorium
             {
                 Main.NewText("A new item has been unlocked in Deviantt's shop!", Color.HotPink);
             }
-            #endregion
+            return true;
+        }
+        public override void SetDefaults(NPC npc)
+        {
+            int num1 = ModCompatibility.Calamity.Loaded || ModCompatibility.SacredTools.Loaded ? 30000 : 20000;
+            int num2 = ModCompatibility.Calamity.Loaded || ModCompatibility.SacredTools.Loaded ? 300000 : 150000;
+            int num3 = 30000000;
 
-    //        if (NoLoot)
-    //        {
-    //            return false;
-    //        }
-    //        if (SwarmActive && ssm.SwarmActive && Main.netMode != NetmodeID.MultiplayerClient)
-    //        {
-    //            if (npc.type == ModContent.NPCType<BuriedChampion>())
-    //            {
-    //                Swarm(npc, ModContent.NPCType<BuriedChampion>(), ModContent.ItemType<BuriedChampionTreasureBag>(), ModContent.ItemType<BuriedChampionTrophy>(), ModContent.ItemType<BuriedEnergizer>());
-    //            }
-    //            else if (npc.type == ModContent.NPCType<FallenBeholder>())
-    //            {
-    //                Swarm(npc, ModContent.NPCType<FallenBeholder>(), ModContent.ItemType<FallenBeholderTreasureBag>(), ModContent.ItemType<FallenBeholderTrophy>(), ModContent.ItemType<FallenEnergizer>());
-    //            }
-    //            else if (npc.type == ModContent.NPCType<Lich>())
-    //            {
-    //                Swarm(npc, ModContent.NPCType<Lich>(), ModContent.ItemType<LichTreasureBag>(), ModContent.ItemType<LichTrophy>(), ModContent.ItemType<LichEnergizer>());
-    //            }
-    //            else if (npc.type == ModContent.NPCType<QueenJellyfish>())
-    //            {
-    //                Swarm(npc, ModContent.NPCType<QueenJellyfish>(), ModContent.ItemType<QueenJellyfishTreasureBag>(), ModContent.ItemType<QueenJellyfishTrophy>(), ModContent.ItemType<JellyfishEnergizer>());
-    //            }
-    //            else if (npc.type == ModContent.NPCType<GraniteEnergyStorm>())
-    //            {
-    //                Swarm(npc, ModContent.NPCType<GraniteEnergyStorm>(), ModContent.ItemType<GraniteEnergyStormTreasureBag>(), ModContent.ItemType<GraniteEnergyStormTrophy>(), ModContent.ItemType<GraniteEnergizer>());
-    //            }
-    //            //else if (npc.type == ModContent.NPCType<StarScouter>())
-    //            //{
-    //            //    Swarm(npc, ModContent.NPCType<StarScouter>(), ModContent.ItemType<StarScouterTreasureBag>(), ModContent.ItemType<StarScouterTrophy>(), ModContent.ItemType<PerforatorEnergizer>());
-    //            //}
-    //            else if (npc.type == ModContent.NPCType<BoreanStrider>())
-    //            {
-    //                Swarm(npc, ModContent.NPCType<BoreanStrider>(), ModContent.ItemType<BoreanStriderTreasureBag>(), ModContent.ItemType<BoreanStriderTrophy>(), ModContent.ItemType<BoreanEnergizer>());
-    //            }
-				//else if (npc.type == ModContent.NPCType<Viscount>())
-				//{
-				//	Swarm(npc, ModContent.NPCType<Viscount>(), ModContent.ItemType<ViscountTreasureBag>(), ModContent.ItemType<ViscountTrophy>(), ModContent.ItemType<ViscountEnergizer>());
-				//}
-				//else if (npc.type == ModContent.NPCType<TheGrandThunderBird>())
-    //            {
-    //                Swarm(npc, ModContent.NPCType<TheGrandThunderBird>(), ModContent.ItemType<TheGrandThunderBirdTreasureBag>(), ModContent.ItemType<TheGrandThunderBirdTrophy>(), ModContent.ItemType<ThunderEnergizer>());
-    //            }
-				//else if (npc.type == ModContent.NPCType<ForgottenOne>())
-				//{
-				//	Swarm(npc, ModContent.NPCType<ForgottenOne>(), ModContent.ItemType<ForgottenOneTreasureBag>(), ModContent.ItemType<ForgottenOneTrophy>(), ModContent.ItemType<ForgottenEnergizer>());
-				//}
-				//return false;
-    //        }
-    //        else
-    //        {
-                return true;
-    //        }
+            int num12 = 50;
+            int num22 = 100;
+            int num32 = 200;
+
+            if (ssm.SwarmSetDefaults)
+            {
+                if (npc.type == NPCType<QueenJellyfish>() || npc.type == NPCType<TheGrandThunderBird>() || npc.type == NPCType<GraniteEnergyStorm>() || npc.type == NPCType<BuriedChampion>() || npc.type == NPCType<Viscount>() || npc.type == NPCType<StarScouter>())
+                {
+                    npc.lifeMax = num1 * ssm.SwarmItemsUsed;
+                    npc.damage = num12 * ssm.SwarmItemsUsed;
+                }
+                if (npc.type == NPCType<BoreanStrider>() || npc.type == NPCType<FallenBeholder>() || npc.type == NPCType<FallenBeholder2>() || npc.type == NPCType<Lich>() || npc.type == NPCType<LichHeadless>() || npc.type == NPCType<ForgottenOne>() || npc.type == NPCType<ForgottenOneCracked>() || npc.type == NPCType<ForgottenOneReleased>())
+                {
+                    npc.lifeMax = num2 * ssm.SwarmItemsUsed;
+                    npc.damage = num22 * ssm.SwarmItemsUsed;
+                }
+                if (npc.type == NPCType<DreamEater>())
+                {
+                    npc.lifeMax = num3 * ssm.SwarmItemsUsed;
+                    npc.damage = num32 * ssm.SwarmItemsUsed;
+                }
+            }
         }
     }
 }
