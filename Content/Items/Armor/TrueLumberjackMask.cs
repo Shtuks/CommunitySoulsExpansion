@@ -12,12 +12,17 @@ using ssm.Content.SoulToggles;
 using ssm.Content.Projectiles;
 using Luminance.Core.Graphics;
 using Microsoft.Xna.Framework.Graphics;
+using FargowiltasSouls.Content.Items.Materials;
 
 namespace ssm.Content.Items.Armor
 {
     [AutoloadEquip(EquipType.Head)]
     public class TrueLumberjackMask : ModItem
     {
+        public override bool IsLoadingEnabled(Mod mod)
+        {
+            return FargoSoulsUtil.AprilFools;
+        }
         public override void SetDefaults()
         {
             Item.width = 18;
@@ -84,9 +89,11 @@ namespace ssm.Content.Items.Armor
 
             recipe.AddIngredient<LumberjackMask>();
 
-            recipe.AddIngredient<Sadism>(100);
-            recipe.AddIngredient<StargateSoul>(4);
-            //recipe.AddIngredient<ShardOfStarlight>(30);
+            if (ShtunConfig.Instance.AlternativeSiblings) { recipe.AddIngredient<Sadism>(100); recipe.AddIngredient<StargateSoul>(4); }
+            recipe.AddIngredient<EternalEnergy>(100);
+            recipe.AddIngredient<Eridanium>(100);
+            recipe.AddIngredient<AbomEnergy>(100);
+            recipe.AddIngredient<DeviatingEnergy>(100);
 
             recipe.AddTile<MutantsForgeTile>();
             recipe.Register();

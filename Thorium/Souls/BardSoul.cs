@@ -37,7 +37,7 @@ namespace ssm.Thorium.Souls
 
         private void Thorium(Player player)
         {
-            player.GetDamage<BardDamage>() += 0.22f;
+            player.GetDamage<BardDamage>() += 0.25f;
             player.GetCritChance<BardDamage>() += 0.10f;
             player.GetAttackSpeed<BardDamage>() += 0.15f;
             player.GetModPlayer<ThoriumPlayer>().bardBuffDuration += 3000;

@@ -1,14 +1,15 @@
 ﻿using CalamityMod.Items.Weapons.Melee;
 using CalamityMod.Items.Weapons.Ranged;
-using CalamityMod.Items.Weapons.Magic;
 using ssm.Core;
 using System.Collections.Generic;
 using Terraria;
 using Terraria.ModLoader;
 using Terraria.ID;
 using CalamityMod.Items.Weapons.Rogue;
+using CalamityMod.Items.Weapons.Magic;
 using CalamityMod.Items.Potions;
 using FargowiltasSouls.Content.Items.Accessories.Souls;
+using FargowiltasCrossmod.Content.Calamity.Items.Accessories.Souls;
 
 namespace ssm.Calamity
 {
@@ -76,6 +77,14 @@ namespace ssm.Calamity
             {
                 tooltips.Add(new TooltipLine(Mod, "rebalance", $"[c/FFFF00:CSE Balance:] Canceled DLC buff."));
                 tooltips.Add(new TooltipLine(Mod, "rebalance", $"[c/FFFF00:CSE Balance:] Damage decreased by 50%."));
+            }
+        }
+
+        public override void UpdateAccessory(Item item, Player player, bool hideVisual)
+        {
+            if (item.type == ModContent.ItemType<VagabondsSoul>())
+            {
+                player.GetDamage<ThrowingDamageClass>() += 3;
             }
         }
     }

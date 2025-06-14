@@ -14,6 +14,10 @@ namespace ssm.Content.Items.Armor
     [AutoloadEquip(EquipType.Legs)]
     public class TrueMonstrosityPants : ModItem
     {
+        public override bool IsLoadingEnabled(Mod mod)
+        {
+            return ShtunConfig.Instance.AlternativeSiblings;
+        }
         public override void SetDefaults()
         {
             ((Entity)this.Item).width = 18;

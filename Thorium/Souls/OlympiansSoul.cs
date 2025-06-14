@@ -36,7 +36,7 @@ namespace ssm.Thorium.Souls
         {
             ThoriumPlayer thoriumPlayer = player.GetModPlayer<ThoriumPlayer>();
 
-            player.GetDamage<ThrowingDamageClass>() += 0.22f;
+            player.GetDamage<ThrowingDamageClass>() += 0.25f;
             player.GetCritChance<ThrowingDamageClass>() += 10f;
             player.GetAttackSpeed<ThrowingDamageClass>() += 10f;
             player.Shtun().throwerVelocity += 0.15f;

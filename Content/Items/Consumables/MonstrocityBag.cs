@@ -8,6 +8,10 @@ namespace ssm.Content.Items.Consumables
 {
     public class MonstrocityBag : BossBag
     {
+        public override bool IsLoadingEnabled(Mod mod)
+        {
+            return ShtunConfig.Instance.AlternativeSiblings;
+        }
         protected override bool IsPreHMBag => false;
 
         public override void ModifyItemLoot(ItemLoot itemLoot)

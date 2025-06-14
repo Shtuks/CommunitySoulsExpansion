@@ -19,6 +19,10 @@ namespace ssm.Content.Items.Accessories
     [AutoloadEquip(EquipType.Wings)]
     public class StargateSoul : ModItem
     {
+        public override bool IsLoadingEnabled(Mod mod)
+        {
+            return ShtunConfig.Instance.AlternativeSiblings;
+        }
         public override void SetStaticDefaults()
         {
             ItemID.Sets.ItemNoGravity[Type] = true;

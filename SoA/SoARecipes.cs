@@ -16,6 +16,7 @@ using Terraria.ID;
 using SacredTools.Content.Items.Armor.Oblivion;
 using SacredTools.Content.Items.Weapons.Relic;
 using FargowiltasSouls.Content.Items.Materials;
+using SacredTools.Content.Items.Accessories.Sigils;
 
 namespace ssm
 {
@@ -94,6 +95,23 @@ namespace ssm
                 {
                     recipe.AddIngredient<LunarRing>();
                     recipe.AddIngredient<RageSuppressor>();
+                }
+
+                if (recipe.HasResult<BerserkerSoul>() && !recipe.HasIngredient<SolarSigil>())
+                {
+                    recipe.AddIngredient<SolarSigil>();
+                }
+                if (recipe.HasResult<ArchWizardsSoul>() && !recipe.HasIngredient<NebulaSigil>())
+                {
+                    recipe.AddIngredient<NebulaSigil>();
+                }
+                if (recipe.HasResult<SnipersSoul>() && !recipe.HasIngredient<VortexSigil>())
+                {
+                    recipe.AddIngredient<VortexSigil>();
+                }
+                if (recipe.HasResult<ConjuristsSoul>() && !recipe.HasIngredient<StardustSigil>())
+                {
+                    recipe.AddIngredient<StardustSigil>();
                 }
 
                 //if (recipe.HasResult<MasochistSoul>() && !recipe.HasIngredient<YataMirror>())

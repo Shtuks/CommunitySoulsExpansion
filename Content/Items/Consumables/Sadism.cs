@@ -7,6 +7,10 @@ namespace ssm.Content.Items.Consumables
 {
     public class Sadism : ModItem
     {
+        public override bool IsLoadingEnabled(Mod mod)
+        {
+            return ShtunConfig.Instance.AlternativeSiblings;
+        }
         public override void SetDefaults()
         {
             Item.width = 20;

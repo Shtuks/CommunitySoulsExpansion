@@ -363,11 +363,6 @@ Mods: {
 					'''
 			}
 
-			Adventurer: {
-				DisplayName: Adventurer
-				Tooltip: ""
-			}
-
 			HurricaneForce: {
 				DisplayName: Force of Hurricane
 				Tooltip:
@@ -520,7 +515,6 @@ Mods: {
 					Effects of Celestial Shield and Royal Guard
 					Only grants effects of Shield of Reflections when True Mode is enabled.
 					'''
-				SoAMaso: Summon [i:SacredTools/YataMirror] little Nihilus and [i:SacredTools/PrimordialCore] Pyramid Orbitals
 				SoABerserker: Effects of Flora Fist
 				SoASupersonic: Effects of Heart of the Plough, Advanced Dash Tech
 				SoAWorldshaper: Effects of Rage Supressor, Celestial ring
@@ -590,11 +584,6 @@ Mods: {
 					'''
 			}
 
-			UltimateFargoWeapon: {
-				Tooltip: ""
-				DisplayName: Ultimate Fargo Weapon
-			}
-
 			MutantsForge: {
 				DisplayName: Mutants Forge
 				Tooltip: ""
@@ -648,221 +637,6 @@ Mods: {
 			Sadism: {
 				DisplayName: Sadism
 				Tooltip: True escence of eternity.
-			}
-
-			CrabulonEnergizer: {
-				DisplayName: Crabulon Energizer
-				Tooltip: ""
-			}
-
-			OverloadSprout: {
-				DisplayName: Overload Sprout
-				Tooltip: ""
-			}
-
-			DesertEnergizer: {
-				DisplayName: Desert Energizer
-				Tooltip: ""
-			}
-
-			HiveEnergizer: {
-				DisplayName: Hive Energizer
-				Tooltip: ""
-			}
-
-			PerforatorEnergizer: {
-				DisplayName: Perforator Energizer
-				Tooltip: ""
-			}
-
-			SlimeGodEnergizer: {
-				DisplayName: Slime God Energizer
-				Tooltip: ""
-			}
-
-			BunchOfMedalions: {
-				DisplayName: Bunch Of Medalions
-				Tooltip: ""
-			}
-
-			AnahitaEnergizer: {
-				DisplayName: Anahita Energizer
-				Tooltip: ""
-			}
-
-			AstralEnergizer: {
-				DisplayName: Astral Energizer
-				Tooltip: ""
-			}
-
-			AureusEnergizer: {
-				DisplayName: Aureus Energizer
-				Tooltip: ""
-			}
-
-			AuricEnergizer: {
-				DisplayName: Auric Energizer
-				Tooltip: ""
-			}
-
-			BrimstoneEnergizer: {
-				DisplayName: Brimstone Energizer
-				Tooltip: ""
-			}
-
-			CalamitousEnergizer: {
-				DisplayName: Calamitous Energizer
-				Tooltip: ""
-			}
-
-			CryoEnergizer: {
-				DisplayName: Cryo Energizer
-				Tooltip: ""
-			}
-
-			DevouringEnergizer: {
-				DisplayName: Devouring Energizer
-				Tooltip: ""
-			}
-
-			FleshyEnergizer: {
-				DisplayName: Fleshy Energizer
-				Tooltip: ""
-			}
-
-			FollyEnergizer: {
-				DisplayName: Folly Energizer
-				Tooltip: ""
-			}
-
-			PlagueEnergizer: {
-				DisplayName: Plague Energizer
-				Tooltip: ""
-			}
-
-			ProfandedEnergizer: {
-				DisplayName: Profanded Energizer
-				Tooltip: ""
-			}
-
-			TerraEnergizer: {
-				DisplayName: Terra Energizer
-				Tooltip: ""
-			}
-
-			ToxicEnergizer: {
-				DisplayName: Toxic Energizer
-				Tooltip: ""
-			}
-
-			WaifuCloneEnergizer: {
-				DisplayName: Waifu Clone Energizer
-				Tooltip: ""
-			}
-
-			WaifuEnergizer: {
-				DisplayName: Waifu Energizer
-				Tooltip: ""
-			}
-
-			AstralLump: {
-				DisplayName: Astral Lump
-				Tooltip: ""
-			}
-
-			BloodyWormChicken: {
-				DisplayName: Bloody Worm Chicken
-				Tooltip: ""
-			}
-
-			CosmicAmalgamation: {
-				DisplayName: Cosmic Amalgamation
-				Tooltip: ""
-			}
-
-			CryonicCore: {
-				DisplayName: Cryonic Core
-				Tooltip: ""
-			}
-
-			DeepFriedIdol: {
-				DisplayName: Deep Fried Idol
-				Tooltip: ""
-			}
-
-			EyeofExtintion: {
-				DisplayName: Eyeof Extintion
-				Tooltip: ""
-			}
-
-			OverloadedWaifu: {
-				DisplayName: Overloaded Waifu
-				Tooltip: ""
-			}
-
-			OverloadPheromones: {
-				DisplayName: Overload Pheromones
-				Tooltip: ""
-			}
-
-			OverloadSeafood: {
-				DisplayName: Overload Seafood
-				Tooltip: ""
-			}
-
-			OverloadStarcore: {
-				DisplayName: Overload Starcore
-				Tooltip: ""
-			}
-
-			OverloadTeratoma: {
-				DisplayName: Overload Teratoma
-				Tooltip: ""
-			}
-
-			OverloadWhistle: {
-				DisplayName: Overload Whistle
-				Tooltip: ""
-			}
-
-			PhantasmalBeacon: {
-				DisplayName: Phantasmal Beacon
-				Tooltip: ""
-			}
-
-			PileOfBloodWorms: {
-				DisplayName: Pile Of Blood Worms
-				Tooltip: ""
-			}
-
-			PlagueTerminal: {
-				DisplayName: Plague Terminal
-				Tooltip: ""
-			}
-
-			ProfandedCluster: {
-				DisplayName: Profanded Cluster
-				Tooltip: ""
-			}
-
-			TrueOverloadedSludge: {
-				DisplayName: True Overloaded Sludge
-				Tooltip: ""
-			}
-
-			YharonEggsBox: {
-				DisplayName: Yharon Eggs Box
-				Tooltip: ""
-			}
-
-			SwarmDeactivatorDebug: {
-				Tooltip: ""
-				DisplayName: Swarm Deactivator Debug
-			}
-
-			OverloadedSirenPearl: {
-				DisplayName: Overloaded Siren Pearl
-				Tooltip: ""
 			}
 
 			EridanusEnchant: {
@@ -921,21 +695,6 @@ Mods: {
 					'''
 			}
 
-			RampartOfAsgard: {
-				DisplayName: Rampart Of Asgard
-				Tooltip: ""
-			}
-
-			StarlightVodka: {
-				DisplayName: Starlight Vodka
-				Tooltip: ""
-			}
-
-			ProfandedSomething: {
-				DisplayName: Profanded Something
-				Tooltip: ""
-			}
-
 			AsthraltiteEnchant: {
 				DisplayName: Asthraltite Enchantment
 				Tooltip:
@@ -981,9 +740,7 @@ Mods: {
 				Tooltip:
 					'''
 					'Make Soran great again'
-					Pressing [Ability] puts you in 'Sniper State' 
-					Your damage is upped in this state however you are frozen in place and have reduced defense 
-					State is toggled upon button press and has a cooldown of 5 seconds after switching
+					WIP
 					'''
 			}
 
@@ -2105,301 +1862,6 @@ Mods: {
 					'''
 			}
 
-			ForgottenEnergizer: {
-				DisplayName: Forgotten Energizer
-				Tooltip: ""
-			}
-
-			ViscountEnergizer: {
-				DisplayName: Viscount Energizer
-				Tooltip: ""
-			}
-
-			OverloadChampion: {
-				DisplayName: Overload Champion
-				Tooltip: ""
-			}
-
-			OverloadGranite: {
-				DisplayName: Overload Granite
-				Tooltip: ""
-			}
-
-			OverloadJelly: {
-				DisplayName: Overload Jelly
-				Tooltip: ""
-			}
-
-			OverloadLich: {
-				DisplayName: Overload Lich
-				Tooltip: ""
-			}
-
-			OverloadRag: {
-				DisplayName: Overload Rag
-				Tooltip: ""
-			}
-
-			OverloadSaucer: {
-				DisplayName: Overload Saucer
-				Tooltip: ""
-			}
-
-			OverloadStrider: {
-				DisplayName: Overload Strider
-				Tooltip: ""
-			}
-
-			OverloadThunderbird: {
-				DisplayName: Overload Thunderbird
-				Tooltip: ""
-			}
-
-			OverloadViscount: {
-				Tooltip: ""
-				DisplayName: Overload Viscount
-			}
-
-			OverloadAbyssalion: {
-				Tooltip: ""
-				DisplayName: Overload Abyssalion
-			}
-
-			AbaddonEnergizer: {
-				DisplayName: Abaddon Energizer
-				Tooltip: ""
-			}
-
-			AraneasEnergizer: {
-				DisplayName: Araneas Energizer
-				Tooltip: ""
-			}
-
-			DecreeEnergizer: {
-				DisplayName: Decree Energizer
-				Tooltip: ""
-			}
-
-			ErazorEnergizer: {
-				DisplayName: Erazor Energizer
-				Tooltip: ""
-			}
-
-			JensenEnergizer: {
-				DisplayName: Jensen Energizer
-				Tooltip: ""
-			}
-
-			NovanielEnergizer: {
-				DisplayName: Novaniel Energizer
-				Tooltip: ""
-			}
-
-			PrimordiaEnergizer: {
-				DisplayName: Primordia Energizer
-				Tooltip: ""
-			}
-
-			PumpkinEnergizer: {
-				DisplayName: Pumpkin Energizer
-				Tooltip: ""
-			}
-
-			RaynareEnergizer: {
-				DisplayName: Raynare Energizer
-				Tooltip: ""
-			}
-
-			SerpentEnergizer: {
-				DisplayName: Serpent Energizer
-				Tooltip: ""
-			}
-
-			OverloadAbaddon: {
-				DisplayName: Overload Abaddon
-				Tooltip: ""
-			}
-
-			OverloadAraneas: {
-				DisplayName: Overload Araneas
-				Tooltip: ""
-			}
-
-			OverloadDecree: {
-				DisplayName: Overload Decree
-				Tooltip: ""
-			}
-
-			OverloadErazor: {
-				DisplayName: Overload Erazor
-				Tooltip: ""
-			}
-
-			OverloadJensen: {
-				DisplayName: Overload Jensen
-				Tooltip: ""
-			}
-
-			OverloadNovaniel: {
-				DisplayName: Overload Novaniel
-				Tooltip: ""
-			}
-
-			OverloadPrimordia: {
-				DisplayName: Overload Primordia
-				Tooltip: ""
-			}
-
-			OverloadPumpkin: {
-				DisplayName: Overload Pumpkin
-				Tooltip: ""
-			}
-
-			OverloadRaynare: {
-				DisplayName: Overload Raynare
-				Tooltip: ""
-			}
-
-			OverloadSerpent: {
-				DisplayName: Overload Serpent
-				Tooltip: ""
-			}
-
-			Monstrocity: {
-				DisplayName: Monstrosity
-				Tooltip: ""
-			}
-
-			DemonshadeWorkbench: {
-				Tooltip: ""
-				DisplayName: Demonshade Workbench
-			}
-
-			BrimstoneWitch: {
-				DisplayName: Brimstone Witch
-				Tooltip: ""
-			}
-
-			Archmage: {
-				DisplayName: Archmage
-				Tooltip: ""
-			}
-
-			SeaKing: {
-				DisplayName: Sea King
-				Tooltip: ""
-			}
-
-			OverloadAnahita: {
-				DisplayName: Overload Anahita
-				Tooltip: ""
-			}
-
-			OverloadAS: {
-				DisplayName: Overload Aquatic scourge
-				Tooltip: ""
-			}
-
-			OverloadAureus: {
-				DisplayName: Overload Aureus
-				Tooltip: ""
-			}
-
-			OverloadBirb: {
-				DisplayName: Overload Birb
-				Tooltip: ""
-			}
-
-			OverloadCrabulon: {
-				DisplayName: Overload Crabulon
-				Tooltip: ""
-			}
-
-			OverloadCryogen: {
-				DisplayName: Overload Cryogen
-				Tooltip: ""
-			}
-
-			OverloadDeus: {
-				DisplayName: Overload Deus
-				Tooltip: ""
-			}
-
-			OverloadDOG: {
-				DisplayName: Overload Devourer of Gods
-				Tooltip: ""
-			}
-
-			OverloadDS: {
-				DisplayName: Overload Desert Scourge
-				Tooltip: ""
-			}
-
-			OverloadElemental: {
-				DisplayName: Overload Elemental
-				Tooltip: ""
-			}
-
-			OverloadGoliath: {
-				DisplayName: Overload Goliath
-				Tooltip: ""
-			}
-
-			OverloadGuardians: {
-				DisplayName: Overload Guardians
-				Tooltip: ""
-			}
-
-			OverloadHive: {
-				DisplayName: Overload Hive
-				Tooltip: ""
-			}
-
-			OverloadOldDuke: {
-				DisplayName: Overload Old Duke
-				Tooltip: ""
-			}
-
-			OverloadPerforators: {
-				DisplayName: Overload Perforators
-				Tooltip: ""
-			}
-
-			OverloadPolterghast: {
-				DisplayName: Overload Polterghast
-				Tooltip: ""
-			}
-
-			OverloadProvidence: {
-				DisplayName: Overload Providence
-				Tooltip: ""
-			}
-
-			OverloadRavager: {
-				DisplayName: Overload Ravager
-				Tooltip: ""
-			}
-
-			OverloadSlimeGod: {
-				DisplayName: Overload Slime God
-				Tooltip: ""
-			}
-
-			OverloadWaifu: {
-				DisplayName: Overload Calamitas
-				Tooltip: ""
-			}
-
-			OverloadWaifuClone: {
-				DisplayName: Overload Calamitas Clone
-				Tooltip: ""
-			}
-
-			OverloadYharon: {
-				DisplayName: Overload Yharon
-				Tooltip: ""
-			}
-
 			ElementalArtifact: {
 				DisplayName: Elemental Artifact
 				Tooltip:
@@ -2417,16 +1879,6 @@ Mods: {
 					Effects of Blazing Core, The Evolution, Affliction, Bloodflare Core and Elemental Artifact.
 					'It gives off a weird aura.'
 					'''
-			}
-
-			MonstrosityEnchant: {
-				DisplayName: Monstrosity Enchantment
-				Tooltip: ""
-			}
-
-			MaxChargerDebug: {
-				Tooltip: ""
-				DisplayName: Max Charger Debug
 			}
 
 			MotDE: {
@@ -2519,19 +1971,6 @@ Mods: {
 					'''
 			}
 
-			VoidFaquirEnchant: {
-				DisplayName: Void Faquir Enchantment
-				Tooltip:
-					'''
-					Hitting the target will increase void energy
-					Provides movement and flight speed bonuses based on the amount of void energy
-					Press the armor bonus key to activate Void energy Summon a Void Wraith to assist in battle and fly indefinitely for 10 seconds
-					Void Wrairh damage type depends on the weapon in hand
-					Press [KEY] to activate the coordinated state
-					In this state, you are not affected by gravity and push away the surrounding projectiles
-					'''
-			}
-
 			DivineEnchant: {
 				DisplayName: Divine Enchantment
 				Tooltip:
@@ -2556,16 +1995,6 @@ Mods: {
 					Press Armor Ability Key to create an ice shield that parries attack
 					Failing to parry will cause you to overcool
 					'''
-			}
-
-			WoolenEnchantment: {
-				DisplayName: Woolen Enchantment
-				Tooltip: ""
-			}
-
-			EmptinessEnchant: {
-				DisplayName: Emptiness Enchantment
-				Tooltip: ""
 			}
 
 			CoralEnchant: {
@@ -2595,7 +2024,7 @@ Mods: {
 
 			DemonshadeWorkbenchItem: {
 				Tooltip: ""
-				DisplayName: Demonshade Workbench
+				DisplayName: Shadowspec Workbench
 			}
 
 			SolynsSigil: {
@@ -3321,6 +2750,11 @@ Mods: {
 				Tooltip: Becomes stronger with bosses defeated: Mutant, Monstrosity
 				DisplayName: Catlight
 			}
+
+			SwarmDeactivatorDebug: {
+				Tooltip: ""
+				DisplayName: Swarm Deactivator Debug
+			}
 		}
 
 		Buffs: {
@@ -3371,17 +2805,17 @@ Mods: {
 
 			DreadflameAura: {
 				DisplayName: Dreadflame Aura
-				Description: Mods.ssm.Buffs.DreadflameAura.Description
+				Description: Your magic and summon damage increased by 30%
 			}
 
 			DreadflameAuraCD: {
 				DisplayName: Dreadflame Aura Сooldown
-				Description: Mods.ssm.Buffs.DreadflameAuraCD.Description
+				Description: You can not use Dreadflame Aura again
 			}
 
 			VulkanReaperBuff: {
 				DisplayName: Vulkan Reaper Buff
-				Description: Mods.ssm.Buffs.VulkanReaperBuff.Description
+				Description: ech
 			}
 
 			RivalBuff: {
@@ -3430,15 +2864,14 @@ Mods: {
 					Normal21: Why don't I attack? Ah that's a nice question, I don't think it's necessary.
 					Normal22: My hp is limited to this world, but i would prob get 22^22^22^22 times this
 					Normal23: Eternity doesn't last that long when you are old enough.
-					Normal24: This white-haired cat-eared child scares me.
-					Normal25: Sunflowers are cool, not for your health tho
-					Normal26: Turip ip ip ip
-					Normal27: Are you approaching me? Can't but my stuff if you don't get closer
-					Normal28: There is a pipe bomb inside your walls
-					Normal29: A lot of things explode for no reason
-					Normal30: Megalovania isn't funny
-					Normal31: I may be in love with the Forbotten one, don't search her up on Google please
-					Normal32: Did you know that market got inflated prices bc of some sonic books? Don't trust me? Search up Sonic inflation on google to learn more ab it!
+					Normal24: Sunflowers are cool, not for your health tho
+					Normal25: Turip ip ip ip
+					Normal26: Are you approaching me? Can't but my stuff if you don't get closer
+					Normal27: There is a pipe bomb inside your walls
+					Normal28: A lot of things explode for no reason
+					Normal29: Megalovania isn't funny
+					Normal30: I may be in love with the Forbotten one, don't search her up on Google please
+					Normal31: Did you know that market got inflated prices bc of some sonic books? Don't trust me? Search up Sonic inflation on google to learn more ab it!
 				}
 
 				DisplayName: Monstrosity
@@ -3470,7 +2903,7 @@ Mods: {
 				DisplayNameApril: LumberJack
 
 				BossChecklistIntegration: {
-					SpawnInfo: Spawned with an Mutants Curse EX anytime anywhere.
+					SpawnInfo: Use Mutant's Forge
 					DespawnMessage: ""
 					KilledAllMessage: ""
 				}
@@ -3759,6 +3192,11 @@ Mods: {
 
 				SpiritMod: {
 					Label: Spirit Mod
+					Tooltip: ""
+				}
+
+				AlternativeSiblings: {
+					Label: Alternative Siblings
 					Tooltip: ""
 				}
 			}

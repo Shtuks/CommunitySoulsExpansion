@@ -15,6 +15,11 @@ namespace ssm.Content.NPCs
     [AutoloadHead]
     public class Monstrocity : ModNPC
     {
+        public override bool IsLoadingEnabled(Mod mod)
+        {
+            return ShtunConfig.Instance.AlternativeSiblings;
+        }
+
         private static int shopNum;
         private static bool showCycleShop;
         public static List<string> Names = new() {

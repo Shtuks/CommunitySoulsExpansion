@@ -101,7 +101,10 @@ namespace ssm.Items
         public static void RegisterItems()
         {
             CaughtTownies = new Dictionary<int, int>();
-            Add("Monstrocity", ModContent.NPCType<Monstrocity>(), "'Hey buddy you got any food?'");
+            if (ShtunConfig.Instance.AlternativeSiblings)
+            {
+                Add("Monstrocity", ModContent.NPCType<Monstrocity>(), "'Hey buddy you got any food?'");
+            }
         }
 
         public static void Add(string internalName, int id, string quote)

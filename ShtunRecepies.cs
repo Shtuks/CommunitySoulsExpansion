@@ -8,6 +8,7 @@ using FargowiltasSouls.Content.Items.Accessories.Souls;
 using FargowiltasSouls.Content.Items.Materials;
 using ssm.Content.Items.Consumables;
 using FargowiltasSouls.Content.Items.Weapons.FinalUpgrades;
+using FargowiltasSouls;
 
 namespace ssm
 {
@@ -15,26 +16,18 @@ namespace ssm
     [JITWhenModsEnabled(ModCompatibility.MagicStorage.Name)]
     public class Recipes : ModSystem
     {
-        public override void PostAddRecipes()
+        public override bool IsLoadingEnabled(Mod mod)
         {
-            for (int i = 0; i < Recipe.numRecipes; i++)
-            {
-                Recipe recipe = Main.recipe[i];
-                if (recipe.HasResult<CreativeStorageUnit>())
-                {
-                    recipe.AddIngredient<EternalStorageUnitItem>(10);
-
-                    recipe.AddIngredient<TrueLumberjackBody>();
-                    recipe.AddIngredient<TrueLumberjackMask>();
-                    recipe.AddIngredient<TrueLumberjackPants>();
-
-                    if (ModCompatibility.WrathoftheGods.Loaded)
-                    {
-                        ModContent.TryFind("NoxusBoss", "CheatPermissionSlip", out ModItem item);
-                        recipe.AddIngredient(item, 1);
-                    }
-                }
-            }
+            return FargoSoulsUtil.AprilFools && ShtunConfig.Instance.AlternativeSiblings;
+        }
+        public override void AddRecipes()
+        {
+            Recipe.Create(ModContent.ItemType<CreativeStorageUnit>())
+                .AddIngredient<EternalStorageUnitItem>(10)
+                .AddIngredient<TrueLumberjackBody>()
+                .AddIngredient<TrueLumberjackMask>()
+                .AddIngredient<TrueLumberjackPants>()
+                .Register();
         }
     }
 
@@ -49,7 +42,7 @@ namespace ssm
                 {
                     recipe.AddIngredient<AbomEnergy>(10);
                 }
-                if ((recipe.HasResult(ModContent.ItemType<Penetrator>()) || recipe.HasResult(ModContent.ItemType<StyxGazer>()) || recipe.HasResult(ModContent.ItemType<SparklingLove>())) && !recipe.HasIngredient(ModContent.ItemType<Sadism>()))
+                if ((recipe.HasResult(ModContent.ItemType<Penetrator>()) || recipe.HasResult(ModContent.ItemType<StyxGazer>()) || recipe.HasResult(ModContent.ItemType<SparklingLove>())) && !recipe.HasIngredient(ModContent.ItemType<Sadism>()) && ShtunConfig.Instance.AlternativeSiblings)
                 {
                     recipe.AddIngredient<Sadism>(30);
                 }

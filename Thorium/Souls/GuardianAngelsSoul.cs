@@ -45,7 +45,7 @@ namespace ssm.Thorium.Souls
         {
             ThoriumPlayer thoriumPlayer = player.GetModPlayer<ThoriumPlayer>();
 
-            player.GetDamage<HealerDamage>() += 0.22f;
+            player.GetDamage<HealerDamage>() += 0.25f;
             player.GetCritChance<HealerDamage>() += 0.12f;
             player.GetAttackSpeed<HealerDamage>() += 0.15f;
             player.GetAttackSpeed((DamageClass)ThoriumDamageBase<HealerTool>.Instance) += 0.20f;

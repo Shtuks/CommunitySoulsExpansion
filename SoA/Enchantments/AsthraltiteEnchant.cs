@@ -71,7 +71,7 @@ namespace ssm.SoA.Enchantments
             recipe.AddIngredient<AsthralLegs>();
             recipe.AddIngredient<AsthralRing>();
             recipe.AddIngredient<CasterArcanum>();
-            recipe.AddIngredient<MementoMori>();
+            //recipe.AddIngredient<MementoMori>(); now in class souls
             recipe.AddRecipeGroup("ssm:AsthralHelms");
             recipe.AddTile(412);
             recipe.Register();

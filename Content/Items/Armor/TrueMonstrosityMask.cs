@@ -15,6 +15,10 @@ namespace ssm.Content.Items.Armor
     [AutoloadEquip(EquipType.Head)]
     public class TrueMonstrosityMask : ModItem
     {
+        public override bool IsLoadingEnabled(Mod mod)
+        {
+            return ShtunConfig.Instance.AlternativeSiblings;
+        }
         public override void SetDefaults()
         {
             Item.width = 18;

@@ -46,7 +46,7 @@ namespace ssm.SoA
             }
             if (entity.type == ModContent.ItemType<Desperatio>())
             {
-                entity.damage = ModCompatibility.Calamity.Loaded ? (int)(entity.damage * 1.5f) : (int)(entity.damage * 1.1);
+                entity.damage = ModCompatibility.Calamity.Loaded ? (int)(entity.damage * 1.1f) : (int)(entity.damage * 1);
             }
             if (entity.type == ModContent.ItemType<Eschaton>())
             {
@@ -86,7 +86,7 @@ namespace ssm.SoA
             }
             if (item.type == ModContent.ItemType<Desperatio>())
             {
-                tooltips.Add(new TooltipLine(Mod, "rebalance", $"[c/00A36C:Cross-Mod Balance:] Damage increased by 50%"));
+                tooltips.Add(new TooltipLine(Mod, "rebalance", $"[c/00A36C:Cross-Mod Balance:] Damage increased by 20%"));
                 tooltips.Add(new TooltipLine(Mod, "nerf", $"[c/00A36C:Cross-Mod Balance:] Fire column deal 70% less damage."));
                 tooltips.Add(new TooltipLine(Mod, "homing", $"[c/00A36C:Cross-Mod Balance:] Weapon's pojectiles are homing in on enemies"));
             }

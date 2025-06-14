@@ -7,12 +7,18 @@ using ssm.Content.Items.Consumables;
 using Luminance.Core.Graphics;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
+using FargowiltasSouls.Content.Items.Materials;
+using FargowiltasSouls;
 
 namespace ssm.Content.Items.Armor
 {
     [AutoloadEquip(EquipType.Body)]
     public class TrueLumberjackBody : ModItem
     {
+        public override bool IsLoadingEnabled(Mod mod)
+        {
+            return FargoSoulsUtil.AprilFools;
+        }
         public override void SetDefaults()
         {
             ((Entity)this.Item).width = 18;
@@ -59,9 +65,11 @@ namespace ssm.Content.Items.Armor
 
             recipe.AddIngredient<LumberjackBody>();
 
-            recipe.AddIngredient<Sadism>(100);
-            recipe.AddIngredient<StargateSoul>(4);
-            //recipe.AddIngredient<ShardOfStarlight>(30);
+            if (ShtunConfig.Instance.AlternativeSiblings) {recipe.AddIngredient<Sadism>(100); recipe.AddIngredient<StargateSoul>(4); }
+            recipe.AddIngredient<EternalEnergy>(100);
+            recipe.AddIngredient<Eridanium>(100);
+            recipe.AddIngredient<AbomEnergy>(100);
+            recipe.AddIngredient<DeviatingEnergy>(100);
 
             recipe.AddTile<MutantsForgeTile>();
             recipe.Register();

@@ -8,13 +8,13 @@ using FargowiltasSouls.Content.Items.Summons;
 using FargowiltasSouls.Content.Items.Weapons.FinalUpgrades;
 using FargowiltasSouls.Content.Items.Weapons.SwarmDrops;
 using FargowiltasSouls.Core.Globals;
-using FargowiltasSouls.Core.Systems;
 using Microsoft.Xna.Framework;
 using ssm.Content.DamageClasses;
 using ssm.Content.Items.Accessories;
 using ssm.Core;
 using System;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using Terraria;
 using Terraria.ModLoader;
 using ThoriumMod.Utilities;
@@ -28,7 +28,7 @@ namespace ssm
         {
             if (entity.type == ModContent.ItemType<Penetrator>() || entity.type == ModContent.ItemType<SparklingLove>() || entity.type == ModContent.ItemType<StyxGazer>())
             {
-                entity.damage *= 5;
+                entity.damage *= 2;
             }
             if (ModCompatibility.Calamity.Loaded)
             {
@@ -69,6 +69,26 @@ namespace ssm
             {
                 player.maxMinions += 2;
             }
+
+            //if (ModCompatibility.SacredTools.Loaded)
+            //{
+                if (Item.type == ModContent.ItemType<BerserkerSoul>())
+                {
+                    player.GetDamage<MeleeDamageClass>() += 3;
+                }
+                if (Item.type == ModContent.ItemType<SnipersSoul>())
+                {
+                    player.GetDamage<RangedDamageClass>() += 3;
+                }
+                if (Item.type == ModContent.ItemType<ConjuristsSoul>())
+                {
+                    player.GetDamage<MeleeDamageClass>() += 3;
+                }
+                if (Item.type == ModContent.ItemType<ArchWizardsSoul>())
+                {
+                    player.GetDamage<RangedDamageClass>() += 3;
+                }
+            //}
 
             //SoU
             if (ModCompatibility.SacredTools.Loaded && (Item.type == ModContent.ItemType<UniverseSoul>() || Item.type == ModContent.ItemType<EternitySoul>() || Item.type == ModContent.ItemType<StargateSoul>()))
@@ -125,6 +145,13 @@ namespace ssm
         }
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
         {
+            if (item.ModItem is BaseSoul)
+            {
+                for (int i = 0; i < tooltips.Count; i++)
+                {
+                    tooltips[i].Text = Regex.Replace(tooltips[i].Text, "22%", "25%", RegexOptions.IgnoreCase);
+                }
+            }
             if (item.type == ModContent.ItemType<UniverseSoul>() && ModCompatibility.SacredTools.Loaded && ModCompatibility.Thorium.Loaded && ModCompatibility.Calamity.Loaded)
             {
                 tooltips.Add(new TooltipLine(Mod, "balance", $"[c/00A36C:CSE Balance:] Additional 2 minion slots."));

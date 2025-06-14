@@ -12,6 +12,7 @@ using SacredTools.Items.Weapons.Oblivion;
 using SacredTools.Items.Weapons;
 using SacredTools.Items.Weapons.Primordia;
 using FargowiltasSouls.Content.Items.Materials;
+using SacredTools.Content.Items.Accessories.Sigils;
 
 namespace ssm.SoA.Souls
 {
@@ -39,10 +40,10 @@ namespace ssm.SoA.Souls
 
         private void Thorium(Player player)
         {
-            player.GetDamage<UnitedModdedThrower>() += 0.22f;
+            player.GetDamage<UnitedModdedThrower>() += 0.25f;
             player.GetCritChance<UnitedModdedThrower>() += 10f;
             player.GetAttackSpeed<UnitedModdedThrower>() += 0.15f;
-            player.Shtun().throwerVelocity += 0.20f;
+            player.Shtun().throwerVelocity += 0.2f;
         }
 
         public override void AddRecipes()
@@ -50,6 +51,7 @@ namespace ssm.SoA.Souls
             Recipe recipe = this.CreateRecipe();
 
             recipe.AddIngredient<StalkerEssence>();
+            recipe.AddIngredient<QuasarSigil>();
 
             recipe.AddIngredient<AsthralSaber>();
             recipe.AddIngredient<LunaticsGamble>();

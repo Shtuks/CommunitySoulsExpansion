@@ -1,4 +1,3 @@
-using FargowiltasSouls.Content.Items.Accessories.Souls;
 using System.ComponentModel;
 using Terraria.ModLoader.Config;
 
@@ -25,6 +24,11 @@ namespace ssm
         [BackgroundColor(60, 200, 60, 192)]
         [DefaultValue(false)]
         public bool ExperimentalContent { get; set; }
+
+        [ReloadRequired]
+        [BackgroundColor(60, 200, 60, 192)]
+        [DefaultValue(false)]
+        public bool AlternativeSiblings { get; set; }
 
         [Header("CrossMods")]
 
