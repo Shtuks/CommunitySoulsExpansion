@@ -9,6 +9,8 @@ using FargowiltasSouls.Content.Items.Materials;
 using ssm.Content.Items.Consumables;
 using FargowiltasSouls.Content.Items.Weapons.FinalUpgrades;
 using FargowiltasSouls;
+using Fargowiltas.Items.Tiles;
+using ssm.CrossMod.CraftingStations;
 
 namespace ssm
 {
@@ -45,6 +47,11 @@ namespace ssm
                 if ((recipe.HasResult(ModContent.ItemType<Penetrator>()) || recipe.HasResult(ModContent.ItemType<StyxGazer>()) || recipe.HasResult(ModContent.ItemType<SparklingLove>())) && !recipe.HasIngredient(ModContent.ItemType<Sadism>()) && ShtunConfig.Instance.AlternativeSiblings)
                 {
                     recipe.AddIngredient<Sadism>(30);
+                }
+                if (recipe.HasResult(ModContent.ItemType<EternitySoul>()) && recipe.HasTile<CrucibleCosmosSheet>())
+                {
+                    recipe.RemoveTile(ModContent.TileType<CrucibleCosmosSheet>());
+                    recipe.AddTile<MutantsForgeTile>();
                 }
             }
         }

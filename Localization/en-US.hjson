@@ -31,23 +31,25 @@ Mods: {
 					Effects of Dragon Talon Necklace and Disco Music Player
 					'''
 			}
-			
+
 			DragonEnchant2: {
-				DisplayName: Dragon Enchantment
-				Tooltip: Creates a burst of shadowflames after taking damage
+				DisplayName: Dragon Enchant2
+				Tooltip: ""
 			}
 
 			TitanEnchant2: {
-				DisplayName: Titan Enchantment
-				Tooltip: Using ranged weapons triggers a recoil blast
+				DisplayName: Titan Enchant2
+				Tooltip: ""
 			}
 
 			WarlockEnchant: {
 				DisplayName: Warlock Enchantment
 				Tooltip:
 					'''
-					Increases health regeneration and jump speed
-					Enemies killed by minions heal the player
+					'Better than a wizard'
+					Critical strikes will generate up to 15 shadow wisps
+					Pressing the 'Special Ability' key will unleash every stored shadow wisp towards your cursor's position
+					Effects of Demon Tongue and Dark Effigy
 					'''
 			}
 
@@ -67,17 +69,6 @@ Mods: {
 					'''
 					Spectral aura drains mana out of nearby enemies
 					Effects of Shadowbound Exoskeleton
-					'''
-			}
-
-			WarlockEnchant: {
-				DisplayName: Warlock Enchantment
-				Tooltip:
-					'''
-					'Better than a wizard'
-					Critical strikes will generate up to 15 shadow wisps
-					Pressing the 'Special Ability' key will unleash every stored shadow wisp towards your cursor's position
-					Effects of Demon Tongue and Dark Effigy
 					'''
 			}
 
@@ -380,6 +371,11 @@ Mods: {
 					[i:ssm/WayfarersEnchant] Effect of Explorer's Treads and Metal Band
 					[i:ssm/SunflowerEnchant] Being outside during daytime increases defense, maximum mana, and life regeneration slightly
 					'''
+			}
+
+			Adventurer: {
+				Tooltip: ""
+				DisplayName: Adventurer
 			}
 
 			HurricaneForce: {
@@ -2694,16 +2690,6 @@ Mods: {
 			StarblightFruit: {
 				DisplayName: Starblight Fruit
 				Tooltip: Gived permanent accessory slot and some potions effects
-			}
-
-			DragonEnchant2: {
-				DisplayName: Dragon Enchant2
-				Tooltip: ""
-			}
-
-			TitanEnchant2: {
-				DisplayName: Titan Enchant2
-				Tooltip: ""
 			}
 
 			WarlockEnchant2: {

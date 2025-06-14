@@ -5,6 +5,7 @@ using Terraria;
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
 using ssm.Core;
+using FargowiltasSouls.Content.Projectiles.BossWeapons;
 
 namespace ssm.Items;
 [ExtendsFromMod(ModCompatibility.Calamity.Name)]
@@ -29,12 +30,24 @@ public class ShtunTerminus : ModItem, ILocalizedModType, IModType
 
     public override bool AltFunctionUse(Player player)
     {
-        if (ModCompatibility.WrathoftheGods.Loaded)
-        {
-            ModCompatibility.WrathoftheGods.Mod.TryFind<ModProjectile>("TerminusProj", out ModProjectile terminusProj);
-            Item.shoot = terminusProj.Type;
-        }
         return ModCompatibility.WrathoftheGods.Loaded;
+    }
+
+    public override bool CanUseItem(Player player)
+    {
+        if (player.altFunctionUse == 2)
+        {
+            if (ModCompatibility.WrathoftheGods.Loaded)
+            {
+                ModCompatibility.WrathoftheGods.Mod.TryFind<ModProjectile>("TerminusProj", out ModProjectile terminusProj);
+                Item.shoot = terminusProj.Type;
+            }
+        }
+        else
+        {
+            Item.shoot = ModContent.ProjectileType<TerminusHoldout>();
+        }
+        return true;
     }
     public override void UpdateInventory(Player player)
     {

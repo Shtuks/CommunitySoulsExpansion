@@ -88,7 +88,6 @@ namespace ssm.Thorium.Souls
             else
             {
                 recipe.AddIngredient(ModContent.Find<ModItem>(ModCompatibility.CalBardHealer.Name, "OmniSpeaker"));
-                recipe.AddIngredient(ModContent.Find<ModItem>(ModCompatibility.CalBardHealer.Name, "TreeWhispererAmulet"));
                 recipe.AddIngredient<TheSet>();
                 recipe.AddIngredient(ModContent.Find<ModItem>(ModCompatibility.CalBardHealer.Name, "TreeWhisperersHarp"));
                 recipe.AddIngredient(ModContent.Find<ModItem>(ModCompatibility.CalBardHealer.Name, "FeralKeytar"));

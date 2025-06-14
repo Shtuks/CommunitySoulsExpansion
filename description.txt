@@ -11,7 +11,7 @@ Most of SoA enchantments was reworked and no longer give armor set bonuses.
 All things mod doing for now:
 - Balancing part of Post-ML content
 
-- Force for Calamity Addons
+- Compatibility with most of Calamity addons
 
 - Merge kinetic(SoA) thrower(Thorium) and rogue(Calamity) in one class
 
