@@ -16,6 +16,7 @@ using ThoriumMod.NPCs.BossForgottenOne;
 using ThoriumMod.NPCs.BossThePrimordials;
 using ThoriumMod.NPCs.BossViscount;
 using ThoriumMod.NPCs.BossStarScouter;
+using ThoriumMod;
 
 
 namespace ssm.Thorium
@@ -76,6 +77,66 @@ namespace ssm.Thorium
                 {
                     npc.lifeMax = num3 * ssm.SwarmItemsUsed;
                     npc.damage = num32 * ssm.SwarmItemsUsed;
+                }
+            }
+        }
+        public override void OnHitByProjectile(NPC target, Projectile proj, NPC.HitInfo hit, int damageDone)
+        {
+            if (proj.DamageType == ModContent.GetInstance<HealerDamage>())
+            {
+                switch (proj.owner.ToPlayer().meleeEnchant)
+                {
+                    case 1:
+                        target.AddBuff(BuffID.Venom, 180);
+                        break;
+                    case 2:
+                        target.AddBuff(BuffID.CursedInferno, 180);
+                        break;
+                    case 3:
+                        target.AddBuff(BuffID.OnFire, 180);
+                        break;
+                    case 4:
+                        target.AddBuff(BuffID.Midas, 180);
+                        break;
+                    case 5:
+                        target.AddBuff(BuffID.Ichor, 180);
+                        break;
+                    case 6:
+                        target.AddBuff(BuffID.Confused, 180);
+                        break;
+                    case 8:
+                        target.AddBuff(BuffID.Poisoned, 180);
+                        break;
+                }
+            }
+        }
+        public override void OnHitByItem(NPC target, Player player, Item item, NPC.HitInfo hit, int damageDone)
+        {
+            if (item.DamageType == ModContent.GetInstance<HealerDamage>())
+            {
+                switch (player.meleeEnchant)
+                {
+                    case 1:
+                        target.AddBuff(BuffID.Venom, 180);
+                        break;
+                    case 2:
+                        target.AddBuff(BuffID.CursedInferno, 180);
+                        break;
+                    case 3:
+                        target.AddBuff(BuffID.OnFire, 180);
+                        break;
+                    case 4:
+                        target.AddBuff(BuffID.Midas, 180);
+                        break;
+                    case 5:
+                        target.AddBuff(BuffID.Ichor, 180);
+                        break;
+                    case 6:
+                        target.AddBuff(BuffID.Confused, 180);
+                        break;
+                    case 8:
+                        target.AddBuff(BuffID.Poisoned, 180);
+                        break;
                 }
             }
         }

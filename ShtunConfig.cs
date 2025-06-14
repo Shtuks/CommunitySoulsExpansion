@@ -1,3 +1,4 @@
+using FargowiltasSouls.Content.Items.Accessories.Souls;
 using System.ComponentModel;
 using Terraria.ModLoader.Config;
 

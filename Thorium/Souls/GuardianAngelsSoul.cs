@@ -111,7 +111,7 @@ namespace ssm.Thorium.Souls
                 recipe.AddIngredient(ModContent.Find<ModItem>(ModCompatibility.CalBardHealer.Name, "BloomingSaintessDevotion"));
                 recipe.AddIngredient(ModContent.Find<ModItem>(ModCompatibility.CalBardHealer.Name, "SavingGrace"));
                 recipe.AddIngredient(ModContent.Find<ModItem>(ModCompatibility.CalBardHealer.Name, "WilloftheRagnarok"));
-                recipe.AddIngredient(ModContent.Find<ModItem>(ModCompatibility.CalBardHealer.Name, "PhoenicianBreak"));
+                recipe.AddIngredient(ModContent.Find<ModItem>(ModCompatibility.CalBardHealer.Name, "PhoenicianBeak"));
                 recipe.AddIngredient(ModContent.Find<ModItem>(ModCompatibility.CalBardHealer.Name, "MilkyWay"));
             }
 

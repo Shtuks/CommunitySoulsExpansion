@@ -3,7 +3,6 @@ using ssm.Core;
 using static CalamityMod.Events.BossRushEvent;
 using Redemption.NPCs.Bosses.ADD;
 using Redemption.NPCs.Bosses.Neb;
-using Redemption.NPCs.Bosses.Neb.Phase2;
 using CalamityMod.NPCs.Polterghast;
 
 namespace ssm.Redemption
@@ -24,7 +23,7 @@ namespace ssm.Redemption
                 Bosses.Add(new Boss(ModContent.NPCType<Nebuleus>(), TimeChangeContext.Night));
             }
 
-            BossIDsAfterDeath.Add(ModContent.NPCType<Nebuleus>(), [ModContent.NPCType<Nebuleus2>()]);
+            //BossIDsAfterDeath.Add(ModContent.NPCType<Nebuleus>(), [ModContent.NPCType<Nebuleus2>()]);
         }
     }
 }

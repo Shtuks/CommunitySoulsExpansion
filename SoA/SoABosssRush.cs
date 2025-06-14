@@ -10,6 +10,7 @@ using CalamityMod.NPCs.Providence;
 using SacredTools.NPCs.Boss.Erazor;
 using CalamityMod.NPCs.SupremeCalamitas;
 using CalamityMod.NPCs.Polterghast;
+using CalamityMod.NPCs.OldDuke;
 
 namespace ssm.SoA
 {
@@ -32,7 +33,7 @@ namespace ssm.SoA
                     Bosses[i].HostileNPCsToNotDelete.Add(ModContent.NPCType<AraghurTail>());
                     Bosses.Insert(i, new Boss(ModContent.NPCType<AraghurHead>()));
                 }
-                if (Bosses[i].EntityID == ModContent.NPCType<DevourerofGodsHead>())
+                if (Bosses[i].EntityID == ModContent.NPCType<OldDuke>())
                 {
                     Bosses.Insert(i, new Boss(ModContent.NPCType<Novaniel>()));
                 }

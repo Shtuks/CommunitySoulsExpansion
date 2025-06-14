@@ -1,4 +1,3 @@
-using CalamityMod.Events;
 using Fargowiltas;
 using FargowiltasSouls.Content.Bosses.AbomBoss;
 using FargowiltasSouls.Content.Bosses.MutantBoss;
@@ -13,11 +12,6 @@ namespace ssm
 {
     public partial class ShtunNpcs : GlobalNPC
     {
-        [JITWhenModsEnabled(ModCompatibility.Calamity.Name)]
-        bool CheckBossRush()
-        {
-            return BossRushEvent.BossRushActive;
-        }
         public override bool InstancePerEntity => true;
 
         public int chtuxlagorInferno;
@@ -34,7 +28,6 @@ namespace ssm
         private int go = 1;
         public override void Load()
         {
-            if (ModCompatibility.IEoR.Loaded) { multiplierM += 5f; }
             if (ModCompatibility.Redemption.Loaded) { multiplierA += 1f; }
             if (ModCompatibility.Thorium.Loaded && !ModCompatibility.Calamity.Loaded) { multiplierA += 1f; }
             if (ModCompatibility.SacredTools.Loaded && !ModCompatibility.Calamity.Loaded) { multiplierM += 0.7f; }
@@ -45,39 +38,17 @@ namespace ssm
         }
         public override void SetDefaults(NPC npc)
         {
-            bool num = false;
-            if (ModCompatibility.Calamity.Loaded)
-            {
-                num = CheckBossRush();
-            }
-
             if (npc.type == ModContent.NPCType<MutantBoss>())
             {
-                multiplierM *= num ? 0.5f : 1f;
-
-                npc.damage = Main.getGoodWorld ? 2000 : (int)(500 + (125 * (ModCompatibility.IEoR.Loaded ? Math.Round(multiplierM, 1) * 0.5f : Math.Round(multiplierM, 1))));
-                npc.lifeMax = (int)(10000000 + (10000000 * Math.Round(multiplierM, 1)));
+                npc.defense = ModCompatibility.Calamity.Loaded ? 300 : 250;
+                npc.damage = Main.getGoodWorld ? 2000 : (int)(500 + (125 * (Math.Round(multiplierM, 1))));
+                npc.lifeMax = (int)((ModCompatibility.IEoR.Loaded ? 40000000 : 10000000) + (10000000 * Math.Round(multiplierM, 1)));
             }
 
             if (npc.type == ModContent.NPCType<AbomBoss>())
             {
                 npc.damage = Main.getGoodWorld ? 1000 : (int)(250 + (15 * multiplierA));
                 npc.lifeMax = (int)(2800000 + (1000000 * multiplierA)) / (Main.expertMode ? 2 : 4);
-            }
-
-            if (!ssm.SwarmActive)
-            {
-                return;
-            }
-
-            if (FargoSets.NPCs.SwarmHealth[npc.type] != 0)
-            {
-                npc.lifeMax = FargoSets.NPCs.SwarmHealth[npc.type];
-            }
-
-            if (!npc.townNPC && npc.lifeMax > 10 && npc.damage > 0 && npc.damage < ssm.SwarmMinDamage * 2)
-            {
-                npc.damage = ssm.SwarmMinDamage * 2;
             }
         }
         public override void SetStaticDefaults()

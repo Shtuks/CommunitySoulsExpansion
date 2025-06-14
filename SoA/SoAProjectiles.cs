@@ -9,6 +9,7 @@ using ssm.Content.NPCs;
 using ssm.Content.Projectiles.Enchantments;
 using ssm.Core;
 using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 using static ssm.SoA.Enchantments.FallenPrinceEnchant;
 
@@ -63,13 +64,14 @@ namespace ssm.SoA
 
         public void CreateGravityField(Projectile proj, int damage)
         {
+            //Funniest shit i ever made
             float gravityStrength = MathHelper.Clamp(damage / 50f, 1f, 20f);
             float radius = 300f;
 
             for (int i = 0; i < Main.maxNPCs; i++)
             {
                 NPC npc = Main.npc[i];
-                if (npc.active && !npc.friendly && npc.CanBeChasedBy())
+                if (npc.active && !npc.friendly && npc.CanBeChasedBy() && !npc.boss)
                 {
                     float distance = Vector2.Distance(npc.Center, proj.Center);
                     if (distance < radius)
@@ -79,12 +81,12 @@ namespace ssm.SoA
                         float pullStrength = gravityStrength * (1f - distance / radius);
                         npc.velocity += direction * pullStrength;
 
-                        //if (Main.rand.NextBool(5))
-                        //{
-                        //    Dust dust = Dust.NewDustDirect(npc.position, npc.width, npc.height, DustID.Torch, 0f, 0f, 100, default, 2f);
-                        //    dust.velocity = direction * pullStrength * 2f;
-                        //    dust.noGravity = true;
-                        //}
+                        if (Main.rand.NextBool(5))
+                        {
+                            Dust dust = Dust.NewDustDirect(npc.position, npc.width, npc.height, DustID.Torch, 0f, 0f, 100, default, 2f);
+                            dust.velocity = direction * pullStrength * 2f;
+                            dust.noGravity = true;
+                        }
                     }
                 }
             }

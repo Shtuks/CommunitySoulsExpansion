@@ -941,13 +941,7 @@ Mods: {
 				Tooltip:
 					'''
 					'Asph-... Asthath-... How are you meant to pronounce this?'
-					Press [{$Keybinds.AbilityPrimary.DisplayName}] to parry incoming attacks in the direction of the cursor
-					Successfully parrying an attack will grant 1 second of invincibility and knock the player backwards
-					If an attack is parried the moment it hits the player, you receive 2 seconds of invincibility instead
-					Cooldown depends on the action (Missed parry: 5 seconds, Taking damage: 2 seconds, Successful parry: 3 seconds, Perfect parry: 2 seconds)
-					Certain special attacks and contact damage cannot be parried
-					This ability disables shadow dodge and similar effects
-					Effects of Ring of the Fallen, Memento Mori, and Arcanum of the Caster
+					Allows crits, and super crits to have a 50% chance to ignore Superarmor
 					'''
 			}
 
@@ -1019,7 +1013,7 @@ Mods: {
 				Tooltip:
 					'''
 					'Does something soon'TM
-					Effects of Stone of Resonance
+					Using relic weapons multiply most of stats by 1.1
 					'''
 			}
 
@@ -1028,10 +1022,9 @@ Mods: {
 				Tooltip:
 					'''
 					'Give up your heritage, gain power'
-					Hitting enemies has a chance to summon an energy blade behind you (Max of 5).
-					Every newly acquired blade increases the damage of pre-existing ones by 20%
-					Pressing [Ability] will launch the blades at nearby enemies
-					Effects of Novaniel's Resolve
+					When throwing a weapon enemies are pulled closer to it by gravity 
+					The strength of the gravity is based on the weapons damage
+					Before death you will explode into a supernova
 					'''
 			}
 
@@ -1040,9 +1033,8 @@ Mods: {
 				Tooltip:
 					'''
 					'Raze your enemies with Araghur's flames'
-					Taking fatal damage will revive you with 1/3rd of your max health
-					You will have one minute of increased strength after rebirth
-					5 minute cooldown
+					Projectiles that hit the ground have a chance to create spurring flame geysers
+					Geysers lasts for 5 seconds 
 					'''
 			}
 
@@ -1072,11 +1064,7 @@ Mods: {
 				Tooltip:
 					'''
 					'Who needs magic when you have technology?'
-					Dealing damage charges up an energy forcefield around you that damages enemies and decays over time 
-					Can be instantly discharged by pressing [Ability], which will cause a shockwave to damage all nearby enemies 
-					Damage, range and debuff duration are increased by forcefield strength 
-					Has a cooldown of 1 minute
-					Damaging enemies will occasionally call upon a meteor to fall from the sky
+					WIP
 					'''
 			}
 
@@ -1104,19 +1092,23 @@ Mods: {
 				Tooltip:
 					'''
 					'It's time to shine'
-					Throwing damage creates surges of energy around you
-					Energy surges attempt to home into enemies
+					WIP
 					'''
 			}
 
 			SpaceJunkEnchant: {
 				DisplayName: Space Junk Enchantment
-				Tooltip:
+				Tooltip1:
 					'''
 					'I'm da spaceman!'
 					Pressing the ability key sends out a falling satellite that explodes into multiple damaging shrapnels
 					Shrapnels stay on grounds/platforms and disappear after a few seconds
 					When being damaged, there is a 33% chance for 1-2 shrapnels to fall off your armor
+					'''
+				Tooltip:
+					'''
+					'I'm da spaceman!'
+					WIP
 					'''
 			}
 
@@ -1125,7 +1117,7 @@ Mods: {
 				Tooltip:
 					'''
 					'Stand proud'
-					Summons a Stellar Guardian behind you that attacks enemies
+					WIP
 					'''
 			}
 
@@ -1134,7 +1126,8 @@ Mods: {
 				Tooltip:
 					'''
 					'The ride never ends'
-					Increases damage fall off distance by a 15%, and makes bosses aggression go down when taken damage
+					The player's movement generates nightmare bubbles that when hitting a boss decrease their aggression by 15% 
+					Hitting enemies gives them the “fear” debuff causing them to hit other enemies 
 					'''
 			}
 
@@ -1432,11 +1425,9 @@ Mods: {
 				Tooltip:
 					'''
 					'Light yet durable'
-					10% damage reduction at Full HP
 					Nothing will stop your movement 
 					Double tap to dash
 					Grants immunity to shambler chain-balls
-					Effects of Spiked Bracer and Thorium Shield
 					'''
 			}
 
@@ -1562,7 +1553,7 @@ Mods: {
 					50% increased mining speed
 					Shows the location of enemies, traps, and treasures
 					Light is emitted from the player
-					Effects of Crystaline Charm and Crystal Spear Tip
+					Effects of Crystal Spear Tip
 					'''
 			}
 
@@ -2726,16 +2717,6 @@ Mods: {
 				DisplayName: Blue Computer Chip
 			}
 
-			MariviumEnchant: {
-				Tooltip:
-					'''
-					If your crit chance is over 100%, convert excess crit chance into damage bonus
-					Obtain 2 layers of shields, which takes 10 seconds to recover after being shattered
-					After shield shattered, treat 140 health points and increase your damage by 100% for 5 seconds
-					'''
-				DisplayName: Marivium Enchant
-			}
-
 			ClamitasEnchant: {
 				Tooltip:
 					'''
@@ -2792,11 +2773,6 @@ Mods: {
 
 			SleepyRock: {
 				DisplayName: Sleepy Rock
-				Tooltip: ""
-			}
-
-			MutantsCurseEX: {
-				DisplayName: Mutants Curse EX
 				Tooltip: ""
 			}
 
@@ -3158,7 +3134,7 @@ Mods: {
 
 			ShtunTerminus: {
 				DisplayName: Terminus
-				Tooltip: "Summons Boss Rush. If WotG enabled summons Nameless Deity on RMB."
+				Tooltip: Summons Boss Rush. If WotG enabled summons Nameless Deity on RMB.
 			}
 
 			BeekeeperEssence: {
