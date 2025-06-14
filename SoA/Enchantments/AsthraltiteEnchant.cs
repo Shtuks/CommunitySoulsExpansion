@@ -1,19 +1,16 @@
 ﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria.Localization;
-using SacredTools;
-using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using FargowiltasSouls.Content.Items.Accessories.Enchantments;
 using FargowiltasSouls.Core.AccessoryEffectSystem;
 using ssm.Content.SoulToggles;
-using ssm.Content.Buffs.Minions;
 using ssm.Core;
-using Microsoft.Xna.Framework.Graphics;
 using SacredTools.Content.Items.Armor.Asthraltite;
 using SacredTools.Content.Items.Accessories;
-using SacredTools.Content.Items.Accessories.Sigils;
+using FargowiltasSouls;
+using SacredTools.Content.Items.Weapons.Asthraltite;
+using SacredTools.NPCs;
 
 namespace ssm.SoA.Enchantments
 {
@@ -42,37 +39,37 @@ namespace ssm.SoA.Enchantments
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            ModdedPlayer modPlayer = player.GetModPlayer<ModdedPlayer>();
-            modPlayer.AstralSet = true;
-
-            //ModContent.Find<ModItem>(this.soa.Name, "AsthraliteHelmetRevenant").UpdateArmorSet(player);
-            ModContent.Find<ModItem>(this.soa.Name, "AsthralSummon").UpdateArmorSet(player);
-            ModContent.Find<ModItem>(this.soa.Name, "AsthralRanged").UpdateArmorSet(player);
-            ModContent.Find<ModItem>(this.soa.Name, "AsthralMage").UpdateArmorSet(player);
-            ModContent.Find<ModItem>(this.soa.Name, "AsthralMelee").UpdateArmorSet(player);
+            player.AddEffect<AsthraltiteEffect>(Item);
 
             ModContent.Find<ModItem>(this.soa.Name, "AsthralRing").UpdateAccessory(player, false);
-
-            ModContent.Find<ModItem>(this.soa.Name, "MementoMori").UpdateAccessory(player, false);
-
             ModContent.Find<ModItem>(this.soa.Name, "CasterArcanum").UpdateAccessory(player, false);
         }
 
-        public class AsthraliteEffect : AccessoryEffect
+        public class AsthraltiteEffect : AccessoryEffect
         {
             public override Header ToggleHeader => Header.GetHeader<SyranForceHeader>();
             public override int ToggleItemType => ModContent.ItemType<AsthraltiteEnchant>();
+
+            public override void OnHitNPCEither(Player player, NPC target, NPC.HitInfo hitInfo, DamageClass damageClass, int baseDamage, Projectile projectile, Item item)
+            {
+                if(Main.rand.NextBool() && hitInfo.Crit)
+                {
+                    hitInfo.Damage *= 2;
+                }
+                target.GetGlobalNPC<ModGlobalNPC>().InflictDraconicBlaze(target, 300, hitInfo.Damage / 2);
+            }
         }
 
         public override void AddRecipes()
         {
             Recipe recipe = this.CreateRecipe();
+            recipe.AddRecipeGroup("ssm:AsthralHelms");
             recipe.AddIngredient<AsthralChest>();
             recipe.AddIngredient<AsthralLegs>();
             recipe.AddIngredient<AsthralRing>();
             recipe.AddIngredient<CasterArcanum>();
+            recipe.AddIngredient<AsthralBlade>();
             //recipe.AddIngredient<MementoMori>(); now in class souls
-            recipe.AddRecipeGroup("ssm:AsthralHelms");
             recipe.AddTile(412);
             recipe.Register();
         }

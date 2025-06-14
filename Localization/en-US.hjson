@@ -31,6 +31,25 @@ Mods: {
 					Effects of Dragon Talon Necklace and Disco Music Player
 					'''
 			}
+			
+			DragonEnchant2: {
+				DisplayName: Dragon Enchantment
+				Tooltip: Creates a burst of shadowflames after taking damage
+			}
+
+			TitanEnchant2: {
+				DisplayName: Titan Enchantment
+				Tooltip: Using ranged weapons triggers a recoil blast
+			}
+
+			WarlockEnchant: {
+				DisplayName: Warlock Enchantment
+				Tooltip:
+					'''
+					Increases health regeneration and jump speed
+					Enemies killed by minions heal the player
+					'''
+			}
 
 			TitanEnchant: {
 				DisplayName: Titan Enchantment
@@ -648,6 +667,7 @@ Mods: {
 					10% crit chance increase for current class
 					10% attack speed increase for current class
 					Press DOWN double times activate Eridanus' blessing
+					[i:FargowiltasSouls/UniverseCore]
 					'''
 			}
 
@@ -658,7 +678,7 @@ Mods: {
 					Massive increasement to all offencive stats.
 					[i:ssm/GaiaEnchant] Press DOWN double times activate Attacking mode which have following effects:
 					30% damage and 15% crit chance increase for current class, increase armor penetration by 20
-					Decrease defence by 30, endurance by 15% and max life by 10%
+					Decrease defense by 30, endurance by 15% and max life by 10%
 					[i:ssm/EridanusEnchant] Press DOWN double times activate Eridanus' blessing
 					[i:ssm/StyxEnchant] Can endure any attack and survive with one life, endurance recovers when you reach max life
 					Increased damage gained Sparkling Adoration graze, halves heart cooldown, Abominationn periodically manifests to support your critical hits
@@ -691,7 +711,7 @@ Mods: {
 					Press DOWN double times activate Attacking mode which have following effects:
 					30% damage and 15% crit chance increase for current class
 					increase armor penetration by 20
-					Decrease defence by 20, endurance by 15% and max life by 10%
+					Decrease defense by 20, endurance by 15% and max life by 10%
 					'''
 			}
 
@@ -700,7 +720,8 @@ Mods: {
 				Tooltip:
 					'''
 					'Asph-... Asthath-... How are you meant to pronounce this?'
-					Allows crits, and super crits to have a 50% chance to ignore Superarmor
+					Allows crits, and super crits to have a 50% chance to ignore any type of defense
+					All attacks inflict Draconic Blaze
 					'''
 			}
 
@@ -750,7 +771,7 @@ Mods: {
 					'''
 					'Ralnek's spirit guides you'
 					Surrounds player with Dreadfire Aura that inflicting Dreadfire buff
-					Dreadfire buff increases magic and summon damage by 15%
+					Dreadfire buff increases damage by 20%
 					'''
 			}
 
@@ -759,7 +780,7 @@ Mods: {
 				Tooltip:
 					'''
 					'Creeper? Aw man…'
-					After taking damage you create pulses that grants a damage buff to minions, sentries, and nearby players
+					After taking damage create pulses that grants a damage buff to minions, sentries, and nearby players
 					The strength of the buff depends on the user's health 
 					'''
 			}
@@ -2754,6 +2775,11 @@ Mods: {
 				Tooltip: ""
 				DisplayName: Swarm Deactivator Debug
 			}
+
+			SyrianForce: {
+				DisplayName: Syrian Force
+				Tooltip: ""
+			}
 		}
 
 		Buffs: {
@@ -2913,6 +2939,7 @@ Mods: {
 		}
 
 		Toggler: {
+			//thorium
 			GraniteEffect: Shock Absorber
 			ThiefsWalletEffect: Pirate's Purse
 			BlastShieldEffect: Blast Shield
@@ -2948,16 +2975,6 @@ Mods: {
 			PocketFusionGeneratorEffect: Pocket Fusion Generator
 			SerpentShieldEffect: Serpent Shield
 			MotDEEffect: Mark of the Dream Eater
-			ChaosStoneEffect: Chaos Stone
-			CryoStoneEffect: Cryo Stone
-			BloomStoneEffect: Bloom Stone
-			ToxicHeartEffect: Toxic Heart
-			AttackSpeedCapSoulEffect: Attack speed cap
-			HideofAstrumDeusEffect: Hide of Astrum Deus
-			AquaticHeartEffect: Aquatic Heart
-			RoyalGuardEffect: Royal Guard
-			MilinticaDashEffect: Advanced Dash
-			HeartOfThePloughEffect: Heart of the Plough
 			GuardianEffect: Medical Bag
 			AsgardForceHeader: Asgard Force
 			AlfheimForceHeader: Alfheim Force
@@ -2971,7 +2988,7 @@ Mods: {
 			SacredEffect: Karma Holder
 			IcyEffect: Icy Aura
 			NoviceClericEffect: Holy Crosses
-			TideTurnerEffect: Tide Defence
+			TideTurnerEffect: Tide Defense
 			DreadEffect: increased Inertia
 			WhisperingEffect: Eldrich Tentacles
 			LodestoneEffect: Sandweaver's Tiara
@@ -2983,33 +3000,41 @@ Mods: {
 			PyroEffect: Pyromancer Ignition
 			PlagueLordEffect: Plague Lord's Flask
 			LodestoneEffect2: Lodestone Shields
-
 			//soa
+			FoundationsForceHeader: Foundations Force
+			SyranForceHeader: Syrian Force
+			AsthraltiteEffect: Hypercrits
+			ExitumLuxEffect: Relic Boost
+			SpaceJunkEffect: Space Junk on hit
+			VoidWardenEffect: Nightmare Bubbles
+			LapisDefenseEffect: Lapis defense
 			VulcanReaperEffect: Reaper Streak
 			FlariumEffect: Flarium Geysers
 			BlightboneEffect: Blightbone Support
-			LapisDefenceEffect: Lapis defence
 			LapisSpeedEffect: Lapis Speed
 			EerieEffect: Eerie Pulses
+			PrairieEffect: Wind Speed
 			FrosthunterEffect: Frost Explosions
 			CosmicCommanderEffect: Very annoying effect. Turn it off.
 			GenerationsForceHeader: Generations Force
 			SoranForceHeader: Soran Force
-			BlazingBruteEffect: Blazing Shield
+			BlazingBruteEffect: Rival Streak
 			FallenPrinceEffect: Energy Blades
 			NebulousApprenticeEffect: Nebulous Flames
 			GravityEffect: Gravity Area
 			SupernovaEffect: Supernova On Death
-			StellarPriestEffect: Stallar Guardian
+			StellarPriestEffect: Stellar Guardian
 			QuasarEffect: ech
 			BismuthEffect: Bismuth Crystal
 			DreadfireEffect: Dreadfire Aura
 			MarstechEffect: Force Fields
 			FloraFistEffect: Flora Fist
 			SoAMasoSoulHeader: Soul of Master
-
-			//cal
+			RoyalGuardEffect: Royal Guard
+			MilinticaDashEffect: Advanced Dash
+			HeartOfThePloughEffect: Heart of the Plough
 			CalamitySoulHeader: Godseeker Soul
+			//cal
 			ShatteredCommunityEffect: Shattered Community
 			ClamitasEffect: Clams Minions
 			RedDevil: Demonshade Devil
@@ -3021,10 +3046,14 @@ Mods: {
 			VoidFaquirEffect: Void Bar
 			SplendorEffect: Splendor Jam
 			DivineEffect: Light Dimension Cursor
-
-
-			//other
+			ChaosStoneEffect: Chaos Stone
+			CryoStoneEffect: Cryo Stone
+			BloomStoneEffect: Bloom Stone
+			ToxicHeartEffect: Toxic Heart
+			HideofAstrumDeusEffect: Hide of Astrum Deus
+			AquaticHeartEffect: Aquatic Heart
 			EridanusEffect: Eridanus blessing
+			//other
 			GaiaEffect: Attacking mode
 			NekomiEffect: Nekomi armor set
 			PhantaplazmalEffect: Mutant armor set
@@ -3035,6 +3064,69 @@ Mods: {
 			SpeedCapEffect: Movement Speed Cap
 			SpectralFishEffect: Spectral Fishron Support
 			CuteFishEXEffect: Fishron Ritual
+			//redemption
+			AdvancementHeader: "{$Mods.FargoMoreSoulsCompat.Items.AdvancementForce.DisplayName}"
+			CommonGuardBauble: Soul Bauble
+			PureIronCross: Holy Shield
+			XenomiteNecklace: Necklace of Perception
+			XenomiteArmorEffect: Toxic Gas
+			HardlightEffect: Drones Summon
+			XeniumConcoction: Beelzebub Concoction
+			XeniumShield: Infected Thornshield Dash
+			//spirit
+			AdventurerHeader: Adventurer Force
+			BotanistHerbEffect: Glowing Herb
+			FloranWellFed: Raw Meat Drops
+			FloranGrassEffect: Standing On Grass Bonus
+			WayfarerTreads: Explorer's Treads
+			WayfarerBand: Metal Band
+			WayfarerArmorBuff: Wayfarer Stacking Buff
+			HurricaneHeader: Hurricane Force
+			RogueCrestEffect: Rusted Sword Summon
+			RogueRuneEffect: Movement Increases
+			RogueArmorEffect: Rogue Invisibility On Hit
+			ChitinTornadoDash: Tornado Dash
+			ApostleEffect: Feathers Spawn
+			MarbleChunkEffect: Limited Flight
+			AstraliteArmorEffect: Energy Field
+			AstraliteBoots: Fast Falling
+			SeraphAngelicSigil: Angelic Spark
+			RunicSpawn: Explosive Runes
+			RunicScroll: Rune Wizard's Scroll
+			AtlantisHeader: Atlantis Force
+			BismiteExplosion: Toxic Explosion
+			BismiteShieldEffect: Festering Wounds On Hit
+			CascadeBubble: Bubble Shield
+			CascadePendant: Improved Swimming
+			GraniteChunkStomp: Granite Stomp
+			GraniteBoots: Low Health Speed Boost
+			StreamSurferFishJump: Fish Jump/ Fall Speed
+			StreamSurferSpout: Water Spout Summon
+			SpiritFangEffect: Shadow-Singed Fang
+			PrimalStoneArmorEffect: Inflict Unstable Affliction
+			FrostburnHeader: Frostburn Force
+			BloodCourtBolt: Blood Bolt
+			BloodCourtTongue: Grisly Tongue
+			BloodCourtWard: Sanguine Ward
+			CryoliteAura: Icy Aura
+			CryoliteCard: Four Of A Kind
+			DuskRunes: Shadowflame Magic Attack
+			DuskGuitar: Guitar Lightning
+			FrigidAttackSpeed: Icy Wall
+			FrigidIceWall: Frigid Melee Speed
+			MarksmanCrit: Concentrated Critical Attack
+			PainMongerGuard: Infernal Guardians
+			PainMongerMaw: Magic Fiery Spit
+			SlagTyrantBurst: Sentries Fireballs Burst
+			SlagTyrantSummon: Magic Scepter Summon
+			//consolaria
+			HeroHeader: Hero Force
+			OstaraJump: Bunny Hops
+			OstaraGift: Ostara's Gift
+			DragonBurst: Dragon Burst
+			TitanRecoil: Ranged Recoil
+			PhantasmalAura: Spectral Aura
+			PhantasmalJump: Shadowbound Jump
 		}
 
 		Tiles: {
@@ -3120,6 +3212,7 @@ Mods: {
 			CatlightProj.DisplayName: Catlight Proj
 			CatlightExtraProj.DisplayName: Catlight Extra Proj
 			CatlightDeathray.DisplayName: Catlight Deathray
+			EeriePulse.DisplayName: Eerie Pulse
 		}
 
 		Bestiary: {

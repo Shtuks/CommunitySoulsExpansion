@@ -1,8 +1,10 @@
 ﻿using FargowiltasSouls;
+using FargowiltasSouls.Core.AccessoryEffectSystem;
 using ssm.Core;
 using Terraria;
 using Terraria.ModLoader;
 using static ssm.SoA.Enchantments.DreadfireEnchant;
+using static ssm.SoA.Forces.GenerationsForce;
 
 namespace ssm.Content.Buffs
 {
@@ -18,13 +20,12 @@ namespace ssm.Content.Buffs
 
         public override void Update(Player player, ref int buffIndex)
         {
-            player.GetDamage<GenericDamageClass>() += player.ForceEffect<DreadfireEffect>() ? 0.4f : 0.3f;
-            //player.GetDamage<MagicDamageClass>() += player.ForceEffect<DreadfireEffect>() ? 0.4f : 0.3f;
+            player.GetDamage<GenericDamageClass>() += player.ForceEffect<DreadfireEffect>() ? 0.3f : 0.2f;
         }
 
         public override void Update(NPC npc, ref int buffIndex)
         {
-            npc.lifeRegen -= Main.LocalPlayer.ForceEffect<DreadfireEffect>() ? 30 : 5;
+            npc.lifeRegen -= Main.LocalPlayer.HasEffect<GenerationsEffect>() ? 300 : 30;
         }
     }
 }

@@ -57,7 +57,7 @@ namespace ssm.SoA.Enchantments
                 {
                     player.AddBuff(ModContent.BuffType<DreadflameAura>(), 600);
 
-                    player.AddBuff(ModContent.BuffType<DreadflameAuraCD>(), player.ForceEffect<DreadfireEffect>() ? 3000 : 2700);
+                    player.AddBuff(ModContent.BuffType<DreadflameAuraCD>(), player.ForceEffect<DreadfireEffect>() ? 2600 : 2000);
                 }
             }
             public static int Range(Player player, bool forceEffect) => (int)((forceEffect ? 450f : 250f) * (1f + player.FargoSouls().AuraSizeBonus));

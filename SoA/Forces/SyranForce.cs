@@ -44,7 +44,7 @@ namespace ssm.SoA.Forces
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            player.AddEffect<AsthraliteEffect>(Item);
+            player.AddEffect<AsthraltiteEffect>(Item);
             player.AddEffect<VoidWardenEffect>(Item);
             player.AddEffect<VulcanReaperEffect>(Item);
             player.AddEffect<ExitumLuxEffect>(Item);

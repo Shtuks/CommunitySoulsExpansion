@@ -44,7 +44,7 @@ namespace ssm
 
         [ReloadRequired]
         [BackgroundColor(60, 200, 60, 192)]
-        [DefaultValue(false)]
+        [DefaultValue(true)]
         public bool ThrowerMerge { get; set; }
 
         [Header("EnchantsLoad")]

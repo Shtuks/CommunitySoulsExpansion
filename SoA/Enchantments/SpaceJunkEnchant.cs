@@ -71,10 +71,10 @@ namespace ssm.SoA.Enchantments
 
         public class SpaceJunkAbilityEffect : AccessoryEffect
         {
-            public override Header ToggleHeader => Header.GetHeader<SyranForceHeader>();
-            public override int ToggleItemType => ModContent.ItemType<SpaceJunkEnchant>();
+            public override Header ToggleHeader => null;
             public override bool ActiveSkill => true;
 
+            public override int ToggleItemType => ModContent.ItemType<SpaceJunkEnchant>();
             public override void ActiveSkillJustPressed(Player player, bool stunned)
             {
                 NPC nearestEnemy = null;

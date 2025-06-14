@@ -17,10 +17,6 @@ namespace ssm.Consolaria.Enchantments
     [ExtendsFromMod(ModCompatibility.Consolaria.Name)]
     public class AncientTitanEnchant : BaseEnchant
     {
-        public override bool IsLoadingEnabled(Mod mod)
-        {
-            return ShtunConfig.Instance.ExperimentalContent;
-        }
         public override Color nameColor => new Color(60, 75, 100);
         public override void SetDefaults()
         {

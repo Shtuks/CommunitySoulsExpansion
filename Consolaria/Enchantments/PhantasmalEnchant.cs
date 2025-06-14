@@ -17,10 +17,6 @@ namespace ssm.Consolaria.Enchantments
     [ExtendsFromMod(ModCompatibility.Consolaria.Name)]
     public class PhantasmalEnchant : BaseEnchant
     {
-        public override bool IsLoadingEnabled(Mod mod)
-        {
-            return ShtunConfig.Instance.ExperimentalContent;
-        }
         public override Color nameColor => new Color(207, 142, 231);
         public override void SetDefaults()
         {

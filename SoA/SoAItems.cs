@@ -36,23 +36,23 @@ namespace ssm.SoA
             }
             if (entity.type == ModContent.ItemType<FlamesOfCondemnation>())
             {
-                entity.damage = ModCompatibility.Calamity.Loaded ? (int)(entity.damage * 2.2f) : (int)(entity.damage * 2);
+                entity.damage = (int)(entity.damage * 2.2f);
             }
             if (entity.type == ModContent.ItemType<Malice>())
             {
-                entity.damage = ModCompatibility.Calamity.Loaded ? (int)(entity.damage * 1.8f) : (int)(entity.damage * 1.5f);
+                entity.damage = (int)(entity.damage * 1.8f);
             }
             if (entity.type == ModContent.ItemType<Tenebris>())
             {
-                entity.damage = ModCompatibility.Calamity.Loaded ? (int)(entity.damage * 1.1f) : (int)(entity.damage * 1);
+                entity.damage = (int)(entity.damage * 1.1f);
             }
             if (entity.type == ModContent.ItemType<Desperatio>())
             {
-                entity.damage = ModCompatibility.Calamity.Loaded ? (int)(entity.damage * 1.1f) : (int)(entity.damage * 1);
+                entity.damage = (int)(entity.damage * 1.1f);
             }
             if (entity.type == ModContent.ItemType<Eschaton>())
             {
-                entity.damage = ModCompatibility.Calamity.Loaded ? (int)(entity.damage * 1.9f) : (int)(entity.damage * 1.5);
+                entity.damage = (int)(entity.damage * 1.9f);
             }
             if (entity.type == ModContent.ItemType<AsthraltiteHealingPotion>() && ModCompatibility.Calamity.Loaded)
             {
@@ -98,25 +98,6 @@ namespace ssm.SoA
                 tooltips.Add(new TooltipLine(Mod, "velocity", $"[c/00A36C:Cross-Mod Balance:] Projectile velocity increased by 10%"));
                 tooltips.Add(new TooltipLine(Mod, "homing", $"[c/00A36C:Cross-Mod Balance:] Weapon's pojectiles are homing in on enemies"));
             }
-        }
-        public override bool? UseItem(Item item, Player player)
-        {
-            if (item != null && item.damage > 0 && !item.IsAir)
-            {
-                if (!player.ForceEffect<BlightboneEffect>() && Main.rand.NextFloat() < 0.1f)
-                {
-                    Projectile.NewProjectile(player.GetSource_FromThis(), player.Center, player.velocity * 0.8f,
-                        ModContent.ProjectileType<Blightbone>(), (int)(item.damage * 0.5f), item.knockBack, player.whoAmI);
-                }
-                else
-                {
-                    Projectile.NewProjectile(player.GetSource_FromThis(), player.Center, player.velocity * 0.8f,
-                        ModContent.ProjectileType<Blightbone>(), (int)(item.damage * 0.5f), item.knockBack, player.whoAmI);
-                    Projectile.NewProjectile(player.GetSource_FromThis(), player.Center, player.velocity * 0.9f,
-                        ModContent.ProjectileType<Blightbone>(), (int)(item.damage * 0.25f), item.knockBack, player.whoAmI);
-                }
-            }
-            return base.UseItem(item, player);
         }
 
         //More kluges YAY

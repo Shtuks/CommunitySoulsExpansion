@@ -1,4 +1,3 @@
-using Fargowiltas;
 using FargowiltasSouls.Content.Bosses.AbomBoss;
 using FargowiltasSouls.Content.Bosses.MutantBoss;
 using ssm.Core;
@@ -29,20 +28,21 @@ namespace ssm
         public override void Load()
         {
             if (ModCompatibility.Redemption.Loaded) { multiplierA += 1f; }
-            if (ModCompatibility.Thorium.Loaded && !ModCompatibility.Calamity.Loaded) { multiplierA += 1f; }
-            if (ModCompatibility.SacredTools.Loaded && !ModCompatibility.Calamity.Loaded) { multiplierM += 0.7f; }
+            if (ModCompatibility.Thorium.Loaded && !ModCompatibility.Calamity.Loaded) {multiplierA += 1f; }
+
+            if (ModCompatibility.SacredTools.Loaded && !ModCompatibility.Calamity.Loaded) { multiplierM += 0.8f; }
             if (ModCompatibility.Calamity.Loaded && !ModCompatibility.SacredTools.Loaded) { multiplierM += 1f; }
-            if (ModCompatibility.Thorium.Loaded) { multiplierM += 0.9f; multiplierA += 3f; }
+            if (ModCompatibility.Thorium.Loaded) { multiplierM += 0.6f; multiplierA += 3f; }
             if (ModCompatibility.Calamity.Loaded) { multiplierM += 1.8f; multiplierA += 7f; }
-            if (ModCompatibility.SacredTools.Loaded) { multiplierM += 1.3f; multiplierA += 2f; }
+            if (ModCompatibility.SacredTools.Loaded) { multiplierM += 1.6f; multiplierA += 2f; }
         }
         public override void SetDefaults(NPC npc)
         {
             if (npc.type == ModContent.NPCType<MutantBoss>())
             {
                 npc.defense = ModCompatibility.Calamity.Loaded ? 300 : 250;
-                npc.damage = Main.getGoodWorld ? 2000 : (int)(500 + (125 * (Math.Round(multiplierM, 1))));
-                npc.lifeMax = (int)((ModCompatibility.IEoR.Loaded ? 40000000 : 10000000) + (10000000 * Math.Round(multiplierM, 1)));
+                npc.damage = Main.getGoodWorld ? 2000 : (int)(500 + ((ModCompatibility.Calamity.Loaded ? 125 : 100) * (Math.Round(multiplierM, 1))));
+                npc.lifeMax = (int)((ModCompatibility.IEoR.Loaded ? 40000000 : 10000000) + (10000000 * Math.Round(multiplierM, 1))) / (Main.expertMode ? 1 : 2);
             }
 
             if (npc.type == ModContent.NPCType<AbomBoss>())

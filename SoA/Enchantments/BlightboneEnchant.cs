@@ -11,7 +11,6 @@ using SacredTools.Content.Items.Accessories;
 using SacredTools.Content.Items.Weapons.Dreadfire;
 using FargowiltasSouls;
 using System;
-using Terraria.Audio;
 using ssm.Content.Projectiles.Enchantments;
 
 namespace ssm.SoA.Enchantments
@@ -43,27 +42,33 @@ namespace ssm.SoA.Enchantments
 
             player.AddEffect<BlightboneEffect>(Item);
         }
-
         public class BlightboneEffect : AccessoryEffect
         {
+            public int boneCD;
             public override Header ToggleHeader => Header.GetHeader<FoundationsForceHeader>();
             public override int ToggleItemType => ModContent.ItemType<BlightboneEnchant>();
             public override bool ExtraAttackEffect => true;
             public override void TryAdditionalAttacks(Player player, int damage, DamageClass damageType)
             {
-                FargoSoulsPlayer fargoSoulsPlayer = player.FargoSouls();
-                if (player.whoAmI != Main.myPlayer || fargoSoulsPlayer.AdditionalAttacksTimer > 0)
+                if (boneCD > 0)
                 {
                     return;
                 }
 
-                fargoSoulsPlayer.AdditionalAttacksTimer = 30;
+                boneCD = 30;
                 float num = 50f;
                 Vector2 center = player.Center;
                 Vector2 vector = Vector2.Normalize(Main.MouseWorld - center);
-                for (int i = 0; i < 3; i++)
+                for (int i = 0; i < (player.ForceEffect<BlightboneEffect>() ? 3 : 1); i++)
                 {
-                    Projectile.NewProjectile(GetSource_EffectItem(player), center, vector.RotatedByRandom(Math.PI / 2.0) * Main.rand.NextFloat(6f, 10f), ModContent.ProjectileType<Blightbone>(), (int)(num * player.ActualClassDamage(DamageClass.Throwing)), 9f, player.whoAmI);
+                    Projectile.NewProjectile(GetSource_EffectItem(player), center, vector.RotatedByRandom(Math.PI / 2.0) * Main.rand.NextFloat(6f, 10f) * 2, ModContent.ProjectileType<Blightbone>(), (int)(num * player.ActualClassDamage(DamageClass.Throwing)), 9f, player.whoAmI);
+                }
+            }
+            public override void PostUpdateEquips(Player player)
+            {
+                if (boneCD > 0)
+                {
+                    boneCD--;
                 }
             }
         }

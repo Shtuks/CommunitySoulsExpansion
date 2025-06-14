@@ -16,10 +16,6 @@ namespace ssm.Consolaria.Enchantments
     [ExtendsFromMod(ModCompatibility.Consolaria.Name)]
     public class DragonEnchant2 : BaseEnchant
     {
-        public override bool IsLoadingEnabled(Mod mod)
-        {
-            return ShtunConfig.Instance.ExperimentalContent;
-        }
         public override Color nameColor => new Color(151, 191, 241);
         public override void SetDefaults()
         {

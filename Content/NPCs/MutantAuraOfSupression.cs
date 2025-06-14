@@ -41,11 +41,11 @@ namespace ssm.Content.NPCs
             NPC.damage = 0;
             if (!WorldSavingSystem.MasochistModeReal)
             {
-                NPC.lifeMax = 20000000;
+                NPC.lifeMax = ModCompatibility.Calamity.Loaded ? 20000000 : 15000000;
             }
             else
             {
-                NPC.lifeMax = 30000000;
+                NPC.lifeMax = ModCompatibility.Calamity.Loaded ? 30000000 : 20000000;
             }
             NPC.HitSound = SoundID.NPCHit1;
             NPC.DeathSound = SoundID.NPCHit1;

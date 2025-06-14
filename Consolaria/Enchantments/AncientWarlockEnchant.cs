@@ -14,10 +14,6 @@ namespace ssm.Consolaria.Enchantments
     [ExtendsFromMod(ModCompatibility.Consolaria.Name)]
     public class AncientWarlockEnchant : BaseEnchant
     {
-        public override bool IsLoadingEnabled(Mod mod)
-        {
-            return ShtunConfig.Instance.ExperimentalContent;
-        }
         public override Color nameColor => new Color(101, 25, 179);
         public override void SetDefaults()
         {

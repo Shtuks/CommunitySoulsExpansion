@@ -14,10 +14,6 @@ namespace ssm.Consolaria.Enchantments
     [ExtendsFromMod(ModCompatibility.Consolaria.Name)]
     public class AncientDragonEnchant : BaseEnchant
     {
-        public override bool IsLoadingEnabled(Mod mod)
-        {
-            return ShtunConfig.Instance.ExperimentalContent;
-        }
         public override Color nameColor => new Color(151, 191, 241);
         public override void SetDefaults()
         {
@@ -26,7 +22,6 @@ namespace ssm.Consolaria.Enchantments
             Item.value = 50000;
             Item.defense = 7;
         }
-
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             player.GetDamage(DamageClass.Melee) += 0.10f;

@@ -6,7 +6,6 @@ using FargowiltasSouls.Core.AccessoryEffectSystem;
 using ssm.Content.SoulToggles;
 using NoxusBoss.Content.Items.Accessories.VanityEffects;
 using NoxusBoss.Content.Items.Accessories.Wings;
-using ssm.Content.Tiles;
 using ssm.CrossMod.CraftingStations;
 
 namespace ssm.Calamity.Addons
@@ -25,6 +24,28 @@ namespace ssm.Calamity.Addons
             Item.value = 50000;
         }
 
+        public override void VerticalWingSpeeds(Player player, ref float ascentWhenFalling, ref float ascentWhenRising,
+           ref float maxCanAscendMultiplier, ref float maxAscentMultiplier, ref float constantAscend)
+        {
+            player.wingsLogic = ArmorIDs.Wing.LongTrailRainbowWings;
+            ascentWhenFalling = 0.85f;
+            ascentWhenRising = 0.25f;
+            maxCanAscendMultiplier = 1f;
+            maxAscentMultiplier = 1.75f;
+            constantAscend = 0.135f;
+            if (player.controlUp)
+            {
+                ascentWhenFalling *= 6f;
+                ascentWhenRising *= 6f;
+                constantAscend *= 6f;
+            }
+        }
+
+        public override void HorizontalWingSpeeds(Player player, ref float speed, ref float acceleration)
+        {
+            speed = 15f;
+            acceleration = 0.75f;
+        }
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             if (player.AddEffect<DeificEffect>(Item))
