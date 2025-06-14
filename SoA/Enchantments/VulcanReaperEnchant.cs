@@ -37,21 +37,38 @@ namespace ssm.SoA.Enchantments
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            if (player.AddEffect<VulcanReaperEffect>(Item))
-            {
-                player.GetModPlayer<SoAPlayer>().vulcanReaperEnchant = player.ForceEffect<VulcanReaperEffect>() ? 2 : 1;
-            }
+            player.AddEffect<VulcanReaperEffect>(Item);
             player.buffImmune[ModContent.Find<ModBuff>(ModCompatibility.SacredTools.Name, "ObsidianCurse").Type] = true;
         }
 
         public class VulcanReaperEffect : AccessoryEffect
         {
+            public int vulcanStacks;
+            public int vulcanTime;
             public override Header ToggleHeader => Header.GetHeader<SyranForceHeader>();
             public override int ToggleItemType => ModContent.ItemType<VulcanReaperEnchant>();
-
             public override void PostUpdateEquips(Player player)
             {
-                player.GetModPlayer<MiscEffectsPlayer>().bossDamage *= 1f + (player.GetModPlayer<SoAPlayer>().vulcanStacks * 0.05f);
+                if (vulcanStacks > 0)
+                {
+                    vulcanTime++;
+                }
+
+                if (vulcanTime >= 300)
+                {
+                    vulcanStacks--;
+                    vulcanTime = 0;
+                }
+
+                player.GetModPlayer<MiscEffectsPlayer>().bossDamage *= 1f + (vulcanStacks * 0.05f);
+            }
+
+            public override void OnHitNPCEither(Player player, NPC target, NPC.HitInfo hitInfo, DamageClass damageClass, int baseDamage, Projectile projectile, Item item)
+            {
+                if (target.life <= 0 && !target.friendly && target.type != NPCID.TargetDummy)
+                {
+                    vulcanStacks++;
+                }
             }
         }
 

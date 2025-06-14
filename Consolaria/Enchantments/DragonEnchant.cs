@@ -47,6 +47,7 @@ namespace ssm.Consolaria.Enchantments
             recipe.AddTile(TileID.CrystalBall);
             recipe.Register();
         }
+
         private readonly Mod Consolaria = ModLoader.GetMod("Consolaria");
         public class DragonBurst : AccessoryEffect
         {

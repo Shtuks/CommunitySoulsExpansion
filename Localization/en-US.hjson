@@ -759,9 +759,8 @@ Mods: {
 				Tooltip:
 					'''
 					'Creeper? Aw man…'
-					Summons an eerie crimson monster
-					Whenever the minion hits an enemy, you get the “Eerie Regeneration” buff
-					The monster lifesteals for 25% of the damage it deals
+					After taking damage you create pulses that grants a damage buff to minions, sentries, and nearby players
+					The strength of the buff depends on the user's health 
 					'''
 			}
 
@@ -2914,15 +2913,9 @@ Mods: {
 		}
 
 		Toggler: {
-			CosmicCommanderEffect: Very annoying effect. Turn it off.
-			SpectralFishEffect: Spectral Fishron Support
-			CuteFishEXEffect: Fishron Ritual
 			GraniteEffect: Shock Absorber
 			ThiefsWalletEffect: Pirate's Purse
 			BlastShieldEffect: Blast Shield
-			SpeedCapEffect: Movement Speed Cap
-			MariviumEffect: Marivium Shields
-			HolyShieldEffect: Holy Shield
 			CrashEffect: Crash Boots
 			CairoEffect: Eternal Oasis
 			MotDEHeader: Mark of the Dream Eater
@@ -2948,14 +2941,8 @@ Mods: {
 			ArtificersEffect: Artificer's Rocketeers
 			LivingWoodEffect: Living Wood Sapling
 			BiotechEffect: Biotech Probe
-			AddonsForceHeader: Addons Force
-			ShogunEffect: Slippery Shogun Wings
-			VoidFaquirEffect: Void Bar
-			SplendorEffect: Splendor Jam
-			DivineEffect: Light Dimension Cursor
 			EntropicEffect: Illusions
 			TendrilsEffect: Tendrils Attachment
-			IntergelacticEffect: Asteroids Ring
 			InfernoLordsFocusEffect: Inferno Lord Focus
 			LihzahrdTailEffect: Lihzahrd’s tail
 			PocketFusionGeneratorEffect: Pocket Fusion Generator
@@ -2968,11 +2955,7 @@ Mods: {
 			AttackSpeedCapSoulEffect: Attack speed cap
 			HideofAstrumDeusEffect: Hide of Astrum Deus
 			AquaticHeartEffect: Aquatic Heart
-			SoAMasoSoulHeader: Soul of Master
-			YataMirrorEffect: Yata Mirror
-			PrimordialCoreEffect: Primordia Core
 			RoyalGuardEffect: Royal Guard
-			FloraFistEffect: Flora Fist
 			MilinticaDashEffect: Advanced Dash
 			HeartOfThePloughEffect: Heart of the Plough
 			GuardianEffect: Medical Bag
@@ -2987,7 +2970,7 @@ Mods: {
 			VanaheimForceHeader: Vanaheim Force
 			SacredEffect: Karma Holder
 			IcyEffect: Icy Aura
-			NoviceClericEffect: Holy crosses
+			NoviceClericEffect: Holy Crosses
 			TideTurnerEffect: Tide Defence
 			DreadEffect: increased Inertia
 			WhisperingEffect: Eldrich Tentacles
@@ -2995,18 +2978,52 @@ Mods: {
 			BulbEffect: Kick Petal
 			LifeBloomEffect: Heart of the Jungles
 			CyberPunkEffect: Fixed notes
+			CapeoftheSurvivorEffect: Cape of the Survivor
+			CrystalScorpionEffect: Crystal Scorpion
+			PyroEffect: Pyromancer Ignition
+			PlagueLordEffect: Plague Lord's Flask
+			LodestoneEffect2: Lodestone Shields
+
+			//soa
+			VulcanReaperEffect: Reaper Streak
+			FlariumEffect: Flarium Geysers
+			BlightboneEffect: Blightbone Support
+			LapisDefenceEffect: Lapis defence
+			LapisSpeedEffect: Lapis Speed
+			EerieEffect: Eerie Pulses
+			FrosthunterEffect: Frost Explosions
+			CosmicCommanderEffect: Very annoying effect. Turn it off.
 			GenerationsForceHeader: Generations Force
 			SoranForceHeader: Soran Force
 			BlazingBruteEffect: Blazing Shield
 			FallenPrinceEffect: Energy Blades
 			NebulousApprenticeEffect: Nebulous Flames
-			QuasarEffect: Energy Surges
+			GravityEffect: Gravity Area
+			SupernovaEffect: Supernova On Death
 			StellarPriestEffect: Stallar Guardian
-			BismuthEffect: Bismuth Hammers
-			DreadfireEffect: Pumpkin Amulet
+			QuasarEffect: ech
+			BismuthEffect: Bismuth Crystal
+			DreadfireEffect: Dreadfire Aura
 			MarstechEffect: Force Fields
-			CalamitySoulHeader: Calamity Soul
+			FloraFistEffect: Flora Fist
+			SoAMasoSoulHeader: Soul of Master
+
+			//cal
+			CalamitySoulHeader: Godseeker Soul
 			ShatteredCommunityEffect: Shattered Community
+			ClamitasEffect: Clams Minions
+			RedDevil: Demonshade Devil
+			SoulCrystal: Soul Crystal
+			PyrogenEffect: Pyrogen Core
+			IntergelacticEffect: Asteroids Ring
+			AddonsForceHeader: Addons Force
+			ShogunEffect: Slippery Shogun Wings
+			VoidFaquirEffect: Void Bar
+			SplendorEffect: Splendor Jam
+			DivineEffect: Light Dimension Cursor
+
+
+			//other
 			EridanusEffect: Eridanus blessing
 			GaiaEffect: Attacking mode
 			NekomiEffect: Nekomi armor set
@@ -3015,8 +3032,9 @@ Mods: {
 			MutantSoulEffect: Spectral Mutant
 			DeviEffect: Spectral Deviantt
 			EternityForceHeader: Eternity Force
-			ChtuxlagorHeartHeader: Chtux'lag'or Heart
-			ChtuxlagorHeartEffect: Don't do that
+			SpeedCapEffect: Movement Speed Cap
+			SpectralFishEffect: Spectral Fishron Support
+			CuteFishEXEffect: Fishron Ritual
 		}
 
 		Tiles: {
@@ -3095,7 +3113,6 @@ Mods: {
 			SatelliteShard.DisplayName: Satellite Shard
 			SpaceJunkProj.DisplayName: Space Junk Proj
 			DevianttSoul.DisplayName: Deviantt Soul
-			EerieMinion.DisplayName: Eerie Minion
 			MutantSoul.DisplayName: Mutant Soul
 			SpectralFishron.DisplayName: Spectral Fishron
 			SquirrelRing.DisplayName: Squirrel Ring

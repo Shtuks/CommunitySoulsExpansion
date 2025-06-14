@@ -1,7 +1,6 @@
 ﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using SacredTools;
 using Microsoft.Xna.Framework;
 using FargowiltasSouls.Content.Items.Accessories.Enchantments;
 using FargowiltasSouls.Core.AccessoryEffectSystem;
@@ -20,7 +19,6 @@ namespace ssm.SoA.Enchantments
     [JITWhenModsEnabled(ModCompatibility.SacredTools.Name)]
     public class LapisEnchant : BaseEnchant
     {
-        private int attackCounter = 0;
         public override bool IsLoadingEnabled(Mod mod)
         {
             return ShtunConfig.Instance.SacredTools;
@@ -39,38 +37,50 @@ namespace ssm.SoA.Enchantments
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            if (player.AddEffect<LapisSpeedEffect>(Item))
-            {
-                player.moveSpeed += player.ForceEffect<LapisSpeedEffect>() ? 0.2f : 0.15f;
-                player.GetModPlayer<SoAPlayer>().lapisEnchant = player.ForceEffect<LapisSpeedEffect>() ? 2 : 1;
-            }
-            if (player.AddEffect<LapisSpeedEffect>(Item))
-            {
-                if (player.itemAnimation > 0 && player.HeldItem.damage > 0)
-                {
-                    attackCounter++;
-
-                    if (attackCounter >= (player.ForceEffect<LapisDefenseEffect>() ? 3 : 5))
-                    {
-                        attackCounter = 0;
-                        player.AddLeveledBuff<LapisShieldBuff>(600);
-                    }
-                }
-            }
-
-            //ModContent.Find<ModItem>(ModCompatibility.SacredTools.Name, "LapisPendant").UpdateAccessory(player, false);
+            player.AddEffect<LapisSpeedEffect>(Item);
+            player.AddEffect<LapisDefenseEffect>(Item);
         }
 
         public class LapisSpeedEffect : AccessoryEffect
         {
+            public int lapisSpeedTimer;
             public override Header ToggleHeader => Header.GetHeader<FoundationsForceHeader>();
             public override int ToggleItemType => ModContent.ItemType<LapisEnchant>();
+            public override void PostUpdateEquips(Player player)
+            {
+                if (lapisSpeedTimer > 0)
+                {
+                    lapisSpeedTimer--;
+                    player.moveSpeed += 0.25f;
+                }
+                player.moveSpeed += player.ForceEffect<LapisSpeedEffect>() ? 0.2f : 0.1f;
+            }
+
+            public override void OnHurt(Player player, Player.HurtInfo info)
+            {
+                if (!player.dead)
+                {
+                    lapisSpeedTimer = 300;
+                }
+            }
         }
 
         public class LapisDefenseEffect : AccessoryEffect
         {
+            private int attackCounter = 0;
             public override Header ToggleHeader => Header.GetHeader<FoundationsForceHeader>();
             public override int ToggleItemType => ModContent.ItemType<LapisEnchant>();
+
+            public override void OnHitNPCEither(Player player, NPC target, NPC.HitInfo hitInfo, DamageClass damageClass, int baseDamage, Projectile projectile, Item item)
+            {
+                attackCounter++;
+
+                if (attackCounter >= (player.ForceEffect<LapisDefenseEffect>() ? 3 : 5))
+                {
+                    attackCounter = 0;
+                    player.AddLeveledBuff<LapisShieldBuff>(600);
+                }
+            }
         }
 
         public override void AddRecipes()

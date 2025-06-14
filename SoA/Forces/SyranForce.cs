@@ -1,26 +1,37 @@
 ﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria.Localization;
-using SacredTools;
 using FargowiltasSouls.Content.Items.Accessories.Forces;
-using Fargowiltas.Items.Tiles;
-using ssm.SoA.Enchantments;
 using ssm.Core;
+using FargowiltasSouls.Core.AccessoryEffectSystem;
+using static ssm.SoA.Enchantments.AsthraltiteEnchant;
+using static ssm.SoA.Enchantments.VoidWardenEnchant;
+using static ssm.SoA.Enchantments.VulcanReaperEnchant;
+using static ssm.SoA.Enchantments.ExitumLuxEnchant;
+using static ssm.SoA.Enchantments.FlariumEnchant;
+using ssm.SoA.Enchantments;
 
 namespace ssm.SoA.Forces
 {
     [ExtendsFromMod(ModCompatibility.SacredTools.Name)]
     [JITWhenModsEnabled(ModCompatibility.SacredTools.Name)]
-    public class SyranForce : BaseForce
+    public class SyrianForce : BaseForce
     {
         public override bool IsLoadingEnabled(Mod mod)
         {
             return ShtunConfig.Instance.SacredTools;
         }
-
-        private readonly Mod soa = ModLoader.GetMod("SacredTools");
-
+        public override void SetStaticDefaults()
+        {
+            Enchants[Type] = new int[5]
+            {
+                ModContent.ItemType<AsthraltiteEnchant>(),
+                ModContent.ItemType<VoidWardenEnchant>(),
+                ModContent.ItemType<VulcanReaperEnchant>(),
+                ModContent.ItemType<ExitumLuxEnchant>(),
+                ModContent.ItemType<FlariumEnchant>()
+            };
+        }
         public override void SetDefaults()
         {
             Item.width = 20;
@@ -33,22 +44,30 @@ namespace ssm.SoA.Forces
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            ModContent.Find<ModItem>(((ModType)this).Mod.Name, "VoidWardenEnchant").UpdateAccessory(player, hideVisual);
-            ModContent.Find<ModItem>(((ModType)this).Mod.Name, "VulcanReaperEnchant").UpdateAccessory(player, hideVisual);
-            ModContent.Find<ModItem>(((ModType)this).Mod.Name, "FlariumEnchant").UpdateAccessory(player, hideVisual);
-            ModContent.Find<ModItem>(((ModType)this).Mod.Name, "ExitumLuxEnchant").UpdateAccessory(player, hideVisual);
-            ModContent.Find<ModItem>(((ModType)this).Mod.Name, "AsthraltiteEnchant").UpdateAccessory(player, hideVisual);
+            player.AddEffect<AsthraliteEffect>(Item);
+            player.AddEffect<VoidWardenEffect>(Item);
+            player.AddEffect<VulcanReaperEffect>(Item);
+            player.AddEffect<ExitumLuxEffect>(Item);
+            player.AddEffect<FlariumEffect>(Item);
+
+            player.AddEffect<SyrianEffect>(Item);
+        }
+
+        public class SyrianEffect : AccessoryEffect
+        {
+            public override Header ToggleHeader => null;
         }
 
         public override void AddRecipes()
         {
-            Recipe recipe = this.CreateRecipe();
-            recipe.AddIngredient<VoidWardenEnchant>();
-            recipe.AddIngredient<VulcanReaperEnchant>();
-            recipe.AddIngredient<FlariumEnchant>();
-            recipe.AddIngredient<ExitumLuxEnchant>();
-            recipe.AddIngredient<AsthraltiteEnchant>();
-            recipe.AddTile<CrucibleCosmosSheet>();
+            Recipe recipe = CreateRecipe();
+            int[] array = Enchants[Type];
+            foreach (int itemID in array)
+            {
+                recipe.AddIngredient(itemID);
+            }
+
+            recipe.AddTile(ModContent.Find<ModTile>("Fargowiltas", "CrucibleCosmosSheet"));
             recipe.Register();
         }
     }

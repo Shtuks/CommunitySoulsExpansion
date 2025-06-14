@@ -8,8 +8,7 @@ using ssm.Content.SoulToggles;
 using ssm.Core;
 using SacredTools.Content.Items.Armor.Eerie;
 using SacredTools.Items.Weapons;
-using FargowiltasSouls;
-using ssm.Content.Projectiles.Minions;
+using ssm.Content.Projectiles.Enchantments;
 
 namespace ssm.SoA.Enchantments
 {
@@ -35,37 +34,22 @@ namespace ssm.SoA.Enchantments
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            if (player.AddEffect<EerieEffect>(Item))
-            {
-                player.GetModPlayer<SoAPlayer>().eerieEnchant = player.ForceEffect<EerieEffect>() ? 2 : 1;
-            }
+            player.AddEffect<EerieEffect>(Item);
         }
 
         public class EerieEffect : AccessoryEffect
         {
             public override Header ToggleHeader => Header.GetHeader<GenerationsForceHeader>();
             public override int ToggleItemType => ModContent.ItemType<EerieEnchant>();
-
-            public override void PreUpdate(Player player)
+            public override void OnHitByProjectile(Player player, Projectile proj, Player.HurtInfo hurtInfo)
             {
-                if (player.whoAmI == Main.myPlayer)
-                {
-                    int minionType = ModContent.ProjectileType<EerieMinion>();
-                    if (player.ownedProjectileCounts[minionType] < 1)
-                    {
-                        Projectile.NewProjectile(
-                            player.GetSource_FromThis(),
-                            player.Center,
-                            Vector2.Zero,
-                            minionType,
-                            30,
-                            2f, 
-                            player.whoAmI);
-                    }
-                }
+                Projectile.NewProjectile(player.GetSource_FromThis(), player.Center, Vector2.Zero, ModContent.ProjectileType<EeriePulse>(), 0, 0);
+            }
+            public override void OnHitByNPC(Player player, NPC npc, Player.HurtInfo hurtInfo)
+            {
+                Projectile.NewProjectile(player.GetSource_FromThis(), player.Center, Vector2.Zero, ModContent.ProjectileType<EeriePulse>(), 0, 0);
             }
         }
-
         public override void AddRecipes()
         {
             Recipe recipe = this.CreateRecipe();

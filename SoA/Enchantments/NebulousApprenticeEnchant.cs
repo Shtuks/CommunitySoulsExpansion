@@ -17,6 +17,9 @@ using SacredTools.Content.Items.Accessories;
 using SacredTools.Items.Weapons.Lunatic;
 using SacredTools.Content.Items.Weapons.Asthraltite;
 using ssm.Core;
+using ClickerClass.Prefixes.ClickerPrefixes;
+using SacredTools.Content.Projectiles.Armors.Nuba;
+using FargowiltasSouls;
 
 namespace ssm.SoA.Enchantments
 {
@@ -53,6 +56,32 @@ namespace ssm.SoA.Enchantments
         {
             public override Header ToggleHeader => Header.GetHeader<SoranForceHeader>();
             public override int ToggleItemType => ModContent.ItemType<NebulousApprenticeEnchant>();
+
+            public override void OnHitNPCEither(Player player, NPC target, NPC.HitInfo hitInfo, DamageClass damageClass, int baseDamage, Projectile projectile, Item item)
+            {
+                if (!target.immortal && Main.rand.NextBool(10))
+                {
+                    float num2 = (float)Main.rand.Next(-35, 36) * 0.02f;
+                    float num3 = (float)Main.rand.Next(-35, 36) * 0.02f;
+                    num2 *= 10f;
+                    num3 *= 10f;
+                    int[] array0 = new int[3]
+                    {
+                        ModContent.ProjectileType<NubaFlameDamage>(),
+                        ModContent.ProjectileType<NubaFlameDefense>(),
+                        ModContent.ProjectileType<NubaFlameHealth>(),
+                    };
+                    int[] array = new int[5]
+                    {
+                        ModContent.ProjectileType<NubaFlameDamage>(),
+                        ModContent.ProjectileType<NubaFlameDefense>(),
+                        ModContent.ProjectileType<NubaFlameHealth>(),
+                        ModContent.ProjectileType<NubaFlameMana>(),
+                        ModContent.ProjectileType<NubaFlameSpeed>()
+                    };
+                    Projectile.NewProjectile(target.GetSource_OnHurt(player), target.Center.X, target.Center.Y, num2, num3, player.ForceEffect<NebulousApprenticeEffect>() ? array[Main.rand.Next(5)] : array0[Main.rand.Next(3)], 0, 0f, projectile.owner);
+                }
+            }
         }
 
         public override void AddRecipes()

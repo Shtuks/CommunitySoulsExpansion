@@ -1,12 +1,16 @@
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria.Localization;
 using FargowiltasSouls.Content.Items.Accessories.Forces;
 using Fargowiltas.Items.Tiles;
 using ssm.SoA.Enchantments;
-using ssm.Systems;
 using ssm.Core;
+using FargowiltasSouls.Core.AccessoryEffectSystem;
+using static ssm.SoA.Forces.GenerationsForce;
+using static ssm.SoA.Enchantments.PrairieEnchant;
+using static ssm.SoA.Enchantments.LapisEnchant;
+using static ssm.SoA.Enchantments.FrosthunterEnchant;
+using static ssm.SoA.Enchantments.BlightboneEnchant;
 
 namespace ssm.SoA.Forces
 {
@@ -19,8 +23,16 @@ namespace ssm.SoA.Forces
             return ShtunConfig.Instance.SacredTools;
         }
 
-        private readonly Mod soa = ModLoader.GetMod("SacredTools");
-
+        public override void SetStaticDefaults()
+        {
+            Enchants[Type] = new int[4]
+            {
+                ModContent.ItemType<PrairieEnchant>(),
+                ModContent.ItemType<LapisEnchant>(),
+                ModContent.ItemType<FrosthunterEnchant>(),
+                ModContent.ItemType<BlightboneEnchant>()
+            };
+        }
         public override void SetDefaults()
         {
             Item.width = 20;
@@ -31,23 +43,31 @@ namespace ssm.SoA.Forces
             Item.value = 600000;
         }
 
+        public class FoundationsEffect : AccessoryEffect
+        {
+            public override Header ToggleHeader => null;
+        }
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            ModContent.Find<ModItem>(((ModType)this).Mod.Name, "PrairieEnchant").UpdateAccessory(player, hideVisual);
-            ModContent.Find<ModItem>(((ModType)this).Mod.Name, "LapisEnchant").UpdateAccessory(player, hideVisual);
-            ModContent.Find<ModItem>(((ModType)this).Mod.Name, "FrosthunterEnchant").UpdateAccessory(player, hideVisual);
-            ModContent.Find<ModItem>(((ModType)this).Mod.Name, "BlightboneEnchant").UpdateAccessory(player, hideVisual);
+            player.AddEffect<PrairieEffect>(Item);
+            player.AddEffect<LapisDefenseEffect>(Item);
+            player.AddEffect<LapisSpeedEffect>(Item);
+            player.AddEffect<FrosthunterEffect>(Item);
+            player.AddEffect<BlightboneEffect>(Item);
+
+            player.AddEffect<FoundationsEffect>(Item);
         }
 
         public override void AddRecipes()
         {
-            Recipe recipe = this.CreateRecipe();
-            recipe.AddIngredient<PrairieEnchant>();
-            recipe.AddIngredient<LapisEnchant>();
-            recipe.AddIngredient<FrosthunterEnchant>();
-            recipe.AddIngredient<BlightboneEnchant>();
+            Recipe recipe = CreateRecipe();
+            int[] array = Enchants[Type];
+            foreach (int itemID in array)
+            {
+                recipe.AddIngredient(itemID);
+            }
 
-            recipe.AddTile<CrucibleCosmosSheet>();
+            recipe.AddTile(ModContent.Find<ModTile>("Fargowiltas", "CrucibleCosmosSheet"));
             recipe.Register();
         }
     }

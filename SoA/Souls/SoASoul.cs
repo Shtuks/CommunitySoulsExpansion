@@ -42,7 +42,7 @@ namespace ssm.SoA.Souls
             ModContent.Find<ModItem>(((ModType)this).Mod.Name, "FoundationsForce").UpdateAccessory(player, hideVisual);
             ModContent.Find<ModItem>(((ModType)this).Mod.Name, "GenerationsForce").UpdateAccessory(player, hideVisual);
             ModContent.Find<ModItem>(((ModType)this).Mod.Name, "SoranForce").UpdateAccessory(player, hideVisual);
-            ModContent.Find<ModItem>(((ModType)this).Mod.Name, "SyranForce").UpdateAccessory(player, hideVisual);
+            ModContent.Find<ModItem>(((ModType)this).Mod.Name, "SyrianForce").UpdateAccessory(player, hideVisual);
 
             player.buffImmune[ModContent.Find<ModBuff>(this.Mod.Name, "NihilityPresenceBuff").Type] = true;
         }
@@ -53,7 +53,7 @@ namespace ssm.SoA.Souls
             recipe.AddIngredient<FoundationsForce>();
             recipe.AddIngredient<GenerationsForce>();
             recipe.AddIngredient<SoranForce>();
-            recipe.AddIngredient<SyranForce>();
+            recipe.AddIngredient<SyrianForce>();
             recipe.AddIngredient<AbomEnergy>(10);
             recipe.AddIngredient<EmberOfOmen>(5);
             recipe.AddTile<SyranCraftingStationTile>();

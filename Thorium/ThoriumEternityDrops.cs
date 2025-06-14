@@ -21,6 +21,7 @@ namespace ssm.Thorium
     [JITWhenModsEnabled(ModCompatibility.Thorium.Name)]
     public class ThoriumEternityDrops : GlobalNPC
     {
+        public override bool InstancePerEntity => true;
         public override void ModifyNPCLoot(NPC npc, NPCLoot npcLoot)
         {
             LeadingConditionRule emodeRule = new(new EModeDropCondition());
@@ -50,8 +51,6 @@ namespace ssm.Thorium
             {
                 emodeRule.OnSuccess(FargoSoulsUtil.BossBagDropCustom(ItemID.FloatingIslandFishingCrate, 5));
             }
-
-            //boreal and sinster crate?
         }
     }
 }

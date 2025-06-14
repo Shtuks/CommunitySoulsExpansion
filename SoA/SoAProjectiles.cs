@@ -12,6 +12,8 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using static ssm.SoA.Enchantments.FallenPrinceEnchant;
+using static ssm.SoA.Enchantments.FlariumEnchant;
+using static ssm.SoA.Forces.SyrianForce;
 
 namespace ssm.SoA
 {
@@ -20,17 +22,23 @@ namespace ssm.SoA
     public class SoAProjectiles : GlobalProjectile
     {
         public int auraFrameMutant;
+        public int eerieBoost;
         public override bool InstancePerEntity => true;
 
         public override void SetDefaults(Projectile proj)
         {
             if (proj.type == ModContent.ProjectileType<DesperatioFlame>())
             {
-                proj.damage -= (int)(proj.damage * 0.4f);
+                proj.damage -= (int)(proj.damage * 0.3f);
             }
         }
         public override void AI(Projectile projectile)
         {
+            if(eerieBoost > 0 && projectile.minion)
+            {
+                projectile.damage = (int)(projectile.damage * 1.1);
+                eerieBoost--;
+            }
             if (projectile.type == ModContent.ProjectileType<TenebrisLink2>())
             {
                 if ((projectile.ai[1] += 1f) >= 20f)
@@ -101,7 +109,7 @@ namespace ssm.SoA
                 projectile.owner == Main.player[projectile.owner].whoAmI)
             {
                 Player player = Main.player[projectile.owner];
-                if (player.GetModPlayer<SoAPlayer>().flariumEnchant > 0)
+                if (player.HasEffect<FlariumEffect>())
                 {
                     if (projectile.velocity.Y != 0 &&
                         projectile.position.Y / 16 < Main.worldSurface &&
@@ -111,7 +119,7 @@ namespace ssm.SoA
                         if (Main.rand.NextFloat() < 0.15f)
                         {
                             int duration = Main.rand.Next(120, 300);
-                            int damage = player.GetModPlayer<SoAPlayer>().flariumEnchant > 1 ? 200 : 100;
+                            int damage = player.HasEffect<SyrianEffect>() ? 1000 : 100;
                             Vector2 position = projectile.Center;
 
                             Projectile.NewProjectile(

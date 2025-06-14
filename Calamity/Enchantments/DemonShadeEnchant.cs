@@ -10,6 +10,7 @@ using ssm.Core;
 using CalamityMod.Items.Armor.Demonshade;
 using FargowiltasSouls.Core.AccessoryEffectSystem;
 using ssm.Content.SoulToggles;
+using CalamityMod.Buffs.StatDebuffs;
 
 namespace ssm.Calamity.Enchantments
 {
@@ -45,6 +46,8 @@ namespace ssm.Calamity.Enchantments
             {
                 ModContent.Find<ModItem>(this.calamity.Name, "ProfanedSoulCrystal").UpdateAccessory(player, hideVisual);
             }
+
+            player.AddEffect<Enrage>(Item);
         }
 
         public override void AddRecipes()
@@ -65,6 +68,17 @@ namespace ssm.Calamity.Enchantments
         {
             public override Header ToggleHeader => Header.GetHeader<CalamitySoulHeader>();
             public override int ToggleItemType => ModContent.ItemType<DemonShadeEnchant>();
+        }
+
+        public class Enrage : AccessoryEffect
+        {
+            public override Header ToggleHeader => Header.GetHeader<CalamitySoulHeader>();
+            public override int ToggleItemType => ModContent.ItemType<DemonShadeEnchant>();
+
+            public override void ActiveSkillJustPressed(Player player, bool stunned)
+            {
+                player.AddBuff(ModContent.BuffType<Enraged>(), 600);
+            }
         }
 
         public class SoulCrystal : AccessoryEffect

@@ -2,7 +2,6 @@
 using Terraria.ID;
 using Terraria.ModLoader;
 using FargowiltasSouls.Content.Items.Accessories.Forces;
-using Fargowiltas.Items.Tiles;
 using ssm.SoA.Enchantments;
 using ssm.Core;
 using FargowiltasSouls.Core.AccessoryEffectSystem;
@@ -11,6 +10,7 @@ using static ssm.SoA.Enchantments.EerieEnchant;
 using static ssm.SoA.Enchantments.BismuthEnchant;
 using static ssm.SoA.Enchantments.DreadfireEnchant;
 using static ssm.SoA.Enchantments.MarstechEnchant;
+using static ssm.SoA.Enchantments.SpaceJunkEnchant;
 
 namespace ssm.SoA.Forces
 {
@@ -32,6 +32,17 @@ namespace ssm.SoA.Forces
             Item.value = 600000;
         }
 
+        public override void SetStaticDefaults()
+        {
+            Enchants[Type] =
+            [
+                ModContent.ItemType<CairoCrusaderEnchant>(),
+                ModContent.ItemType<EerieEnchant>(),
+                ModContent.ItemType<BismuthEnchant>(),
+                ModContent.ItemType<DreadfireEnchant>(),
+                ModContent.ItemType<MarstechEnchant>()
+            ];
+        }
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             player.AddEffect<CairoEffect>(Item);
@@ -39,6 +50,8 @@ namespace ssm.SoA.Forces
             player.AddEffect<BismuthEffect>(Item);
             player.AddEffect<DreadfireEffect>(Item);
             player.AddEffect<MarstechEffect>(Item);
+            player.AddEffect<SpaceJunkEffect>(Item);
+            player.AddEffect<SpaceJunkAbilityEffect>(Item);
 
             player.AddEffect<GenerationsEffect>(Item);
         }
@@ -49,13 +62,14 @@ namespace ssm.SoA.Forces
         }
         public override void AddRecipes()
         {
-            Recipe recipe = this.CreateRecipe();
-            recipe.AddIngredient<CairoCrusaderEnchant>();
-            recipe.AddIngredient<EerieEnchant>();
-            recipe.AddIngredient<BismuthEnchant>();
-            recipe.AddIngredient<DreadfireEnchant>();
-            recipe.AddIngredient<MarstechEnchant>();
-            recipe.AddTile<CrucibleCosmosSheet>();
+            Recipe recipe = CreateRecipe();
+            int[] array = Enchants[Type];
+            foreach (int itemID in array)
+            {
+                recipe.AddIngredient(itemID);
+            }
+
+            recipe.AddTile(ModContent.Find<ModTile>("Fargowiltas", "CrucibleCosmosSheet"));
             recipe.Register();
         }
     }

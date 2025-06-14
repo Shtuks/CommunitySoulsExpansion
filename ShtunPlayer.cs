@@ -12,13 +12,11 @@ using FargowiltasSouls.Content.Buffs.Boss;
 using ssm.Content.Buffs;
 using System.Collections.Generic;
 using Terraria.ModLoader.IO;
-using FargowiltasSouls.Content.UI;
 using Terraria.ID;
 using FargowiltasSouls.Core.Globals;
 using FargowiltasSouls.Content.Bosses.MutantBoss;
 using ssm.Core;
 using FargowiltasSouls.Core.Systems;
-using CalamityMod.Systems;
 using CalamityMod.Events;
 
 namespace ssm
@@ -68,26 +66,6 @@ namespace ssm
                 Player.accCalendar = true;
                 Player.accWeatherRadio = true;
 
-                //for (int index = 0; index < BuffLoader.BuffCount; ++index)
-                //{
-                //    if (Main.debuff[index])
-                //    {
-                //        Player.buffImmune[index] = true;
-                //        Player.buffImmune[ModContent.BuffType<AbomPresenceBuff>()] = false;
-                //        Player.buffImmune[ModContent.BuffType<MutantPresenceBuff>()] = false;
-
-                //        if (ModLoader.TryGetMod("SacredTools", out Mod soa))
-                //        {
-                //            Player.buffImmune[ModContent.BuffType<NihilityPresenceBuff>()] = false;
-                //        }
-                //        if (ModLoader.TryGetMod("CalamityMod", out Mod kal))
-                //        {
-                //            Player.buffImmune[ModContent.Find<ModBuff>("CalamityMod", "RageMode").Type] = false;
-                //            Player.buffImmune[ModContent.Find<ModBuff>("CalamityMod", "AdrenalineMode").Type] = false;
-                //        }
-                //    }
-                //}
-
                 Player.findTreasure = true;
                 Player.nightVision = true;
                 Player.detectCreature = true;
@@ -107,16 +85,6 @@ namespace ssm
                 Player.buffImmune[104] = true;
                 Player.buffImmune[111] = true;
                 Player.ammoBox = true;
-                Player.pickSpeed -= 0.2f;
-                Player.moveSpeed += 0.2f;
-                Player.GetArmorPenetration(DamageClass.Generic) += 10;
-                Player.moveSpeed += 0.25f;
-                Player.statLifeMax2 += Player.statLifeMax / 5 / 20 * 20;
-                Player.lifeRegen += 3;
-                Player.endurance += 0.1f;
-                Player.statDefense += 8;
-                Player.GetCritChance(DamageClass.Generic) += 0.1f;
-                Player.GetDamage(DamageClass.Generic) += 0.1f;
                 Player.archery = true;
                 Player.ammoPotion = true;
                 Player.lavaImmune = true;
@@ -142,11 +110,18 @@ namespace ssm
                 Player.buffImmune[6] = true;
                 Player.buffImmune[7] = true;
                 Player.buffImmune[14] = true;
-                Player.maxMinions += 2;
-                if (Player.thorns < 1.0)
-                {
-                    Player.thorns = 0.3333333f;
-                }
+
+                Player.pickSpeed -= 0.2f;
+                Player.moveSpeed += 0.2f;
+                Player.GetArmorPenetration(DamageClass.Generic) += 10;
+                Player.moveSpeed += 0.25f;
+                Player.statLifeMax2 += Player.statLifeMax / 5 / 20 * 20;
+                Player.lifeRegen += 5;
+                Player.endurance += 0.1f;
+                Player.statDefense += 10;
+                Player.GetCritChance(DamageClass.Generic) += 0.1f;
+                Player.GetDamage(DamageClass.Generic) += 0.1f;
+                Player.maxMinions += 2;  
             }
 
             if (FargoSoulsUtil.BossIsAlive(ref ShtunNpcs.mutantEX, ModContent.NPCType<MutantEX>()) && Main.player[Main.myPlayer].Shtun().lumberjackSet && WorldSaveSystem.enragedMutantEX)

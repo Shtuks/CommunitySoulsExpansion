@@ -44,10 +44,7 @@ namespace ssm.SoA.Enchantments
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            if (player.AddEffect<FlariumEffect>(Item))
-            {
-                player.GetModPlayer<SoAPlayer>().flariumEnchant = player.ForceEffect<FlariumEffect>() ? 2 : 1;
-            }
+            player.AddEffect<FlariumEffect>(Item);
         }
 
         public class FlariumEffect : AccessoryEffect

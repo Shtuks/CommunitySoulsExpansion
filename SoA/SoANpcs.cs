@@ -14,8 +14,6 @@ using System.IO;
 using Terraria.ModLoader.IO;
 using SacredTools.Content.NPCs.Boss.Decree;
 using static Terraria.ModLoader.ModContent;
-using CalamityHunt.Common.Players;
-using SacredTools.Content.NPCs.Boss.Jensen;
 using SacredTools.NPCs.Boss.Pumpkin;
 using SacredTools.NPCs.Boss.Jensen;
 using SacredTools.NPCs.Boss.Araneas;
@@ -23,6 +21,7 @@ using SacredTools.NPCs.Boss.Raynare;
 using SacredTools.NPCs.Boss.Primordia;
 using SacredTools.NPCs.Boss.Abaddon;
 using SacredTools.NPCs.Boss.Araghur;
+using FargowiltasSouls.Core.Globals;
 
 namespace ssm.SoA
 {
@@ -73,30 +72,30 @@ namespace ssm.SoA
         }
         public override void OnKill(NPC npc)
         {
-            if(npc.type == ModContent.NPCType<Nihilus>() && !WorldSaveSystem.downedNihilus)
+            if(npc.type == NPCType<Nihilus>() && !WorldSaveSystem.downedNihilus)
             {
                 WorldSaveSystem.downedNihilus = true;
             }
         }
         public override bool PreAI(NPC npc)
         {
-            if (npc.type == ModContent.NPCType<Nihilus>() || npc.type == ModContent.NPCType<Nihilus2>())
+            if (npc.type == NPCType<Nihilus>() || npc.type == NPCType<Nihilus2>())
             {
                 if (Main.expertMode && Main.LocalPlayer.active && !Main.LocalPlayer.dead && !Main.LocalPlayer.ghost)
-                    Main.LocalPlayer.AddBuff(ModContent.BuffType<NihilityPresenceBuff>(), 2);
+                    Main.LocalPlayer.AddBuff(BuffType<NihilityPresenceBuff>(), 2);
             }
             return base.PreAI(npc);
         }
         public override void AI(NPC npc)
         {
-            if (npc.type == ModContent.NPCType<MutantBoss>())
+            if (npc.type == NPCType<MutantBoss>())
             {
-                npc.dontTakeDamage = NPC.CountNPCS(ModContent.NPCType<MutantAuraOfSupression>()) > 0;
+                npc.dontTakeDamage = NPC.CountNPCS(NPCType<MutantAuraOfSupression>()) > 0 || Main.npc[EModeGlobalNPC.mutantBoss].ai[0] < 0;
                 if (!summonedShieldOnce)
                 {
                     summonedShieldOnce = true;
                     IEntitySource source = npc.GetSource_FromAI();
-                    int shield = NPC.NewNPC(source, (int)npc.Center.X, (int)npc.position.Y + npc.height, ModContent.NPCType<MutantAuraOfSupression>());
+                    int shield = NPC.NewNPC(source, (int)npc.Center.X, (int)npc.position.Y + npc.height, NPCType<MutantAuraOfSupression>());
                     Main.npc[shield].ai[0] = npc.whoAmI;
                 }
             }

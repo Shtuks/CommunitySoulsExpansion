@@ -27,9 +27,6 @@ namespace ssm.SoA.Enchantments
             return ShtunConfig.Instance.SacredTools;
         }
 
-        private readonly Mod soa = ModLoader.GetMod("SacredTools");
-
-
         public override void SetDefaults()
         {
             Item.width = 20;
@@ -44,17 +41,7 @@ namespace ssm.SoA.Enchantments
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            ModdedPlayer modPlayer = player.GetModPlayer<ModdedPlayer>();
-            if (player.AddEffect<CairoEffect>(Item))
-            {
-                modPlayer.cairoCrusader = true;
-                if (player.whoAmI == Main.myPlayer)
-                {
-                    const int damage = 255;
-                    if (player.ownedProjectileCounts[ModContent.ProjectileType<EternalOasis>()] < 1)
-                        FargoSoulsUtil.NewSummonProjectile(player.GetSource_FromThis(), player.Center, Vector2.Zero, ModContent.ProjectileType<EternalOasis>(), damage, 8f, player.whoAmI);
-                }
-            }
+            player.AddEffect<CairoEffect>(Item);
         }
 
         public class CairoEffect : AccessoryEffect
@@ -62,6 +49,15 @@ namespace ssm.SoA.Enchantments
             public override Header ToggleHeader => Header.GetHeader<GenerationsForceHeader>();
             public override int ToggleItemType => ModContent.ItemType<CairoCrusaderEnchant>();
             public override bool MinionEffect => true;
+
+            public override void PostUpdateEquips(Player player)
+            {
+                if (player.whoAmI == Main.myPlayer)
+                {
+                    if (player.ownedProjectileCounts[ModContent.ProjectileType<EternalOasis>()] < 1)
+                        FargoSoulsUtil.NewSummonProjectile(player.GetSource_FromThis(), player.Center, Vector2.Zero, ModContent.ProjectileType<EternalOasis>(), (int)player.GetDamage<GenericDamageClass>().ApplyTo(50), 8f, player.whoAmI);
+                }
+            }
         }
 
         public override void AddRecipes()

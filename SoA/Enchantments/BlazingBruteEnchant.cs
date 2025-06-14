@@ -9,6 +9,7 @@ using SacredTools.Content.Items.Armor.Lunar.Solar;
 using SacredTools.Items.Weapons.Lunatic;
 using ssm.Core;
 using FargowiltasSouls;
+using ssm.Content.Buffs;
 
 namespace ssm.SoA.Enchantments
 {
@@ -34,15 +35,43 @@ namespace ssm.SoA.Enchantments
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            if (player.AddEffect<BlazingBruteEffect>(Item))
-            {
-                player.GetModPlayer<SoAPlayer>().rivalEnchant = player.ForceEffect<BlazingBruteEffect>() ? 2 : 1;
-            }
+            player.AddEffect<BlazingBruteEffect>(Item);
         }
         public class BlazingBruteEffect : AccessoryEffect
         {
+            public int rivalKillCount = 0;
+            public int rivalTimer = 0;
             public override Header ToggleHeader => Header.GetHeader<SoranForceHeader>();
             public override int ToggleItemType => ModContent.ItemType<BlazingBruteEnchant>();
+
+            public override void PostUpdateEquips(Player player)
+            {
+                player.GetModPlayer<SoAPlayer>().rivalStreak = rivalKillCount;
+
+                if (rivalKillCount > 0)
+                {
+                    player.AddBuff(ModContent.BuffType<RivalBuff>(), 60);
+                    rivalTimer++;
+                    player.GetDamage<GenericDamageClass>() += 0.2f * rivalKillCount;
+                }
+
+                if (rivalTimer >= 300)
+                {
+                    rivalKillCount--;
+                    rivalTimer = 0;
+                }
+            }
+
+            public override void OnHitNPCEither(Player player, NPC target, NPC.HitInfo hitInfo, DamageClass damageClass, int baseDamage, Projectile projectile, Item item)
+            {
+                if (target.life <= 0 && !target.friendly && target.type != NPCID.TargetDummy)
+                {
+                    if (rivalKillCount < 6)
+                    {
+                        rivalKillCount++;
+                    }
+                }
+            }
         }
 
         public override void AddRecipes()

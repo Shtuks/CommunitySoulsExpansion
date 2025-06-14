@@ -9,8 +9,9 @@ using SacredTools.Items.Weapons;
 using SacredTools.Content.Items.Armor.SpaceJunk;
 using SacredTools.Content.Items.Weapons.Event;
 using ssm.Core;
-using FargowiltasSouls;
 using ssm.Content.Projectiles.Enchantments;
+using System;
+using static ssm.SoA.Forces.GenerationsForce;
 
 namespace ssm.SoA.Enchantments
 {
@@ -36,10 +37,7 @@ namespace ssm.SoA.Enchantments
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            if (player.AddEffect<SpaceJunkEffect>(Item))
-            {
-                player.GetModPlayer<SoAPlayer>().spaceJunkEnchant = player.ForceEffect<SpaceJunkEffect>() ? 2 : 1;
-            }
+            player.AddEffect<SpaceJunkEffect>(Item);
             player.AddEffect<SpaceJunkAbilityEffect>(Item);
         }
 
@@ -47,6 +45,28 @@ namespace ssm.SoA.Enchantments
         {
             public override Header ToggleHeader => Header.GetHeader<SyranForceHeader>();
             public override int ToggleItemType => ModContent.ItemType<SpaceJunkEnchant>();
+
+            public override void OnHitByEither(Player player, NPC npc, Projectile proj)
+            {
+                if (Main.rand.NextFloat() < 0.33f)
+                {
+                    float spread = 40f * 0.0174f;
+                    double startAngle = Math.Atan2(player.velocity.X, player.velocity.Y) - spread / 2;
+                    double deltaAngle = spread / 4f;
+                    double offsetAngle;
+
+                    if (player.whoAmI == Main.myPlayer)
+                    {
+                        for (int i = 0; i < 4; i++)
+                        {
+                            int dmg = (int)player.GetDamage<GenericDamageClass>().ApplyTo(player.HasEffect<GenerationsEffect>() ? 400 : 40);
+                            offsetAngle = startAngle + deltaAngle * (i + i * i) / 2f + 32f * i;
+                            int shard = Projectile.NewProjectile(player.GetSource_FromThis(), player.Center.X, player.Center.Y, (float)(Math.Sin(offsetAngle) * 5f), (float)(Math.Cos(offsetAngle) * 5f), ModContent.ProjectileType<SatelliteShard>(), dmg, 1, player.whoAmI, 0f, 0f);
+                            Main.projectile[shard].DamageType = DamageClass.Generic;
+                        }
+                    }
+                }
+            }
         }
 
         public class SpaceJunkAbilityEffect : AccessoryEffect
@@ -76,7 +96,7 @@ namespace ssm.SoA.Enchantments
 
                 if (nearestEnemy != null)
                 {
-                    ShtunUtils.ProjectileRain(Main.LocalPlayer.GetSource_FromThis(), nearestEnemy.Center, 400, 100, 500, 800, 15, ModContent.ProjectileType<SpaceJunkProj>(), (int)Main.LocalPlayer.GetDamage<GenericDamageClass>().ApplyTo(40), 1, Main.LocalPlayer.whoAmI);
+                    ShtunUtils.ProjectileRain(Main.LocalPlayer.GetSource_FromThis(), nearestEnemy.Center, 400, 100, 500, 800, 15, ModContent.ProjectileType<SpaceJunkProj>(), (int)Main.LocalPlayer.GetDamage<GenericDamageClass>().ApplyTo(player.HasEffect<GenerationsEffect>() ? 500 : 50), 1, Main.LocalPlayer.whoAmI);
                 }
             }
         }

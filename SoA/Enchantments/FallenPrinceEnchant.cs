@@ -1,21 +1,14 @@
 ﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria.Localization;
-using SacredTools;
-using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using FargowiltasSouls.Content.Items.Accessories.Enchantments;
 using FargowiltasSouls.Core.AccessoryEffectSystem;
 using ssm.Content.SoulToggles;
-using SacredTools.Content.Items.Accessories;
-using SacredTools.Content.Items.Armor.Dreadfire;
-using SacredTools.Content.Items.Weapons.Dreadfire;
 using SacredTools.Content.Items.Armor.Lunar.Quasar;
 using SacredTools.Content.Items.Accessories.ChallengeItems;
 using SacredTools.Items.Weapons.Lunatic;
 using ssm.Core;
-using static ssm.SoA.Enchantments.DreadfireEnchant;
 
 namespace ssm.SoA.Enchantments
 {
@@ -45,6 +38,7 @@ namespace ssm.SoA.Enchantments
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
+            player.AddEffect<SupernovaEffect>(Item);
             player.AddEffect<GravityEffect>(Item);
         }
 

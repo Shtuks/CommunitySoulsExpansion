@@ -36,17 +36,60 @@ namespace ssm.SoA.Enchantments
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            if (player.AddEffect<BismuthEffect>(Item))
-            {
-                player.GetModPlayer<SoAPlayer>().bismuthEnchant = player.ForceEffect<BismuthEffect>() ? 2 : 1;
-            }
+            player.AddEffect<BismuthEffect>(Item);
         }
 
         public class BismuthEffect : AccessoryEffect
         {
+            public int bismuthCrystalStage = 0;
+            public int bismuthFormationTimer = 0;
+            public const int FormationTime = 300;
+            public const int MaxStages = 3;
+            public const int MaxDamageAbsorption = 90;
+            public int currentDamageAbsorbed = 0;
             public override Header ToggleHeader => Header.GetHeader<GenerationsForceHeader>();
             public override int ToggleItemType => ModContent.ItemType<BismuthEnchant>();
 
+            public override void PostUpdateEquips(Player player)
+            {
+                bismuthFormationTimer++;
+
+                if (bismuthFormationTimer >= FormationTime / MaxStages * (bismuthCrystalStage + 1) && bismuthCrystalStage < MaxStages)
+                {
+                    bismuthCrystalStage++;
+                    currentDamageAbsorbed = 0;
+                }
+            }
+
+            public override void ModifyHurt(Player player, ref Player.HurtModifiers modifiers)
+            {
+                if (bismuthCrystalStage > 0 && currentDamageAbsorbed < MaxDamageAbsorption)
+                {
+                    float damageReduction = 0f;
+
+                    if (ShtunUtils.AnyBossAlive())
+                    {
+                        damageReduction = player.ForceEffect<BismuthEffect>() ? 0.1f : 0.05f;
+                    }
+                    else
+                    {
+                        damageReduction = player.ForceEffect<BismuthEffect>() ? 0.2f : 0.1f;
+                    }
+
+                    float damageToAbsorb = modifiers.FinalDamage.Flat * damageReduction;
+
+                    if (currentDamageAbsorbed + damageToAbsorb > MaxDamageAbsorption)
+                    {
+                        damageToAbsorb = MaxDamageAbsorption - currentDamageAbsorbed;
+                    }
+
+                    if (damageToAbsorb > 0)
+                    {
+                        modifiers.FinalDamage -= damageToAbsorb;
+                        currentDamageAbsorbed += (int)damageToAbsorb;
+                    }
+                }
+            }
         }
 
         public override void AddRecipes()

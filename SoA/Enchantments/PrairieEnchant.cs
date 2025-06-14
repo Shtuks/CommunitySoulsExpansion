@@ -38,6 +38,7 @@ namespace ssm.SoA.Enchantments
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
+            player.AddEffect<PrairieEffect>(Item);
         }
 
         public class PrairieEffect : AccessoryEffect
@@ -51,12 +52,12 @@ namespace ssm.SoA.Enchantments
 
                 float windSpeedAbs = System.Math.Abs(windSpeed);
 
-                float minbonus = player.ForceEffect<PrairieEffect>() ? 1.05f : 1.02f;
-                float maxbonus = player.ForceEffect<PrairieEffect>() ? 1.1f : 1.05f;
+                float minbonus = player.ForceEffect<PrairieEffect>() ? 1.1f : 1.05f;
+                float maxbonus = player.ForceEffect<PrairieEffect>() ? 1.2f : 1.1f;
 
                 if (windSpeedAbs > 0.5f)
                 {
-                    float bonusMultiplier = (player.ForceEffect<PrairieEffect>() ? 1.05f : 1.02f) + (windSpeedAbs - 0.5f) * 0.06f;
+                    float bonusMultiplier = (player.ForceEffect<PrairieEffect>() ? 1.1f : 1.1f) + (windSpeedAbs - 0.5f) * 0.06f;
 
                     if (bonusMultiplier > maxbonus)
                         bonusMultiplier = maxbonus;

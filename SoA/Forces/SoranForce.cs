@@ -1,13 +1,15 @@
 ﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria.Localization;
-using SacredTools;
-using Microsoft.Xna.Framework;
 using FargowiltasSouls.Content.Items.Accessories.Forces;
-using Fargowiltas.Items.Tiles;
-using ssm.SoA.Enchantments;
 using ssm.Core;
+using FargowiltasSouls.Core.AccessoryEffectSystem;
+using static ssm.SoA.Enchantments.FallenPrinceEnchant;
+using static ssm.SoA.Enchantments.CosmicCommanderEnchant;
+using static ssm.SoA.Enchantments.BlazingBruteEnchant;
+using static ssm.SoA.Enchantments.NebulousApprenticeEnchant;
+using static ssm.SoA.Enchantments.StellarPriestEnchant;
+using ssm.SoA.Enchantments;
 
 namespace ssm.SoA.Forces
 {
@@ -20,8 +22,17 @@ namespace ssm.SoA.Forces
             return ShtunConfig.Instance.SacredTools;
         }
 
-        private readonly Mod soa = ModLoader.GetMod("SacredTools");
-
+        public override void SetStaticDefaults()
+        {
+            Enchants[Type] = new int[5]
+            {
+                ModContent.ItemType<CosmicCommanderEnchant>(),
+                ModContent.ItemType<BlazingBruteEnchant>(),
+                ModContent.ItemType<NebulousApprenticeEnchant>(),
+                ModContent.ItemType<StellarPriestEnchant>(),
+                ModContent.ItemType<FallenPrinceEnchant>()
+            };
+        }
         public override void SetDefaults()
         {
             Item.width = 20;
@@ -34,24 +45,30 @@ namespace ssm.SoA.Forces
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            ModContent.Find<ModItem>(((ModType)this).Mod.Name, "BlazingBruteEnchant").UpdateAccessory(player, hideVisual);
-            ModContent.Find<ModItem>(((ModType)this).Mod.Name, "CosmicCommanderEnchant").UpdateAccessory(player, hideVisual);
-            ModContent.Find<ModItem>(((ModType)this).Mod.Name, "NebulousApprenticeEnchant").UpdateAccessory(player, hideVisual);
-            ModContent.Find<ModItem>(((ModType)this).Mod.Name, "StellarPriestEnchant").UpdateAccessory(player, hideVisual);
-            ModContent.Find<ModItem>(((ModType)this).Mod.Name, "QuasarEnchant").UpdateAccessory(player, hideVisual);
-            ModContent.Find<ModItem>(((ModType)this).Mod.Name, "FallenPrinceEnchant").UpdateAccessory(player, hideVisual);
+            player.AddEffect<CosmicCommanderEffect>(Item);
+            player.AddEffect<BlazingBruteEffect>(Item);
+            player.AddEffect<NebulousApprenticeEffect>(Item);
+            player.AddEffect<StellarPriestEffect>(Item);
+            player.AddEffect<SupernovaEffect>(Item);
+            player.AddEffect<GravityEffect>(Item);
+
+            player.AddEffect<SoranEffect>(Item);
         }
 
+        public class SoranEffect : AccessoryEffect
+        {
+            public override Header ToggleHeader => null;
+        }
         public override void AddRecipes()
         {
-            Recipe recipe = this.CreateRecipe();
-            recipe.AddIngredient<BlazingBruteEnchant>();
-            recipe.AddIngredient<NebulousApprenticeEnchant>();
-            recipe.AddIngredient<CosmicCommanderEnchant>();
-            recipe.AddIngredient<StellarPriestEnchant>();
-            recipe.AddIngredient<QuasarEnchant>();
-            recipe.AddIngredient<FallenPrinceEnchant>();
-            recipe.AddTile<CrucibleCosmosSheet>();
+            Recipe recipe = CreateRecipe();
+            int[] array = Enchants[Type];
+            foreach (int itemID in array)
+            {
+                recipe.AddIngredient(itemID);
+            }
+
+            recipe.AddTile(ModContent.Find<ModTile>("Fargowiltas", "CrucibleCosmosSheet"));
             recipe.Register();
         }
     }

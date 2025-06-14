@@ -16,7 +16,7 @@ namespace ssm.Content.Buffs
         }
         public override void ModifyBuffText(ref string buffName, ref string tip, ref int rare)
         {
-            var killStreak = Main.LocalPlayer.GetModPlayer<SoAPlayer>().rivalKillCount;
+            var killStreak = Main.LocalPlayer.GetModPlayer<SoAPlayer>().rivalStreak;
             tip = $"Increased damage by {20 * killStreak}% ({killStreak}/5 stacks)";
         }
     }

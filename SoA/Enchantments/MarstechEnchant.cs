@@ -12,6 +12,7 @@ using SacredTools.Items.Weapons.Marstech;
 using SacredTools.Content.Items.Armor.Marstech;
 using SacredTools.Items.Claymarine;
 using ssm.Core;
+using static ssm.SoA.Enchantments.SpaceJunkEnchant;
 
 namespace ssm.SoA.Enchantments
 {
@@ -23,9 +24,6 @@ namespace ssm.SoA.Enchantments
         {
             return ShtunConfig.Instance.SacredTools;
         }
-
-        private readonly Mod soa = ModLoader.GetMod("SacredTools");
-
         public override void SetDefaults()
         {
             Item.width = 20;
@@ -40,14 +38,9 @@ namespace ssm.SoA.Enchantments
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            ModdedPlayer modPlayer = player.GetModPlayer<ModdedPlayer>();
-            if (player.AddEffect<MarstechEffect>(Item))
-            {
-                //set bonus
-                modPlayer.marsArmor = true;
-                //space junk
-                modPlayer.spaceJunk = true;
-            }
+            player.AddEffect<MarstechEffect>(Item);
+            player.AddEffect<SpaceJunkEffect>(Item);
+            player.AddEffect<SpaceJunkAbilityEffect>(Item);
         }
 
         public class MarstechEffect : AccessoryEffect
