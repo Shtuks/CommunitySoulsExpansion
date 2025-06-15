@@ -5,6 +5,9 @@ using FargowiltasSouls.Core.Systems;
 using Redemption.NPCs.Bosses.Neb;
 using Redemption.NPCs.Bosses.Neb.Phase2;
 using Redemption.NPCs.Bosses.ADD;
+using CalamityMod.Events;
+using Redemption.NPCs.Bosses.PatientZero;
+using SpiritMod.Items.Ammo.Rocket.Warhead;
 
 namespace ssm.Redemption
 {
@@ -12,12 +15,23 @@ namespace ssm.Redemption
     [JITWhenModsEnabled(ModCompatibility.Redemption.Name)]
     public class RedemptionHPBalance : GlobalNPC
     {
+        [JITWhenModsEnabled(ModCompatibility.Calamity.Name)]
+        bool CheckBossRush()
+        {
+            return BossRushEvent.BossRushActive;
+        }
         public override bool InstancePerEntity => true;
         public override void SetDefaults(NPC npc)
         {
+            bool num = false;
+            if (ModCompatibility.Calamity.Loaded)
+            {
+                num = CheckBossRush();
+            }
+
             //if (WorldSavingSystem.EternityMode)
             //{
-                if (npc.type == ModContent.NPCType<Nebuleus>())
+            if (npc.type == ModContent.NPCType<Nebuleus>())
                 {
                     float multiplier = 0;
 
@@ -41,16 +55,45 @@ namespace ssm.Redemption
 
                 if (npc.type == ModContent.NPCType<Akka>())
                 {
-                    npc.lifeMax = 1600000;
+                    npc.lifeMax = num ? 5000000 : 1600000;
                     npc.damage = 420;
                 }
 
                 if (npc.type == ModContent.NPCType<Ukko>())
                 {
-                    npc.lifeMax = 1800000;
+                    npc.lifeMax = num ? 6000000 : 1800000;
                     npc.damage = 470;
                 }
-            //}
+
+                if (npc.type == ModContent.NPCType<PZ>())
+                {
+                    npc.lifeMax = num ? 5000000 : 1600000;
+                    npc.damage = 420;
+                }
+
+                if (npc.type == ModContent.NPCType<PZ_Kari>())
+                {
+                    npc.lifeMax = num ? 6000000 : 1800000;
+                    npc.damage = 470;
+                }
+        }
+        public override bool CheckDead(NPC npc)
+        {
+            bool num = false;
+            if (ModCompatibility.Calamity.Loaded)
+            {
+                num = CheckBossRush();
+            }
+
+            if (npc.type == ModContent.NPCType<PZ>() && num)
+            {
+                if (npc.life < 10)
+                {
+                    return true;
+                }
+                return false;
+            }
+            return base.CheckDead(npc);
         }
     }
 }

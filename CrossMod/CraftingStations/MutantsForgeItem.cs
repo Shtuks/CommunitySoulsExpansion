@@ -17,7 +17,7 @@ namespace ssm.CrossMod.CraftingStations
         public override void SetStaticDefaults()
         {
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
-            Main.RegisterItemAnimation(Item.type, new DrawAnimationVertical(4, 8));
+            Main.RegisterItemAnimation(Item.type, new DrawAnimationVertical(16, 8));
             ItemID.Sets.AnimatesAsSoul[Item.type] = true;
         }
 

@@ -52,7 +52,7 @@ namespace ssm.SoA.Enchantments
                 {
                     player.AddBuff(ModContent.BuffType<RivalBuff>(), 60);
                     rivalTimer++;
-                    player.GetDamage<GenericDamageClass>() += 0.2f * rivalKillCount;
+                    player.GetDamage<GenericDamageClass>() += 0.1f * rivalKillCount;
                 }
 
                 if (rivalTimer >= 300)

@@ -62,6 +62,20 @@ namespace ssm
         public static string filePath = "C:/Users/" + userName + "/Documents/My Games/Terraria/tModLoader/StarlightSouls";
 
         //public override uint ExtraPlayerBuffSlots => 300u;
+
+        public static void Add(string internalName, int id)
+        {
+            if (Instance == null)
+            {
+                Instance = ModContent.GetInstance<ssm>();
+            }
+            CaughtNPCItem item = new(internalName, id);
+            ssm.Instance.AddContent(item);
+            FieldInfo info = typeof(CaughtNPCItem).GetField("CaughtTownies", LumUtils.UniversalBindingFlags);
+            Dictionary<int, int> list = (Dictionary<int, int>)info.GetValue(info);
+            list.Add(id, item.Type);
+            info.SetValue(info, list);
+        }
         public static int SwarmMinDamage
         {
             get

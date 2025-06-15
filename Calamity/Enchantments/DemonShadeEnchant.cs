@@ -74,7 +74,7 @@ namespace ssm.Calamity.Enchantments
         {
             public override Header ToggleHeader => Header.GetHeader<CalamitySoulHeader>();
             public override int ToggleItemType => ModContent.ItemType<DemonShadeEnchant>();
-
+            public override bool ActiveSkill => true;
             public override void ActiveSkillJustPressed(Player player, bool stunned)
             {
                 player.AddBuff(ModContent.BuffType<Enraged>(), 600);

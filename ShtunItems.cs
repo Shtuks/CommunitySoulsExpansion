@@ -1,13 +1,14 @@
 ﻿using BombusApisBee.BeeDamageClass;
 using ClickerClass.Utilities;
 using FargowiltasSouls;
-using FargowiltasSouls.Content.Bosses.MutantBoss;
 using FargowiltasSouls.Content.Items.Accessories.Souls;
 using FargowiltasSouls.Content.Items.Armor;
+using FargowiltasSouls.Content.Items.BossBags;
+using FargowiltasSouls.Content.Items.Materials;
 using FargowiltasSouls.Content.Items.Summons;
 using FargowiltasSouls.Content.Items.Weapons.FinalUpgrades;
 using FargowiltasSouls.Content.Items.Weapons.SwarmDrops;
-using FargowiltasSouls.Core.Globals;
+using FargowiltasSouls.Core.ItemDropRules.Conditions;
 using Microsoft.Xna.Framework;
 using ssm.Content.DamageClasses;
 using ssm.Content.Items.Accessories;
@@ -16,6 +17,7 @@ using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using Terraria;
+using Terraria.GameContent.ItemDropRules;
 using Terraria.ModLoader;
 using ThoriumMod.Utilities;
 
@@ -63,6 +65,13 @@ namespace ssm
             }
         }
 
+        public override void ModifyItemLoot(Item item, ItemLoot itemLoot)
+        {
+            if (item.type == ModContent.ItemType<MutantBag>())
+            {
+                itemLoot.Add(ItemDropRule.ByCondition(new EModeDropCondition(), ModContent.ItemType<EternalEnergy>(), 1, 20, 30));
+            }
+        }
         public override void UpdateAccessory(Item Item, Player player, bool hideVisual)
         {
             if (Item.type == ModContent.ItemType<UniverseSoul>() && ModCompatibility.SacredTools.Loaded && ModCompatibility.Thorium.Loaded && ModCompatibility.Calamity.Loaded)
@@ -70,25 +79,22 @@ namespace ssm
                 player.maxMinions += 2;
             }
 
-            //if (ModCompatibility.SacredTools.Loaded)
-            //{
-                if (Item.type == ModContent.ItemType<BerserkerSoul>())
-                {
-                    player.GetDamage<MeleeDamageClass>() += 3;
-                }
-                if (Item.type == ModContent.ItemType<SnipersSoul>())
-                {
-                    player.GetDamage<RangedDamageClass>() += 3;
-                }
-                if (Item.type == ModContent.ItemType<ConjuristsSoul>())
-                {
-                    player.GetDamage<MeleeDamageClass>() += 3;
-                }
-                if (Item.type == ModContent.ItemType<ArchWizardsSoul>())
-                {
-                    player.GetDamage<RangedDamageClass>() += 3;
-                }
-            //}
+            if (Item.type == ModContent.ItemType<BerserkerSoul>())
+            {
+                player.GetDamage<MeleeDamageClass>() += 0.03f;
+            }
+            if (Item.type == ModContent.ItemType<SnipersSoul>())
+            {
+                player.GetDamage<RangedDamageClass>() += 0.03f;
+            }
+            if (Item.type == ModContent.ItemType<ConjuristsSoul>())
+            {
+                player.GetDamage<MeleeDamageClass>() += 0.03f;
+            }
+            if (Item.type == ModContent.ItemType<ArchWizardsSoul>())
+            {
+                player.GetDamage<RangedDamageClass>() += 0.03f;
+            }
 
             //SoU
             if (ModCompatibility.SacredTools.Loaded && (Item.type == ModContent.ItemType<UniverseSoul>() || Item.type == ModContent.ItemType<EternitySoul>() || Item.type == ModContent.ItemType<StargateSoul>()))
@@ -138,9 +144,13 @@ namespace ssm
         }
         public override void ModifyWeaponDamage(Item item, Player player, ref StatModifier damage)
         {
-            if (FargoSoulsUtil.BossIsAlive(ref EModeGlobalNPC.mutantBoss, ModContent.NPCType<MutantBoss>()) && damage.Flat > 100000 && !ShtunUtils.IsModItem(item, "SacredTools") && !ShtunUtils.IsModItem(item, "FargowiltasSouls"))
+            if (item.damage < 100000 && item.damage > 50000 && !ShtunUtils.IsModItem(item, "SacredTools") && !ShtunUtils.IsModItem(item, "FargowiltasSouls") && !ShtunUtils.IsModItem(item, "ThoriumMod") && !ShtunUtils.IsModItem(item, "CaamityMod"))
             {
                 damage *= 0.1f;
+            }
+            if (item.damage > 100000 && !ShtunUtils.IsModItem(item, "SacredTools") && !ShtunUtils.IsModItem(item, "FargowiltasSouls") && !ShtunUtils.IsModItem(item, "ThoriumMod") && !ShtunUtils.IsModItem(item, "CaamityMod"))
+            {
+                damage *= 0.01f;
             }
         }
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
@@ -166,7 +176,7 @@ namespace ssm
             if (item.type == ModContent.ItemType<MutantsCurse>() || item.type == ModContent.ItemType<AbominationnVoodooDoll>())
             {
                 tooltips.Add(new TooltipLine(Mod, "1m", "Mutant max life and damage scales with ammount of supported mods."));
-                tooltips.Add(new TooltipLine(Mod, "2m", $"Points: {Math.Round(ShtunNpcs.multiplierM, 1)}, Max Life: {10000000 + Math.Round(ShtunNpcs.multiplierM, 1) * 10000000}, Damage: {500 + Math.Round(ShtunNpcs.multiplierM, 1) * 100}"));
+                tooltips.Add(new TooltipLine(Mod, "2m", $"Points: {Math.Round(ShtunNpcs.multiplierM, 1)}, Max Life: {10000000 + Math.Round(ShtunNpcs.multiplierM, 1) * 10000000}, Damage: {500 + Math.Round(ShtunNpcs.multiplierM, 1) * (ModCompatibility.Calamity.Loaded ? 125 : 100)}"));
                 tooltips.Add(new TooltipLine(Mod, "3m", "Thorium adds 0.9 points. SoA adds 1.3. Calamity 1.8"));
                 tooltips.Add(new TooltipLine(Mod, "4m", "If olnly one of supported mods active Thorium - 1 SoA - 2 Calamity 2.8"));
                 tooltips.Add(new TooltipLine(Mod, "5m", "If Masochist mode enabled, points multiplied by 1.5"));

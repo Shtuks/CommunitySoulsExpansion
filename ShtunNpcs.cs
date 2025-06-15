@@ -6,13 +6,17 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
+using FargowiltasSouls.Core.Globals;
+using Luminance.Common.Utilities;
+using FargowiltasSouls.Core.Systems;
 
 namespace ssm
 {
     public partial class ShtunNpcs : GlobalNPC
     {
         public override bool InstancePerEntity => true;
-
+        public int genTimer = 0;
+        
         public int chtuxlagorInferno;
         public static int ECH = -1;
         public static int DukeEX = -1;
@@ -40,9 +44,8 @@ namespace ssm
         {
             if (npc.type == ModContent.NPCType<MutantBoss>())
             {
-                npc.defense = ModCompatibility.Calamity.Loaded ? 300 : 250;
                 npc.damage = Main.getGoodWorld ? 2000 : (int)(500 + ((ModCompatibility.Calamity.Loaded ? 125 : 100) * (Math.Round(multiplierM, 1))));
-                npc.lifeMax = (int)((ModCompatibility.IEoR.Loaded ? 40000000 : 10000000) + (10000000 * Math.Round(multiplierM, 1))) / (Main.expertMode ? 1 : 2);
+                npc.lifeMax = (int)(10000000 + (10000000 * Math.Round(multiplierM, 1))) / (Main.expertMode ? 1 : 2);
             }
 
             if (npc.type == ModContent.NPCType<AbomBoss>())
@@ -60,7 +63,32 @@ namespace ssm
             if (chtuxlagorInferno > 0)
                 ApplyDPSDebuff(npc.lifeMax / 10, npc.lifeMax / 100, ref npc.lifeRegen, ref damage);
         }
+        public override void ModifyIncomingHit(NPC npc, ref NPC.HitModifiers modifiers)
+        {
+            if (npc.type == ModContent.NPCType<MutantBoss>())
+            {
+                float LRM = Utilities.Saturate((float)npc.life / (float)npc.lifeMax);
+                float maxTimeNormal = 18000; // 4 min
+                float maxTimeMaso = 21600; // 4.5 min
+                float intendedDuration = WorldSavingSystem.MasochistModeReal ? maxTimeMaso : maxTimeNormal;
 
+                // 0 = as intended, 1 = instakill
+                float fightProgress = Utilities.InverseLerp(0f, intendedDuration, genTimer);
+                float aheadOfSchedule = MathF.Max(0f, 1f - fightProgress - LRM);
+
+                float resistanceFactor = (float)Math.Pow(aheadOfSchedule, 0.4f); // lower value - sharper applying
+
+                if (aheadOfSchedule > 0.9f)
+                {
+                    modifiers.SetMaxDamage(0);
+                }
+                else
+                {
+                    float damageMultiplier = 1f - resistanceFactor;
+                    modifiers.FinalDamage *= damageMultiplier;
+                }
+            }
+        }
         public override void PostAI(NPC npc)
         {
             if (chtuxlagorInferno > 0)
@@ -72,7 +100,15 @@ namespace ssm
                 go = 1;
             }
         }
-        
+
+        public override void AI(NPC npc)
+        {
+            if (npc.type == ModContent.NPCType<MutantBoss>() && Main.npc[EModeGlobalNPC.mutantBoss].ai[0] > 10)
+            {
+                genTimer++;
+            }
+            base.AI(npc);
+        }
         public void ApplyDPSDebuff(int lifeRegenValue, int damageValue, ref int lifeRegen, ref int damage)
         {
             if (lifeRegen > 0)

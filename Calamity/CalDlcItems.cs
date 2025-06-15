@@ -25,7 +25,7 @@ namespace ssm.Calamity
         {
             if (item.type == ModContent.ItemType<MutantsCurse>())
                 return BossDownedSaveSystem.HasDefeated<NamelessDeityBoss>();
-            return true;
+            return base.CanUseItem(item, player);
         }
     }
 }

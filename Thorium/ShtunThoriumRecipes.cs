@@ -13,6 +13,7 @@ using ThoriumMod.Items.BossThePrimordials.Rhapsodist;
 using FargowiltasSouls.Content.Items.Armor;
 using ThoriumMod.Items.BossThePrimordials.Omni;
 using ThoriumMod.Items.BossThePrimordials.Aqua;
+using ThoriumMod.Items.Terrarium;
 
 namespace ssm.Thorium
 {
@@ -81,6 +82,10 @@ namespace ssm.Thorium
                 if (recipe.HasResult<ColossusSoul>() && !recipe.HasIngredient<GuardianAngelsSoul>())
                 {
                     recipe.AddIngredient<BlastShield>();
+                }
+                if (recipe.HasResult<TerrariumDefender>() && !recipe.HasIngredient<CorruptedWarShield>())
+                {
+                    recipe.AddIngredient<CorruptedWarShield>();
                 }
                 if (recipe.HasResult<HungeringBlossom>() && !recipe.HasIngredient(ItemID.NaturesGift))
                 {

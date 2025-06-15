@@ -18,7 +18,7 @@ namespace ssm.Calamity.Addons
             {
                 for (int i = Bosses.Count - 1; i >= 0; i--)
                 {
-                    if (Bosses[i].EntityID == ModContent.NPCType<Providence>())
+                    if (Bosses[i].EntityID == ModContent.NPCType<Providence>() && !ModCompatibility.IEoR.Loaded)
                     {
                         Bosses.Insert(i, new Boss(ModContent.NPCType<Astrageldon>(), TimeChangeContext.Night));
                     }
@@ -34,7 +34,7 @@ namespace ssm.Calamity.Addons
         {
             for (int i = Bosses.Count - 1; i >= 0; i--)
             {
-                if (Bosses[i].EntityID == ModContent.NPCType<Draedon>())
+                if (Bosses[i].EntityID == ModContent.NPCType<Draedon>() && !ModCompatibility.IEoR.Loaded)
                 {
                     Bosses.Insert(i, new Boss(ModContent.NPCType<MarsBody>(), TimeChangeContext.Night));
                 }

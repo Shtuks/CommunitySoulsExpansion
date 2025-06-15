@@ -1,8 +1,6 @@
 ﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria.Localization;
-using SacredTools;
 using Microsoft.Xna.Framework;
 using FargowiltasSouls.Content.Items.Accessories.Enchantments;
 using FargowiltasSouls.Core.AccessoryEffectSystem;
@@ -12,10 +10,7 @@ using SacredTools.Content.Items.Armor.Dreadfire;
 using SacredTools.Content.Items.Accessories;
 using SacredTools.Content.Items.Weapons.Dreadfire;
 using ssm.Content.Buffs;
-using BombusApisBee;
 using FargowiltasSouls;
-using FargowiltasSouls.Content.Buffs.Souls;
-using FargowiltasSouls.Content.Projectiles;
 using ssm.Content.Projectiles;
 
 namespace ssm.SoA.Enchantments

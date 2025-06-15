@@ -29,10 +29,14 @@ namespace ssm.ClassSouls.Beekeeper.Souls
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            player.GetDamage<HymenoptraDamageClass>() += 0.22f;
+            player.GetDamage<HymenoptraDamageClass>() += 0.25f;
             player.GetCritChance<HymenoptraDamageClass>() += 0.10f;
             player.GetAttackSpeed<HymenoptraDamageClass>() += 0.15f;
             player.GetModPlayer<BeeDamagePlayer>().BeeResourceMax2 += 200;
+
+            ModContent.Find<ModItem>(((ModType)this).Mod.Name, "GlassOfHoney").UpdateAccessory(player, hideVisual);
+            ModContent.Find<ModItem>(((ModType)this).Mod.Name, "HymenoptrianNecklace").UpdateAccessory(player, hideVisual);
+            ModContent.Find<ModItem>(((ModType)this).Mod.Name, "LihzardianHornetRelic").UpdateAccessory(player, hideVisual);
         }
         public override void AddRecipes()
         {

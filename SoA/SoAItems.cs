@@ -13,7 +13,6 @@ using SacredTools.Content.Items.Armor.SpaceJunk;
 using SacredTools.Content.Items.Potions.Recovery;
 using SacredTools.Content.Items.Weapons.Dreamscape.Nihilus;
 using ssm.Content.DamageClasses;
-using ssm.Content.Projectiles.Enchantments;
 using ssm.Core;
 using System.Collections.Generic;
 using Terraria;
@@ -30,29 +29,25 @@ namespace ssm.SoA
         
         public override void SetDefaults(Item entity)
         {
-            if (entity.type == ModContent.ItemType<YataMirror>())
-            {
-                entity.damage = (int)(entity.damage * 0.5f);
-            }
             if (entity.type == ModContent.ItemType<FlamesOfCondemnation>())
             {
-                entity.damage = (int)(entity.damage * 2.2f);
+                entity.damage = (int)(entity.damage * (ModCompatibility.Calamity.Loaded ? 2.5f : 2.2f));
             }
             if (entity.type == ModContent.ItemType<Malice>())
             {
-                entity.damage = (int)(entity.damage * 1.8f);
+                entity.damage = (int)(entity.damage * (ModCompatibility.Calamity.Loaded ? 2 : 1.8f));
             }
             if (entity.type == ModContent.ItemType<Tenebris>())
             {
-                entity.damage = (int)(entity.damage * 1.1f);
+                entity.damage = (int)(entity.damage * (ModCompatibility.Calamity.Loaded ? 1.6f : 1.1f));
             }
             if (entity.type == ModContent.ItemType<Desperatio>())
             {
-                entity.damage = (int)(entity.damage * 1.1f);
+                entity.damage = (int)(entity.damage * (ModCompatibility.Calamity.Loaded ? 1.8f : 1.2f));
             }
             if (entity.type == ModContent.ItemType<Eschaton>())
             {
-                entity.damage = (int)(entity.damage * 1.9f);
+                entity.damage = (int)(entity.damage * (ModCompatibility.Calamity.Loaded ? 2.1f : 1.9f));
             }
             if (entity.type == ModContent.ItemType<AsthraltiteHealingPotion>() && ModCompatibility.Calamity.Loaded)
             {
@@ -69,34 +64,35 @@ namespace ssm.SoA
         }
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
         {
-            if (item.type == ModContent.ItemType<YataMirror>())
-            {
-                tooltips.Add(new TooltipLine(Mod, "rebalance", $"[c/00A36C:Cross-Mod Balance:] Damage decreased by 50%"));
-            }
+            int n = 0;
             if (item.type == ModContent.ItemType<FlamesOfCondemnation>())
             {
-                tooltips.Add(new TooltipLine(Mod, "rebalance", $"[c/00A36C:Cross-Mod Balance:] Damage increased by 120%"));
+                n = ModCompatibility.Calamity.Loaded ? 150 : 120;
             }
             if (item.type == ModContent.ItemType<Malice>())
             {
-                tooltips.Add(new TooltipLine(Mod, "rebalance", $"[c/00A36C:Cross-Mod Balance:] Damage increased by 80%"));
+                n = ModCompatibility.Calamity.Loaded ? 100 : 80;
             }
             if (item.type == ModContent.ItemType<Tenebris>())
             {
-                tooltips.Add(new TooltipLine(Mod, "rebalance", $"[c/00A36C:Cross-Mod Balance:] Damage increased by 10%"));
+                n = ModCompatibility.Calamity.Loaded ? 60 : 10;
                 tooltips.Add(new TooltipLine(Mod, "homing", $"[c/00A36C:Cross-Mod Balance:] Weapon's pojectiles are homing in on enemies"));
             }
             if (item.type == ModContent.ItemType<Desperatio>())
             {
-                tooltips.Add(new TooltipLine(Mod, "rebalance", $"[c/00A36C:Cross-Mod Balance:] Damage increased by 10%"));
+                n = ModCompatibility.Calamity.Loaded ? 90 : 20;
                 tooltips.Add(new TooltipLine(Mod, "nerf", $"[c/00A36C:Cross-Mod Balance:] Fire column deal 70% less damage."));
                 tooltips.Add(new TooltipLine(Mod, "homing", $"[c/00A36C:Cross-Mod Balance:] Weapon's pojectiles are homing in on enemies"));
             }
             if (item.type == ModContent.ItemType<Eschaton>())
             {
-                tooltips.Add(new TooltipLine(Mod, "rebalance", $"[c/00A36C:Cross-Mod Balance:] Damage increased by 90%"));
+                n = ModCompatibility.Calamity.Loaded ? 120 : 90;
                 tooltips.Add(new TooltipLine(Mod, "velocity", $"[c/00A36C:Cross-Mod Balance:] Projectile velocity increased by 10%"));
                 tooltips.Add(new TooltipLine(Mod, "homing", $"[c/00A36C:Cross-Mod Balance:] Weapon's pojectiles are homing in on enemies"));
+            }
+            if (item.type == ModContent.ItemType<Eschaton>() || item.type == ModContent.ItemType<Desperatio>() || item.type == ModContent.ItemType<Tenebris>() || item.type == ModContent.ItemType<Malice>() || item.type == ModContent.ItemType<FlamesOfCondemnation>())
+            {
+                tooltips.Add(new TooltipLine(Mod, "rebalance", $"[c/00A36C:Cross-Mod Balance:] Damage increased by {n}%"));
             }
         }
 

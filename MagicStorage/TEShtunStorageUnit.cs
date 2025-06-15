@@ -131,7 +131,7 @@ public class TEShtunStorageUnit : TEStorageUnit
             return;
         }
         Item original = toDeposit.Clone();
-        TEShtunStorageUnit.DepositToItemCollection(items, toDeposit, ShtunCapacity, out var hasChange);
+        DepositToItemCollection(items, toDeposit, ShtunCapacity, out var hasChange);
         if (hasChange && Main.netMode != 1)
         {
             if (Main.netMode == 2)

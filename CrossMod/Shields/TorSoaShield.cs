@@ -2,6 +2,7 @@
 using SacredTools.Content.Items.Accessories;
 using ssm.Core;
 using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 using ThoriumMod.Items.Terrarium;
 
@@ -33,9 +34,11 @@ namespace ssm.CrossMod.Shields
                 //reflection to colossus
                 if (recipe.HasResult(ModContent.ItemType<ColossusSoul>()) && recipe.HasIngredient(1613))
                 {
+                    recipe.RemoveIngredient(ItemID.FrozenShield);
                     recipe.RemoveIngredient(1613);
                     recipe.AddIngredient<ReflectionShield>(1);
                 }
+
             }
         }
     }

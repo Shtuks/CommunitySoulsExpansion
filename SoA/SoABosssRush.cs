@@ -2,15 +2,13 @@
 using ssm.Core;
 using static CalamityMod.Events.BossRushEvent;
 using SacredTools.NPCs.Boss.Abaddon;
-using CalamityMod.NPCs.CeaselessVoid;
 using SacredTools.NPCs.Boss.Araghur;
 using CalamityMod.NPCs.DevourerofGods;
 using SacredTools.NPCs.Boss.Lunarians;
 using CalamityMod.NPCs.Providence;
 using SacredTools.NPCs.Boss.Erazor;
-using CalamityMod.NPCs.SupremeCalamitas;
 using CalamityMod.NPCs.Polterghast;
-using CalamityMod.NPCs.OldDuke;
+using CalamityMod.NPCs.ExoMechs;
 
 namespace ssm.SoA
 {
@@ -33,11 +31,14 @@ namespace ssm.SoA
                     Bosses[i].HostileNPCsToNotDelete.Add(ModContent.NPCType<AraghurTail>());
                     Bosses.Insert(i, new Boss(ModContent.NPCType<AraghurHead>()));
                 }
-                if (Bosses[i].EntityID == ModContent.NPCType<OldDuke>())
+                if (Bosses[i].EntityID == ModContent.NPCType<DevourerofGodsHead>())
                 {
                     Bosses.Insert(i, new Boss(ModContent.NPCType<Novaniel>()));
                 }
-                Bosses.Add(new Boss(ModContent.NPCType<ErazorBoss>()));
+                if (Bosses[i].EntityID == ModContent.NPCType<Draedon>())
+                {
+                    Bosses.Insert(i, new Boss(ModContent.NPCType<ErazorBoss>()));
+                }
             }
         }
     }

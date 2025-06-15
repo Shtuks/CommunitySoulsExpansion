@@ -64,9 +64,9 @@ namespace ssm
                 npc.AddBuff(ModContent.BuffType<ChtuxlagorInferno>(), 180);
             }
 
-            if (npc.type == ModContent.NPCType<MutantBoss>() && !WorldSavingSystem.DownedMutant)
+            if (npc.type == ModContent.NPCType<MutantBoss>())
             {
-                modifiers.SetMaxDamage(40000);
+                modifiers.SetMaxDamage(50000);
             }
         }
         public override void ModifyHitByItem(NPC npc, Player player, Item item, ref NPC.HitModifiers modifiers)
@@ -81,9 +81,9 @@ namespace ssm
                 npc.checkDead();
             }
 
-            if (npc.type == ModContent.NPCType<MutantBoss>() && !WorldSavingSystem.DownedMutant)
+            if (npc.type == ModContent.NPCType<MutantBoss>())
             {
-                modifiers.SetMaxDamage(40000);
+                modifiers.SetMaxDamage(50000);
             }
         }
         public override void HitEffect(NPC npc, NPC.HitInfo hit)

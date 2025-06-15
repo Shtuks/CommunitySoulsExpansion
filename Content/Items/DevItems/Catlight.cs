@@ -3,6 +3,9 @@ using Terraria.ID;
 using FargowiltasSouls.Core.Systems;
 using ssm.Systems;
 using Terraria.ModLoader;
+using ssm.Core;
+using FargowiltasSouls.Content.Items.Materials;
+using Fargowiltas.Items.Tiles;
 
 namespace ssm.Content.Items.DevItems
 {
@@ -28,17 +31,17 @@ namespace ssm.Content.Items.DevItems
             Item.shootSpeed = 0f;
         }
 
-        //public override void AddRecipes()
-        //{
-        //    Recipe recipe = CreateRecipe(1);
+        public override void AddRecipes()
+        {
+            Recipe recipe = CreateRecipe(1);
 
-        //    if (!ModCompatibility.Calamity.Loaded)
-        //    {
-        //        recipe.AddIngredient<AbomEnergy>(10);
-        //    }
+            if (!ModCompatibility.Calamity.Loaded)
+            {
+                recipe.AddIngredient<AbomEnergy>(10);
+            }
 
-        //    recipe.AddTile<MutantsForgeTile>();
-        //    recipe.Register();
-        //}
+            recipe.AddTile<CrucibleCosmosSheet>();
+            recipe.Register();
+        }
     }
 }

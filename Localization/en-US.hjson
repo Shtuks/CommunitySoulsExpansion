@@ -33,13 +33,13 @@ Mods: {
 			}
 
 			DragonEnchant2: {
-				DisplayName: Dragon Enchant2
-				Tooltip: ""
+				DisplayName: Dragon Enchantment
+				Tooltip: Creates a burst of shadowflames after taking damage
 			}
 
 			TitanEnchant2: {
-				DisplayName: Titan Enchant2
-				Tooltip: ""
+				DisplayName: Titan Enchantment
+				Tooltip: Using ranged weapons triggers a recoil blast
 			}
 
 			WarlockEnchant: {
@@ -50,6 +50,15 @@ Mods: {
 					Critical strikes will generate up to 15 shadow wisps
 					Pressing the 'Special Ability' key will unleash every stored shadow wisp towards your cursor's position
 					Effects of Demon Tongue and Dark Effigy
+					'''
+			}
+
+			WarlockEnchant2: {
+				DisplayName: Warlock Enchantment
+				Tooltip:
+					'''
+					Increases health regeneration and jump speed
+					Enemies killed by minions heal the player
 					'''
 			}
 
@@ -115,9 +124,9 @@ Mods: {
 					[i:ssm/OstaraEnchant] Allows wearer to perform up to 5 bunny hops
 					[i:ssm/OstaraEnchant] Effects of Ostara's Gift
 					[i:ssm/DragonEnchant] Creates a burst of shadowflames after taking damage	
-					[i:ssm/TitanEnchant] Using ranged weapons triggers a recoil blast
+					[i:ssm/TitanEnchant2] Using ranged weapons triggers a recoil blast
 					[i:ssm/PhantasmalEnchant] Spectral aura drains mana out of nearby enemies
-					[i:ssm/WarlockEnchant] Enemies killed by minions heal the player
+					[i:ssm/WarlockEnchant2] Enemies killed by minions heal the player
 					'''
 			}
 
@@ -599,11 +608,6 @@ Mods: {
 					'''
 			}
 
-			MutantsForge: {
-				DisplayName: Mutants Forge
-				Tooltip: ""
-			}
-
 			MonstrosityMask: {
 				DisplayName: Monstrosity Mask
 				Tooltip: Vanity
@@ -946,8 +950,8 @@ Mods: {
 					'''
 			}
 
-			SyranForce: {
-				DisplayName: Syran Force
+			SyrainForce: {
+				DisplayName: Syrain Force
 				Tooltip:
 					'''
 					'Dragon Rage empowers you, and encourages you to go on'
@@ -1907,6 +1911,16 @@ Mods: {
 					'''
 			}
 
+			MutagenBeekeeper: {
+				DisplayName: Beekeeper's Mutagen
+				Tooltip:
+					'''
+					20% increased hymenoptra damage
+					10% increased hymenoptra critical chance
+					+ 100 max honey
+					'''
+			}
+
 			CorruptedWarShield: {
 				Tooltip:
 					'''
@@ -1949,9 +1963,9 @@ Mods: {
 				DisplayName: Addons Force
 				Tooltip:
 					'''
-					Set Bonuses of Marivium, Intergelactic, Clamitas, Shogun, Void Faquir and Frozen armor sets
-					Effects of Hell's Fire, Soul of Pyrogen, Holy Mantle and Splendor Jam
-					Effects of Cursor Mutagen, Reincarnation Badge and Influx Cluster
+					Set Bonuses of Intergelactic, Clamitas, Shogun and Frozen armor sets
+					Effects of Hell's Fire, Soul of Pyrogen and Splendor Jam
+					Effects of Cursor Mutagen and Influx Cluster
 					'''
 			}
 
@@ -2024,17 +2038,17 @@ Mods: {
 			}
 
 			SyranCraftingStationItem: {
-				Tooltip: ""
-				DisplayName: Syran Crafting Station
+				Tooltip: Counts as every crafting station from Shadows of Abaddon
+				DisplayName: Syrus Workshop
 			}
 
 			MutantsForgeItem: {
-				Tooltip: ""
+				Tooltip: Conts as every possible crafting station
 				DisplayName: Mutants Forge
 			}
 
 			DreamersForgeItem: {
-				Tooltip: ""
+				Tooltip: Conts as every crafting station from Thorium Mod
 				DisplayName: Dreamers Forge
 			}
 
@@ -2049,8 +2063,8 @@ Mods: {
 			}
 
 			RedemptionCraftingStationItem: {
-				DisplayName: Redemption Crafting Station
-				Tooltip: ""
+				DisplayName: Xenium Factory
+				Tooltip: Counts as every crafting station from Redemption Mod
 			}
 
 			CairoCrusaderEnchant: {
@@ -2439,7 +2453,7 @@ Mods: {
 			HorrorForce: {
 				Tooltip:
 					'''
-					Set bonuses from [i:Spooky/SpiritHorsemanHead] Spirit Horseman, [i:Spooky/SpiderHead] Spi-Ops, [i:Spooky/WizardGangsterHead] Gilded Mage and [i:Spooky/Root] Root
+					Set bonuses from [i:Spooky/FlowerHead] Flower, [i:Spooky/SpiritHorsemanHead] Spirit Horseman, [i:Spooky/SpiderHead] Spi-Ops, [i:Spooky/WizardGangsterHead] Gilded Mage and [i:Spooky/Root] Root
 					Effects of [i:Spooky/SkullAmulet] Skull Amulet, [i:Spooky/SpiritAmulet] Spirit Amulet and [i:Spooky/BustlingGlowshroom] Bustling Glowshroom
 					Effects of [i:Spooky/HunterScarf] Old Hunter Scarf, [i:Spooky/SewingThread] Sewing Thread and [i:Spooky/DaffodilHairpin] Flower Hairpin 
 					'''
@@ -2589,6 +2603,7 @@ Mods: {
 					18% increased hymenoptra damage
 					10% increased hymenoptra critical chance
 					+ 50 max honey
+					'This is only the beginning...'
 					'''
 			}
 
@@ -2596,9 +2611,10 @@ Mods: {
 				DisplayName: Beekeeper Soul
 				Tooltip:
 					'''
-					22% increased hymenoptra damage
+					25% increased hymenoptra damage
 					10% increased hymenoptra critical chance
 					+ 200 max honey
+					Effects of Glass Of Honey, Hymenoptrian Necklace, Lihzardian Hornet Relic
 					'''
 			}
 
@@ -2684,16 +2700,6 @@ Mods: {
 
 			RuneWizard: {
 				DisplayName: Rune Wizard
-				Tooltip: ""
-			}
-
-			StarblightFruit: {
-				DisplayName: Starblight Fruit
-				Tooltip: Gived permanent accessory slot and some potions effects
-			}
-
-			WarlockEnchant2: {
-				DisplayName: Warlock Enchant2
 				Tooltip: ""
 			}
 
@@ -3038,7 +3044,7 @@ Mods: {
 			ToxicHeartEffect: Toxic Heart
 			HideofAstrumDeusEffect: Hide of Astrum Deus
 			AquaticHeartEffect: Aquatic Heart
-			EridanusEffect: Eridanus blessing
+			Enrage: Demonshade Enrage
 			//other
 			GaiaEffect: Attacking mode
 			NekomiEffect: Nekomi armor set
@@ -3050,6 +3056,7 @@ Mods: {
 			SpeedCapEffect: Movement Speed Cap
 			SpectralFishEffect: Spectral Fishron Support
 			CuteFishEXEffect: Fishron Ritual
+			EridanusEffect: Eridanus blessing
 			//redemption
 			AdvancementHeader: "{$Mods.FargoMoreSoulsCompat.Items.AdvancementForce.DisplayName}"
 			CommonGuardBauble: Soul Bauble
@@ -3195,9 +3202,6 @@ Mods: {
 			SpectralFishron.DisplayName: Spectral Fishron
 			SquirrelRing.DisplayName: Squirrel Ring
 			FlariumGeyser.DisplayName: Flarium Geyser
-			CatlightProj.DisplayName: Catlight Proj
-			CatlightExtraProj.DisplayName: Catlight Extra Proj
-			CatlightDeathray.DisplayName: Catlight Deathray
 			EeriePulse.DisplayName: Eerie Pulse
 		}
 
