@@ -25,6 +25,7 @@ using Terraria.UI;
 using ssm.CrossMod.CraftingStations;
 using ssm.gunrightsmod;
 using ssm.SpiritMod;
+using Fargowiltas.Items.CaughtNPCs;
 
 namespace ssm
 {
