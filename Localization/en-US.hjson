@@ -2440,24 +2440,24 @@ Mods: {
 				DisplayName: Convective Enchantment
 			}
 
-			TerrorForce: {
+			HorrorForce: {
 				Tooltip:
 					'''
 					Set bonuses from [i:Spooky/EyeHead] Living Flesh, [i:Spooky/GoreHoodEye] Gore, [i:Spooky/OldWoodHead] Old Wood and [i:Spooky/GourdHead] RottenGourd
 					Effects of [i:Spooky/CreepyCandle] Creepy Candle, [i:Spooky/MonsterBloodVial] Monster Blood Vial and [i:Spooky/TotalOrganPackage] Total Organ Package
 					Effects of [i:Spooky/GhostBook] Tome of Spirits, [i:Spooky/CandyBag] Bag 'O Treats and [i:Spooky/RustyRing] Rusty Ring
 					'''
-				DisplayName: Terror Force
+				DisplayName: Horror Force
 			}
 
-			HorrorForce: {
+			TerrorForce: {
 				Tooltip:
 					'''
 					Set bonuses from [i:Spooky/FlowerHead] Flower, [i:Spooky/SpiritHorsemanHead] Spirit Horseman, [i:Spooky/SpiderHead] Spi-Ops, [i:Spooky/WizardGangsterHead] Gilded Mage and [i:Spooky/Root] Root
 					Effects of [i:Spooky/SkullAmulet] Skull Amulet, [i:Spooky/SpiritAmulet] Spirit Amulet and [i:Spooky/BustlingGlowshroom] Bustling Glowshroom
 					Effects of [i:Spooky/HunterScarf] Old Hunter Scarf, [i:Spooky/SewingThread] Sewing Thread and [i:Spooky/DaffodilHairpin] Flower Hairpin 
 					'''
-				DisplayName: Horror Force
+				DisplayName: Terror Force
 			}
 
 			SpiritHorsemenEnchant: {

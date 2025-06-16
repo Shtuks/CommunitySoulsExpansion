@@ -5,6 +5,8 @@ using ssm.Core;
 using ThoriumMod.Items.Terrarium;
 using FargowiltasSouls.Content.Items.Accessories.Souls;
 using ssm.Thorium.Souls;
+using Terraria.ID;
+using ThoriumMod.Items.BasicAccessories;
 
 namespace ssm.CrossMod.Shields
 {
@@ -36,6 +38,11 @@ namespace ssm.CrossMod.Shields
                     recipe.RemoveIngredient(1613);
                     recipe.AddIngredient<CorruptedWarShield>(1);
                     recipe.AddIngredient<AsgardsValor>(1);
+                }
+                if (recipe.HasResult(ModContent.ItemType<TerrariumDefender>()) && recipe.HasIngredient(ItemID.FrozenShield) && ModCompatibility.SacredTools.Loaded)
+                {
+                    recipe.RemoveIngredient(ItemID.FrozenShield);
+                    recipe.RemoveIngredient(ModContent.ItemType<HolyAegis>());
                 }
                 // defender to aegis
                 if (recipe.HasResult(ModContent.ItemType<AsgardianAegis>()) && recipe.HasIngredient<AsgardsValor>())
