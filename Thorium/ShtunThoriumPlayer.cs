@@ -568,12 +568,11 @@ namespace ssm.Thorium
             //}
             //}
         }
-        public override void OnHitNPC(Item item, Player player, NPC target, NPC.HitInfo hit, int damageDone)
+        public override void OnHitNPC(Item item, NPC target, int damage, float knockBack, bool crit)
         {
-            if (player.GetModPlayer<ShtunThoriumPlayer>().ThunderTalonEternity)
+            if (ThunderTalonEternity)
             {
-                target.AddBuff(BuffID.BoneJavelin, 300);
-
+            target.AddBuff(BuffID.BoneJavelin, 300);
             }
         }
     }
