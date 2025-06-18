@@ -41,5 +41,14 @@ namespace ssm.Thorium
                 tooltips.Add(new TooltipLine(Mod, "rebalance", $"[c/00A36C:Cross-Mod Balance:] Damage decreased by 20% but increased projectile velocity by 20%"));
             }
         }
+        public override void OnHitNPC(Projectile projectile, NPC target, NPC.HitInfo hit, int damageDone)
+        {
+            Player player = Main.player[projectile.owner];
+            if (player.GetModPlayer<ShtunThoriumPlayer>().ThunderTalonEternity)
+            {
+                target.AddBuff(BuffID.BoneJavelin, 300);
+
+            }
+        }
     }
 }

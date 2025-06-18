@@ -1,40 +1,55 @@
 {
   "version": 3,
   "targets": {
-    "net8.0": {}
+    "net8.0": {
+      "tModLoader.CodeAssist/0.1.5": {
+        "type": "package"
+      }
+    }
   },
-  "libraries": {},
+  "libraries": {
+    "tModLoader.CodeAssist/0.1.5": {
+      "sha512": "Sg/jKEg/z5eN+Cdi3/9CU4JfJwvXHVH+UDJf4Lipo26uTa+guLLJXH1XDJNPShTFwKK8jMUYbthINP4QhsgHSA==",
+      "type": "package",
+      "path": "tmodloader.codeassist/0.1.5",
+      "hasTools": true,
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "NugetIcon.png",
+        "analyzers/dotnet/cs/tModLoader.CodeAssist.dll",
+        "tmodloader.codeassist.0.1.5.nupkg.sha512",
+        "tmodloader.codeassist.nuspec",
+        "tools/install.ps1",
+        "tools/uninstall.ps1"
+      ]
+    }
+  },
   "projectFileDependencyGroups": {
     "net8.0": [
       "tModLoader.CodeAssist >= 0.1.*"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\kolot\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\rcber\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\kolot\\OneDrive\\Документы\\My Games\\Terraria\\tModLoader\\ModSources\\ssm\\ssm.csproj",
+      "projectUniqueName": "C:\\Users\\rcber\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\CommunitySoulsExpansion\\ssm.csproj",
       "projectName": "ssm",
-      "projectPath": "C:\\Users\\kolot\\OneDrive\\Документы\\My Games\\Terraria\\tModLoader\\ModSources\\ssm\\ssm.csproj",
-      "packagesPath": "C:\\Users\\kolot\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\kolot\\OneDrive\\Документы\\My Games\\Terraria\\tModLoader\\ModSources\\ssm\\obj\\",
+      "projectPath": "C:\\Users\\rcber\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\CommunitySoulsExpansion\\ssm.csproj",
+      "packagesPath": "C:\\Users\\rcber\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\rcber\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\CommunitySoulsExpansion\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\kolot\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Users\\rcber\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {}
+        "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net8.0": {
@@ -51,8 +66,7 @@
         "enableAudit": "true",
         "auditLevel": "low",
         "auditMode": "direct"
-      },
-      "SdkAnalysisLevel": "9.0.100"
+      }
     },
     "frameworks": {
       "net8.0": {
@@ -79,19 +93,8 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.102/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.411/PortableRuntimeIdentifierGraph.json"
       }
     }
-  },
-  "logs": [
-    {
-      "code": "NU1101",
-      "level": "Error",
-      "message": "Не удалось найти пакет tModLoader.CodeAssist. Пакеты с таким идентификатором отсутствуют в следующих источниках пакетов: Microsoft Visual Studio Offline Packages",
-      "libraryId": "tModLoader.CodeAssist",
-      "targetGraphs": [
-        "net8.0"
-      ]
-    }
-  ]
+  }
 }

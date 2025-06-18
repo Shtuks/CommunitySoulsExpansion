@@ -14,6 +14,7 @@ using ThoriumMod.NPCs.BossQueenJellyfish;
 using ThoriumMod.NPCs.BossStarScouter;
 using ThoriumMod.NPCs.BossTheGrandThunderBird;
 using ThoriumMod.NPCs.BossViscount;
+using ssm.Content.Items.Accessories;
 
 namespace ssm.Thorium
 {
@@ -23,12 +24,15 @@ namespace ssm.Thorium
     {
         public override bool InstancePerEntity => true;
         public override void ModifyNPCLoot(NPC npc, NPCLoot npcLoot)
+        
         {
             LeadingConditionRule emodeRule = new(new EModeDropCondition());
+            npcLoot.Add(emodeRule);
 
-            if(npc.type == ModContent.NPCType<TheGrandThunderBird>())
+            if (npc.type == ModContent.NPCType<TheGrandThunderBird>())
             {
                 emodeRule.OnSuccess(FargoSoulsUtil.BossBagDropCustom(ModContent.ItemType<StrangeCrate>(), 5));
+                emodeRule.OnSuccess(FargoSoulsUtil.BossBagDropCustom(ModContent.ItemType<ThunderTalonEternity>(), 1));
             }
             else if (npc.type == ModContent.NPCType<QueenJellyfish>())
             {
@@ -46,7 +50,6 @@ namespace ssm.Thorium
             {
                 emodeRule.OnSuccess(FargoSoulsUtil.BossBagDropCustom(ModContent.ItemType<AbyssalCrate>(), 5));
             }
-
             else if (npc.type == ModContent.NPCType<StarScouter>())
             {
                 emodeRule.OnSuccess(FargoSoulsUtil.BossBagDropCustom(ItemID.FloatingIslandFishingCrate, 5));
