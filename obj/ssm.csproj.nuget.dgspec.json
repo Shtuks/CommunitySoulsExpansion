@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\rcber\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\CommunitySoulsExpansion\\ssm.csproj": {}
+    "C:\\Users\\rcber\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\ssm\\ssm.csproj": {}
   },
   "projects": {
-    "C:\\Users\\rcber\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\CommunitySoulsExpansion\\ssm.csproj": {
+    "C:\\Users\\rcber\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\ssm\\ssm.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\rcber\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\CommunitySoulsExpansion\\ssm.csproj",
+        "projectUniqueName": "C:\\Users\\rcber\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\ssm\\ssm.csproj",
         "projectName": "ssm",
-        "projectPath": "C:\\Users\\rcber\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\CommunitySoulsExpansion\\ssm.csproj",
+        "projectPath": "C:\\Users\\rcber\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\ssm\\ssm.csproj",
         "packagesPath": "C:\\Users\\rcber\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\rcber\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\CommunitySoulsExpansion\\obj\\",
+        "outputPath": "C:\\Users\\rcber\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\ssm\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\rcber\\AppData\\Roaming\\NuGet\\NuGet.Config"

@@ -2772,6 +2772,25 @@ Mods: {
 				DisplayName: Syrian Force
 				Tooltip: ""
 			}
+
+			RottingFingernail: {
+				DisplayName: Rotting Fingernail
+				Tooltip:
+					'''
+					Grants immunity to Cryptic Grasp
+					Spawns 2 friendly Grave Limbs which latch onto enemies dealing 5 dps each
+					“Utterly revolting.”
+					'''
+			}
+
+			ThunderTalonEternity: {
+				DisplayName: Thunder Talon
+				Tooltip:
+					'''
+					Your attacks apply petrified on hit.
+					“Do you hear lightning or see thunder?”
+					'''
+			}
 		}
 
 		Buffs: {

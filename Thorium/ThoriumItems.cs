@@ -5,6 +5,7 @@ using Terraria;
 using Terraria.ModLoader;
 using ThoriumMod.Items.BossThePrimordials.Omni;
 using ThoriumMod.Items.Terrarium;
+using Terraria.ID;
 
 namespace ssm.Thorium
 {
@@ -41,13 +42,11 @@ namespace ssm.Thorium
                 tooltips.Add(new TooltipLine(Mod, "rebalance", $"[c/00A36C:Cross-Mod Balance:] Damage decreased by 20% but increased projectile velocity by 20%"));
             }
         }
-        public override void OnHitNPC(Projectile projectile, NPC target, NPC.HitInfo hit, int damageDone)
+        public override void OnHitNPC(Item item, Player player, NPC target, NPC.HitInfo hit, int damageDone)
         {
-            Player player = Main.player[projectile.owner];
             if (player.GetModPlayer<ShtunThoriumPlayer>().ThunderTalonEternity)
             {
                 target.AddBuff(BuffID.BoneJavelin, 300);
-
             }
         }
     }

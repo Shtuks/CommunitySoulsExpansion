@@ -568,12 +568,5 @@ namespace ssm.Thorium
             //}
             //}
         }
-        public override void OnHitNPC(Item item, NPC target, int damage, float knockBack, bool crit)
-        {
-            if (ThunderTalonEternity)
-            {
-            target.AddBuff(BuffID.BoneJavelin, 300);
-            }
-        }
     }
 }

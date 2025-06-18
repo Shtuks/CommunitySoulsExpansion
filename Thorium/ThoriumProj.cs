@@ -2,6 +2,7 @@
 using Terraria;
 using ssm.Core;
 using ThoriumMod.Projectiles;
+using Terraria.ID;
 
 namespace ssm.Thorium
 {
