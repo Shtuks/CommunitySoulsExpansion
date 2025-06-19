@@ -24,6 +24,13 @@ namespace ssm.Thorium
             if (player.GetModPlayer<ShtunThoriumPlayer>().ThunderTalonEternity)
             {
                 target.AddBuff(BuffID.BoneJavelin, 300);
+            }
+            if (player.GetModPlayer<ShtunThoriumPlayer>().DarkenedCloak)
+            {
+                if (Main.rand.NextBool(4))
+                {
+                    player.AddBuff(BuffID.BoneJavelin, 300);
+                }
 
             }
         }

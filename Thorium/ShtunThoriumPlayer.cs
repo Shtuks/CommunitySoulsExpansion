@@ -49,6 +49,7 @@ namespace ssm.Thorium
         public bool ConduitEnchant;
         public bool ThoriumSoul;
         public bool ThunderTalonEternity;
+        public bool DarkenedCloak;
 
         public void ThoriumResetEffects()
         {
@@ -77,6 +78,7 @@ namespace ssm.Thorium
             ConduitEnchant = false;
             ThoriumSoul = false;
             ThunderTalonEternity = false;
+            DarkenedCloak = false;
         }
 
         public override void PostUpdate()

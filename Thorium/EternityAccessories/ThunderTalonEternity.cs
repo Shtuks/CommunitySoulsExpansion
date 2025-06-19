@@ -4,7 +4,7 @@ using ssm.Thorium;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace ssm.Content.Items.Accessories
+namespace ssm.Thorium.EternityAccessories
 {
 	public class ThunderTalonEternity : ModItem
 	{
