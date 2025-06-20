@@ -1,8 +1,8 @@
 ﻿using Terraria.ModLoader;
 using Terraria;
 using ssm.Core;
-using ThoriumMod.Projectiles;
 using Terraria.ID;
+using ssm.Thorium.Buffs;
 
 namespace ssm.Thorium
 {
@@ -29,9 +29,8 @@ namespace ssm.Thorium
             {
                 if (Main.rand.NextBool(4))
                 {
-                    player.AddBuff(BuffID.BoneJavelin, 300);
+                    player.AddBuff(ModContent.BuffType<SoulStrength>(), 120);
                 }
-
             }
         }
     }

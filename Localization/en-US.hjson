@@ -2791,6 +2791,16 @@ Mods: {
 					“Do you hear lightning or see thunder?”
 					'''
 			}
+
+			DarkenedCloak: {
+				DisplayName: Darkened Cloak
+				Tooltip: ""
+			}
+
+			Dumbass: {
+				DisplayName: Dumbass
+				Tooltip: ""
+			}
 		}
 
 		Buffs: {
@@ -2857,6 +2867,11 @@ Mods: {
 			RivalBuff: {
 				Description: ech
 				DisplayName: Rival Buff
+			}
+
+			SoulStrength: {
+				DisplayName: Soul Strength
+				Description: Your soul is empowered!
 			}
 		}
 

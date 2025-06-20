@@ -14,7 +14,7 @@ using ThoriumMod.NPCs.BossQueenJellyfish;
 using ThoriumMod.NPCs.BossStarScouter;
 using ThoriumMod.NPCs.BossTheGrandThunderBird;
 using ThoriumMod.NPCs.BossViscount;
-using ssm.Content.Items.Accessories;
+using ssm.Thorium.EternityAccessories;
 
 namespace ssm.Thorium
 {
@@ -45,6 +45,7 @@ namespace ssm.Thorium
             else if (npc.type == ModContent.NPCType<Lich>())
             {
                 emodeRule.OnSuccess(FargoSoulsUtil.BossBagDropCustom(ModContent.ItemType<WondrousCrate>(), 5));
+                emodeRule.OnSuccess(FargoSoulsUtil.BossBagDropCustom(ModContent.ItemType<DarkenedCloak>(), 1));
             }
             else if (npc.type == ModContent.NPCType<ForgottenOne>())
             {
