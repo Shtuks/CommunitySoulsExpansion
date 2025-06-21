@@ -17,7 +17,6 @@ using ssm.Core;
 using System.Collections.Generic;
 using Terraria;
 using Terraria.ModLoader;
-using static ssm.SoA.Enchantments.BlightboneEnchant;
 
 namespace ssm.SoA
 {
@@ -39,11 +38,11 @@ namespace ssm.SoA
             }
             if (entity.type == ModContent.ItemType<Tenebris>())
             {
-                entity.damage = (int)(entity.damage * (ModCompatibility.Calamity.Loaded ? 1.6f : 1.1f));
+                entity.damage = (int)(entity.damage * (ModCompatibility.Calamity.Loaded ? 1.5f : 1.1f));
             }
             if (entity.type == ModContent.ItemType<Desperatio>())
             {
-                entity.damage = (int)(entity.damage * (ModCompatibility.Calamity.Loaded ? 1.8f : 1.2f));
+                entity.damage = (int)(entity.damage * (ModCompatibility.Calamity.Loaded ? 1.9f : 1.2f));
             }
             if (entity.type == ModContent.ItemType<Eschaton>())
             {
@@ -75,7 +74,7 @@ namespace ssm.SoA
             }
             if (item.type == ModContent.ItemType<Tenebris>())
             {
-                n = ModCompatibility.Calamity.Loaded ? 60 : 10;
+                n = ModCompatibility.Calamity.Loaded ? 50 : 10;
                 tooltips.Add(new TooltipLine(Mod, "homing", $"[c/00A36C:Cross-Mod Balance:] Weapon's pojectiles are homing in on enemies"));
             }
             if (item.type == ModContent.ItemType<Desperatio>())

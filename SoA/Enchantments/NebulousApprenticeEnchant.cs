@@ -1,23 +1,15 @@
 ﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria.Localization;
-using SacredTools;
-using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using FargowiltasSouls.Content.Items.Accessories.Enchantments;
 using FargowiltasSouls.Core.AccessoryEffectSystem;
 using ssm.Content.SoulToggles;
-using Microsoft.Xna.Framework.Graphics;
-using SacredTools.Content.Items.Armor.Marstech;
-using SacredTools.Items.Claymarine;
-using SacredTools.Items.Weapons.Marstech;
 using SacredTools.Content.Items.Armor.Lunar.Nebula;
 using SacredTools.Content.Items.Accessories;
 using SacredTools.Items.Weapons.Lunatic;
 using SacredTools.Content.Items.Weapons.Asthraltite;
 using ssm.Core;
-using ClickerClass.Prefixes.ClickerPrefixes;
 using SacredTools.Content.Projectiles.Armors.Nuba;
 using FargowiltasSouls;
 

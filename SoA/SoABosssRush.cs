@@ -9,6 +9,7 @@ using CalamityMod.NPCs.Providence;
 using SacredTools.NPCs.Boss.Erazor;
 using CalamityMod.NPCs.Polterghast;
 using CalamityMod.NPCs.ExoMechs;
+using FargowiltasSouls.Content.Items.Armor;
 
 namespace ssm.SoA
 {

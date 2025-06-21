@@ -5,7 +5,6 @@ using ThoriumMod;
 using Microsoft.Xna.Framework;
 using ThoriumMod.Items.BardItems;
 using ThoriumMod.Items.Misc;
-using ThoriumMod.Items.BossStarScouter;
 using ssm.Core;
 using FargowiltasSouls.Content.Items.Accessories.Enchantments;
 

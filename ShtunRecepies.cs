@@ -3,7 +3,6 @@ using Terraria.ModLoader;
 using MagicStorage.Items;
 using ssm.Core;
 using ssm.Content.Items.Armor;
-using ssm.MagicStorage;
 using FargowiltasSouls.Content.Items.Accessories.Souls;
 using FargowiltasSouls.Content.Items.Materials;
 using ssm.Content.Items.Consumables;
@@ -25,7 +24,6 @@ namespace ssm
         public override void AddRecipes()
         {
             Recipe.Create(ModContent.ItemType<CreativeStorageUnit>())
-                .AddIngredient<EternalStorageUnitItem>(10)
                 .AddIngredient<TrueLumberjackBody>()
                 .AddIngredient<TrueLumberjackMask>()
                 .AddIngredient<TrueLumberjackPants>()

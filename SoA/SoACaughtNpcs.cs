@@ -1,6 +1,7 @@
 ﻿using Terraria.ModLoader;
 using ssm.Core;
 using SacredTools.Content.NPCs.Town;
+using FargowiltasSouls.Content.Items.Armor;
 
 namespace ssm.SoA
 {
