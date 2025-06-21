@@ -13,7 +13,7 @@ namespace ssm.Redemption.InfAmmo
     public class WastelandRenewalSupreme : BaseRenewalItem
     {
         public WastelandRenewalSupreme()
-            : base("Wasteland Renewal Supreme", "Turn the entire world into wasteland", -1, supreme: true, ModContent.ItemType<PurityRenewal>())
+            : base("Wasteland Renewal Supreme", "Turn the entire world into wasteland", -1, supreme: true, ModContent.ItemType<WastelandRenewal>())
         {
         }
 

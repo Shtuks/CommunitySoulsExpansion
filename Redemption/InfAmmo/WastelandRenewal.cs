@@ -5,6 +5,7 @@ using Terraria;
 using Microsoft.Xna.Framework;
 using Fargowiltas.Projectiles;
 using ssm.Core;
+using Redemption.Items.Usable;
 
 namespace ssm.Redemption.InfAmmo
 {
@@ -13,7 +14,7 @@ namespace ssm.Redemption.InfAmmo
     public class WastelandRenewal : BaseRenewalItem
     {
         public WastelandRenewal()
-            : base("Wasteland Renewal", "Turn large radius into wasteland", 780)
+            : base("Wasteland Renewal", "Turn large radius into wasteland", ModContent.ItemType<BleachedSolution>())
         {
         }
 
