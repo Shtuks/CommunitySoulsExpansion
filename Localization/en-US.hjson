@@ -2802,9 +2802,9 @@ Mods: {
 				Tooltip: ""
 			}
 
-			DazzlingQuiver: {
-				DisplayName: Dazzling Quiver
-				Tooltip: ""
+			CrystalQuiver: {
+				DisplayName: Crystal Quiver
+				Tooltip: Confuses hit enemies and deals increased damage to movement impaired enemies
 			}
 
 			DurasteelQuiver: {
@@ -2814,17 +2814,17 @@ Mods: {
 
 			GhostPulseQuiver: {
 				DisplayName: Ghost Pulse Quiver
-				Tooltip: ""
+				Tooltip: Damages nearby enemies while in flight
 			}
 
 			IcyQuiver: {
 				DisplayName: Icy Quiver
-				Tooltip: ""
+				Tooltip: Has a chance to significantly hinder hit enemies' movement
 			}
 
 			SpiritQuiver: {
 				DisplayName: Spirit Quiver
-				Tooltip: ""
+				Tooltip: Pierces tiles and enemies, but fades quickly
 			}
 
 			SteelQuiver: {
@@ -2834,47 +2834,51 @@ Mods: {
 
 			TalonQuiver: {
 				DisplayName: Talon Quiver
-				Tooltip: ""
+				Tooltip: Every fourth arrow stuck to an enemy gouges them
 			}
 
 			CoralDartBox: {
 				DisplayName: Coral Dart Box
-				Tooltip: ""
+				Tooltip: Splinters after impacting an enemy
 			}
 
 			DrillDartBox: {
 				DisplayName: Drill Dart Box
-				Tooltip: ""
+				Tooltip: Briefly digs through tiles on impact, gaining increased damage and penetration
 			}
 
 			FlareDartBox: {
 				DisplayName: Flare Dart Box
-				Tooltip: ""
+				Tooltip: Empowers in blast damage and radius over time
 			}
 
 			PhaseDartBox: {
 				DisplayName: Phase Dart Box
-				Tooltip: ""
+				Tooltip: Increases in damage before reaching a peak, then it quickly loses damage
 			}
 
 			TetherDartBox: {
 				DisplayName: Tether Dart Box
-				Tooltip: ""
+				Tooltip: Splits into a damaging electric field
 			}
 
 			BaseballJar: {
 				DisplayName: Baseball Jar
-				Tooltip: ""
+				Tooltip: Must be used with a baseball bat
 			}
 
 			LilTorpedoBox: {
-				DisplayName: Lil Torpedo Box
-				Tooltip: ""
+				DisplayName: Lil' Torpedo Box
+				Tooltip: Releases explosive shrapnel upon impact
 			}
 
 			PillCase: {
 				DisplayName: Pill Case
-				Tooltip: ""
+				Tooltip:
+					'''
+					Throws out a bounding pill
+					Right click to throw a pill that increases an allies life recovery breifly.
+					'''
 			}
 
 			SeethingChargeJar: {
@@ -2884,52 +2888,90 @@ Mods: {
 
 			SnotBallJar: {
 				DisplayName: Snot Ball Jar
-				Tooltip: ""
+				Tooltip: Slows hit enemies movement
 			}
 
 			SpudJar: {
 				DisplayName: Spud Jar
-				Tooltip: ""
+				Tooltip: Mashes against enemies and tiles
 			}
 
 			SteamBatteryCase: {
 				DisplayName: Steam Battery Case
-				Tooltip: ""
+				Tooltip: Used by steam punk weaponry
 			}
 
 			SyringeCase: {
 				DisplayName: Syringe Case
-				Tooltip: ""
+				Tooltip:
+					'''
+					Heals ally life by 4
+					Pricks an ally with a life-giving needle
+					'''
 			}
 
 			CursedSawbladeStack: {
-				DisplayName: Cursed Sawblade Stack
-				Tooltip: ""
+				DisplayName: Stack of Cursed Sawblades
+				Tooltip:
+					'''
+					Pierces through multiple enemies and bounces against tiles
+					Afflicts hit enemies with cursed flames
+					'''
 			}
 
 			DazzlingSawbladeStack: {
-				DisplayName: Dazzling Sawblade Stack
-				Tooltip: ""
+				DisplayName: Stack of Dazzling Sawblades
+				Tooltip:
+					'''
+					Pierces through multiple enemies and bounces against tiles
+					Afflicts hit enemies with confusion
+					'''
 			}
 
 			FrozenSawbladeStack: {
-				DisplayName: Frozen Sawblade Stack
-				Tooltip: ""
+				DisplayName: Stack of Frozen Sawblades
+				Tooltip:
+					'''
+					Pierces through multiple enemies and bounces against tiles
+					Freezes hit enemies, slowing them greatly
+					'''
 			}
 
 			MoltenSawbladeStack: {
-				DisplayName: Molten Sawblade Stack
-				Tooltip: ""
+				DisplayName: Stack of Molten Sawblades
+				Tooltip:
+					'''
+					Pierces through multiple enemies and bounces against tiles
+					Sets hit enemies on fire
+					'''
 			}
 
 			SawbladeStack: {
-				DisplayName: Sawblade Stack
-				Tooltip: ""
+				DisplayName: Stack of Sawblades
+				Tooltip: Pierces through multiple enemies and bounces against tiles
 			}
 
 			VileSawbladeStack: {
-				DisplayName: Vile Sawblade Stack
-				Tooltip: ""
+				DisplayName: Stack of Vile Sawblades
+				Tooltip:
+					'''
+					Pierces through multiple enemies and bounces against tiles
+					Afflicts hit enemies with ichor
+					'''
+			}
+
+			HeartQuiver: {
+				DisplayName: Heart Quiver
+				Tooltip:
+					'''
+					Has a chance to stun enemies on hit
+					'Legendary arrows dropped by cupid himself'
+					'''
+			}
+
+			SpectralQuiver: {
+				DisplayName: Spectral Quiver
+				Tooltip: Pierces tiles and enemies, but dissipates quickly in the air
 			}
 		}
 
@@ -2941,17 +2983,17 @@ Mods: {
 
 			SadismEX: {
 				DisplayName: Sadism EX
-				Description: You immune to all debuffs.
+				Description: You are immune to all debuffs.
 			}
 
 			YharimBuff: {
 				DisplayName: Yharim Buff
-				Description: Your power rival with Godseeker's
+				Description: Your power rivals the Godseeker's
 			}
 
 			DeviSoulBuff: {
 				DisplayName: Deviantt Soul Buff
-				Description: Spectral Deviantt protects you
+				Description: The Spectral Deviantt protects you
 			}
 
 			MutantSoulBuff: {
@@ -3462,6 +3504,11 @@ Mods: {
 
 				AlternativeSiblings: {
 					Label: Alternative Siblings
+					Tooltip: ""
+				}
+
+				Consolaria: {
+					Label: Consolaria
 					Tooltip: ""
 				}
 			}

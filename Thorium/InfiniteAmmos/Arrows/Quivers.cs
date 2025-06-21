@@ -82,7 +82,7 @@ namespace ssm.Thorium.InfiniteAmmos.Arrows
     }
     [ExtendsFromMod(ModCompatibility.Thorium.Name)]
     [JITWhenModsEnabled(ModCompatibility.Thorium.Name)]
-    public class DazzlingQuiver : BaseAmmo
+    public class CrystalQuiver : BaseAmmo
     {
         public override int AmmunitionItem => ModContent.ItemType<CrystalArrow>();
         public override bool IsLoadingEnabled(Mod mod)

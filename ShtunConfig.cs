@@ -48,6 +48,7 @@ namespace ssm
         public bool ThrowerMerge { get; set; }
 
         [Header("EnchantsLoad")]
+
         [ReloadRequired]
         [BackgroundColor(60, 200, 60, 192)]
         [DefaultValue(true)]
@@ -92,5 +93,10 @@ namespace ssm
         [BackgroundColor(60, 200, 60, 192)]
         [DefaultValue(true)]
         public bool SpiritMod { get; set; }
+
+        [ReloadRequired]
+        [BackgroundColor(60, 200, 60, 192)]
+        [DefaultValue(true)]
+        public bool Consolaria { get; set; }
     }
 }

@@ -143,6 +143,9 @@
 	  <Reference Include="ThoriumRework">
 	    <HintPath>lib\ThoriumRework.dll</HintPath>
 	  </Reference>
+	  <Reference Include="Consolaria">
+	    <HintPath>lib\Consolaria.dll</HintPath>
+	  </Reference>
 	</ItemGroup>
 
 	<!-- References -->
