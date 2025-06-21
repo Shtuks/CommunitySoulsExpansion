@@ -48,6 +48,8 @@ namespace ssm.Thorium
         public bool MixTape;
         public bool ConduitEnchant;
         public bool ThoriumSoul;
+        public bool ThunderTalonEternity;
+        public bool DarkenedCloak;
 
         public void ThoriumResetEffects()
         {
@@ -75,6 +77,9 @@ namespace ssm.Thorium
             MixTape = false;
             ConduitEnchant = false;
             ThoriumSoul = false;
+            ThunderTalonEternity = false;
+            DarkenedCloak = false;
+
         }
 
         public override void PostUpdate()
@@ -103,7 +108,7 @@ namespace ssm.Thorium
             ThoriumPlayer thoriumPlayer = Player.GetModPlayer<ThoriumPlayer>();
 
             //if (FungusEnchant && !ThoriumSoul && Main.rand.Next(5) == 0)
-                //target.AddBuff(ModContent.BuffType<Mycelium>(120);
+            //target.AddBuff(ModContent.BuffType<Mycelium>(120);
 
             if (proj.type == ModContent.ProjectileType<PyroBurst>() || proj.type == ModContent.ProjectileType<LightStrike>() || proj.type == ModContent.ProjectileType<WhiteFlare>() || proj.type == ModContent.ProjectileType<MixtapeNote>())
             {
@@ -147,9 +152,9 @@ namespace ssm.Thorium
                 //assassin duplicate damage
                 //if (SoulConfig.Instance.GetValue(SoulConfig.Instance.thoriumToggles.AssassinDamage) && Utils.NextFloat(Main.rand) < 0.1f)
                 //{
-                    //Main.PlaySound(SoundID.Item, (int)target.position.X, (int)target.position.Y, 92, 1f, 0f);
-                    //Projectile.NewProjectile((float)((int)target.Center.X), (float)((int)target.Center.Y), 0f, 0f, thorium.ProjectileType("MeteorPlasmaDamage"), (int)((float)proj.damage * 1.15f), 0f, Main.myPlayer, 0f, 0f);
-                    //Projectile.NewProjectile((float)((int)target.Center.X), (float)((int)target.Center.Y), 0f, 0f, thorium.ProjectileType("MeteorPlasma"), 0, 0f, Main.myPlayer, 0f, 0f);
+                //Main.PlaySound(SoundID.Item, (int)target.position.X, (int)target.position.Y, 92, 1f, 0f);
+                //Projectile.NewProjectile((float)((int)target.Center.X), (float)((int)target.Center.Y), 0f, 0f, thorium.ProjectileType("MeteorPlasmaDamage"), (int)((float)proj.damage * 1.15f), 0f, Main.myPlayer, 0f, 0f);
+                //Projectile.NewProjectile((float)((int)target.Center.X), (float)((int)target.Center.Y), 0f, 0f, thorium.ProjectileType("MeteorPlasma"), 0, 0f, Main.myPlayer, 0f, 0f);
                 //}
 
                 //insta kill
@@ -280,8 +285,8 @@ namespace ssm.Thorium
                 //if (SoulConfig.Instance.GetValue(SoulConfig.Instance.thoriumToggles.AssassinDamage) && Utils.NextFloat(Main.rand) < 0.1f)
                 //{
                 //    Main.PlaySound(SoundID.Item, (int)target.position.X, (int)target.position.Y, 92, 1f, 0f);
-                    //Projectile.NewProjectile((float)((int)target.Center.X), (float)((int)target.Center.Y), 0f, 0f, thorium.ProjectileType("MeteorPlasmaDamage"), (int)((float)Item.damage * 1.15f), 0f, Main.myPlayer, 0f, 0f);
-                    //Projectile.NewProjectile((float)((int)target.Center.X), (float)((int)target.Center.Y), 0f, 0f, thorium.ProjectileType("MeteorPlasma"), 0, 0f, Main.myPlayer, 0f, 0f);
+                //Projectile.NewProjectile((float)((int)target.Center.X), (float)((int)target.Center.Y), 0f, 0f, thorium.ProjectileType("MeteorPlasmaDamage"), (int)((float)Item.damage * 1.15f), 0f, Main.myPlayer, 0f, 0f);
+                //Projectile.NewProjectile((float)((int)target.Center.X), (float)((int)target.Center.Y), 0f, 0f, thorium.ProjectileType("MeteorPlasma"), 0, 0f, Main.myPlayer, 0f, 0f);
                 //}
                 //insta kill
                 if (target.type != NPCID.TargetDummy && target.lifeMax < 1000000 && Utils.NextFloat(Main.rand) < 0.05f)
@@ -312,7 +317,7 @@ namespace ssm.Thorium
                 Projectile.NewProjectile(target.GetSource_FromThis(), target.Center, Vector2.Zero, ModContent.ProjectileType<PyroExplosion2>(), 100, 1f, Main.myPlayer, 0f, 0f);
             }
 
-             if (BronzeEnchant /*&& SoulConfig.Instance.GetValue(SoulConfig.Instance.thoriumToggles.BronzeLightning*/ && Main.rand.Next(5) == 0)
+            if (BronzeEnchant /*&& SoulConfig.Instance.GetValue(SoulConfig.Instance.thoriumToggles.BronzeLightning*/ && Main.rand.Next(5) == 0)
             {
                 target.immune[Player.whoAmI] = 5;
                 Projectile.NewProjectile(target.GetSource_FromThis(), target.Center, Vector2.Zero, ModContent.ProjectileType<LightStrike>(), (int)(Player.GetWeaponDamage(Player.HeldItem) / 4), 1f, Main.myPlayer, 0f, 0f);
@@ -542,7 +547,7 @@ namespace ssm.Thorium
                 //thoriumPlayer.timer bloodChargeTimer = 120;
                 //if (Player.ownedProjectileCounts[thorium.ProjectileType("DemonBloodVisual")] < 1)
                 //{
-                    //Projectile.NewProjectile(Player.Center.X, Player.Center.Y, 0f, 0f, thorium.ProjectileType("DemonBloodVisual"), 0, 0f, Player.whoAmI, 0f, 0f);
+                //Projectile.NewProjectile(Player.Center.X, Player.Center.Y, 0f, 0f, thorium.ProjectileType("DemonBloodVisual"), 0, 0f, Player.whoAmI, 0f, 0f);
                 //}
                 if (thoriumPlayer.bloodCharge >= 5)
                 {
@@ -550,7 +555,7 @@ namespace ssm.Thorium
                     Player.HealEffect(Item.damage / 5, true);
                     //Projectile.NewProjectile((float)((int)target.Center.X), (float)((int)target.Center.Y), 0f, 0f, thorium.ProjectileType("BloodBoom"), 0, 0f, Main.myPlayer, 0f, 0f);
                     Item.damage = (int)((float)Item.damage * 2f);
-                   // Player.AddBuff(thorium.BuffType("DemonBloodExhaust"), 600, true);
+                    // Player.AddBuff(thorium.BuffType("DemonBloodExhaust"), 600, true);
                     thoriumPlayer.bloodCharge = 0;
                 }
             }
@@ -558,12 +563,12 @@ namespace ssm.Thorium
             //mixtape
             //if (MixTape && SoulConfig.Instance.GetValue(SoulConfig.Instance.thoriumToggles.MixTape) && crit)
             //{
-                //int num23 = Main.rand.Next(3);
-                //Main.PlaySound(SoundID.Item, (int)target.position.X, (int)target.position.Y, 73, 1f, 0f);
-                //for (int n = 0; n < 5; n++)
-                //{
-                   // Projectile.NewProjectile(target.Center.X, target.Center.Y, Utils.NextFloat(Main.rand, -5f, 5f), Utils.NextFloat(Main.rand, -5f, 5f), thorium.ProjectileType("MixtapeNote"), (int)((float)Item.damage * 0.25f), 2f, Player.whoAmI, (float)num23, 0f);
-                //}
+            //int num23 = Main.rand.Next(3);
+            //Main.PlaySound(SoundID.Item, (int)target.position.X, (int)target.position.Y, 73, 1f, 0f);
+            //for (int n = 0; n < 5; n++)
+            //{
+            // Projectile.NewProjectile(target.Center.X, target.Center.Y, Utils.NextFloat(Main.rand, -5f, 5f), Utils.NextFloat(Main.rand, -5f, 5f), thorium.ProjectileType("MixtapeNote"), (int)((float)Item.damage * 0.25f), 2f, Player.whoAmI, (float)num23, 0f);
+            //}
             //}
         }
     }

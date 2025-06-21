@@ -5,6 +5,8 @@ using Terraria;
 using Terraria.ModLoader;
 using ThoriumMod.Items.BossThePrimordials.Omni;
 using ThoriumMod.Items.Terrarium;
+using Terraria.ID;
+using ssm.Thorium.Buffs;
 
 namespace ssm.Thorium
 {
@@ -39,6 +41,20 @@ namespace ssm.Thorium
             if (item.type == ModContent.ItemType<OmniCannon>())
             {
                 tooltips.Add(new TooltipLine(Mod, "rebalance", $"[c/00A36C:Cross-Mod Balance:] Damage decreased by 20% but increased projectile velocity by 20%"));
+            }
+        }
+        public override void OnHitNPC(Item item, Player player, NPC target, NPC.HitInfo hit, int damageDone)
+        {
+            if (player.GetModPlayer<ShtunThoriumPlayer>().ThunderTalonEternity)
+            {
+                target.AddBuff(BuffID.BoneJavelin, 300);
+            }
+            if (player.GetModPlayer<ShtunThoriumPlayer>().DarkenedCloak)
+            {
+                if (Main.rand.NextBool(4))
+                {
+                    player.AddBuff(ModContent.BuffType<SoulStrength>(), 120);
+                }
             }
         }
     }

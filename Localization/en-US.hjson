@@ -2794,6 +2794,165 @@ Mods: {
 				DisplayName: Xenomite Pouch
 				Tooltip: ""
 			}
+
+			RottingFingernail: {
+				DisplayName: Rotting Fingernail
+				Tooltip:
+					'''
+					Grants immunity to Cryptic Grasp
+					Spawns 2 friendly Grave Limbs which latch onto enemies dealing 5 dps each
+					“Utterly revolting.”
+					'''
+			}
+
+			ThunderTalonEternity: {
+				DisplayName: Thunder Talon
+				Tooltip:
+					'''
+					Your attacks apply petrified on hit.
+					“Do you hear lightning or see thunder?”
+					'''
+			}
+
+			DarkenedCloak: {
+				DisplayName: Darkened Cloak
+				Tooltip: ""
+			}
+
+			Dumbass: {
+				DisplayName: Dumbass
+				Tooltip: ""
+			}
+
+			DazzlingQuiver: {
+				DisplayName: Dazzling Quiver
+				Tooltip: ""
+			}
+
+			DurasteelQuiver: {
+				DisplayName: Durasteel Quiver
+				Tooltip: ""
+			}
+
+			GhostPulseQuiver: {
+				DisplayName: Ghost Pulse Quiver
+				Tooltip: ""
+			}
+
+			IcyQuiver: {
+				DisplayName: Icy Quiver
+				Tooltip: ""
+			}
+
+			SpiritQuiver: {
+				DisplayName: Spirit Quiver
+				Tooltip: ""
+			}
+
+			SteelQuiver: {
+				DisplayName: Steel Quiver
+				Tooltip: ""
+			}
+
+			TalonQuiver: {
+				DisplayName: Talon Quiver
+				Tooltip: ""
+			}
+
+			CoralDartBox: {
+				DisplayName: Coral Dart Box
+				Tooltip: ""
+			}
+
+			DrillDartBox: {
+				DisplayName: Drill Dart Box
+				Tooltip: ""
+			}
+
+			FlareDartBox: {
+				DisplayName: Flare Dart Box
+				Tooltip: ""
+			}
+
+			PhaseDartBox: {
+				DisplayName: Phase Dart Box
+				Tooltip: ""
+			}
+
+			TetherDartBox: {
+				DisplayName: Tether Dart Box
+				Tooltip: ""
+			}
+
+			BaseballJar: {
+				DisplayName: Baseball Jar
+				Tooltip: ""
+			}
+
+			LilTorpedoBox: {
+				DisplayName: Lil Torpedo Box
+				Tooltip: ""
+			}
+
+			PillCase: {
+				DisplayName: Pill Case
+				Tooltip: ""
+			}
+
+			SeethingChargeJar: {
+				DisplayName: Seething Charge Jar
+				Tooltip: ""
+			}
+
+			SnotBallJar: {
+				DisplayName: Snot Ball Jar
+				Tooltip: ""
+			}
+
+			SpudJar: {
+				DisplayName: Spud Jar
+				Tooltip: ""
+			}
+
+			SteamBatteryCase: {
+				DisplayName: Steam Battery Case
+				Tooltip: ""
+			}
+
+			SyringeCase: {
+				DisplayName: Syringe Case
+				Tooltip: ""
+			}
+
+			CursedSawbladeStack: {
+				DisplayName: Cursed Sawblade Stack
+				Tooltip: ""
+			}
+
+			DazzlingSawbladeStack: {
+				DisplayName: Dazzling Sawblade Stack
+				Tooltip: ""
+			}
+
+			FrozenSawbladeStack: {
+				DisplayName: Frozen Sawblade Stack
+				Tooltip: ""
+			}
+
+			MoltenSawbladeStack: {
+				DisplayName: Molten Sawblade Stack
+				Tooltip: ""
+			}
+
+			SawbladeStack: {
+				DisplayName: Sawblade Stack
+				Tooltip: ""
+			}
+
+			VileSawbladeStack: {
+				DisplayName: Vile Sawblade Stack
+				Tooltip: ""
+			}
 		}
 
 		Buffs: {
@@ -2860,6 +3019,11 @@ Mods: {
 			RivalBuff: {
 				Description: ech
 				DisplayName: Rival Buff
+			}
+
+			SoulStrength: {
+				DisplayName: Soul Strength
+				Description: Your soul is empowered!
 			}
 		}
 
@@ -3243,6 +3407,7 @@ Mods: {
 			EeriePulse.DisplayName: Eerie Pulse
 			WastelandNukeProj.DisplayName: Wasteland Nuke Proj
 			WastelandNukeSupremeProj.DisplayName: Wasteland Nuke Supreme Proj
+			StriderLegShockwave.DisplayName: Strider Leg Shockwave
 		}
 
 		Bestiary: {
