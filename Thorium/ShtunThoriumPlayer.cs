@@ -79,6 +79,7 @@ namespace ssm.Thorium
             ThoriumSoul = false;
             ThunderTalonEternity = false;
             DarkenedCloak = false;
+
         }
 
         public override void PostUpdate()

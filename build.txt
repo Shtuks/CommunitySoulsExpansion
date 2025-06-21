@@ -7,4 +7,4 @@ weakReferences = CalamityMod, Redemption, SacredTools, ThoriumMod, FargowiltasCr
 sortArfter = FargowiltasSouls, Fargowiltas, Luminance, FargowiltasCrossmod
 includePDB = true
 includeSource = true
-buildIgnore = lib\*
+buildIgnore = lib\*, bin\*
