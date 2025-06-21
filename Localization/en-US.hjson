@@ -573,13 +573,13 @@ Mods: {
 				Tooltip:
 					'''
 					[i:FargowiltasSouls/SparklingAdoration] Graze attacks to gain up to x1.25 increased damage
-					Damage bonus decreases over time and is fully lost on hit
-					Your attacks periodically summon life draining heart
-					[i:FargowiltasSouls/NekomiHood][i:FargowiltasSouls/NekomiHoodie][i:FargowiltasSouls/NekomiLeggings] 7% increased damage & critical strike chance for your current weapon class
-					Increases Sparkling Adoration graze radius, graze attacks to temporarily charge energy
-					Increases life regeneration when damaged at the cost of some energy
-					Double tap down key to release energy as life draining heart
-					Wield a demon axe of love and justice when fully charged
+					[i:FargowiltasSouls/SparklingAdoration] Damage bonus decreases over time and is fully lost on hit
+					[i:FargowiltasSouls/SparklingAdoration] Your attacks periodically summon life draining heart
+					[i:FargowiltasSouls/NekomiHood] 7% increased damage & critical strike chance for your current weapon class
+					[i:FargowiltasSouls/NekomiHood] Increases Sparkling Adoration graze radius, graze attacks to temporarily charge energy
+					[i:FargowiltasSouls/NekomiHood] Increases life regeneration when damaged at the cost of some energy
+					[i:FargowiltasSouls/NekomiHood] Double tap down key to release energy as life draining heart
+					[i:FargowiltasSouls/NekomiHood] Wield a demon axe of love and justice when fully charged
 					'''
 			}
 
@@ -588,11 +588,11 @@ Mods: {
 				Tooltip:
 					'''
 					[i:FargowiltasSouls/MutantEye] 25% increased graze bonus damage cap
-					Converts Sparkling Adoration hearts to love rays, Increases damage gained per graze
-					Increases Spectral Abominationn respawn rate & damage
-					Press the bomb key to unleash a wave of spheres and destroy most hostile projectiles, it has 60 second cooldown
-					[i:FargowiltasSouls/MutantMask][i:FargowiltasSouls/MutantBody][i:FargowiltasSouls/MutantPants] Phantasmal eyes will shoot phantasmal deathray at nearby enemies
-					Summons spectral abomination, you erupt into a massive deathray when revived, 20% increased weapon use speed
+					[i:FargowiltasSouls/MutantEye] Converts Sparkling Adoration hearts to love rays, Increases damage gained per graze
+					[i:FargowiltasSouls/MutantEye] Increases Spectral Abominationn respawn rate & damage
+					[i:FargowiltasSouls/MutantEye] Press the bomb key to unleash a wave of spheres and destroy most hostile projectiles, it has 60 second cooldown
+					[i:FargowiltasSouls/MutantMask] Phantasmal eyes will shoot phantasmal deathray at nearby enemies
+					[i:FargowiltasSouls/MutantMask] Summons spectral abomination, you erupt into a massive deathray when revived, 20% increased weapon use speed
 					'''
 			}
 
@@ -601,10 +601,10 @@ Mods: {
 				Tooltip:
 					'''
 					[i:FargowiltasSouls/AbominableWand] Can endure any attack and survive with one life, endurance recovers when you reach max life
-					Increased damage gained Sparkling Adoration graze, halves heart cooldown, Abominationn periodically manifests to support your critical hits
-					[i:FargowiltasSouls/StyxCrown][i:FargowiltasSouls/StyxChestplate][i:FargowiltasSouls/StyxLeggings] 20% Increased damage for current weapon class
-					Attack enemies to charge energy, reduces damage taken for energy, Your attacks inflict Abominable Fang
-					Double tap down key to release energy as homing shots & brandish a blade of infernal magic when fully charged
+					[i:FargowiltasSouls/AbominableWand] Increased damage gained Sparkling Adoration graze, halves heart cooldown, Abominationn periodically manifests to support your critical hits
+					[i:FargowiltasSouls/StyxCrown] 20% Increased damage for current weapon class
+					[i:FargowiltasSouls/StyxCrown] Attack enemies to charge energy, reduces damage taken for energy, Your attacks inflict Abominable Fang
+					[i:FargowiltasSouls/StyxCrown] Double tap down key to release energy as homing shots & brandish a blade of infernal magic when fully charged
 					'''
 			}
 
@@ -662,12 +662,12 @@ Mods: {
 				DisplayName: Eridanus Enchantment
 				Tooltip:
 					'''
-					[i:FargowiltasSouls/EridanusHat] [i:FargowiltasSouls/EridanusBattleplate] [i:FargowiltasSouls/EridanusLegwear]
-					20% damage increase for current class
-					10% crit chance increase for current class
-					10% attack speed increase for current class
-					Press DOWN double times activate Eridanus' blessing
-					[i:FargowiltasSouls/UniverseCore]
+					[i:FargowiltasSouls/EridanusHat] 20% damage increase for current class
+					[i:FargowiltasSouls/EridanusHat] 10% crit chance increase for current class
+					[i:FargowiltasSouls/EridanusHat] 10% attack speed increase for current class
+					[i:FargowiltasSouls/EridanusHat] Press DOWN double times activate Eridanus' blessing
+					[i:FargowiltasSouls/UniverseCore] Your critical strikes can critically strike
+					[i:FargowiltasSouls/UniverseCore] Supercrits deal x4 damage and inflict Flames of The Cosmos
 					'''
 			}
 
@@ -675,28 +675,21 @@ Mods: {
 				DisplayName: Eternity Force
 				Tooltip:
 					'''
-					Massive increasement to all offencive stats.
-					[i:ssm/GaiaEnchant] Press DOWN double times activate Attacking mode which have following effects:
-					30% damage and 15% crit chance increase for current class, increase armor penetration by 20
-					Decrease defense by 30, endurance by 15% and max life by 10%
+					[i:ssm/NekomiEnchant] [i:ssm/StyxEnchant] Increases life regeneration and damage resistance when damaged at the cost of some energy
+					[i:ssm/NekomiEnchant] [i:ssm/StyxEnchant] Double tap down key to release energy as life draining heart or homing scythes
+					[i:ssm/NekomiEnchant] [i:ssm/StyxEnchant] Wield a demon axe of love and justice or brand of inferno magic when fully charged
+					[i:ssm/GaiaEnchant] Press DOWN double times activate Attacking mode
 					[i:ssm/EridanusEnchant] Press DOWN double times activate Eridanus' blessing
+					[i:ssm/EridanusEnchant] Your critical strikes can critically strike
 					[i:ssm/StyxEnchant] Can endure any attack and survive with one life, endurance recovers when you reach max life
-					Increased damage gained Sparkling Adoration graze, halves heart cooldown, Abominationn periodically manifests to support your critical hits
-					Attack enemies to charge energy, reduces damage taken for energy, Your attacks inflict Abominable Fang
-					Double tap down key to release energy as homing shots & brandish a blade of infernal magic when fully charged
-					[i:ssm/PhantaplazmalEnchant] 25% increased graze bonus damage cap
-					Converts Sparkling Adoration hearts to love rays, Increases damage gained per graze
-					Increases Spectral Abominationn respawn rate & damage
-					Press the bomb key to unleash a wave of spheres and destroy most hostile projectiles, it has 60 second cooldown
-					Phantasmal eyes will shoot phantasmal deathray at nearby enemies
-					Summons spectral abomination, you erupt into a massive deathray when revived
+					[i:ssm/StyxEnchant] Attack enemies to charge energy, Your attacks inflict Abominable Fang
+					[i:ssm/PhantaplazmalEnchant] Press the bomb key to unleash a wave of spheres and destroy most hostile projectiles, it has 60 second cooldown
+					[i:ssm/PhantaplazmalEnchant] Phantasmal eyes will shoot phantasmal deathray at nearby enemies
+					[i:ssm/PhantaplazmalEnchant] Summons spectral abomination, you erupt into a massive deathray when revived
 					[i:ssm/NekomiEnchant] Graze attacks to gain up to x1.25 increased damage
-					Damage bonus decreases over time and is fully lost on hit
-					Your attacks periodically summon life draining heart
-					Graze attacks to temporarily charge energy
-					Increases life regeneration when damaged at the cost of some energy
-					Double tap down key to release energy as life draining heart
-					Wield a demon axe of love and justice when fully charged
+					[i:ssm/NekomiEnchant] Damage bonus decreases over time and is fully lost on hit
+					[i:ssm/NekomiEnchant] Your attacks periodically summon life draining heart
+					[i:ssm/EternityForce] Phantasmal Siblings minions protect you
 					'''
 			}
 
@@ -704,11 +697,10 @@ Mods: {
 				DisplayName: Gaia Enchantment
 				Tooltip:
 					'''
-					[i:FargowiltasSouls/GaiaHelmet] [i:FargowiltasSouls/GaiaPlate] [i:FargowiltasSouls/GaiaGreaves]
-					10% decrease mana usage and increase chance not to consume ammo
-					10% melee attack speed increasement
-					4 additional minion slots
-					Press DOWN double times activate Attacking mode which have following effects:
+					[i:FargowiltasSouls/GaiaHelmet] 10% decrease mana usage and increase chance not to consume ammo
+					[i:FargowiltasSouls/GaiaHelmet] 10% melee attack speed increasement
+					[i:FargowiltasSouls/GaiaHelmet] 4 additional minion slots
+					[i:FargowiltasSouls/GaiaHelmet] Press DOWN double times activate Attacking mode which have following effects:
 					30% damage and 15% crit chance increase for current class
 					increase armor penetration by 20
 					Decrease defense by 20, endurance by 15% and max life by 10%
@@ -1726,7 +1718,7 @@ Mods: {
 				DisplayName: Astro Enchantment
 				Tooltip:
 					'''
-					Summon damage has a chance to unleash a brust of damaging plasma on hit
+					Summon damage has a chance to unleash a burst of damaging plasma on hit
 					increases your max number of minions and sentries by 1
 					'''
 			}
@@ -2601,7 +2593,7 @@ Mods: {
 				Tooltip:
 					'''
 					18% increased hymenoptra damage
-					10% increased hymenoptra critical chance
+					5% increased hymenoptra critical chance
 					+ 50 max honey
 					'This is only the beginning...'
 					'''
@@ -2624,7 +2616,7 @@ Mods: {
 			}
 
 			MonstrocityRelicItem: {
-				DisplayName: Monstrosity Relic Item
+				DisplayName: Monstrosity Relic
 				Tooltip: ""
 			}
 
@@ -2644,17 +2636,17 @@ Mods: {
 			}
 
 			AbominableStorageUnitItem: {
-				DisplayName: Abominable Storage Unit Item
+				DisplayName: Abominable Storage Unit
 				Tooltip: ""
 			}
 
 			DeviatingStorageUnitItem: {
-				DisplayName: Deviating Storage Unit Item
+				DisplayName: Deviating Storage Unit
 				Tooltip: ""
 			}
 
 			EternalStorageUnitItem: {
-				DisplayName: Eternal Storage Unit Item
+				DisplayName: Eternal Storage Unit
 				Tooltip: ""
 			}
 
@@ -2676,11 +2668,6 @@ Mods: {
 			MacroverseSoul: {
 				Tooltip: ""
 				DisplayName: Macroverse Soul
-			}
-
-			ILoveStarlightCat: {
-				DisplayName: I Love Starlight Cat
-				Tooltip: ""
 			}
 
 			LivingWoodEnchant2: {
@@ -2769,7 +2756,42 @@ Mods: {
 			}
 
 			SyrianForce: {
-				DisplayName: Syrian Force
+				DisplayName: Syran Force
+				Tooltip: ""
+			}
+
+			AquaQuiver: {
+				DisplayName: Aqua Quiver
+				Tooltip: ""
+			}
+
+			BilePouch: {
+				DisplayName: Bile Pouch
+				Tooltip: ""
+			}
+
+			BileQuiver: {
+				DisplayName: Bile Quiver
+				Tooltip: ""
+			}
+
+			MoonflareQuiver: {
+				DisplayName: Moonflare Quiver
+				Tooltip: ""
+			}
+
+			WastelandRenewal: {
+				DisplayName: Wasteland Renewal
+				Tooltip: ""
+			}
+
+			WastelandRenewalSupreme: {
+				DisplayName: Wasteland Renewal Supreme
+				Tooltip: ""
+			}
+
+			XenomitePouch: {
+				DisplayName: Xenomite Pouch
 				Tooltip: ""
 			}
 
@@ -3134,6 +3156,22 @@ Mods: {
 
 			MutantIllusion.DisplayName: Monstrosity
 			MutantAuraOfSupression.DisplayName: Mutant Aura Of Supression
+
+			MonocleCat: {
+				DisplayName: Monocle Cat
+
+				TownNPCMood: {
+					Content: I am content.
+					NoHome: I hate not having a home.
+					FarFromHome: I am too far from home.
+					LoveSpace: I love having so much space.
+					DislikeCrowded: I dislike how crowded I am.
+					HateCrowded: I hate how crowded I am.
+					LoveNPC: I love {NPCName}.
+					LikeNPC_Princess: I like {NPCName}.
+					Princess_LovesNPC: I like {NPCName}.
+				}
+			}
 		}
 
 		Toggler: {
@@ -3200,7 +3238,7 @@ Mods: {
 			LodestoneEffect2: Lodestone Shields
 			//soa
 			FoundationsForceHeader: Foundations Force
-			SyranForceHeader: Syrian Force
+			SyranForceHeader: Syran Force
 			AsthraltiteEffect: Hypercrits
 			ExitumLuxEffect: Relic Boost
 			SpaceJunkEffect: Space Junk on hit
@@ -3409,6 +3447,8 @@ Mods: {
 			SquirrelRing.DisplayName: Squirrel Ring
 			FlariumGeyser.DisplayName: Flarium Geyser
 			EeriePulse.DisplayName: Eerie Pulse
+			WastelandNukeProj.DisplayName: Wasteland Nuke Proj
+			WastelandNukeSupremeProj.DisplayName: Wasteland Nuke Supreme Proj
 			StriderLegShockwave.DisplayName: Strider Leg Shockwave
 		}
 
@@ -3453,7 +3493,7 @@ Mods: {
 				}
 
 				ThrowerMerge: {
-					Tooltip: ""
+					Tooltip: Merge Throewer(Thorium), Rogue(Calamity) and Revenant(SoA) into one hybrid class.
 					Label: Thrower Merge
 				}
 
@@ -3474,7 +3514,17 @@ Mods: {
 
 				Homeward: {
 					Label: Homeward Journey
-					Tooltip: ""
+					Tooltip: WIP
+				}
+
+				Vitality: {
+					Label: Vitality
+					Tooltip: WIP
+				}
+
+				Orchid: {
+					Label: Orchid
+					Tooltip: WIP
 				}
 
 				Redemption: {
@@ -3504,7 +3554,7 @@ Mods: {
 
 				AlternativeSiblings: {
 					Label: Alternative Siblings
-					Tooltip: ""
+					Tooltip: Monstrosity, Divergentt and Amalgamationn can be loaded
 				}
 
 				Consolaria: {

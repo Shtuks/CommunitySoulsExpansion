@@ -44,7 +44,8 @@ namespace ssm
         {
             if (npc.type == ModContent.NPCType<MutantBoss>())
             {
-                npc.damage = Main.getGoodWorld ? 2000 : (int)(500 + ((ModCompatibility.Calamity.Loaded ? 125 : 100) * (Math.Round(multiplierM, 1))));
+                npc.defense = 0;
+                npc.damage = Main.getGoodWorld ? 2000 : (int)(500 + ((ModCompatibility.Calamity.Loaded ? 130 : 100) * (Math.Round(multiplierM, 1))));
                 npc.lifeMax = (int)(10000000 + (10000000 * Math.Round(multiplierM, 1))) / (Main.expertMode ? 1 : 2);
             }
 
@@ -65,7 +66,7 @@ namespace ssm
         }
         public override void ModifyIncomingHit(NPC npc, ref NPC.HitModifiers modifiers)
         {
-            if (npc.type == ModContent.NPCType<MutantBoss>())
+            if (npc.type == ModContent.NPCType<MutantBoss>() && ModCompatibility.SacredTools.Loaded)
             {
                 float LRM = Utilities.Saturate((float)npc.life / (float)npc.lifeMax);
                 float maxTimeNormal = 18000; // 4 min
@@ -76,11 +77,11 @@ namespace ssm
                 float fightProgress = Utilities.InverseLerp(0f, intendedDuration, genTimer);
                 float aheadOfSchedule = MathF.Max(0f, 1f - fightProgress - LRM);
 
-                float resistanceFactor = (float)Math.Pow(aheadOfSchedule, 0.4f); // lower value - sharper applying
+                float resistanceFactor = (float)Math.Pow(aheadOfSchedule, 0.1f); // lower value - sharper applying
 
-                if (aheadOfSchedule > 0.9f)
+                if (aheadOfSchedule > 0.8f)
                 {
-                    modifiers.SetMaxDamage(0);
+                    modifiers.FinalDamage *= 0.01f;
                 }
                 else
                 {

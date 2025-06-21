@@ -19,17 +19,12 @@ namespace ssm.Content.DamageClasses
             Instance = null;
         }
 
+        public override bool GetPrefixInheritance(DamageClass damageClass)
+        {
+            return damageClass == Ranged;
+        }
         public override StatInheritanceData GetModifierInheritance(DamageClass damageClass)
         {
-            if (ModCompatibility.Calamity.Loaded)
-            {
-                CalUMT.CalUMTAdd(damageClass);
-            }
-            if (ModCompatibility.SacredTools.Loaded)
-            {
-                SoAUMT.CalUMTAdd(damageClass);
-            }
-
             if (damageClass == Throwing || damageClass == Generic)
             {
                 return StatInheritanceData.Full;
@@ -44,13 +39,7 @@ namespace ssm.Content.DamageClasses
             {
                 return true;
             }
-            if (ModCompatibility.Calamity.Loaded)
-            {
-                if (damageClass == CalUMT.GetEffectInheritance(damageClass))
-                {
-                    return true;
-                }
-            }
+
             if (ModCompatibility.SacredTools.Loaded)
             {
                 if (damageClass == SoAUMT.GetEffectInheritance(damageClass))
@@ -58,6 +47,7 @@ namespace ssm.Content.DamageClasses
                     return true;
                 }
             }
+
             return false;
         }
     }

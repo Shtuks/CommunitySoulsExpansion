@@ -23,6 +23,7 @@
 	  <None Remove="Thorium\Enchantments\HarbingerEnchant.cs.sex" />
 	</ItemGroup>
 	<ItemGroup>
+	  <Compile Include="Redemption\Mutagens\MutagenClicker.cs.bak" />
 	  <Compile Include="Thorium\Enchantments\BerserkerEnchant.cs.sex" />
 	  <Compile Include="Thorium\Enchantments\MagmaEnchant.cs.sex" />
 	</ItemGroup>

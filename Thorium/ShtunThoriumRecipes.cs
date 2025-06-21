@@ -14,6 +14,8 @@ using FargowiltasSouls.Content.Items.Armor;
 using ThoriumMod.Items.BossThePrimordials.Omni;
 using ThoriumMod.Items.BossThePrimordials.Aqua;
 using ThoriumMod.Items.Terrarium;
+using ThoriumMod.Items.ThrownItems;
+using ThoriumMod.Items.HealerItems;
 
 namespace ssm.Thorium
 {
@@ -92,20 +94,40 @@ namespace ssm.Thorium
                     recipe.RemoveIngredient(ItemID.ManaFlower);
                     recipe.AddIngredient(ItemID.NaturesGift);
                 }
-                if (recipe.HasResult<StyxCrown>() && !recipe.HasIngredient(549))
+
+                if (recipe.HasResult<StyxCrown>() && recipe.HasIngredient(549))
                 {
                     recipe.RemoveIngredient(549);
                     recipe.AddIngredient(ModContent.ItemType<DeathEssence>(), 10);
                 }
-                if (recipe.HasResult<StyxLeggings>() && !recipe.HasIngredient(547))
+                if (recipe.HasResult<StyxLeggings>() && recipe.HasIngredient(547))
                 {
                     recipe.RemoveIngredient(547);
                     recipe.AddIngredient(ModContent.ItemType<OceanEssence>(), 10);
                 }
-                if (recipe.HasResult<StyxChestplate>() && !recipe.HasIngredient(548))
+                if (recipe.HasResult<StyxChestplate>() && recipe.HasIngredient(548))
                 {
                     recipe.RemoveIngredient(548);
                     recipe.AddIngredient(ModContent.ItemType<OceanEssence>(), 10);
+                }
+
+                if (recipe.HasResult<GaiaHelmet>() && !recipe.HasIngredient<DarkMatter>())
+                {
+                    recipe.AddIngredient(ModContent.ItemType<HolyKnightsAlloy>(), 6);
+                    recipe.AddIngredient(ModContent.ItemType<DarkMatter>(), 6);
+                    recipe.AddIngredient(ModContent.ItemType<BloomWeave>(), 6);
+                }
+                if (recipe.HasResult<GaiaGreaves>() && !recipe.HasIngredient<DarkMatter>())
+                {
+                    recipe.AddIngredient(ModContent.ItemType<HolyKnightsAlloy>(), 6);
+                    recipe.AddIngredient(ModContent.ItemType<DarkMatter>(), 6);
+                    recipe.AddIngredient(ModContent.ItemType<BloomWeave>(), 6);
+                }
+                if (recipe.HasResult<GaiaPlate>() && !recipe.HasIngredient<DarkMatter>())
+                {
+                    recipe.AddIngredient(ModContent.ItemType<HolyKnightsAlloy>(), 9);
+                    recipe.AddIngredient(ModContent.ItemType<DarkMatter>(), 9);
+                    recipe.AddIngredient(ModContent.ItemType<BloomWeave>(), 9);
                 }
             }
 		}

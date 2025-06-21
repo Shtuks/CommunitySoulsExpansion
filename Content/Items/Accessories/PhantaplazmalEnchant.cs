@@ -74,7 +74,7 @@ namespace ssm.Content.Items.Accessories
             Recipe recipe = this.CreateRecipe(1);
             recipe.AddIngredient(this.FargoSoul, "EternalEnergy", 50);
             recipe.AddIngredient(this.FargoSoul, "MutantEye", 1);
-            recipe.AddIngredient(this.FargoSoul, "PhantasmalEnergy", 1);
+            //recipe.AddIngredient(this.FargoSoul, "PhantasmalEnergy", 1);
             recipe.AddIngredient(this.FargoSoul, "MutantMask", 1);
             recipe.AddIngredient(this.FargoSoul, "MutantBody", 1);
             recipe.AddIngredient(this.FargoSoul, "MutantPants", 1);

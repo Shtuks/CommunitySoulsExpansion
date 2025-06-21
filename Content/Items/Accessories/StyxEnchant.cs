@@ -78,7 +78,7 @@ namespace ssm.Content.Items.Accessories
             Recipe recipe = this.CreateRecipe(1);
             recipe.AddIngredient(this.FargoSoul, "AbomEnergy", 50);
             recipe.AddIngredient(this.FargoSoul, "AbominableWand", 1);
-            recipe.AddIngredient(this.FargoSoul, "BrokenHilt", 1);
+            //recipe.AddIngredient(this.FargoSoul, "BrokenHilt", 1);
             recipe.AddIngredient(this.FargoSoul, "StyxCrown", 1);
             recipe.AddIngredient(this.FargoSoul, "StyxChestplate", 1);
             recipe.AddIngredient(this.FargoSoul, "StyxLeggings", 1);
