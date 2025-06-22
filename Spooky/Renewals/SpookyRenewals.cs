@@ -4,13 +4,14 @@ using Terraria.DataStructures;
 using Terraria.ModLoader;
 using Fargowiltas.Items.Renewals;
 using Spooky.Content.Items.SpookyBiome.Misc;
+using ssm.Core;
 
 namespace ssm.Spooky.Renewals
 {
+    [ExtendsFromMod(ModCompatibility.Spooky.Name)]
+    [JITWhenModsEnabled(ModCompatibility.Spooky.Name)]
     public class SpookyRenewal : BaseRenewalItem
     {
-        public override string Texture => "ssm/Spooky/Renewals/SpookyRenewal";
-
         public SpookyRenewal() : base("Spooky Renewal", "Spookifies a large radius", ModContent.ItemType<SpookySolution>())
         {
         }
@@ -23,10 +24,10 @@ namespace ssm.Spooky.Renewals
         }
     }
 
+    [ExtendsFromMod(ModCompatibility.Spooky.Name)]
+    [JITWhenModsEnabled(ModCompatibility.Spooky.Name)]
     public class SpookyRenewalSupreme : BaseRenewalItem
     {
-        public override string Texture => "ssm/Spooky/Renewals/SpookyRenewalSupreme";
-
         public SpookyRenewalSupreme() : base("Spooky Renewal Supreme", "Spookifies the entire world", -1, true, ModContent.ItemType<SpookyRenewal>())
         {
         }
