@@ -2995,6 +2995,50 @@ Mods: {
 				DisplayName: Spectral Quiver
 				Tooltip: Pierces tiles and enemies, but dissipates quickly in the air
 			}
+
+			BoogerQuiver: {
+				DisplayName: Booger Quiver
+				Tooltip: Bounces off of surfaces and enemies
+			}
+
+			OldWoodQuiver: {
+				DisplayName: Old Wood Quiver
+				Tooltip: May sometimes stick to enemies on hit
+			}
+
+			EndlessMucusPouch: {
+				DisplayName: Endless Mucus Pouch
+				Tooltip: Ricochets to nearby enemies on hit
+			}
+
+			EndlessRustedPouch: {
+				DisplayName: Endless Rusted Pouch
+				Tooltip: Splits into shrapnel on impact
+			}
+
+			EndlessSnotRocketBox: {
+				DisplayName: Endless Snot Rocket Box
+				Tooltip:
+					'''
+					Accelerates	rapidly as it travels
+					Explodes into lingering snot on direct enemy hits
+					'''
+			}
+
+			MossyPebbleJar: {
+				DisplayName: Mossy Pebble Jar
+				Tooltip: Used as ammo with slingshots
+			}
+
+			SpookyRenewal: {
+				DisplayName: Spooky Renewal
+				Tooltip: ""
+			}
+
+			SpookyRenewalSupreme: {
+				DisplayName: Spooky Renewal Supreme
+				Tooltip: ""
+			}
 		}
 
 		Buffs: {
@@ -3450,6 +3494,8 @@ Mods: {
 			WastelandNukeProj.DisplayName: Wasteland Nuke Proj
 			WastelandNukeSupremeProj.DisplayName: Wasteland Nuke Supreme Proj
 			StriderLegShockwave.DisplayName: Strider Leg Shockwave
+			SpookyRenewalProj.DisplayName: Spooky Renewal Proj
+			SpookyRenewalSupremeProj.DisplayName: Spooky Renewal Supreme Proj
 		}
 
 		Bestiary: {

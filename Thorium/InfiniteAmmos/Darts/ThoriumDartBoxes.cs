@@ -47,11 +47,6 @@ namespace ssm.Thorium.InfiniteAmmos.Darts
     public class TetherDartBox : BaseAmmo
     {
         public override int AmmunitionItem => ModContent.ItemType<TetherDart>();
-        public override bool IsLoadingEnabled(Mod mod)
-        {
-            return ShtunConfig.Instance.Thorium;
-        }
-        private readonly Mod thorium = ModLoader.GetMod("ThoriumMod");
     }
 
     [ExtendsFromMod(ModCompatibility.Thorium.Name)]
@@ -59,10 +54,5 @@ namespace ssm.Thorium.InfiniteAmmos.Darts
     public class FlareDartBox : BaseAmmo
     {
         public override int AmmunitionItem => ModContent.ItemType<FlareDart>();
-        public override bool IsLoadingEnabled(Mod mod)
-        {
-            return ShtunConfig.Instance.Thorium;
-        }
-        private readonly Mod thorium = ModLoader.GetMod("ThoriumMod");
     }
 }
