@@ -3039,6 +3039,121 @@ Mods: {
 				DisplayName: Spooky Renewal Supreme
 				Tooltip: ""
 			}
+
+			EyeValleyRenewal: {
+				DisplayName: Eye Valley Renewal
+				Tooltip: ""
+			}
+
+			EyeValleyRenewalSupreme: {
+				DisplayName: Eye Valley Renewal Supreme
+				Tooltip: ""
+			}
+
+			SwampyRenewal: {
+				DisplayName: Swampy Renewal
+				Tooltip: ""
+			}
+
+			SwampyRenewalSupreme: {
+				DisplayName: Swampy Renewal Supreme
+				Tooltip: ""
+			}
+
+			AdamantiteJar: {
+				DisplayName: Adamantite Jar
+				Tooltip: ""
+			}
+
+			AsthraltitePouch: {
+				DisplayName: Asthraltite Pouch
+				Tooltip: ""
+			}
+
+			ChlorophyteJar: {
+				DisplayName: Chlorophyte Jar
+				Tooltip: ""
+			}
+
+			CobaltJar: {
+				DisplayName: Cobalt Jar
+				Tooltip: ""
+			}
+
+			FlariumPouch: {
+				DisplayName: Flarium Pouch
+				Tooltip: ""
+			}
+
+			FlariumQuiver: {
+				DisplayName: Flarium Quiver
+				Tooltip: ""
+			}
+
+			FlariumRenewal: {
+				DisplayName: Flarium Renewal
+				Tooltip: ""
+			}
+
+			FlariumRenewalSupreme: {
+				DisplayName: Flarium Renewal Supreme
+				Tooltip: ""
+			}
+
+			LunarianPouch: {
+				DisplayName: Lunarian Pouch
+				Tooltip: ""
+			}
+
+			LunarianQuiver: {
+				DisplayName: Lunarian Quiver
+				Tooltip: ""
+			}
+
+			MarstechJar: {
+				DisplayName: Marstech Jar
+				Tooltip: ""
+			}
+
+			MythrilJar: {
+				DisplayName: Mythril Jar
+				Tooltip: ""
+			}
+
+			OblivionPouch: {
+				DisplayName: Oblivion Pouch
+				Tooltip: ""
+			}
+
+			OblivionQuiver: {
+				DisplayName: Oblivion Quiver
+				Tooltip: ""
+			}
+
+			OrichalcumJar: {
+				DisplayName: Orichalcum Jar
+				Tooltip: ""
+			}
+
+			PalladiumJar: {
+				DisplayName: Palladium Jar
+				Tooltip: ""
+			}
+
+			SpectralJar: {
+				DisplayName: Spectral Jar
+				Tooltip: ""
+			}
+
+			TitaniumJar: {
+				DisplayName: Titanium Jar
+				Tooltip: ""
+			}
+
+			VenomiteJar: {
+				DisplayName: Venomite Jar
+				Tooltip: ""
+			}
 		}
 
 		Buffs: {
@@ -3496,6 +3611,12 @@ Mods: {
 			StriderLegShockwave.DisplayName: Strider Leg Shockwave
 			SpookyRenewalProj.DisplayName: Spooky Renewal Proj
 			SpookyRenewalSupremeProj.DisplayName: Spooky Renewal Supreme Proj
+			EyeValleyRenewalProj.DisplayName: Eye Valley Renewal Proj
+			EyeValleyRenewalSupremeProj.DisplayName: Eye Valley Renewal Supreme Proj
+			SwampyRenewalProj.DisplayName: Swampy Renewal Proj
+			SwampyRenewalSupremeProj.DisplayName: Swampy Renewal Supreme Proj
+			FlariumNukeProj.DisplayName: Flarium Nuke Proj
+			FlariumNukeSupremeProj.DisplayName: Flarium Nuke Supreme Proj
 		}
 
 		Bestiary: {

@@ -8,14 +8,14 @@ using Spooky.Content.Generation;
 
 namespace ssm.Spooky.Renewals
 {
-    public class RenewalBaseProj : ModProjectile
+    public class SpookyConvert : ModProjectile
     {
         private readonly String name;
         private readonly int projType;
         private readonly int convertType;
         private readonly bool supreme;
 
-        protected RenewalBaseProj(String name, int projType, int convertType, bool supreme)
+        protected SpookyConvert(String name, int projType, int convertType, bool supreme)
         {
             this.name = name;
             this.projType = projType;
