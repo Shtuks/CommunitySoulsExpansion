@@ -3154,6 +3154,86 @@ Mods: {
 				DisplayName: Venomite Jar
 				Tooltip: ""
 			}
+
+			CorruptRenewal: {
+				DisplayName: Corrupt Renewal
+				Tooltip: ""
+			}
+
+			CorruptRenewalSupreme: {
+				DisplayName: Corrupt Renewal Supreme
+				Tooltip: ""
+			}
+
+			CrimsonRenewal: {
+				DisplayName: Crimson Renewal
+				Tooltip: ""
+			}
+
+			CrimsonRenewalSupreme: {
+				DisplayName: Crimson Renewal Supreme
+				Tooltip: ""
+			}
+
+			DirtRenewal: {
+				DisplayName: Dirt Renewal
+				Tooltip: ""
+			}
+
+			DirtRenewalSupreme: {
+				DisplayName: Dirt Renewal Supreme
+				Tooltip: ""
+			}
+
+			HallowRenewal: {
+				DisplayName: Hallow Renewal
+				Tooltip: ""
+			}
+
+			HallowRenewalSupreme: {
+				DisplayName: Hallow Renewal Supreme
+				Tooltip: ""
+			}
+
+			MushroomRenewal: {
+				DisplayName: Mushroom Renewal
+				Tooltip: ""
+			}
+
+			MushroomRenewalSupreme: {
+				DisplayName: Mushroom Renewal Supreme
+				Tooltip: ""
+			}
+
+			PurityRenewal: {
+				DisplayName: Purity Renewal
+				Tooltip: ""
+			}
+
+			PurityRenewalSupreme: {
+				DisplayName: Purity Renewal Supreme
+				Tooltip: ""
+			}
+
+			SandRenewal: {
+				DisplayName: Sand Renewal
+				Tooltip: ""
+			}
+
+			SandRenewalSupreme: {
+				DisplayName: Sand Renewal Supreme
+				Tooltip: ""
+			}
+
+			SnowRenewal: {
+				DisplayName: Snow Renewal
+				Tooltip: ""
+			}
+
+			SnowRenewalSupreme: {
+				DisplayName: Snow Renewal Supreme
+				Tooltip: ""
+			}
 		}
 
 		Buffs: {
@@ -3617,6 +3697,22 @@ Mods: {
 			SwampyRenewalSupremeProj.DisplayName: Swampy Renewal Supreme Proj
 			FlariumNukeProj.DisplayName: Flarium Nuke Proj
 			FlariumNukeSupremeProj.DisplayName: Flarium Nuke Supreme Proj
+			CorruptNukeProj.DisplayName: Corrupt Nuke Proj
+			CorruptNukeSupremeProj.DisplayName: Corrupt Nuke Supreme Proj
+			CrimsonNukeProj.DisplayName: Crimson Nuke Proj
+			CrimsonNukeSupremeProj.DisplayName: Crimson Nuke Supreme Proj
+			DirtNukeProj.DisplayName: Dirt Nuke Proj
+			DirtNukeSupremeProj.DisplayName: Dirt Nuke Supreme Proj
+			HallowNukeProj.DisplayName: Hallow Nuke Proj
+			HallowNukeSupremeProj.DisplayName: Hallow Nuke Supreme Proj
+			MushroomNukeProj.DisplayName: Mushroom Nuke Proj
+			MushroomNukeSupremeProj.DisplayName: Mushroom Nuke Supreme Proj
+			PurityNukeProj.DisplayName: Purity Nuke Proj
+			PurityNukeSupremeProj.DisplayName: Purity Nuke Supreme Proj
+			SandNukeProj.DisplayName: Sand Nuke Proj
+			SandNukeSupremeProj.DisplayName: Sand Nuke Supreme Proj
+			SnowNukeProj.DisplayName: Snow Nuke Proj
+			SnowNukeSupremeProj.DisplayName: Snow Nuke Supreme Proj
 		}
 
 		Bestiary: {

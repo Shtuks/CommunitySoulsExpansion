@@ -9,7 +9,6 @@ using Terraria.ModLoader;
 using System.Reflection;
 using Microsoft.Xna.Framework.Graphics;
 using System;
-using ssm.Items;
 using ssm.Core;
 using ssm.Systems;
 using ssm.Thorium;

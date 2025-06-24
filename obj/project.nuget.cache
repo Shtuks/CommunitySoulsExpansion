@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "ZEJb8+3rKmo=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\rcber\\OneDrive\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\ssm\\ssm.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\rcber\\.nuget\\packages\\tmodloader.codeassist\\0.1.5\\tmodloader.codeassist.0.1.5.nupkg.sha512",
+    "C:\\Users\\rcber\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\8.0.16\\microsoft.windowsdesktop.app.ref.8.0.16.nupkg.sha512",
+    "C:\\Users\\rcber\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\8.0.16\\microsoft.aspnetcore.app.ref.8.0.16.nupkg.sha512"
+  ],
+  "logs": []
+}
