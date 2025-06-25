@@ -239,7 +239,7 @@ namespace ssm.Core.RenewalConversions
 
                         if (Math.Sqrt(x * x + y * y) <= radius + 0.5)
                         {
-                            if (ModLoader.TryGetMod("Calamity", out Mod Calamity))
+                            if (ModLoader.TryGetMod("CalamityMod", out Mod CalamityMod))
                             {
                                 CalamityConversion.AstralToPurity(i, j, 4);
                             }
@@ -267,8 +267,8 @@ namespace ssm.Core.RenewalConversions
         }
     }
 
-        [ExtendsFromMod(ModCompatibility.Spirit.Name)]
-        [JITWhenModsEnabled(ModCompatibility.Spirit.Name)]
+    [ExtendsFromMod(ModCompatibility.SpiritMod.Name)]
+    [JITWhenModsEnabled(ModCompatibility.SpiritMod.Name)]
     public class SpiritPuritySupport : GlobalProjectile
     {
         public override bool InstancePerEntity => true;

@@ -32,7 +32,7 @@ namespace ssm.Core.RenewalConversions
                     // Astral block-to-vanilla tile conversions
                     if (type == ModContent.TileType<AstralDirt>())
                         tile.TileType = TileID.Dirt;
-
+                        
                     else if (type == ModContent.TileType<AstralSnow>())
                         tile.TileType = TileID.SnowBlock;
 
