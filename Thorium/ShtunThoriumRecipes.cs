@@ -17,6 +17,8 @@ using ThoriumMod.Items.Terrarium;
 using ThoriumMod.Items.ThrownItems;
 using ThoriumMod.Items.HealerItems;
 using ThoriumMod.Items.BossThePrimordials.Slag;
+using Fargowiltas.Items.Tiles;
+using ssm.CrossMod.CraftingStations;
 
 namespace ssm.Thorium
 {
@@ -129,6 +131,28 @@ namespace ssm.Thorium
                     recipe.AddIngredient(ModContent.ItemType<HolyKnightsAlloy>(), 9);
                     recipe.AddIngredient(ModContent.ItemType<DarkMatter>(), 9);
                     recipe.AddIngredient(ModContent.ItemType<BloomWeave>(), 9);
+                }
+
+                if ((recipe.HasResult<ColossusSoul>() ||
+                    recipe.HasResult<FlightMasterySoul>() ||
+                    recipe.HasResult<ArchWizardsSoul>() ||
+                    recipe.HasResult<BerserkerSoul>() ||
+                    recipe.HasResult<SnipersSoul>() ||
+                    recipe.HasResult<ConjuristsSoul>()) && !recipe.HasIngredient<OceanEssence>())
+                {
+                    recipe.AddIngredient<OceanEssence>(5);
+                    recipe.AddIngredient<InfernoEssence>(5);
+                    recipe.AddIngredient<DeathEssence>(5);
+                }
+
+                if (recipe.HasResult(ItemID.DrillContainmentUnit) && !recipe.HasIngredient<TerrariumCore>())
+                {
+                    recipe.RemoveIngredient(ItemID.MeteoriteBar);
+                    recipe.RemoveIngredient(ItemID.HellstoneBar);
+                    recipe.RemoveIngredient(ItemID.ShroomiteBar);
+                    recipe.RemoveIngredient(ItemID.SpectreBar);
+                    recipe.RemoveIngredient(ItemID.ChlorophyteBar);
+                    recipe.AddIngredient<TerrariumCore>(40);
                 }
             }
 		}

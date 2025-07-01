@@ -1,6 +1,8 @@
 ﻿using CalamityMod.Items.Materials;
+using ContinentOfJourney.Items.Material;
 using FargowiltasCrossmod.Content.Calamity.Items.Accessories.Essences;
 using FargowiltasCrossmod.Content.Calamity.Items.Accessories.Souls;
+using FargowiltasSouls.Content.Items.Accessories.Souls;
 using Redemption.Items.Materials.PostML;
 using ssm.ClassSouls.Beekeeper.Essences;
 using ssm.ClassSouls.Beekeeper.Souls;
@@ -62,6 +64,10 @@ namespace ssm.Redemption
                     recipe.AddIngredient<MutagenHealing>();
                     recipe.RemoveIngredient(ModContent.ItemType<HealerEssence>());
                 }
+                if (recipe.HasResult<ThoriumSoul>() && !recipe.HasIngredient<LifeFragment>())
+                {
+                    recipe.AddIngredient<LifeFragment>(5);
+                }
             }
         }
     }
@@ -106,6 +112,10 @@ namespace ssm.Redemption
                 {
                     recipe.AddIngredient<MutagenThrowingSoA>();
                     recipe.RemoveIngredient(ModContent.ItemType<StalkerEssence>());
+                }
+                if (recipe.HasResult<SoASoul>() && !recipe.HasIngredient<LifeFragment>())
+                {
+                    recipe.AddIngredient<LifeFragment>(5);
                 }
             }
         }

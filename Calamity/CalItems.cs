@@ -41,10 +41,10 @@ namespace ssm.Calamity
             {
                 entity.damage = (int)(entity.damage * 1.1f);
             }
-            if (entity.type == ItemID.Zenith)
-            {
-                entity.damage = (int)(entity.damage * 1.3f);
-            }
+            //if (entity.type == ItemID.Zenith)
+            //{
+            //    entity.damage = (int)(entity.damage * 1.3f);
+            //}
             if (entity.type == ModContent.ItemType<OmegaHealingPotion>() && ModCompatibility.SacredTools.Loaded)
             {
                 entity.healLife = 400;
@@ -69,10 +69,10 @@ namespace ssm.Calamity
             {
                 tooltips.Add(new TooltipLine(Mod, "rebalance", $"[c/FF0000:CSE Balance:] Damage decreased by 30%."));
             }
-            if (item.type == ItemID.Zenith)
-            {
-                tooltips.Add(new TooltipLine(Mod, "rebalance", $"[c/00A36C:CSE Balance:] Damage increased by 30%."));
-            }
+            //if (item.type == ItemID.Zenith)
+            //{
+            //    tooltips.Add(new TooltipLine(Mod, "rebalance", $"[c/00A36C:CSE Balance:] Damage increased by 30%."));
+            //}
             if (item.type == ModContent.ItemType<Sylvestaff>())
             {
                 tooltips.Add(new TooltipLine(Mod, "rebalance", $"[c/FFFF00:CSE Balance:] Canceled DLC buff."));

@@ -8,6 +8,9 @@ using ThoriumMod.Items.BardItems;
 using ThoriumMod.Items.Donate;
 using FargowiltasSouls.Content.Items.Accessories.Souls;
 using ThoriumMod.Items.BossThePrimordials.Rhapsodist;
+using ThoriumMod.Items.BossThePrimordials.Aqua;
+using ThoriumMod.Items.BossThePrimordials.Omni;
+using ThoriumMod.Items.BossThePrimordials.Slag;
 
 namespace ssm.Thorium.Souls
 {
@@ -97,6 +100,9 @@ namespace ssm.Thorium.Souls
                 recipe.AddIngredient(ModContent.Find<ModItem>(ModCompatibility.CalBardHealer.Name, "YharimsJam"));
             }
 
+            recipe.AddIngredient<OceanEssence>(5);
+            recipe.AddIngredient<InfernoEssence>(5);
+            recipe.AddIngredient<DeathEssence>(5);
             recipe.AddTile<CrucibleCosmosSheet>();
 
             recipe.Register();

@@ -26,12 +26,12 @@ namespace ssm.Calamity
                 if (npc.type == ModContent.NPCType<ErazorBoss>())
                 {
                     npc.defense = 500;
-                    npc.lifeMax = 9800000;
+                    npc.lifeMax = 19800000;
                     npc.damage = 700;
                 }
                 if (npc.type == ModContent.NPCType<Novaniel>())
                 {
-                    npc.lifeMax = 5100000;
+                    npc.lifeMax = 15100000;
                     npc.damage = 700;
                 }
                 if (npc.type == ModContent.NPCType<Nuba>())
@@ -56,12 +56,12 @@ namespace ssm.Calamity
                 }
                 if (npc.type == ModContent.NPCType<AraghurHead>() || npc.type == ModContent.NPCType<AraghurBody>() || npc.type == ModContent.NPCType<AraghurTail>())
                 {
-                    npc.lifeMax = 8980000;
+                    npc.lifeMax = 18980000;
                     npc.damage = 700;
                 }
                 if (npc.type == ModContent.NPCType<Abaddon>())
                 {
-                    npc.lifeMax = 7700000;
+                    npc.lifeMax = 10700000;
                     npc.damage = 700;
                 }
                 if (!fullHP) { npc.life = npc.lifeMax; fullHP = true; }

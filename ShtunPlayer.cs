@@ -21,6 +21,7 @@ using CalamityMod.Events;
 using BombusApisBee.BeeDamageClass;
 using CalamityMod.CalPlayer;
 using ThoriumMod.Utilities;
+using FargowiltasSouls.Content.Bosses.AbomBoss;
 
 namespace ssm
 {
@@ -44,7 +45,7 @@ namespace ssm
 
         public override void PostUpdateBuffs()
         {
-            if (FargoSoulsUtil.BossIsAlive(ref EModeGlobalNPC.mutantBoss, ModContent.NPCType<MutantBoss>()) && ModCompatibility.Calamity.Loaded && !WorldSavingSystem.MasochistModeReal)
+            if ((FargoSoulsUtil.BossIsAlive(ref EModeGlobalNPC.mutantBoss, ModContent.NPCType<MutantBoss>()) || FargoSoulsUtil.BossIsAlive(ref EModeGlobalNPC.abomBoss, ModContent.NPCType<AbomBoss>())) && ModCompatibility.Calamity.Loaded)
             {
                 ModLoader.GetMod("CalamityMod").TryFind("Enraged", out ModBuff enrage);
                 ModLoader.GetMod("CalamityMod").TryFind("RageMode", out ModBuff rage);
@@ -54,78 +55,78 @@ namespace ssm
                 Main.LocalPlayer.buffImmune[adrenaline.Type] = true;
             }
 
-            if (starlightFruit)
-            {
-                Player.accWatch = 3;
-                Player.accDepthMeter = 1;
-                Player.accCompass = 1;
-                Player.accFishFinder = true;
-                Player.accDreamCatcher = true;
-                Player.accOreFinder = true;
-                Player.accStopwatch = true;
-                Player.accCritterGuide = true;
-                Player.accJarOfSouls = true;
-                Player.accThirdEye = true;
-                Player.accCalendar = true;
-                Player.accWeatherRadio = true;
+            //if (starlightFruit)
+            //{
+            //    Player.accWatch = 3;
+            //    Player.accDepthMeter = 1;
+            //    Player.accCompass = 1;
+            //    Player.accFishFinder = true;
+            //    Player.accDreamCatcher = true;
+            //    Player.accOreFinder = true;
+            //    Player.accStopwatch = true;
+            //    Player.accCritterGuide = true;
+            //    Player.accJarOfSouls = true;
+            //    Player.accThirdEye = true;
+            //    Player.accCalendar = true;
+            //    Player.accWeatherRadio = true;
 
-                Player.findTreasure = true;
-                Player.nightVision = true;
-                Player.detectCreature = true;
-                Player.pickSpeed -= 0.25f;
-                Player.dangerSense = true;
-                Player.gills = true;
-                Player.waterWalk = true;
-                Player.ignoreWater = true;
-                Player.accFlipper = true;
-                Player.buffImmune[4] = true;
-                Player.buffImmune[15] = true;
-                Player.buffImmune[109] = true;
-                Player.buffImmune[9] = true;
-                Player.buffImmune[11] = true;
-                Player.buffImmune[12] = true;
-                Player.buffImmune[17] = true;
-                Player.buffImmune[104] = true;
-                Player.buffImmune[111] = true;
-                Player.ammoBox = true;
-                Player.archery = true;
-                Player.ammoPotion = true;
-                Player.lavaImmune = true;
-                Player.fireWalk = true;
-                Player.buffImmune[24] = true;
-                Player.buffImmune[29] = true;
-                Player.buffImmune[39] = true;
-                Player.buffImmune[44] = true;
-                Player.buffImmune[46] = true;
-                Player.buffImmune[47] = true;
-                Player.buffImmune[69] = true;
-                Player.buffImmune[110] = true;
-                Player.buffImmune[112] = true;
-                Player.buffImmune[113] = true;
-                Player.buffImmune[114] = true;
-                Player.buffImmune[115] = true;
-                Player.buffImmune[117] = true;
-                Player.buffImmune[150] = true;
-                Player.buffImmune[348] = true;
-                Player.buffImmune[1] = true;
-                Player.buffImmune[2] = true;
-                Player.buffImmune[5] = true;
-                Player.buffImmune[6] = true;
-                Player.buffImmune[7] = true;
-                Player.buffImmune[14] = true;
+            //    Player.findTreasure = true;
+            //    Player.nightVision = true;
+            //    Player.detectCreature = true;
+            //    Player.pickSpeed -= 0.25f;
+            //    Player.dangerSense = true;
+            //    Player.gills = true;
+            //    Player.waterWalk = true;
+            //    Player.ignoreWater = true;
+            //    Player.accFlipper = true;
+            //    Player.buffImmune[4] = true;
+            //    Player.buffImmune[15] = true;
+            //    Player.buffImmune[109] = true;
+            //    Player.buffImmune[9] = true;
+            //    Player.buffImmune[11] = true;
+            //    Player.buffImmune[12] = true;
+            //    Player.buffImmune[17] = true;
+            //    Player.buffImmune[104] = true;
+            //    Player.buffImmune[111] = true;
+            //    Player.ammoBox = true;
+            //    Player.archery = true;
+            //    Player.ammoPotion = true;
+            //    Player.lavaImmune = true;
+            //    Player.fireWalk = true;
+            //    Player.buffImmune[24] = true;
+            //    Player.buffImmune[29] = true;
+            //    Player.buffImmune[39] = true;
+            //    Player.buffImmune[44] = true;
+            //    Player.buffImmune[46] = true;
+            //    Player.buffImmune[47] = true;
+            //    Player.buffImmune[69] = true;
+            //    Player.buffImmune[110] = true;
+            //    Player.buffImmune[112] = true;
+            //    Player.buffImmune[113] = true;
+            //    Player.buffImmune[114] = true;
+            //    Player.buffImmune[115] = true;
+            //    Player.buffImmune[117] = true;
+            //    Player.buffImmune[150] = true;
+            //    Player.buffImmune[348] = true;
+            //    Player.buffImmune[1] = true;
+            //    Player.buffImmune[2] = true;
+            //    Player.buffImmune[5] = true;
+            //    Player.buffImmune[6] = true;
+            //    Player.buffImmune[7] = true;
+            //    Player.buffImmune[14] = true;
 
-                Player.pickSpeed -= 0.2f;
-                Player.moveSpeed += 0.2f;
-                Player.GetArmorPenetration(DamageClass.Generic) += 10;
-                Player.moveSpeed += 0.25f;
-                Player.statLifeMax2 += Player.statLifeMax / 5 / 20 * 20;
-                Player.lifeRegen += 5;
-                Player.endurance += 0.1f;
-                Player.statDefense += 10;
-                Player.GetCritChance(DamageClass.Generic) += 0.1f;
-                Player.GetDamage(DamageClass.Generic) += 0.1f;
-                Player.maxMinions += 2;  
-            }
+            //    Player.pickSpeed -= 0.2f;
+            //    Player.moveSpeed += 0.2f;
+            //    Player.GetArmorPenetration(DamageClass.Generic) += 10;
+            //    Player.moveSpeed += 0.25f;
+            //    Player.statLifeMax2 += Player.statLifeMax / 5 / 20 * 20;
+            //    Player.lifeRegen += 5;
+            //    Player.endurance += 0.1f;
+            //    Player.statDefense += 10;
+            //    Player.GetCritChance(DamageClass.Generic) += 0.1f;
+            //    Player.GetDamage(DamageClass.Generic) += 0.1f;
+            //    Player.maxMinions += 2;  
+            //}
 
             if (FargoSoulsUtil.BossIsAlive(ref ShtunNpcs.mutantEX, ModContent.NPCType<MutantEX>()) && Main.player[Main.myPlayer].Shtun().lumberjackSet && WorldSaveSystem.enragedMutantEX)
             {
@@ -191,7 +192,7 @@ namespace ssm
             {
                 Main.NewText(Language.GetTextValue($"Mods.ssm.Message.NoBalancing"), Color.LimeGreen);
             }
-            if (ModLoader.TryGetMod("InfernalEclipseAPI", out Mod _))
+            if (ModLoader.TryGetMod("InfernalEclipseAPI", out Mod _) || ModLoader.TryGetMod("WHummusMultiModBalancing", out Mod _))
             {
                 Main.NewText(Language.GetTextValue($"Mods.ssm.Message.IHateRogue"), Color.LimeGreen);
             }

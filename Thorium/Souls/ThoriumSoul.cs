@@ -66,7 +66,7 @@ namespace ssm.Thorium.Souls
         {
             Recipe recipe = this.CreateRecipe();
 
-            recipe.AddIngredient<AbomEnergy>(10);
+            if (!ModCompatibility.Calamity.Loaded) { recipe.AddIngredient<AbomEnergy>(10); }
             recipe.AddIngredient(null, "MuspelheimForce");
             recipe.AddIngredient(null, "JotunheimForce");
             recipe.AddIngredient(null, "AlfheimForce");

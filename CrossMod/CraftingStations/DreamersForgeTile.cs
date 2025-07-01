@@ -61,7 +61,7 @@ namespace ssm.CrossMod.CraftingStations
             if (++frameCounter >= 16)
             {
                 frameCounter = 0;
-                frame = (frame + 1) % 7;
+                frame = (frame + 1) % 4;
             }
         }
 

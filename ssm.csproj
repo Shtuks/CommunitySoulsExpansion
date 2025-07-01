@@ -60,6 +60,9 @@
 	  <Reference Include="ClickerClass">
 	    <HintPath>lib\ClickerClass.dll</HintPath>
 	  </Reference>
+	  <Reference Include="ContinentOfJourney">
+	    <HintPath>..\..\ModReader\ContinentOfJourney\ContinentOfJourney.dll</HintPath>
+	  </Reference>
 	  <Reference Include="DragonLens">
 	    <HintPath>lib\DragonLens.dll</HintPath>
 	  </Reference>

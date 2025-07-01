@@ -15,6 +15,8 @@ using CalamityMod.Items.Armor.Bloodflare;
 using ssm.Content.Items.Accessories;
 using CalamityMod.Items;
 using FargowiltasSouls.Content.Items.Summons;
+using Terraria.ID;
+using ThoriumMod.Items.Terrarium;
 
 namespace ssm.Calamity
 {
@@ -54,8 +56,11 @@ namespace ssm.Calamity
                 {
                     if (recipe.HasResult<UniverseSoul>() || recipe.HasResult<TerrariaSoul>() || recipe.HasResult<MasochistSoul>() || recipe.HasResult<DimensionSoul>())
                     {
-                        if (recipe.RemoveIngredient(ModContent.ItemType<AshesofAnnihilation>()) && recipe.RemoveIngredient(ModContent.ItemType<ExoPrism>()))
+                        if (recipe.RemoveIngredient(ModContent.ItemType<AshesofAnnihilation>()) && recipe.RemoveIngredient(ModContent.ItemType<ExoPrism>())) 
+                        {
                             recipe.AddIngredient<ShadowspecBar>(5);
+                            recipe.AddIngredient<MiracleMatter>(5);
+                        }
                     }
                 }
 
@@ -67,6 +72,12 @@ namespace ssm.Calamity
                 if (!recipe.HasIngredient<Rock>() && recipe.HasResult<AbominationnVoodooDoll>())
                 {
                     recipe.AddIngredient<Rock>(1);
+                }
+
+                if (recipe.HasResult(ItemID.DrillContainmentUnit) && !recipe.HasIngredient<AerialiteBar>())
+                {
+                    recipe.AddIngredient<LifeAlloy>(40);
+                    recipe.AddIngredient<AerialiteBar>(40);
                 }
             }
         }

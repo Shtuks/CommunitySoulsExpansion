@@ -10,6 +10,8 @@ using FargowiltasSouls.Content.Items.Weapons.FinalUpgrades;
 using FargowiltasSouls;
 using Fargowiltas.Items.Tiles;
 using ssm.CrossMod.CraftingStations;
+using Terraria.ID;
+using Redemption.Items.Materials.PostML;
 
 namespace ssm
 {
@@ -50,6 +52,13 @@ namespace ssm
                 {
                     recipe.RemoveTile(ModContent.TileType<CrucibleCosmosSheet>());
                     recipe.AddTile<MutantsForgeTile>();
+                }
+                if (ModCompatibility.Calamity.Loaded)
+                {
+                    if ((recipe.HasResult<UniverseSoul>() || recipe.HasResult<TerrariaSoul>() || recipe.HasResult<MasochistSoul>() || recipe.HasResult<DimensionSoul>()) && recipe.HasIngredient<AbomEnergy>())
+                    {
+                        recipe.RemoveIngredient(ModContent.ItemType<AbomEnergy>());
+                    }
                 }
             }
         }

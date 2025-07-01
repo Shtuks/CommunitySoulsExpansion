@@ -32,8 +32,9 @@ namespace ssm
         private int go = 1;
         public override void Load()
         {
-            if (ModCompatibility.Thorium.Loaded && !ModCompatibility.Calamity.Loaded) {multiplierA += 1f; }
+            if (ModCompatibility.Thorium.Loaded && !ModCompatibility.Calamity.Loaded) { multiplierA += 1f; }
 
+            if (ModCompatibility.Homeward.Loaded) { multiplierA += 1f; }
             if (ModCompatibility.SacredTools.Loaded && !ModCompatibility.Calamity.Loaded) { multiplierM += 0.8f; }
             if (ModCompatibility.Calamity.Loaded && !ModCompatibility.SacredTools.Loaded) { multiplierM += 1f; }
             if (ModCompatibility.Thorium.Loaded) { multiplierM += 0.6f; multiplierA += 3f; }
@@ -84,7 +85,7 @@ namespace ssm
                 float fightProgress = Utilities.InverseLerp(0f, intendedDuration, genTimer);
                 float aheadOfSchedule = MathF.Max(0f, 1f - fightProgress - LRM);
 
-                float resistanceFactor = (float)Math.Pow(aheadOfSchedule, 0.1f); // lower value - sharper applying
+                float resistanceFactor = (float)Math.Pow(aheadOfSchedule, 0.3f); // lower value - sharper applying
 
                 if (aheadOfSchedule > 0.8f)
                 {

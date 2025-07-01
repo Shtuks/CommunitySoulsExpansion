@@ -1,25 +1,15 @@
 using Fargowiltas.Items.Tiles;
+using FargowiltasSouls.Content.Items.Materials;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using Mono.Cecil.Cil;
-using MonoMod.Cil;
-using ReLogic.Content;
 using ssm.Core;
-using System.Reflection;
 using Terraria;
-using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria.UI;
 
 namespace ssm.Content.Items.Consumables
 {
     public class StarblightFruit : ModItem
     {
-        public override bool IsLoadingEnabled(Mod mod)
-        {
-            return false;
-        }
         public override void SetStaticDefaults()
         {
             Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
@@ -58,26 +48,32 @@ namespace ssm.Content.Items.Consumables
 
             if (ModCompatibility.SacredTools.Loaded)
             {
-                ModCompatibility.SacredTools.Mod.TryFind<ModItem>("ComboPotion", out ModItem soa);
+                //ModCompatibility.SacredTools.Mod.TryFind<ModItem>("ComboPotion", out ModItem soa);
                 ModCompatibility.SacredTools.Mod.TryFind<ModItem>("EmberOfOmen", out ModItem soa2);
-                recipe.AddIngredient(soa, 50);
+                //recipe.AddIngredient(soa, 50);
                 recipe.AddIngredient(soa2, 5);
             }
 
-            if (ModCompatibility.AlchNPCs.Loaded)
-            {
-                ModCompatibility.AlchNPCs.Mod.TryFind<ModItem>("ExplorerCombination", out ModItem alch1);
-                ModCompatibility.AlchNPCs.Mod.TryFind<ModItem>("UniversalCombination", out ModItem alch);
-                recipe.AddIngredient(alch, 50);
-                recipe.AddIngredient(alch1, 50);
-            }
+            //if (ModCompatibility.AlchNPCs.Loaded)
+            //{
+            //    ModCompatibility.AlchNPCs.Mod.TryFind<ModItem>("ExplorerCombination", out ModItem alch1);
+            //    ModCompatibility.AlchNPCs.Mod.TryFind<ModItem>("UniversalCombination", out ModItem alch);
+            //    recipe.AddIngredient(alch, 50);
+            //    recipe.AddIngredient(alch1, 50);
+            //}
 
             if (ModCompatibility.Calamity.Loaded)
             {
                 ModCompatibility.Calamity.Mod.TryFind<ModItem>("ShadowspecBar", out ModItem cal);
                 recipe.AddIngredient(cal, 5);
             }
+            else
+            {
+                recipe.AddIngredient<AbomEnergy>(10);
+            }
 
+            recipe.AddIngredient(ItemID.LifeFruit, 10);
+            recipe.AddIngredient(ItemID.DemonHeart);
             recipe.AddTile<CrucibleCosmosSheet>();
             recipe.Register();
         }
@@ -89,7 +85,7 @@ namespace ssm.Content.Items.Consumables
             if (!Player.active)
                 return false;
 
-            return Player.Shtun().starlightFruit;
+            return Player.Shtun().starlightFruit && ((ModCompatibility.Calamity.Loaded && ModCompatibility.SacredTools.Loaded) || (ModCompatibility.Thorium.Loaded && ModCompatibility.SacredTools.Loaded) || (ModCompatibility.Thorium.Loaded && ModCompatibility.Calamity.Loaded));
         }
         public override bool IsHidden() => IsEmpty && !IsEnabled();
     }

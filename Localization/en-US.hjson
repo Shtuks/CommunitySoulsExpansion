@@ -72,6 +72,11 @@ Mods: {
 					'''
 			}
 
+			StarblightFruit: {
+				DisplayName: Qliphoth Fruit
+				Tooltip: Grants extra accessory slot
+			}
+
 			PhantasmalEnchant: {
 				DisplayName: Phantasmal Enchantment
 				Tooltip:
@@ -677,7 +682,7 @@ Mods: {
 					'''
 					[i:ssm/NekomiEnchant] [i:ssm/StyxEnchant] Increases life regeneration and damage resistance when damaged at the cost of some energy
 					[i:ssm/NekomiEnchant] [i:ssm/StyxEnchant] Double tap down key to release energy as life draining heart or homing scythes
-					[i:ssm/NekomiEnchant] [i:ssm/StyxEnchant] Wield a demon axe of love and justice or brand of inferno magic when fully charged
+					[i:ssm/NekomiEnchant] [i:ssm/StyxEnchant] Wield a demon axe of love and justice or brandish a blade of infernal magic when fully charged
 					[i:ssm/GaiaEnchant] Press DOWN double times activate Attacking mode
 					[i:ssm/EridanusEnchant] Press DOWN double times activate Eridanus' blessing
 					[i:ssm/EridanusEnchant] Your critical strikes can critically strike
@@ -3234,101 +3239,6 @@ Mods: {
 				DisplayName: Snow Renewal Supreme
 				Tooltip: ""
 			}
-
-			AdamantiteJar: {
-				DisplayName: Adamantite Jar
-				Tooltip: ""
-			}
-
-			AsthraltitePouch: {
-				DisplayName: Asthraltite Pouch
-				Tooltip: ""
-			}
-
-			ChlorophyteJar: {
-				DisplayName: Chlorophyte Jar
-				Tooltip: ""
-			}
-
-			CobaltJar: {
-				DisplayName: Cobalt Jar
-				Tooltip: ""
-			}
-
-			FlariumPouch: {
-				DisplayName: Flarium Pouch
-				Tooltip: ""
-			}
-
-			FlariumQuiver: {
-				DisplayName: Flarium Quiver
-				Tooltip: ""
-			}
-
-			FlariumRenewal: {
-				DisplayName: Flarium Renewal
-				Tooltip: ""
-			}
-
-			FlariumRenewalSupreme: {
-				DisplayName: Flarium Renewal Supreme
-				Tooltip: ""
-			}
-
-			LunarianPouch: {
-				DisplayName: Lunarian Pouch
-				Tooltip: ""
-			}
-
-			LunarianQuiver: {
-				DisplayName: Lunarian Quiver
-				Tooltip: ""
-			}
-
-			MarstechJar: {
-				DisplayName: Marstech Jar
-				Tooltip: ""
-			}
-
-			MythrilJar: {
-				DisplayName: Mythril Jar
-				Tooltip: ""
-			}
-
-			OblivionPouch: {
-				DisplayName: Oblivion Pouch
-				Tooltip: ""
-			}
-
-			OblivionQuiver: {
-				DisplayName: Oblivion Quiver
-				Tooltip: ""
-			}
-
-			OrichalcumJar: {
-				DisplayName: Orichalcum Jar
-				Tooltip: ""
-			}
-
-			PalladiumJar: {
-				DisplayName: Palladium Jar
-				Tooltip: ""
-			}
-
-			SpectralJar: {
-				DisplayName: Spectral Jar
-				Tooltip: ""
-			}
-
-			TitaniumJar: {
-				DisplayName: Titanium Jar
-				Tooltip: ""
-			}
-
-			VenomiteJar: {
-				DisplayName: Venomite Jar
-				Tooltip: ""
-			}
 		}
 
 		Buffs: {
@@ -3925,7 +3835,7 @@ Mods: {
 		DamageClasses.UnitedModdedThrower.DisplayName: thrower damage
 
 		Message: {
-			IHateRogue: If you playing with Infernal Eclipse API make sure that you turn off their thrower merge
+			IHateRogue: If you playing with mods that merge thrower classes make sure that you turn off their thrower merge
 			NoBalance: If you playing Calamity with Thorium, install WHummus' Calamity/Thorium Balancing
 			NoRework: It is recomended to play Thorium with Thorium Bosses Rework to enhance experience
 			NoSoABardHealer1: We detected that you playing Shadows of Abaddon with Thorium Mod

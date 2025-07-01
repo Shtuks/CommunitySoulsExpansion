@@ -66,7 +66,7 @@ namespace ssm.CrossMod.CraftingStations
             if (++frameCounter >= 16)
             {
                 frameCounter = 0;
-                frame = (frame + 1) % 7;
+                frame = (frame + 1) % 5;
             }
         }
         public override void ModifyLight(int i, int j, ref float r, ref float g, ref float b)
