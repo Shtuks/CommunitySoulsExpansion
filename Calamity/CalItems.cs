@@ -31,7 +31,7 @@ namespace ssm.Calamity
             }
             if (entity.type == ModContent.ItemType<IridescentExcalibur>())
             {
-                entity.damage = (int)(entity.damage * 1.4f);
+                entity.damage = (int)(entity.damage * 1.5f);
             }
             if (entity.type == ModContent.ItemType<Supernova>())
             {

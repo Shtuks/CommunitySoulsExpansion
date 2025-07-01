@@ -6,7 +6,6 @@ using FargowiltasSouls.Content.Bosses.MutantBoss;
 using ssm.Content.NPCs.MutantEX;
 using ssm.Content.Buffs;
 using ssm.Core;
-using FargowiltasSouls.Core.Systems;
 
 namespace ssm
 {

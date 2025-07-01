@@ -1,8 +1,7 @@
 ﻿using Terraria;
 using Terraria.ModLoader;
-using ssm.Content.DamageClasses;
 
-namespace ssm.Reworks
+namespace ssm.Content.DamageClasses
 {
     public class ThrowingToUMT : GlobalItem
     {

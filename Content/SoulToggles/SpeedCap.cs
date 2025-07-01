@@ -5,7 +5,7 @@ using ssm.Content.Items.Accessories;
 using Terraria;
 using Terraria.ModLoader;
 
-namespace ssm.Reworks
+namespace ssm.Content.SoulToggles
 {
     public class SpeedCap : GlobalItem
     {

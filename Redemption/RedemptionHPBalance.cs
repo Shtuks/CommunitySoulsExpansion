@@ -35,8 +35,9 @@ namespace ssm.Redemption
                 {
                     float multiplier = 0;
 
-                    if (ModCompatibility.Thorium.Loaded) { multiplier += 1f; }
-                    if (ModCompatibility.SacredTools.Loaded) { multiplier += 0.6f; }
+                    if (ModCompatibility.Thorium.Loaded) { multiplier += 0.7f; }
+                    if (ModCompatibility.SacredTools.Loaded) { multiplier += 0.3f; }
+                    if (ModCompatibility.Calamity.Loaded) { multiplier += 0.5f; }
 
                     npc.lifeMax = (int)(3400000 + (1000000 * multiplier));
                     npc.damage = 730;
@@ -46,8 +47,9 @@ namespace ssm.Redemption
                 {
                     float multiplier = 0;
 
-                    if (ModCompatibility.Thorium.Loaded) { multiplier += 1f; }
-                    if (ModCompatibility.SacredTools.Loaded) { multiplier += 0.6f; }
+                    if (ModCompatibility.Thorium.Loaded) { multiplier += 0.7f; }
+                    if (ModCompatibility.SacredTools.Loaded) { multiplier += 0.3f; }
+                    if (ModCompatibility.Calamity.Loaded) { multiplier += 0.5f; }
 
                     npc.lifeMax = (int)(3700000 + (1000000 * multiplier));
                     npc.damage = 800;
@@ -73,7 +75,7 @@ namespace ssm.Redemption
 
                 if (npc.type == ModContent.NPCType<PZ_Kari>())
                 {
-                    npc.lifeMax = num ? 6000000 : 1800000;
+                    npc.lifeMax = num ? 4000000 : 1800000;
                     npc.damage = 470;
                 }
         }

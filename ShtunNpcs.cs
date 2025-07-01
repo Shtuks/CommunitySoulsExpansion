@@ -9,6 +9,7 @@ using Microsoft.Xna.Framework;
 using FargowiltasSouls.Core.Globals;
 using Luminance.Common.Utilities;
 using FargowiltasSouls.Core.Systems;
+using Fargowiltas.NPCs;
 
 namespace ssm
 {
@@ -31,28 +32,34 @@ namespace ssm
         private int go = 1;
         public override void Load()
         {
-            if (ModCompatibility.Redemption.Loaded) { multiplierA += 1f; }
             if (ModCompatibility.Thorium.Loaded && !ModCompatibility.Calamity.Loaded) {multiplierA += 1f; }
 
             if (ModCompatibility.SacredTools.Loaded && !ModCompatibility.Calamity.Loaded) { multiplierM += 0.8f; }
             if (ModCompatibility.Calamity.Loaded && !ModCompatibility.SacredTools.Loaded) { multiplierM += 1f; }
             if (ModCompatibility.Thorium.Loaded) { multiplierM += 0.6f; multiplierA += 3f; }
-            if (ModCompatibility.Calamity.Loaded) { multiplierM += 1.8f; multiplierA += 7f; }
+            if (ModCompatibility.Calamity.Loaded) { multiplierM += 1.8f; multiplierA += 6f; }
             if (ModCompatibility.SacredTools.Loaded) { multiplierM += 1.6f; multiplierA += 2f; }
         }
         public override void SetDefaults(NPC npc)
         {
             if (npc.type == ModContent.NPCType<MutantBoss>())
             {
-                npc.defense = 0;
                 npc.damage = Main.getGoodWorld ? 2000 : (int)(500 + ((ModCompatibility.Calamity.Loaded ? 130 : 100) * (Math.Round(multiplierM, 1))));
                 npc.lifeMax = (int)(10000000 + (10000000 * Math.Round(multiplierM, 1))) / (Main.expertMode ? 1 : 2);
+            }
+            if (npc.type == ModContent.NPCType<Mutant>())
+            {
+                npc.lifeMax = (int)(10000000 + (10000000 * Math.Round(multiplierM, 1))) / (Main.expertMode ? 1 : 2) / 10;
             }
 
             if (npc.type == ModContent.NPCType<AbomBoss>())
             {
                 npc.damage = Main.getGoodWorld ? 1000 : (int)(250 + (15 * multiplierA));
                 npc.lifeMax = (int)(2800000 + (1000000 * multiplierA)) / (Main.expertMode ? 2 : 4);
+            }
+            if (npc.type == ModContent.NPCType<Abominationn>())
+            {
+                npc.lifeMax = (int)(2800000 + (1000000 * multiplierA)) / (Main.expertMode ? 2 : 4)/10;
             }
         }
         public override void SetStaticDefaults()
@@ -66,11 +73,11 @@ namespace ssm
         }
         public override void ModifyIncomingHit(NPC npc, ref NPC.HitModifiers modifiers)
         {
-            if (npc.type == ModContent.NPCType<MutantBoss>() && ModCompatibility.SacredTools.Loaded)
+            if (npc.type == ModContent.NPCType<MutantBoss>() && Main.npc[EModeGlobalNPC.mutantBoss].ai[0] > 10)
             {
                 float LRM = Utilities.Saturate((float)npc.life / (float)npc.lifeMax);
-                float maxTimeNormal = 18000; // 4 min
-                float maxTimeMaso = 21600; // 4.5 min
+                float maxTimeNormal = 12000; // 4 min
+                float maxTimeMaso = 18000; // 4.5 min
                 float intendedDuration = WorldSavingSystem.MasochistModeReal ? maxTimeMaso : maxTimeNormal;
 
                 // 0 = as intended, 1 = instakill

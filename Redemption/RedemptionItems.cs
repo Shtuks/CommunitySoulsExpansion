@@ -68,41 +68,47 @@ namespace ssm.Redemption
 
         public override void SetDefaults(Item entity)
         {
-            if (entity.type == ModContent.ItemType<Twinklestar>())
+            if (ModCompatibility.Calamity.Loaded || ModCompatibility.SacredTools.Loaded)
             {
-                entity.damage = (int)(entity.damage * 1.6f);
-            }
-            if (entity.type == ModContent.ItemType<Constellations>())
-            {
-                entity.damage = (int)(entity.damage * 1.3f);
-            }
-            if (entity.type == ModContent.ItemType<CosmosChains>())
-            {
-                entity.damage = (int)(entity.damage * 1.2f);
-            }
-            if (entity.type == ModContent.ItemType<PiercingNebulaWeapon>())
-            {
-                entity.damage = (int)(entity.damage * 1.5f);
+                if (entity.type == ModContent.ItemType<Twinklestar>())
+                {
+                    entity.damage = (int)(entity.damage * 1.6f);
+                }
+                if (entity.type == ModContent.ItemType<Constellations>())
+                {
+                    entity.damage = (int)(entity.damage * 1.3f);
+                }
+                if (entity.type == ModContent.ItemType<CosmosChains>())
+                {
+                    entity.damage = (int)(entity.damage * 1.2f);
+                }
+                if (entity.type == ModContent.ItemType<PiercingNebulaWeapon>())
+                {
+                    entity.damage = (int)(entity.damage * 1.5f);
+                }
             }
         }
 
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
         {
-            if (item.type == ModContent.ItemType<Twinklestar>())
+            if (ModCompatibility.Calamity.Loaded || ModCompatibility.SacredTools.Loaded)
             {
-                tooltips.Add(new TooltipLine(Mod, "rebalance", $"[c/00A36C:Cross-Mod Balance:] Damage increased by 60%"));
-            }
-            if (item.type == ModContent.ItemType<Constellations>())
-            {
-                tooltips.Add(new TooltipLine(Mod, "rebalance", $"[c/00A36C:Cross-Mod Balance:] Damage increased by 30%"));
-            }
-            if (item.type == ModContent.ItemType<CosmosChains>())
-            {
-                tooltips.Add(new TooltipLine(Mod, "rebalance", $"[c/00A36C:Cross-Mod Balance:] Damage increased by 20%"));
-            }
-            if (item.type == ModContent.ItemType<PiercingNebulaWeapon>())
-            {
-                tooltips.Add(new TooltipLine(Mod, "rebalance", $"[c/00A36C:Cross-Mod Balance:] Damage increased by 50%"));
+                if (item.type == ModContent.ItemType<Twinklestar>())
+                {
+                    tooltips.Add(new TooltipLine(Mod, "rebalance", $"[c/00A36C:Cross-Mod Balance:] Damage increased by 60%"));
+                }
+                if (item.type == ModContent.ItemType<Constellations>())
+                {
+                    tooltips.Add(new TooltipLine(Mod, "rebalance", $"[c/00A36C:Cross-Mod Balance:] Damage increased by 30%"));
+                }
+                if (item.type == ModContent.ItemType<CosmosChains>())
+                {
+                    tooltips.Add(new TooltipLine(Mod, "rebalance", $"[c/00A36C:Cross-Mod Balance:] Damage increased by 20%"));
+                }
+                if (item.type == ModContent.ItemType<PiercingNebulaWeapon>())
+                {
+                    tooltips.Add(new TooltipLine(Mod, "rebalance", $"[c/00A36C:Cross-Mod Balance:] Damage increased by 50%"));
+                }
             }
         }
     }

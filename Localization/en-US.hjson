@@ -1929,7 +1929,7 @@ Mods: {
 					Thrower projectiles create nanoblades as they travel
 					Stealth strikes summon nanobeams and sparks on enemy hits
 					Stealth strikes have +15 armor penetration, deal 5% more damage, and heal for 2 HP
-					25% increased Thrower damage and 25% increased Thrower velocity
+					20% increased Thrower damage and 25% increased Thrower velocity
 					Landing a stealth strike grants a 12% crit bonus to non-stealth strikes
 					This crit bonus decays over 5 seconds
 					25% of your Thrower damage is duplicated 
@@ -2953,6 +2953,101 @@ Mods: {
 				DisplayName: Vile Sawblade Stack
 				Tooltip: ""
 			}
+
+			AdamantiteJar: {
+				DisplayName: Adamantite Jar
+				Tooltip: ""
+			}
+
+			AsthraltitePouch: {
+				DisplayName: Asthraltite Pouch
+				Tooltip: ""
+			}
+
+			ChlorophyteJar: {
+				DisplayName: Chlorophyte Jar
+				Tooltip: ""
+			}
+
+			CobaltJar: {
+				DisplayName: Cobalt Jar
+				Tooltip: ""
+			}
+
+			FlariumPouch: {
+				DisplayName: Flarium Pouch
+				Tooltip: ""
+			}
+
+			FlariumQuiver: {
+				DisplayName: Flarium Quiver
+				Tooltip: ""
+			}
+
+			FlariumRenewal: {
+				DisplayName: Flarium Renewal
+				Tooltip: ""
+			}
+
+			FlariumRenewalSupreme: {
+				DisplayName: Flarium Renewal Supreme
+				Tooltip: ""
+			}
+
+			LunarianPouch: {
+				DisplayName: Lunarian Pouch
+				Tooltip: ""
+			}
+
+			LunarianQuiver: {
+				DisplayName: Lunarian Quiver
+				Tooltip: ""
+			}
+
+			MarstechJar: {
+				DisplayName: Marstech Jar
+				Tooltip: ""
+			}
+
+			MythrilJar: {
+				DisplayName: Mythril Jar
+				Tooltip: ""
+			}
+
+			OblivionPouch: {
+				DisplayName: Oblivion Pouch
+				Tooltip: ""
+			}
+
+			OblivionQuiver: {
+				DisplayName: Oblivion Quiver
+				Tooltip: ""
+			}
+
+			OrichalcumJar: {
+				DisplayName: Orichalcum Jar
+				Tooltip: ""
+			}
+
+			PalladiumJar: {
+				DisplayName: Palladium Jar
+				Tooltip: ""
+			}
+
+			SpectralJar: {
+				DisplayName: Spectral Jar
+				Tooltip: ""
+			}
+
+			TitaniumJar: {
+				DisplayName: Titanium Jar
+				Tooltip: ""
+			}
+
+			VenomiteJar: {
+				DisplayName: Venomite Jar
+				Tooltip: ""
+			}
 		}
 
 		Buffs: {
@@ -3408,6 +3503,8 @@ Mods: {
 			WastelandNukeProj.DisplayName: Wasteland Nuke Proj
 			WastelandNukeSupremeProj.DisplayName: Wasteland Nuke Supreme Proj
 			StriderLegShockwave.DisplayName: Strider Leg Shockwave
+			FlariumNukeProj.DisplayName: Flarium Nuke Proj
+			FlariumNukeSupremeProj.DisplayName: Flarium Nuke Supreme Proj
 		}
 
 		Bestiary: {
@@ -3520,10 +3617,11 @@ Mods: {
 		DamageClasses.UnitedModdedThrower.DisplayName: thrower damage
 
 		Message: {
+			IHateRogue: If you playing with Infernal Eclipse API make sure that you turn off their thrower merge
 			NoBalance: If you playing Calamity with Thorium, install WHummus' Calamity/Thorium Balancing
-			NoRework: It is recomended to play Thorium with Thorium Bosses Rework to enhance experience.
-			NoSoABardHealer1: We detected that you playing Shadows of Abaddon with Thorium Mod.
-			NoSoABardHealer2: Please install SoA Bard & Healer for better compatibility.
+			NoRework: It is recomended to play Thorium with Thorium Bosses Rework to enhance experience
+			NoSoABardHealer1: We detected that you playing Shadows of Abaddon with Thorium Mod
+			NoSoABardHealer2: Please install SoA Bard & Healer for better compatibility
 		}
 
 		"Keybinds.Dot Mount.DisplayName": Dot  Mount

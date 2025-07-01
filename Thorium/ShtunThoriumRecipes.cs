@@ -16,6 +16,7 @@ using ThoriumMod.Items.BossThePrimordials.Aqua;
 using ThoriumMod.Items.Terrarium;
 using ThoriumMod.Items.ThrownItems;
 using ThoriumMod.Items.HealerItems;
+using ThoriumMod.Items.BossThePrimordials.Slag;
 
 namespace ssm.Thorium
 {
@@ -108,7 +109,7 @@ namespace ssm.Thorium
                 if (recipe.HasResult<StyxChestplate>() && recipe.HasIngredient(548))
                 {
                     recipe.RemoveIngredient(548);
-                    recipe.AddIngredient(ModContent.ItemType<OceanEssence>(), 10);
+                    recipe.AddIngredient(ModContent.ItemType<InfernoEssence>(), 10);
                 }
 
                 if (recipe.HasResult<GaiaHelmet>() && !recipe.HasIngredient<DarkMatter>())

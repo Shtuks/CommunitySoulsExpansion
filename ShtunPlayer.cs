@@ -18,6 +18,9 @@ using FargowiltasSouls.Content.Bosses.MutantBoss;
 using ssm.Core;
 using FargowiltasSouls.Core.Systems;
 using CalamityMod.Events;
+using BombusApisBee.BeeDamageClass;
+using CalamityMod.CalPlayer;
+using ThoriumMod.Utilities;
 
 namespace ssm
 {
@@ -41,15 +44,15 @@ namespace ssm
 
         public override void PostUpdateBuffs()
         {
-            //if (FargoSoulsUtil.BossIsAlive(ref EModeGlobalNPC.mutantBoss, ModContent.NPCType<MutantBoss>()) && ModCompatibility.Calamity.Loaded && !WorldSavingSystem.MasochistModeReal)
-            //{
-            //    ModLoader.GetMod("CalamityMod").TryFind("Enraged", out ModBuff enrage);
-            //    ModLoader.GetMod("CalamityMod").TryFind("RageMode", out ModBuff rage);
-            //    ModLoader.GetMod("CalamityMod").TryFind("AdrenalineMode", out ModBuff adrenaline);
-            //    Main.LocalPlayer.buffImmune[enrage.Type] = true;
-            //    Main.LocalPlayer.buffImmune[rage.Type] = true;
-            //    Main.LocalPlayer.buffImmune[adrenaline.Type] = true;
-            //}
+            if (FargoSoulsUtil.BossIsAlive(ref EModeGlobalNPC.mutantBoss, ModContent.NPCType<MutantBoss>()) && ModCompatibility.Calamity.Loaded && !WorldSavingSystem.MasochistModeReal)
+            {
+                ModLoader.GetMod("CalamityMod").TryFind("Enraged", out ModBuff enrage);
+                ModLoader.GetMod("CalamityMod").TryFind("RageMode", out ModBuff rage);
+                ModLoader.GetMod("CalamityMod").TryFind("AdrenalineMode", out ModBuff adrenaline);
+                Main.LocalPlayer.buffImmune[enrage.Type] = true;
+                Main.LocalPlayer.buffImmune[rage.Type] = true;
+                Main.LocalPlayer.buffImmune[adrenaline.Type] = true;
+            }
 
             if (starlightFruit)
             {
@@ -131,18 +134,52 @@ namespace ssm
             }
         }
 
+        public override void PostUpdateEquips()
+        {
+            if (Player.FargoSouls().MutantSetBonusItem != null)
+            {
+                Player.Shtun().throwerVelocity += 0.3f;
+                if (ModCompatibility.Thorium.Loaded) { BardAndHealer(Player, 1000, 0, 1, 2f, 100, 100, 2, 1000); }
+                if (ModCompatibility.BeekeeperClass.Loaded) { Beekeeper(Player, 30); }
+                if (ModCompatibility.Calamity.Loaded) { ThrowerCal(Player, 5); }
+            }
+
+            if (Player.FargoSouls().StyxSet)
+            {
+                Player.Shtun().throwerVelocity += 0.2f;
+                if (ModCompatibility.Thorium.Loaded) { BardAndHealer(Player, 10, 0, 0.5f, 1f, 30, 15, 2, 600); }
+                if (ModCompatibility.BeekeeperClass.Loaded) { Beekeeper(Player, 20); }
+                if (ModCompatibility.Calamity.Loaded) { ThrowerCal(Player, 2); }
+            }
+
+            if (Player.FargoSouls().GaiaSet)
+            {
+                Player.Shtun().throwerVelocity += 0.1f;
+                if (ModCompatibility.Thorium.Loaded) { BardAndHealer(Player, 1, 200, 0.3f, 0.5f, 20, 10, 2, 300); }
+                if (ModCompatibility.BeekeeperClass.Loaded) { Beekeeper(Player, 20); }
+                if (ModCompatibility.Calamity.Loaded) { ThrowerCal(Player, 1.1f); }
+            }
+
+            if (Player.FargoSouls().NekomiSet)
+            {
+                Player.Shtun().throwerVelocity += 0.05f;
+                if (ModCompatibility.Thorium.Loaded) { BardAndHealer(Player, 0.5f, 100, 0.1f, 0.25f, 10, 5, 1, 180); }
+                if (ModCompatibility.BeekeeperClass.Loaded) { Beekeeper(Player, 10); }
+                if (ModCompatibility.Calamity.Loaded) { ThrowerCal(Player, 0.7f); }
+            }
+        }
         public override void SaveData(TagCompound tag)
         {
-            var playerData = new List<string>();
-            if (starlightFruit) playerData.Add("starlightFruit");
+            var PlayerData = new List<string>();
+            if (starlightFruit) PlayerData.Add("starlightFruit");
 
-            tag.Add($"{Mod.Name}.{Player.name}.Data", playerData);
+            tag.Add($"{Mod.Name}.{Player.name}.Data", PlayerData);
         }
 
         public override void LoadData(TagCompound tag)
         {
-            var playerData = tag.GetList<string>($"{Mod.Name}.{Player.name}.Data");
-            starlightFruit = playerData.Contains("starlightFruit");
+            var PlayerData = tag.GetList<string>($"{Mod.Name}.{Player.name}.Data");
+            starlightFruit = PlayerData.Contains("starlightFruit");
         }
         public override void OnEnterWorld()
         {
@@ -153,6 +190,10 @@ namespace ssm
             if (ModCompatibility.Calamity.Loaded && ModCompatibility.Thorium.Loaded && !ModLoader.TryGetMod("WHummusMultiModBalancing", out Mod _))
             {
                 Main.NewText(Language.GetTextValue($"Mods.ssm.Message.NoBalancing"), Color.LimeGreen);
+            }
+            if (ModLoader.TryGetMod("InfernalEclipseAPI", out Mod _))
+            {
+                Main.NewText(Language.GetTextValue($"Mods.ssm.Message.IHateRogue"), Color.LimeGreen);
             }
 
             //if (!ModLoader.TryGetMod("SoABardHealer", out Mod _) && ModLoader.TryGetMod("SoA", out Mod _) && ModLoader.TryGetMod("ThoriumMod", out Mod _))
@@ -202,6 +243,35 @@ namespace ssm
                 Player.maxMinions = 0;
             }
         }
+
+
+        [JITWhenModsEnabled(ModCompatibility.Thorium.Name)]
+        public void BardAndHealer(Player Player, float bonus1, int bonus2, float bonus3, float bonus4, int bonus5, int bonus6, int bonus7, short bonus8)
+        {
+            Player.GetThoriumPlayer().bardBuffDuration += bonus8;
+            Player.GetThoriumPlayer().techPointsMax += bonus7;
+            Player.GetThoriumPlayer().throwerExhaustionRegenBonus += bonus1;
+            Player.GetThoriumPlayer().throwerExhaustionMax += bonus2;
+            Player.GetThoriumPlayer().bardResourceDropBoost += bonus3;
+            Player.GetThoriumPlayer().inspirationRegenBonus += bonus4;
+            Player.GetThoriumPlayer().bardResourceMax2 += bonus5;
+            Player.GetThoriumPlayer().healBonus += bonus6;
+        }
+
+
+        [JITWhenModsEnabled(ModCompatibility.BeekeeperClass.Name)]
+        public void Beekeeper(Player Player, int bonus)
+        {
+            Player.GetModPlayer<BeeDamagePlayer>().BeeResourceMax2 += bonus;
+        }
+
+        [JITWhenModsEnabled(ModCompatibility.Calamity.Name)]
+        public void ThrowerCal(Player Player, float bonus)
+        {
+            Player.GetModPlayer<CalamityPlayer>().wearingRogueArmor = true;
+            Player.GetModPlayer<CalamityPlayer>().rogueStealthMax += bonus;
+        }
+
         public override bool CanBeHitByNPC(NPC npc, ref int cooldownSlot)
         {
             return !lumberjackSet;

@@ -17,6 +17,12 @@ public static class ModCompatibility
         public static bool Loaded => ModLoader.HasMod(Name);
         public static Mod Mod => ModLoader.GetMod(Name);
     }
+    public static class SBH
+    {
+        public const string Name = "SoABardHealer";
+        public static bool Loaded => ModLoader.HasMod(Name);
+        public static Mod Mod => ModLoader.GetMod(Name);
+    }
     public static class CalBardHealer
     {
         public const string Name = "CalamityBardHealer";
