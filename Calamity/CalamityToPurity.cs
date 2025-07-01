@@ -6,14 +6,15 @@ using CalamityMod.Tiles.Astral;
 using CalamityMod.Tiles.AstralDesert;
 using CalamityMod.Tiles.AstralSnow;
 using CalamityMod.Walls;
+using ssm.Core; 
 
-namespace ssm.Core.RenewalConversions
+namespace ssm.Calamity
 {
     [ExtendsFromMod(ModCompatibility.Calamity.Name)]
     [JITWhenModsEnabled(ModCompatibility.Calamity.Name)]
     public static class CalamityConversion
     {
-        public static void AstralToPurity(int i, int j, int size = 4)
+        public static void AstralConvert(int i, int j, int size = 4)
         {
             for (int k = i - size; k <= i + size; k++)
             {

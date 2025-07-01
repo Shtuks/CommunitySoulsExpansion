@@ -2040,7 +2040,11 @@ Mods: {
 			}
 
 			MutantsForgeItem: {
-				Tooltip: Conts as every possible crafting station
+				Tooltip:
+					'''
+					Counts as every possible crafting station.
+					Allows you to summon any boss
+					'''
 				DisplayName: Mutants Forge
 			}
 
