@@ -2824,9 +2824,9 @@ Mods: {
 				Tooltip: ""
 			}
 
-			DazzlingQuiver: {
-				DisplayName: Dazzling Quiver
-				Tooltip: ""
+			CrystalQuiver: {
+				DisplayName: Crystal Quiver
+				Tooltip: Confuses hit enemies and deals increased damage to movement impaired enemies
 			}
 
 			DurasteelQuiver: {
@@ -2836,17 +2836,17 @@ Mods: {
 
 			GhostPulseQuiver: {
 				DisplayName: Ghost Pulse Quiver
-				Tooltip: ""
+				Tooltip: Damages nearby enemies while in flight
 			}
 
 			IcyQuiver: {
 				DisplayName: Icy Quiver
-				Tooltip: ""
+				Tooltip: Has a chance to significantly hinder hit enemies' movement
 			}
 
 			SpiritQuiver: {
 				DisplayName: Spirit Quiver
-				Tooltip: ""
+				Tooltip: Pierces tiles and enemies, but fades quickly
 			}
 
 			SteelQuiver: {
@@ -2856,47 +2856,51 @@ Mods: {
 
 			TalonQuiver: {
 				DisplayName: Talon Quiver
-				Tooltip: ""
+				Tooltip: Every fourth arrow stuck to an enemy gouges them
 			}
 
 			CoralDartBox: {
 				DisplayName: Coral Dart Box
-				Tooltip: ""
+				Tooltip: Splinters after impacting an enemy
 			}
 
 			DrillDartBox: {
 				DisplayName: Drill Dart Box
-				Tooltip: ""
+				Tooltip: Briefly digs through tiles on impact, gaining increased damage and penetration
 			}
 
 			FlareDartBox: {
 				DisplayName: Flare Dart Box
-				Tooltip: ""
+				Tooltip: Empowers in blast damage and radius over time
 			}
 
 			PhaseDartBox: {
 				DisplayName: Phase Dart Box
-				Tooltip: ""
+				Tooltip: Increases in damage before reaching a peak, then it quickly loses damage
 			}
 
 			TetherDartBox: {
 				DisplayName: Tether Dart Box
-				Tooltip: ""
+				Tooltip: Splits into a damaging electric field
 			}
 
 			BaseballJar: {
 				DisplayName: Baseball Jar
-				Tooltip: ""
+				Tooltip: Must be used with a baseball bat
 			}
 
 			LilTorpedoBox: {
-				DisplayName: Lil Torpedo Box
-				Tooltip: ""
+				DisplayName: Lil' Torpedo Box
+				Tooltip: Releases explosive shrapnel upon impact
 			}
 
 			PillCase: {
 				DisplayName: Pill Case
-				Tooltip: ""
+				Tooltip:
+					'''
+					Throws out a bounding pill
+					Right click to throw a pill that increases an allies life recovery breifly.
+					'''
 			}
 
 			SeethingChargeJar: {
@@ -2906,51 +2910,328 @@ Mods: {
 
 			SnotBallJar: {
 				DisplayName: Snot Ball Jar
-				Tooltip: ""
+				Tooltip: Slows hit enemies movement
 			}
 
 			SpudJar: {
 				DisplayName: Spud Jar
-				Tooltip: ""
+				Tooltip: Mashes against enemies and tiles
 			}
 
 			SteamBatteryCase: {
 				DisplayName: Steam Battery Case
-				Tooltip: ""
+				Tooltip: Used by steam punk weaponry
 			}
 
 			SyringeCase: {
 				DisplayName: Syringe Case
-				Tooltip: ""
+				Tooltip:
+					'''
+					Heals ally life by 4
+					Pricks an ally with a life-giving needle
+					'''
 			}
 
 			CursedSawbladeStack: {
-				DisplayName: Cursed Sawblade Stack
-				Tooltip: ""
+				DisplayName: Stack of Cursed Sawblades
+				Tooltip:
+					'''
+					Pierces through multiple enemies and bounces against tiles
+					Afflicts hit enemies with cursed flames
+					'''
 			}
 
 			DazzlingSawbladeStack: {
-				DisplayName: Dazzling Sawblade Stack
-				Tooltip: ""
+				DisplayName: Stack of Dazzling Sawblades
+				Tooltip:
+					'''
+					Pierces through multiple enemies and bounces against tiles
+					Afflicts hit enemies with confusion
+					'''
 			}
 
 			FrozenSawbladeStack: {
-				DisplayName: Frozen Sawblade Stack
-				Tooltip: ""
+				DisplayName: Stack of Frozen Sawblades
+				Tooltip:
+					'''
+					Pierces through multiple enemies and bounces against tiles
+					Freezes hit enemies, slowing them greatly
+					'''
 			}
 
 			MoltenSawbladeStack: {
-				DisplayName: Molten Sawblade Stack
-				Tooltip: ""
+				DisplayName: Stack of Molten Sawblades
+				Tooltip:
+					'''
+					Pierces through multiple enemies and bounces against tiles
+					Sets hit enemies on fire
+					'''
 			}
 
 			SawbladeStack: {
-				DisplayName: Sawblade Stack
-				Tooltip: ""
+				DisplayName: Stack of Sawblades
+				Tooltip: Pierces through multiple enemies and bounces against tiles
 			}
 
 			VileSawbladeStack: {
-				DisplayName: Vile Sawblade Stack
+				DisplayName: Stack of Vile Sawblades
+				Tooltip:
+					'''
+					Pierces through multiple enemies and bounces against tiles
+					Afflicts hit enemies with ichor
+					'''
+			}
+
+			HeartQuiver: {
+				DisplayName: Heart Quiver
+				Tooltip:
+					'''
+					Has a chance to stun enemies on hit
+					'Legendary arrows dropped by cupid himself'
+					'''
+			}
+
+			SpectralQuiver: {
+				DisplayName: Spectral Quiver
+				Tooltip: Pierces tiles and enemies, but dissipates quickly in the air
+			}
+
+			BoogerQuiver: {
+				DisplayName: Booger Quiver
+				Tooltip: Bounces off of surfaces and enemies
+			}
+
+			OldWoodQuiver: {
+				DisplayName: Old Wood Quiver
+				Tooltip: May sometimes stick to enemies on hit
+			}
+
+			EndlessMucusPouch: {
+				DisplayName: Endless Mucus Pouch
+				Tooltip: Ricochets to nearby enemies on hit
+			}
+
+			EndlessRustedPouch: {
+				DisplayName: Endless Rusted Pouch
+				Tooltip: Splits into shrapnel on impact
+			}
+
+			EndlessSnotRocketBox: {
+				DisplayName: Endless Snot Rocket Box
+				Tooltip:
+					'''
+					Accelerates	rapidly as it travels
+					Explodes into lingering snot on direct enemy hits
+					'''
+			}
+
+			MossyPebbleJar: {
+				DisplayName: Mossy Pebble Jar
+				Tooltip: Used as ammo with slingshots
+			}
+
+			SpookyRenewal: {
+				DisplayName: Spooky Renewal
+				Tooltip: ""
+			}
+
+			SpookyRenewalSupreme: {
+				DisplayName: Spooky Renewal Supreme
+				Tooltip: ""
+			}
+
+			EyeValleyRenewal: {
+				DisplayName: Eye Valley Renewal
+				Tooltip: ""
+			}
+
+			EyeValleyRenewalSupreme: {
+				DisplayName: Eye Valley Renewal Supreme
+				Tooltip: ""
+			}
+
+			SwampyRenewal: {
+				DisplayName: Swampy Renewal
+				Tooltip: ""
+			}
+
+			SwampyRenewalSupreme: {
+				DisplayName: Swampy Renewal Supreme
+				Tooltip: ""
+			}
+
+			AdamantiteJar: {
+				DisplayName: Adamantite Jar
+				Tooltip: ""
+			}
+
+			AsthraltitePouch: {
+				DisplayName: Asthraltite Pouch
+				Tooltip: ""
+			}
+
+			ChlorophyteJar: {
+				DisplayName: Chlorophyte Jar
+				Tooltip: ""
+			}
+
+			CobaltJar: {
+				DisplayName: Cobalt Jar
+				Tooltip: ""
+			}
+
+			FlariumPouch: {
+				DisplayName: Flarium Pouch
+				Tooltip: ""
+			}
+
+			FlariumQuiver: {
+				DisplayName: Flarium Quiver
+				Tooltip: ""
+			}
+
+			FlariumRenewal: {
+				DisplayName: Flarium Renewal
+				Tooltip: ""
+			}
+
+			FlariumRenewalSupreme: {
+				DisplayName: Flarium Renewal Supreme
+				Tooltip: ""
+			}
+
+			LunarianPouch: {
+				DisplayName: Lunarian Pouch
+				Tooltip: ""
+			}
+
+			LunarianQuiver: {
+				DisplayName: Lunarian Quiver
+				Tooltip: ""
+			}
+
+			MarstechJar: {
+				DisplayName: Marstech Jar
+				Tooltip: ""
+			}
+
+			MythrilJar: {
+				DisplayName: Mythril Jar
+				Tooltip: ""
+			}
+
+			OblivionPouch: {
+				DisplayName: Oblivion Pouch
+				Tooltip: ""
+			}
+
+			OblivionQuiver: {
+				DisplayName: Oblivion Quiver
+				Tooltip: ""
+			}
+
+			OrichalcumJar: {
+				DisplayName: Orichalcum Jar
+				Tooltip: ""
+			}
+
+			PalladiumJar: {
+				DisplayName: Palladium Jar
+				Tooltip: ""
+			}
+
+			SpectralJar: {
+				DisplayName: Spectral Jar
+				Tooltip: ""
+			}
+
+			TitaniumJar: {
+				DisplayName: Titanium Jar
+				Tooltip: ""
+			}
+
+			VenomiteJar: {
+				DisplayName: Venomite Jar
+				Tooltip: ""
+			}
+
+			CorruptRenewal: {
+				DisplayName: Corrupt Renewal
+				Tooltip: ""
+			}
+
+			CorruptRenewalSupreme: {
+				DisplayName: Corrupt Renewal Supreme
+				Tooltip: ""
+			}
+
+			CrimsonRenewal: {
+				DisplayName: Crimson Renewal
+				Tooltip: ""
+			}
+
+			CrimsonRenewalSupreme: {
+				DisplayName: Crimson Renewal Supreme
+				Tooltip: ""
+			}
+
+			DirtRenewal: {
+				DisplayName: Dirt Renewal
+				Tooltip: ""
+			}
+
+			DirtRenewalSupreme: {
+				DisplayName: Dirt Renewal Supreme
+				Tooltip: ""
+			}
+
+			HallowRenewal: {
+				DisplayName: Hallow Renewal
+				Tooltip: ""
+			}
+
+			HallowRenewalSupreme: {
+				DisplayName: Hallow Renewal Supreme
+				Tooltip: ""
+			}
+
+			MushroomRenewal: {
+				DisplayName: Mushroom Renewal
+				Tooltip: ""
+			}
+
+			MushroomRenewalSupreme: {
+				DisplayName: Mushroom Renewal Supreme
+				Tooltip: ""
+			}
+
+			PurityRenewal: {
+				DisplayName: Purity Renewal
+				Tooltip: ""
+			}
+
+			PurityRenewalSupreme: {
+				DisplayName: Purity Renewal Supreme
+				Tooltip: ""
+			}
+
+			SandRenewal: {
+				DisplayName: Sand Renewal
+				Tooltip: ""
+			}
+
+			SandRenewalSupreme: {
+				DisplayName: Sand Renewal Supreme
+				Tooltip: ""
+			}
+
+			SnowRenewal: {
+				DisplayName: Snow Renewal
+				Tooltip: ""
+			}
+
+			SnowRenewalSupreme: {
+				DisplayName: Snow Renewal Supreme
 				Tooltip: ""
 			}
 
@@ -3058,17 +3339,17 @@ Mods: {
 
 			SadismEX: {
 				DisplayName: Sadism EX
-				Description: You immune to all debuffs.
+				Description: You are immune to all debuffs.
 			}
 
 			YharimBuff: {
 				DisplayName: Yharim Buff
-				Description: Your power rival with Godseeker's
+				Description: Your power rivals the Godseeker's
 			}
 
 			DeviSoulBuff: {
 				DisplayName: Deviantt Soul Buff
-				Description: Spectral Deviantt protects you
+				Description: The Spectral Deviantt protects you
 			}
 
 			MutantSoulBuff: {
@@ -3503,8 +3784,30 @@ Mods: {
 			WastelandNukeProj.DisplayName: Wasteland Nuke Proj
 			WastelandNukeSupremeProj.DisplayName: Wasteland Nuke Supreme Proj
 			StriderLegShockwave.DisplayName: Strider Leg Shockwave
+			SpookyRenewalProj.DisplayName: Spooky Renewal Proj
+			SpookyRenewalSupremeProj.DisplayName: Spooky Renewal Supreme Proj
+			EyeValleyRenewalProj.DisplayName: Eye Valley Renewal Proj
+			EyeValleyRenewalSupremeProj.DisplayName: Eye Valley Renewal Supreme Proj
+			SwampyRenewalProj.DisplayName: Swampy Renewal Proj
+			SwampyRenewalSupremeProj.DisplayName: Swampy Renewal Supreme Proj
 			FlariumNukeProj.DisplayName: Flarium Nuke Proj
 			FlariumNukeSupremeProj.DisplayName: Flarium Nuke Supreme Proj
+			CorruptNukeProj.DisplayName: Corrupt Nuke Proj
+			CorruptNukeSupremeProj.DisplayName: Corrupt Nuke Supreme Proj
+			CrimsonNukeProj.DisplayName: Crimson Nuke Proj
+			CrimsonNukeSupremeProj.DisplayName: Crimson Nuke Supreme Proj
+			DirtNukeProj.DisplayName: Dirt Nuke Proj
+			DirtNukeSupremeProj.DisplayName: Dirt Nuke Supreme Proj
+			HallowNukeProj.DisplayName: Hallow Nuke Proj
+			HallowNukeSupremeProj.DisplayName: Hallow Nuke Supreme Proj
+			MushroomNukeProj.DisplayName: Mushroom Nuke Proj
+			MushroomNukeSupremeProj.DisplayName: Mushroom Nuke Supreme Proj
+			PurityNukeProj.DisplayName: Purity Nuke Proj
+			PurityNukeSupremeProj.DisplayName: Purity Nuke Supreme Proj
+			SandNukeProj.DisplayName: Sand Nuke Proj
+			SandNukeSupremeProj.DisplayName: Sand Nuke Supreme Proj
+			SnowNukeProj.DisplayName: Snow Nuke Proj
+			SnowNukeSupremeProj.DisplayName: Snow Nuke Supreme Proj
 		}
 
 		Bestiary: {
@@ -3610,6 +3913,11 @@ Mods: {
 				AlternativeSiblings: {
 					Label: Alternative Siblings
 					Tooltip: Monstrosity, Divergentt and Amalgamationn can be loaded
+				}
+
+				Consolaria: {
+					Label: Consolaria
+					Tooltip: ""
 				}
 			}
 		}
