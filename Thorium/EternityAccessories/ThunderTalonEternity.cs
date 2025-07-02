@@ -10,6 +10,10 @@ namespace ssm.Thorium.EternityAccessories
     [JITWhenModsEnabled(ModCompatibility.Thorium.Name)]
 	public class ThunderTalonEternity : ModItem
     {
+        public override bool IsLoadingEnabled(Mod mod)
+        {
+            return ShtunConfig.Instance.ExperimentalContent;
+        }
         public override void SetDefaults()
         {
             Item.width = 42;

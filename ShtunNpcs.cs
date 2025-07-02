@@ -32,14 +32,16 @@ namespace ssm
         private int go = 1;
         public override void Load()
         {
+            if (ModCompatibility.SacredTools.Loaded && !ModCompatibility.Thorium.Loaded) { multiplierA += 1f; }
             if (ModCompatibility.Thorium.Loaded && !ModCompatibility.Calamity.Loaded) { multiplierA += 1f; }
+            if (ModCompatibility.Homeward.Loaded && !ModCompatibility.Calamity.Loaded) { multiplierA += 1f; }
 
-            if (ModCompatibility.Homeward.Loaded) { multiplierA += 1f; }
             if (ModCompatibility.SacredTools.Loaded && !ModCompatibility.Calamity.Loaded) { multiplierM += 0.8f; }
             if (ModCompatibility.Calamity.Loaded && !ModCompatibility.SacredTools.Loaded) { multiplierM += 1f; }
+
             if (ModCompatibility.Thorium.Loaded) { multiplierM += 0.6f; multiplierA += 3f; }
             if (ModCompatibility.Calamity.Loaded) { multiplierM += 1.8f; multiplierA += 6f; }
-            if (ModCompatibility.SacredTools.Loaded) { multiplierM += 1.6f; multiplierA += 2f; }
+            if (ModCompatibility.SacredTools.Loaded) { multiplierM += 1.6f; multiplierA += 1f; }
         }
         public override void SetDefaults(NPC npc)
         {

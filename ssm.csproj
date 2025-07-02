@@ -9,12 +9,16 @@
 	</PropertyGroup>
 	<ItemGroup>
 	  <AdditionalFiles Remove="Content\NPCs\StarlightCat\**" />
+	  <AdditionalFiles Remove="MagicStorage\**" />
 	  <AdditionalFiles Remove="Thorium\Swarm\**" />
 	  <Compile Remove="Content\NPCs\StarlightCat\**" />
+	  <Compile Remove="MagicStorage\**" />
 	  <Compile Remove="Thorium\Swarm\**" />
 	  <EmbeddedResource Remove="Content\NPCs\StarlightCat\**" />
+	  <EmbeddedResource Remove="MagicStorage\**" />
 	  <EmbeddedResource Remove="Thorium\Swarm\**" />
 	  <None Remove="Content\NPCs\StarlightCat\**" />
+	  <None Remove="MagicStorage\**" />
 	  <None Remove="Thorium\Swarm\**" />
 	</ItemGroup>
 	<ItemGroup>
@@ -30,7 +34,6 @@
 	<ItemGroup>
 	  <None Include="Calamity\Addons\DivineEnchant.cs" />
 	  <None Include="Calamity\Addons\EmptinessEnchant.cs" />
-	  <None Include="MagicStorage\StorageUnits.cs" />
 	</ItemGroup>
 	<ItemGroup>
 	  <Reference Include="BombusApisBee">

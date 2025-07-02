@@ -2040,12 +2040,16 @@ Mods: {
 			}
 
 			MutantsForgeItem: {
-				Tooltip: Conts as every possible crafting station
+				Tooltip:
+					'''
+					Counts as every possible crafting station
+					RMB on tile to open UI that can summon any boss
+					'''
 				DisplayName: Mutants Forge
 			}
 
 			DreamersForgeItem: {
-				Tooltip: Conts as every crafting station from Thorium Mod
+				Tooltip: Counts as every crafting station from Thorium Mod
 				DisplayName: Dreamers Forge
 			}
 
