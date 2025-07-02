@@ -2049,7 +2049,7 @@ Mods: {
 			}
 
 			DreamersForgeItem: {
-				Tooltip: Conts as every crafting station from Thorium Mod
+				Tooltip: Counts as every crafting station from Thorium Mod
 				DisplayName: Dreamers Forge
 			}
 

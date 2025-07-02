@@ -41,6 +41,11 @@ namespace ssm.Content.NPCs.MutantEX
     [AutoloadBossHead]
     public class MutantEX : ModNPC
     {
+        public override bool IsLoadingEnabled(Mod mod)
+        {
+            return ShtunConfig.Instance.AlternativeSiblings;
+        }
+        
         //lumberjack
         //public override string Texture => $"ssm/Content/NPCs/MutantEX/MutantEX{FargoSoulsUtil.TryAprilFoolsTexture}";
 

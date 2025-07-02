@@ -58,7 +58,9 @@ namespace ssm.CrossMod.CraftingStations
 				TileType<AncientAltar>(),
 				TileType<MonolithAmalgam>(),
 				TileType<StaticRefiner>(),
-			};
+                TileType<WulfrumLabstation>(),
+                TileType<VoidCondenser>()
+            };
 		}
 
         public override void AnimateTile(ref int frame, ref int frameCounter)

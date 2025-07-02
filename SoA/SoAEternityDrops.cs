@@ -14,6 +14,7 @@ namespace ssm.SoA
     [JITWhenModsEnabled(ModCompatibility.SacredTools.Name)]
     public class SoAEternityDrops : GlobalNPC
     {
+        public override bool InstancePerEntity => true;
         public override void ModifyNPCLoot(NPC npc, NPCLoot npcLoot)
         {
             LeadingConditionRule emodeRule = new(new EModeDropCondition());

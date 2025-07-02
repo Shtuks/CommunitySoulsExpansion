@@ -16,7 +16,7 @@ namespace ssm.Thorium.EternityAccessories
     {
         public override bool IsLoadingEnabled(Mod mod)
         {
-            return ShtunConfig.Instance.Thorium;
+            return ShtunConfig.Instance.ExperimentalContent;
         }
         public override void SetDefaults()
         {

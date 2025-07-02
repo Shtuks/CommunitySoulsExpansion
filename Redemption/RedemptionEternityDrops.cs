@@ -17,6 +17,7 @@ namespace ssm.Redemption
     [JITWhenModsEnabled(ModCompatibility.Redemption.Name)]
     public class RedemptionEternityDrops : GlobalNPC
     {
+        public override bool InstancePerEntity => true;
         public override void ModifyNPCLoot(NPC npc, NPCLoot npcLoot)
         {
             LeadingConditionRule emodeRule = new(new EModeDropCondition());

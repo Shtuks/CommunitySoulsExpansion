@@ -21,11 +21,13 @@ namespace ssm.CrossMod.CraftingStations
 			Main.tileFrameImportant[Type] = true;
 			Main.tileNoAttach[Type] = true;
 			Main.tileLavaDeath[Type] = false;
-			TileObjectData.newTile.CopyFrom(TileObjectData.Style6x3);
+			TileObjectData.newTile.CopyFrom(TileObjectData.Style3x4);
 			TileObjectData.newTile.DrawFlipHorizontal = false;
 			TileObjectData.newTile.DrawFlipVertical = false;
             TileObjectData.newTile.Height = 4;
-            TileObjectData.newTile.Width = 11;
+            TileObjectData.newTile.Width = 4;
+            TileObjectData.newTile.CoordinatePadding = 2;
+			AnimationFrameHeight = 72;
             TileObjectData.newTile.CoordinateHeights = new int[]
 			{
 				16,
@@ -34,7 +36,7 @@ namespace ssm.CrossMod.CraftingStations
 				16
 			};
 			TileObjectData.addTile(Type);
-            this.AddMapEntry(new Color(41, 157, 230), ((ModBlockType)this).CreateMapEntryName());
+            this.AddMapEntry(new Color(41, 157, 110), ((ModBlockType)this).CreateMapEntryName());
             TileID.Sets.DisableSmartCursor[(int)((ModBlockType)this).Type] = true;
             AdjTiles = new int[]
 			{
@@ -55,5 +57,14 @@ namespace ssm.CrossMod.CraftingStations
 				TileType<XeniumSmelterTile>()
 			};
 		}
+
+        public override void AnimateTile(ref int frame, ref int frameCounter)
+        {
+            ++frameCounter;
+            if (frameCounter < 16)
+                return;
+            frame = (frame + 1) % 10;
+            frameCounter = 0;
+        }
     }
 }

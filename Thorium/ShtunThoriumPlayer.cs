@@ -48,6 +48,7 @@ namespace ssm.Thorium
         public bool MixTape;
         public bool ConduitEnchant;
         public bool ThoriumSoul;
+
         public bool ThunderTalonEternity;
         public bool DarkenedCloak;
 
@@ -77,6 +78,7 @@ namespace ssm.Thorium
             MixTape = false;
             ConduitEnchant = false;
             ThoriumSoul = false;
+
             ThunderTalonEternity = false;
             DarkenedCloak = false;
 

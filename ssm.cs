@@ -127,18 +127,20 @@ namespace ssm
                 //    true
                 //);
 
-                Add("Boss",
-                    "MutantEX",
-                    float.MaxValue-1,
-                    new List<int> { ModContent.NPCType<MutantEX>() },
-                    () => WorldSaveSystem.downedMutantEX,
-                    () => true,
-                    new List<int> {
+                if (ShtunConfig.Instance.AlternativeSiblings) {
+                    Add("Boss",
+                        "MutantEX",
+                        float.MaxValue - 1,
+                        new List<int> { ModContent.NPCType<MutantEX>() },
+                        () => WorldSaveSystem.downedMutantEX,
+                        () => true,
+                        new List<int> {
                         ModContent.ItemType<Sadism>(),
-                    },
-                    new List<int> { ModContent.ItemType<MutantsForgeItem>() },
-                    true
-                );
+                        },
+                        new List<int> { ModContent.ItemType<MutantsForgeItem>() },
+                        true
+                    );
+                }
 
                 //Add("Boss",
                 //    "Echdeath",

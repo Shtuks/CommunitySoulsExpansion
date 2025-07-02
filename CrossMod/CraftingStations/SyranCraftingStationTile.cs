@@ -21,14 +21,15 @@ namespace ssm.CrossMod.CraftingStations
             Main.tileFrameImportant[(int)((ModBlockType)this).Type] = true;
             Main.tileNoAttach[(int)((ModBlockType)this).Type] = true;
             Main.tileLavaDeath[(int)((ModBlockType)this).Type] = false;
-            TileObjectData.newTile.CopyFrom(TileObjectData.Style5x4);
+            TileObjectData.newTile.CopyFrom(TileObjectData.Style6x3);
             TileObjectData.newTile.LavaDeath = false;
             TileID.Sets.CountsAsHoneySource[Type] = true;
             TileID.Sets.CountsAsLavaSource[Type] = true;
             TileID.Sets.CountsAsWaterSource[Type] = true;
-            TileObjectData.newTile.Height = 5;
+            TileObjectData.newTile.Height = 3;
             TileObjectData.newTile.Width = 5;
             TileObjectData.newTile.CoordinatePadding = 2;
+            AnimationFrameHeight = 54;
             TileObjectData.newTile.CoordinateHeights = new int[]
             {
                 16,
@@ -39,8 +40,7 @@ namespace ssm.CrossMod.CraftingStations
             };
             TileObjectData.newTile.Origin = new Point16(2, 1);
             TileObjectData.addTile((int)((ModBlockType)this).Type);
-            AddMapEntry(new Color(41, 157, 230), ((ModBlockType)this).CreateMapEntryName());
-            AnimationFrameHeight = 90;
+            AddMapEntry(new Color(230, 10, 210), ((ModBlockType)this).CreateMapEntryName());
             TileID.Sets.DisableSmartCursor[(int)((ModBlockType)this).Type] = true;
             ((ModBlockType)this).DustType = 84;
 
@@ -70,7 +70,7 @@ namespace ssm.CrossMod.CraftingStations
             if (++frameCounter >= 16)
             {
                 frameCounter = 0;
-                frame = (frame + 1) % 8;
+                frame = (frame + 1) % 6;
             }
         }
     }
