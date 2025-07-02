@@ -29,6 +29,10 @@ namespace ssm.Calamity
             {
                 entity.damage = (int)(entity.damage * 0.9f);
             }
+            if (entity.type == ModContent.ItemType<HalibutCannon>())
+            {
+                entity.damage = (int)(entity.damage * 0.7f);
+            }
             if (entity.type == ModContent.ItemType<IridescentExcalibur>())
             {
                 entity.damage = (int)(entity.damage * 1.5f);
@@ -64,6 +68,10 @@ namespace ssm.Calamity
             if (item.type == ModContent.ItemType<Voidragon>())
             {
                 tooltips.Add(new TooltipLine(Mod, "rebalance", $"[c/FFFF00:CSE Balance:] Canceled DLC buff."));
+            }
+            if (item.type == ModContent.ItemType<HalibutCannon>())
+            {
+                tooltips.Add(new TooltipLine(Mod, "rebalance", $"[c/FFFF00:CSE Balance:] Damage decreased by 30%."));
             }
             if (item.type == ModContent.ItemType<Supernova>())
             {

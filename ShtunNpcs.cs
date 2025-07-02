@@ -32,12 +32,21 @@ namespace ssm
         private int go = 1;
         public override void Load()
         {
-            if (ModCompatibility.SacredTools.Loaded && !ModCompatibility.Thorium.Loaded) { multiplierA += 1f; }
+            //soa 34
+            //cal 38
+            //thor 16
+            //HWJ 18
+            //soa-cal 45
+            //soa-thor 40
+            //soa-cal-thor 50
+            //thor-cal 
+            if (ModCompatibility.SacredTools.Loaded && !ModCompatibility.Thorium.Loaded) { multiplierA += 1.1f; }
             if (ModCompatibility.Thorium.Loaded && !ModCompatibility.Calamity.Loaded) { multiplierA += 1f; }
             if (ModCompatibility.Homeward.Loaded && !ModCompatibility.Calamity.Loaded) { multiplierA += 1f; }
+            if (ModCompatibility.Homeward.Loaded && !ModCompatibility.Calamity.Loaded && !ModCompatibility.SacredTools.Loaded) { multiplierM += 0.8f; }
 
             if (ModCompatibility.SacredTools.Loaded && !ModCompatibility.Calamity.Loaded) { multiplierM += 0.8f; }
-            if (ModCompatibility.Calamity.Loaded && !ModCompatibility.SacredTools.Loaded) { multiplierM += 1f; }
+            if (ModCompatibility.Calamity.Loaded && !ModCompatibility.SacredTools.Loaded) { multiplierM += 0.8f; }
 
             if (ModCompatibility.Thorium.Loaded) { multiplierM += 0.6f; multiplierA += 3f; }
             if (ModCompatibility.Calamity.Loaded) { multiplierM += 1.8f; multiplierA += 6f; }

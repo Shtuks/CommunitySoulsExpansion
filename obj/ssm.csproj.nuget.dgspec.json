@@ -1,26 +1,31 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\rcber\\OneDrive\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\ssm\\ssm.csproj": {}
+    "C:\\Users\\kolot\\OneDrive\\Документы\\My Games\\Terraria\\tModLoader\\ModSources\\ssm\\ssm.csproj": {}
   },
   "projects": {
-    "C:\\Users\\rcber\\OneDrive\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\ssm\\ssm.csproj": {
+    "C:\\Users\\kolot\\OneDrive\\Документы\\My Games\\Terraria\\tModLoader\\ModSources\\ssm\\ssm.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\rcber\\OneDrive\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\ssm\\ssm.csproj",
+        "projectUniqueName": "C:\\Users\\kolot\\OneDrive\\Документы\\My Games\\Terraria\\tModLoader\\ModSources\\ssm\\ssm.csproj",
         "projectName": "ssm",
-        "projectPath": "C:\\Users\\rcber\\OneDrive\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\ssm\\ssm.csproj",
-        "packagesPath": "C:\\Users\\rcber\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\rcber\\OneDrive\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\ssm\\obj\\",
+        "projectPath": "C:\\Users\\kolot\\OneDrive\\Документы\\My Games\\Terraria\\tModLoader\\ModSources\\ssm\\ssm.csproj",
+        "packagesPath": "C:\\Users\\kolot\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\kolot\\OneDrive\\Документы\\My Games\\Terraria\\tModLoader\\ModSources\\ssm\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\rcber\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\kolot\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
         ],
         "sources": {
-          "https://api.nuget.org/v3/index.json": {}
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {}
         },
         "frameworks": {
           "net8.0": {
@@ -37,7 +42,8 @@
           "enableAudit": "true",
           "auditLevel": "low",
           "auditMode": "direct"
-        }
+        },
+        "SdkAnalysisLevel": "9.0.100"
       },
       "frameworks": {
         "net8.0": {
@@ -59,22 +65,12 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[8.0.16, 8.0.16]"
-            },
-            {
-              "name": "Microsoft.WindowsDesktop.App.Ref",
-              "version": "[8.0.16, 8.0.16]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.409/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.102/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

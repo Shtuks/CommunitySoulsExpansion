@@ -9,8 +9,8 @@ using ssm.Core;
 
 namespace ssm.Spooky.Renewals
 {
-    [ExtendsFromMod(ModCompatibility.Calamity.Name)]
-    [JITWhenModsEnabled(ModCompatibility.Calamity.Name)]
+    [ExtendsFromMod(ModCompatibility.Spooky.Name)]
+    [JITWhenModsEnabled(ModCompatibility.Spooky.Name)]
     public static class SpookyConversion
     {
         public static void SpookyConvert(int i, int j, int size = 4)

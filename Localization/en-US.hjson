@@ -545,6 +545,7 @@ Mods: {
 					Only grants effects of Shield of Reflections when True Mode is enabled.
 					'''
 				SoABerserker: Effects of Flora Fist
+				SoASnipersSoul: Your weapons don't require reloading
 				SoASupersonic: Effects of Heart of the Plough, Advanced Dash Tech
 				SoAWorldshaper: Effects of Rage Supressor, Celestial ring
 			}
