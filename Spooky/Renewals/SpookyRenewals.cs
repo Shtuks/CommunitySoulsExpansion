@@ -6,7 +6,7 @@ using Fargowiltas.Items.Renewals;
 using ssm.Core;
 using Spooky.Content.Items.SpookyBiome.Misc;
 using Spooky.Content.Items.Cemetery.Misc;
-
+using ssm.Spooky.Renewals;
 
 
 namespace ssm.Spooky.Renewals
@@ -76,7 +76,6 @@ namespace ssm.Spooky.Renewals
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
             Projectile.NewProjectile(player.GetSource_ItemUse(source.Item), position, velocity, ModContent.ProjectileType<SwampyRenewalSupremeProj>(), 0, 0, Main.myPlayer);
-
             return false;
         }
     }

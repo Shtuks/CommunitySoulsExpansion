@@ -42,7 +42,6 @@ namespace ssm.Core.RenewalConversions
                         int j = (int)(projectile.Center.Y / 16f) + y;
 
                         ssmConvertToPurity.ConvertAllToPurity(i, j);
-
                     }
                 }
             }
