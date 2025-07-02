@@ -2042,8 +2042,8 @@ Mods: {
 			MutantsForgeItem: {
 				Tooltip:
 					'''
-					Counts as every possible crafting station
-					RMB on tile to open UI that can summon any boss
+					Counts as every possible crafting station.
+					Allows you to summon any boss
 					'''
 				DisplayName: Mutants Forge
 			}

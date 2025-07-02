@@ -10,13 +10,13 @@ using SacredTools.Content.Walls;
 using SacredTools.Tiles;
 
 
-namespace ssm.Core.RenewalConversions
+namespace ssm.SoA.Renewals
 {
     [ExtendsFromMod(ModCompatibility.SacredTools.Name)]
     [JITWhenModsEnabled(ModCompatibility.SacredTools.Name)]
     public static class SacredToolsConversion
     {
-        public static void ScorchedToPurity(int i, int j, int size = 4)
+        public static void FlariumConvert(int i, int j, int size = 4)
         {
             for (int k = i - size; k <= i + size; k++)
             {
@@ -123,7 +123,7 @@ namespace ssm.Core.RenewalConversions
             }
         }
 
-        public static void ShrineToPurity(int i, int j, int size = 4)
+        public static void ShrineConvert(int i, int j, int size = 4)
         {
             for (int k = i - size; k <= i + size; k++)
             {

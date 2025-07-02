@@ -6,14 +6,15 @@ using SpiritMod.Tiles.Block;
 using SpiritMod.Tiles.Walls.Natural;
 using SpiritMod.Tiles.Ambient.Spirit;
 using SpiritMod.Tiles.Ambient.Briar;
+using ssm.Core;
 
-namespace ssm.Core.RenewalConversions
+namespace ssm.SpiritMod.Renewals
 {
     [ExtendsFromMod(ModCompatibility.SpiritMod.Name)]
     [JITWhenModsEnabled(ModCompatibility.SpiritMod.Name)]
     public static class SpiritToPurityConversion
     {
-        public static void Convert(int i, int j, int size = 4)
+        public static void SpiritConvert(int i, int j, int size = 4)
         {
             for (int k = i - size; k <= i + size; k++)
             {
