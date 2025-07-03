@@ -3244,12 +3244,27 @@ Mods: {
 				DisplayName: Snow Renewal Supreme
 				Tooltip: ""
 			}
+
+			MonstrosityEnchant: {
+				DisplayName: Monstrosity Enchant
+				Tooltip: ""
+			}
+
+			ShadowEnergy: {
+				DisplayName: Shadow Energy
+				Tooltip: ""
+			}
 		}
 
 		Buffs: {
 			ChtuxlagorInferno: {
 				DisplayName: Chtuxlagor Inferno
 				Description: OOOHHHH NOOOO YOU dAed
+			}
+
+			MonstrousMaul: {
+				DisplayName: Monstrous Maul
+				Description: The power of Eternity Mode compels you
 			}
 
 			SadismEX: {
@@ -3723,6 +3738,8 @@ Mods: {
 			SandNukeSupremeProj.DisplayName: Sand Nuke Supreme Proj
 			SnowNukeProj.DisplayName: Snow Nuke Proj
 			SnowNukeSupremeProj.DisplayName: Snow Nuke Supreme Proj
+			NDLaserbeam.DisplayName: N D Laserbeam
+			MutantSCal.DisplayName: Mutant S Cal
 		}
 
 		Bestiary: {

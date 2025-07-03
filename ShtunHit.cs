@@ -26,6 +26,10 @@ namespace ssm
             }
             if (NPC.AnyNPCs(ModContent.NPCType<MutantEX>()))
             {
+                Player.AddBuff(ModContent.BuffType<MonstrousMaul>(), 180);
+            }
+            if (NPC.AnyNPCs(ModContent.NPCType<MutantEX>()))
+            {
                 Player.statLife -= Player.statLife / 5;
             }
             if (NPC.AnyNPCs(ModContent.NPCType<MutantBoss>()))

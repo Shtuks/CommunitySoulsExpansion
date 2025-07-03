@@ -115,7 +115,7 @@ namespace ssm
             {
                 ModContent.Find<ModItem>(this.Mod.Name, "SoASoul").UpdateAccessory(player, hideVisual);
             }
-            if (ModCompatibility.Calamity.Loaded && (Item.type == ModContent.ItemType<EternitySoul>() || Item.type == ModContent.ItemType<StargateSoul>()))
+            if (ModCompatibility.Crossmod.Loaded && ModCompatibility.Calamity.Loaded && (Item.type == ModContent.ItemType<EternitySoul>() || Item.type == ModContent.ItemType<StargateSoul>()))
             {
                 ModContent.Find<ModItem>(this.Mod.Name, "CalamitySoul").UpdateAccessory(player, hideVisual);
             }

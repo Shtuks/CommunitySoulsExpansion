@@ -29,13 +29,15 @@ namespace ssm
     {
         public bool MutantSoul;
         public bool DevianttSoul;
-        public int Screenshake;
         public float throwerVelocity = 1f;
         public bool CyclonicFin;
         public int CyclonicFinCD;
         public bool MonstrocityPresence;
         public bool lumberjackSet;
         public bool starlightFruit;
+
+        public int Screenshake;
+        public int Flash;
 
         //Enchants
         public bool equippedPhantasmalEnchantment;
@@ -301,6 +303,9 @@ namespace ssm
         {
             if (Screenshake > 0)
                 Screenshake--;
+
+            if (Flash > 0)
+                Flash--;
 
             equippedPhantasmalEnchantment = false;
             equippedAbominableEnchantment = false;

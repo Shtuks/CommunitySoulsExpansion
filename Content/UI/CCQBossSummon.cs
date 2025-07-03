@@ -6,8 +6,8 @@ using Terraria;
 using FargowiltasSouls;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework;
+using ssm.Content.NPCs.MutantEX;
 
-// WHY THIS SHIT IS NOT WORKING
 namespace ssm.Content.UI
 {
     public class BossSummonUI : UIState
@@ -15,7 +15,7 @@ namespace ssm.Content.UI
         private UIPanel panel;
         private UIList list;
         private UIScrollbar scrollbar;
-
+        private UITextPanel<string> monstrButton;
         public BossSummonUI()
         {
             panel = new UIPanel();

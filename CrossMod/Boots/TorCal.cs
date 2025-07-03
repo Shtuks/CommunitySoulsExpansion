@@ -50,8 +50,11 @@ namespace ssm.CrossMod.Boots
                 //aeolus to sprinters
                 if (recipe.HasResult(ModContent.ItemType<TerrariumParticleSprinters>()) && !recipe.HasIngredient<AeolusBoots>())
                 {
-                    recipe.RemoveIngredient(5000);
                     recipe.AddIngredient<AeolusBoots>(1);
+                }
+                if (recipe.HasResult(ModContent.ItemType<TerrariumParticleSprinters>()) && recipe.HasIngredient(5000))
+                {
+                    recipe.RemoveIngredient(5000);
                 }
                 //sprinters to celestial
                 if (recipe.HasResult(ModContent.ItemType<TracersCelestial>()) && !recipe.HasIngredient<TerrariumParticleSprinters>())

@@ -6,6 +6,10 @@ using Terraria.Localization;
 using CalamityMod.Projectiles.Magic;
 using Terraria.DataStructures;
 using System.Collections.Generic;
+using Microsoft.Xna.Framework.Graphics;
+using ReLogic.Content;
+using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace ssm
 {
