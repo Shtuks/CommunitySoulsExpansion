@@ -15,8 +15,11 @@ namespace ssm.CrossMod
                 {
                     if (ShtunConfig.Instance.ThrowerMerge)
                     {
-                        tooltips[i].Text = Regex.Replace(tooltips[i].Text, "kinetic", "thrower", RegexOptions.IgnoreCase);
-                        tooltips[i].Text = Regex.Replace(tooltips[i].Text, "rogue", "thrower", RegexOptions.IgnoreCase);
+                        tooltips[i].Text = Regex.Replace(tooltips[i].Text, "kinetic", "thrower");
+                        tooltips[i].Text = Regex.Replace(tooltips[i].Text, "rogue", "thrower");
+
+                        tooltips[i].Text = Regex.Replace(tooltips[i].Text, "Kinetic", "Thrower");
+                        tooltips[i].Text = Regex.Replace(tooltips[i].Text, "Rogue", "Thrower");
                     }
                 }
             }
