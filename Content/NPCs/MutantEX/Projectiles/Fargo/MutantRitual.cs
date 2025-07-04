@@ -133,8 +133,8 @@ namespace ssm.Content.NPCs.MutantEX.Projectiles
             Color outerColor = (FargoSoulsUtil.AprilFools ? Color.Red : Color.CadetBlue);
             outerColor.A = 0;
             Color darkColor = outerColor;
-            Color mediumColor = Color.Lerp(outerColor, Color.White, 0.75f);
-            Color lightColor2 = Color.Lerp(outerColor, Color.White, 0.5f);
+            Color mediumColor = Color.Lerp(outerColor, Color.MediumPurple, 0.8f);
+            Color lightColor2 = Color.Lerp(outerColor, Color.Purple, 0.6f);
             Vector2 auraPos = base.Projectile.Center;
             float leeway = (float)(base.Projectile.width / 2) * base.Projectile.scale;
             leeway *= 0.75f;
@@ -142,11 +142,11 @@ namespace ssm.Content.NPCs.MutantEX.Projectiles
             Player target = Main.LocalPlayer;
             Asset<Texture2D> blackTile = TextureAssets.MagicPixel;
             Asset<Texture2D> diagonalNoise = FargosTextureRegistry.WavyNoise;
-            float maxOpacity = base.Projectile.Opacity;
+            float maxOpacity = Projectile.Opacity * 1.5f;
             float scale = base.Projectile.scale * 0.5f;
             ManagedShader borderShader = ShaderManager.GetShader("FargowiltasSouls.MutantP2Aura");
-            borderShader.TrySetParameter("colorMult", (object)7.35f);
-            borderShader.TrySetParameter("time", (object)Main.GlobalTimeWrappedHourly);
+            borderShader.TrySetParameter("colorMult", (object)10f);
+            borderShader.TrySetParameter("time", Main.GlobalTimeWrappedHourly * 2);
             borderShader.TrySetParameter("radius", (object)(radius * scale));
             borderShader.TrySetParameter("anchorPoint", (object)auraPos);
             borderShader.TrySetParameter("screenPosition", (object)Main.screenPosition);

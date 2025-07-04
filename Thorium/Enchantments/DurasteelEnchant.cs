@@ -55,19 +55,6 @@ namespace ssm.Thorium.Enchantments
             ModContent.GetModItem(ModContent.ItemType<SpikedBracer>()).UpdateAccessory(player, hideVisual);
             ModContent.GetModItem(ModContent.ItemType<ThoriumShield>()).UpdateAccessory(player, hideVisual);
             ModContent.GetModItem(ModContent.ItemType<SteelEnchant>()).UpdateAccessory(player, hideVisual);
-
-            if (player.AddEffect<IncandescentSparkEffect>(Item))
-            {
-                //toggle
-                ModContent.GetModItem(ModContent.ItemType<IncandescentSpark>()).UpdateAccessory(player, hideVisual);
-            }
-        }
-
-        public class IncandescentSparkEffect : AccessoryEffect
-        {
-            public override Header ToggleHeader => Header.GetHeader<MidgardForceHeader>();
-            public override int ToggleItemType => ModContent.ItemType<DurasteelEnchant>();
-            public override bool MutantsPresenceAffects => true;
         }
 
         public override void AddRecipes()
@@ -80,7 +67,6 @@ namespace ssm.Thorium.Enchantments
             recipe.AddIngredient(ModContent.ItemType<DurasteelChestplate>());
             recipe.AddIngredient(ModContent.ItemType<DurasteelGreaves>());
             recipe.AddIngredient(ModContent.ItemType<SteelEnchant>());
-            recipe.AddIngredient(ModContent.ItemType<IncandescentSpark>());
             recipe.AddIngredient(ModContent.ItemType<DurasteelBlade>());
 
             recipe.AddTile(TileID.CrystalBall);

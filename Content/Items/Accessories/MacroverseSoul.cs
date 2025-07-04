@@ -10,6 +10,7 @@ namespace ssm.Content.Items.Accessories
 {
     public class MicroverseSoul : BaseSoul
     {
+
         public override bool IsLoadingEnabled(Mod mod)
         {
             return false;//ShtunConfig.Instance.ExperimentalContent;

@@ -96,7 +96,7 @@ namespace ssm.Content.NPCs.MutantEX.Projectiles.Calamity
                 p = ShtunUtils.AnyBossAlive() ? Main.npc[FargoSoulsGlobalNPC.boss].target : Player.FindClosest(Projectile.Center, 0, 0);
                 Projectile.netUpdate = true;
             }
-            if ((Projectile.localAI[0] += 1f) > 85f)
+            if ((Projectile.localAI[0] += 1f) > 125f)
             {
                 Projectile.rotation = Projectile.velocity.ToRotation();
                 Projectile.direction = Projectile.spriteDirection = Projectile.velocity.X > 0f ? 1 : -1;

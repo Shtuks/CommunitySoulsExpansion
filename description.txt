@@ -29,7 +29,7 @@ Mods with hightest level of compatibility: Shadows of Abaddon, Thorium, Redempti
 Full list of supported mods: Calamity, Spooky, Polarities, Bombus Apis, Consolaria, Spirit, TerMerica
 Coming soon compatibility: Homeward Journey, Orchid, Vitality
 
-Coding: StarlightCat, Ropro0923, Pucheglazik
+Coding: StarlightCat, Ropro0923
 Sprites: ma3allim, DanHameln, Dandel
 Wiki: Soltan, magegor11
 Testing: cheesenuggets, Mr.Puzzles

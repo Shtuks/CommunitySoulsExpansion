@@ -57,6 +57,11 @@ namespace ssm
         [ReloadRequired]
         [BackgroundColor(60, 200, 60, 192)]
         [DefaultValue(true)]
+        public bool EternityForce { get; set; }
+
+        [ReloadRequired]
+        [BackgroundColor(60, 200, 60, 192)]
+        [DefaultValue(true)]
         public bool SacredTools { get; set; }
 
         [ReloadRequired]

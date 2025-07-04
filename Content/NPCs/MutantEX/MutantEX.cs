@@ -1,6 +1,5 @@
 ﻿using Fargowiltas.NPCs;
 using FargowiltasCrossmod.Content.Common.Projectiles;
-using FargowiltasCrossmod.Core.Common;
 using FargowiltasSouls;
 using FargowiltasSouls.Assets.ExtraTextures;
 using FargowiltasSouls.Assets.Sounds;
@@ -78,7 +77,6 @@ namespace ssm.Content.NPCs.MutantEX
 
         public static float multiplierL = 0;
         public static float multiplierD = 0;
-        public static bool applied;
         public override void SetStaticDefaults()
         {
             Main.npcFrameCount[NPC.type] = 4;
@@ -115,7 +113,7 @@ namespace ssm.Content.NPCs.MutantEX
             NPC.aiStyle = -1;
             NPC.netAlways = true;
             NPC.timeLeft = NPC.activeTime * 30;
-            NPC.BossBar = ModContent.GetInstance<MonstrocityBossBar>();
+            NPC.BossBar = ModContent.GetInstance<MonstrosityBossBar>();
 
             if (WorldSaveSystem.enragedMutantEX)
             {
@@ -123,10 +121,7 @@ namespace ssm.Content.NPCs.MutantEX
                 NPC.defense = int.MaxValue;
             }
 
-            if (ModLoader.TryGetMod("FargowiltasMusic", out Mod musicMod))
-            {
-                Music = MusicLoader.GetMusicSlot(musicMod, "Assets/Music/Storia");
-            }
+            Music = MusicLoader.GetMusicSlot(Mod, "Assets/Sounds/Music/Axion");
 
             SceneEffectPriority = SceneEffectPriority.BossHigh;
 
@@ -153,7 +148,6 @@ namespace ssm.Content.NPCs.MutantEX
             writer.Write(NPC.localAI[1]);
             writer.Write(NPC.localAI[2]);
             writer.Write(endTimeVariance);
-            writer.Write(applied);
         }
 
         public override void ReceiveExtraAI(BinaryReader reader)
@@ -162,12 +156,11 @@ namespace ssm.Content.NPCs.MutantEX
             NPC.localAI[1] = reader.ReadSingle();
             NPC.localAI[2] = reader.ReadSingle();
             endTimeVariance = reader.ReadSingle();
-            applied = reader.ReadBoolean();
         }
 
         public override void OnSpawn(IEntitySource source)
         {
-            if (ModContent.TryFind(Mod.Name, "Monstrocity", out ModNPC modNPC))
+            if (ModContent.TryFind(Mod.Name, "Monstrosity", out ModNPC modNPC))
             {
                 int n = NPC.FindFirstNPC(modNPC.Type);
                 if (n != -1 && n != Main.maxNPCs)
@@ -181,22 +174,22 @@ namespace ssm.Content.NPCs.MutantEX
                         NetMessage.SendData(MessageID.SyncNPC, -1, -1, null, n);
                 }
             }
+            multiplierD = 0;
+            multiplierL = 0;
+
+            if (ModCompatibility.Thorium.Loaded) { multiplierD += 2f; multiplierL += 1f; }
+            if (ModCompatibility.Calamity.Loaded) { multiplierD += 1f; multiplierL += 2f; }
+            if (ModCompatibility.SacredTools.Loaded) { multiplierD += 1f; multiplierL += 2f; }
+
+            NPC.lifeMax = 100000000 + (int)(100000000 * multiplierL);
+            NPC.damage = 1500 + (int)(1000 * multiplierD);
+            NPC.life = NPC.lifeMax;
+
             AuraCenter = NPC.Center;
         }
 
         public override bool PreAI()
         {
-            if (!applied) {
-                if (ModCompatibility.Thorium.Loaded) { multiplierD += 2f; multiplierL += 1f; }
-                if (ModCompatibility.Calamity.Loaded) { multiplierD += 1f; multiplierL += 2f; }
-                if (ModCompatibility.SacredTools.Loaded) { multiplierD += 1f; multiplierL += 2f; }
-
-                NPC.lifeMax = 100000000 + (int)(100000000 * multiplierL) / 2;
-                NPC.damage = 1500 + (int)(1000 * multiplierD);
-                NPC.life = NPC.lifeMax;
-                applied = true;
-            }
-
             if (!Main.dedServ)
             {
                 if (!Main.LocalPlayer.ItemTimeIsZero && (Main.LocalPlayer.HeldItem.type == ItemID.RodofDiscord || Main.LocalPlayer.HeldItem.type == ItemID.RodOfHarmony))
@@ -310,9 +303,9 @@ namespace ssm.Content.NPCs.MutantEX
                 case 42: PrepareDeathrayRain(); break; //abom
                 case 43: DeathrayRain(); break;
 
-                case 44: if (ModCompatibility.Thorium.Loaded) {ForgottenOneAttack();} else {AttackChoice++;}; break;
+                case 44: /*if (ModCompatibility.Thorium.Loaded) {ForgottenOneAttack();} else {*/AttackChoice++;/*};*/ break;
 
-                case 45: AttackChoice++; break;
+                case 45: SpearTossDirectP2(); ; break;  //mutant
                 case 46: AttackChoice++; break;
 
                 case 47: goto case 35;
@@ -437,7 +430,7 @@ namespace ssm.Content.NPCs.MutantEX
             }
 
             if (Main.LocalPlayer.active && !Main.LocalPlayer.dead && !Main.LocalPlayer.ghost)
-                Main.LocalPlayer.AddBuff(ModContent.BuffType<MonstrocityPresenceBuff>(), 2);
+                Main.LocalPlayer.AddBuff(ModContent.BuffType<MonstrosityPresenceBuff>(), 2);
 
             if (NPC.localAI[3] == 0)
             {
@@ -462,7 +455,7 @@ namespace ssm.Content.NPCs.MutantEX
                 {
                     if (Main.expertMode)
                     {
-                        Main.LocalPlayer.AddBuff(ModContent.BuffType<MonstrocityPresenceBuff>(), 2);
+                        Main.LocalPlayer.AddBuff(ModContent.BuffType<MonstrosityPresenceBuff>(), 2);
                         if (Main.getGoodWorld)
                             Main.LocalPlayer.AddBuff(ModContent.BuffType<GoldenStasisCDBuff>(), 2);
                     }
@@ -666,7 +659,7 @@ namespace ssm.Content.NPCs.MutantEX
                         EdgyBossText(GFBQuote(36));
                         if (NPC.position.Y < 0)
                             NPC.position.Y = 0;
-                        if (FargoSoulsUtil.HostCheck && ModContent.TryFind("ssm", "Monstrocity", out ModNPC modNPC) && !NPC.AnyNPCs(modNPC.Type))
+                        if (FargoSoulsUtil.HostCheck && ModContent.TryFind("ssm", "Monstrosity", out ModNPC modNPC) && !NPC.AnyNPCs(modNPC.Type))
                         {
                             FargoSoulsUtil.ClearHostileProjectiles(2, NPC.whoAmI);
                             int n = NPC.NewNPC(NPC.GetSource_FromAI(), (int)NPC.Center.X, (int)NPC.Center.Y, modNPC.Type);
@@ -3259,47 +3252,6 @@ namespace ssm.Content.NPCs.MutantEX
             }
             return retval;
         }
-
-        private void VoidRaysP3()
-        {
-            if ((NPC.ai[1] -= 1f) < 0f)
-            {
-                if (Main.netMode != 1)
-                {
-                    float speed = ((NPC.localAI[0] <= 40f) ? 4f : 2f);
-                    Projectile.NewProjectile(NPC.GetSource_FromThis(), NPC.Center, speed * Vector2.UnitX.RotatedBy(NPC.ai[2]), ModContent.ProjectileType<MutantMark1>(), FargoSoulsUtil.ScaledProjectileDamage(NPC.damage), 0f, Main.myPlayer, 0f, 0f);
-                }
-                NPC.ai[1] = 1f;
-                NPC.ai[2] += NPC.ai[3];
-                if (NPC.localAI[0] < 30f)
-                {
-                    EModeSpecialEffects();
-                }
-                if (NPC.localAI[0]++ == 40f || NPC.localAI[0] == 80f || NPC.localAI[0] == 120f)
-                {
-                    NPC.netUpdate = true;
-                    NPC.ai[2] -= NPC.ai[3] / (float)(3);
-                }
-                else if (NPC.localAI[0] >= (float)(160))
-                {
-                    NPC.netUpdate = true;
-                    NPC.ai[0] -= 1f;
-                    NPC.ai[1] = 0f;
-                    NPC.ai[2] = 0f;
-                    NPC.ai[3] = 0f;
-                    NPC.localAI[0] = 0f;
-                }
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                int d = Dust.NewDust(NPC.position, NPC.width, NPC.height, 60, 0f, 0f, 0, default(Color), 1.5f);
-                Main.dust[d].noGravity = true;
-                Main.dust[d].noLight = true;
-                Main.dust[d].velocity *= 4f;
-            }
-            NPC.velocity = Vector2.Zero;
-        }
-
         private void OkuuSpheresP3()
         {
             if (NPC.ai[2] == 0f)
@@ -3378,7 +3330,7 @@ namespace ssm.Content.NPCs.MutantEX
                 EModeSpecialEffects();
             }
             int endTime = 360;
-            endTime += 360;
+            endTime += 400;
             if ((NPC.ai[3] += 1f) > (float)endTime)
             {
                 NPC.ai[0] -= 1f;
@@ -3466,7 +3418,7 @@ namespace ssm.Content.NPCs.MutantEX
         {
             if (!AliveCheck(player))
 
-                NPC.localAI[2] = 0;
+            NPC.localAI[2] = 0;
             Vector2 targetPos = player.Center;
             targetPos.X += 500 * (NPC.Center.X < targetPos.X ? -1 : 1);
             if (NPC.Distance(targetPos) > 50)
@@ -3512,7 +3464,7 @@ namespace ssm.Content.NPCs.MutantEX
                     int max = 10;
                     int damage = FargoSoulsUtil.ScaledProjectileDamage(NPC.damage);
                     SpawnSphereRing(max, 6f, damage, 0.5f);
-                    SpawnSphereRing(max, 6f, damage, -0.5f);
+                    SpawnSphereRing(max, 8f, damage, -0.5f);
                 }
             }
             else if (NPC.ai[2] == 330f)
@@ -3705,7 +3657,7 @@ namespace ssm.Content.NPCs.MutantEX
             NPC.life = 0;
             NPC.dontTakeDamage = false;
             NPC.checkDead();
-            if (Main.netMode == 1 || !ModContent.TryFind<ModNPC>("Fargowiltas", "Mutant", out var modNPC) || NPC.AnyNPCs(modNPC.Type))
+            if (Main.netMode == 1 || !ModContent.TryFind<ModNPC>(Mod.Name, "Monstrosity", out var modNPC) || NPC.AnyNPCs(modNPC.Type))
             {
                 return;
             }
@@ -3784,8 +3736,8 @@ namespace ssm.Content.NPCs.MutantEX
         public override void ModifyNPCLoot(NPCLoot npcLoot)
         {
             //npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<MonstrosityEmodeAccessory>()));
-            npcLoot.Add(ItemDropRule.BossBag(ModContent.ItemType<MonstrocityBag>()));
-            npcLoot.Add(ItemDropRule.MasterModeCommonDrop(ModContent.ItemType<MonstrocityRelicItem>()));
+            npcLoot.Add(ItemDropRule.BossBag(ModContent.ItemType<MonstrosityBag>()));
+            npcLoot.Add(ItemDropRule.MasterModeCommonDrop(ModContent.ItemType<MonstrosityRelicItem>()));
             //npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<MonstrosityTrophy>()));
             //npcLoot.Add(ItemDropRule.MasterModeDropOnAllPlayers(ModContent.ItemType<MonstrosityPet>(), 4));
         }
@@ -4048,7 +4000,7 @@ namespace ssm.Content.NPCs.MutantEX
                     const int loveOffset = 90;
                     if (FargoSoulsUtil.HostCheck)
                     {
-                        int p = Projectile.NewProjectile(NPC.GetSource_FromThis(), NPC.Center + -Vector2.UnitY.RotatedBy(angle) * loveOffset, Vector2.Zero, ModContent.ProjectileType<DeviSparklingLove>(), FargoSoulsUtil.ScaledProjectileDamage(NPC.defDamage, 4f / 2), 0f, Main.myPlayer, NPC.whoAmI, loveOffset);
+                        int p = Projectile.NewProjectile(NPC.GetSource_FromThis(), NPC.Center + -Vector2.UnitY.RotatedBy(angle) * loveOffset, Vector2.Zero, ModContent.ProjectileType<MonstrositySparklingLove>(), FargoSoulsUtil.ScaledProjectileDamage(NPC.defDamage, 4f / 2), 0f, Main.myPlayer, NPC.whoAmI, loveOffset);
                     }
 
                     const int spacing = 80;
@@ -4070,7 +4022,7 @@ namespace ssm.Content.NPCs.MutantEX
                     }
 
 
-                    if (WorldSavingSystem.MasochistModeReal && FargoSoulsUtil.HostCheck && Main.getGoodWorld)
+                    if (FargoSoulsUtil.HostCheck)
                     {
                         for (int i = 0; i < 4; i++)
                         {
@@ -4081,17 +4033,16 @@ namespace ssm.Content.NPCs.MutantEX
 
                             int damage = NPC.ai[1] > 1 ? FargoSoulsUtil.ScaledProjectileDamage(NPC.defDamage, 4f / 3) : FargoSoulsUtil.ScaledProjectileDamage(NPC.defDamage);
 
-                            Projectile.NewProjectile(NPC.GetSource_FromThis(), NPC.Center, speed, ModContent.ProjectileType<DeviEnergyHeart>(),
+                            Projectile.NewProjectile(NPC.GetSource_FromThis(), NPC.Center, speed, ModContent.ProjectileType<MonstrosityDEH>(),
                                 damage, 0f, Main.myPlayer, 0, acceleration);
                         }
                     }
 
-                    if (WorldSavingSystem.MasochistModeReal)
-                        NPC.ai[1] += 60;
+                    NPC.ai[1] += 80;
                 }
 
                 float progress = NPC.ai[1] / 150f;
-                float modifier = 0.025f;
+                float modifier = 0.04f;
                 SwingRotation -= NPC.ai[2] * progress * modifier;
 
                 NPC.direction = NPC.spriteDirection = Math.Sign(NPC.ai[2]);
@@ -4123,7 +4074,7 @@ namespace ssm.Content.NPCs.MutantEX
                 {
                     if (NPC.ai[1] == 180)
                     {
-                        foreach (Projectile proj in Main.projectile.Where(p => (p.TypeAlive<DeviAxe>() || p.TypeAlive<DeviSparklingLove>()) && p.ai[0] == NPC.whoAmI))
+                        foreach (Projectile proj in Main.projectile.Where(p => (p.TypeAlive<MonstrosityAxe>() || p.TypeAlive<MonstrositySparklingLove>()) && p.ai[0] == NPC.whoAmI))
                         {
                             proj.Kill();
                         }
@@ -4160,7 +4111,7 @@ namespace ssm.Content.NPCs.MutantEX
             bool masoExtend = WorldSavingSystem.MasochistModeReal && MasoSwingCount == 0;
             if (NPC.ai[1] == 178 && !masoExtend)
             {
-                foreach (Projectile proj in Main.projectile.Where(p => (p.TypeAlive<DeviAxe>() || p.TypeAlive<DeviSparklingLove>()) && p.ai[0] == NPC.whoAmI))
+                foreach (Projectile proj in Main.projectile.Where(p => (p.TypeAlive<MonstrosityAxe>() || p.TypeAlive<MonstrositySparklingLove>()) && p.ai[0] == NPC.whoAmI))
                 {
                     proj.timeLeft = 2;
                 }

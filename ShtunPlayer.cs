@@ -32,7 +32,7 @@ namespace ssm
         public float throwerVelocity = 1f;
         public bool CyclonicFin;
         public int CyclonicFinCD;
-        public bool MonstrocityPresence;
+        public bool MonstrosityPresence;
         public bool lumberjackSet;
         public bool starlightFruit;
 

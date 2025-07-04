@@ -920,9 +920,12 @@ Mods: {
 				DisplayName: Foundations Force
 				Tooltip:
 					'''
+					[i:ssm/BlightboneEnchant] Chance for a frosted bone to support your attack
+					[i:ssm/FrosthunterEnchant] Bones explode into frost explosion and freeze enemies
+					[i:ssm/PraireEnchant] Bones damage and velocity affected by speed of wind
+					[i:ssm/LapisEnchant] Being near frost explosion grants max lapis speed and Defense
+					[i:ssm/CairoCrusaderEnchant] Frost Explosion can enevelop player in blizzar that can ignore attack
 					':HeyMF:'
-					All armor bonuses from Prairie, Frosthunter, Lapis, and Blightbone
-					Effects of Frigid Pendant, Lapis Pendant, and Pumpkin Amulet
 					'''
 			}
 
@@ -930,10 +933,11 @@ Mods: {
 				DisplayName: Generations Force
 				Tooltip:
 					'''
-					Through all this world's years, none have seen anything quite like you'
-					All armor bonuses from Eerie, Bismuth, and Dreadfire
-					All armor bonuses from Space Junk and Marstech
-					Effects of Dreadflame Emblem
+					[i:ssm/DreadfireEnchant] You have aura that inflict dreadfire on nearby enemies and allies
+					[i:ssm/BismuthEnchant] Anyone standing inside of aura get bismuth crystal that reduces damage by 10% 
+					[i:ssm/EerieEnchant] After shield breaks for next 10 seconds you will release eerie pulses that buff minions and allies
+					[i:ssm/MarstechEnchant]
+					'Through all this world's years, none have seen anything quite like you'
 					'''
 			}
 
@@ -941,22 +945,27 @@ Mods: {
 				DisplayName: Soran Force
 				Tooltip:
 					'''
+					[i:ssm/BlazingBruteEnchant] [i:ssm/CosmicCommanderEnchant] Marks bosses with crosshair
+					[i:ssm/BlazingBruteEnchant] [i:ssm/CosmicCommanderEnchant] The longer you hit in crosshairs, the more damsge boost you get
+					[i:ssm/QuasarEnchant] [i:ssm/FallenPrinceEnchant] Hitting enemies have chance to reate quasar that pull weak enemies
+					[i:ssm/FallenPrinceEnchant] [i:ssm/NebulousApprenticeEnchant] Upon death you will be revived in supernova explosion
+					[i:ssm/FallenPrinceEnchant] [i:ssm/NebulousApprenticeEnchant] After respawning Shadow of Nuba will protect you for few seconds
+					[i:ssm/StellarPriestEnchant] Minions have a chance to summon starstream worms
+					[i:ssm/NebulousApprenticeEnchant] Attacking enemies release buff wisps which can be picked up for different stacking buffs
 					'The true power of the Soraniti'
-					All armor bonuses from Blazing Brute, Cosmic Commander, and Nebulous Apprentice
-					All armor bonuses from Stellar Priest, Quasar, and Fallen Prince
-					Effects of Nuba's Blessing, Novaniel's Resolve, and Celestial Ring
 					'''
 			}
 
 			SyrainForce: {
-				DisplayName: Syrain Force
+				DisplayName: Syran Force
 				Tooltip:
 					'''
+					[i:ssm/VoidWardenEnchant] [i:ssm/AsthraltiteEnchant] Grants ring of void lanterns that decrease agression and shoot enemies
+					[i:ssm/VoidWardenEnchant] Hitting enemy inflict Fear that makes them attack other enemies
+					[i:ssm/FlariumEnchant] Lanterns sometimes spur abyssal flame geysers
+					[i:ssm/VulcanReaperEnchant] If lanterns kill enemy while any boss active your boss damage increases
+					[i:ssm/ExitumLuxEnchant] Attacking with relic weapon grants 20% damage buff
 					'Dragon Rage empowers you, and encourages you to go on'
-					All armor bonuses from Void Warden, Vulcan Reaper, and Flarium
-					All armor bonuses from Asthraltite
-					Effects of Ring of the Fallen, Memento Mori, and Arcanum of the Caster
-					Effects of Stone of Resonance
 					'''
 			}
 
@@ -964,16 +973,12 @@ Mods: {
 				DisplayName: Soul of Two Realms
 				Tooltip:
 					'''
+					[i:ssm/SyrianForce] Gain void lanterns ring that can spur gaysers, buffs relic weapons, increases boss damage if enemy killed
+					[i:ssm/SoranForce] Marks bosses with crosshair that boost your damage, creates quasars when hitting enemy, supernova revival
+					[i:ssm/SoranForce] Release buff wisps whan attacking, minions summon starstream worms
+					[i:ssm/GenerationsForce] Aura inflicting dreadfire, bismuth crystals that release eerie pulses when broken, 
+					[i:ssm/FoundationsForce] Blightbone support, bones explode and grant lapis shield and speed, envelop player in blizzard
 					'Two worlds, now embodied as one'
-					All armor bonuses from Bismuth, Frosthunter, and Blightbone
-					All armor bonuses from Dreadfire, Space Junk, and Marstech
-					All armor bonuses from Blazing Brute, Cosmic Commander, and Nebulous Apprentice
-					All armor bonuses from Stellar Priest and Fallen Prince
-					All armor bonuses from Void Warden, Vulcan Reaper, and Flarium
-					All armor bonuses from Asthraltite
-					Effects of Dreadflame Emblem, Lapis Pendant, Frigid Pendant, and Pumpkin Amulet
-					Effects of Nuba's Blessing, Novaniel's Resolve, and Celestial Ring
-					Effects of Ring of the Fallen, Memento Mori, and Arcanum of the Caster
 					'''
 			}
 
@@ -1260,7 +1265,7 @@ Mods: {
 					'Masterfully forged by the Blacksmith'
 					12% damage reduction at Full HP
 					Grants immunity to shambler chain-balls
-					Effects of Incandescent Spark, Spiked Bracersand and Thorium Shield
+					Effects of Spiked Bracersand and Thorium Shield
 					'''
 			}
 
@@ -1802,7 +1807,7 @@ Mods: {
 					'Behold the power of Mankind...'
 					All armor bonuses from Lodestone, Valadium, Illumite, and Terrarium
 					All armor bonuses from Durasteel, Darksteel, Steel, and Thorium
-					Effects of Incandescent Spark, Spiked Bracersand, Thorium Shield, and Obsidian Scale
+					Effects of Spiked Bracersand, Thorium Shield, and Obsidian Scale
 					Effects of Crietz, Astro-Beetle Husk, Sandweaver's Tiara, and Beholder's gaze
 					Effects of Mirror of Beholder, Nuclear Option, Jazz Music Player and Band of Replenishmen
 					Effects of Terrarium Surround Buffer and Fan Letter
@@ -2620,12 +2625,12 @@ Mods: {
 					'''
 			}
 
-			MonstrocityBag: {
+			MonstrosityBag: {
 				DisplayName: Monstrosity Bag
 				Tooltip: ""
 			}
 
-			MonstrocityRelicItem: {
+			MonstrosityRelicItem: {
 				DisplayName: Monstrosity Relic
 				Tooltip: ""
 			}
@@ -3297,7 +3302,7 @@ Mods: {
 				Description: Little Yharon is fighting for you.
 			}
 
-			MonstrocityPresenceBuff: {
+			MonstrosityPresenceBuff: {
 				Description: No soul toggles, no eternity crits, no escape.
 				DisplayName: Monstrosity Presence
 			}
@@ -3334,7 +3339,7 @@ Mods: {
 		}
 
 		NPCs: {
-			Monstrocity: {
+			Monstrosity: {
 				TownNPCMood: {
 					Content: I am content.
 					NoHome: I hate not having a home.
@@ -3461,7 +3466,6 @@ Mods: {
 			TerrariumEffect: Terrarium Energies
 			NuclearOptionEffect: Nuclear Option
 			IllumiteEffect: Illumite Missiles
-			IncandescentSparkEffect: Incandescent Spark
 			TideHunterEffect: Foam Splashes
 			DepthDiverEffect: Drowned Doublon
 			DepthAuraEffect: Depth Aura Buff
@@ -3739,10 +3743,16 @@ Mods: {
 			SnowNukeSupremeProj.DisplayName: Snow Nuke Supreme Proj
 			NDLaserbeam.DisplayName: ND Laserbeam
 			MutantSCal.DisplayName: Mutant SCal
+			MonstrosityBoss.DisplayName: Monstrosity Boss
+			MonstrOldDuke.DisplayName: Monstr Old Duke
+			MonstrYharon.DisplayName: Monstr Yharon
+			MonstrosityDEH.DisplayName: Monstrosity D E H
+			MonstrositySparklingLove.DisplayName: Monstrosity Sparkling Love
+			MonstrosityAxe.DisplayName: Monstrosity Axe
 		}
 
 		Bestiary: {
-			Monstrocity: The Siblings' more annoying, strange cousin, he thinks he is stronger than his cousin the mutant which makes the both of them fight a lot, he likes tacos though.
+			Monstrosity: The Siblings' more annoying, strange cousin, he thinks he is stronger than his cousin the mutant which makes the both of them fight a lot, he likes tacos though.
 			Echdeath: ech
 		}
 
@@ -3782,7 +3792,7 @@ Mods: {
 				}
 
 				ThrowerMerge: {
-					Tooltip: Merge Throewer(Thorium), Rogue(Calamity) and Revenant(SoA) into one hybrid class.
+					Tooltip: Merge Thrower(Thorium), Rogue(Calamity) and Revenant(SoA) into one hybrid class.
 					Label: Thrower Merge
 				}
 
@@ -3848,6 +3858,11 @@ Mods: {
 
 				Consolaria: {
 					Label: Consolaria
+					Tooltip: ""
+				}
+
+				EternityForce: {
+					Label: Eternity Force
 					Tooltip: ""
 				}
 			}
