@@ -8,7 +8,7 @@ namespace ssm.SpiritMod
 {
     [JITWhenModsEnabled(ModCompatibility.SpiritMod.Name)]
     [ExtendsFromMod(ModCompatibility.SpiritMod.Name)]
-    public class ConsolariaRecipes : ModSystem
+    public class SpiritModRecipes : ModSystem
     {
         public override void PostAddRecipes()
         {

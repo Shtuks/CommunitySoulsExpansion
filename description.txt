@@ -26,8 +26,8 @@ All things mod doing for now:
 Redemption and SoA Enchantments will be completely reworked soon.
 
 Mods with hightest level of compatibility: Shadows of Abaddon, Thorium, Redemption
-Full list of supported mods: Calamity, Spooky, Polarities, Bombus Apis, Consolaria, Spirit, TerMerica
-Coming soon compatibility: Homeward Journey, Orchid, Vitality
+Full list of supported mods: Calamity, Spooky, Polarities, Bombus Apis, Consolaria, Spirit, TerMerica, Homeward Journey
+Coming soon compatibility: Orchid, Vitality
 
 Coding: StarlightCat, Ropro0923
 Sprites: ma3allim, DanHameln, Dandel
