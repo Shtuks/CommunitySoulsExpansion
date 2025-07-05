@@ -1,23 +1,23 @@
-using Terraria;
-using Terraria.ID;
-using Terraria.ModLoader;
-using ssm.Content.Buffs;
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+using CalamityMod.Items.LoreItems;
+using ssm.Core;
 
-namespace ssm.Content.Items.Consumables
+namespace ssm.Content.Items
 {
-    public class Sadism : ModItem
+    [ExtendsFromMod(ModCompatibility.Calamity.Name)]
+    [JITWhenModsEnabled(ModCompatibility.Calamity.Name)]
+    [LegacyName(new string[] { "KnowledgeMonstrosity" })]
+    public class MonstrosityLore : LoreItem
     {
-        public override bool IsLoadingEnabled(Mod mod)
-        {
-            return ShtunConfig.Instance.AlternativeSiblings;
-        }
+        public override void SetStaticDefaults() => base.SetStaticDefaults();
+
         public override void SetDefaults()
         {
-            Item.width = 20;
-            Item.height = 20;
-            Item.maxStack = 30;
+            Item.width = 34;
+            Item.height = 26;
             Item.rare = 11;
-            Item.value = Item.sellPrice(10, 0, 0, 0);
         }
 
         public override bool PreDrawTooltipLine(DrawableTooltipLine line, ref int yOffset)
@@ -37,5 +37,10 @@ namespace ssm.Content.Items.Consumables
             }
             return true;
         }
+
+        //public override void AddRecipes()
+        //{
+        //    this.CreateRecipe(1).AddIngredient<MonstrosityTrophy>(1).AddTile(101);
+        //}
     }
 }

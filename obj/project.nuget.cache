@@ -1,18 +1,14 @@
 {
   "version": 2,
-  "dgSpecHash": "OTK18iCyj4E=",
+  "dgSpecHash": "scr3nFzTuhI=",
   "success": false,
-  "projectFilePath": "C:\\Users\\kolot\\OneDrive\\Документы\\My Games\\Terraria\\tModLoader\\ModSources\\ssm\\ssm.csproj",
+  "projectFilePath": "C:\\Users\\elikm\\Source\\Repos\\CommunitySoulsExpansion\\ssm.csproj",
   "expectedPackageFiles": [],
   "logs": [
     {
-      "code": "NU1101",
+      "code": "NU1105",
       "level": "Error",
-      "message": "Не удалось найти пакет tModLoader.CodeAssist. Пакеты с таким идентификатором отсутствуют в следующих источниках пакетов: Microsoft Visual Studio Offline Packages",
-      "libraryId": "tModLoader.CodeAssist",
-      "targetGraphs": [
-        "net8.0"
-      ]
+      "message": "Невозможно прочитать сведения о проекте для \"ssm\": Идентификатор платформы \"\" недопустим."
     }
   ]
 }

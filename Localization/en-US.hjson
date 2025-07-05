@@ -10,6 +10,58 @@ Mods: {
 		}
 
 		Items: {
+			Lore: {
+				MonstrosityLore: {
+					Lore:
+						'''
+						What a calamity
+						'''
+					DisplayName: Lore - Monstrosity
+				}
+				EchdeathLore: {
+					Lore:
+						'''
+						What a calamity
+						'''
+					DisplayName: Lore - Echdeath
+				}
+				DivergenttLore: {
+					Lore:
+						'''
+						What a calamity
+						'''
+					DisplayName: Lore - Divergentt
+				}
+				AbomLore: {
+					Lore:
+						'''
+						What a calamity
+						'''
+					DisplayName: Lore - Abominationn
+				}
+				MutantLore: {
+					Lore:
+						'''
+						What a calamity
+						'''
+					DisplayName: Lore - Mutant
+				}
+				AmalgamationnLore: {
+					Lore:
+						'''
+						What a calamity
+						'''
+					DisplayName: Lore - Amalgamationn
+				}
+				DeviLore: {
+					Lore:
+						'''
+						What a calamity
+						'''
+					DisplayName: Lore - Deviantt
+				}
+			}
+
 			OstaraEnchant: {
 				DisplayName: Ostara Enchantment
 				Tooltip:
