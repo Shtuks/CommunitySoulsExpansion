@@ -177,12 +177,12 @@ namespace ssm.Content.NPCs.MutantEX
             multiplierD = 0;
             multiplierL = 0;
 
-            if (ModCompatibility.Thorium.Loaded) { multiplierD += 2f; multiplierL += 1f; }
+            if (ModCompatibility.Thorium.Loaded) { multiplierD += 1f; multiplierL += 1f; }
             if (ModCompatibility.Calamity.Loaded) { multiplierD += 1f; multiplierL += 2f; }
             if (ModCompatibility.SacredTools.Loaded) { multiplierD += 1f; multiplierL += 2f; }
 
             NPC.lifeMax = 100000000 + (int)(100000000 * multiplierL);
-            NPC.damage = 1500 + (int)(1000 * multiplierD);
+            NPC.damage = 1000 + (int)(1000 * multiplierD);
             NPC.life = NPC.lifeMax;
 
             AuraCenter = NPC.Center;
@@ -474,11 +474,11 @@ namespace ssm.Content.NPCs.MutantEX
         {
             if (FargoSoulsUtil.HostCheck)
             {
-                if (WorldSavingSystem.EternityMode && AttackChoice != -7 && (AttackChoice < 0 || AttackChoice > 10) && FargoSoulsUtil.ProjectileExists(ritualProj, ModContent.ProjectileType<MutantRitual>()) == null)
-                    ritualProj = Projectile.NewProjectile(NPC.GetSource_FromThis(), NPC.Center, Vector2.Zero, ModContent.ProjectileType<MutantRitual>(), FargoSoulsUtil.ScaledProjectileDamage(NPC.defDamage), 0f, Main.myPlayer, 0f, NPC.whoAmI);
+                if (WorldSavingSystem.EternityMode && AttackChoice != -7 && (AttackChoice < 0 || AttackChoice > 10) && FargoSoulsUtil.ProjectileExists(ritualProj, ModContent.ProjectileType<MonstrosityRitual>()) == null)
+                    ritualProj = Projectile.NewProjectile(NPC.GetSource_FromThis(), NPC.Center, Vector2.Zero, ModContent.ProjectileType<MonstrosityRitual>(), FargoSoulsUtil.ScaledProjectileDamage(NPC.defDamage), 0f, Main.myPlayer, 0f, NPC.whoAmI);
 
-                if (FargoSoulsUtil.ProjectileExists(ringProj, ModContent.ProjectileType<MutantRitual5>()) == null)
-                    ringProj = Projectile.NewProjectile(NPC.GetSource_FromThis(), NPC.Center, Vector2.Zero, ModContent.ProjectileType<MutantRitual5>(), 0, 0f, Main.myPlayer, 0f, NPC.whoAmI);
+                if (FargoSoulsUtil.ProjectileExists(ringProj, ModContent.ProjectileType<MonstrosityRitual5>()) == null)
+                    ringProj = Projectile.NewProjectile(NPC.GetSource_FromThis(), NPC.Center, Vector2.Zero, ModContent.ProjectileType<MonstrosityRitual5>(), 0, 0f, Main.myPlayer, 0f, NPC.whoAmI);
 
                 if (FargoSoulsUtil.ProjectileExists(spriteProj, ModContent.ProjectileType<MonstrosityBoss>()) == null)
                 {
@@ -816,11 +816,11 @@ namespace ssm.Content.NPCs.MutantEX
             if (!SkyManager.Instance["ssm:MutantEX"].IsActive())
                 SkyManager.Instance.Activate("ssm:MutantEX");
 
-            if (ModLoader.TryGetMod("FargowiltasMusic", out Mod musicMod))
-            {
-                if (musicMod.Version >= Version.Parse("0.1.1"))
-                    Music = MusicLoader.GetMusicSlot(musicMod, "Assets/Music/Storia");
-            }
+            //if (ModLoader.TryGetMod("FargowiltasMusic", out Mod musicMod))
+            //{
+            //    if (musicMod.Version >= Version.Parse("0.1.1"))
+            //        Music = MusicLoader.GetMusicSlot(musicMod, "Assets/Music/Storia");
+            //}
         }
 
         void FancyFireballs(int repeats)
@@ -1183,7 +1183,7 @@ namespace ssm.Content.NPCs.MutantEX
 
                     EdgyBossText(GFBQuote(6));
                 }
-                else if (NPC.localAI[0] >= 65)
+                else if (NPC.localAI[0] >= 75)
                 {
                     P1NextAttackOrMasoOptions(7);
                 }
@@ -1234,12 +1234,12 @@ namespace ssm.Content.NPCs.MutantEX
 
                     if (FargoSoulsUtil.HostCheck)
                     {
-                        ritualProj = Projectile.NewProjectile(NPC.GetSource_FromThis(), NPC.Center, Vector2.Zero, ModContent.ProjectileType<MutantRitual>(), FargoSoulsUtil.ScaledProjectileDamage(NPC.defDamage), 0f, Main.myPlayer, 0f, NPC.whoAmI);
+                        ritualProj = Projectile.NewProjectile(NPC.GetSource_FromThis(), NPC.Center, Vector2.Zero, ModContent.ProjectileType<MonstrosityRitual>(), FargoSoulsUtil.ScaledProjectileDamage(NPC.defDamage), 0f, Main.myPlayer, 0f, NPC.whoAmI);
 
                         //maso rings
-                        //Projectile.NewProjectile(NPC.GetSource_FromThis(), NPC.Center, Vector2.Zero, ModContent.ProjectileType<MutantRitual2>(), 0, 0f, Main.myPlayer, 0f, NPC.whoAmI);
-                        //Projectile.NewProjectile(NPC.GetSource_FromThis(), NPC.Center, Vector2.Zero, ModContent.ProjectileType<MutantRitual3>(), 0, 0f, Main.myPlayer, 0f, NPC.whoAmI);
-                        //Projectile.NewProjectile(NPC.GetSource_FromThis(), NPC.Center, Vector2.Zero, ModContent.ProjectileType<MutantRitual4>(), 0, 0f, Main.myPlayer, 0f, NPC.whoAmI);
+                        //Projectile.NewProjectile(NPC.GetSource_FromThis(), NPC.Center, Vector2.Zero, ModContent.ProjectileType<MonstrosityRitual2>(), 0, 0f, Main.myPlayer, 0f, NPC.whoAmI);
+                        //Projectile.NewProjectile(NPC.GetSource_FromThis(), NPC.Center, Vector2.Zero, ModContent.ProjectileType<MonstrosityRitual3>(), 0, 0f, Main.myPlayer, 0f, NPC.whoAmI);
+                        //Projectile.NewProjectile(NPC.GetSource_FromThis(), NPC.Center, Vector2.Zero, ModContent.ProjectileType<MonstrosityRitual4>(), 0, 0f, Main.myPlayer, 0f, NPC.whoAmI);
                     }
                 }
             }
@@ -1529,7 +1529,7 @@ namespace ssm.Content.NPCs.MutantEX
                 NPC.ai[3] = NPC.Center.Y;
                 for (int i = 0; i < 1000; i++)
                 {
-                    if (Main.projectile[i].active && Main.projectile[i].type == ModContent.ProjectileType<MutantRitual>() && Main.projectile[i].ai[1] == (float)NPC.whoAmI)
+                    if (Main.projectile[i].active && Main.projectile[i].type == ModContent.ProjectileType<MonstrosityRitual>() && Main.projectile[i].ai[1] == (float)NPC.whoAmI)
                     {
                         NPC.ai[2] = Main.projectile[i].Center.X;
                         NPC.ai[3] = Main.projectile[i].Center.Y;
@@ -2330,7 +2330,7 @@ namespace ssm.Content.NPCs.MutantEX
             {
                 int flip = ((!(NPC.ai[2] < 360f) || !Main.rand.NextBool()) ? 1 : (-1));
                 Vector2 spawnPos = pos + off * Vector2.UnitY * flip;
-                float ai0 = ((FargoSoulsUtil.ProjectileExists(ritualProj, ModContent.ProjectileType<MutantRitual>()) == null) ? 0f : NPC.Distance(Main.projectile[ritualProj].Center));
+                float ai0 = ((FargoSoulsUtil.ProjectileExists(ritualProj, ModContent.ProjectileType<MonstrosityRitual>()) == null) ? 0f : NPC.Distance(Main.projectile[ritualProj].Center));
                 Projectile.NewProjectile(NPC.GetSource_FromThis(), spawnPos, vel * flip, ModContent.ProjectileType<MutantSlimeBall>(), FargoSoulsUtil.ScaledProjectileDamage(NPC.damage), 0f, Main.myPlayer, ai0, 0f);
             }
         }
@@ -2378,7 +2378,7 @@ namespace ssm.Content.NPCs.MutantEX
                     {
                         const int flip = 1;
                         Vector2 spawnPos = pos + off * Vector2.UnitY * flip;
-                        float ai0 = FargoSoulsUtil.ProjectileExists(ritualProj, ModContent.ProjectileType<MutantRitual>()) == null ? 0f : NPC.Distance(Main.projectile[ritualProj].Center);
+                        float ai0 = FargoSoulsUtil.ProjectileExists(ritualProj, ModContent.ProjectileType<MonstrosityRitual>()) == null ? 0f : NPC.Distance(Main.projectile[ritualProj].Center);
                         Projectile.NewProjectile(NPC.GetSource_FromThis(), spawnPos, vel * flip, ModContent.ProjectileType<MutantSlimeSpike>(), FargoSoulsUtil.ScaledProjectileDamage(NPC.defDamage), 0f, Main.myPlayer, ai0, ai2: frame);
                     }
 
@@ -2787,7 +2787,7 @@ namespace ssm.Content.NPCs.MutantEX
                 while (NPC.ai[2] == oldOffset)
                     NPC.ai[2] = Main.rand.Next(-1, 2); 
 
-                Vector2 centerPoint = FargoSoulsUtil.ProjectileExists(ritualProj, ModContent.ProjectileType<MutantRitual>()) == null ? player.Center : Main.projectile[ritualProj].Center;
+                Vector2 centerPoint = FargoSoulsUtil.ProjectileExists(ritualProj, ModContent.ProjectileType<MonstrosityRitual>()) == null ? player.Center : Main.projectile[ritualProj].Center;
                 float maxVariance = 150; 
                 float maxOffsetWithinStep = maxVariance / 3 * .75f; 
                 centerPoint.Y += maxVariance * NPC.ai[2]; 
@@ -3096,7 +3096,7 @@ namespace ssm.Content.NPCs.MutantEX
                 NPC.netUpdate = true;
                 NPC.ai[2] = player.Center.X;
                 NPC.ai[3] = player.Center.Y;
-                if (FargoSoulsUtil.ProjectileExists(ritualProj, ModContent.ProjectileType<MutantRitual>()) != null)
+                if (FargoSoulsUtil.ProjectileExists(ritualProj, ModContent.ProjectileType<MonstrosityRitual>()) != null)
                 {
                     NPC.ai[2] = Main.projectile[ritualProj].Center.X;
                     NPC.ai[3] = Main.projectile[ritualProj].Center.Y;
@@ -3673,15 +3673,6 @@ namespace ssm.Content.NPCs.MutantEX
         }
 
         #endregion
-        
-        public override void OnHitPlayer(Player target, Player.HurtInfo hurtInfo)
-        {
-            target.FargoSouls().MaxLifeReduction += 100;
-            target.AddBuff(ModContent.BuffType<OceanicMaulBuff>(), 5400);
-            target.AddBuff(ModContent.BuffType<MutantFangBuff>(), 180);
-            target.AddBuff(ModContent.BuffType<CurseoftheMoonBuff>(), 600);
-        }
-
         public override void HitEffect(NPC.HitInfo hit)
         {
             for (int i = 0; i < 3; i++)
@@ -3897,7 +3888,7 @@ namespace ssm.Content.NPCs.MutantEX
             {
                 if (FargoSoulsUtil.HostCheck)
                 {
-                    Vector2 pos = FargoSoulsUtil.ProjectileExists(ritualProj, ModContent.ProjectileType<MutantRitual>()) == null ? NPC.Center : Main.projectile[ritualProj].Center;
+                    Vector2 pos = FargoSoulsUtil.ProjectileExists(ritualProj, ModContent.ProjectileType<MonstrosityRitual>()) == null ? NPC.Center : Main.projectile[ritualProj].Center;
                     Vector2 rot = Utils.SafeNormalize(player.velocity, Vector2.UnitY);
                     const int moons = 7;
                     for (int i = 0; i < moons; i++)
@@ -4042,7 +4033,7 @@ namespace ssm.Content.NPCs.MutantEX
                 }
 
                 float progress = NPC.ai[1] / 150f;
-                float modifier = 0.04f;
+                float modifier = 0.03f;
                 SwingRotation -= NPC.ai[2] * progress * modifier;
 
                 NPC.direction = NPC.spriteDirection = Math.Sign(NPC.ai[2]);

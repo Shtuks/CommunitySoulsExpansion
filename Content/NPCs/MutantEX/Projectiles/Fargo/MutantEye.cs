@@ -68,14 +68,14 @@ public class MutantEye : ModProjectile, IPixelPrimitiveDrawer
 			this.ritualID = -2;
 			for (int i = 0; i < 1000; i++)
 			{
-				if (Main.projectile[i].active && Main.projectile[i].type == ModContent.ProjectileType<MutantRitual>())
+				if (Main.projectile[i].active && Main.projectile[i].type == ModContent.ProjectileType<MonstrosityRitual>())
 				{
 					this.ritualID = i;
 					break;
 				}
 			}
 		}
-		Projectile ritual = FargoSoulsUtil.ProjectileExists(this.ritualID, ModContent.ProjectileType<MutantRitual>());
+		Projectile ritual = FargoSoulsUtil.ProjectileExists(this.ritualID, ModContent.ProjectileType<MonstrosityRitual>());
 		if (ritual != null && base.Projectile.Distance(ritual.Center) > 1200f)
 		{
 			base.Projectile.timeLeft = 0;

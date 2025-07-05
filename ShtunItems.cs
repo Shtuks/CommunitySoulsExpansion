@@ -49,18 +49,17 @@ namespace ssm
             }
             if (entity.type == ModContent.ItemType<TheBiggestSting>())
             {
-                entity.damage = 7750;
+                entity.damage = 9750;
             }
             if (entity.type == ModContent.ItemType<PhantasmalLeashOfCthulhu>())
             {
-                entity.damage = 2800;
+                entity.damage = 7800;
             }
             if (entity.type == ModContent.ItemType<SlimeRain>())
             {
-                entity.damage = 6000;
+                entity.damage = 6800;
             }
         }
-
         public override void ModifyItemLoot(Item item, ItemLoot itemLoot)
         {
             if (item.type == ModContent.ItemType<MutantBag>())

@@ -47,15 +47,15 @@ namespace ssm
 
         public override void PostUpdateBuffs()
         {
-            if ((FargoSoulsUtil.BossIsAlive(ref EModeGlobalNPC.mutantBoss, ModContent.NPCType<MutantBoss>()) || FargoSoulsUtil.BossIsAlive(ref EModeGlobalNPC.abomBoss, ModContent.NPCType<AbomBoss>())) && ModCompatibility.Calamity.Loaded)
-            {
-                ModLoader.GetMod("CalamityMod").TryFind("Enraged", out ModBuff enrage);
-                ModLoader.GetMod("CalamityMod").TryFind("RageMode", out ModBuff rage);
-                ModLoader.GetMod("CalamityMod").TryFind("AdrenalineMode", out ModBuff adrenaline);
-                Main.LocalPlayer.buffImmune[enrage.Type] = true;
-                Main.LocalPlayer.buffImmune[rage.Type] = true;
-                Main.LocalPlayer.buffImmune[adrenaline.Type] = true;
-            }
+            //if ((FargoSoulsUtil.BossIsAlive(ref EModeGlobalNPC.mutantBoss, ModContent.NPCType<MutantBoss>()) || FargoSoulsUtil.BossIsAlive(ref EModeGlobalNPC.abomBoss, ModContent.NPCType<AbomBoss>())) && ModCompatibility.Calamity.Loaded)
+            //{
+            //    ModLoader.GetMod("CalamityMod").TryFind("Enraged", out ModBuff enrage);
+            //    ModLoader.GetMod("CalamityMod").TryFind("RageMode", out ModBuff rage);
+            //    ModLoader.GetMod("CalamityMod").TryFind("AdrenalineMode", out ModBuff adrenaline);
+            //    Main.LocalPlayer.buffImmune[enrage.Type] = ShtunConfig.Instance.DebugMode ? false : true;
+            //    Main.LocalPlayer.buffImmune[rage.Type] = true;
+            //    Main.LocalPlayer.buffImmune[adrenaline.Type] = true;
+            //}
 
             //if (starlightFruit)
             //{

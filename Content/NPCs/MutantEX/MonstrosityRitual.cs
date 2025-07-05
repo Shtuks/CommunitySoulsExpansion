@@ -14,16 +14,16 @@ using Terraria.Audio;
 using Terraria.GameContent;
 using Terraria.ModLoader;
 
-namespace ssm.Content.NPCs.MutantEX.Projectiles
+namespace ssm.Content.NPCs.MutantEX
 {
-    public class MutantRitual : BaseArena
+    public class MonstrosityRitual : BaseArena
     {
         public override string Texture => "Terraria/Images/Projectile_454";
 
         private const float realRotation = MathHelper.Pi / 140f;
         private bool MutantDead;
 
-        public MutantRitual() : base(realRotation, 1200f, ModContent.NPCType<MutantEX>(), visualCount: 48) { }
+        public MonstrosityRitual() : base(realRotation, 1200f, ModContent.NPCType<MutantEX>(), visualCount: 48) { }
 
         public override void SetStaticDefaults()
         {
@@ -41,7 +41,7 @@ namespace ssm.Content.NPCs.MutantEX.Projectiles
         protected override void Movement(NPC npc)
         {
             float targetRotation;
-            if (npc.ai[0] == 19) 
+            if (npc.ai[0] == 19)
             {
                 Projectile.velocity = Vector2.Zero;
 
@@ -66,9 +66,9 @@ namespace ssm.Content.NPCs.MutantEX.Projectiles
             {
                 Projectile.velocity = npc.Center - Projectile.Center;
                 if (npc.ai[0] == 36)
-                    Projectile.velocity /= 20f; 
+                    Projectile.velocity /= 20f;
                 else if (npc.ai[0] == 22 || npc.ai[0] == 23 || npc.ai[0] == 25)
-                    Projectile.velocity /= 40f; 
+                    Projectile.velocity /= 40f;
                 else
                     Projectile.velocity /= 60f;
 
@@ -130,37 +130,37 @@ namespace ssm.Content.NPCs.MutantEX.Projectiles
 
         public override bool PreDraw(ref Color lightColor)
         {
-            Color outerColor = (FargoSoulsUtil.AprilFools ? Color.Red : Color.CadetBlue);
+            Color outerColor = FargoSoulsUtil.AprilFools ? Color.Red : Color.Purple;
             outerColor.A = 0;
             Color darkColor = outerColor;
             Color mediumColor = Color.Lerp(outerColor, Color.MediumPurple, 0.8f);
             Color lightColor2 = Color.Lerp(outerColor, Color.Purple, 0.6f);
-            Vector2 auraPos = base.Projectile.Center;
-            float leeway = (float)(base.Projectile.width / 2) * base.Projectile.scale;
+            Vector2 auraPos = Projectile.Center;
+            float leeway = Projectile.width / 2 * Projectile.scale;
             leeway *= 0.75f;
-            float radius = base.threshold - leeway;
+            float radius = threshold - leeway;
             Player target = Main.LocalPlayer;
             Asset<Texture2D> blackTile = TextureAssets.MagicPixel;
-            Asset<Texture2D> diagonalNoise = FargosTextureRegistry.WavyNoise;
-            float maxOpacity = Projectile.Opacity * 1.5f;
-            float scale = base.Projectile.scale * 0.5f;
+            Asset<Texture2D> diagonalNoise = FargosTextureRegistry.CrustyNoise;
+            float maxOpacity = 1;
+            float scale = Projectile.scale * 0.5f;
             ManagedShader borderShader = ShaderManager.GetShader("FargowiltasSouls.MutantP2Aura");
-            borderShader.TrySetParameter("colorMult", (object)10f);
-            borderShader.TrySetParameter("time", Main.GlobalTimeWrappedHourly * 2);
-            borderShader.TrySetParameter("radius", (object)(radius * scale));
-            borderShader.TrySetParameter("anchorPoint", (object)auraPos);
-            borderShader.TrySetParameter("screenPosition", (object)Main.screenPosition);
-            borderShader.TrySetParameter("screenSize", (object)Main.ScreenSize.ToVector2());
-            borderShader.TrySetParameter("playerPosition", (object)target.Center);
-            borderShader.TrySetParameter("maxOpacity", (object)maxOpacity);
-            borderShader.TrySetParameter("darkColor", (object)darkColor.ToVector4());
-            borderShader.TrySetParameter("midColor", (object)mediumColor.ToVector4());
-            borderShader.TrySetParameter("lightColor", (object)lightColor2.ToVector4());
+            borderShader.TrySetParameter("colorMult", 15f);
+            borderShader.TrySetParameter("time", Main.GlobalTimeWrappedHourly * 3);
+            borderShader.TrySetParameter("radius", radius * scale);
+            borderShader.TrySetParameter("anchorPoint", auraPos);
+            borderShader.TrySetParameter("screenPosition", Main.screenPosition);
+            borderShader.TrySetParameter("screenSize", Main.ScreenSize.ToVector2());
+            borderShader.TrySetParameter("playerPosition", target.Center);
+            borderShader.TrySetParameter("maxOpacity", maxOpacity);
+            borderShader.TrySetParameter("darkColor", darkColor.ToVector4());
+            borderShader.TrySetParameter("midColor", mediumColor.ToVector4());
+            borderShader.TrySetParameter("lightColor", lightColor2.ToVector4());
             Main.spriteBatch.GraphicsDevice.Textures[1] = diagonalNoise.Value;
             Main.spriteBatch.End();
             Main.spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.Additive, SamplerState.LinearWrap, DepthStencilState.None, Main.Rasterizer, borderShader.WrappedEffect, Main.GameViewMatrix.TransformationMatrix);
             Rectangle rekt = new Rectangle(Main.screenWidth / 2, Main.screenHeight / 2, Main.screenWidth, Main.screenHeight);
-            Main.spriteBatch.Draw(blackTile.Value, rekt, null, default(Color), 0f, blackTile.Value.Size() * 0.5f, SpriteEffects.None, 0f);
+            Main.spriteBatch.Draw(blackTile.Value, rekt, null, default, 0f, blackTile.Value.Size() * 0.5f, SpriteEffects.None, 0f);
             Main.spriteBatch.End();
             Main.spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, Main.DefaultSamplerState, DepthStencilState.None, Main.Rasterizer, null, Main.GameViewMatrix.TransformationMatrix);
             return false;

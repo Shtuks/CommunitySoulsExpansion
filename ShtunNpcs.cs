@@ -33,30 +33,35 @@ namespace ssm
         public override void Load()
         {
             //soa 34
-            //cal 38
+            //cal 48
             //thor 16
             //HWJ 18
-            //soa-cal 45
+            //soa-cal 55
             //soa-thor 40
-            //soa-cal-thor 50
-            //thor-cal 
+            //soa-cal-thor 60
+            //thor-cal 52
             if (ModCompatibility.SacredTools.Loaded && !ModCompatibility.Thorium.Loaded) { multiplierA += 1.1f; }
             if (ModCompatibility.Thorium.Loaded && !ModCompatibility.Calamity.Loaded) { multiplierA += 1f; }
-            if (ModCompatibility.Homeward.Loaded && !ModCompatibility.Calamity.Loaded) { multiplierA += 1f; }
             if (ModCompatibility.Homeward.Loaded && !ModCompatibility.Calamity.Loaded && !ModCompatibility.SacredTools.Loaded) { multiplierM += 0.8f; }
 
             if (ModCompatibility.SacredTools.Loaded && !ModCompatibility.Calamity.Loaded) { multiplierM += 0.8f; }
-            if (ModCompatibility.Calamity.Loaded && !ModCompatibility.SacredTools.Loaded) { multiplierM += 0.8f; }
 
             if (ModCompatibility.Thorium.Loaded) { multiplierM += 0.6f; multiplierA += 3f; }
-            if (ModCompatibility.Calamity.Loaded) { multiplierM += 1.8f; multiplierA += 6f; }
+            if (ModCompatibility.Calamity.Loaded) { multiplierM += ShtunConfig.Instance.DebugMode ? 8.8f : 2.8f; multiplierA += 6f; }
             if (ModCompatibility.SacredTools.Loaded) { multiplierM += 1.6f; multiplierA += 1f; }
         }
         public override void SetDefaults(NPC npc)
         {
+            //devi max hp - 40 k
+            //divergentt max hp - 600 k
+            //abom max hp - 12.8 mil
+            //amalgamationn max hp - 30 mil
+            //mutant max hp - 60 mil //120 mil if debug mode
+            //monstrosity max hp - 600 mil
+
             if (npc.type == ModContent.NPCType<MutantBoss>())
             {
-                npc.damage = Main.getGoodWorld ? 2000 : (int)(500 + ((ModCompatibility.Calamity.Loaded ? 130 : 100) * (Math.Round(multiplierM, 1))));
+                npc.damage = Main.getGoodWorld ? 2000 : (int)(500 + (ModCompatibility.Calamity.Loaded ? 80 : 100 * (Math.Round(multiplierM, 1))));
                 npc.lifeMax = (int)(10000000 + (10000000 * Math.Round(multiplierM, 1))) / (Main.expertMode ? 1 : 2);
             }
             if (npc.type == ModContent.NPCType<Mutant>())
@@ -85,7 +90,7 @@ namespace ssm
         }
         public override void ModifyIncomingHit(NPC npc, ref NPC.HitModifiers modifiers)
         {
-            if (npc.type == ModContent.NPCType<MutantBoss>() && Main.npc[EModeGlobalNPC.mutantBoss].ai[0] > 10)
+            if (npc.type == ModContent.NPCType<MutantBoss>() && Main.npc[EModeGlobalNPC.mutantBoss].ai[0] > 10 && ModCompatibility.IEoR.Loaded)
             {
                 float LRM = Utilities.Saturate((float)npc.life / (float)npc.lifeMax);
                 float maxTimeNormal = 12000; // 4 min
