@@ -2,7 +2,12 @@
 using System.Collections.Generic;
 using System.Text;
 using CalamityMod.Items.LoreItems;
+using Luminance.Core.Graphics;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using ssm.Core;
+using Terraria;
+using Terraria.ModLoader;
 
 namespace ssm.Content.Items
 {
@@ -19,7 +24,6 @@ namespace ssm.Content.Items
             Item.height = 26;
             Item.rare = 11;
         }
-
         public override bool PreDrawTooltipLine(DrawableTooltipLine line, ref int yOffset)
         {
             if ((line.Mod == "Terraria" && line.Name == "ItemName") || line.Name == "FlavorText")

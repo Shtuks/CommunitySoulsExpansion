@@ -2,6 +2,9 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using ssm.Content.Buffs;
+using Luminance.Core.Graphics;
+using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework;
 
 namespace ssm.Content.Items.Consumables
 {
