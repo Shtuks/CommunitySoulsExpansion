@@ -10,6 +10,8 @@ using FargowiltasSouls.Core.Globals;
 using Luminance.Common.Utilities;
 using FargowiltasSouls.Core.Systems;
 using Fargowiltas.NPCs;
+using ssm.Content.NPCs.MutantEX;
+using FargowiltasSouls.Content.Bosses.DeviBoss;
 
 namespace ssm
 {
@@ -61,7 +63,7 @@ namespace ssm
 
             if (npc.type == ModContent.NPCType<MutantBoss>())
             {
-                npc.damage = Main.getGoodWorld ? 2000 : (int)(500 + (ModCompatibility.Calamity.Loaded ? 80 : 100 * (Math.Round(multiplierM, 1))));
+                npc.damage = Main.getGoodWorld ? 2000 : (int)(500 + ((ModCompatibility.Calamity.Loaded ? 80 : 100) * (Math.Round(multiplierM, 1))));
                 npc.lifeMax = (int)(10000000 + (10000000 * Math.Round(multiplierM, 1))) / (Main.expertMode ? 1 : 2);
             }
             if (npc.type == ModContent.NPCType<Mutant>())
@@ -82,6 +84,9 @@ namespace ssm
         public override void SetStaticDefaults()
         {
             NPCID.Sets.ImmuneToRegularBuffs[ModContent.NPCType<MutantBoss>()] = true;
+            NPCID.Sets.ImmuneToRegularBuffs[ModContent.NPCType<MutantEX>()] = true;
+            NPCID.Sets.ImmuneToRegularBuffs[ModContent.NPCType<DeviBoss>()] = true;
+            NPCID.Sets.ImmuneToRegularBuffs[ModContent.NPCType<AbomBoss>()] = true;
         }
         public override void UpdateLifeRegen(NPC npc, ref int damage)
         {
@@ -101,7 +106,7 @@ namespace ssm
                 float fightProgress = Utilities.InverseLerp(0f, intendedDuration, genTimer);
                 float aheadOfSchedule = MathF.Max(0f, 1f - fightProgress - LRM);
 
-                float resistanceFactor = (float)Math.Pow(aheadOfSchedule, 0.3f); // lower value - sharper applying
+                float resistanceFactor = (float)Math.Pow(aheadOfSchedule, 0.1f); // lower value - sharper applying
 
                 if (aheadOfSchedule > 0.8f)
                 {

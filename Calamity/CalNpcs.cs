@@ -75,8 +75,8 @@ namespace ssm.Calamity
                 {
                     float multiplier = 0;
 
-                    if (ModCompatibility.Thorium.Loaded) { multiplier += 2f; }
-                    if (ModCompatibility.SacredTools.Loaded) { multiplier += 3f; }
+                    if (ModCompatibility.Thorium.Loaded) { multiplier += 5f; }
+                    if (ModCompatibility.SacredTools.Loaded) { multiplier += 5f; }
 
                     npc.lifeMax = (int)(25000000 + (1000000 * multiplier));
                 }

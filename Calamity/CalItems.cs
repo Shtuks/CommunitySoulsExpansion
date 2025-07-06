@@ -71,7 +71,7 @@ namespace ssm.Calamity
             }
             if (item.type == ModContent.ItemType<HalibutCannon>())
             {
-                tooltips.Add(new TooltipLine(Mod, "rebalance", $"[c/FFFF00:CSE Balance:] Damage decreased by 30%."));
+                tooltips.Add(new TooltipLine(Mod, "rebalance", $"[c/FF0000:CSE Balance:] Damage decreased by 30%."));
             }
             if (item.type == ModContent.ItemType<Supernova>())
             {
@@ -84,7 +84,7 @@ namespace ssm.Calamity
             if (item.type == ModContent.ItemType<Sylvestaff>())
             {
                 tooltips.Add(new TooltipLine(Mod, "rebalance", $"[c/FFFF00:CSE Balance:] Canceled DLC buff."));
-                tooltips.Add(new TooltipLine(Mod, "rebalance", $"[c/FFFF00:CSE Balance:] Damage decreased by 50%."));
+                tooltips.Add(new TooltipLine(Mod, "rebalance", $"[c/FF0000:CSE Balance:] Damage decreased by 50%."));
             }
         }
 

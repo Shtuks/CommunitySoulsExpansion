@@ -7,6 +7,7 @@ using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.GameContent.Personalities;
 using Fargowiltas.NPCs;
+using FargowiltasSouls;
 
 namespace ssm.Content.NPCs
 {
@@ -28,7 +29,7 @@ namespace ssm.Content.NPCs
             "Echson",
             "Doggo",
             "Bingus",
-            "Spoinkers",
+            "Greg",
             "La creatura",
             "DrMutant",
             "Herobrine",
@@ -77,6 +78,9 @@ namespace ssm.Content.NPCs
                     .SetNPCAffection<Mutant>(AffectionLevel.Dislike)
                     .SetNPCAffection<Deviantt>(AffectionLevel.Like)
                     .SetNPCAffection<Abominationn>(AffectionLevel.Like);
+
+            if (FargoSoulsUtil.AprilFools)
+                NPC.GivenName = Language.GetTextValue("Mods.ssm.NPCs.Monstrosity.DisplayNameApril");
         }
         public override bool CanTownNPCSpawn(int numTownNPCs)
         {
@@ -92,17 +96,44 @@ namespace ssm.Content.NPCs
         }
         public override string GetChat()
         {
+            List<string> dialogue = new List<string>
+            {
+                "You know the rules! And you will die. Im not going to rickroll you, that's only 0,00001% chance.",
+                "Yippe!",
+                "Soul of eternity is not enough to face me, let alone 2 of it.",
+                "Why would i be afraid of a cat? Well, it is long story.",
+                "Can I jump? Yes, I have a 'spacebar'.",
+                "It would be a calamity for you not to buy my products.",
+                "How old am i? I'm some Eternity years old.",
+                "When Abomination went to register at the registry office they put an extra 'N' in his name.",
+                "You don't want to see me in boss form.",
+                "My creator? Don't mention it if you don't want to see me angry.",
+                "I'm the reason why Seth got his face covered with that bandana.",
+                "1.4.5? maybe in a few years.",
+                "There's an imposter among us, he's me! I don't really belong anywhere.",
+                "Galactica has a friend of mine, you should visit him.",
+                "I heard rumors about a creature with 'EX' in its name, that doesn't sound so good.",
+                "Deviantt doesn't like my look.",
+                "I am the real evil presence that watches you.",
+                "Split me? nah that would be a calamity , imagine if some Elements awoken from my dead body, that would be a cataclysm, and this world would not be worthy to witness this.",
+                "I heard about Whips, they boost your damage, I don't like it.",
+                "Why don't I attack? Ah that's a nice question, I don't think it's necessary.",
+                "My hp is limited to this world, but I would prob get 22^22^22^22 times this.",
+                "Eternity doesn't last that long when you are old enough.",
+                "Sunflowers are cool, not for your health tho.",
+                "Are you approaching me? Can't but my stuff if you don't get closer.",
+                "There is a pipe bomb inside your walls.",
+                "A lot of things explode for no reason.",
+                "Also try Infernal Eclipse of Ragnarok!",
+                "Once I put Thunder Bird, Scarabeus, Desert Scourge, Cursed Coffin and Grand Antlion in one room to see who is strongest. Instead they started talking about politics.",
+            };
+
             if (WorldSavingSystem.DownedMutant)
             {
-                return "[c/FF0000:You are ready.]";
+                dialogue.Add("[c/FF0000:You are ready.]");
             }
 
-            return Main.rand.Next(3) switch
-            {
-                0 => "...",
-                1 => "...",
-                _ => "...",
-            };
+            return Main.rand.Next(dialogue);
         }
         public override void SetChatButtons(ref string button, ref string button2)
         {

@@ -177,9 +177,9 @@ namespace ssm.Content.NPCs.MutantEX
             multiplierD = 0;
             multiplierL = 0;
 
-            if (ModCompatibility.Thorium.Loaded) { multiplierD += 1f; multiplierL += 1f; }
-            if (ModCompatibility.Calamity.Loaded) { multiplierD += 1f; multiplierL += 2f; }
-            if (ModCompatibility.SacredTools.Loaded) { multiplierD += 1f; multiplierL += 2f; }
+            if (ModCompatibility.Thorium.Loaded) { multiplierD += 0.5f; multiplierL += 1f; }
+            if (ModCompatibility.Calamity.Loaded) { multiplierD += 1f; multiplierL += 3f; }
+            if (ModCompatibility.SacredTools.Loaded) { multiplierD += 0.7f; multiplierL += 2f; }
 
             NPC.lifeMax = 100000000 + (int)(100000000 * multiplierL);
             NPC.damage = 1000 + (int)(1000 * multiplierD);
@@ -263,7 +263,7 @@ namespace ssm.Content.NPCs.MutantEX
 
                 case 19: if (ModCompatibility.Calamity.Loaded) { SCalAttack(); } else { AttackChoice++; }; break; //scal vortex
 
-                case 20: EOCStarSickles(); break;
+                case 20: SpearTossDirectP2(); break;
 
                 case 21: PrepareSpearDashDirectP2(); break;
                 case 22: SpearDashDirectP2(); break;
@@ -302,11 +302,10 @@ namespace ssm.Content.NPCs.MutantEX
 
                 case 42: PrepareDeathrayRain(); break; //abom
                 case 43: DeathrayRain(); break;
+                case 44: PrepareDeathrayRain2(); ; break; 
+                case 45: DeathrayRain2(); break;
 
-                case 44: /*if (ModCompatibility.Thorium.Loaded) {ForgottenOneAttack();} else {*/AttackChoice++;/*};*/ break;
-
-                case 45: SpearTossDirectP2(); ; break;  //mutant
-                case 46: AttackChoice++; break;
+                case 46: /*if (ModCompatibility.Thorium.Loaded) {ForgottenOneAttack();} else {*/AttackChoice++;/*};*/ break;
 
                 case 47: goto case 35;
                 case 48: QueenSlimeRain(); break;
@@ -1434,7 +1433,7 @@ namespace ssm.Content.NPCs.MutantEX
             NPC.ai[3] = 0f;
             if ((NPC.ai[2] += 1f) > NPC.localAI[1])
             {
-                ChooseNextAttack(16, 19, 20, 26, 29, 31, 33, 39, 42, 44, 45);
+                ChooseNextAttack(16, 19, 20, 26, 29, 31, 33, 39, 42, 44, 46);
             }
             else
             {
@@ -1671,7 +1670,7 @@ namespace ssm.Content.NPCs.MutantEX
             }
             if ((NPC.ai[1] += 1f) > 450f)
             {
-                ChooseNextAttack(11, 13, 16, 21, 26, 29, 31, 33, 35, 37, 41, 44, 45, 47, 49);
+                ChooseNextAttack(11, 13, 16, 21, 26, 29, 31, 33, 35, 37, 41, 44, 46, 47, 49);
             }
             void LaserSpread(Vector2 spawn)
             {
@@ -1832,7 +1831,7 @@ namespace ssm.Content.NPCs.MutantEX
                 if ((NPC.ai[2] += 1f) > NPC.localAI[1])
                 {
                     shouldAttack = false;
-                    ChooseNextAttack(11, 19, 20, 29, 31, 33, 35, 37, 39, 42, 44, 45);
+                    ChooseNextAttack(11, 19, 20, 29, 31, 33, 35, 37, 39, 42, 44, 46);
                 }
                 if (Main.netMode != 1)
                 {
@@ -1954,7 +1953,7 @@ namespace ssm.Content.NPCs.MutantEX
             }
             if ((NPC.ai[3] += 1f) > (float)endTime)
             {
-                ChooseNextAttack(11, 13, 16, 19, 21, 24, 29, 31, 33, 35, 37, 39, 41, 42, 45, 47, 49);
+                ChooseNextAttack(11, 13, 16, 19, 21, 24, 29, 31, 33, 35, 37, 39, 41, 42, 46, 47, 49);
                 NPC.netUpdate = true;
             }
             void SpawnPrime(float varianceInDegrees, float rotationInDegrees)
@@ -2300,7 +2299,7 @@ namespace ssm.Content.NPCs.MutantEX
                 int[] obj = new int[12]
                 {
                 11, 16, 19, 20, 0, 31, 33, 37, 39, 41,
-                42, 45
+                42, 46
                 };
                 obj[4] = 26;
                 ChooseNextAttack(obj);
@@ -2435,7 +2434,7 @@ namespace ssm.Content.NPCs.MutantEX
             int endTime = masoMovingRainAttackTime + timeToMove + (int)(300 * endTimeVariance);
             if (++NPC.ai[1] > endTime)
             {
-                ChooseNextAttack(11, 16, 19, 20, 26, 31, 33, 37, 39, 41, 42, 45);
+                ChooseNextAttack(11, 16, 19, 20, 26, 31, 33, 37, 39, 41, 42, 46);
             }
         }
 
@@ -2558,7 +2557,7 @@ namespace ssm.Content.NPCs.MutantEX
                     int[] obj = new int[11]
                     {
                     11, 16, 19, 20, 0, 31, 33, 35, 42, 44,
-                    45
+                    46
                     };
                     obj[4] = 44;
                     ChooseNextAttack(obj);
@@ -2682,7 +2681,7 @@ namespace ssm.Content.NPCs.MutantEX
             }
             if ((NPC.ai[3] += 1f) > 450f)
             {
-                ChooseNextAttack(11, 13, 16, 21, 24, 26, 29, 31, 33, 35, 39, 41, 44, 45);
+                ChooseNextAttack(11, 13, 16, 21, 24, 26, 29, 31, 33, 35, 39, 41, 44, 46);
             }
         }
 
@@ -2739,7 +2738,7 @@ namespace ssm.Content.NPCs.MutantEX
                 int[] obj = new int[14]
                 {
                 11, 13, 16, 21, 0, 29, 31, 35, 37, 39,
-                41, 45, 47, 49
+                41, 47, 47, 49
                 };
                 obj[4] = 26;
                 ChooseNextAttack(obj);
@@ -3954,7 +3953,7 @@ namespace ssm.Content.NPCs.MutantEX
                     NPC.ai[2] = 0f;
                     NPC.ai[3] = 0f;
                     NPC.localAI[0] = 0f;
-                    ChooseNextAttack(11, 13, 16, 21, 26, 29, 31, 33, 35, 37, 41, 44, 45);
+                    ChooseNextAttack(11, 13, 16, 21, 26, 29, 31, 33, 35, 37, 41, 44, 46);
                     return;
                 }
             }
@@ -4033,7 +4032,7 @@ namespace ssm.Content.NPCs.MutantEX
                 }
 
                 float progress = NPC.ai[1] / 150f;
-                float modifier = 0.03f;
+                float modifier = 0.02f;
                 SwingRotation -= NPC.ai[2] * progress * modifier;
 
                 NPC.direction = NPC.spriteDirection = Math.Sign(NPC.ai[2]);
@@ -4091,7 +4090,7 @@ namespace ssm.Content.NPCs.MutantEX
                 {
                     if (AttackChoice > 10)
                     {
-                        ChooseNextAttack(11, 13, 16, 21, 26, 29, 31, 33, 35, 37, 41, 44, 45);
+                        ChooseNextAttack(11, 13, 16, 21, 26, 29, 31, 33, 35, 37, 41, 44, 46);
                     }
                     else
                     {

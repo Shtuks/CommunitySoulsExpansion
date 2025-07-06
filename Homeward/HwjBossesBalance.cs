@@ -29,7 +29,6 @@ namespace ssm.Homeward
                 if (ModCompatibility.Calamity.Loaded) { multiplier += 0.6f; }
 
                 npc.lifeMax = (int)(2900000 + (1000000 * multiplier));
-                npc.damage = 730;
             }
 
             if (npc.type == ModContent.NPCType<WorldsEndEverlastingFallingWhale>())
