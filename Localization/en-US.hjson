@@ -10,6 +10,43 @@ Mods: {
 		}
 
 		Items: {
+			Lore: {
+				MonstrosityLore: {
+					Lore: What a calamity
+					DisplayName: Lore - Monstrosity
+				}
+
+				EchdeathLore: {
+					Lore: What a calamity
+					DisplayName: Lore - Echdeath
+				}
+
+				DivergenttLore: {
+					Lore: What a calamity
+					DisplayName: Lore - Divergentt
+				}
+
+				AbomLore: {
+					Lore: What a calamity
+					DisplayName: Lore - Abominationn
+				}
+
+				MutantLore: {
+					Lore: What a calamity
+					DisplayName: Lore - Mutant
+				}
+
+				AmalgamationnLore: {
+					Lore: What a calamity
+					DisplayName: Lore - Amalgamationn
+				}
+
+				DeviLore: {
+					Lore: What a calamity
+					DisplayName: Lore - Deviantt
+				}
+			}
+
 			OstaraEnchant: {
 				DisplayName: Ostara Enchantment
 				Tooltip:
@@ -70,6 +107,11 @@ Mods: {
 					15% increased damage
 					Effects of Mask of the Crystal Eye, Abyssal Shell, and Rock Music Player
 					'''
+			}
+
+			StarblightFruit: {
+				DisplayName: Qliphoth Fruit
+				Tooltip: Grants extra accessory slot
 			}
 
 			PhantasmalEnchant: {
@@ -540,6 +582,7 @@ Mods: {
 					Only grants effects of Shield of Reflections when True Mode is enabled.
 					'''
 				SoABerserker: Effects of Flora Fist
+				SoASnipers: Your weapons don't require reloading
 				SoASupersonic: Effects of Heart of the Plough, Advanced Dash Tech
 				SoAWorldshaper: Effects of Rage Supressor, Celestial ring
 			}
@@ -573,13 +616,13 @@ Mods: {
 				Tooltip:
 					'''
 					[i:FargowiltasSouls/SparklingAdoration] Graze attacks to gain up to x1.25 increased damage
-					Damage bonus decreases over time and is fully lost on hit
-					Your attacks periodically summon life draining heart
-					[i:FargowiltasSouls/NekomiHood][i:FargowiltasSouls/NekomiHoodie][i:FargowiltasSouls/NekomiLeggings] 7% increased damage & critical strike chance for your current weapon class
-					Increases Sparkling Adoration graze radius, graze attacks to temporarily charge energy
-					Increases life regeneration when damaged at the cost of some energy
-					Double tap down key to release energy as life draining heart
-					Wield a demon axe of love and justice when fully charged
+					[i:FargowiltasSouls/SparklingAdoration] Damage bonus decreases over time and is fully lost on hit
+					[i:FargowiltasSouls/SparklingAdoration] Your attacks periodically summon life draining heart
+					[i:FargowiltasSouls/NekomiHood] 7% increased damage & critical strike chance for your current weapon class
+					[i:FargowiltasSouls/NekomiHood] Increases Sparkling Adoration graze radius, graze attacks to temporarily charge energy
+					[i:FargowiltasSouls/NekomiHood] Increases life regeneration when damaged at the cost of some energy
+					[i:FargowiltasSouls/NekomiHood] Double tap down key to release energy as life draining heart
+					[i:FargowiltasSouls/NekomiHood] Wield a demon axe of love and justice when fully charged
 					'''
 			}
 
@@ -588,11 +631,11 @@ Mods: {
 				Tooltip:
 					'''
 					[i:FargowiltasSouls/MutantEye] 25% increased graze bonus damage cap
-					Converts Sparkling Adoration hearts to love rays, Increases damage gained per graze
-					Increases Spectral Abominationn respawn rate & damage
-					Press the bomb key to unleash a wave of spheres and destroy most hostile projectiles, it has 60 second cooldown
-					[i:FargowiltasSouls/MutantMask][i:FargowiltasSouls/MutantBody][i:FargowiltasSouls/MutantPants] Phantasmal eyes will shoot phantasmal deathray at nearby enemies
-					Summons spectral abomination, you erupt into a massive deathray when revived, 20% increased weapon use speed
+					[i:FargowiltasSouls/MutantEye] Converts Sparkling Adoration hearts to love rays, Increases damage gained per graze
+					[i:FargowiltasSouls/MutantEye] Increases Spectral Abominationn respawn rate & damage
+					[i:FargowiltasSouls/MutantEye] Press the bomb key to unleash a wave of spheres and destroy most hostile projectiles, it has 60 second cooldown
+					[i:FargowiltasSouls/MutantMask] Phantasmal eyes will shoot phantasmal deathray at nearby enemies
+					[i:FargowiltasSouls/MutantMask] Summons spectral abomination, you erupt into a massive deathray when revived, 20% increased weapon use speed
 					'''
 			}
 
@@ -601,10 +644,10 @@ Mods: {
 				Tooltip:
 					'''
 					[i:FargowiltasSouls/AbominableWand] Can endure any attack and survive with one life, endurance recovers when you reach max life
-					Increased damage gained Sparkling Adoration graze, halves heart cooldown, Abominationn periodically manifests to support your critical hits
-					[i:FargowiltasSouls/StyxCrown][i:FargowiltasSouls/StyxChestplate][i:FargowiltasSouls/StyxLeggings] 20% Increased damage for current weapon class
-					Attack enemies to charge energy, reduces damage taken for energy, Your attacks inflict Abominable Fang
-					Double tap down key to release energy as homing shots & brandish a blade of infernal magic when fully charged
+					[i:FargowiltasSouls/AbominableWand] Increased damage gained Sparkling Adoration graze, halves heart cooldown, Abominationn periodically manifests to support your critical hits
+					[i:FargowiltasSouls/StyxCrown] 20% Increased damage for current weapon class
+					[i:FargowiltasSouls/StyxCrown] Attack enemies to charge energy, reduces damage taken for energy, Your attacks inflict Abominable Fang
+					[i:FargowiltasSouls/StyxCrown] Double tap down key to release energy as homing shots & brandish a blade of infernal magic when fully charged
 					'''
 			}
 
@@ -662,12 +705,12 @@ Mods: {
 				DisplayName: Eridanus Enchantment
 				Tooltip:
 					'''
-					[i:FargowiltasSouls/EridanusHat] [i:FargowiltasSouls/EridanusBattleplate] [i:FargowiltasSouls/EridanusLegwear]
-					20% damage increase for current class
-					10% crit chance increase for current class
-					10% attack speed increase for current class
-					Press DOWN double times activate Eridanus' blessing
-					[i:FargowiltasSouls/UniverseCore]
+					[i:FargowiltasSouls/EridanusHat] 20% damage increase for current class
+					[i:FargowiltasSouls/EridanusHat] 10% crit chance increase for current class
+					[i:FargowiltasSouls/EridanusHat] 10% attack speed increase for current class
+					[i:FargowiltasSouls/EridanusHat] Press DOWN double times activate Eridanus' blessing
+					[i:FargowiltasSouls/UniverseCore] Your critical strikes can critically strike
+					[i:FargowiltasSouls/UniverseCore] Supercrits deal x4 damage and inflict Flames of The Cosmos
 					'''
 			}
 
@@ -675,28 +718,21 @@ Mods: {
 				DisplayName: Eternity Force
 				Tooltip:
 					'''
-					Massive increasement to all offencive stats.
-					[i:ssm/GaiaEnchant] Press DOWN double times activate Attacking mode which have following effects:
-					30% damage and 15% crit chance increase for current class, increase armor penetration by 20
-					Decrease defense by 30, endurance by 15% and max life by 10%
+					[i:ssm/NekomiEnchant] [i:ssm/StyxEnchant] Increases life regeneration and damage resistance when damaged at the cost of some energy
+					[i:ssm/NekomiEnchant] [i:ssm/StyxEnchant] Double tap down key to release energy as life draining heart or homing scythes
+					[i:ssm/NekomiEnchant] [i:ssm/StyxEnchant] Wield a demon axe of love and justice or brandish a blade of infernal magic when fully charged
+					[i:ssm/GaiaEnchant] Press DOWN double times activate Attacking mode
 					[i:ssm/EridanusEnchant] Press DOWN double times activate Eridanus' blessing
+					[i:ssm/EridanusEnchant] Your critical strikes can critically strike
 					[i:ssm/StyxEnchant] Can endure any attack and survive with one life, endurance recovers when you reach max life
-					Increased damage gained Sparkling Adoration graze, halves heart cooldown, Abominationn periodically manifests to support your critical hits
-					Attack enemies to charge energy, reduces damage taken for energy, Your attacks inflict Abominable Fang
-					Double tap down key to release energy as homing shots & brandish a blade of infernal magic when fully charged
-					[i:ssm/PhantaplazmalEnchant] 25% increased graze bonus damage cap
-					Converts Sparkling Adoration hearts to love rays, Increases damage gained per graze
-					Increases Spectral Abominationn respawn rate & damage
-					Press the bomb key to unleash a wave of spheres and destroy most hostile projectiles, it has 60 second cooldown
-					Phantasmal eyes will shoot phantasmal deathray at nearby enemies
-					Summons spectral abomination, you erupt into a massive deathray when revived
+					[i:ssm/StyxEnchant] Attack enemies to charge energy, Your attacks inflict Abominable Fang
+					[i:ssm/PhantaplazmalEnchant] Press the bomb key to unleash a wave of spheres and destroy most hostile projectiles, it has 60 second cooldown
+					[i:ssm/PhantaplazmalEnchant] Phantasmal eyes will shoot phantasmal deathray at nearby enemies
+					[i:ssm/PhantaplazmalEnchant] Summons spectral abomination, you erupt into a massive deathray when revived
 					[i:ssm/NekomiEnchant] Graze attacks to gain up to x1.25 increased damage
-					Damage bonus decreases over time and is fully lost on hit
-					Your attacks periodically summon life draining heart
-					Graze attacks to temporarily charge energy
-					Increases life regeneration when damaged at the cost of some energy
-					Double tap down key to release energy as life draining heart
-					Wield a demon axe of love and justice when fully charged
+					[i:ssm/NekomiEnchant] Damage bonus decreases over time and is fully lost on hit
+					[i:ssm/NekomiEnchant] Your attacks periodically summon life draining heart
+					[i:ssm/EternityForce] Phantasmal Siblings minions protect you
 					'''
 			}
 
@@ -704,11 +740,10 @@ Mods: {
 				DisplayName: Gaia Enchantment
 				Tooltip:
 					'''
-					[i:FargowiltasSouls/GaiaHelmet] [i:FargowiltasSouls/GaiaPlate] [i:FargowiltasSouls/GaiaGreaves]
-					10% decrease mana usage and increase chance not to consume ammo
-					10% melee attack speed increasement
-					4 additional minion slots
-					Press DOWN double times activate Attacking mode which have following effects:
+					[i:FargowiltasSouls/GaiaHelmet] 10% decrease mana usage and increase chance not to consume ammo
+					[i:FargowiltasSouls/GaiaHelmet] 10% melee attack speed increasement
+					[i:FargowiltasSouls/GaiaHelmet] 4 additional minion slots
+					[i:FargowiltasSouls/GaiaHelmet] Press DOWN double times activate Attacking mode which have following effects:
 					30% damage and 15% crit chance increase for current class
 					increase armor penetration by 20
 					Decrease defense by 20, endurance by 15% and max life by 10%
@@ -922,9 +957,12 @@ Mods: {
 				DisplayName: Foundations Force
 				Tooltip:
 					'''
+					[i:ssm/BlightboneEnchant] Chance for a frosted bone to support your attack
+					[i:ssm/FrosthunterEnchant] Bones explode into frost explosion and freeze enemies
+					[i:ssm/PraireEnchant] Bones damage and velocity affected by speed of wind
+					[i:ssm/LapisEnchant] Being near frost explosion grants max lapis speed and Defense
+					[i:ssm/CairoCrusaderEnchant] Frost Explosion can enevelop player in blizzar that can ignore attack
 					':HeyMF:'
-					All armor bonuses from Prairie, Frosthunter, Lapis, and Blightbone
-					Effects of Frigid Pendant, Lapis Pendant, and Pumpkin Amulet
 					'''
 			}
 
@@ -932,10 +970,11 @@ Mods: {
 				DisplayName: Generations Force
 				Tooltip:
 					'''
-					Through all this world's years, none have seen anything quite like you'
-					All armor bonuses from Eerie, Bismuth, and Dreadfire
-					All armor bonuses from Space Junk and Marstech
-					Effects of Dreadflame Emblem
+					[i:ssm/DreadfireEnchant] You have aura that inflict dreadfire on nearby enemies and allies
+					[i:ssm/BismuthEnchant] Anyone standing inside of aura get bismuth crystal that reduces damage by 10% 
+					[i:ssm/EerieEnchant] After shield breaks for next 10 seconds you will release eerie pulses that buff minions and allies
+					[i:ssm/MarstechEnchant]
+					'Through all this world's years, none have seen anything quite like you'
 					'''
 			}
 
@@ -943,22 +982,27 @@ Mods: {
 				DisplayName: Soran Force
 				Tooltip:
 					'''
+					[i:ssm/BlazingBruteEnchant] [i:ssm/CosmicCommanderEnchant] Marks bosses with crosshair
+					[i:ssm/BlazingBruteEnchant] [i:ssm/CosmicCommanderEnchant] The longer you hit in crosshairs, the more damsge boost you get
+					[i:ssm/QuasarEnchant] [i:ssm/FallenPrinceEnchant] Hitting enemies have chance to reate quasar that pull weak enemies
+					[i:ssm/FallenPrinceEnchant] [i:ssm/NebulousApprenticeEnchant] Upon death you will be revived in supernova explosion
+					[i:ssm/FallenPrinceEnchant] [i:ssm/NebulousApprenticeEnchant] After respawning Shadow of Nuba will protect you for few seconds
+					[i:ssm/StellarPriestEnchant] Minions have a chance to summon starstream worms
+					[i:ssm/NebulousApprenticeEnchant] Attacking enemies release buff wisps which can be picked up for different stacking buffs
 					'The true power of the Soraniti'
-					All armor bonuses from Blazing Brute, Cosmic Commander, and Nebulous Apprentice
-					All armor bonuses from Stellar Priest, Quasar, and Fallen Prince
-					Effects of Nuba's Blessing, Novaniel's Resolve, and Celestial Ring
 					'''
 			}
 
 			SyrainForce: {
-				DisplayName: Syrain Force
+				DisplayName: Syran Force
 				Tooltip:
 					'''
+					[i:ssm/VoidWardenEnchant] [i:ssm/AsthraltiteEnchant] Grants ring of void lanterns that decrease agression and shoot enemies
+					[i:ssm/VoidWardenEnchant] Hitting enemy inflict Fear that makes them attack other enemies
+					[i:ssm/FlariumEnchant] Lanterns sometimes spur abyssal flame geysers
+					[i:ssm/VulcanReaperEnchant] If lanterns kill enemy while any boss active your boss damage increases
+					[i:ssm/ExitumLuxEnchant] Attacking with relic weapon grants 20% damage buff
 					'Dragon Rage empowers you, and encourages you to go on'
-					All armor bonuses from Void Warden, Vulcan Reaper, and Flarium
-					All armor bonuses from Asthraltite
-					Effects of Ring of the Fallen, Memento Mori, and Arcanum of the Caster
-					Effects of Stone of Resonance
 					'''
 			}
 
@@ -966,16 +1010,12 @@ Mods: {
 				DisplayName: Soul of Two Realms
 				Tooltip:
 					'''
+					[i:ssm/SyrianForce] Gain void lanterns ring that can spur gaysers, buffs relic weapons, increases boss damage if enemy killed
+					[i:ssm/SoranForce] Marks bosses with crosshair that boost your damage, creates quasars when hitting enemy, supernova revival
+					[i:ssm/SoranForce] Release buff wisps whan attacking, minions summon starstream worms
+					[i:ssm/GenerationsForce] Aura inflicting dreadfire, bismuth crystals that release eerie pulses when broken, 
+					[i:ssm/FoundationsForce] Blightbone support, bones explode and grant lapis shield and speed, envelop player in blizzard
 					'Two worlds, now embodied as one'
-					All armor bonuses from Bismuth, Frosthunter, and Blightbone
-					All armor bonuses from Dreadfire, Space Junk, and Marstech
-					All armor bonuses from Blazing Brute, Cosmic Commander, and Nebulous Apprentice
-					All armor bonuses from Stellar Priest and Fallen Prince
-					All armor bonuses from Void Warden, Vulcan Reaper, and Flarium
-					All armor bonuses from Asthraltite
-					Effects of Dreadflame Emblem, Lapis Pendant, Frigid Pendant, and Pumpkin Amulet
-					Effects of Nuba's Blessing, Novaniel's Resolve, and Celestial Ring
-					Effects of Ring of the Fallen, Memento Mori, and Arcanum of the Caster
 					'''
 			}
 
@@ -1191,9 +1231,10 @@ Mods: {
 				DisplayName: Cyber Punk Enchantment
 				Tooltip:
 					'''
+					2 cybernetic orbs fly around you and protect from projectiles. 
+					Gives random level 3 empowerment when killed.
+					Each orb respawns after 1 minute. 
 					'Techno rave!'
-					Pressing the 'Special Ability' key will cycle you through four states
-					Effects of Auto Tuner, Metal Music Player, and Diss Track
 					'''
 			}
 
@@ -1262,7 +1303,7 @@ Mods: {
 					'Masterfully forged by the Blacksmith'
 					12% damage reduction at Full HP
 					Grants immunity to shambler chain-balls
-					Effects of Incandescent Spark, Spiked Bracersand and Thorium Shield
+					Effects of Spiked Bracersand and Thorium Shield
 					'''
 			}
 
@@ -1489,9 +1530,8 @@ Mods: {
 				DisplayName: Noble Enchantment
 				Tooltip:
 					'''
+					Picking up coins grants you The Rich buff for 5 seconds, which increases your movement speed by 5% and increases your damage by 15%       
 					'Rich with culture'
-					Inspiration notes that drop are twice as potent and increase your symphonic damage briefly
-					Effects of Ring of Unity, Brass Cap, and Waxy Rosin
 					'''
 			}
 
@@ -1726,7 +1766,7 @@ Mods: {
 				DisplayName: Astro Enchantment
 				Tooltip:
 					'''
-					Summon damage has a chance to unleash a brust of damaging plasma on hit
+					Summon damage has a chance to unleash a burst of damaging plasma on hit
 					increases your max number of minions and sentries by 1
 					'''
 			}
@@ -1804,7 +1844,7 @@ Mods: {
 					'Behold the power of Mankind...'
 					All armor bonuses from Lodestone, Valadium, Illumite, and Terrarium
 					All armor bonuses from Durasteel, Darksteel, Steel, and Thorium
-					Effects of Incandescent Spark, Spiked Bracersand, Thorium Shield, and Obsidian Scale
+					Effects of Spiked Bracersand, Thorium Shield, and Obsidian Scale
 					Effects of Crietz, Astro-Beetle Husk, Sandweaver's Tiara, and Beholder's gaze
 					Effects of Mirror of Beholder, Nuclear Option, Jazz Music Player and Band of Replenishmen
 					Effects of Terrarium Surround Buffer and Fan Letter
@@ -1937,7 +1977,7 @@ Mods: {
 					Thrower projectiles create nanoblades as they travel
 					Stealth strikes summon nanobeams and sparks on enemy hits
 					Stealth strikes have +15 armor penetration, deal 5% more damage, and heal for 2 HP
-					25% increased Thrower damage and 25% increased Thrower velocity
+					20% increased Thrower damage and 25% increased Thrower velocity
 					Landing a stealth strike grants a 12% crit bonus to non-stealth strikes
 					This crit bonus decays over 5 seconds
 					25% of your Thrower damage is duplicated 
@@ -2043,12 +2083,16 @@ Mods: {
 			}
 
 			MutantsForgeItem: {
-				Tooltip: Conts as every possible crafting station
-				DisplayName: Mutants Forge
+				Tooltip:
+					'''
+					Counts as every possible crafting station.
+					Allows you to summon any boss
+					'''
+				DisplayName: Cosmic Quantum Computer
 			}
 
 			DreamersForgeItem: {
-				Tooltip: Conts as every crafting station from Thorium Mod
+				Tooltip: Counts as every crafting station from Thorium Mod
 				DisplayName: Dreamers Forge
 			}
 
@@ -2063,7 +2107,7 @@ Mods: {
 			}
 
 			RedemptionCraftingStationItem: {
-				DisplayName: Xenium Factory
+				DisplayName: Xenium Fabricator
 				Tooltip: Counts as every crafting station from Redemption Mod
 			}
 
@@ -2601,7 +2645,7 @@ Mods: {
 				Tooltip:
 					'''
 					18% increased hymenoptra damage
-					10% increased hymenoptra critical chance
+					5% increased hymenoptra critical chance
 					+ 50 max honey
 					'This is only the beginning...'
 					'''
@@ -2618,13 +2662,13 @@ Mods: {
 					'''
 			}
 
-			MonstrocityBag: {
+			MonstrosityBag: {
 				DisplayName: Monstrosity Bag
 				Tooltip: ""
 			}
 
-			MonstrocityRelicItem: {
-				DisplayName: Monstrosity Relic Item
+			MonstrosityRelicItem: {
+				DisplayName: Monstrosity Relic
 				Tooltip: ""
 			}
 
@@ -2644,17 +2688,17 @@ Mods: {
 			}
 
 			AbominableStorageUnitItem: {
-				DisplayName: Abominable Storage Unit Item
+				DisplayName: Abominable Storage Unit
 				Tooltip: ""
 			}
 
 			DeviatingStorageUnitItem: {
-				DisplayName: Deviating Storage Unit Item
+				DisplayName: Deviating Storage Unit
 				Tooltip: ""
 			}
 
 			EternalStorageUnitItem: {
-				DisplayName: Eternal Storage Unit Item
+				DisplayName: Eternal Storage Unit
 				Tooltip: ""
 			}
 
@@ -2676,11 +2720,6 @@ Mods: {
 			MacroverseSoul: {
 				Tooltip: ""
 				DisplayName: Macroverse Soul
-			}
-
-			ILoveStarlightCat: {
-				DisplayName: I Love Starlight Cat
-				Tooltip: ""
 			}
 
 			LivingWoodEnchant2: {
@@ -2769,7 +2808,42 @@ Mods: {
 			}
 
 			SyrianForce: {
-				DisplayName: Syrian Force
+				DisplayName: Syran Force
+				Tooltip: ""
+			}
+
+			AquaQuiver: {
+				DisplayName: Aqua Quiver
+				Tooltip: ""
+			}
+
+			BilePouch: {
+				DisplayName: Bile Pouch
+				Tooltip: ""
+			}
+
+			BileQuiver: {
+				DisplayName: Bile Quiver
+				Tooltip: ""
+			}
+
+			MoonflareQuiver: {
+				DisplayName: Moonflare Quiver
+				Tooltip: ""
+			}
+
+			WastelandRenewal: {
+				DisplayName: Wasteland Renewal
+				Tooltip: ""
+			}
+
+			WastelandRenewalSupreme: {
+				DisplayName: Wasteland Renewal Supreme
+				Tooltip: ""
+			}
+
+			XenomitePouch: {
+				DisplayName: Xenomite Pouch
 				Tooltip: ""
 			}
 
@@ -2801,6 +2875,427 @@ Mods: {
 				DisplayName: Dumbass
 				Tooltip: ""
 			}
+
+			CrystalQuiver: {
+				DisplayName: Crystal Quiver
+				Tooltip: Confuses hit enemies and deals increased damage to movement impaired enemies
+			}
+
+			DurasteelQuiver: {
+				DisplayName: Durasteel Quiver
+				Tooltip: ""
+			}
+
+			GhostPulseQuiver: {
+				DisplayName: Ghost Pulse Quiver
+				Tooltip: Damages nearby enemies while in flight
+			}
+
+			IcyQuiver: {
+				DisplayName: Icy Quiver
+				Tooltip: Has a chance to significantly hinder hit enemies' movement
+			}
+
+			SpiritQuiver: {
+				DisplayName: Spirit Quiver
+				Tooltip: Pierces tiles and enemies, but fades quickly
+			}
+
+			SteelQuiver: {
+				DisplayName: Steel Quiver
+				Tooltip: ""
+			}
+
+			TalonQuiver: {
+				DisplayName: Talon Quiver
+				Tooltip: Every fourth arrow stuck to an enemy gouges them
+			}
+
+			CoralDartBox: {
+				DisplayName: Coral Dart Box
+				Tooltip: Splinters after impacting an enemy
+			}
+
+			DrillDartBox: {
+				DisplayName: Drill Dart Box
+				Tooltip: Briefly digs through tiles on impact, gaining increased damage and penetration
+			}
+
+			FlareDartBox: {
+				DisplayName: Flare Dart Box
+				Tooltip: Empowers in blast damage and radius over time
+			}
+
+			PhaseDartBox: {
+				DisplayName: Phase Dart Box
+				Tooltip: Increases in damage before reaching a peak, then it quickly loses damage
+			}
+
+			TetherDartBox: {
+				DisplayName: Tether Dart Box
+				Tooltip: Splits into a damaging electric field
+			}
+
+			BaseballJar: {
+				DisplayName: Baseball Jar
+				Tooltip: Must be used with a baseball bat
+			}
+
+			LilTorpedoBox: {
+				DisplayName: Lil' Torpedo Box
+				Tooltip: Releases explosive shrapnel upon impact
+			}
+
+			PillCase: {
+				DisplayName: Pill Case
+				Tooltip:
+					'''
+					Throws out a bounding pill
+					Right click to throw a pill that increases an allies life recovery breifly.
+					'''
+			}
+
+			SeethingChargeJar: {
+				DisplayName: Seething Charge Jar
+				Tooltip: ""
+			}
+
+			SnotBallJar: {
+				DisplayName: Snot Ball Jar
+				Tooltip: Slows hit enemies movement
+			}
+
+			SpudJar: {
+				DisplayName: Spud Jar
+				Tooltip: Mashes against enemies and tiles
+			}
+
+			SteamBatteryCase: {
+				DisplayName: Steam Battery Case
+				Tooltip: Used by steam punk weaponry
+			}
+
+			SyringeCase: {
+				DisplayName: Syringe Case
+				Tooltip:
+					'''
+					Heals ally life by 4
+					Pricks an ally with a life-giving needle
+					'''
+			}
+
+			CursedSawbladeStack: {
+				DisplayName: Stack of Cursed Sawblades
+				Tooltip:
+					'''
+					Pierces through multiple enemies and bounces against tiles
+					Afflicts hit enemies with cursed flames
+					'''
+			}
+
+			DazzlingSawbladeStack: {
+				DisplayName: Stack of Dazzling Sawblades
+				Tooltip:
+					'''
+					Pierces through multiple enemies and bounces against tiles
+					Afflicts hit enemies with confusion
+					'''
+			}
+
+			FrozenSawbladeStack: {
+				DisplayName: Stack of Frozen Sawblades
+				Tooltip:
+					'''
+					Pierces through multiple enemies and bounces against tiles
+					Freezes hit enemies, slowing them greatly
+					'''
+			}
+
+			MoltenSawbladeStack: {
+				DisplayName: Stack of Molten Sawblades
+				Tooltip:
+					'''
+					Pierces through multiple enemies and bounces against tiles
+					Sets hit enemies on fire
+					'''
+			}
+
+			SawbladeStack: {
+				DisplayName: Stack of Sawblades
+				Tooltip: Pierces through multiple enemies and bounces against tiles
+			}
+
+			VileSawbladeStack: {
+				DisplayName: Stack of Vile Sawblades
+				Tooltip:
+					'''
+					Pierces through multiple enemies and bounces against tiles
+					Afflicts hit enemies with ichor
+					'''
+			}
+
+			HeartQuiver: {
+				DisplayName: Heart Quiver
+				Tooltip:
+					'''
+					Has a chance to stun enemies on hit
+					'Legendary arrows dropped by cupid himself'
+					'''
+			}
+
+			SpectralQuiver: {
+				DisplayName: Spectral Quiver
+				Tooltip: Pierces tiles and enemies, but dissipates quickly in the air
+			}
+
+			BoogerQuiver: {
+				DisplayName: Booger Quiver
+				Tooltip: Bounces off of surfaces and enemies
+			}
+
+			OldWoodQuiver: {
+				DisplayName: Old Wood Quiver
+				Tooltip: May sometimes stick to enemies on hit
+			}
+
+			EndlessMucusPouch: {
+				DisplayName: Endless Mucus Pouch
+				Tooltip: Ricochets to nearby enemies on hit
+			}
+
+			EndlessRustedPouch: {
+				DisplayName: Endless Rusted Pouch
+				Tooltip: Splits into shrapnel on impact
+			}
+
+			EndlessSnotRocketBox: {
+				DisplayName: Endless Snot Rocket Box
+				Tooltip:
+					'''
+					Accelerates	rapidly as it travels
+					Explodes into lingering snot on direct enemy hits
+					'''
+			}
+
+			MossyPebbleJar: {
+				DisplayName: Mossy Pebble Jar
+				Tooltip: Used as ammo with slingshots
+			}
+
+			SpookyRenewal: {
+				DisplayName: Spooky Renewal
+				Tooltip: ""
+			}
+
+			SpookyRenewalSupreme: {
+				DisplayName: Spooky Renewal Supreme
+				Tooltip: ""
+			}
+
+			EyeValleyRenewal: {
+				DisplayName: Eye Valley Renewal
+				Tooltip: ""
+			}
+
+			EyeValleyRenewalSupreme: {
+				DisplayName: Eye Valley Renewal Supreme
+				Tooltip: ""
+			}
+
+			SwampyRenewal: {
+				DisplayName: Swampy Renewal
+				Tooltip: ""
+			}
+
+			SwampyRenewalSupreme: {
+				DisplayName: Swampy Renewal Supreme
+				Tooltip: ""
+			}
+
+			AdamantiteJar: {
+				DisplayName: Adamantite Jar
+				Tooltip: ""
+			}
+
+			AsthraltitePouch: {
+				DisplayName: Asthraltite Pouch
+				Tooltip: ""
+			}
+
+			ChlorophyteJar: {
+				DisplayName: Chlorophyte Jar
+				Tooltip: ""
+			}
+
+			CobaltJar: {
+				DisplayName: Cobalt Jar
+				Tooltip: ""
+			}
+
+			FlariumPouch: {
+				DisplayName: Flarium Pouch
+				Tooltip: ""
+			}
+
+			FlariumQuiver: {
+				DisplayName: Flarium Quiver
+				Tooltip: ""
+			}
+
+			FlariumRenewal: {
+				DisplayName: Flarium Renewal
+				Tooltip: ""
+			}
+
+			FlariumRenewalSupreme: {
+				DisplayName: Flarium Renewal Supreme
+				Tooltip: ""
+			}
+
+			LunarianPouch: {
+				DisplayName: Lunarian Pouch
+				Tooltip: ""
+			}
+
+			LunarianQuiver: {
+				DisplayName: Lunarian Quiver
+				Tooltip: ""
+			}
+
+			MarstechJar: {
+				DisplayName: Marstech Jar
+				Tooltip: ""
+			}
+
+			MythrilJar: {
+				DisplayName: Mythril Jar
+				Tooltip: ""
+			}
+
+			OblivionPouch: {
+				DisplayName: Oblivion Pouch
+				Tooltip: ""
+			}
+
+			OblivionQuiver: {
+				DisplayName: Oblivion Quiver
+				Tooltip: ""
+			}
+
+			OrichalcumJar: {
+				DisplayName: Orichalcum Jar
+				Tooltip: ""
+			}
+
+			PalladiumJar: {
+				DisplayName: Palladium Jar
+				Tooltip: ""
+			}
+
+			SpectralJar: {
+				DisplayName: Spectral Jar
+				Tooltip: ""
+			}
+
+			TitaniumJar: {
+				DisplayName: Titanium Jar
+				Tooltip: ""
+			}
+
+			VenomiteJar: {
+				DisplayName: Venomite Jar
+				Tooltip: ""
+			}
+
+			CorruptRenewal: {
+				DisplayName: Corrupt Renewal
+				Tooltip: ""
+			}
+
+			CorruptRenewalSupreme: {
+				DisplayName: Corrupt Renewal Supreme
+				Tooltip: ""
+			}
+
+			CrimsonRenewal: {
+				DisplayName: Crimson Renewal
+				Tooltip: ""
+			}
+
+			CrimsonRenewalSupreme: {
+				DisplayName: Crimson Renewal Supreme
+				Tooltip: ""
+			}
+
+			DirtRenewal: {
+				DisplayName: Dirt Renewal
+				Tooltip: ""
+			}
+
+			DirtRenewalSupreme: {
+				DisplayName: Dirt Renewal Supreme
+				Tooltip: ""
+			}
+
+			HallowRenewal: {
+				DisplayName: Hallow Renewal
+				Tooltip: ""
+			}
+
+			HallowRenewalSupreme: {
+				DisplayName: Hallow Renewal Supreme
+				Tooltip: ""
+			}
+
+			MushroomRenewal: {
+				DisplayName: Mushroom Renewal
+				Tooltip: ""
+			}
+
+			MushroomRenewalSupreme: {
+				DisplayName: Mushroom Renewal Supreme
+				Tooltip: ""
+			}
+
+			PurityRenewal: {
+				DisplayName: Purity Renewal
+				Tooltip: ""
+			}
+
+			PurityRenewalSupreme: {
+				DisplayName: Purity Renewal Supreme
+				Tooltip: ""
+			}
+
+			SandRenewal: {
+				DisplayName: Sand Renewal
+				Tooltip: ""
+			}
+
+			SandRenewalSupreme: {
+				DisplayName: Sand Renewal Supreme
+				Tooltip: ""
+			}
+
+			SnowRenewal: {
+				DisplayName: Snow Renewal
+				Tooltip: ""
+			}
+
+			SnowRenewalSupreme: {
+				DisplayName: Snow Renewal Supreme
+				Tooltip: ""
+			}
+
+			MonstrosityEnchant: {
+				DisplayName: Monstrosity Enchant
+				Tooltip: ""
+			}
+
+			ShadowEnergy: {
+				DisplayName: Shadow Energy
+				Tooltip: ""
+			}
 		}
 
 		Buffs: {
@@ -2809,19 +3304,24 @@ Mods: {
 				Description: OOOHHHH NOOOO YOU dAed
 			}
 
+			MonstrousMaul: {
+				DisplayName: Monstrous Maul
+				Description: The power of Eternity Mode compels you
+			}
+
 			SadismEX: {
 				DisplayName: Sadism EX
-				Description: You immune to all debuffs.
+				Description: You are immune to all debuffs.
 			}
 
 			YharimBuff: {
 				DisplayName: Yharim Buff
-				Description: Your power rival with Godseeker's
+				Description: Your power rivals the Godseeker's
 			}
 
 			DeviSoulBuff: {
 				DisplayName: Deviantt Soul Buff
-				Description: Spectral Deviantt protects you
+				Description: The Spectral Deviantt protects you
 			}
 
 			MutantSoulBuff: {
@@ -2839,8 +3339,8 @@ Mods: {
 				Description: Little Yharon is fighting for you.
 			}
 
-			MonstrocityPresenceBuff: {
-				Description: No soul toggles, no eternity crits, no escape.
+			MonstrosityPresenceBuff: {
+				Description: No soul toggles, no debuff immunities, no eternity crits, no escape.
 				DisplayName: Monstrosity Presence
 			}
 
@@ -2873,10 +3373,20 @@ Mods: {
 				DisplayName: Soul Strength
 				Description: Your soul is empowered!
 			}
+
+			EnrageCal: {
+				Description: Enrage
+				DisplayName: Enrage
+			}
+
+			TheRichBuff: {
+				DisplayName: The Rich Buff
+				Description: Mods.ssm.Buffs.TheRichBuff.Description
+			}
 		}
 
 		NPCs: {
-			Monstrocity: {
+			Monstrosity: {
 				TownNPCMood: {
 					Content: I am content.
 					NoHome: I hate not having a home.
@@ -2890,42 +3400,8 @@ Mods: {
 					DislikeNPC: I like {NPCName}.
 				}
 
-				Chat: {
-					Normal0: You know the rules! And you will die. Im not going to rickroll you, that's only 0,00001% chance
-					Normal1: Yippe!
-					Normal2: Yharim? that huge army maybe it's just huge to disguise something small
-					Normal3: Soul of eternity is not enough to face me, let alone 2 of it
-					Normal4: Why would i be afraid of a cat? Well, it is long story.
-					Normal5: Devourer of Gods don't come face me because I'm above god's standard
-					Normal6: It would be a calamity for you not to buy my products
-					Normal7: How old am i? I'm some Eternity years old
-					Normal8: When abomination went to register at the registry office they put an extra 'N' in his name
-					Normal9: You don't want to see me in boss form
-					Normal10: My creator? Don't mention it if you don't want to see me angry
-					Normal11: I'm the reason why Seth got his face covered with that bandana
-					Normal12: 1.4.5? maybe in a few years
-					Normal13: There's an imposter among us, he's me! I don't really belong anywhere
-					Normal14: Galactica has a friend of mine, you should visit him
-					Normal15: I heard rumors about a creature with 'Ex' in its name, that doesn't sound so good
-					Normal16: Deviantt likes my look
-					Normal17: I am the real evil presence that watches you
-					Normal18: Split me? nah that would be a calamity , imagine if some Elements awoken from my dead body, that would be a cataclysm, and this world would not be worthy to witness this
-					Normal19: You are in a deep sleep for 52 years, please wake up
-					Normal20: I heard about Whips, they boost your damage, I don't like it.
-					Normal21: Why don't I attack? Ah that's a nice question, I don't think it's necessary.
-					Normal22: My hp is limited to this world, but i would prob get 22^22^22^22 times this
-					Normal23: Eternity doesn't last that long when you are old enough.
-					Normal24: Sunflowers are cool, not for your health tho
-					Normal25: Turip ip ip ip
-					Normal26: Are you approaching me? Can't but my stuff if you don't get closer
-					Normal27: There is a pipe bomb inside your walls
-					Normal28: A lot of things explode for no reason
-					Normal29: Megalovania isn't funny
-					Normal30: I may be in love with the Forbotten one, don't search her up on Google please
-					Normal31: Did you know that market got inflated prices bc of some sonic books? Don't trust me? Search up Sonic inflation on google to learn more ab it!
-				}
-
 				DisplayName: Monstrosity
+				DisplayNameApril: Уёбище
 				Census.SpawnCondition: Spawns when Moon Lord is defeated.
 			}
 
@@ -2933,7 +3409,7 @@ Mods: {
 				DisplayName: Duke Fishron EX
 
 				BossChecklistIntegration: {
-					SpawnInfo: Spawned with an Oceanic Curse anytime at the seashore.
+					SpawnInfo: Use Mutant's Forge
 					DespawnMessage: ""
 					KilledAllMessage: ""
 				}
@@ -2943,7 +3419,7 @@ Mods: {
 				DisplayName: Echdeath
 
 				BossChecklistIntegration: {
-					SpawnInfo: Spawned with an [deleted] anytime anywhere.
+					SpawnInfo: Use Mutant's Forge
 					DespawnMessage: ""
 					KilledAllMessage: ""
 				}
@@ -2962,6 +3438,22 @@ Mods: {
 
 			MutantIllusion.DisplayName: Monstrosity
 			MutantAuraOfSupression.DisplayName: Mutant Aura Of Supression
+
+			MonocleCat: {
+				DisplayName: Monocle Cat
+
+				TownNPCMood: {
+					Content: I am content.
+					NoHome: I hate not having a home.
+					FarFromHome: I am too far from home.
+					LoveSpace: I love having so much space.
+					DislikeCrowded: I dislike how crowded I am.
+					HateCrowded: I hate how crowded I am.
+					LoveNPC: I love {NPCName}.
+					LikeNPC_Princess: I like {NPCName}.
+					Princess_LovesNPC: I like {NPCName}.
+				}
+			}
 		}
 
 		Toggler: {
@@ -2987,7 +3479,6 @@ Mods: {
 			TerrariumEffect: Terrarium Energies
 			NuclearOptionEffect: Nuclear Option
 			IllumiteEffect: Illumite Missiles
-			IncandescentSparkEffect: Incandescent Spark
 			TideHunterEffect: Foam Splashes
 			DepthDiverEffect: Drowned Doublon
 			DepthAuraEffect: Depth Aura Buff
@@ -3028,7 +3519,7 @@ Mods: {
 			LodestoneEffect2: Lodestone Shields
 			//soa
 			FoundationsForceHeader: Foundations Force
-			SyranForceHeader: Syrian Force
+			SyranForceHeader: Syran Force
 			AsthraltiteEffect: Hypercrits
 			ExitumLuxEffect: Relic Boost
 			SpaceJunkEffect: Space Junk on hit
@@ -3157,12 +3648,11 @@ Mods: {
 		}
 
 		Tiles: {
-			MutantsForgeTile.MapEntry: Mutants Forge
+			MutantsForgeTile.MapEntry: Cosmic Quantum Computer
 			DemonshadeWorkbenchTile.MapEntry: Demonshade Workbench
-			SyranCraftingStationTile.MapEntry: Syran Crafting Station
-			DreamersForgeTile.MapEntry: Dreamers Forge
-			RedemptionCraftingStationTile.MapEntry: Redemption Crafting Station
-			ShtunStorageUnit.MapEntry: Shtun Storage Unit
+			SyranCraftingStationTile.MapEntry: Syrus Workstation
+			DreamersForgeTile.MapEntry: Dreamer's Forge
+			RedemptionCraftingStationTile.MapEntry: Xenium Fabricator
 		}
 
 		Projectiles: {
@@ -3170,8 +3660,8 @@ Mods: {
 			BossRush.DisplayName: Boss Rush
 			AbomSword.DisplayName: Abom Sword
 			AbomSwordHandle.DisplayName: Abom Sword Handle
-			MutantRitual5.DisplayName: Mutant Ritual5
-			MutantRitual.DisplayName: Mutant Ritual
+			MonstrosityRitual5.DisplayName: Mutant Ritual5
+			MonstrosityRitual.DisplayName: Mutant Ritual
 			MutantSansBeam.DisplayName: Mutant Sans Beam
 			MutantSansHead.DisplayName: Mutant Sans Head
 			MutantShadowHand.DisplayName: Mutant Shadow Hand
@@ -3237,10 +3727,47 @@ Mods: {
 			SquirrelRing.DisplayName: Squirrel Ring
 			FlariumGeyser.DisplayName: Flarium Geyser
 			EeriePulse.DisplayName: Eerie Pulse
+			WastelandNukeProj.DisplayName: Wasteland Nuke Proj
+			WastelandNukeSupremeProj.DisplayName: Wasteland Nuke Supreme Proj
+			StriderLegShockwave.DisplayName: Strider Leg Shockwave
+			SpookyRenewalProj.DisplayName: Spooky Renewal Proj
+			SpookyRenewalSupremeProj.DisplayName: Spooky Renewal Supreme Proj
+			EyeValleyRenewalProj.DisplayName: Eye Valley Renewal Proj
+			EyeValleyRenewalSupremeProj.DisplayName: Eye Valley Renewal Supreme Proj
+			SwampyRenewalProj.DisplayName: Swampy Renewal Proj
+			SwampyRenewalSupremeProj.DisplayName: Swampy Renewal Supreme Proj
+			FlariumNukeProj.DisplayName: Flarium Nuke Proj
+			FlariumNukeSupremeProj.DisplayName: Flarium Nuke Supreme Proj
+			CorruptNukeProj.DisplayName: Corrupt Nuke Proj
+			CorruptNukeSupremeProj.DisplayName: Corrupt Nuke Supreme Proj
+			CrimsonNukeProj.DisplayName: Crimson Nuke Proj
+			CrimsonNukeSupremeProj.DisplayName: Crimson Nuke Supreme Proj
+			DirtNukeProj.DisplayName: Dirt Nuke Proj
+			DirtNukeSupremeProj.DisplayName: Dirt Nuke Supreme Proj
+			HallowNukeProj.DisplayName: Hallow Nuke Proj
+			HallowNukeSupremeProj.DisplayName: Hallow Nuke Supreme Proj
+			MushroomNukeProj.DisplayName: Mushroom Nuke Proj
+			MushroomNukeSupremeProj.DisplayName: Mushroom Nuke Supreme Proj
+			PurityNukeProj.DisplayName: Purity Nuke Proj
+			PurityNukeSupremeProj.DisplayName: Purity Nuke Supreme Proj
+			SandNukeProj.DisplayName: Sand Nuke Proj
+			SandNukeSupremeProj.DisplayName: Sand Nuke Supreme Proj
+			SnowNukeProj.DisplayName: Snow Nuke Proj
+			SnowNukeSupremeProj.DisplayName: Snow Nuke Supreme Proj
+			NDLaserbeam.DisplayName: ND Laserbeam
+			MutantSCal.DisplayName: Mutant SCal
+			MonstrosityBoss.DisplayName: Monstrosity Boss
+			MonstrOldDuke.DisplayName: Monstr Old Duke
+			MonstrYharon.DisplayName: Monstr Yharon
+			MonstrosityDEH.DisplayName: Monstrosity D E H
+			MonstrositySparklingLove.DisplayName: Monstrosity Sparkling Love
+			MonstrosityAxe.DisplayName: Monstrosity Axe
+			SteelSwordProjectile.DisplayName: Steel Sword Projectile
+			SwordRainProjectile.DisplayName: Sword Rain Projectile
 		}
 
 		Bestiary: {
-			Monstrocity: The Siblings' more annoying, strange cousin, he thinks he is stronger than his cousin the mutant which makes the both of them fight a lot, he likes tacos though.
+			Monstrosity: The Siblings' more annoying, strange cousin, he thinks he is stronger than his cousin the mutant which makes the both of them fight a lot, he likes tacos though.
 			Echdeath: ech
 		}
 
@@ -3280,7 +3807,7 @@ Mods: {
 				}
 
 				ThrowerMerge: {
-					Tooltip: ""
+					Tooltip: Merge Thrower(Thorium), Rogue(Calamity) and Revenant(SoA) into one hybrid class.
 					Label: Thrower Merge
 				}
 
@@ -3301,7 +3828,17 @@ Mods: {
 
 				Homeward: {
 					Label: Homeward Journey
-					Tooltip: ""
+					Tooltip: WIP
+				}
+
+				Vitality: {
+					Label: Vitality
+					Tooltip: WIP
+				}
+
+				Orchid: {
+					Label: Orchid
+					Tooltip: WIP
 				}
 
 				Redemption: {
@@ -3331,6 +3868,21 @@ Mods: {
 
 				AlternativeSiblings: {
 					Label: Alternative Siblings
+					Tooltip: Monstrosity, Divergentt and Amalgamationn can be loaded
+				}
+
+				Consolaria: {
+					Label: Consolaria
+					Tooltip: ""
+				}
+
+				EternityForce: {
+					Label: Eternity Force
+					Tooltip: ""
+				}
+
+				BossRushPostMutant: {
+					Label: Boss Rush Post Mutant
 					Tooltip: ""
 				}
 			}
@@ -3339,10 +3891,11 @@ Mods: {
 		DamageClasses.UnitedModdedThrower.DisplayName: thrower damage
 
 		Message: {
+			IHateRogue: If you playing with mods that merge thrower classes make sure that you turn off their thrower merge
 			NoBalance: If you playing Calamity with Thorium, install WHummus' Calamity/Thorium Balancing
-			NoRework: It is recomended to play Thorium with Thorium Bosses Rework to enhance experience.
-			NoSoABardHealer1: We detected that you playing Shadows of Abaddon with Thorium Mod.
-			NoSoABardHealer2: Please install SoA Bard & Healer for better compatibility.
+			NoRework: It is recomended to play Thorium with Thorium Bosses Rework to enhance experience
+			NoSoABardHealer1: We detected that you playing Shadows of Abaddon with Thorium Mod
+			NoSoABardHealer2: Please install SoA Bard & Healer for better compatibility
 		}
 
 		"Keybinds.Dot Mount.DisplayName": Dot  Mount

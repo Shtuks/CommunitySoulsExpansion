@@ -11,6 +11,7 @@ using CalamityMod.Items.Armor.Demonshade;
 using FargowiltasSouls.Core.AccessoryEffectSystem;
 using ssm.Content.SoulToggles;
 using CalamityMod.Buffs.StatDebuffs;
+using ssm.Content.Buffs;
 
 namespace ssm.Calamity.Enchantments
 {
@@ -77,7 +78,7 @@ namespace ssm.Calamity.Enchantments
             public override bool ActiveSkill => true;
             public override void ActiveSkillJustPressed(Player player, bool stunned)
             {
-                player.AddBuff(ModContent.BuffType<Enraged>(), 600);
+                player.AddBuff(ShtunConfig.Instance.DebugMode ? ModContent.BuffType<EnrageCal>() : ModContent.BuffType<Enraged>(), 1200);
             }
         }
 

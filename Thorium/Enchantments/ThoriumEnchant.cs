@@ -39,10 +39,9 @@ namespace ssm.Thorium.Enchantments
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            ShtunThoriumPlayer modPlayer = player.GetModPlayer<ShtunThoriumPlayer>();
             ThoriumPlayer thoriumPlayer = player.GetModPlayer<ThoriumPlayer>();
             //diverman meme
-            modPlayer.ThoriumEnchant = true;
+            //thoriumPlayer.thoriumEndurance = true;
 
             if (player.AddEffect<CrietzEffect>(Item))
             {

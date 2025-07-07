@@ -6,11 +6,11 @@ using Fargowiltas.Items.Tiles;
 using ssm.SoA.Enchantments;
 using ssm.Core;
 using FargowiltasSouls.Core.AccessoryEffectSystem;
-using static ssm.SoA.Forces.GenerationsForce;
 using static ssm.SoA.Enchantments.PrairieEnchant;
 using static ssm.SoA.Enchantments.LapisEnchant;
 using static ssm.SoA.Enchantments.FrosthunterEnchant;
 using static ssm.SoA.Enchantments.BlightboneEnchant;
+using static ssm.SoA.Enchantments.CairoCrusaderEnchant;
 
 namespace ssm.SoA.Forces
 {
@@ -25,8 +25,9 @@ namespace ssm.SoA.Forces
 
         public override void SetStaticDefaults()
         {
-            Enchants[Type] = new int[4]
+            Enchants[Type] = new int[5]
             {
+                ModContent.ItemType<CairoCrusaderEnchant>(),
                 ModContent.ItemType<PrairieEnchant>(),
                 ModContent.ItemType<LapisEnchant>(),
                 ModContent.ItemType<FrosthunterEnchant>(),
@@ -49,6 +50,7 @@ namespace ssm.SoA.Forces
         }
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
+            player.AddEffect<CairoEffect>(Item);
             player.AddEffect<PrairieEffect>(Item);
             player.AddEffect<LapisDefenseEffect>(Item);
             player.AddEffect<LapisSpeedEffect>(Item);

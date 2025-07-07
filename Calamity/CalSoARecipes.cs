@@ -50,6 +50,7 @@ namespace ssm.Calamity
                 {
                     recipe.AddIngredient<AuricBar>(1);
                 }
+
                 //Waiting for erazor rework
                 //if (recipe.HasResult<ShadowspecBar>() && !recipe.HasIngredient<IDontExist>())
                 //{

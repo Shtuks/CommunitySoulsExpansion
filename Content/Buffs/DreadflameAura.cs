@@ -25,7 +25,7 @@ namespace ssm.Content.Buffs
 
         public override void Update(NPC npc, ref int buffIndex)
         {
-            npc.lifeRegen -= Main.LocalPlayer.HasEffect<GenerationsEffect>() ? 300 : 30;
+            npc.lifeRegen -= Main.LocalPlayer.HasEffect<GenerationsEffect>() ? 3000 : 30;
         }
     }
 }

@@ -6,7 +6,6 @@ using FargowiltasSouls.Content.Bosses.MutantBoss;
 using ssm.Content.NPCs.MutantEX;
 using ssm.Content.Buffs;
 using ssm.Core;
-using FargowiltasSouls.Core.Systems;
 
 namespace ssm
 {
@@ -24,6 +23,10 @@ namespace ssm
             if (Player.HasBuff<MutantDesperationBuff>() && NPC.AnyNPCs(ModContent.NPCType<MutantEX>()))
             {
                 Player.AddBuff(ModContent.BuffType<TimeFrozenBuff>(), 10);
+            }
+            if (NPC.AnyNPCs(ModContent.NPCType<MutantEX>()))
+            {
+                Player.AddBuff(ModContent.BuffType<MonstrousMaul>(), 180);
             }
             if (NPC.AnyNPCs(ModContent.NPCType<MutantEX>()))
             {

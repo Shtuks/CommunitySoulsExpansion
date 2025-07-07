@@ -18,9 +18,6 @@ namespace ssm.Thorium.Souls
         {
             return ShtunConfig.Instance.Thorium;
         }
-
-        private readonly Mod thorium = ModLoader.GetMod("ThoriumMod");
-
         public override void SetDefaults()
         {
             Item.width = 20;
@@ -34,10 +31,6 @@ namespace ssm.Thorium.Souls
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            ShtunThoriumPlayer thoriumPlayer = player.GetModPlayer<ShtunThoriumPlayer>();
-
-            thoriumPlayer.ThoriumSoul = true;
-
             player.ClearBuff(ModContent.BuffType<MetronomeDebuff>());
 
             //MUSPELHEIM
@@ -66,7 +59,7 @@ namespace ssm.Thorium.Souls
         {
             Recipe recipe = this.CreateRecipe();
 
-            recipe.AddIngredient<AbomEnergy>(10);
+            if (!ModCompatibility.Calamity.Loaded) { recipe.AddIngredient<AbomEnergy>(10); }
             recipe.AddIngredient(null, "MuspelheimForce");
             recipe.AddIngredient(null, "JotunheimForce");
             recipe.AddIngredient(null, "AlfheimForce");

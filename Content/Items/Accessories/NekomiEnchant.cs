@@ -20,11 +20,17 @@ using ssm.Content.Items.Accessories;
 using ssm.Core;
 using FargowiltasSouls.Content.Items.Accessories.Enchantments;
 using FargowiltasSouls;
+using FargowiltasSouls.Content.Patreon.Tiger;
 
 namespace ssm.Content.Items.Accessories
 {
     public class NekomiEnchant : BaseEnchant
     {
+        public override bool IsLoadingEnabled(Mod mod)
+        {
+            return ShtunConfig.Instance.EternityForce;
+        }
+
         private readonly Mod FargoSoul = Terraria.ModLoader.ModLoader.GetMod("FargowiltasSouls");
 
         public override void SetStaticDefaults() => ItemID.Sets.ItemNoGravity[this.Type] = true;
@@ -72,12 +78,11 @@ namespace ssm.Content.Items.Accessories
         public override void AddRecipes()
         {
             Recipe recipe = this.CreateRecipe(1);
-            recipe.AddIngredient(this.FargoSoul, "DeviatingEnergy", 50);
             recipe.AddIngredient(this.FargoSoul, "SparklingAdoration", 1);
-            recipe.AddIngredient(this.FargoSoul, "BrokenBlade", 1);
             recipe.AddIngredient(this.FargoSoul, "NekomiHood", 1);
             recipe.AddIngredient(this.FargoSoul, "NekomiHoodie", 1);
             recipe.AddIngredient(this.FargoSoul, "NekomiLeggings", 1);
+            recipe.AddIngredient<TouhouStaff>(1);
             recipe.AddTile(TileID.DemonAltar);
             recipe.Register();
         }

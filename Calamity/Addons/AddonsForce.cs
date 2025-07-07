@@ -11,6 +11,10 @@ namespace ssm.Calamity.Addons
     [JITWhenModsEnabled(ModCompatibility.Calamity.Name)]
     public class AddonsForce : BaseForce
     {
+        public override bool IsLoadingEnabled(Mod mod)
+        {
+            return ModCompatibility.Goozma.Loaded || ModCompatibility.Clamity.Loaded || ModCompatibility.Catalyst.Loaded;
+        }
         public override void SetDefaults()
         {
             Item.width = 20;

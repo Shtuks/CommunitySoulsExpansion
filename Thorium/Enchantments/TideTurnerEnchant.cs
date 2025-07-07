@@ -46,37 +46,15 @@ namespace ssm.Thorium.Enchantments
         {
             ThoriumPlayer thoriumPlayer = player.GetModPlayer<ThoriumPlayer>();
 
-            if (player.AddEffect<TideTurnerEffect>(Item))
+            if (player.AddEffect<TideTurnerEffect2>(Item))
             {
-                thoriumPlayer.tideHelmet = true;
-                if (thoriumPlayer.tideOrb < 10)
-                {
-                    timer++;
-                    if (timer > 30)
-                    {
-                        float num = 30f;
-                        int num2 = 0;
-                        while (num2 < num)
-                        {
-                            Vector2 vector = Vector2.UnitX * 0f;
-                            vector += -Utils.RotatedBy(Vector2.UnitY, (num2 * (6.28318548f / num)), default(Vector2)) * new Vector2(25f, 25f);
-                            vector = Utils.RotatedBy(vector, Utils.ToRotation(player.velocity), default(Vector2));
-                            int num3 = Dust.NewDust(player.Center, 0, 0, 113, 0f, 0f, 0, default(Color), 1f);
-                            Main.dust[num3].scale = 1.6f;
-                            Main.dust[num3].noGravity = true;
-                            Main.dust[num3].position = player.Center + vector;
-                            Main.dust[num3].velocity = player.velocity * 0f + Utils.SafeNormalize(vector, Vector2.UnitY) * 1f;
-                            int num4 = num2;
-                            num2 = num4 + 1;
-                        }
-                        thoriumPlayer.tideOrb++;
-                        timer = 0;
-                    }
-                }
+                ModContent.Find<ModItem>(this.thorium.Name, "TideTurnersGaze").UpdateAccessory(player, hideVisual);
             }
 
-            thoriumPlayer.setTideCrown = true;
-            thoriumPlayer.setTideTurner = true;
+            if (player.AddEffect<TideTurnerEffect>(Item))
+            {
+                ModContent.Find<ModItem>(this.thorium.Name, "TideTurnerHelmet").UpdateAccessory(player, hideVisual);
+            }
 
             if (player.AddEffect<PlagueLordEffect>(Item))
             {
@@ -85,6 +63,12 @@ namespace ssm.Thorium.Enchantments
         }
 
         public class TideTurnerEffect : AccessoryEffect
+        {
+            public override Header ToggleHeader => Header.GetHeader<JotunheimForceHeader>();
+            public override int ToggleItemType => ModContent.ItemType<TideTurnerEnchant>();
+        }
+
+        public class TideTurnerEffect2 : AccessoryEffect
         {
             public override Header ToggleHeader => Header.GetHeader<JotunheimForceHeader>();
             public override int ToggleItemType => ModContent.ItemType<TideTurnerEnchant>();

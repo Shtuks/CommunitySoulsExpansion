@@ -34,16 +34,16 @@ namespace ssm.ClassSouls.Beekeeper.Souls
             player.GetAttackSpeed<HymenoptraDamageClass>() += 0.15f;
             player.GetModPlayer<BeeDamagePlayer>().BeeResourceMax2 += 200;
 
-            ModContent.Find<ModItem>(((ModType)this).Mod.Name, "GlassOfHoney").UpdateAccessory(player, hideVisual);
-            ModContent.Find<ModItem>(((ModType)this).Mod.Name, "HymenoptrianNecklace").UpdateAccessory(player, hideVisual);
-            ModContent.Find<ModItem>(((ModType)this).Mod.Name, "LihzardianHornetRelic").UpdateAccessory(player, hideVisual);
+            ModContent.Find<ModItem>(ModCompatibility.BeekeeperClass.Name, "GlassOfHoney").UpdateAccessory(player, hideVisual);
+            ModContent.Find<ModItem>(ModCompatibility.BeekeeperClass.Name, "HymenoptrianNecklace").UpdateAccessory(player, hideVisual);
+            ModContent.Find<ModItem>(ModCompatibility.BeekeeperClass.Name, "LihzardianHornetRelic").UpdateAccessory(player, hideVisual);
         }
         public override void AddRecipes()
         {
             Recipe recipe = this.CreateRecipe();
 
             recipe.AddIngredient(null, "BeekeeperEssence");
-            recipe.AddIngredient<AbomEnergy>(10);
+            if (ModCompatibility.Calamity.Loaded || ModCompatibility.SacredTools.Loaded) { recipe.AddIngredient<AbomEnergy>(10); }
 
             recipe.AddIngredient<HoneycombOfTheGalaxies>();
             recipe.AddIngredient<SpectralBeeTome>();

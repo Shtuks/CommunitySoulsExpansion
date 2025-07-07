@@ -3,7 +3,6 @@ using Terraria.ModLoader;
 using MagicStorage.Items;
 using ssm.Core;
 using ssm.Content.Items.Armor;
-using ssm.MagicStorage;
 using FargowiltasSouls.Content.Items.Accessories.Souls;
 using FargowiltasSouls.Content.Items.Materials;
 using ssm.Content.Items.Consumables;
@@ -11,6 +10,8 @@ using FargowiltasSouls.Content.Items.Weapons.FinalUpgrades;
 using FargowiltasSouls;
 using Fargowiltas.Items.Tiles;
 using ssm.CrossMod.CraftingStations;
+using Terraria.ID;
+using Redemption.Items.Materials.PostML;
 
 namespace ssm
 {
@@ -25,7 +26,6 @@ namespace ssm
         public override void AddRecipes()
         {
             Recipe.Create(ModContent.ItemType<CreativeStorageUnit>())
-                .AddIngredient<EternalStorageUnitItem>(10)
                 .AddIngredient<TrueLumberjackBody>()
                 .AddIngredient<TrueLumberjackMask>()
                 .AddIngredient<TrueLumberjackPants>()
@@ -52,6 +52,18 @@ namespace ssm
                 {
                     recipe.RemoveTile(ModContent.TileType<CrucibleCosmosSheet>());
                     recipe.AddTile<MutantsForgeTile>();
+                }
+                if (ModCompatibility.Calamity.Loaded)
+                {
+                    if ((recipe.HasResult<UniverseSoul>() || recipe.HasResult<TerrariaSoul>() || recipe.HasResult<MasochistSoul>() || recipe.HasResult<DimensionSoul>()) && recipe.HasIngredient<AbomEnergy>())
+                    {
+                        recipe.RemoveIngredient(ModContent.ItemType<AbomEnergy>());
+                    }
+                }
+                //trawler soul post abom is so stupid
+                if (recipe.HasResult(ModContent.ItemType<TrawlerSoul>()) && recipe.HasIngredient(ModContent.ItemType<AbomEnergy>()))
+                {
+                    recipe.RemoveIngredient(ModContent.ItemType<AbomEnergy>());
                 }
             }
         }

@@ -88,7 +88,7 @@ namespace ssm.SoA
         }
         public override void AI(NPC npc)
         {
-            if (npc.type == NPCType<MutantBoss>())
+            if (npc.type == NPCType<MutantBoss>() && ShtunConfig.Instance.ExperimentalContent)
             {
                 npc.dontTakeDamage = NPC.CountNPCS(NPCType<MutantAuraOfSupression>()) > 0 || Main.npc[EModeGlobalNPC.mutantBoss].ai[0] < 0;
                 if (!summonedShieldOnce)

@@ -107,7 +107,7 @@ namespace ssm.SoA.Souls
             recipe.AddIngredient<GenerationsForce>();
             recipe.AddIngredient<SoranForce>();
             recipe.AddIngredient<SyrianForce>();
-            recipe.AddIngredient<AbomEnergy>(10);
+            if (!ModCompatibility.Calamity.Loaded) { recipe.AddIngredient<AbomEnergy>(10); }
             recipe.AddIngredient<EmberOfOmen>(5);
             recipe.AddTile<SyranCraftingStationTile>();
             recipe.Register();

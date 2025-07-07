@@ -9,12 +9,16 @@
 	</PropertyGroup>
 	<ItemGroup>
 	  <AdditionalFiles Remove="Content\NPCs\StarlightCat\**" />
+	  <AdditionalFiles Remove="MagicStorage\**" />
 	  <AdditionalFiles Remove="Thorium\Swarm\**" />
 	  <Compile Remove="Content\NPCs\StarlightCat\**" />
+	  <Compile Remove="MagicStorage\**" />
 	  <Compile Remove="Thorium\Swarm\**" />
 	  <EmbeddedResource Remove="Content\NPCs\StarlightCat\**" />
+	  <EmbeddedResource Remove="MagicStorage\**" />
 	  <EmbeddedResource Remove="Thorium\Swarm\**" />
 	  <None Remove="Content\NPCs\StarlightCat\**" />
+	  <None Remove="MagicStorage\**" />
 	  <None Remove="Thorium\Swarm\**" />
 	</ItemGroup>
 	<ItemGroup>
@@ -23,13 +27,13 @@
 	  <None Remove="Thorium\Enchantments\HarbingerEnchant.cs.sex" />
 	</ItemGroup>
 	<ItemGroup>
+	  <Compile Include="Redemption\Mutagens\MutagenClicker.cs.bak" />
 	  <Compile Include="Thorium\Enchantments\BerserkerEnchant.cs.sex" />
 	  <Compile Include="Thorium\Enchantments\MagmaEnchant.cs.sex" />
 	</ItemGroup>
 	<ItemGroup>
 	  <None Include="Calamity\Addons\DivineEnchant.cs" />
 	  <None Include="Calamity\Addons\EmptinessEnchant.cs" />
-	  <None Include="MagicStorage\StorageUnits.cs" />
 	</ItemGroup>
 	<ItemGroup>
 	  <Reference Include="BombusApisBee">
@@ -58,6 +62,9 @@
 	  </Reference>
 	  <Reference Include="ClickerClass">
 	    <HintPath>lib\ClickerClass.dll</HintPath>
+	  </Reference>
+	  <Reference Include="ContinentOfJourney">
+	    <HintPath>..\..\ModReader\ContinentOfJourney\ContinentOfJourney.dll</HintPath>
 	  </Reference>
 	  <Reference Include="DragonLens">
 	    <HintPath>lib\DragonLens.dll</HintPath>
@@ -142,6 +149,9 @@
 	  </Reference>
 	  <Reference Include="ThoriumRework">
 	    <HintPath>lib\ThoriumRework.dll</HintPath>
+	  </Reference>
+	  <Reference Include="Consolaria">
+	    <HintPath>lib\Consolaria.dll</HintPath>
 	  </Reference>
 	</ItemGroup>
 

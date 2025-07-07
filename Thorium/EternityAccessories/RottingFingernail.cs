@@ -4,12 +4,20 @@ using Terraria.ModLoader;
 using ThoriumMod.Buffs;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using ssm.Core;
+
 
 
 namespace ssm.Thorium.EternityAccessories
 {
+    [ExtendsFromMod(ModCompatibility.Thorium.Name)]
+    [JITWhenModsEnabled(ModCompatibility.Thorium.Name)]
     public class RottingFingernail : ModItem
     {
+        public override bool IsLoadingEnabled(Mod mod)
+        {
+            return ShtunConfig.Instance.ExperimentalContent;
+        }
         public override void SetDefaults()
         {
             Item.width = 11;

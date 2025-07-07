@@ -11,6 +11,8 @@ using ThoriumMod.Items.BossFallenBeholder;
 using FargowiltasSouls.Core.AccessoryEffectSystem;
 using FargowiltasSouls.Core.Toggler.Content;
 using FargowiltasSouls.Content.Items.Accessories.Souls;
+using ThoriumMod.Items.BossThePrimordials.Slag;
+using ThoriumMod.Items.BossThePrimordials.Omni;
 
 namespace ssm.Thorium.Souls
 {
@@ -63,12 +65,14 @@ namespace ssm.Thorium.Souls
             recipe.AddIngredient<PiratesPurse>();
             recipe.AddIngredient<ThrowingGuideVolume3>();
             recipe.AddIngredient<TidalWave>();
-            recipe.AddIngredient<AngelsEnd>();
             recipe.AddIngredient<TerrariumRippleKnife>();
             recipe.AddIngredient<DragonFang>();
             recipe.AddIngredient<TerraKnife>();
-            recipe.AddIngredient<TrueCarnwennan>();
             recipe.AddIngredient<HellRoller>();
+
+            recipe.AddIngredient<OceanEssence>(5);
+            recipe.AddIngredient<InfernoEssence>(5);
+            recipe.AddIngredient<DeathEssence>(5);
 
             recipe.AddTile<CrucibleCosmosSheet>();
             recipe.Register();

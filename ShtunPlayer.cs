@@ -8,15 +8,15 @@ using ssm.Content.Projectiles;
 using ssm.Content.NPCs.MutantEX;
 using ssm.Systems;
 using FargowiltasSouls;
-using FargowiltasSouls.Content.Buffs.Boss;
-using ssm.Content.Buffs;
 using System.Collections.Generic;
 using Terraria.ModLoader.IO;
 using Terraria.ID;
 using FargowiltasSouls.Core.Globals;
 using FargowiltasSouls.Content.Bosses.MutantBoss;
 using ssm.Core;
-using FargowiltasSouls.Core.Systems;
+using BombusApisBee.BeeDamageClass;
+using CalamityMod.CalPlayer;
+using ThoriumMod.Utilities;
 using CalamityMod.Events;
 
 namespace ssm
@@ -25,13 +25,15 @@ namespace ssm
     {
         public bool MutantSoul;
         public bool DevianttSoul;
-        public int Screenshake;
         public float throwerVelocity = 1f;
         public bool CyclonicFin;
         public int CyclonicFinCD;
-        public bool MonstrocityPresence;
+        public bool MonstrosityPresence;
         public bool lumberjackSet;
         public bool starlightFruit;
+
+        public int Screenshake;
+        public int Flash;
 
         //Enchants
         public bool equippedPhantasmalEnchantment;
@@ -41,88 +43,88 @@ namespace ssm
 
         public override void PostUpdateBuffs()
         {
-            if (FargoSoulsUtil.BossIsAlive(ref EModeGlobalNPC.mutantBoss, ModContent.NPCType<MutantBoss>()) && ModCompatibility.Calamity.Loaded && !WorldSavingSystem.MasochistModeReal)
-            {
-                ModLoader.GetMod("CalamityMod").TryFind("Enraged", out ModBuff enrage);
-                ModLoader.GetMod("CalamityMod").TryFind("RageMode", out ModBuff rage);
-                ModLoader.GetMod("CalamityMod").TryFind("AdrenalineMode", out ModBuff adrenaline);
-                Main.LocalPlayer.buffImmune[enrage.Type] = true;
-                Main.LocalPlayer.buffImmune[rage.Type] = true;
-                Main.LocalPlayer.buffImmune[adrenaline.Type] = true;
-            }
+            //if ((FargoSoulsUtil.BossIsAlive(ref EModeGlobalNPC.mutantBoss, ModContent.NPCType<MutantBoss>()) || FargoSoulsUtil.BossIsAlive(ref EModeGlobalNPC.abomBoss, ModContent.NPCType<AbomBoss>())) && ModCompatibility.Calamity.Loaded)
+            //{
+            //    ModLoader.GetMod("CalamityMod").TryFind("Enraged", out ModBuff enrage);
+            //    ModLoader.GetMod("CalamityMod").TryFind("RageMode", out ModBuff rage);
+            //    ModLoader.GetMod("CalamityMod").TryFind("AdrenalineMode", out ModBuff adrenaline);
+            //    Main.LocalPlayer.buffImmune[enrage.Type] = ShtunConfig.Instance.DebugMode ? false : true;
+            //    Main.LocalPlayer.buffImmune[rage.Type] = true;
+            //    Main.LocalPlayer.buffImmune[adrenaline.Type] = true;
+            //}
 
-            if (starlightFruit)
-            {
-                Player.accWatch = 3;
-                Player.accDepthMeter = 1;
-                Player.accCompass = 1;
-                Player.accFishFinder = true;
-                Player.accDreamCatcher = true;
-                Player.accOreFinder = true;
-                Player.accStopwatch = true;
-                Player.accCritterGuide = true;
-                Player.accJarOfSouls = true;
-                Player.accThirdEye = true;
-                Player.accCalendar = true;
-                Player.accWeatherRadio = true;
+            //if (starlightFruit)
+            //{
+            //    Player.accWatch = 3;
+            //    Player.accDepthMeter = 1;
+            //    Player.accCompass = 1;
+            //    Player.accFishFinder = true;
+            //    Player.accDreamCatcher = true;
+            //    Player.accOreFinder = true;
+            //    Player.accStopwatch = true;
+            //    Player.accCritterGuide = true;
+            //    Player.accJarOfSouls = true;
+            //    Player.accThirdEye = true;
+            //    Player.accCalendar = true;
+            //    Player.accWeatherRadio = true;
 
-                Player.findTreasure = true;
-                Player.nightVision = true;
-                Player.detectCreature = true;
-                Player.pickSpeed -= 0.25f;
-                Player.dangerSense = true;
-                Player.gills = true;
-                Player.waterWalk = true;
-                Player.ignoreWater = true;
-                Player.accFlipper = true;
-                Player.buffImmune[4] = true;
-                Player.buffImmune[15] = true;
-                Player.buffImmune[109] = true;
-                Player.buffImmune[9] = true;
-                Player.buffImmune[11] = true;
-                Player.buffImmune[12] = true;
-                Player.buffImmune[17] = true;
-                Player.buffImmune[104] = true;
-                Player.buffImmune[111] = true;
-                Player.ammoBox = true;
-                Player.archery = true;
-                Player.ammoPotion = true;
-                Player.lavaImmune = true;
-                Player.fireWalk = true;
-                Player.buffImmune[24] = true;
-                Player.buffImmune[29] = true;
-                Player.buffImmune[39] = true;
-                Player.buffImmune[44] = true;
-                Player.buffImmune[46] = true;
-                Player.buffImmune[47] = true;
-                Player.buffImmune[69] = true;
-                Player.buffImmune[110] = true;
-                Player.buffImmune[112] = true;
-                Player.buffImmune[113] = true;
-                Player.buffImmune[114] = true;
-                Player.buffImmune[115] = true;
-                Player.buffImmune[117] = true;
-                Player.buffImmune[150] = true;
-                Player.buffImmune[348] = true;
-                Player.buffImmune[1] = true;
-                Player.buffImmune[2] = true;
-                Player.buffImmune[5] = true;
-                Player.buffImmune[6] = true;
-                Player.buffImmune[7] = true;
-                Player.buffImmune[14] = true;
+            //    Player.findTreasure = true;
+            //    Player.nightVision = true;
+            //    Player.detectCreature = true;
+            //    Player.pickSpeed -= 0.25f;
+            //    Player.dangerSense = true;
+            //    Player.gills = true;
+            //    Player.waterWalk = true;
+            //    Player.ignoreWater = true;
+            //    Player.accFlipper = true;
+            //    Player.buffImmune[4] = true;
+            //    Player.buffImmune[15] = true;
+            //    Player.buffImmune[109] = true;
+            //    Player.buffImmune[9] = true;
+            //    Player.buffImmune[11] = true;
+            //    Player.buffImmune[12] = true;
+            //    Player.buffImmune[17] = true;
+            //    Player.buffImmune[104] = true;
+            //    Player.buffImmune[111] = true;
+            //    Player.ammoBox = true;
+            //    Player.archery = true;
+            //    Player.ammoPotion = true;
+            //    Player.lavaImmune = true;
+            //    Player.fireWalk = true;
+            //    Player.buffImmune[24] = true;
+            //    Player.buffImmune[29] = true;
+            //    Player.buffImmune[39] = true;
+            //    Player.buffImmune[44] = true;
+            //    Player.buffImmune[46] = true;
+            //    Player.buffImmune[47] = true;
+            //    Player.buffImmune[69] = true;
+            //    Player.buffImmune[110] = true;
+            //    Player.buffImmune[112] = true;
+            //    Player.buffImmune[113] = true;
+            //    Player.buffImmune[114] = true;
+            //    Player.buffImmune[115] = true;
+            //    Player.buffImmune[117] = true;
+            //    Player.buffImmune[150] = true;
+            //    Player.buffImmune[348] = true;
+            //    Player.buffImmune[1] = true;
+            //    Player.buffImmune[2] = true;
+            //    Player.buffImmune[5] = true;
+            //    Player.buffImmune[6] = true;
+            //    Player.buffImmune[7] = true;
+            //    Player.buffImmune[14] = true;
 
-                Player.pickSpeed -= 0.2f;
-                Player.moveSpeed += 0.2f;
-                Player.GetArmorPenetration(DamageClass.Generic) += 10;
-                Player.moveSpeed += 0.25f;
-                Player.statLifeMax2 += Player.statLifeMax / 5 / 20 * 20;
-                Player.lifeRegen += 5;
-                Player.endurance += 0.1f;
-                Player.statDefense += 10;
-                Player.GetCritChance(DamageClass.Generic) += 0.1f;
-                Player.GetDamage(DamageClass.Generic) += 0.1f;
-                Player.maxMinions += 2;  
-            }
+            //    Player.pickSpeed -= 0.2f;
+            //    Player.moveSpeed += 0.2f;
+            //    Player.GetArmorPenetration(DamageClass.Generic) += 10;
+            //    Player.moveSpeed += 0.25f;
+            //    Player.statLifeMax2 += Player.statLifeMax / 5 / 20 * 20;
+            //    Player.lifeRegen += 5;
+            //    Player.endurance += 0.1f;
+            //    Player.statDefense += 10;
+            //    Player.GetCritChance(DamageClass.Generic) += 0.1f;
+            //    Player.GetDamage(DamageClass.Generic) += 0.1f;
+            //    Player.maxMinions += 2;  
+            //}
 
             if (FargoSoulsUtil.BossIsAlive(ref ShtunNpcs.mutantEX, ModContent.NPCType<MutantEX>()) && Main.player[Main.myPlayer].Shtun().lumberjackSet && WorldSaveSystem.enragedMutantEX)
             {
@@ -131,21 +133,79 @@ namespace ssm
             }
         }
 
+        public override void PostUpdateEquips()
+        {
+            if (Player.FargoSouls().MutantSetBonusItem != null)
+            {
+                Player.Shtun().throwerVelocity += 0.3f;
+                if (ModCompatibility.Thorium.Loaded) { BardAndHealer(Player, 1000, 0, 1, 2f, 100, 100, 2, 1000); }
+                if (ModCompatibility.BeekeeperClass.Loaded) { Beekeeper(Player, 30); }
+                if (ModCompatibility.Calamity.Loaded) { ThrowerCal(Player, 5); }
+            }
+
+            if (Player.FargoSouls().StyxSet)
+            {
+                Player.Shtun().throwerVelocity += 0.2f;
+                if (ModCompatibility.Thorium.Loaded) { BardAndHealer(Player, 10, 0, 0.5f, 1f, 30, 15, 2, 600); }
+                if (ModCompatibility.BeekeeperClass.Loaded) { Beekeeper(Player, 20); }
+                if (ModCompatibility.Calamity.Loaded) { ThrowerCal(Player, 2); }
+            }
+
+            if (Player.FargoSouls().GaiaSet)
+            {
+                Player.Shtun().throwerVelocity += 0.1f;
+                if (ModCompatibility.Thorium.Loaded) { BardAndHealer(Player, 1, 200, 0.3f, 0.5f, 20, 10, 2, 300); }
+                if (ModCompatibility.BeekeeperClass.Loaded) { Beekeeper(Player, 20); }
+                if (ModCompatibility.Calamity.Loaded) { ThrowerCal(Player, 1.1f); }
+            }
+
+            if (Player.FargoSouls().NekomiSet)
+            {
+                Player.Shtun().throwerVelocity += 0.05f;
+                if (ModCompatibility.Thorium.Loaded) { BardAndHealer(Player, 0.5f, 100, 0.1f, 0.25f, 10, 5, 1, 180); }
+                if (ModCompatibility.BeekeeperClass.Loaded) { Beekeeper(Player, 10); }
+                if (ModCompatibility.Calamity.Loaded) { ThrowerCal(Player, 0.7f); }
+            }
+        }
         public override void SaveData(TagCompound tag)
         {
-            var playerData = new List<string>();
-            if (starlightFruit) playerData.Add("starlightFruit");
+            var PlayerData = new List<string>();
+            if (starlightFruit) PlayerData.Add("starlightFruit");
 
-            tag.Add($"{Mod.Name}.{Player.name}.Data", playerData);
+            tag.Add($"{Mod.Name}.{Player.name}.Data", PlayerData);
         }
 
         public override void LoadData(TagCompound tag)
         {
-            var playerData = tag.GetList<string>($"{Mod.Name}.{Player.name}.Data");
-            starlightFruit = playerData.Contains("starlightFruit");
+            var PlayerData = tag.GetList<string>($"{Mod.Name}.{Player.name}.Data");
+            starlightFruit = PlayerData.Contains("starlightFruit");
         }
         public override void OnEnterWorld()
         {
+            // debug only //
+            //if (BossRushEvent.Bosses == null || BossRushEvent.Bosses.Count == 0)
+            //{
+            //    Main.NewText("empty");
+            //    return;
+            //}
+            //string message = "bosses ids: ";
+            //foreach (BossRushEvent.Boss boss in BossRushEvent.Bosses)
+            //{
+            //    message += $"{boss.EntityID}, ";
+
+            //    if (message.Length > 500)
+            //    {
+            //        Main.NewText(message.TrimEnd(',', ' '));
+            //        message = "more: ";
+            //    }
+            //}
+            //if (message.Length > 0)
+            //{
+            //    Main.NewText(message.TrimEnd(',', ' '));
+            //}
+            // debug only //
+
+
             if (!ModLoader.TryGetMod("ThoriumRework", out Mod _) && ModLoader.TryGetMod("ThoriumMod", out Mod _))
             {
                 Main.NewText(Language.GetTextValue($"Mods.ssm.Message.NoRework"), Color.LimeGreen);
@@ -153,6 +213,10 @@ namespace ssm
             if (ModCompatibility.Calamity.Loaded && ModCompatibility.Thorium.Loaded && !ModLoader.TryGetMod("WHummusMultiModBalancing", out Mod _))
             {
                 Main.NewText(Language.GetTextValue($"Mods.ssm.Message.NoBalancing"), Color.LimeGreen);
+            }
+            if (ModLoader.TryGetMod("InfernalEclipseAPI", out Mod _) || ModLoader.TryGetMod("WHummusMultiModBalancing", out Mod _))
+            {
+                Main.NewText(Language.GetTextValue($"Mods.ssm.Message.IHateRogue"), Color.LimeGreen);
             }
 
             //if (!ModLoader.TryGetMod("SoABardHealer", out Mod _) && ModLoader.TryGetMod("SoA", out Mod _) && ModLoader.TryGetMod("ThoriumMod", out Mod _))
@@ -202,6 +266,35 @@ namespace ssm
                 Player.maxMinions = 0;
             }
         }
+
+
+        [JITWhenModsEnabled(ModCompatibility.Thorium.Name)]
+        public void BardAndHealer(Player Player, float bonus1, int bonus2, float bonus3, float bonus4, int bonus5, int bonus6, int bonus7, short bonus8)
+        {
+            Player.GetThoriumPlayer().bardBuffDuration += bonus8;
+            Player.GetThoriumPlayer().techPointsMax += bonus7;
+            Player.GetThoriumPlayer().throwerExhaustionRegenBonus += bonus1;
+            Player.GetThoriumPlayer().throwerExhaustionMax += bonus2;
+            Player.GetThoriumPlayer().bardResourceDropBoost += bonus3;
+            Player.GetThoriumPlayer().inspirationRegenBonus += bonus4;
+            Player.GetThoriumPlayer().bardResourceMax2 += bonus5;
+            Player.GetThoriumPlayer().healBonus += bonus6;
+        }
+
+
+        [JITWhenModsEnabled(ModCompatibility.BeekeeperClass.Name)]
+        public void Beekeeper(Player Player, int bonus)
+        {
+            Player.GetModPlayer<BeeDamagePlayer>().BeeResourceMax2 += bonus;
+        }
+
+        [JITWhenModsEnabled(ModCompatibility.Calamity.Name)]
+        public void ThrowerCal(Player Player, float bonus)
+        {
+            Player.GetModPlayer<CalamityPlayer>().wearingRogueArmor = true;
+            Player.GetModPlayer<CalamityPlayer>().rogueStealthMax += bonus;
+        }
+
         public override bool CanBeHitByNPC(NPC npc, ref int cooldownSlot)
         {
             return !lumberjackSet;
@@ -230,6 +323,9 @@ namespace ssm
         {
             if (Screenshake > 0)
                 Screenshake--;
+
+            if (Flash > 0)
+                Flash--;
 
             equippedPhantasmalEnchantment = false;
             equippedAbominableEnchantment = false;

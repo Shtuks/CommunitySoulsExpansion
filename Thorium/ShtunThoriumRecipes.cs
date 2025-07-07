@@ -14,6 +14,10 @@ using FargowiltasSouls.Content.Items.Armor;
 using ThoriumMod.Items.BossThePrimordials.Omni;
 using ThoriumMod.Items.BossThePrimordials.Aqua;
 using ThoriumMod.Items.Terrarium;
+using ThoriumMod.Items.ThrownItems;
+using ThoriumMod.Items.HealerItems;
+using ThoriumMod.Items.BossThePrimordials.Slag;
+using ssm.Thorium.Enchantments;
 
 namespace ssm.Thorium
 {
@@ -92,20 +96,67 @@ namespace ssm.Thorium
                     recipe.RemoveIngredient(ItemID.ManaFlower);
                     recipe.AddIngredient(ItemID.NaturesGift);
                 }
-                if (recipe.HasResult<StyxCrown>() && !recipe.HasIngredient(549))
+
+                if (recipe.HasResult<WorldShaperSoul>() && !recipe.HasIngredient<GeodeEnchant>())
+                {
+                    recipe.AddIngredient<GeodeEnchant>();
+                }
+
+                if (recipe.HasResult<StyxCrown>() && recipe.HasIngredient(549))
                 {
                     recipe.RemoveIngredient(549);
                     recipe.AddIngredient(ModContent.ItemType<DeathEssence>(), 10);
                 }
-                if (recipe.HasResult<StyxLeggings>() && !recipe.HasIngredient(547))
+                if (recipe.HasResult<StyxLeggings>() && recipe.HasIngredient(547))
                 {
                     recipe.RemoveIngredient(547);
                     recipe.AddIngredient(ModContent.ItemType<OceanEssence>(), 10);
                 }
-                if (recipe.HasResult<StyxChestplate>() && !recipe.HasIngredient(548))
+                if (recipe.HasResult<StyxChestplate>() && recipe.HasIngredient(548))
                 {
                     recipe.RemoveIngredient(548);
-                    recipe.AddIngredient(ModContent.ItemType<OceanEssence>(), 10);
+                    recipe.AddIngredient(ModContent.ItemType<InfernoEssence>(), 10);
+                }
+
+                if (recipe.HasResult<GaiaHelmet>() && !recipe.HasIngredient<DarkMatter>())
+                {
+                    recipe.AddIngredient(ModContent.ItemType<HolyKnightsAlloy>(), 6);
+                    recipe.AddIngredient(ModContent.ItemType<DarkMatter>(), 6);
+                    recipe.AddIngredient(ModContent.ItemType<BloomWeave>(), 6);
+                }
+                if (recipe.HasResult<GaiaGreaves>() && !recipe.HasIngredient<DarkMatter>())
+                {
+                    recipe.AddIngredient(ModContent.ItemType<HolyKnightsAlloy>(), 6);
+                    recipe.AddIngredient(ModContent.ItemType<DarkMatter>(), 6);
+                    recipe.AddIngredient(ModContent.ItemType<BloomWeave>(), 6);
+                }
+                if (recipe.HasResult<GaiaPlate>() && !recipe.HasIngredient<DarkMatter>())
+                {
+                    recipe.AddIngredient(ModContent.ItemType<HolyKnightsAlloy>(), 9);
+                    recipe.AddIngredient(ModContent.ItemType<DarkMatter>(), 9);
+                    recipe.AddIngredient(ModContent.ItemType<BloomWeave>(), 9);
+                }
+
+                if ((recipe.HasResult<ColossusSoul>() ||
+                    recipe.HasResult<FlightMasterySoul>() ||
+                    recipe.HasResult<ArchWizardsSoul>() ||
+                    recipe.HasResult<BerserkerSoul>() ||
+                    recipe.HasResult<SnipersSoul>() ||
+                    recipe.HasResult<ConjuristsSoul>()) && !recipe.HasIngredient<OceanEssence>())
+                {
+                    recipe.AddIngredient<OceanEssence>(5);
+                    recipe.AddIngredient<InfernoEssence>(5);
+                    recipe.AddIngredient<DeathEssence>(5);
+                }
+
+                if (recipe.HasResult(ItemID.DrillContainmentUnit) && !recipe.HasIngredient<TerrariumCore>())
+                {
+                    recipe.RemoveIngredient(ItemID.MeteoriteBar);
+                    recipe.RemoveIngredient(ItemID.HellstoneBar);
+                    recipe.RemoveIngredient(ItemID.ShroomiteBar);
+                    recipe.RemoveIngredient(ItemID.SpectreBar);
+                    recipe.RemoveIngredient(ItemID.ChlorophyteBar);
+                    recipe.AddIngredient<TerrariumCore>(40);
                 }
             }
 		}

@@ -14,7 +14,7 @@ namespace ssm.Calamity.Addons
         {
             if (item.type == ModContent.ItemType<CheatPermissionSlip>())
             {
-                tooltips.Add(new TooltipLine(Mod, "PostMonstrocity", $"[c/FF0000:Cross-Mod Balance:] Can only be used after defeating the Monstrocity"));
+                tooltips.Add(new TooltipLine(Mod, "PostMonstrosity", $"[c/FF0000:Cross-Mod Balance:] Can only be used after defeating the Monstrosity"));
             }
         }
     }

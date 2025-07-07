@@ -135,6 +135,7 @@ namespace ssm
                     //recipe.AddIngredient<AsthraltiteWings>();
                     recipe.AddIngredient<DespairBoosters>();
                     recipe.AddIngredient<AuroraWings>();
+                    recipe.AddIngredient<FlariumWings>();
                 }
 
                 if (recipe.createItem.ModItem is BaseForce)
@@ -154,6 +155,7 @@ namespace ssm
                 {
                     recipe.AddIngredient<AbomEnergy>(5);
                 }
+
                 if ((recipe.HasResult<AsthraltiteHelmetRevenant>() ||
                     recipe.HasResult<AsthralRanged>() ||
                     recipe.HasResult<AsthralMelee>() ||

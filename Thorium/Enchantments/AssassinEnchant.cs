@@ -8,6 +8,10 @@ using ThoriumMod.Items.RangedItems;
 using ThoriumMod.Items.Tracker;
 using FargowiltasSouls.Content.Items.Accessories.Enchantments;
 using ThoriumMod;
+using FargowiltasSouls.Core.AccessoryEffectSystem;
+using static ssm.Thorium.Enchantments.BronzeEnchant;
+using ssm.Content.Projectiles.Enchantments;
+using ssm.Content.SoulToggles;
 
 namespace ssm.Thorium.Enchantments
 {
@@ -36,13 +40,18 @@ namespace ssm.Thorium.Enchantments
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            ThoriumPlayer modPlayer = player.GetModPlayer<ThoriumPlayer>();
-            modPlayer.masterArbalestHoodSet = true;
-            modPlayer.masterArbalestHoodSet = true;
-
-            ModContent.Find<ModItem>(this.thorium.Name, "DartPouch").UpdateAccessory(player, hideVisual);
+            player.AddEffect<AssasinEffect>(Item);
         }
 
+        public class AssasinEffect : AccessoryEffect
+        {
+            public override Header ToggleHeader => Header.GetHeader<AlfheimForceHeader>();
+            public override bool ActiveSkill => true;
+            public override void ActiveSkillJustPressed(Player player, bool stunned)
+            {
+                //player.Teleport(Main.mouse)
+            }
+        }
         public override void AddRecipes()
         {
             Recipe recipe = this.CreateRecipe();

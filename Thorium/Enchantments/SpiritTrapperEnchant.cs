@@ -41,11 +41,9 @@ namespace ssm.Thorium.Enchantments
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            ShtunThoriumPlayer modPlayer = player.GetModPlayer<ShtunThoriumPlayer>();
             ThoriumPlayer thoriumPlayer = player.GetModPlayer<ThoriumPlayer>();
             //set bonus
             thoriumPlayer.setSpiritTrapper = true;
-            modPlayer.SpiritTrapperEnchant = true;
 
             ModContent.Find<ModItem>(this.thorium.Name, "ScryingGlass").UpdateAccessory(player, hideVisual);
         }

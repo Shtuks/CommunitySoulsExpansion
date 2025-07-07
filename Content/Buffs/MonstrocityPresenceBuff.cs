@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace ssm.Content.Buffs
 {
-    public class MonstrocityPresenceBuff : ModBuff
+    public class MonstrosityPresenceBuff : ModBuff
     {
         public override void SetStaticDefaults()
         {
@@ -15,7 +15,7 @@ namespace ssm.Content.Buffs
         }
         public override void Update(Player player, ref int buffIndex)
         {
-            player.Shtun().MonstrocityPresence = true;
+            player.Shtun().MonstrosityPresence = true;
             player.FargoSouls().OceanicMaul = true;
             player.FargoSouls().TinEternityDamage = 0;
             player.FargoSouls().noDodge = true;

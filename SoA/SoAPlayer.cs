@@ -1,4 +1,7 @@
-﻿using ssm.Core;
+﻿using SacredTools;
+using ssm.Content.DamageClasses;
+using ssm.Core;
+using Terraria;
 using Terraria.ModLoader;
 
 namespace ssm.SoA
@@ -8,5 +11,13 @@ namespace ssm.SoA
     public class SoAPlayer : ModPlayer
     {
         public int rivalStreak;
+
+        public override void PostUpdateEquips()
+        {
+            if (Player.GetModPlayer<ModdedPlayer>().AstralSet)
+            {
+                Player.GetDamage<UnitedModdedThrower>() += 0.7f;
+            }
+        }
     }
 }

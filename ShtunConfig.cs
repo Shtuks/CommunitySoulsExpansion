@@ -47,11 +47,22 @@ namespace ssm
         [DefaultValue(true)]
         public bool ThrowerMerge { get; set; }
 
+        [ReloadRequired]
+        [BackgroundColor(60, 200, 60, 192)]
+        [DefaultValue(false)]
+        public bool BossRushPostMutant { get; set; }
+
         [Header("EnchantsLoad")]
+
         [ReloadRequired]
         [BackgroundColor(60, 200, 60, 192)]
         [DefaultValue(true)]
         public bool Thorium { get; set; }
+
+        [ReloadRequired]
+        [BackgroundColor(60, 200, 60, 192)]
+        [DefaultValue(true)]
+        public bool EternityForce { get; set; }
 
         [ReloadRequired]
         [BackgroundColor(60, 200, 60, 192)]
@@ -92,5 +103,10 @@ namespace ssm
         [BackgroundColor(60, 200, 60, 192)]
         [DefaultValue(true)]
         public bool SpiritMod { get; set; }
+
+        [ReloadRequired]
+        [BackgroundColor(60, 200, 60, 192)]
+        [DefaultValue(true)]
+        public bool Consolaria { get; set; }
     }
 }

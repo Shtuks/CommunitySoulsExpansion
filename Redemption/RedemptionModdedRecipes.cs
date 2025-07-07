@@ -1,6 +1,8 @@
 ﻿using CalamityMod.Items.Materials;
+using ContinentOfJourney.Items.Material;
 using FargowiltasCrossmod.Content.Calamity.Items.Accessories.Essences;
 using FargowiltasCrossmod.Content.Calamity.Items.Accessories.Souls;
+using FargowiltasSouls.Content.Items.Accessories.Souls;
 using Redemption.Items.Materials.PostML;
 using ssm.ClassSouls.Beekeeper.Essences;
 using ssm.ClassSouls.Beekeeper.Souls;
@@ -62,25 +64,12 @@ namespace ssm.Redemption
                     recipe.AddIngredient<MutagenHealing>();
                     recipe.RemoveIngredient(ModContent.ItemType<HealerEssence>());
                 }
-            }
-        }
-    }
+                if (recipe.HasResult<ThoriumSoul>() && !recipe.HasIngredient<LifeFragment>() && !ModLoader.HasMod(ModCompatibility.Calamity.Name))
+                {
+                    recipe.AddIngredient<LifeFragment>(5);
+                }
 
-    [ExtendsFromMod(ModCompatibility.Redemption.Name, ModCompatibility.Thorium.Name)]
-    [JITWhenModsEnabled(ModCompatibility.Redemption.Name, ModCompatibility.Thorium.Name)]
-    public class RedemptionTorThrowerRecipes : ModSystem
-    {
-        public override bool IsLoadingEnabled(Mod mod)
-        {
-            return !ModLoader.HasMod(ModCompatibility.Calamity.Name) && !ModLoader.HasMod(ModCompatibility.SacredTools.Name);
-        }
-        public override void PostAddRecipes()
-        {
-            for (int i = 0; i < Recipe.numRecipes; i++)
-            {
-                Recipe recipe = Main.recipe[i];
-
-                if (recipe.HasResult<OlympiansSoul>() && !recipe.HasResult<MutagenThrowing>())
+                if (recipe.HasResult<OlympiansSoul>() && !recipe.HasResult<MutagenThrowing>() && !ModLoader.HasMod(ModCompatibility.Calamity.Name))
                 {
                     recipe.AddIngredient<MutagenThrowing>();
                     recipe.RemoveIngredient(ModContent.ItemType<SlingerEssence>());
@@ -93,19 +82,19 @@ namespace ssm.Redemption
     [JITWhenModsEnabled(ModCompatibility.Redemption.Name, ModCompatibility.SacredTools.Name)]
     public class RedemptionSoARecipes : ModSystem
     {
-        public override bool IsLoadingEnabled(Mod mod)
-        {
-            return !ModLoader.HasMod(ModCompatibility.Calamity.Name) && !ModLoader.HasMod(ModCompatibility.Thorium.Name);
-        }
         public override void PostAddRecipes()
         {
             for (int i = 0; i < Recipe.numRecipes; i++)
             {
                 Recipe recipe = Main.recipe[i];
-                if (recipe.HasResult<StalkerSoul>() && !recipe.HasResult<MutagenThrowingSoA>())
+                if (recipe.HasResult<StalkerSoul>() && !recipe.HasResult<MutagenThrowingSoA>() && !ModLoader.HasMod(ModCompatibility.Thorium.Name))
                 {
                     recipe.AddIngredient<MutagenThrowingSoA>();
                     recipe.RemoveIngredient(ModContent.ItemType<StalkerEssence>());
+                }
+                if (recipe.HasResult<SoASoul>() && !recipe.HasIngredient<LifeFragment>() && !ModLoader.HasMod(ModCompatibility.Calamity.Name))
+                {
+                    recipe.AddIngredient<LifeFragment>(5);
                 }
             }
         }

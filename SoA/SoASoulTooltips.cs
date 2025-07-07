@@ -10,7 +10,6 @@ namespace ssm.SoA
     [ExtendsFromMod(ModCompatibility.SacredTools.Name)]
     public class SoASoulsTooltips : GlobalItem
     {
-        static string ExpandedTooltipLoc(string line) => Language.GetTextValue($"Mods.ssm.ExpandedTooltips.{line}");
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
         {
             string key = "Mods.ssm.Items.AddedEffects.";
@@ -30,9 +29,9 @@ namespace ssm.SoA
                 tooltips.Insert(9, new TooltipLine(Mod, "SoABerserkerSoul", Language.GetTextValue(key + "SoABerserker")));
             }
 
-            if (item.type == ModContent.ItemType<MasochistSoul>() && !item.social)
+            if (item.type == ModContent.ItemType<SnipersSoul>() && !item.social)
             {
-                tooltips.Insert(9, new TooltipLine(Mod, "SoAMasoSoul", Language.GetTextValue(key + "SoAMaso")));
+                tooltips.Insert(7, new TooltipLine(Mod, "SoASnipersSoul", Language.GetTextValue(key + "SoASnipers")));
             }
 
             //if (item.type == ModContent.ItemType<ArchWizardsSoul>() && !item.social)
@@ -53,8 +52,8 @@ namespace ssm.SoA
             if (item.type == ModContent.ItemType<UniverseSoul>() && !item.social)
             {
                 tooltips.Insert(15, new TooltipLine(Mod, "SoAUniverseSoul",
-                    Language.GetTextValue(key + "SoABerserker")// + "\n" +
-                    //Language.GetTextValue(key + "SoASniper") + "\n" +
+                    Language.GetTextValue(key + "SoABerserker") + "\n" +
+                    Language.GetTextValue(key + "SoASnipers")// + "\n" +
                     //Language.GetTextValue(key + "SoAWizard") + "\n" +
                     //Language.GetTextValue(key + "SoAConjurist")
                     ));

@@ -20,6 +20,7 @@ namespace ssm.CrossMod.CraftingStations
     {
         public override void SetDefaults()
         {
+            Item.value = Item.buyPrice(2, 0, 0, 0);
             Item.CloneDefaults(ItemType<CrucibleCosmos>());
             Item.createTile = TileType<DreamersForgeTile>();
         }

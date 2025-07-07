@@ -1,7 +1,4 @@
-﻿using BombusApisBee.BeeDamageClass;
-using ClickerClass.Utilities;
-using FargowiltasSouls;
-using FargowiltasSouls.Content.Items.Accessories.Souls;
+﻿using FargowiltasSouls.Content.Items.Accessories.Souls;
 using FargowiltasSouls.Content.Items.Armor;
 using FargowiltasSouls.Content.Items.BossBags;
 using FargowiltasSouls.Content.Items.Materials;
@@ -19,7 +16,6 @@ using System.Text.RegularExpressions;
 using Terraria;
 using Terraria.GameContent.ItemDropRules;
 using Terraria.ModLoader;
-using ThoriumMod.Utilities;
 
 namespace ssm
 {
@@ -53,18 +49,17 @@ namespace ssm
             }
             if (entity.type == ModContent.ItemType<TheBiggestSting>())
             {
-                entity.damage = 7750;
+                entity.damage = 9750;
             }
             if (entity.type == ModContent.ItemType<PhantasmalLeashOfCthulhu>())
             {
-                entity.damage = 2800;
+                entity.damage = 7800;
             }
             if (entity.type == ModContent.ItemType<SlimeRain>())
             {
-                entity.damage = 6000;
+                entity.damage = 6800;
             }
         }
-
         public override void ModifyItemLoot(Item item, ItemLoot itemLoot)
         {
             if (item.type == ModContent.ItemType<MutantBag>())
@@ -119,7 +114,7 @@ namespace ssm
             {
                 ModContent.Find<ModItem>(this.Mod.Name, "SoASoul").UpdateAccessory(player, hideVisual);
             }
-            if (ModCompatibility.Calamity.Loaded && (Item.type == ModContent.ItemType<EternitySoul>() || Item.type == ModContent.ItemType<StargateSoul>()))
+            if (ModCompatibility.Crossmod.Loaded && ModCompatibility.Calamity.Loaded && (Item.type == ModContent.ItemType<EternitySoul>() || Item.type == ModContent.ItemType<StargateSoul>()))
             {
                 ModContent.Find<ModItem>(this.Mod.Name, "CalamitySoul").UpdateAccessory(player, hideVisual);
             }
@@ -175,19 +170,54 @@ namespace ssm
             }
             if (item.type == ModContent.ItemType<MutantsCurse>() || item.type == ModContent.ItemType<AbominationnVoodooDoll>())
             {
-                tooltips.Add(new TooltipLine(Mod, "1m", "Mutant max life and damage scales with ammount of supported mods."));
-                tooltips.Add(new TooltipLine(Mod, "2m", $"Points: {Math.Round(ShtunNpcs.multiplierM, 1)}, Max Life: {10000000 + Math.Round(ShtunNpcs.multiplierM, 1) * 10000000}, Damage: {500 + Math.Round(ShtunNpcs.multiplierM, 1) * (ModCompatibility.Calamity.Loaded ? 125 : 100)}"));
-                tooltips.Add(new TooltipLine(Mod, "3m", "Thorium adds 0.9 points. SoA adds 1.3. Calamity 1.8"));
-                tooltips.Add(new TooltipLine(Mod, "4m", "If olnly one of supported mods active Thorium - 1 SoA - 2 Calamity 2.8"));
-                tooltips.Add(new TooltipLine(Mod, "5m", "If Masochist mode enabled, points multiplied by 1.5"));
-                if (ModCompatibility.Calamity.Loaded)
+                //tooltips.Add(new TooltipLine(Mod, "1m", "Mutant max life and damage scales with ammount of supported mods."));
+                //tooltips.Add(new TooltipLine(Mod, "2m", $"Points: {Math.Round(ShtunNpcs.multiplierM, 1)}, Max Life: {10000000 + Math.Round(ShtunNpcs.multiplierM, 1) * 10000000}, Damage: {500 + Math.Round(ShtunNpcs.multiplierM, 1) * (ModCompatibility.Calamity.Loaded ? 125 : 100)}"));
+                //tooltips.Add(new TooltipLine(Mod, "3m", "Thorium adds 0.9 points. SoA adds 1.3. Calamity 1.8"));
+                //tooltips.Add(new TooltipLine(Mod, "4m", "If olnly one of supported mods active Thorium - 1 SoA - 2 Calamity 2.8"));
+                //tooltips.Add(new TooltipLine(Mod, "5m", "If Masochist mode enabled, points multiplied by 1.5"));
+                if (ModCompatibility.SacredTools.Loaded && ShtunConfig.Instance.ExperimentalContent)
                 {
-                    tooltips.Add(new TooltipLine(Mod, "6m", "Rage and Adrenaline disabled during fight."));
-                }
-                if (ModCompatibility.SacredTools.Loaded)
-                {
-                    tooltips.Add(new TooltipLine(Mod, "7m", "In first phase Mutant will have Aura of Supression. After destroying aura second phase will start."));
+                    tooltips.Add(new TooltipLine(Mod, "7m", "In first phase Mutant has Aura of Supression. After destroying aura second phase will start."));
                     tooltips.Add(new TooltipLine(Mod, "8m", "Aura can be destroyed only with Relic Weapons or Styx Armor set bonus. Mutant immune to damage if aura active."));
+                }
+            }
+            if (ModCompatibility.Thorium.Loaded)
+            {
+                if (item.type == ModContent.ItemType<NekomiHood>() || item.type == ModContent.ItemType<NekomiHoodie>() || item.type == ModContent.ItemType<NekomiLeggings>())
+                {
+                    tooltips.Add(new TooltipLine(Mod, "thoriumeffect1", $"[c/00A36C:CSE Set Bonus:] Increased inspiration regeneration and chance for notes to drop"));
+                    tooltips.Add(new TooltipLine(Mod, "thoriumeffect2", $"[c/00A36C:CSE Set Bonus:] Increased thrower velocity and exhaustion regeneration by 5%"));
+                    tooltips.Add(new TooltipLine(Mod, "thoriumeffect2", $"[c/00A36C:CSE Set Bonus:] Increased healing bonus by 5 and max inspiration by 10"));
+                    tooltips.Add(new TooltipLine(Mod, "thoriumeffect2", $"[c/00A36C:CSE Set Bonus:] Increased technique points by 1 and max bard buffs duration"));
+                }
+                if (item.type == ModContent.ItemType<StyxCrown>() || item.type == ModContent.ItemType<StyxChestplate>() || item.type == ModContent.ItemType<StyxLeggings>())
+                {
+                    tooltips.Add(new TooltipLine(Mod, "thoriumeffect1", $"[c/00A36C:CSE Set Bonus:] Increased inspiration regeneration and chance for notes to drop"));
+                    tooltips.Add(new TooltipLine(Mod, "thoriumeffect2", $"[c/00A36C:CSE Set Bonus:] Increased thrower velocity and exhaustion regeneration by 20%"));
+                    tooltips.Add(new TooltipLine(Mod, "thoriumeffect2", $"[c/00A36C:CSE Set Bonus:] Increased healing bonus by 10 and max inspiration by 30"));
+                    tooltips.Add(new TooltipLine(Mod, "thoriumeffect2", $"[c/00A36C:CSE Set Bonus:] Increased technique points by 2 and max bard buffs duration"));
+                }
+                if (item.type == ModContent.ItemType<GaiaGreaves>() || item.type == ModContent.ItemType<GaiaHelmet>() || item.type == ModContent.ItemType<GaiaPlate>())
+                {
+                    tooltips.Add(new TooltipLine(Mod, "thoriumeffect1", $"[c/00A36C:CSE Set Bonus:] Increased inspiration regeneration and chance for notes to drop"));
+                    tooltips.Add(new TooltipLine(Mod, "thoriumeffect2", $"[c/00A36C:CSE Set Bonus:] Increased thrower velocity and exhaustion regeneration by 20%"));
+                    tooltips.Add(new TooltipLine(Mod, "thoriumeffect2", $"[c/00A36C:CSE Set Bonus:] Increased healing bonus by 10 and max inspiration by 30"));
+                    tooltips.Add(new TooltipLine(Mod, "thoriumeffect2", $"[c/00A36C:CSE Set Bonus:] Increased technique points by 1 and max bard buffs duration"));
+                }
+            }
+            if (ModCompatibility.Calamity.Loaded)
+            {
+                if (item.type == ModContent.ItemType<NekomiHood>() || item.type == ModContent.ItemType<NekomiHoodie>() || item.type == ModContent.ItemType<NekomiLeggings>())
+                {
+                    tooltips.Add(new TooltipLine(Mod, "caleffect", $"[c/00A36C:CSE Set Bonus:] Increased stealth by 70"));
+                }
+                if (item.type == ModContent.ItemType<StyxChestplate>() || item.type == ModContent.ItemType<StyxCrown>() || item.type == ModContent.ItemType<StyxLeggings>())
+                {
+                    tooltips.Add(new TooltipLine(Mod, "caleffect", $"[c/00A36C:CSE Set Bonus:] Increased stealth by 200"));
+                }
+                if (item.type == ModContent.ItemType<GaiaPlate>() || item.type == ModContent.ItemType<GaiaHelmet>() || item.type == ModContent.ItemType<GaiaGreaves>())
+                {
+                    tooltips.Add(new TooltipLine(Mod, "caleffect", $"[c/00A36C:CSE Set Bonus:] Increased stealth by 110"));
                 }
             }
         }
@@ -198,25 +228,8 @@ namespace ssm
                 velocity *= player.Shtun().throwerVelocity;
             }
         }
-
         public override void UpdateEquip(Item Item, Player player)
         {
-            if (player.FargoSouls().MutantSetBonusItem != null)
-            {
-                player.Shtun().throwerVelocity += 0.2f;
-                if (ModCompatibility.Thorium.Loaded) { BardAndHealer(player, 20); }
-                if (ModCompatibility.ClikerClass.Loaded) { Clicker(player, 0.5f); }
-                if (ModCompatibility.BeekeeperClass.Loaded) { Beekeeper(player, 30); }
-            }
-
-            if (player.FargoSouls().StyxSet == true)
-            {
-                player.Shtun().throwerVelocity += 0.1f;
-                if (ModCompatibility.Thorium.Loaded) { BardAndHealer(player, 10); }
-                if (ModCompatibility.ClikerClass.Loaded) { Clicker(player, 0.25f); }
-                if (ModCompatibility.BeekeeperClass.Loaded) { Beekeeper(player, 15); }
-            }
-
             if (ModCompatibility.Calamity.Loaded)
             {
                 if (Item.type == ModContent.ItemType<StyxCrown>())
@@ -236,25 +249,6 @@ namespace ssm
                     player.GetDamage(DamageClass.Generic) += 10 / 100f;
                 }
             }
-        }
-
-        [JITWhenModsEnabled(ModCompatibility.Thorium.Name)]
-        public void BardAndHealer(Player player, int bonus)
-        {
-            player.GetThoriumPlayer().healBonus += bonus;
-            player.GetThoriumPlayer().bardResourceMax2 += bonus;
-        }
-
-        [JITWhenModsEnabled(ModCompatibility.BeekeeperClass.Name)]
-        public void Beekeeper(Player player, int bonus)
-        {
-            player.GetModPlayer<BeeDamagePlayer>().BeeResourceMax2 += bonus;
-        }
-
-        [JITWhenModsEnabled(ModCompatibility.ClikerClass.Name)]
-        public void Clicker(Player player, float bonus)
-        {
-            player.GetClickerPlayer().clickerBonusPercent += bonus;
         }
     }
 }

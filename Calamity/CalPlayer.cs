@@ -1,10 +1,12 @@
 ﻿using CalamityMod;
+using CalamityMod.CalPlayer;
 using CalamityMod.Items.SummonItems;
 using FargowiltasSouls;
 using FargowiltasSouls.Content.Bosses.MutantBoss;
 using FargowiltasSouls.Content.Buffs.Boss;
 using FargowiltasSouls.Core.Globals;
 using ssm.Content.Buffs;
+using ssm.Content.DamageClasses;
 using ssm.Core;
 using ssm.Items;
 using Terraria;
@@ -26,6 +28,14 @@ namespace ssm.Calamity
                     item.SetDefaults(ModContent.ItemType<ShtunTerminus>());
                 }
             }
+        }
+
+        public override void PostUpdateMiscEffects()
+        {
+            Player player = Main.LocalPlayer;
+            var CalPlayer = player.GetModPlayer<CalamityPlayer>();
+
+            Player.GetDamage<UnitedModdedThrower>() += CalPlayer.stealthDamage;
         }
         public override void PostUpdateBuffs()
         {

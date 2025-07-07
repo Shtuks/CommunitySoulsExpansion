@@ -6,6 +6,10 @@ using ThoriumMod.Items.ArcaneArmor;
 using ThoriumMod.Items.ThrownItems;
 using FargowiltasSouls.Content.Items.Accessories.Enchantments;
 using ssm.Core;
+using ThoriumMod.Utilities;
+using FargowiltasSouls.Core.AccessoryEffectSystem;
+using ssm.Content.SoulToggles;
+using static ssm.Thorium.Enchantments.TideTurnerEnchant;
 
 namespace ssm.Thorium.Enchantments
 {
@@ -34,13 +38,19 @@ namespace ssm.Thorium.Enchantments
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            ShtunThoriumPlayer modPlayer = player.GetModPlayer<ShtunThoriumPlayer>();
-            //yew set bonus
-            modPlayer.YewEnchant = true;
-            //goblin war shield
+            if (player.AddEffect<YewWoodEffect>(Item))
+            {
+                player.GetThoriumPlayer().yewCharging = true;
+            }
             ModContent.Find<ModItem>(this.thorium.Name, "ThumbRing").UpdateAccessory(player, hideVisual);
         }
 
+        public class YewWoodEffect : AccessoryEffect
+        {
+            public override Header ToggleHeader => Header.GetHeader<SvartalfheimForceHeader>();
+            public override int ToggleItemType => ModContent.ItemType<TideHunterEnchant>();
+            public override bool ExtraAttackEffect => true;
+        }
         public override void AddRecipes()
         {
             Recipe recipe = this.CreateRecipe();
