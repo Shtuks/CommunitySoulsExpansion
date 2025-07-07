@@ -8,6 +8,11 @@ using ThoriumMod.Items.ThrownItems;
 using ssm.Core;
 using FargowiltasSouls.Content.Items.Accessories.Enchantments;
 using ThoriumMod.Items.BossBuriedChampion;
+using ThoriumMod.Utilities;
+using FargowiltasSouls.Core.AccessoryEffectSystem;
+using ssm.Content.SoulToggles;
+using ssm.Content.Projectiles.Enchantments;
+using static ssm.Thorium.Enchantments.CyberPunkEnchant;
 
 namespace ssm.Thorium.Enchantments
 {
@@ -35,15 +40,48 @@ namespace ssm.Thorium.Enchantments
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            ShtunThoriumPlayer modPlayer = player.GetModPlayer<ShtunThoriumPlayer>();
-            //lightning
-            modPlayer.BronzeEnchant = true;
-
-            ModContent.Find<ModItem>(this.thorium.Name, "ChampionsRebuttal").UpdateAccessory(player, hideVisual);
-            ModContent.Find<ModItem>(this.thorium.Name, "SpartanSandles").UpdateAccessory(player, hideVisual);
-            ModContent.Find<ModItem>(this.thorium.Name, "OlympicTorch").UpdateAccessory(player, hideVisual);
+            player.AddEffect<BronzeEffect>(Item);
         }
 
+        public class BronzeEffect : AccessoryEffect
+        {
+            public override Header ToggleHeader => Header.GetHeader<VanaheimForceHeader>();
+            public override int ToggleItemType => ModContent.ItemType<BronzeEnchant>();
+            public override bool MutantsPresenceAffects => true;
+
+            private int timer;
+            public override void PostUpdate(Player player)
+            {
+                if (player.wingTime > 0 && player.velocity.Y != 0)
+                {
+                    timer++;
+                    if (timer >= 42)
+                    {
+                        SpawnSword(player);
+                        timer = 0;
+                    }
+                }
+                else
+                {
+                    timer = 0;
+                }
+            }
+            private void SpawnSword(Player player)
+            {
+                Vector2 position = new Vector2(
+                    player.position.X + Main.rand.Next(-20, 20),
+                    player.position.Y + player.height + 10);
+
+                Projectile.NewProjectile(
+                    player.GetSource_FromThis(),
+                    position,
+                    new Vector2(0, 10), 
+                    ModContent.ProjectileType<SwordRainProjectile>(),
+                    50, 
+                    5f, 
+                    player.whoAmI);
+            }
+        }
         public override void AddRecipes()
         {
 

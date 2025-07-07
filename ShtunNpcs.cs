@@ -34,17 +34,10 @@ namespace ssm
         private int go = 1;
         public override void Load()
         {
-            //soa 34
-            //cal 48
-            //thor 16
-            //HWJ 18
-            //soa-cal 55
-            //soa-thor 40
-            //soa-cal-thor 60
-            //thor-cal 52
             if (ModCompatibility.SacredTools.Loaded && !ModCompatibility.Thorium.Loaded) { multiplierA += 1.1f; }
             if (ModCompatibility.Thorium.Loaded && !ModCompatibility.Calamity.Loaded) { multiplierA += 1f; }
             if (ModCompatibility.Homeward.Loaded && !ModCompatibility.Calamity.Loaded && !ModCompatibility.SacredTools.Loaded) { multiplierM += 0.8f; }
+            if (ModCompatibility.Calamity.Loaded && !ModCompatibility.SacredTools.Loaded) { multiplierA += 1f; }
 
             if (ModCompatibility.SacredTools.Loaded && !ModCompatibility.Calamity.Loaded) { multiplierM += 0.8f; }
 
@@ -58,13 +51,62 @@ namespace ssm
             //divergentt max hp - 600 k
             //abom max hp - 12.8 mil
             //amalgamationn max hp - 30 mil
-            //mutant max hp - 60 mil //120 mil if debug mode
+            //mutant max hp - 70 mil
             //monstrosity max hp - 600 mil
 
             if (npc.type == ModContent.NPCType<MutantBoss>())
             {
-                npc.damage = Main.getGoodWorld ? 2000 : (int)(500 + ((ModCompatibility.Calamity.Loaded ? 80 : 100) * (Math.Round(multiplierM, 1))));
-                npc.lifeMax = (int)(10000000 + (10000000 * Math.Round(multiplierM, 1))) / (Main.expertMode ? 1 : 2);
+                //cal omly
+                if (ModCompatibility.Calamity.Loaded && !ModCompatibility.SacredTools.Loaded && !ModCompatibility.Thorium.Loaded)
+                {
+                    npc.damage = 750;
+                    npc.lifeMax = 45000000;
+                }
+
+                //soa only
+                if (ModCompatibility.SacredTools.Loaded && !ModCompatibility.Calamity.Loaded && !ModCompatibility.Thorium.Loaded)
+                {
+                    npc.damage = 700;
+                    npc.lifeMax = 35000000;
+                }
+
+                //thorium only
+                if (ModCompatibility.Thorium.Loaded && !ModCompatibility.SacredTools.Loaded && !ModCompatibility.Calamity.Loaded)
+                {
+                    npc.damage = 600;
+                    npc.lifeMax = 18000000;
+                }
+
+                //thorium and soa
+                if (ModCompatibility.Thorium.Loaded && ModCompatibility.SacredTools.Loaded && !ModCompatibility.Calamity.Loaded)
+                {
+                    npc.damage = 750;
+                    npc.lifeMax = 45000000;
+                }
+
+                //thorium and cal
+                if (ModCompatibility.Thorium.Loaded && ModCompatibility.Calamity.Loaded && !ModCompatibility.SacredTools.Loaded)
+                {
+                    npc.damage = 800;
+                    npc.lifeMax = 50000000;
+                }
+
+                //soa and cal
+                if (ModCompatibility.SacredTools.Loaded && ModCompatibility.Calamity.Loaded && !ModCompatibility.Thorium.Loaded)
+                {
+                    npc.damage = 900;
+                    npc.lifeMax = 60000000;
+                }
+
+                //all mods
+                if (ModCompatibility.Thorium.Loaded && ModCompatibility.Calamity.Loaded && ModCompatibility.SacredTools.Loaded)
+                {
+                    npc.damage = 1000;
+                    npc.lifeMax = 70000000;
+                }
+
+                //npc.damage = Main.getGoodWorld ? 2000 : (int)(500 + ((ModCompatibility.Calamity.Loaded && ShtunConfig.Instance.DebugMode ? 90 : 100) * (Math.Round(multiplierM, 1))));
+                //npc.lifeMax = (int)(10000000 + (10000000 * Math.Round(multiplierM, 1))) / (Main.expertMode ? 1 : 2);
             }
             if (npc.type == ModContent.NPCType<Mutant>())
             {

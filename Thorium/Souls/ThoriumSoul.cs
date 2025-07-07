@@ -18,9 +18,6 @@ namespace ssm.Thorium.Souls
         {
             return ShtunConfig.Instance.Thorium;
         }
-
-        private readonly Mod thorium = ModLoader.GetMod("ThoriumMod");
-
         public override void SetDefaults()
         {
             Item.width = 20;
@@ -34,10 +31,6 @@ namespace ssm.Thorium.Souls
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            ShtunThoriumPlayer thoriumPlayer = player.GetModPlayer<ShtunThoriumPlayer>();
-
-            thoriumPlayer.ThoriumSoul = true;
-
             player.ClearBuff(ModContent.BuffType<MetronomeDebuff>());
 
             //MUSPELHEIM

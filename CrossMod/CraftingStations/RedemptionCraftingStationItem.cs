@@ -6,6 +6,7 @@ using Redemption.Items.Materials.PostML;
 using Redemption.Items.Placeable.Furniture.Lab;
 using Redemption.Items.Placeable.Furniture.SlayerShip;
 using Redemption.Items.Placeable.Furniture.Misc;
+using Fargowiltas.Items.Tiles;
 
 namespace ssm.CrossMod.CraftingStations
 {
@@ -15,7 +16,8 @@ namespace ssm.CrossMod.CraftingStations
     {
         public override void SetDefaults()
         {
-            Item.CloneDefaults(ItemType<XeniumAlloy>());
+            Item.CloneDefaults(ItemType<CrucibleCosmos>());
+            Item.value = Item.buyPrice(1, 0, 0, 0);
             Item.createTile = TileType<RedemptionCraftingStationTile>();
         }
         public override void AddRecipes()

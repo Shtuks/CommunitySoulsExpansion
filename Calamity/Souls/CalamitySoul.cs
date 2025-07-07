@@ -67,7 +67,6 @@ namespace ssm.Calamity.Souls
                 recipe.AddIngredient<SolynsSigil>();
             }
 
-            recipe.AddIngredient<AbomEnergy>(10);
             recipe.AddIngredient<ShadowspecBar>(5);
             recipe.AddTile<DemonshadeWorkbenchTile>();
 

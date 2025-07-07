@@ -8,20 +8,16 @@ using ssm.Content.Projectiles;
 using ssm.Content.NPCs.MutantEX;
 using ssm.Systems;
 using FargowiltasSouls;
-using FargowiltasSouls.Content.Buffs.Boss;
-using ssm.Content.Buffs;
 using System.Collections.Generic;
 using Terraria.ModLoader.IO;
 using Terraria.ID;
 using FargowiltasSouls.Core.Globals;
 using FargowiltasSouls.Content.Bosses.MutantBoss;
 using ssm.Core;
-using FargowiltasSouls.Core.Systems;
-using CalamityMod.Events;
 using BombusApisBee.BeeDamageClass;
 using CalamityMod.CalPlayer;
 using ThoriumMod.Utilities;
-using FargowiltasSouls.Content.Bosses.AbomBoss;
+using CalamityMod.Events;
 
 namespace ssm
 {
@@ -186,6 +182,30 @@ namespace ssm
         }
         public override void OnEnterWorld()
         {
+            // debug only //
+            //if (BossRushEvent.Bosses == null || BossRushEvent.Bosses.Count == 0)
+            //{
+            //    Main.NewText("empty");
+            //    return;
+            //}
+            //string message = "bosses ids: ";
+            //foreach (BossRushEvent.Boss boss in BossRushEvent.Bosses)
+            //{
+            //    message += $"{boss.EntityID}, ";
+
+            //    if (message.Length > 500)
+            //    {
+            //        Main.NewText(message.TrimEnd(',', ' '));
+            //        message = "more: ";
+            //    }
+            //}
+            //if (message.Length > 0)
+            //{
+            //    Main.NewText(message.TrimEnd(',', ' '));
+            //}
+            // debug only //
+
+
             if (!ModLoader.TryGetMod("ThoriumRework", out Mod _) && ModLoader.TryGetMod("ThoriumMod", out Mod _))
             {
                 Main.NewText(Language.GetTextValue($"Mods.ssm.Message.NoRework"), Color.LimeGreen);

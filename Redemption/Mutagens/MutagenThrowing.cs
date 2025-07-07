@@ -16,7 +16,7 @@ namespace ssm.Redemption.Mutagens
     {
         public override bool IsLoadingEnabled(Mod mod)
         {
-            return !ModLoader.HasMod(ModCompatibility.Calamity.Name) && !ModLoader.HasMod(ModCompatibility.SacredTools.Name);
+            return !ModLoader.HasMod(ModCompatibility.Calamity.Name);
         }
         public override void SetStaticDefaults()
         {

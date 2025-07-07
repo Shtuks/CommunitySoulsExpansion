@@ -17,8 +17,7 @@ using ThoriumMod.Items.Terrarium;
 using ThoriumMod.Items.ThrownItems;
 using ThoriumMod.Items.HealerItems;
 using ThoriumMod.Items.BossThePrimordials.Slag;
-using Fargowiltas.Items.Tiles;
-using ssm.CrossMod.CraftingStations;
+using ssm.Thorium.Enchantments;
 
 namespace ssm.Thorium
 {
@@ -96,6 +95,11 @@ namespace ssm.Thorium
                 {
                     recipe.RemoveIngredient(ItemID.ManaFlower);
                     recipe.AddIngredient(ItemID.NaturesGift);
+                }
+
+                if (recipe.HasResult<WorldShaperSoul>() && !recipe.HasIngredient<GeodeEnchant>())
+                {
+                    recipe.AddIngredient<GeodeEnchant>();
                 }
 
                 if (recipe.HasResult<StyxCrown>() && recipe.HasIngredient(549))

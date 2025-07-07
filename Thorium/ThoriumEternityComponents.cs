@@ -5,6 +5,7 @@ using ssm.Core;
 using ssm.Thorium.Toggles;
 using Terraria;
 using Terraria.ModLoader;
+using static ssm.Thorium.Enchantments.GeodeEnchant;
 
 namespace ssm.SoA
 {
@@ -23,6 +24,11 @@ namespace ssm.SoA
 				    ModContent.Find<ModItem>(ModCompatibility.Thorium.Name, "BlastShield").UpdateAccessory(player, hideVisual);
 				}
 			}
-		}
+
+            if (item.type == ModContent.ItemType<WorldShaperSoul>() || item.type == ModContent.ItemType<DimensionSoul>() || item.type == ModContent.ItemType<EternitySoul>() || item.type == ModContent.ItemType<StargateSoul>())
+            {
+                player.AddEffect<GeodeEffect>(item);
+            }
+        }
     }
 }

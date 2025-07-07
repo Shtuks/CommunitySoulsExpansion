@@ -1231,9 +1231,10 @@ Mods: {
 				DisplayName: Cyber Punk Enchantment
 				Tooltip:
 					'''
+					2 cybernetic orbs fly around you and protect from projectiles. 
+					Gives random level 3 empowerment when killed.
+					Each orb respawns after 1 minute. 
 					'Techno rave!'
-					Pressing the 'Special Ability' key will cycle you through four states
-					Effects of Auto Tuner, Metal Music Player, and Diss Track
 					'''
 			}
 
@@ -1529,9 +1530,8 @@ Mods: {
 				DisplayName: Noble Enchantment
 				Tooltip:
 					'''
+					Picking up coins grants you The Rich buff for 5 seconds, which increases your movement speed by 5% and increases your damage by 15%       
 					'Rich with culture'
-					Inspiration notes that drop are twice as potent and increase your symphonic damage briefly
-					Effects of Ring of Unity, Brass Cap, and Waxy Rosin
 					'''
 			}
 
@@ -3378,6 +3378,11 @@ Mods: {
 				Description: Enrage
 				DisplayName: Enrage
 			}
+
+			TheRichBuff: {
+				DisplayName: The Rich Buff
+				Description: Mods.ssm.Buffs.TheRichBuff.Description
+			}
 		}
 
 		NPCs: {
@@ -3645,7 +3650,7 @@ Mods: {
 		Tiles: {
 			MutantsForgeTile.MapEntry: Cosmic Quantum Computer
 			DemonshadeWorkbenchTile.MapEntry: Demonshade Workbench
-			SyranCraftingStationTile.MapEntry: Syran Workstation
+			SyranCraftingStationTile.MapEntry: Syrus Workstation
 			DreamersForgeTile.MapEntry: Dreamer's Forge
 			RedemptionCraftingStationTile.MapEntry: Xenium Fabricator
 		}
@@ -3757,6 +3762,8 @@ Mods: {
 			MonstrosityDEH.DisplayName: Monstrosity D E H
 			MonstrositySparklingLove.DisplayName: Monstrosity Sparkling Love
 			MonstrosityAxe.DisplayName: Monstrosity Axe
+			SteelSwordProjectile.DisplayName: Steel Sword Projectile
+			SwordRainProjectile.DisplayName: Sword Rain Projectile
 		}
 
 		Bestiary: {
