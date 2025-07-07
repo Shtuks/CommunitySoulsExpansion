@@ -45,6 +45,10 @@ namespace ssm.Calamity
     [JITWhenModsEnabled(ModCompatibility.Calamity.Name, ModCompatibility.WrathoftheGods.Name)]
     public class WotGBossRush2 : ModSystem
     {
+        public override bool IsLoadingEnabled(Mod mod)
+        {
+            return ShtunConfig.Instance.BossRushPostMutant;
+        }
         public override void PostSetupContent()
         {
             for (int i = Bosses.Count - 1; i >= 0; i--)
@@ -65,6 +69,7 @@ namespace ssm.Calamity
 
             BossIDsAfterDeath.Add(NPCType<AvatarRift>(), [NPCType<AvatarOfEmptiness>()]);
             Bosses.Add(new Boss(NPCType<NamelessDeityBoss>()));
+            //BossDeathEffects.Add(NPCType<NamelessDeityBoss>(), npc => { BossRushDialogueSystem.StartDialogue(DownedBossSystem.downedBossRush ? BossRushDialoguePhase.EndRepeat : BossRushDialoguePhase.End); });
             Bosses.Add(new Boss(NPCType<MutantBoss>()));
         }
     }

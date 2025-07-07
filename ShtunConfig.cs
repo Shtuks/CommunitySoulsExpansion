@@ -47,6 +47,11 @@ namespace ssm
         [DefaultValue(true)]
         public bool ThrowerMerge { get; set; }
 
+        [ReloadRequired]
+        [BackgroundColor(60, 200, 60, 192)]
+        [DefaultValue(false)]
+        public bool BossRushPostMutant { get; set; }
+
         [Header("EnchantsLoad")]
 
         [ReloadRequired]
