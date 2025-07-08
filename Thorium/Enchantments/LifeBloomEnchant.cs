@@ -37,8 +37,8 @@ namespace ssm.Thorium.Enchantments
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            ShtunThoriumPlayer modPlayer = player.GetModPlayer<ShtunThoriumPlayer>();
-            modPlayer.LifeBloomEnchant = true;
+            ThoriumPlayer modPlayer = player.GetModPlayer<ThoriumPlayer>();
+            modPlayer.setLifeBloom = true;
 
             ModContent.Find<ModItem>("ssm", "LivingWoodEnchant").UpdateAccessory(player, hideVisual);
 

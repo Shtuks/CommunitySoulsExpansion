@@ -26,6 +26,11 @@ namespace ssm.Content.Items.Accessories
 {
     public class NekomiEnchant : BaseEnchant
     {
+        public override bool IsLoadingEnabled(Mod mod)
+        {
+            return ShtunConfig.Instance.EternityForce;
+        }
+
         private readonly Mod FargoSoul = Terraria.ModLoader.ModLoader.GetMod("FargowiltasSouls");
 
         public override void SetStaticDefaults() => ItemID.Sets.ItemNoGravity[this.Type] = true;

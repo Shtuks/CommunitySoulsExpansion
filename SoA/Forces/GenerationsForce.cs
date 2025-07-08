@@ -36,7 +36,6 @@ namespace ssm.SoA.Forces
         {
             Enchants[Type] =
             [
-                ModContent.ItemType<CairoCrusaderEnchant>(),
                 ModContent.ItemType<EerieEnchant>(),
                 ModContent.ItemType<BismuthEnchant>(),
                 ModContent.ItemType<DreadfireEnchant>(),
@@ -45,7 +44,6 @@ namespace ssm.SoA.Forces
         }
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            player.AddEffect<CairoEffect>(Item);
             player.AddEffect<EerieEffect>(Item);
             player.AddEffect<BismuthEffect>(Item);
             player.AddEffect<DreadfireEffect>(Item);

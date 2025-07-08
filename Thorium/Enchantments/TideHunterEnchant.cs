@@ -11,6 +11,7 @@ using FargowiltasSouls.Content.Items.Accessories.Enchantments;
 using FargowiltasSouls.Core.AccessoryEffectSystem;
 using static ssm.Thorium.Enchantments.SandstoneEnchant;
 using ssm.Content.SoulToggles;
+using ThoriumMod;
 
 namespace ssm.Thorium.Enchantments
 {
@@ -39,12 +40,12 @@ namespace ssm.Thorium.Enchantments
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            ShtunThoriumPlayer modPlayer = player.GetModPlayer<ShtunThoriumPlayer>();
+            ThoriumPlayer modPlayer = player.GetModPlayer<ThoriumPlayer>();
 
             if (player.AddEffect<TideHunterEffect>(Item))
             {
                 //tide hunter set bonus
-                modPlayer.TideHunterEnchant = true;
+                modPlayer.tideHunterSet = true;
             }
 
             //angler bowl

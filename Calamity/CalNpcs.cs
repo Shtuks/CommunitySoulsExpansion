@@ -40,18 +40,19 @@ namespace ssm.Calamity
         }
         public override void SetDefaults(NPC npc)
         {
-            if (npc.type == ModContent.NPCType<MutantBoss>() && ModCompatibility.SacredTools.Loaded)
-            {
-                npc.DR_NERD(0.05f, 0.10f, 0.15f);
-            }
+            //if (npc.type == ModContent.NPCType<MutantBoss>() && ModCompatibility.SacredTools.Loaded)
+            //{
+            //    npc.DR_NERD(0.1f, 0.2f, 0.3f);
+            //}
             if (npc.type == ModContent.NPCType<SupremeCalamitas>())
             {
                 float multiplier = 0;
 
-                if (ModCompatibility.Thorium.Loaded) { multiplier += 0.7f; }
-                if (ModCompatibility.SacredTools.Loaded) { multiplier += 0.3f; }
+                if (ModCompatibility.Thorium.Loaded) { multiplier += 0.6f; }
+                if (ModCompatibility.SacredTools.Loaded) { multiplier += 0.2f; }
 
                 npc.lifeMax = (int)(2800000 + (1000000 * multiplier));
+                npc.damage += (int)(npc.damage * multiplier);
             }
 
             if (ModCompatibility.Goozma.Loaded)
@@ -64,6 +65,20 @@ namespace ssm.Calamity
                     if (ModCompatibility.SacredTools.Loaded) { multiplier += 0.3f; }
 
                     npc.lifeMax = (int)(4300000 + (1000000 * multiplier));
+                    npc.damage += (int)(npc.damage * multiplier);
+                }
+            }
+
+            if (ModCompatibility.WrathoftheGods.Loaded)
+            {
+                if (npc.type == ModCompatibility.WrathoftheGods.NamelessDeityBoss.Type)
+                {
+                    float multiplier = 0;
+
+                    if (ModCompatibility.Thorium.Loaded) { multiplier += 5f; }
+                    if (ModCompatibility.SacredTools.Loaded) { multiplier += 5f; }
+
+                    npc.lifeMax = (int)(25000000 + (1000000 * multiplier));
                 }
             }
 
@@ -71,28 +86,31 @@ namespace ssm.Calamity
             {
                 float multiplier = 0;
 
-                if (ModCompatibility.Thorium.Loaded) { multiplier += 0.6f; }
-                if (ModCompatibility.SacredTools.Loaded) { multiplier += 0.2f; }
+                if (ModCompatibility.Thorium.Loaded) { multiplier += 0.5f; }
+                if (ModCompatibility.SacredTools.Loaded) { multiplier += 0.1f; }
 
                 npc.lifeMax = (int)(4400000 + (1000000 * multiplier));
+                npc.damage += (int)(npc.damage * multiplier);
             }
             if (npc.type == ModContent.NPCType<Apollo>() || npc.type == ModContent.NPCType<Artemis>())
             {
                 float multiplier = 0;
 
-                if (ModCompatibility.Thorium.Loaded) { multiplier += 0.6f; }
-                if (ModCompatibility.SacredTools.Loaded) { multiplier += 0.2f; }
+                if (ModCompatibility.Thorium.Loaded) { multiplier += 0.5f; }
+                if (ModCompatibility.SacredTools.Loaded) { multiplier += 0.1f; }
 
                 npc.lifeMax = (int)(4300000 + (1000000 * multiplier));
+                npc.damage += (int)(npc.damage * multiplier);
             }
             if (npc.type == ModContent.NPCType<ThanatosBody1>() || npc.type == ModContent.NPCType<ThanatosBody2>() || npc.type == ModContent.NPCType<ThanatosHead>() || npc.type == ModContent.NPCType<ThanatosTail>())
             {
                 float multiplier = 0;
 
-                if (ModCompatibility.Thorium.Loaded) { multiplier += 0.6f; }
-                if (ModCompatibility.SacredTools.Loaded) { multiplier += 0.2f; }
+                if (ModCompatibility.Thorium.Loaded) { multiplier += 0.5f; }
+                if (ModCompatibility.SacredTools.Loaded) { multiplier += 0.1f; }
 
                 npc.lifeMax = (int)(4300000 + (1000000 * multiplier));
+                npc.damage += (int)(npc.damage * multiplier);
             }
         }
     }

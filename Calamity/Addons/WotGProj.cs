@@ -67,7 +67,7 @@
 //                    targetDevi = npc;
 //                    break;
 //                }
-//                if (npc.active && npc.type == ModContent.NPCType<Monstrocity>())
+//                if (npc.active && npc.type == ModContent.NPCType<Monstrosity>())
 //                {
 //                    targetDeviNPC = npc;
 //                    break;

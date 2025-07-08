@@ -12,6 +12,9 @@ using Terraria.Localization;
 using Redemption.Items.Armor.HM.Hardlight;
 using Redemption.Items.Armor.PreHM.CommonGuard;
 using SacredTools.Content.Items.Materials;
+using ssm.Content.Items.Armor;
+using Redemption.Items.Materials.PreHM;
+using ssm.CrossMod.CraftingStations;
 
 namespace ssm.Redemption
 {
@@ -27,6 +30,17 @@ namespace ssm.Redemption
             RecipeGroup.RegisterGroup("ssm:HardlightHelms", rec1);
         }
 
+        public override void AddRecipes()
+        {
+            Recipe.Create(ModContent.ItemType<PureIronAlloy>())
+                .AddIngredient<DragonLeadAlloy>()
+                .AddTile<RedemptionCraftingStationTile>()
+                .Register();
+            Recipe.Create(ModContent.ItemType<DragonLeadAlloy>())
+                .AddIngredient<PureIronAlloy>()
+                .AddTile<RedemptionCraftingStationTile>()
+                .Register();
+        }
         public override void PostAddRecipes()
         {
             for (int i = 0; i < Recipe.numRecipes; i++)
@@ -68,9 +82,9 @@ namespace ssm.Redemption
                     }
                 }
 
-                //emblem -> essence -> mutagen/post-dog acc -> soul
-                //Where are soa sigils? In asthrashite enchant
-
+                //emblem -> essence -> mutagen/post-dog acc ->
+                //                                                  soul     
+                //                     hwj emblem -> sigil ->
                 if (recipe.HasResult<MutagenMagic>() && !recipe.HasResult<ApprenticesEssence>())
                 {
                     recipe.AddIngredient<ApprenticesEssence>();

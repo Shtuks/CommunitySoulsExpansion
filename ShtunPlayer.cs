@@ -8,20 +8,16 @@ using ssm.Content.Projectiles;
 using ssm.Content.NPCs.MutantEX;
 using ssm.Systems;
 using FargowiltasSouls;
-using FargowiltasSouls.Content.Buffs.Boss;
-using ssm.Content.Buffs;
 using System.Collections.Generic;
 using Terraria.ModLoader.IO;
 using Terraria.ID;
 using FargowiltasSouls.Core.Globals;
 using FargowiltasSouls.Content.Bosses.MutantBoss;
 using ssm.Core;
-using FargowiltasSouls.Core.Systems;
-using CalamityMod.Events;
 using BombusApisBee.BeeDamageClass;
 using CalamityMod.CalPlayer;
 using ThoriumMod.Utilities;
-using FargowiltasSouls.Content.Bosses.AbomBoss;
+using CalamityMod.Events;
 
 namespace ssm
 {
@@ -29,13 +25,15 @@ namespace ssm
     {
         public bool MutantSoul;
         public bool DevianttSoul;
-        public int Screenshake;
         public float throwerVelocity = 1f;
         public bool CyclonicFin;
         public int CyclonicFinCD;
-        public bool MonstrocityPresence;
+        public bool MonstrosityPresence;
         public bool lumberjackSet;
         public bool starlightFruit;
+
+        public int Screenshake;
+        public int Flash;
 
         //Enchants
         public bool equippedPhantasmalEnchantment;
@@ -45,15 +43,15 @@ namespace ssm
 
         public override void PostUpdateBuffs()
         {
-            if ((FargoSoulsUtil.BossIsAlive(ref EModeGlobalNPC.mutantBoss, ModContent.NPCType<MutantBoss>()) || FargoSoulsUtil.BossIsAlive(ref EModeGlobalNPC.abomBoss, ModContent.NPCType<AbomBoss>())) && ModCompatibility.Calamity.Loaded)
-            {
-                ModLoader.GetMod("CalamityMod").TryFind("Enraged", out ModBuff enrage);
-                ModLoader.GetMod("CalamityMod").TryFind("RageMode", out ModBuff rage);
-                ModLoader.GetMod("CalamityMod").TryFind("AdrenalineMode", out ModBuff adrenaline);
-                Main.LocalPlayer.buffImmune[enrage.Type] = true;
-                Main.LocalPlayer.buffImmune[rage.Type] = true;
-                Main.LocalPlayer.buffImmune[adrenaline.Type] = true;
-            }
+            //if ((FargoSoulsUtil.BossIsAlive(ref EModeGlobalNPC.mutantBoss, ModContent.NPCType<MutantBoss>()) || FargoSoulsUtil.BossIsAlive(ref EModeGlobalNPC.abomBoss, ModContent.NPCType<AbomBoss>())) && ModCompatibility.Calamity.Loaded)
+            //{
+            //    ModLoader.GetMod("CalamityMod").TryFind("Enraged", out ModBuff enrage);
+            //    ModLoader.GetMod("CalamityMod").TryFind("RageMode", out ModBuff rage);
+            //    ModLoader.GetMod("CalamityMod").TryFind("AdrenalineMode", out ModBuff adrenaline);
+            //    Main.LocalPlayer.buffImmune[enrage.Type] = ShtunConfig.Instance.DebugMode ? false : true;
+            //    Main.LocalPlayer.buffImmune[rage.Type] = true;
+            //    Main.LocalPlayer.buffImmune[adrenaline.Type] = true;
+            //}
 
             //if (starlightFruit)
             //{
@@ -184,6 +182,30 @@ namespace ssm
         }
         public override void OnEnterWorld()
         {
+            // debug only //
+            //if (BossRushEvent.Bosses == null || BossRushEvent.Bosses.Count == 0)
+            //{
+            //    Main.NewText("empty");
+            //    return;
+            //}
+            //string message = "bosses ids: ";
+            //foreach (BossRushEvent.Boss boss in BossRushEvent.Bosses)
+            //{
+            //    message += $"{boss.EntityID}, ";
+
+            //    if (message.Length > 500)
+            //    {
+            //        Main.NewText(message.TrimEnd(',', ' '));
+            //        message = "more: ";
+            //    }
+            //}
+            //if (message.Length > 0)
+            //{
+            //    Main.NewText(message.TrimEnd(',', ' '));
+            //}
+            // debug only //
+
+
             if (!ModLoader.TryGetMod("ThoriumRework", out Mod _) && ModLoader.TryGetMod("ThoriumMod", out Mod _))
             {
                 Main.NewText(Language.GetTextValue($"Mods.ssm.Message.NoRework"), Color.LimeGreen);
@@ -301,6 +323,9 @@ namespace ssm
         {
             if (Screenshake > 0)
                 Screenshake--;
+
+            if (Flash > 0)
+                Flash--;
 
             equippedPhantasmalEnchantment = false;
             equippedAbominableEnchantment = false;

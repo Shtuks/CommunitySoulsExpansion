@@ -65,11 +65,9 @@ namespace ssm.Thorium.Souls
             recipe.AddIngredient<PiratesPurse>();
             recipe.AddIngredient<ThrowingGuideVolume3>();
             recipe.AddIngredient<TidalWave>();
-            recipe.AddIngredient<AngelsEnd>();
             recipe.AddIngredient<TerrariumRippleKnife>();
             recipe.AddIngredient<DragonFang>();
             recipe.AddIngredient<TerraKnife>();
-            recipe.AddIngredient<TrueCarnwennan>();
             recipe.AddIngredient<HellRoller>();
 
             recipe.AddIngredient<OceanEssence>(5);

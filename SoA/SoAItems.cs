@@ -1,4 +1,5 @@
-﻿using SacredTools;
+﻿using FargowiltasSouls;
+using SacredTools;
 using SacredTools.Common.Types;
 using SacredTools.Content.Items.Accessories;
 using SacredTools.Content.Items.Accessories.Sigils;
@@ -13,10 +14,11 @@ using SacredTools.Content.Items.Armor.SpaceJunk;
 using SacredTools.Content.Items.Potions.Recovery;
 using SacredTools.Content.Items.Weapons.Asthraltite;
 using SacredTools.Content.Items.Weapons.Dreamscape.Nihilus;
-using ssm.Content.DamageClasses;
+using SacredTools.Items.Weapons.Ammo;
 using ssm.Core;
 using System.Collections.Generic;
 using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace ssm.SoA
@@ -61,7 +63,7 @@ namespace ssm.SoA
 
         public override void UpdateInventory(Item item, Player player)
         {
-            if (item.ModItem is ReloadWeapon reloadWeapon && item.type == ModContent.ItemType<Desperatio>())
+            if (item.ModItem is ReloadWeapon reloadWeapon && (player.FargoSouls().RangedSoul || player.FargoSouls().Eternity || player.FargoSouls().UniverseSoul))
             {
                 reloadWeapon.RefillMagazine(player);
             }

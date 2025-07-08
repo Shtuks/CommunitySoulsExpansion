@@ -72,11 +72,13 @@ namespace ssm.CrossMod.Boots
                     recipe.AddIngredient<AeolusBoots>(1);
                 }
                 //sprinters to celestial
-                if (recipe.HasResult(ModContent.ItemType<TracersCelestial>()) && (recipe.HasIngredient<AngelTreads>() || recipe.HasIngredient<AeolusBoots>()))
+                if (recipe.HasResult(ModContent.ItemType<TracersCelestial>()) && !recipe.HasIngredient<TerrariumParticleSprinters>())
                 {
-                    recipe.RemoveIngredient(ModContent.ItemType<AngelTreads>());
-                    recipe.RemoveIngredient(ModContent.ItemType<AeolusBoots>());
                     recipe.AddIngredient<TerrariumParticleSprinters>(1);
+                }
+                if (recipe.HasResult(ModContent.ItemType<TracersCelestial>()) && recipe.HasIngredient<AeolusBoots>())
+                {
+                    recipe.RemoveIngredient(ModContent.ItemType<AeolusBoots>());
                 }
                 //celestial to spurs
                 if (recipe.HasResult(ModContent.ItemType<VoidSpurs>()) && recipe.HasIngredient<RoyalRunners>())
@@ -90,19 +92,6 @@ namespace ssm.CrossMod.Boots
                     recipe.RemoveIngredient(ModContent.ItemType<TracersCelestial>());
                     recipe.AddIngredient<VoidSpurs>(1);
                 }
-                //elysian to seraph
-                //cal code
-                //seraph to supersonic (if no cal dlc)
-                if (recipe.HasResult(ModContent.ItemType<SupersonicSoul>()) && !recipe.HasIngredient<TracersSeraph>())
-                {
-                    recipe.RemoveIngredient(ModContent.ItemType<AeolusBoots>());
-                    recipe.AddIngredient<TracersSeraph>(1);
-                }
-                //drew to flight
-                //if (recipe.HasResult(ModContent.ItemType<FlightMasterySoul>()) && !recipe.HasIngredient<WingsofRebirth>())
-                //{
-                //    recipe.AddIngredient<WingsofRebirth>(1);
-                //}
             }
         }
     }

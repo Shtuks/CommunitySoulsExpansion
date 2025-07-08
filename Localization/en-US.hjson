@@ -10,6 +10,43 @@ Mods: {
 		}
 
 		Items: {
+			Lore: {
+				MonstrosityLore: {
+					Lore: What a calamity
+					DisplayName: Lore - Monstrosity
+				}
+
+				EchdeathLore: {
+					Lore: What a calamity
+					DisplayName: Lore - Echdeath
+				}
+
+				DivergenttLore: {
+					Lore: What a calamity
+					DisplayName: Lore - Divergentt
+				}
+
+				AbomLore: {
+					Lore: What a calamity
+					DisplayName: Lore - Abominationn
+				}
+
+				MutantLore: {
+					Lore: What a calamity
+					DisplayName: Lore - Mutant
+				}
+
+				AmalgamationnLore: {
+					Lore: What a calamity
+					DisplayName: Lore - Amalgamationn
+				}
+
+				DeviLore: {
+					Lore: What a calamity
+					DisplayName: Lore - Deviantt
+				}
+			}
+
 			OstaraEnchant: {
 				DisplayName: Ostara Enchantment
 				Tooltip:
@@ -545,6 +582,7 @@ Mods: {
 					Only grants effects of Shield of Reflections when True Mode is enabled.
 					'''
 				SoABerserker: Effects of Flora Fist
+				SoASnipers: Your weapons don't require reloading
 				SoASupersonic: Effects of Heart of the Plough, Advanced Dash Tech
 				SoAWorldshaper: Effects of Rage Supressor, Celestial ring
 			}
@@ -919,9 +957,12 @@ Mods: {
 				DisplayName: Foundations Force
 				Tooltip:
 					'''
+					[i:ssm/BlightboneEnchant] Chance for a frosted bone to support your attack
+					[i:ssm/FrosthunterEnchant] Bones explode into frost explosion and freeze enemies
+					[i:ssm/PraireEnchant] Bones damage and velocity affected by speed of wind
+					[i:ssm/LapisEnchant] Being near frost explosion grants max lapis speed and Defense
+					[i:ssm/CairoCrusaderEnchant] Frost Explosion can enevelop player in blizzar that can ignore attack
 					':HeyMF:'
-					All armor bonuses from Prairie, Frosthunter, Lapis, and Blightbone
-					Effects of Frigid Pendant, Lapis Pendant, and Pumpkin Amulet
 					'''
 			}
 
@@ -929,10 +970,11 @@ Mods: {
 				DisplayName: Generations Force
 				Tooltip:
 					'''
-					Through all this world's years, none have seen anything quite like you'
-					All armor bonuses from Eerie, Bismuth, and Dreadfire
-					All armor bonuses from Space Junk and Marstech
-					Effects of Dreadflame Emblem
+					[i:ssm/DreadfireEnchant] You have aura that inflict dreadfire on nearby enemies and allies
+					[i:ssm/BismuthEnchant] Anyone standing inside of aura get bismuth crystal that reduces damage by 10% 
+					[i:ssm/EerieEnchant] After shield breaks for next 10 seconds you will release eerie pulses that buff minions and allies
+					[i:ssm/MarstechEnchant]
+					'Through all this world's years, none have seen anything quite like you'
 					'''
 			}
 
@@ -940,22 +982,27 @@ Mods: {
 				DisplayName: Soran Force
 				Tooltip:
 					'''
+					[i:ssm/BlazingBruteEnchant] [i:ssm/CosmicCommanderEnchant] Marks bosses with crosshair
+					[i:ssm/BlazingBruteEnchant] [i:ssm/CosmicCommanderEnchant] The longer you hit in crosshairs, the more damsge boost you get
+					[i:ssm/QuasarEnchant] [i:ssm/FallenPrinceEnchant] Hitting enemies have chance to reate quasar that pull weak enemies
+					[i:ssm/FallenPrinceEnchant] [i:ssm/NebulousApprenticeEnchant] Upon death you will be revived in supernova explosion
+					[i:ssm/FallenPrinceEnchant] [i:ssm/NebulousApprenticeEnchant] After respawning Shadow of Nuba will protect you for few seconds
+					[i:ssm/StellarPriestEnchant] Minions have a chance to summon starstream worms
+					[i:ssm/NebulousApprenticeEnchant] Attacking enemies release buff wisps which can be picked up for different stacking buffs
 					'The true power of the Soraniti'
-					All armor bonuses from Blazing Brute, Cosmic Commander, and Nebulous Apprentice
-					All armor bonuses from Stellar Priest, Quasar, and Fallen Prince
-					Effects of Nuba's Blessing, Novaniel's Resolve, and Celestial Ring
 					'''
 			}
 
 			SyrainForce: {
-				DisplayName: Syrain Force
+				DisplayName: Syran Force
 				Tooltip:
 					'''
+					[i:ssm/VoidWardenEnchant] [i:ssm/AsthraltiteEnchant] Grants ring of void lanterns that decrease agression and shoot enemies
+					[i:ssm/VoidWardenEnchant] Hitting enemy inflict Fear that makes them attack other enemies
+					[i:ssm/FlariumEnchant] Lanterns sometimes spur abyssal flame geysers
+					[i:ssm/VulcanReaperEnchant] If lanterns kill enemy while any boss active your boss damage increases
+					[i:ssm/ExitumLuxEnchant] Attacking with relic weapon grants 20% damage buff
 					'Dragon Rage empowers you, and encourages you to go on'
-					All armor bonuses from Void Warden, Vulcan Reaper, and Flarium
-					All armor bonuses from Asthraltite
-					Effects of Ring of the Fallen, Memento Mori, and Arcanum of the Caster
-					Effects of Stone of Resonance
 					'''
 			}
 
@@ -963,16 +1010,12 @@ Mods: {
 				DisplayName: Soul of Two Realms
 				Tooltip:
 					'''
+					[i:ssm/SyrianForce] Gain void lanterns ring that can spur gaysers, buffs relic weapons, increases boss damage if enemy killed
+					[i:ssm/SoranForce] Marks bosses with crosshair that boost your damage, creates quasars when hitting enemy, supernova revival
+					[i:ssm/SoranForce] Release buff wisps whan attacking, minions summon starstream worms
+					[i:ssm/GenerationsForce] Aura inflicting dreadfire, bismuth crystals that release eerie pulses when broken, 
+					[i:ssm/FoundationsForce] Blightbone support, bones explode and grant lapis shield and speed, envelop player in blizzard
 					'Two worlds, now embodied as one'
-					All armor bonuses from Bismuth, Frosthunter, and Blightbone
-					All armor bonuses from Dreadfire, Space Junk, and Marstech
-					All armor bonuses from Blazing Brute, Cosmic Commander, and Nebulous Apprentice
-					All armor bonuses from Stellar Priest and Fallen Prince
-					All armor bonuses from Void Warden, Vulcan Reaper, and Flarium
-					All armor bonuses from Asthraltite
-					Effects of Dreadflame Emblem, Lapis Pendant, Frigid Pendant, and Pumpkin Amulet
-					Effects of Nuba's Blessing, Novaniel's Resolve, and Celestial Ring
-					Effects of Ring of the Fallen, Memento Mori, and Arcanum of the Caster
 					'''
 			}
 
@@ -1188,9 +1231,10 @@ Mods: {
 				DisplayName: Cyber Punk Enchantment
 				Tooltip:
 					'''
+					2 cybernetic orbs fly around you and protect from projectiles. 
+					Gives random level 3 empowerment when killed.
+					Each orb respawns after 1 minute. 
 					'Techno rave!'
-					Pressing the 'Special Ability' key will cycle you through four states
-					Effects of Auto Tuner, Metal Music Player, and Diss Track
 					'''
 			}
 
@@ -1259,7 +1303,7 @@ Mods: {
 					'Masterfully forged by the Blacksmith'
 					12% damage reduction at Full HP
 					Grants immunity to shambler chain-balls
-					Effects of Incandescent Spark, Spiked Bracersand and Thorium Shield
+					Effects of Spiked Bracersand and Thorium Shield
 					'''
 			}
 
@@ -1486,9 +1530,8 @@ Mods: {
 				DisplayName: Noble Enchantment
 				Tooltip:
 					'''
+					Picking up coins grants you The Rich buff for 5 seconds, which increases your movement speed by 5% and increases your damage by 15%       
 					'Rich with culture'
-					Inspiration notes that drop are twice as potent and increase your symphonic damage briefly
-					Effects of Ring of Unity, Brass Cap, and Waxy Rosin
 					'''
 			}
 
@@ -1801,7 +1844,7 @@ Mods: {
 					'Behold the power of Mankind...'
 					All armor bonuses from Lodestone, Valadium, Illumite, and Terrarium
 					All armor bonuses from Durasteel, Darksteel, Steel, and Thorium
-					Effects of Incandescent Spark, Spiked Bracersand, Thorium Shield, and Obsidian Scale
+					Effects of Spiked Bracersand, Thorium Shield, and Obsidian Scale
 					Effects of Crietz, Astro-Beetle Husk, Sandweaver's Tiara, and Beholder's gaze
 					Effects of Mirror of Beholder, Nuclear Option, Jazz Music Player and Band of Replenishmen
 					Effects of Terrarium Surround Buffer and Fan Letter
@@ -2045,7 +2088,7 @@ Mods: {
 					Counts as every possible crafting station.
 					Allows you to summon any boss
 					'''
-				DisplayName: Mutants Forge
+				DisplayName: Cosmic Quantum Computer
 			}
 
 			DreamersForgeItem: {
@@ -2064,7 +2107,7 @@ Mods: {
 			}
 
 			RedemptionCraftingStationItem: {
-				DisplayName: Xenium Factory
+				DisplayName: Xenium Fabricator
 				Tooltip: Counts as every crafting station from Redemption Mod
 			}
 
@@ -2619,12 +2662,12 @@ Mods: {
 					'''
 			}
 
-			MonstrocityBag: {
+			MonstrosityBag: {
 				DisplayName: Monstrosity Bag
 				Tooltip: ""
 			}
 
-			MonstrocityRelicItem: {
+			MonstrosityRelicItem: {
 				DisplayName: Monstrosity Relic
 				Tooltip: ""
 			}
@@ -3243,12 +3286,27 @@ Mods: {
 				DisplayName: Snow Renewal Supreme
 				Tooltip: ""
 			}
+
+			MonstrosityEnchant: {
+				DisplayName: Monstrosity Enchant
+				Tooltip: ""
+			}
+
+			ShadowEnergy: {
+				DisplayName: Shadow Energy
+				Tooltip: ""
+			}
 		}
 
 		Buffs: {
 			ChtuxlagorInferno: {
 				DisplayName: Chtuxlagor Inferno
 				Description: OOOHHHH NOOOO YOU dAed
+			}
+
+			MonstrousMaul: {
+				DisplayName: Monstrous Maul
+				Description: The power of Eternity Mode compels you
 			}
 
 			SadismEX: {
@@ -3281,8 +3339,8 @@ Mods: {
 				Description: Little Yharon is fighting for you.
 			}
 
-			MonstrocityPresenceBuff: {
-				Description: No soul toggles, no eternity crits, no escape.
+			MonstrosityPresenceBuff: {
+				Description: No soul toggles, no debuff immunities, no eternity crits, no escape.
 				DisplayName: Monstrosity Presence
 			}
 
@@ -3315,10 +3373,20 @@ Mods: {
 				DisplayName: Soul Strength
 				Description: Your soul is empowered!
 			}
+
+			EnrageCal: {
+				Description: Enrage
+				DisplayName: Enrage
+			}
+
+			TheRichBuff: {
+				DisplayName: The Rich Buff
+				Description: Mods.ssm.Buffs.TheRichBuff.Description
+			}
 		}
 
 		NPCs: {
-			Monstrocity: {
+			Monstrosity: {
 				TownNPCMood: {
 					Content: I am content.
 					NoHome: I hate not having a home.
@@ -3332,42 +3400,8 @@ Mods: {
 					DislikeNPC: I like {NPCName}.
 				}
 
-				Chat: {
-					Normal0: You know the rules! And you will die. Im not going to rickroll you, that's only 0,00001% chance
-					Normal1: Yippe!
-					Normal2: Yharim? that huge army maybe it's just huge to disguise something small
-					Normal3: Soul of eternity is not enough to face me, let alone 2 of it
-					Normal4: Why would i be afraid of a cat? Well, it is long story.
-					Normal5: Devourer of Gods don't come face me because I'm above god's standard
-					Normal6: It would be a calamity for you not to buy my products
-					Normal7: How old am i? I'm some Eternity years old
-					Normal8: When abomination went to register at the registry office they put an extra 'N' in his name
-					Normal9: You don't want to see me in boss form
-					Normal10: My creator? Don't mention it if you don't want to see me angry
-					Normal11: I'm the reason why Seth got his face covered with that bandana
-					Normal12: 1.4.5? maybe in a few years
-					Normal13: There's an imposter among us, he's me! I don't really belong anywhere
-					Normal14: Galactica has a friend of mine, you should visit him
-					Normal15: I heard rumors about a creature with 'Ex' in its name, that doesn't sound so good
-					Normal16: Deviantt likes my look
-					Normal17: I am the real evil presence that watches you
-					Normal18: Split me? nah that would be a calamity , imagine if some Elements awoken from my dead body, that would be a cataclysm, and this world would not be worthy to witness this
-					Normal19: You are in a deep sleep for 52 years, please wake up
-					Normal20: I heard about Whips, they boost your damage, I don't like it.
-					Normal21: Why don't I attack? Ah that's a nice question, I don't think it's necessary.
-					Normal22: My hp is limited to this world, but i would prob get 22^22^22^22 times this
-					Normal23: Eternity doesn't last that long when you are old enough.
-					Normal24: Sunflowers are cool, not for your health tho
-					Normal25: Turip ip ip ip
-					Normal26: Are you approaching me? Can't but my stuff if you don't get closer
-					Normal27: There is a pipe bomb inside your walls
-					Normal28: A lot of things explode for no reason
-					Normal29: Megalovania isn't funny
-					Normal30: I may be in love with the Forbotten one, don't search her up on Google please
-					Normal31: Did you know that market got inflated prices bc of some sonic books? Don't trust me? Search up Sonic inflation on google to learn more ab it!
-				}
-
 				DisplayName: Monstrosity
+				DisplayNameApril: Уёбище
 				Census.SpawnCondition: Spawns when Moon Lord is defeated.
 			}
 
@@ -3375,7 +3409,7 @@ Mods: {
 				DisplayName: Duke Fishron EX
 
 				BossChecklistIntegration: {
-					SpawnInfo: Spawned with an Oceanic Curse anytime at the seashore.
+					SpawnInfo: Use Mutant's Forge
 					DespawnMessage: ""
 					KilledAllMessage: ""
 				}
@@ -3385,7 +3419,7 @@ Mods: {
 				DisplayName: Echdeath
 
 				BossChecklistIntegration: {
-					SpawnInfo: Spawned with an [deleted] anytime anywhere.
+					SpawnInfo: Use Mutant's Forge
 					DespawnMessage: ""
 					KilledAllMessage: ""
 				}
@@ -3445,7 +3479,6 @@ Mods: {
 			TerrariumEffect: Terrarium Energies
 			NuclearOptionEffect: Nuclear Option
 			IllumiteEffect: Illumite Missiles
-			IncandescentSparkEffect: Incandescent Spark
 			TideHunterEffect: Foam Splashes
 			DepthDiverEffect: Drowned Doublon
 			DepthAuraEffect: Depth Aura Buff
@@ -3615,12 +3648,11 @@ Mods: {
 		}
 
 		Tiles: {
-			MutantsForgeTile.MapEntry: Mutants Forge
+			MutantsForgeTile.MapEntry: Cosmic Quantum Computer
 			DemonshadeWorkbenchTile.MapEntry: Demonshade Workbench
-			SyranCraftingStationTile.MapEntry: Syran Crafting Station
-			DreamersForgeTile.MapEntry: Dreamers Forge
-			RedemptionCraftingStationTile.MapEntry: Redemption Crafting Station
-			ShtunStorageUnit.MapEntry: Shtun Storage Unit
+			SyranCraftingStationTile.MapEntry: Syrus Workstation
+			DreamersForgeTile.MapEntry: Dreamer's Forge
+			RedemptionCraftingStationTile.MapEntry: Xenium Fabricator
 		}
 
 		Projectiles: {
@@ -3628,8 +3660,8 @@ Mods: {
 			BossRush.DisplayName: Boss Rush
 			AbomSword.DisplayName: Abom Sword
 			AbomSwordHandle.DisplayName: Abom Sword Handle
-			MutantRitual5.DisplayName: Mutant Ritual5
-			MutantRitual.DisplayName: Mutant Ritual
+			MonstrosityRitual5.DisplayName: Mutant Ritual5
+			MonstrosityRitual.DisplayName: Mutant Ritual
 			MutantSansBeam.DisplayName: Mutant Sans Beam
 			MutantSansHead.DisplayName: Mutant Sans Head
 			MutantShadowHand.DisplayName: Mutant Shadow Hand
@@ -3722,10 +3754,20 @@ Mods: {
 			SandNukeSupremeProj.DisplayName: Sand Nuke Supreme Proj
 			SnowNukeProj.DisplayName: Snow Nuke Proj
 			SnowNukeSupremeProj.DisplayName: Snow Nuke Supreme Proj
+			NDLaserbeam.DisplayName: ND Laserbeam
+			MutantSCal.DisplayName: Mutant SCal
+			MonstrosityBoss.DisplayName: Monstrosity Boss
+			MonstrOldDuke.DisplayName: Monstr Old Duke
+			MonstrYharon.DisplayName: Monstr Yharon
+			MonstrosityDEH.DisplayName: Monstrosity D E H
+			MonstrositySparklingLove.DisplayName: Monstrosity Sparkling Love
+			MonstrosityAxe.DisplayName: Monstrosity Axe
+			SteelSwordProjectile.DisplayName: Steel Sword Projectile
+			SwordRainProjectile.DisplayName: Sword Rain Projectile
 		}
 
 		Bestiary: {
-			Monstrocity: The Siblings' more annoying, strange cousin, he thinks he is stronger than his cousin the mutant which makes the both of them fight a lot, he likes tacos though.
+			Monstrosity: The Siblings' more annoying, strange cousin, he thinks he is stronger than his cousin the mutant which makes the both of them fight a lot, he likes tacos though.
 			Echdeath: ech
 		}
 
@@ -3765,7 +3807,7 @@ Mods: {
 				}
 
 				ThrowerMerge: {
-					Tooltip: Merge Throewer(Thorium), Rogue(Calamity) and Revenant(SoA) into one hybrid class.
+					Tooltip: Merge Thrower(Thorium), Rogue(Calamity) and Revenant(SoA) into one hybrid class.
 					Label: Thrower Merge
 				}
 
@@ -3831,6 +3873,16 @@ Mods: {
 
 				Consolaria: {
 					Label: Consolaria
+					Tooltip: ""
+				}
+
+				EternityForce: {
+					Label: Eternity Force
+					Tooltip: ""
+				}
+
+				BossRushPostMutant: {
+					Label: Boss Rush Post Mutant
 					Tooltip: ""
 				}
 			}

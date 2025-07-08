@@ -36,10 +36,11 @@ namespace ssm.Calamity.Souls
             ModContent.GetInstance<DemonShadeEnchant>().UpdateAccessory(player, hideVisual);
             ModContent.GetInstance<GaleForce>().UpdateAccessory(player, hideVisual);
             ModContent.GetInstance<ElementsForce>().UpdateAccessory(player, hideVisual);
-            ModContent.GetInstance<AddonsForce>().UpdateAccessory(player, hideVisual);
+            if (ModCompatibility.Catalyst.Loaded || ModCompatibility.Goozma.Loaded || ModCompatibility.Clamity.Loaded) { ModContent.GetInstance<AddonsForce>().UpdateAccessory(player, hideVisual); }
             ModContent.GetInstance<ShatteredCommunity>().UpdateAccessory(player, hideVisual);
             ModContent.GetInstance<ElementalArtifact>().UpdateAccessory(player, hideVisual);
             ModContent.GetInstance<PotJT>().UpdateAccessory(player, hideVisual);
+            if (ModCompatibility.WrathoftheGods.Loaded) { ModContent.GetInstance<SolynsSigil>().UpdateAccessory(player, hideVisual); }
 
             player.buffImmune[ModContent.Find<ModBuff>(this.FargoCross.Name, "CalamitousPresenceBuff").Type] = true;
         }
@@ -56,12 +57,16 @@ namespace ssm.Calamity.Souls
             recipe.AddIngredient<WulfrumEnchant>();
             recipe.AddIngredient<TitanHeartEnchant>();
 
-            if (ModCompatibility.Catalyst.Loaded || ModCompatibility.Goozma.Loaded || ModCompatibility.Clamity.Loaded || ModCompatibility.WrathoftheGods.Loaded)
+            if (ModCompatibility.Catalyst.Loaded || ModCompatibility.Goozma.Loaded || ModCompatibility.Clamity.Loaded)
             {
                 recipe.AddIngredient<AddonsForce>();
             }
 
-            recipe.AddIngredient<AbomEnergy>(10);
+            if (ModCompatibility.WrathoftheGods.Loaded)
+            {
+                recipe.AddIngredient<SolynsSigil>();
+            }
+
             recipe.AddIngredient<ShadowspecBar>(5);
             recipe.AddTile<DemonshadeWorkbenchTile>();
 

@@ -17,6 +17,7 @@ using CalamityMod.Items;
 using FargowiltasSouls.Content.Items.Summons;
 using Terraria.ID;
 using ThoriumMod.Items.Terrarium;
+using Redemption.Items.Materials.PostML;
 
 namespace ssm.Calamity
 {
@@ -59,9 +60,16 @@ namespace ssm.Calamity
                         if (recipe.RemoveIngredient(ModContent.ItemType<AshesofAnnihilation>()) && recipe.RemoveIngredient(ModContent.ItemType<ExoPrism>())) 
                         {
                             recipe.AddIngredient<ShadowspecBar>(5);
-                            recipe.AddIngredient<MiracleMatter>(5);
+                            //recipe.AddIngredient<MiracleMatter>(5);
                         }
                     }
+                }
+
+                if (recipe.HasResult<ShadowspecBar>() && !recipe.HasResult<MiracleMatter>())
+                {
+                    recipe.RemoveIngredient(ModContent.ItemType<ExoPrism>());
+                    recipe.RemoveIngredient(ModContent.ItemType<AuricBar>());
+                    recipe.AddIngredient<MiracleMatter>();
                 }
 
                 //if (ShtunConfig.Instance.ExperimentalContent && !recipe.HasIngredient<Rock>() && recipe.HasResult<MacroverseSoul>())

@@ -16,6 +16,8 @@ namespace ssm.CrossMod.CraftingStations
 
         public override void SetStaticDefaults()
         {
+            Item.value = Item.buyPrice(10, 0, 0, 0);
+            Item.CloneDefaults(ModContent.ItemType<CrucibleCosmos>());
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
             Main.RegisterItemAnimation(Item.type, new DrawAnimationVertical(16, 8));
             ItemID.Sets.AnimatesAsSoul[Item.type] = true;

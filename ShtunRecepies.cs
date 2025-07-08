@@ -60,6 +60,11 @@ namespace ssm
                         recipe.RemoveIngredient(ModContent.ItemType<AbomEnergy>());
                     }
                 }
+                //trawler soul post abom is so stupid
+                if (recipe.HasResult(ModContent.ItemType<TrawlerSoul>()) && recipe.HasIngredient(ModContent.ItemType<AbomEnergy>()))
+                {
+                    recipe.RemoveIngredient(ModContent.ItemType<AbomEnergy>());
+                }
             }
         }
     }

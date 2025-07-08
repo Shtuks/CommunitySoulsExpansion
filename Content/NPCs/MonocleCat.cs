@@ -13,7 +13,11 @@ namespace ssm.Content.NPCs
 {
     public class MonocleCat : ModNPC
     {
-        public override string Texture => "ssm/Content/NPCs/Monstrocity";
+        public override bool IsLoadingEnabled(Mod mod)
+        {
+            return ShtunConfig.Instance.AlternativeSiblings;
+        }
+        public override string Texture => "ssm/Content/NPCs/Monstrosity";
         private static int shopNum;
         private static bool showCycleShop;
 

@@ -10,6 +10,10 @@ namespace ssm.Content.Items.Accessories
 {
     public class EternityForce : ModItem
     {
+        public override bool IsLoadingEnabled(Mod mod)
+        {
+            return ShtunConfig.Instance.EternityForce;
+        }
         public override void SetStaticDefaults()
         {
             ItemID.Sets.ItemNoGravity[Type] = true;
