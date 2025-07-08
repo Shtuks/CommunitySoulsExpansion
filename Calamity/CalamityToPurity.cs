@@ -1,12 +1,12 @@
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using System;
 using CalamityMod.Tiles.Astral;
 using CalamityMod.Tiles.AstralDesert;
 using CalamityMod.Tiles.AstralSnow;
 using CalamityMod.Walls;
-using ssm.Core; 
+using ssm.Core;
+using System.Collections.Generic;
 
 namespace ssm.Calamity
 {
@@ -14,116 +14,105 @@ namespace ssm.Calamity
     [JITWhenModsEnabled(ModCompatibility.Calamity.Name)]
     public static class CalamityConversion
     {
+        private static readonly Dictionary<ushort, ushort> tileConversions = new()
+        {
+            [(ushort)ModContent.TileType<AstralDirt>()] = TileID.Dirt,
+            [(ushort)ModContent.TileType<AstralSnow>()] = TileID.SnowBlock,
+            [(ushort)ModContent.TileType<NovaeSlag>()] = TileID.Hellstone,
+            [(ushort)ModContent.TileType<CelestialRemains>()] = TileID.LihzahrdBrick,
+            [(ushort)ModContent.TileType<AstralClay>()] = TileID.ClayBlock,
+            [(ushort)ModContent.TileType<AstralMonolith>()] = TileID.PearlstoneBrick,
+            [(ushort)ModContent.TileType<AstralStone>()] = TileID.Stone,
+            [(ushort)ModContent.TileType<AstralGrass>()] = TileID.Grass,
+            [(ushort)ModContent.TileType<AstralSand>()] = TileID.Sand,
+            [(ushort)ModContent.TileType<AstralSandstone>()] = TileID.Sandstone,
+            [(ushort)ModContent.TileType<HardenedAstralSand>()] = TileID.HardenedSand,
+            [(ushort)ModContent.TileType<AstralIce>()] = TileID.IceBlock,
+        };
+
+        private static readonly Dictionary<ushort, ushort> wallConversions = new()
+        {
+            [(ushort)ModContent.WallType<AstralDirtWall>()] = WallID.Dirt,
+            [(ushort)ModContent.WallType<AstralSnowWall>()] = WallID.SnowWallUnsafe,
+            [(ushort)ModContent.WallType<AstralSnowWallSafe>()] = WallID.SnowWallUnsafe,
+            [(ushort)ModContent.WallType<CelestialRemainsWall>()] = WallID.LihzahrdBrickUnsafe,
+            [(ushort)ModContent.WallType<AstralGrassWall>()] = WallID.Grass,
+            [(ushort)ModContent.WallType<AstralIceWall>()] = WallID.IceUnsafe,
+            [(ushort)ModContent.WallType<AstralMonolithWall>()] = WallID.PearlstoneBrick,
+            [(ushort)ModContent.WallType<AstralStoneWall>()] = WallID.Stone,
+        };
+
+        private static readonly HashSet<ushort> killTiles = new()
+        {
+            (ushort)ModContent.TileType<AstralNormalLargePiles>(),
+            (ushort)ModContent.TileType<AstralNormalMediumPiles>(),
+            (ushort)ModContent.TileType<AstralNormalSmallPiles>(),
+            (ushort)ModContent.TileType<AstralDesertLargePiles>(),
+            (ushort)ModContent.TileType<AstralDesertMediumPiles>(),
+            (ushort)ModContent.TileType<AstralDesertSmallPiles>(),
+            (ushort)ModContent.TileType<AstralIceLargePiles>(),
+            (ushort)ModContent.TileType<AstralIceMediumPiles>(),
+            (ushort)ModContent.TileType<AstralIceSmallPiles>(),
+
+            (ushort)ModContent.TileType<AstralNormalStalactite>(),
+            (ushort)ModContent.TileType<AstralDesertStalactite>(),
+            (ushort)ModContent.TileType<AstralIceStalactite>(),
+
+            (ushort)ModContent.TileType<AstralVines>(),
+            (ushort)ModContent.TileType<AstralShortPlants>(),
+            (ushort)ModContent.TileType<AstralTallPlants>(),
+        };
+
         public static void AstralConvert(int i, int j, int size = 4)
         {
+            int sizeSq = size * size;
+
             for (int k = i - size; k <= i + size; k++)
             {
                 for (int l = j - size; l <= j + size; l++)
                 {
-                    if (!WorldGen.InWorld(k, l, 1) || (Math.Abs(k - i) + Math.Abs(l - j)) >= Math.Sqrt(size * size + size * size))
+                    if (!WorldGen.InWorld(k, l, 1))
+                        continue;
+
+                    int dx = k - i;
+                    int dy = l - j;
+                    if (dx * dx + dy * dy > sizeSq)
                         continue;
 
                     Tile tile = Main.tile[k, l];
                     if (tile == null)
                         continue;
 
-                    int type = tile.TileType;
-                    int wall = tile.WallType;
+                    bool changed = false;
 
-                    // Astral block-to-vanilla tile conversions
-                    if (type == ModContent.TileType<AstralDirt>())
-                        tile.TileType = TileID.Dirt;
-                        
-                    else if (type == ModContent.TileType<AstralSnow>())
-                        tile.TileType = TileID.SnowBlock;
-
-                    else if (type == ModContent.TileType<NovaeSlag>())
-                        tile.TileType = TileID.Hellstone;
-
-                    else if (type == ModContent.TileType<CelestialRemains>())
-                        tile.TileType = TileID.LihzahrdBrick;
-
-                    else if (type == ModContent.TileType<AstralClay>())
-                        tile.TileType = TileID.ClayBlock;
-
-                    else if (type == ModContent.TileType<AstralMonolith>())
-                        tile.TileType = TileID.PearlstoneBrick;
-
-                    else if (type == ModContent.TileType<AstralStone>())
-                        tile.TileType = TileID.Stone;
-
-                    else if (type == ModContent.TileType<AstralGrass>())
-                        tile.TileType = TileID.Grass;
-
-                    else if (type == ModContent.TileType<AstralSand>())
-                        tile.TileType = TileID.Sand;
-
-                    else if (type == ModContent.TileType<AstralSandstone>())
-                        tile.TileType = TileID.Sandstone;
-
-                    else if (type == ModContent.TileType<HardenedAstralSand>())
-                        tile.TileType = TileID.HardenedSand;
-
-                    else if (type == ModContent.TileType<AstralIce>())
-                        tile.TileType = TileID.IceBlock;
-
-                    // Simple vanilla tile conversions for decorative piles (using your FrozenHell style)
-                    else if (type == ModContent.TileType<AstralNormalLargePiles>() ||
-                             type == ModContent.TileType<AstralNormalMediumPiles>() ||
-                             type == ModContent.TileType<AstralNormalSmallPiles>() ||
-                             type == ModContent.TileType<AstralDesertLargePiles>() ||
-                             type == ModContent.TileType<AstralDesertMediumPiles>() ||
-                             type == ModContent.TileType<AstralDesertSmallPiles>() ||
-                             type == ModContent.TileType<AstralIceLargePiles>() ||
-                             type == ModContent.TileType<AstralIceMediumPiles>() ||
-                             type == ModContent.TileType<AstralIceSmallPiles>())
+                    if (tile.HasTile && killTiles.Contains(tile.TileType))
                     {
                         WorldGen.KillTile(k, l, false, false, true);
+                        continue;
                     }
 
-                    // Stalactites → kill and let vanilla regrow
-                    else if (type == ModContent.TileType<AstralNormalStalactite>() ||
-                             type == ModContent.TileType<AstralDesertStalactite>() ||
-                             type == ModContent.TileType<AstralIceStalactite>())
+                    if (tile.HasTile && tileConversions.TryGetValue(tile.TileType, out ushort newType))
                     {
-                        WorldGen.KillTile(k, l, false, false, true);
+                        if (tile.TileType != newType)
+                        {
+                            tile.TileType = newType;
+                            WorldGen.SquareTileFrame(k, l, true);
+                            changed = true;
+                        }
                     }
 
-                    // Astral grass foliage, vines, etc.
-                    else if (type == ModContent.TileType<AstralVines>() ||
-                             type == ModContent.TileType<AstralShortPlants>() ||
-                             type == ModContent.TileType<AstralTallPlants>())
+                    if (wallConversions.TryGetValue(tile.WallType, out ushort newWall))
                     {
-                        WorldGen.KillTile(k, l, false, false, true);
+                        if (tile.WallType != newWall)
+                        {
+                            tile.WallType = newWall;
+                            WorldGen.SquareWallFrame(k, l, true);
+                            changed = true;
+                        }
                     }
 
-                    // Walls
-                    if (wall == ModContent.WallType<AstralDirtWall>())
-                        tile.WallType = WallID.Dirt;
-
-                    else if (wall == ModContent.WallType<AstralSnowWall>() ||
-                             wall == ModContent.WallType<AstralSnowWallSafe>())
-                        tile.WallType = WallID.SnowWallUnsafe;
-
-                    else if (wall == ModContent.WallType<CelestialRemainsWall>())
-                        tile.WallType = WallID.LihzahrdBrickUnsafe;
-
-                    else if (wall == ModContent.WallType<AstralGrassWall>())
-                        tile.WallType = WallID.Grass;
-
-                    else if (wall == ModContent.WallType<AstralIceWall>())
-                        tile.WallType = WallID.IceUnsafe;
-
-                    else if (wall == ModContent.WallType<AstralMonolithWall>())
-                        tile.WallType = WallID.PearlstoneBrick;
-
-                    else if (wall == ModContent.WallType<AstralStoneWall>())
-                        tile.WallType = WallID.Stone;
-
-                    // Final touches
-                    WorldGen.SquareTileFrame(k, l, true);
-                    WorldGen.SquareWallFrame(k, l, true);
-                    NetMessage.SendTileSquare(-1, k, l, 1);
+                    if (changed)
+                        NetMessage.SendTileSquare(-1, k, l, 1);
                 }
             }
         }
