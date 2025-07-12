@@ -51,13 +51,11 @@ namespace ssm.Thorium.Souls
             player.GetModPlayer<ThoriumPlayer>().bardHomingRangeBonus += 10;
             player.GetModPlayer<ThoriumPlayer>().bardBounceBonus = 10;
 
-            if (!ModCompatibility.CalBardHealer.Loaded)
-            {
-                player.GetModPlayer<ThoriumPlayer>().accWindHoming = true;
-                player.GetModPlayer<ThoriumPlayer>().accBrassMute2 = true;
-                player.GetModPlayer<ThoriumPlayer>().accPercussionTuner2 = true;
-            }
-            else
+            player.GetModPlayer<ThoriumPlayer>().accWindHoming = true;
+            player.GetModPlayer<ThoriumPlayer>().accBrassMute2 = true;
+            player.GetModPlayer<ThoriumPlayer>().accPercussionTuner2 = true;
+
+            if (ModCompatibility.CalBardHealer.Loaded)
             {
                 ModContent.Find<ModItem>(ModCompatibility.CalBardHealer.Name, "OmniSpeaker").UpdateAccessory(player, false);
                 ModContent.Find<ModItem>(ModCompatibility.CalBardHealer.Name, "TreeWhispererAmulet").UpdateAccessory(player, false);
@@ -90,6 +88,10 @@ namespace ssm.Thorium.Souls
             }
             else
             {
+                recipe.AddIngredient<GuitarPickClaw>();
+                recipe.AddIngredient<EpicMouthpiece>();
+                recipe.AddIngredient<StraightMute>();
+                recipe.AddIngredient<DigitalTuner>();
                 recipe.AddIngredient(ModContent.Find<ModItem>(ModCompatibility.CalBardHealer.Name, "OmniSpeaker"));
                 recipe.AddIngredient<TheSet>();
                 recipe.AddIngredient(ModContent.Find<ModItem>(ModCompatibility.CalBardHealer.Name, "TreeWhisperersHarp"));

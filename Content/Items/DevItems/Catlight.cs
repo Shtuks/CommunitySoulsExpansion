@@ -13,7 +13,7 @@ namespace ssm.Content.Items.DevItems
     {
         public override bool IsLoadingEnabled(Mod mod)
         {
-            return ShtunConfig.Instance.ExperimentalContent;
+            return ShtunConfig.Instance.DevItems;
         }
         public override string devName => "StarlightCat";
         public override void SetDefaults()
@@ -29,6 +29,7 @@ namespace ssm.Content.Items.DevItems
             Item.autoReuse = true;
             //Item.shoot = ModContent.ProjectileType<CatlightProj>();
             Item.shootSpeed = 0f;
+            Item.DamageType = DamageClass.Generic;
         }
 
         public override void AddRecipes()
@@ -39,6 +40,31 @@ namespace ssm.Content.Items.DevItems
             {
                 recipe.AddIngredient<AbomEnergy>(10);
             }
+            else
+            {
+                if (ModContent.TryFind("ShadowspecBar", out ModItem cal1))
+                {
+                    recipe.AddIngredient(cal1, 10);
+                }
+                if (ModContent.TryFind("Rock", out ModItem cal2))
+                {
+                    recipe.AddIngredient(cal2, 1);
+                }
+            }
+
+            //recipe.AddIngredient<AmalgamEnergy>(10);
+
+            if (ModCompatibility.SacredTools.Loaded)
+            {
+                if (ModContent.TryFind("EmberOfOmen", out ModItem soa1))
+                {
+                    recipe.AddIngredient(soa1, 10);
+                }
+            }
+
+            recipe.AddIngredient(ItemID.SpellTome);
+            recipe.AddIngredient(ItemID.Catfish);
+            recipe.AddIngredient(ItemID.FallenStar, 3996);
 
             recipe.AddTile<CrucibleCosmosSheet>();
             recipe.Register();

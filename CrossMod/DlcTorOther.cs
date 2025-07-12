@@ -6,6 +6,7 @@ using ssm.CrossMod.Accessories;
 using CalamityMod.Items.Accessories;
 using FargowiltasSouls.Content.Items.Accessories.Souls;
 using ssm.Content.Items.Accessories;
+using ThoriumMod.Items.ThrownItems;
 
 namespace ssm.CrossMod
 {
@@ -18,10 +19,10 @@ namespace ssm.CrossMod
             {
                 Recipe recipe = Main.recipe[i];
 
-                if (recipe.HasResult(ModContent.ItemType<VagabondsSoul>()) && recipe.HasIngredient(ModContent.ItemType<Nanotech>()))
+                if (recipe.HasResult(ModContent.ItemType<VagabondsSoul>()) && !recipe.HasIngredient(ModContent.ItemType<ThrowingGuideVolume3>()))
                 {
-                    recipe.RemoveIngredient(ModContent.ItemType<Nanotech>());
-                    recipe.AddIngredient<GtTETFinal>(1);
+                    //recipe.RemoveIngredient(ModContent.ItemType<Nanotech>());
+                    recipe.AddIngredient<ThrowingGuideVolume3>(1);
                 }
             }
         }

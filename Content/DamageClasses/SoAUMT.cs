@@ -8,7 +8,7 @@ namespace ssm.Content.DamageClasses
     [JITWhenModsEnabled(ModCompatibility.SacredTools.Name)]
     public class SoAUMT
     {
-        public static StatInheritanceData CalUMTAdd(DamageClass damageClass)
+        public static StatInheritanceData SoAUMTAdd(DamageClass damageClass)
         {
             if (damageClass == ModContent.GetInstance<KineticDamageClass>())
             {

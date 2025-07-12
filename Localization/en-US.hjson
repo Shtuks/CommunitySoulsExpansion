@@ -45,6 +45,8 @@ Mods: {
 					Lore: What a calamity
 					DisplayName: Lore - Deviantt
 				}
+
+				AmalgamLore.DisplayName: Amalgam Lore
 			}
 
 			OstaraEnchant: {
@@ -1065,7 +1067,7 @@ Mods: {
 			}
 
 			BardEssence: {
-				DisplayName: Musician Essence
+				DisplayName: Musician's Essence
 				Tooltip:
 					'''
 					18% increased symphonic damage
@@ -1076,7 +1078,7 @@ Mods: {
 			}
 
 			HealerEssence: {
-				DisplayName: Crusader Essence
+				DisplayName: Crusader's Essence
 				Tooltip:
 					'''
 					18% increased radiant damage
@@ -1087,7 +1089,7 @@ Mods: {
 			}
 
 			SlingerEssence: {
-				DisplayName: Slinger Essence
+				DisplayName: Slinger's Essence
 				Tooltip:
 					'''
 					18% increased thrower damage
@@ -1098,37 +1100,30 @@ Mods: {
 			}
 
 			BardSoul: {
-				DisplayName: Bard Soul
+				DisplayName: Bard's Soul
 				Tooltip:
 					'''
 					'Every note you produce births a new world'
-					22% increased symphonic damage
+					25% increased symphonic damage
 					20% increased symphonic playing speed
 					10% increased symphonic critical strike chance
 					Increases maximum inspiration by 20
-					Percussion critical strikes will deal 10% more damage
-					Percussion critical strikes will briefly stun enemies
-					Your wind instrument attacks now attempt to quickly home in on enemies
-					If the attack already homes onto enemies, it does so far more quickly
-					String weapon projectiles bounce five additional times
-					Critical strikes caused by brass instrument attacks release a spread of energy
+					Effects of Terrarium Surround Sound, Straight Mute
+					Effects of Digital Tuner, Epic Mouthpice, Guitar Pick Claw
 					'''
 			}
 
 			GuardianAngelsSoul: {
-				DisplayName: Guardian Angels Soul
+				DisplayName: Guardian Angel's Soul
 				Tooltip:
 					'''
 					'Divine Intervention'
-					22% increased radiant damage
+					25% increased radiant damage
 					20% increased healing and radiant casting speed
 					10% increased radiant critical strike chance
 					Healing spells will heal an additional 5 life
-					Points you towards the ally with the least health
-					Healing an ally will increase your movement speed and increase their life regen and defense
-					Upon drinking a healing potion, all allies will recover 25 life and 50 mana
-					Nearby allies take 10% reduced damage
-					Nearby allies that die drop a wisp of spirit energy
+					Effects of Support Sash, Saving Grace, Soul Guard
+					Effects of Medical Bag
 					'''
 			}
 
@@ -3296,6 +3291,11 @@ Mods: {
 				DisplayName: Shadow Energy
 				Tooltip: ""
 			}
+
+			Pucheblade: {
+				DisplayName: Pucheblade
+				Tooltip: ""
+			}
 		}
 
 		Buffs: {
@@ -3764,6 +3764,7 @@ Mods: {
 			MonstrosityAxe.DisplayName: Monstrosity Axe
 			SteelSwordProjectile.DisplayName: Steel Sword Projectile
 			SwordRainProjectile.DisplayName: Sword Rain Projectile
+			SpawnCutsceneProj.DisplayName: Spawn Cutscene Proj
 		}
 
 		Bestiary: {
@@ -3883,6 +3884,11 @@ Mods: {
 
 				BossRushPostMutant: {
 					Label: Boss Rush Post Mutant
+					Tooltip: ""
+				}
+
+				DevItems: {
+					Label: Dev Items
 					Tooltip: ""
 				}
 			}

@@ -18,6 +18,8 @@ using BombusApisBee.BeeDamageClass;
 using CalamityMod.CalPlayer;
 using ThoriumMod.Utilities;
 using CalamityMod.Events;
+using Microsoft.Xna.Framework.Graphics;
+using Terraria.GameContent;
 
 namespace ssm
 {
@@ -33,7 +35,9 @@ namespace ssm
         public bool starlightFruit;
 
         public int Screenshake;
-        public int Flash;
+        private float blindTime;
+        private float blindDuration;
+        private float blindSharpness;
 
         //Enchants
         public bool equippedPhantasmalEnchantment;
@@ -41,91 +45,20 @@ namespace ssm
         public bool equippedNekomiEnchantment;
         public bool equippedMonstrosityEnchantment;
 
+        public void DiscordWhiteTheme(float duration, float sharpness)
+        {
+            blindDuration = duration;
+            blindTime = duration;
+            blindSharpness = MathHelper.Clamp(sharpness, 1f, 10f);
+        }
+        private float CalculateIntensity()
+        {
+            float progress = blindTime / blindDuration;
+
+            return 1f - MathHelper.Clamp((1f - progress) * blindSharpness, 0f, 1f);
+        }
         public override void PostUpdateBuffs()
         {
-            //if ((FargoSoulsUtil.BossIsAlive(ref EModeGlobalNPC.mutantBoss, ModContent.NPCType<MutantBoss>()) || FargoSoulsUtil.BossIsAlive(ref EModeGlobalNPC.abomBoss, ModContent.NPCType<AbomBoss>())) && ModCompatibility.Calamity.Loaded)
-            //{
-            //    ModLoader.GetMod("CalamityMod").TryFind("Enraged", out ModBuff enrage);
-            //    ModLoader.GetMod("CalamityMod").TryFind("RageMode", out ModBuff rage);
-            //    ModLoader.GetMod("CalamityMod").TryFind("AdrenalineMode", out ModBuff adrenaline);
-            //    Main.LocalPlayer.buffImmune[enrage.Type] = ShtunConfig.Instance.DebugMode ? false : true;
-            //    Main.LocalPlayer.buffImmune[rage.Type] = true;
-            //    Main.LocalPlayer.buffImmune[adrenaline.Type] = true;
-            //}
-
-            //if (starlightFruit)
-            //{
-            //    Player.accWatch = 3;
-            //    Player.accDepthMeter = 1;
-            //    Player.accCompass = 1;
-            //    Player.accFishFinder = true;
-            //    Player.accDreamCatcher = true;
-            //    Player.accOreFinder = true;
-            //    Player.accStopwatch = true;
-            //    Player.accCritterGuide = true;
-            //    Player.accJarOfSouls = true;
-            //    Player.accThirdEye = true;
-            //    Player.accCalendar = true;
-            //    Player.accWeatherRadio = true;
-
-            //    Player.findTreasure = true;
-            //    Player.nightVision = true;
-            //    Player.detectCreature = true;
-            //    Player.pickSpeed -= 0.25f;
-            //    Player.dangerSense = true;
-            //    Player.gills = true;
-            //    Player.waterWalk = true;
-            //    Player.ignoreWater = true;
-            //    Player.accFlipper = true;
-            //    Player.buffImmune[4] = true;
-            //    Player.buffImmune[15] = true;
-            //    Player.buffImmune[109] = true;
-            //    Player.buffImmune[9] = true;
-            //    Player.buffImmune[11] = true;
-            //    Player.buffImmune[12] = true;
-            //    Player.buffImmune[17] = true;
-            //    Player.buffImmune[104] = true;
-            //    Player.buffImmune[111] = true;
-            //    Player.ammoBox = true;
-            //    Player.archery = true;
-            //    Player.ammoPotion = true;
-            //    Player.lavaImmune = true;
-            //    Player.fireWalk = true;
-            //    Player.buffImmune[24] = true;
-            //    Player.buffImmune[29] = true;
-            //    Player.buffImmune[39] = true;
-            //    Player.buffImmune[44] = true;
-            //    Player.buffImmune[46] = true;
-            //    Player.buffImmune[47] = true;
-            //    Player.buffImmune[69] = true;
-            //    Player.buffImmune[110] = true;
-            //    Player.buffImmune[112] = true;
-            //    Player.buffImmune[113] = true;
-            //    Player.buffImmune[114] = true;
-            //    Player.buffImmune[115] = true;
-            //    Player.buffImmune[117] = true;
-            //    Player.buffImmune[150] = true;
-            //    Player.buffImmune[348] = true;
-            //    Player.buffImmune[1] = true;
-            //    Player.buffImmune[2] = true;
-            //    Player.buffImmune[5] = true;
-            //    Player.buffImmune[6] = true;
-            //    Player.buffImmune[7] = true;
-            //    Player.buffImmune[14] = true;
-
-            //    Player.pickSpeed -= 0.2f;
-            //    Player.moveSpeed += 0.2f;
-            //    Player.GetArmorPenetration(DamageClass.Generic) += 10;
-            //    Player.moveSpeed += 0.25f;
-            //    Player.statLifeMax2 += Player.statLifeMax / 5 / 20 * 20;
-            //    Player.lifeRegen += 5;
-            //    Player.endurance += 0.1f;
-            //    Player.statDefense += 10;
-            //    Player.GetCritChance(DamageClass.Generic) += 0.1f;
-            //    Player.GetDamage(DamageClass.Generic) += 0.1f;
-            //    Player.maxMinions += 2;  
-            //}
-
             if (FargoSoulsUtil.BossIsAlive(ref ShtunNpcs.mutantEX, ModContent.NPCType<MutantEX>()) && Main.player[Main.myPlayer].Shtun().lumberjackSet && WorldSaveSystem.enragedMutantEX)
             {
                 Main.LocalPlayer.statDefense*=0;
@@ -138,7 +71,7 @@ namespace ssm
             if (Player.FargoSouls().MutantSetBonusItem != null)
             {
                 Player.Shtun().throwerVelocity += 0.3f;
-                if (ModCompatibility.Thorium.Loaded) { BardAndHealer(Player, 1000, 0, 1, 2f, 100, 100, 2, 1000); }
+                if (ModCompatibility.Thorium.Loaded) { BardAndHealer(Player, 1000, 0, 1, 2f, 100, 50, 2, 1000); }
                 if (ModCompatibility.BeekeeperClass.Loaded) { Beekeeper(Player, 30); }
                 if (ModCompatibility.Calamity.Loaded) { ThrowerCal(Player, 5); }
             }
@@ -260,8 +193,10 @@ namespace ssm
                 Player.AddBuff(BuffID.ChaosState, 100);
             }
 
+            if (blindTime > 0) blindTime--;
+
             //No "free dps"
-            if(FargoSoulsUtil.BossIsAlive(ref EModeGlobalNPC.mutantBoss, ModContent.NPCType<MutantBoss>()) && Player.HeldItem != null && !Player.HeldItem.IsAir && (Player.HeldItem.DamageType != DamageClass.Summon || Player.HeldItem.DamageType != DamageClass.SummonMeleeSpeed))
+            if (FargoSoulsUtil.BossIsAlive(ref EModeGlobalNPC.mutantBoss, ModContent.NPCType<MutantBoss>()) && Player.HeldItem != null && !Player.HeldItem.IsAir && (Player.HeldItem.DamageType != DamageClass.Summon || Player.HeldItem.DamageType != DamageClass.SummonMeleeSpeed))
             {
                 Player.maxMinions = 0;
             }
@@ -308,6 +243,20 @@ namespace ssm
         {
             if (Screenshake > 0)
                 Main.screenPosition += Main.rand.NextVector2Circular(7, 7);
+
+            if (blindTime <= 0) return;
+
+            float intensity = CalculateIntensity();
+            if (intensity <= 0) return;
+            Main.spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend);
+
+            Texture2D pixel = TextureAssets.MagicPixel.Value;
+            Rectangle screen = new Rectangle(0, 0, Main.screenWidth, Main.screenHeight);
+            Color color = Color.White * intensity;
+
+            Main.spriteBatch.Draw(pixel, screen, color);
+
+            Main.spriteBatch.End();
         }
         public override void ModifyHurt(ref Player.HurtModifiers modifiers)
         {
@@ -319,13 +268,15 @@ namespace ssm
                 modifiers.SetMaxDamage(1000);
             }
         }
+
+        public override void UpdateDead()
+        {
+            blindTime = 0;
+        }
         public override void ResetEffects()
         {
             if (Screenshake > 0)
                 Screenshake--;
-
-            if (Flash > 0)
-                Flash--;
 
             equippedPhantasmalEnchantment = false;
             equippedAbominableEnchantment = false;

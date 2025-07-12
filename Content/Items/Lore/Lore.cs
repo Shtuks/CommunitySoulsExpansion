@@ -10,7 +10,7 @@ using ssm.Core;
 using Terraria;
 using Terraria.ModLoader;
 
-namespace ssm.Content.Items
+namespace ssm.Content.Items.Lore
 {
     [ExtendsFromMod(ModCompatibility.Calamity.Name)]
     [JITWhenModsEnabled(ModCompatibility.Calamity.Name)]

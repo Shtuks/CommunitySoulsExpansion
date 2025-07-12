@@ -13,6 +13,8 @@ namespace ssm.CrossMod
             {
                 for (int i = 0; i < tooltips.Count; i++)
                 {
+                    if (i == 0) continue;
+
                     if (ShtunConfig.Instance.ThrowerMerge)
                     {
                         tooltips[i].Text = Regex.Replace(tooltips[i].Text, "kinetic", "thrower");

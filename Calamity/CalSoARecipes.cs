@@ -8,6 +8,7 @@ using CalamityMod.Items.Materials;
 using SacredTools.Content.Items.Weapons.Relic;
 using SacredTools.Content.Items.Armor.Asthraltite;
 using SacredTools.Items.Tools;
+using SacredTools.Content.Items.Placeable.Obelisks;
 
 namespace ssm.Calamity
 {
@@ -29,7 +30,8 @@ namespace ssm.Calamity
                 {
                     recipe.AddIngredient<ShadowspecBar>(5);
                 }
-                if ((recipe.HasResult<PaleRuin>() ||
+                if ((recipe.HasResult<NihilusObelisk>() || 
+                    recipe.HasResult<PaleRuin>() ||
                     recipe.HasResult<AshenWake>() ||
                     recipe.HasResult<CeruleanCyclone>() ||
                     recipe.HasResult<Malevolence>() ||

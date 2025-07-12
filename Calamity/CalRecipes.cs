@@ -65,12 +65,12 @@ namespace ssm.Calamity
                     }
                 }
 
-                if (recipe.HasResult<ShadowspecBar>() && !recipe.HasResult<MiracleMatter>())
-                {
-                    recipe.RemoveIngredient(ModContent.ItemType<ExoPrism>());
-                    recipe.RemoveIngredient(ModContent.ItemType<AuricBar>());
-                    recipe.AddIngredient<MiracleMatter>();
-                }
+                //if (recipe.HasResult<ShadowspecBar>() && !recipe.HasResult<MiracleMatter>())
+                //{
+                //    recipe.RemoveIngredient(ModContent.ItemType<ExoPrism>());
+                //    recipe.RemoveIngredient(ModContent.ItemType<AuricBar>());
+                //    recipe.AddIngredient<MiracleMatter>();
+                //}
 
                 //if (ShtunConfig.Instance.ExperimentalContent && !recipe.HasIngredient<Rock>() && recipe.HasResult<MacroverseSoul>())
                 //{

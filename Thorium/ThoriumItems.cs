@@ -33,14 +33,14 @@ namespace ssm.Thorium
         {
             if (item.type == ModContent.ItemType<OmniCannon>())
             {
-                velocity *= 1.3f;
+                velocity *= 1.4f;
             }
         }
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
         {
             if (item.type == ModContent.ItemType<OmniCannon>())
             {
-                tooltips.Add(new TooltipLine(Mod, "rebalance", $"[c/00A36C:Cross-Mod Balance:] Damage decreased by 20% but increased projectile velocity by 20%"));
+                tooltips.Add(new TooltipLine(Mod, "rebalance", $"[c/00A36C:Cross-Mod Balance:] Damage decreased by 20% but increased projectile velocity by 30%"));
             }
         }
         public override void OnHitNPC(Item item, Player player, NPC target, NPC.HitInfo hit, int damageDone)

@@ -25,6 +25,21 @@ using ssm.CrossMod.CraftingStations;
 using ssm.gunrightsmod;
 using ssm.SpiritMod;
 using Fargowiltas.Items.CaughtNPCs;
+using FargowiltasSouls.Content.Items;
+using SacredTools.Content.Items.Weapons.Dreadfire;
+using SacredTools.Content.Items.Weapons.Harpy;
+using SacredTools.Content.Items.Weapons.Mechs;
+using SacredTools.Items.Dev;
+using SacredTools.Items.Weapons.Flarium;
+using SacredTools.Items.Weapons.Lunatic;
+using SacredTools.Items.Weapons.Luxite;
+using SacredTools.Items.Weapons.Marstech;
+using SacredTools.Items.Weapons.Oblivion;
+using SacredTools.Items.Weapons.Pigman;
+using SacredTools.Items.Weapons.Special;
+using SacredTools.Items.Weapons.Venomite;
+using SacredTools.Items.Weapons;
+using ssm.Content.Items.DevItems;
 
 namespace ssm
 {
@@ -241,6 +256,12 @@ namespace ssm
             {
                 PostSetupContentSoA.PostSetupContent_Thorium();
             }
+
+            //if (ShtunConfig.Instance.DevItems)
+            //{
+            //    int[] SwordsToApplyRework = [ModContent.ItemType<Pucheblade>()];
+            //    SwordGlobalItem.AllowedModdedSwords = SwordGlobalItem.AllowedModdedSwords.Union(SwordsToApplyRework).ToArray();
+            //}
         }
 
         public int OSType()

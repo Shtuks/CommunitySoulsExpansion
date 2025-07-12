@@ -20,10 +20,6 @@ namespace ssm.Content.Buffs
         public override void Update(Player player, ref int buffIndex)
         {
             player.FargoSouls().MutantPresence = true;
-            player.FargoSouls().noDodge = true;
-            player.FargoSouls().noSupersonic = true;
-            player.FargoSouls().GrazeRadius *= 0.5f;
-            player.moonLeech = true;
         }
     }
 }

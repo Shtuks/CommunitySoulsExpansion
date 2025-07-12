@@ -13,6 +13,7 @@ using SacredTools.Content.NPCs.Boss.Decree;
 using SacredTools.NPCs.Boss.Pumpkin;
 using SacredTools.NPCs.Boss.Obelisk.Nihilus;
 using CalamityMod.Events;
+using ThoriumMod.Items.BardItems;
 
 namespace ssm.SoA
 {
@@ -20,15 +21,35 @@ namespace ssm.SoA
     [JITWhenModsEnabled(ModCompatibility.SacredTools.Name)]
     public class SoAHPBalance : GlobalNPC
     {
+        public override bool InstancePerEntity => true;
+        public bool mayo;
+
         [JITWhenModsEnabled(ModCompatibility.Calamity.Name)]
         bool CheckBossRush()
         {
             return BossRushEvent.BossRushActive;
         }
-
-        public bool fullHP = false;
-        public override bool InstancePerEntity => true;
         public override bool PreAI(NPC npc)
+        {
+            if (!mayo)
+            {
+                if (npc.type == ModContent.NPCType<Nihilus>())
+                {
+                    npc.lifeMax = Main.masterMode ? ModCompatibility.Calamity.Loaded ? 11000000 : 7300000 : ModCompatibility.Calamity.Loaded ? 9600000 : 6800000;
+                    npc.damage = ModCompatibility.Calamity.Loaded ? 500 : 450;
+                    npc.life = npc.lifeMax;
+                }
+                if (npc.type == ModContent.NPCType<Nihilus2>())
+                {
+                    npc.lifeMax = Main.masterMode ? ModCompatibility.Calamity.Loaded ? 16000000 : 11000000 : ModCompatibility.Calamity.Loaded ? 15000000 : 9700000;
+                    npc.damage = ModCompatibility.Calamity.Loaded ? 500 : 450;
+                    npc.life = npc.lifeMax;
+                }
+                mayo = true;
+            }
+            return base.PreAI(npc);
+        }
+        public override void SetDefaults(NPC npc)
         {
             bool num = false;
             if (ModCompatibility.Calamity.Loaded) 
@@ -36,7 +57,7 @@ namespace ssm.SoA
                 num = CheckBossRush();
             }
 
-            if (!num && !fullHP && !ssm.SwarmActive)
+            if (!num && !ssm.SwarmActive)
             {
                 if (npc.type == ModContent.NPCType<ErazorBoss>())
                 {
@@ -101,12 +122,12 @@ namespace ssm.SoA
                 }
                 if (npc.type == ModContent.NPCType<Jensen>() || npc.type == ModContent.NPCType<JensenLegacy>())
                 {
-                    npc.lifeMax = 9000;
+                    npc.lifeMax = 10000;
                     npc.damage = 100;
                 }
                 if (npc.type == ModContent.NPCType<Decree>() || npc.type == ModContent.NPCType<DecreeLegacy>())
                 {
-                    npc.lifeMax = 15000;
+                    npc.lifeMax = 9000;
                     npc.damage = 70;
                 }
                 if (npc.type == ModContent.NPCType<Ralnek>())
@@ -119,25 +140,14 @@ namespace ssm.SoA
                     npc.lifeMax = 9000;
                     npc.damage = 90;
                 }
-                if (npc.type == ModContent.NPCType<Nihilus>())
-                {
-                    npc.defense = ModCompatibility.Calamity.Loaded ? 700 : 500;
-                    npc.lifeMax = Main.masterMode ? ModCompatibility.Calamity.Loaded ? 12000000 : 6300000 : ModCompatibility.Calamity.Loaded ? 10000000 : 5800000;
-                    npc.damage = ModCompatibility.Calamity.Loaded ? 600 : 500;
-                }
+
                 if (npc.type == ModContent.NPCType<RelicShieldNihilus>())
                 {
-                    npc.lifeMax = 1500000;
+                    npc.lifeMax = ModCompatibility.Calamity.Loaded ? 1500000 : 1000000;
                 }
                 if (npc.type == ModContent.NPCType<NihilusLanternRisen>() || npc.type == ModContent.NPCType<NihilusLantern>() || npc.type == ModContent.NPCType<NihilusLanternBig>())
                 {
-                    npc.lifeMax = 1000000;
-                }
-                if (npc.type == ModContent.NPCType<Nihilus2>())
-                {
-                    npc.defense = ModCompatibility.Calamity.Loaded ? 700 : 500;
-                    npc.lifeMax = Main.masterMode ? ModCompatibility.Calamity.Loaded ? 16000000 : 9700000 : ModCompatibility.Calamity.Loaded ? 14000000 : 8700000;
-                    npc.damage = ModCompatibility.Calamity.Loaded ? 600 : 500;
+                    npc.lifeMax = ModCompatibility.Calamity.Loaded ? 500000 : 400000;
                 }
 
                 if (Main.getGoodWorld)
@@ -145,9 +155,7 @@ namespace ssm.SoA
                     npc.lifeMax *= 5;
                     npc.damage *= 3;
                 }
-                npc.life = npc.lifeMax; fullHP = true;
             }
-            return base.PreAI(npc);
         }
     }
 }

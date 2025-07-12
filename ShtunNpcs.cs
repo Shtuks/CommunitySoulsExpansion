@@ -34,16 +34,13 @@ namespace ssm
         private int go = 1;
         public override void Load()
         {
-            if (ModCompatibility.SacredTools.Loaded && !ModCompatibility.Thorium.Loaded) { multiplierA += 1.1f; }
-            if (ModCompatibility.Thorium.Loaded && !ModCompatibility.Calamity.Loaded) { multiplierA += 1f; }
             if (ModCompatibility.Homeward.Loaded && !ModCompatibility.Calamity.Loaded && !ModCompatibility.SacredTools.Loaded) { multiplierM += 0.8f; }
-            if (ModCompatibility.Calamity.Loaded && !ModCompatibility.SacredTools.Loaded) { multiplierA += 1f; }
 
             if (ModCompatibility.SacredTools.Loaded && !ModCompatibility.Calamity.Loaded) { multiplierM += 0.8f; }
 
-            if (ModCompatibility.Thorium.Loaded) { multiplierM += 0.6f; multiplierA += 3f; }
+            if (ModCompatibility.Thorium.Loaded) { multiplierM += 0.6f; multiplierA += 1f; }
             if (ModCompatibility.Calamity.Loaded) { multiplierM += ShtunConfig.Instance.DebugMode ? 8.8f : 2.8f; multiplierA += 6f; }
-            if (ModCompatibility.SacredTools.Loaded) { multiplierM += 1.6f; multiplierA += 1f; }
+            if (ModCompatibility.SacredTools.Loaded) { multiplierM += 1.6f; multiplierA += 2f; }
         }
         public override void SetDefaults(NPC npc)
         {
@@ -116,7 +113,7 @@ namespace ssm
             if (npc.type == ModContent.NPCType<AbomBoss>())
             {
                 npc.damage = Main.getGoodWorld ? 1000 : (int)(250 + (15 * multiplierA));
-                npc.lifeMax = (int)(2800000 + (1000000 * multiplierA)) / (Main.expertMode ? 2 : 4);
+                npc.lifeMax = (int)(1400000 + (1000000 * multiplierA)) / (Main.expertMode ? 2 : 4);
             }
             if (npc.type == ModContent.NPCType<Abominationn>())
             {

@@ -29,6 +29,10 @@ namespace ssm.Content.DamageClasses
             {
                 return StatInheritanceData.Full;
             }
+            if (ModCompatibility.SacredTools.Loaded)
+            {
+                return SoAUMT.SoAUMTAdd(damageClass);
+            }
 
             return StatInheritanceData.None;
         }
@@ -43,6 +47,14 @@ namespace ssm.Content.DamageClasses
             if (ModCompatibility.SacredTools.Loaded)
             {
                 if (damageClass == SoAUMT.GetEffectInheritance(damageClass))
+                {
+                    return true;
+                }
+            }
+
+            if (ModCompatibility.Calamity.Loaded)
+            {
+                if (damageClass == CalUMT.GetEffectInheritance(damageClass))
                 {
                     return true;
                 }

@@ -181,8 +181,8 @@ namespace ssm.Content.NPCs.MutantEX
             if (ModCompatibility.Calamity.Loaded) { multiplierD += 1f; multiplierL += 3f; }
             if (ModCompatibility.SacredTools.Loaded) { multiplierD += 0.7f; multiplierL += 2f; }
 
-            NPC.lifeMax = 100000000 + (int)(100000000 * multiplierL);
-            NPC.damage = 1000 + (int)(1000 * multiplierD);
+            NPC.lifeMax = Main.zenithWorld ? int.MaxValue : 200000000 + (int)(100000000 * multiplierL);
+            NPC.damage = Main.zenithWorld ? int.MaxValue : 1000 + (int)(1000 * multiplierD);
             NPC.life = NPC.lifeMax;
 
             AuraCenter = NPC.Center;
