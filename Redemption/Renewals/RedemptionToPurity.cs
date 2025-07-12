@@ -1,10 +1,10 @@
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using System;
-using Terraria;
+using ssm.Core;
 using Redemption.Tiles.Tiles;
 using Redemption.Walls;
-using ssm.Core;
+using System.Collections.Generic;
 
 namespace ssm.Redemption.Renewals
 {
@@ -12,96 +12,93 @@ namespace ssm.Redemption.Renewals
     [JITWhenModsEnabled(ModCompatibility.Redemption.Name)]
     public static class RedemptionConversion
     {
+        private static readonly Dictionary<ushort, ushort> tileConversions = new()
+        {
+            [(ushort)ModContent.TileType<IrradiatedStoneTile>()] = TileID.Stone,
+            [(ushort)ModContent.TileType<IrradiatedEbonstoneTile>()] = TileID.Ebonstone,
+            [(ushort)ModContent.TileType<IrradiatedCrimstoneTile>()] = TileID.Crimstone,
+
+            [(ushort)ModContent.TileType<IrradiatedGrassTile>()] = TileID.Grass,
+            [(ushort)ModContent.TileType<IrradiatedCorruptGrassTile>()] = TileID.CorruptGrass,
+            [(ushort)ModContent.TileType<IrradiatedCrimsonGrassTile>()] = TileID.CrimsonGrass,
+
+            [(ushort)ModContent.TileType<IrradiatedDirtTile>()] = TileID.Dirt,
+
+            [(ushort)ModContent.TileType<IrradiatedIceTile>()] = TileID.IceBlock,
+            [(ushort)ModContent.TileType<IrradiatedSnowTile>()] = TileID.SnowBlock,
+
+            [(ushort)ModContent.TileType<IrradiatedSandTile>()] = TileID.Sand,
+            [(ushort)ModContent.TileType<IrradiatedHardenedSandTile>()] = TileID.HardenedSand,
+            [(ushort)ModContent.TileType<IrradiatedSandstoneTile>()] = TileID.Sandstone,
+
+            [(ushort)ModContent.TileType<IrradiatedLivingWoodTile>()] = TileID.LivingWood,
+            [(ushort)ModContent.TileType<PetrifiedWoodTile>()] = TileID.WoodBlock
+        };
+
+        private static readonly Dictionary<ushort, ushort> wallConversions = new()
+        {
+            [(ushort)ModContent.WallType<IrradiatedStoneWallTile>()] = WallID.Stone,
+            [(ushort)ModContent.WallType<IrradiatedEbonstoneWallTile>()] = WallID.EbonstoneUnsafe,
+            [(ushort)ModContent.WallType<IrradiatedCrimstoneWallTile>()] = WallID.CrimstoneUnsafe,
+
+            [(ushort)ModContent.WallType<IrradiatedHardenedSandWallTile>()] = WallID.HardenedSand,
+            [(ushort)ModContent.WallType<IrradiatedSandstoneWallTile>()] = WallID.Sandstone,
+
+            [(ushort)ModContent.WallType<IrradiatedIceWallTile>()] = WallID.IceUnsafe,
+            [(ushort)ModContent.WallType<IrradiatedSnowWallTile>()] = WallID.SnowWallUnsafe,
+
+            [(ushort)ModContent.WallType<IrradiatedLivingWoodWallTile>()] = WallID.LivingWood,
+            [(ushort)ModContent.WallType<IrradiatedDirtWallTile>()] = WallID.Dirt,
+            [(ushort)ModContent.WallType<IrradiatedMudWallTile>()] = WallID.MudUnsafe,
+
+            [(ushort)ModContent.WallType<PetrifiedWoodWallTile>()] = WallID.Wood
+        };
+
         public static void IrradiatedConvert(int i, int j, int size = 4)
         {
+            int sizeSq = size * size;
+
             for (int k = i - size; k <= i + size; k++)
             {
                 for (int l = j - size; l <= j + size; l++)
                 {
-                    if (WorldGen.InWorld(k, l, 1) &&
-                        (Math.Abs(k - i) + Math.Abs(l - j)) < Math.Sqrt(size * size + size * size))
+                    if (!WorldGen.InWorld(k, l, 1))
+                        continue;
+
+                    int dx = k - i;
+                    int dy = l - j;
+                    if (dx * dx + dy * dy > sizeSq)
+                        continue;
+
+                    Tile tile = Main.tile[k, l];
+                    if (tile == null)
+                        continue;
+
+                    bool changed = false;
+
+                    if (tile.HasTile && tileConversions.TryGetValue(tile.TileType, out ushort newTileType))
                     {
-                        Tile tile = Main.tile[k, l];
-                        if (tile == null) continue;
-
-                        if (tile.HasTile)
+                        if (tile.TileType != newTileType)
                         {
-                            if (tile.TileType == ModContent.TileType<IrradiatedStoneTile>())
-                                ConvertTile(k, l, TileID.Stone);
-                            else if (tile.TileType == ModContent.TileType<IrradiatedEbonstoneTile>())
-                                ConvertTile(k, l, TileID.Ebonstone);
-                            else if (tile.TileType == ModContent.TileType<IrradiatedCrimstoneTile>())
-                                ConvertTile(k, l, TileID.Crimstone);
-                            else if (tile.TileType == ModContent.TileType<IrradiatedGrassTile>())
-                                ConvertTile(k, l, TileID.Grass);
-                            else if (tile.TileType == ModContent.TileType<IrradiatedCorruptGrassTile>())
-                                ConvertTile(k, l, TileID.CorruptGrass);
-                            else if (tile.TileType == ModContent.TileType<IrradiatedCrimsonGrassTile>())
-                                ConvertTile(k, l, TileID.CrimsonGrass);
-                            else if (tile.TileType == ModContent.TileType<IrradiatedDirtTile>())
-                                ConvertTile(k, l, TileID.Dirt);
-                            else if (tile.TileType == ModContent.TileType<IrradiatedIceTile>())
-                                ConvertTile(k, l, TileID.IceBlock);
-                            else if (tile.TileType == ModContent.TileType<IrradiatedSnowTile>())
-                                ConvertTile(k, l, TileID.SnowBlock);
-                            else if (tile.TileType == ModContent.TileType<IrradiatedSandTile>())
-                                ConvertTile(k, l, TileID.Sand);
-                            else if (tile.TileType == ModContent.TileType<IrradiatedHardenedSandTile>())
-                                ConvertTile(k, l, TileID.HardenedSand);
-                            else if (tile.TileType == ModContent.TileType<IrradiatedSandstoneTile>())
-                                ConvertTile(k, l, TileID.Sandstone);
-                            else if (tile.TileType == ModContent.TileType<IrradiatedLivingWoodTile>())
-                                ConvertTile(k, l, TileID.LivingWood);
-                            else if (tile.TileType == ModContent.TileType<PetrifiedWoodTile>())
-                                ConvertTile(k, l, TileID.WoodBlock);
+                            tile.TileType = newTileType;
+                            WorldGen.SquareTileFrame(k, l, true);
+                            changed = true;
                         }
-
-                        if (tile.WallType == ModContent.WallType<IrradiatedStoneWallTile>())
-                            ConvertWall(k, l, WallID.Stone);
-                        else if (tile.WallType == ModContent.WallType<IrradiatedEbonstoneWallTile>())
-                            ConvertWall(k, l, WallID.EbonstoneUnsafe);
-                        else if (tile.WallType == ModContent.WallType<IrradiatedCrimstoneWallTile>())
-                            ConvertWall(k, l, WallID.CrimstoneUnsafe);
-                        else if (tile.WallType == ModContent.WallType<IrradiatedHardenedSandWallTile>())
-                            ConvertWall(k, l, WallID.HardenedSand);
-                        else if (tile.WallType == ModContent.WallType<IrradiatedSandstoneWallTile>())
-                            ConvertWall(k, l, WallID.Sandstone);
-                        else if (tile.WallType == ModContent.WallType<IrradiatedIceWallTile>())
-                            ConvertWall(k, l, WallID.IceUnsafe);
-                        else if (tile.WallType == ModContent.WallType<IrradiatedSnowWallTile>())
-                            ConvertWall(k, l, WallID.SnowWallUnsafe);
-                        else if (tile.WallType == ModContent.WallType<IrradiatedLivingWoodWallTile>())
-                            ConvertWall(k, l, WallID.LivingWood);
-                        else if (tile.WallType == ModContent.WallType<IrradiatedDirtWallTile>())
-                            ConvertWall(k, l, WallID.Dirt);
-                        else if (tile.WallType == ModContent.WallType<IrradiatedMudWallTile>())
-                            ConvertWall(k, l, WallID.MudUnsafe);
-                        else if (tile.WallType == ModContent.WallType<PetrifiedWoodWallTile>())
-                            ConvertWall(k, l, WallID.Wood);
                     }
+
+                     if (wallConversions.TryGetValue(tile.WallType, out ushort newWallType))
+                    {
+                        if (tile.WallType != newWallType)
+                        {
+                            tile.WallType = newWallType;
+                            WorldGen.SquareWallFrame(k, l, true);
+                            changed = true;
+                        }
+                    }
+
+                    if (changed)
+                        NetMessage.SendTileSquare(-1, k, l, 1);
                 }
-            }
-        }
-
-        private static void ConvertTile(int i, int j, ushort type)
-        {
-            Tile tile = Main.tile[i, j];
-            if (tile.TileType != type)
-            {
-                tile.TileType = type;
-                WorldGen.SquareTileFrame(i, j, true);
-                NetMessage.SendTileSquare(-1, i, j, 1);
-            }
-        }
-
-        private static void ConvertWall(int i, int j, ushort type)
-        {
-            Tile tile = Main.tile[i, j];
-            if (tile.WallType != type)
-            {
-                tile.WallType = type;
-                WorldGen.SquareWallFrame(i, j, true);
-                NetMessage.SendTileSquare(-1, i, j, 1);
             }
         }
     }

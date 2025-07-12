@@ -1,7 +1,6 @@
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
-using System;
 using SpiritMod.Tiles.Block;
 using SpiritMod.Tiles.Walls.Natural;
 using SpiritMod.Tiles.Ambient.Spirit;
@@ -16,98 +15,100 @@ namespace ssm.SpiritMod.Renewals
     {
         public static void SpiritConvert(int i, int j, int size = 4)
         {
+            int sizeSq = size * size;
+
             for (int k = i - size; k <= i + size; k++)
             {
                 for (int l = j - size; l <= j + size; l++)
                 {
-                    if (!WorldGen.InWorld(k, l, 1) || (Math.Abs(k - i) + Math.Abs(l - j)) >= Math.Sqrt(size * size + size * size))
+                    if (!WorldGen.InWorld(k, l, 1))
                         continue;
 
-                    Tile tile = Framing.GetTileSafely(k, l);
-                    Tile tileAbove = Framing.GetTileSafely(k, l - 1);
+                    int dx = k - i;
+                    int dy = l - j;
+                    if (dx * dx + dy * dy > sizeSq)
+                        continue;
 
-                    // Wall: SpiritWallNatural → Grass Wall (vanilla)
-                    if (tile.WallType == (ushort)ModContent.WallType<SpiritWallNatural>())
+                    Tile tile = Main.tile[k, l];
+                    Tile tileAbove = Main.tile[k, l - 1];
+                    if (tile == null || tileAbove == null)
+                        continue;
+
+                    bool tileChanged = false;
+                    bool wallChanged = false;
+                    bool tileAboveChanged = false;
+
+                    ushort wall = tile.WallType;
+                    if (wall == ModContent.WallType<SpiritWallNatural>() ||
+                        wall == ModContent.WallType<ReachWallNatural>())
                     {
                         tile.WallType = WallID.Grass;
-                        WorldGen.SquareWallFrame(k, l, true);
-                        NetMessage.SendTileSquare(-1, k, l, 1, TileChangeType.None);
+                        wallChanged = true;
                     }
 
-                    if (tile.WallType == (ushort)ModContent.WallType<ReachWallNatural>())
+                    if (tile.HasTile)
                     {
-                        tile.WallType = WallID.Grass;
-                        WorldGen.SquareWallFrame(k, l, true);
-                        NetMessage.SendTileSquare(-1, k, l, 1, TileChangeType.None);
-                    }   
+                        ushort type = tile.TileType;
 
-                    // Tile: SpiritStone → Stone
-                    if (tile.TileType == (ushort)ModContent.TileType<SpiritStone>())
-                    {
-                        tile.TileType = TileID.Stone;
-                        WorldGen.SquareTileFrame(k, l, true);
-                        NetMessage.SendTileSquare(-1, k, l, 1, TileChangeType.None);
-                    }
-
-                    // Tile: SpiritDirt → Dirt
-                    else if (tile.TileType == (ushort)ModContent.TileType<SpiritDirt>())
-                    {
-                        tile.TileType = TileID.Dirt;
-                        WorldGen.SquareTileFrame(k, l, true);
-                        NetMessage.SendTileSquare(-1, k, l, 1, TileChangeType.None);
-                    }
-
-                    // Tile: SpiritGrass → Grass
-                    else if (tile.TileType == (ushort)ModContent.TileType<SpiritGrass>())
-                    {
-                        tile.TileType = TileID.Grass;
-                        WorldGen.SquareTileFrame(k, l, true);
-                        NetMessage.SendTileSquare(-1, k, l, 1, TileChangeType.None);
-
-                        // If foliage exists above and is SpiritFoliage, revert it
-                        if (tileAbove.TileType == (ushort)ModContent.TileType<SpiritFoliage>())
+                        if (type == ModContent.TileType<SpiritStone>())
                         {
-                            tileAbove.TileType = TileID.Plants;
-                            if (tileAbove.TileFrameX > 270)
-                                tileAbove.TileFrameX = 0;
+                            tile.TileType = TileID.Stone;
+                            tileChanged = true;
+                        }
+                        else if (type == ModContent.TileType<SpiritDirt>())
+                        {
+                            tile.TileType = TileID.Dirt;
+                            tileChanged = true;
+                        }
+                        else if (type == ModContent.TileType<SpiritGrass>())
+                        {
+                            tile.TileType = TileID.Grass;
+                            tileChanged = true;
 
-                            WorldGen.SquareTileFrame(k, l - 1, true);
-                            NetMessage.SendTileSquare(-1, k, l - 1, 1, TileChangeType.None);
+                            if (tileAbove.HasTile && tileAbove.TileType == ModContent.TileType<SpiritFoliage>())
+                            {
+                                tileAbove.TileType = TileID.Plants;
+                                if (tileAbove.TileFrameX > 270)
+                                    tileAbove.TileFrameX = 0;
+                                tileAboveChanged = true;
+                            }
+                        }
+                        else if (type == ModContent.TileType<BriarGrass>())
+                        {
+                            tile.TileType = TileID.Grass;
+                            tileChanged = true;
+
+                            if (tileAbove.HasTile && tileAbove.TileType == ModContent.TileType<BriarFoliage>())
+                            {
+                                tileAbove.TileType = TileID.Plants;
+                                if (tileAbove.TileFrameX > 270)
+                                    tileAbove.TileFrameX = 0;
+                                tileAboveChanged = true;
+                            }
+                        }
+                        else if (type == ModContent.TileType<Spiritsand>())
+                        {
+                            tile.TileType = TileID.Sand;
+                            tileChanged = true;
+                        }
+                        else if (type == ModContent.TileType<SpiritIce>())
+                        {
+                            tile.TileType = TileID.IceBlock;
+                            tileChanged = true;
                         }
                     }
 
-                    else if (tile.TileType == (ushort)ModContent.TileType<BriarGrass>())
-                    {
-                        tile.TileType = TileID.Grass;
+                    if (tileChanged)
                         WorldGen.SquareTileFrame(k, l, true);
-                        NetMessage.SendTileSquare(-1, k, l, 1, TileChangeType.None);
+                    if (wallChanged)
+                        WorldGen.SquareWallFrame(k, l, true);
+                    if (tileChanged || wallChanged)
+                        NetMessage.SendTileSquare(-1, k, l, 1);
 
-                        // If foliage exists above and is BriarFoliage, revert it
-                        if (tileAbove.TileType == (ushort)ModContent.TileType<BriarFoliage>())
-                        {
-                            tileAbove.TileType = TileID.Plants;
-                            if (tileAbove.TileFrameX > 270)
-                                tileAbove.TileFrameX = 0;
-
-                            WorldGen.SquareTileFrame(k, l - 1, true);
-                            NetMessage.SendTileSquare(-1, k, l - 1, 1, TileChangeType.None);
-                        }
-                    }
-
-                    // Tile: Spiritsand → Sand
-                    else if (tile.TileType == (ushort)ModContent.TileType<Spiritsand>())
+                    if (tileAboveChanged)
                     {
-                        tile.TileType = TileID.Sand;
-                        WorldGen.SquareTileFrame(k, l, true);
-                        NetMessage.SendTileSquare(-1, k, l, 1, TileChangeType.None);
-                    }
-
-                    // Tile: SpiritIce → Ice
-                    else if (tile.TileType == (ushort)ModContent.TileType<SpiritIce>())
-                    {
-                        tile.TileType = TileID.IceBlock;
-                        WorldGen.SquareTileFrame(k, l, true);
-                        NetMessage.SendTileSquare(-1, k, l, 1, TileChangeType.None);
+                        WorldGen.SquareTileFrame(k, l - 1, true);
+                        NetMessage.SendTileSquare(-1, k, l - 1, 1);
                     }
                 }
             }
