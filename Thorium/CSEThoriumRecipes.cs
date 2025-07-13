@@ -23,7 +23,7 @@ namespace ssm.Thorium
 {
     [ExtendsFromMod(ModCompatibility.Thorium.Name)]
     [JITWhenModsEnabled(ModCompatibility.Thorium.Name)]
-    class ShtunThoriumRecipes : ModSystem
+    class CSEThoriumRecipes : ModSystem
     {
         public override void AddRecipeGroups()
         {
@@ -70,7 +70,7 @@ namespace ssm.Thorium
 			for (int i = 0; i < Recipe.numRecipes; i++)
 			{
 				Recipe recipe = Main.recipe[i];
-                if (/*!ShtunConfig.Instance.ExperimentalContent && */recipe.HasResult<EternitySoul>() && !recipe.HasIngredient<ThoriumSoul>())
+                if (CSEConfig.Instance.Thorium && recipe.HasResult<EternitySoul>() && !recipe.HasIngredient<ThoriumSoul>())
                 {
                     recipe.AddIngredient<ThoriumSoul>();
                 }

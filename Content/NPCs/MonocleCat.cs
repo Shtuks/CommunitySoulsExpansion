@@ -15,9 +15,9 @@ namespace ssm.Content.NPCs
     {
         public override bool IsLoadingEnabled(Mod mod)
         {
-            return ShtunConfig.Instance.AlternativeSiblings;
+            return CSEConfig.Instance.AlternativeSiblings;
         }
-        public override string Texture => "ssm/Content/NPCs/Monstrosity";
+        public override string Texture => "ssm/Content/NPCs/Monstrosityy";
         private static int shopNum;
         private static bool showCycleShop;
 

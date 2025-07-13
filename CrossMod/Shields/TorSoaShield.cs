@@ -13,7 +13,7 @@ namespace ssm.CrossMod.Shields
     {
         public override bool IsLoadingEnabled(Mod mod)
         {
-            return ShtunConfig.Instance.Shields && !ModCompatibility.Calamity.Loaded;
+            return CSEConfig.Instance.Shields && !ModCompatibility.Calamity.Loaded;
         }
 
         public override void PostAddRecipes()
@@ -48,7 +48,7 @@ namespace ssm.CrossMod.Shields
     {
         public override bool IsLoadingEnabled(Mod mod)
         {
-            return ShtunConfig.Instance.Shields && !ModCompatibility.Calamity.Loaded;
+            return CSEConfig.Instance.Shields && !ModCompatibility.Calamity.Loaded;
         }
         public override bool InstancePerEntity => true;
         public override void UpdateAccessory(Item Item, Player player, bool hideVisual)

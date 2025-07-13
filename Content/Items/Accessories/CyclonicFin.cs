@@ -52,10 +52,10 @@ namespace ssm.Content.Items.Accessories
 
             if (player.AddEffect<SpectralFishEffect>(Item))
             {
-                player.GetModPlayer<ShtunPlayer>().CyclonicFin = true;
+                player.GetModPlayer<CSEPlayer>().CyclonicFin = true;
 
-                if (player.GetModPlayer<ShtunPlayer>().CyclonicFinCD > 0)
-                    player.GetModPlayer<ShtunPlayer>().CyclonicFinCD--;
+                if (player.GetModPlayer<CSEPlayer>().CyclonicFinCD > 0)
+                    player.GetModPlayer<CSEPlayer>().CyclonicFinCD--;
             }
 
             if (player.AddEffect<CuteFishEXEffect>(Item))

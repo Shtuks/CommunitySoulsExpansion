@@ -69,7 +69,7 @@ namespace ssm.Content.NPCs.MutantEX.Projectiles.Calamity
 
             SoundEngine.PlaySound(new SoundStyle("NoxusBoss/Assets/Sounds/Custom/NamelessDeity/PortalLaserShoot") with { Volume = 1.32f, PitchVariance = 0.1f, MaxInstances = 1, SoundLimitBehavior = SoundLimitBehavior.ReplaceOldest }, Main.LocalPlayer.Center);
 
-            Main.LocalPlayer.Shtun().Screenshake = 10;
+            Main.LocalPlayer.CSE().Screenshake = 10;
         }
 
         public override float TelegraphWidthFunction(float completionRatio) => Projectile.Opacity * Projectile.width / 3;

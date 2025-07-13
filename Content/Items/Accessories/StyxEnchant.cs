@@ -36,7 +36,7 @@ namespace ssm.Content.Items.Accessories
     {
         public override bool IsLoadingEnabled(Mod mod)
         {
-            return ShtunConfig.Instance.EternityForce;
+            return CSEConfig.Instance.EternityForce;
         }
         private readonly Mod FargoSoul = Terraria.ModLoader.ModLoader.GetMod("FargowiltasSouls");
 
@@ -73,7 +73,7 @@ namespace ssm.Content.Items.Accessories
 
             if (player.AddEffect<StyxEffect>(Item))
             {
-                player.GetModPlayer<ShtunPlayer>().equippedAbominableEnchantment = true;
+                player.GetModPlayer<CSEPlayer>().equippedAbominableEnchantment = true;
                 ModContent.Find<ModItem>(FargoSoul.Name, "StyxCrown").UpdateArmorSet(player);
                 ModContent.Find<ModItem>(FargoSoul.Name, "StyxChestplate").UpdateArmorSet(player);
                 ModContent.Find<ModItem>(FargoSoul.Name, "StyxLeggings").UpdateArmorSet(player);

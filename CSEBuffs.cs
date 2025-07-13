@@ -7,7 +7,7 @@ using Terraria.ModLoader;
 
 namespace ssm
 {
-    public class ShtunBuffs : GlobalBuff
+    public class CSEBuffs : GlobalBuff
     {
         public override void Update(int type, Player player, ref int buffIndex)
         {

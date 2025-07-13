@@ -47,7 +47,7 @@ namespace ssm.Calamity
     {
         public override bool IsLoadingEnabled(Mod mod)
         {
-            return ShtunConfig.Instance.BossRushPostMutant;
+            return CSEConfig.Instance.BossRushPostMutant;
         }
         public override void PostSetupContent()
         {

@@ -15,7 +15,7 @@ using FargowiltasSouls.Content.Bosses.DeviBoss;
 
 namespace ssm
 {
-    public partial class ShtunNpcs : GlobalNPC
+    public partial class CSENpcs : GlobalNPC
     {
         public override bool InstancePerEntity => true;
         public int genTimer = 0;
@@ -39,7 +39,7 @@ namespace ssm
             if (ModCompatibility.SacredTools.Loaded && !ModCompatibility.Calamity.Loaded) { multiplierM += 0.8f; }
 
             if (ModCompatibility.Thorium.Loaded) { multiplierM += 0.6f; multiplierA += 1f; }
-            if (ModCompatibility.Calamity.Loaded) { multiplierM += ShtunConfig.Instance.DebugMode ? 8.8f : 2.8f; multiplierA += 6f; }
+            if (ModCompatibility.Calamity.Loaded) { multiplierM += CSEConfig.Instance.DebugMode ? 8.8f : 2.8f; multiplierA += 6f; }
             if (ModCompatibility.SacredTools.Loaded) { multiplierM += 1.6f; multiplierA += 2f; }
         }
         public override void SetDefaults(NPC npc)
@@ -102,7 +102,7 @@ namespace ssm
                     npc.lifeMax = 70000000;
                 }
 
-                //npc.damage = Main.getGoodWorld ? 2000 : (int)(500 + ((ModCompatibility.Calamity.Loaded && ShtunConfig.Instance.DebugMode ? 90 : 100) * (Math.Round(multiplierM, 1))));
+                //npc.damage = Main.getGoodWorld ? 2000 : (int)(500 + ((ModCompatibility.Calamity.Loaded && CSEConfig.Instance.DebugMode ? 90 : 100) * (Math.Round(multiplierM, 1))));
                 //npc.lifeMax = (int)(10000000 + (10000000 * Math.Round(multiplierM, 1))) / (Main.expertMode ? 1 : 2);
             }
             if (npc.type == ModContent.NPCType<Mutant>())

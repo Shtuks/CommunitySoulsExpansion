@@ -37,7 +37,7 @@ public class MutantEyeWavy : MutantEye
 
 	public override void AI()
 	{
-		NPC mutant = FargoSoulsUtil.NPCExists(ShtunNpcs.mutantEX);
+		NPC mutant = FargoSoulsUtil.NPCExists(CSENpcs.mutantEX);
 		if (mutant != null && (mutant.ai[0] == -5f || mutant.ai[0] == -7f))
 		{
 			float targetRotation = mutant.ai[3];

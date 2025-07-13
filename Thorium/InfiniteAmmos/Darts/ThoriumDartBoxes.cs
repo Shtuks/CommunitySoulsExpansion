@@ -13,7 +13,7 @@ namespace ssm.Thorium.InfiniteAmmos.Darts
         public override int AmmunitionItem => ModContent.ItemType<CoralDart>();
         public override bool IsLoadingEnabled(Mod mod)
         {
-            return ShtunConfig.Instance.Thorium;
+            return CSEConfig.Instance.Thorium;
         }
         private readonly Mod thorium = ModLoader.GetMod("ThoriumMod");
     }
@@ -25,7 +25,7 @@ namespace ssm.Thorium.InfiniteAmmos.Darts
         public override int AmmunitionItem => ModContent.ItemType<DrillDart>();
         public override bool IsLoadingEnabled(Mod mod)
         {
-            return ShtunConfig.Instance.Thorium;
+            return CSEConfig.Instance.Thorium;
         }
         private readonly Mod thorium = ModLoader.GetMod("ThoriumMod");
     }
@@ -37,7 +37,7 @@ namespace ssm.Thorium.InfiniteAmmos.Darts
         public override int AmmunitionItem => ModContent.ItemType<PhaseDart>();
         public override bool IsLoadingEnabled(Mod mod)
         {
-            return ShtunConfig.Instance.Thorium;
+            return CSEConfig.Instance.Thorium;
         }
         private readonly Mod thorium = ModLoader.GetMod("ThoriumMod");
     }

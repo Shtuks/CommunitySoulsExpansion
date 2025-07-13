@@ -22,7 +22,7 @@ namespace ssm.SoA.Souls
     {
         public override bool IsLoadingEnabled(Mod mod)
         {
-            return !ModLoader.HasMod(ModCompatibility.Calamity.Name) && !ModLoader.HasMod(ModCompatibility.Thorium.Name) && ShtunConfig.Instance.SacredTools;
+            return !ModLoader.HasMod(ModCompatibility.Calamity.Name) && !ModLoader.HasMod(ModCompatibility.Thorium.Name) && CSEConfig.Instance.SacredTools;
         }
         public override void SetDefaults()
         {
@@ -43,7 +43,7 @@ namespace ssm.SoA.Souls
             player.GetDamage<UnitedModdedThrower>() += 0.25f;
             player.GetCritChance<UnitedModdedThrower>() += 10f;
             player.GetAttackSpeed<UnitedModdedThrower>() += 0.15f;
-            player.Shtun().throwerVelocity += 0.2f;
+            player.CSE().throwerVelocity += 0.2f;
         }
 
         public override void AddRecipes()

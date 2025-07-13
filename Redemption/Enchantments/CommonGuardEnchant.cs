@@ -10,6 +10,9 @@ using Redemption.BaseExtension;
 using System;
 using FargowiltasSouls.Core.AccessoryEffectSystem;
 using ssm.Content.SoulToggles;
+using FargowiltasSouls;
+using FargowiltasSouls.Content.UI.Elements;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace ssm.Redemption.Enchantments
 {
@@ -19,7 +22,7 @@ namespace ssm.Redemption.Enchantments
     {
         public override bool IsLoadingEnabled(Mod mod)
         {
-            return ShtunConfig.Instance.Redemption;
+            return CSEConfig.Instance.Redemption;
         }
         public override void SetDefaults()
         {
@@ -35,30 +38,39 @@ namespace ssm.Redemption.Enchantments
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            player.GetAttackSpeed(DamageClass.Melee) += 0.12f;
-            player.endurance += 0.06f;
-            player.RedemptionPlayerBuff().MetalSet = true;
-            if (Main.rand.NextBool(10) && Math.Abs(player.velocity.X) + Math.Abs(player.velocity.Y) > 1f && !player.rocketFrame)
-            {
-                int index = Dust.NewDust(new Vector2(player.position.X - player.velocity.X * 2f, player.position.Y - 2f - player.velocity.Y * 2f), player.width, player.height, 30);
-                Main.dust[index].noGravity = true;
-                Main.dust[index].velocity -= player.velocity * 0.5f;
-            }
-
-            ModContent.Find<ModItem>(ModCompatibility.Redemption.Name, "Wardbreaker").UpdateAccessory(player, hideVisual);
-            ModContent.Find<ModItem>(ModCompatibility.Redemption.Name, "KeepersCirclet").UpdateAccessory(player, hideVisual);
-
-            if (player.AddEffect<CommonGuardBauble>(base.Item))
-            {
-                ModContent.Find<ModItem>(ModCompatibility.Redemption.Name, "TrappedSoulBauble").UpdateAccessory(player, hideVisual: false);
-            }
+            player.AddEffect<CommonGuardEffect>(Item);
         }
 
-        public class CommonGuardBauble : AccessoryEffect
+        public class CommonGuardEffect : AccessoryEffect
         {
             public override Header ToggleHeader => Header.GetHeader<AdvancementForceHeader>();
-
             public override int ToggleItemType => ModContent.ItemType<CommonGuardEnchant>();
+            public override bool ActiveSkill => true;
+
+            public int abilityCD;
+
+            public override void PostUpdateEquips(Player player)
+            {
+                if (player.whoAmI == Main.myPlayer)
+                    CooldownBarManager.Activate("CommonGuardCD", ModContent.Request<Texture2D>("ssm/Redemption/Enchantments/CommonGuardEnchant").Value, new Color(139, 145, 156),
+                        () => (float)abilityCD / 1200, true, activeFunction: () => abilityCD > 0);
+            }
+            public override void ActiveSkillJustPressed(Player player, bool stunned)
+            {
+                if (abilityCD < 0)
+                {
+                    for (int i = 0; i < Main.maxNPCs; i++)
+                    {
+                        NPC npc = Main.npc[i];
+
+                        if (npc.active && npc.getRect().Intersects(new Rectangle(0, 0, Main.screenWidth, Main.screenHeight)))
+                        {
+                            npc.RedemptionGuard().GuardPoints = player.ForceEffect<CommonGuardEffect>() ? 0 : npc.RedemptionGuard().GuardPoints / 2;
+                            abilityCD = 1200;
+                        }
+                    }
+                }
+            }
         }
         public override void AddRecipes()
         {

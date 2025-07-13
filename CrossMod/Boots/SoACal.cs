@@ -29,7 +29,7 @@ namespace ssm.CrossMod.Boots
     {
         public override bool IsLoadingEnabled(Mod mod)
         {
-            return ShtunConfig.Instance.Boots && !ModLoader.HasMod(ModCompatibility.Thorium.Name);
+            return CSEConfig.Instance.Boots && !ModLoader.HasMod(ModCompatibility.Thorium.Name);
         }
         public override void PostAddRecipes()
         {
@@ -101,7 +101,7 @@ namespace ssm.CrossMod.Boots
     {
         public override bool IsLoadingEnabled(Mod mod)
         {
-            return ShtunConfig.Instance.Boots && !ModLoader.HasMod(ModCompatibility.Thorium.Name);
+            return CSEConfig.Instance.Boots && !ModLoader.HasMod(ModCompatibility.Thorium.Name);
         }
         public override bool InstancePerEntity => true;
 

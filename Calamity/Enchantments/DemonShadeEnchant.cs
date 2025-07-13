@@ -78,7 +78,7 @@ namespace ssm.Calamity.Enchantments
             public override bool ActiveSkill => true;
             public override void ActiveSkillJustPressed(Player player, bool stunned)
             {
-                player.AddBuff(ShtunConfig.Instance.DebugMode ? ModContent.BuffType<EnrageCal>() : ModContent.BuffType<Enraged>(), 1200);
+                player.AddBuff(CSEConfig.Instance.DebugMode ? ModContent.BuffType<EnrageCal>() : ModContent.BuffType<Enraged>(), 1200);
             }
         }
 

@@ -7,7 +7,7 @@ namespace ssm.Content.Items.Placeable
     {
         public override bool IsLoadingEnabled(Mod mod)
         {
-            return ShtunConfig.Instance.AlternativeSiblings;
+            return CSEConfig.Instance.AlternativeSiblings;
         }
         protected override int TileType => ModContent.TileType<MonstrosityRelicTile>();
     }

@@ -12,12 +12,11 @@ using CalamityMod.Items.Armor.GodSlayer;
 using CalamityMod.Items.Armor.Silva;
 using CalamityMod.Items.Armor.Tarragon;
 using CalamityMod.Items.Armor.Bloodflare;
-using ssm.Content.Items.Accessories;
 using CalamityMod.Items;
 using FargowiltasSouls.Content.Items.Summons;
 using Terraria.ID;
-using ThoriumMod.Items.Terrarium;
-using Redemption.Items.Materials.PostML;
+using ssm.Content.Items.DevItems;
+using FargowiltasSouls.Content.Items.Materials;
 
 namespace ssm.Calamity
 {
@@ -63,6 +62,15 @@ namespace ssm.Calamity
                             //recipe.AddIngredient<MiracleMatter>(5);
                         }
                     }
+                    if (CSEConfig.Instance.DevItems)
+                    {
+                        if (recipe.HasResult<Catlight>() && !recipe.HasIngredient<ShadowspecBar>())
+                        {
+                            recipe.RemoveIngredient(ModContent.ItemType<AbomEnergy>());
+                            recipe.AddIngredient<Rock>(1);
+                            recipe.AddIngredient<ShadowspecBar>(5);
+                        }
+                    }
                 }
 
                 //if (recipe.HasResult<ShadowspecBar>() && !recipe.HasResult<MiracleMatter>())
@@ -72,7 +80,7 @@ namespace ssm.Calamity
                 //    recipe.AddIngredient<MiracleMatter>();
                 //}
 
-                //if (ShtunConfig.Instance.ExperimentalContent && !recipe.HasIngredient<Rock>() && recipe.HasResult<MacroverseSoul>())
+                //if (CSEConfig.Instance.ExperimentalContent && !recipe.HasIngredient<Rock>() && recipe.HasResult<MacroverseSoul>())
                 //{
                 //    recipe.AddIngredient<Rock>(1);
                 //}

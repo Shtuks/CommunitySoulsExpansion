@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 
 namespace ssm
 {
-    public class ShtunProjectiles : GlobalProjectile
+    public class CSEProjectiles : GlobalProjectile
     {
         public override bool InstancePerEntity => true;
 

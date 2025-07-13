@@ -42,7 +42,7 @@ namespace ssm.CrossMod
     {
         public override bool IsLoadingEnabled(Mod mod)
         {
-            return ShtunConfig.Instance.Shields;
+            return CSEConfig.Instance.Shields;
         }
         public override bool InstancePerEntity => true;
 

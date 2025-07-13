@@ -10,7 +10,7 @@ namespace ssm.Thorium.EternityAccessories
     {
         public override bool IsLoadingEnabled(Mod mod)
         {
-            return ShtunConfig.Instance.ExperimentalContent;
+            return CSEConfig.Instance.ExperimentalContent;
         }
 
         public override void SetDefaults()
@@ -23,7 +23,7 @@ namespace ssm.Thorium.EternityAccessories
         }
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            player.GetModPlayer<ShtunThoriumPlayer>().DarkenedCloak = true;
+            player.GetModPlayer<CSEThoriumPlayer>().DarkenedCloak = true;
         }
     }
 }

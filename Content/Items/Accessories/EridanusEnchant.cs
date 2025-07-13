@@ -33,7 +33,7 @@ namespace ssm.Content.Items.Accessories
     {
         public override bool IsLoadingEnabled(Mod mod)
         {
-            return ShtunConfig.Instance.EternityForce;
+            return CSEConfig.Instance.EternityForce;
         }
 
         private readonly Mod FargoSoul = Terraria.ModLoader.ModLoader.GetMod("FargowiltasSouls");

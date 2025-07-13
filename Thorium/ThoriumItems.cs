@@ -45,11 +45,11 @@ namespace ssm.Thorium
         }
         public override void OnHitNPC(Item item, Player player, NPC target, NPC.HitInfo hit, int damageDone)
         {
-            if (player.GetModPlayer<ShtunThoriumPlayer>().ThunderTalonEternity)
+            if (player.GetModPlayer<CSEThoriumPlayer>().ThunderTalonEternity)
             {
                 target.AddBuff(BuffID.BoneJavelin, 300);
             }
-            if (player.GetModPlayer<ShtunThoriumPlayer>().DarkenedCloak)
+            if (player.GetModPlayer<CSEThoriumPlayer>().DarkenedCloak)
             {
                 if (Main.rand.NextBool(4))
                 {

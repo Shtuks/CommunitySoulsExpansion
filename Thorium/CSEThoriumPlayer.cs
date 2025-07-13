@@ -1,8 +1,5 @@
 ﻿using Terraria.ModLoader;
 using ssm.Core;
-using ssm.Content.Buffs;
-using Terraria.ID;
-using Terraria;
 using ssm.Thorium.Enchantments;
 
 namespace ssm.Thorium
@@ -10,12 +7,12 @@ namespace ssm.Thorium
     [ExtendsFromMod(ModCompatibility.Thorium.Name)]
     [JITWhenModsEnabled(ModCompatibility.Thorium.Name)]
 
-    public partial class ShtunThoriumPlayer : ModPlayer
+    public partial class CSEThoriumPlayer : ModPlayer
     {
         public bool ThunderTalonEternity;
         public bool DarkenedCloak;
 
-        //to complicated behaviour for enchantment methods
+        //too complicated behaviour for enchantment methods
         public bool cyberEnchant;
         public int orbCount = 2;
         private CyberneticOrb[] orbs;

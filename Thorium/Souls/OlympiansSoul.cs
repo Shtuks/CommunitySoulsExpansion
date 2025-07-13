@@ -23,7 +23,7 @@ namespace ssm.Thorium.Souls
     {
         public override bool IsLoadingEnabled(Mod mod)
         {
-            return !ModLoader.HasMod(ModCompatibility.Calamity.Name) && ShtunConfig.Instance.Thorium;
+            return !ModLoader.HasMod(ModCompatibility.Calamity.Name) && CSEConfig.Instance.Thorium;
         }
 
         public override void SetDefaults()
@@ -42,7 +42,7 @@ namespace ssm.Thorium.Souls
             player.GetDamage<ThrowingDamageClass>() += 0.25f;
             player.GetCritChance<ThrowingDamageClass>() += 10f;
             player.GetAttackSpeed<ThrowingDamageClass>() += 0.10f;
-            player.Shtun().throwerVelocity += 0.15f;
+            player.CSE().throwerVelocity += 0.15f;
             player.GetModPlayer<ThoriumPlayer>().throwerExhaustionRegenBonus += 10;
             player.GetModPlayer<ThoriumPlayer>().throwerExhaustionMax += 1000;
             player.GetModPlayer<ThoriumPlayer>().throwGuide3 = true;

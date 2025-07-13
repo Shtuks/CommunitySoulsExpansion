@@ -40,6 +40,11 @@ using SacredTools.Items.Weapons.Special;
 using SacredTools.Items.Weapons.Venomite;
 using SacredTools.Items.Weapons;
 using ssm.Content.Items.DevItems;
+using FargowiltasSouls.Content.Bosses.MutantBoss;
+using Fargowiltas.NPCs;
+using FargowiltasSouls.Content.Bosses.AbomBoss;
+using FargowiltasSouls.Content.Bosses.DeviBoss;
+using ssm.Content.NPCs;
 
 namespace ssm
 {
@@ -65,7 +70,7 @@ namespace ssm
         public bool _showBossSummonUI;
 
         internal static ssm Instance;
-        public static bool debug = ShtunConfig.Instance.DebugMode;
+        public static bool debug = CSEConfig.Instance.DebugMode;
 
         private delegate void UIModDelegate(object instance, SpriteBatch spriteBatch);
         public static bool amiactive;
@@ -94,23 +99,22 @@ namespace ssm
                 return (int)num;
             }
         }
-        private void BossChecklistCompatibility()
+
+        public void AddBCL(string type, string bossName, float priority, List<int> npcIDs, Func<bool> downed, Func<bool> available, List<int> collectibles, List<int> spawnItems, bool hasKilledAllMessage, string portrait = null)
         {
             if (ModLoader.TryGetMod("BossChecklist", out Mod bossChecklist))
             {
                 static bool AllPlayersAreDead() => Main.player.All(plr => !plr.active || plr.dead);
 
-                void Add(string type, string bossName, float priority, List<int> npcIDs, Func<bool> downed, Func<bool> available, List<int> collectibles, List<int> spawnItems, bool hasKilledAllMessage, string portrait = null)
+                bossChecklist.Call(
+                $"Log{type}",
+                this,
+                bossName,
+                priority,
+                downed,
+                npcIDs,
+                new Dictionary<string, object>()
                 {
-                    bossChecklist.Call(
-                        $"Log{type}",
-                        this,
-                        bossName,
-                        priority,
-                        downed,
-                        npcIDs,
-                        new Dictionary<string, object>()
-                        {
                             { "spawnItems", spawnItems },
                             { "availability", available },
                             { "despawnMessage", hasKilledAllMessage ? new Func<NPC, LocalizedText>(npc =>
@@ -126,9 +130,14 @@ namespace ssm
                                     spriteBatch.Draw(tex, rect.Center.ToVector2(), sourceRect, color, 0f, sourceRect.Size() / 2, scale, SpriteEffects.None, 0);
                                 })
                             }
-                        }
-                    );
-                }
+                    }
+                );
+            }
+        }
+        private void BossChecklistCompatibility()
+        {
+            if (ModLoader.TryGetMod("BossChecklist", out Mod bossChecklist))
+            {
                 //Add("Boss",
                 //    "DukeFishronEX",
                 //    int.MaxValue,
@@ -142,8 +151,8 @@ namespace ssm
                 //    true
                 //);
 
-                if (ShtunConfig.Instance.AlternativeSiblings) {
-                    Add("Boss",
+                if (CSEConfig.Instance.AlternativeSiblings) {
+                    AddBCL("Boss",
                         "MutantEX",
                         float.MaxValue - 1,
                         new List<int> { ModContent.NPCType<MutantEX>() },
@@ -169,26 +178,6 @@ namespace ssm
                 //    new List<int> { ModContent.ItemType<MutantsForgeItem>() },
                 //    true
                 //);
-
-                //if (ModCompatibility.SacredTools.Loaded)
-                //{
-                //    ModCompatibility.SacredTools.Mod.TryFind<ModNPC>("Nihilus", out ModNPC Nihilus);
-                //    ModCompatibility.SacredTools.Mod.TryFind<ModItem>("EmberOfOmen", out ModItem Ember);
-                //    ModCompatibility.SacredTools.Mod.TryFind<ModItem>("NihilusObelisk", out ModItem Obelisk);
-                    
-                //    Add("Boss",
-                //    "AbyssalShadowflame",
-                //    27.999f,
-                //    new List<int> {Nihilus.Type},
-                //    () => WorldSaveSystem.downedNihilus,
-                //    () => true,
-                //    new List<int> {
-                //        Ember.Type
-                //    },
-                //    new List<int> { Obelisk.Type },
-                //    true
-                //);
-                //}
             }
         }
 
@@ -224,9 +213,7 @@ namespace ssm
             }
             SkyManager.Instance["ssm:MutantEX"] = new MutantEXSky();
 
-            ModLoader.TryGetMod("BossChecklist", out Mod bossChecklist);
         }
-
         public override void Unload()
         {
             _bossSummonUI = null;
@@ -257,7 +244,7 @@ namespace ssm
                 PostSetupContentSoA.PostSetupContent_Thorium();
             }
 
-            //if (ShtunConfig.Instance.DevItems)
+            //if (CSEConfig.Instance.DevItems)
             //{
             //    int[] SwordsToApplyRework = [ModContent.ItemType<Pucheblade>()];
             //    SwordGlobalItem.AllowedModdedSwords = SwordGlobalItem.AllowedModdedSwords.Union(SwordsToApplyRework).ToArray();

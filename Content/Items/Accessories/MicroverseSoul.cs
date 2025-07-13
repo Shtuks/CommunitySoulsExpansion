@@ -12,7 +12,7 @@ namespace ssm.Content.Items.Accessories
     {
         public override bool IsLoadingEnabled(Mod mod)
         {
-            return false;//ShtunConfig.Instance.ExperimentalContent;
+            return false;//CSEConfig.Instance.ExperimentalContent;
         }
         public override void SetStaticDefaults()
         {

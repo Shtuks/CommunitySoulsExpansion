@@ -2630,7 +2630,7 @@ Mods: {
 				DisplayName: True Lumberjack Body
 			}
 
-			ShtunTerminus: {
+			CSETerminus: {
 				DisplayName: Terminus
 				Tooltip: Summons Boss Rush. If WotG enabled summons Nameless Deity on RMB.
 			}
@@ -3454,6 +3454,23 @@ Mods: {
 					Princess_LovesNPC: I like {NPCName}.
 				}
 			}
+
+			Monstrosityy: {
+				DisplayName: Monstrosityy
+
+				TownNPCMood: {
+					Content: I am content.
+					NoHome: I hate not having a home.
+					FarFromHome: I am too far from home.
+					LoveSpace: I love having so much space.
+					DislikeCrowded: I dislike how crowded I am.
+					HateCrowded: I hate how crowded I am.
+					LikeNPC: I like {NPCName}.
+					DislikeNPC: I dislike {NPCName}.
+					LikeNPC_Princess: I like {NPCName}.
+					Princess_LovesNPC: I like {NPCName}.
+				}
+			}
 		}
 
 		Toggler: {
@@ -3765,6 +3782,9 @@ Mods: {
 			SteelSwordProjectile.DisplayName: Steel Sword Projectile
 			SwordRainProjectile.DisplayName: Sword Rain Projectile
 			SpawnCutsceneProj.DisplayName: Spawn Cutscene Proj
+			ToxicCloudsProj.DisplayName: Toxic Clouds Proj
+			CatlightCat.DisplayName: Catlight Cat
+			CatlightDeathray.DisplayName: Catlight Deathray
 		}
 
 		Bestiary: {
@@ -3773,7 +3793,7 @@ Mods: {
 		}
 
 		Configs: {
-			ShtunConfig: {
+			CSEConfig: {
 				Headers: {
 					General: General
 					CrossMods: Cross-Mods

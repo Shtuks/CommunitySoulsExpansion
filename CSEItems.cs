@@ -19,7 +19,7 @@ using Terraria.ModLoader;
 
 namespace ssm
 {
-    public class ShtunItems : GlobalItem
+    public class CSEItems : GlobalItem
     {
         public override bool InstancePerEntity => true;
         public override void SetDefaults(Item entity)
@@ -151,11 +151,11 @@ namespace ssm
         }
         public override void ModifyWeaponDamage(Item item, Player player, ref StatModifier damage)
         {
-            if (item.damage < 100000 && item.damage > 50000 && !ShtunUtils.IsModItem(item, "SacredTools") && !ShtunUtils.IsModItem(item, "FargowiltasSouls") && !ShtunUtils.IsModItem(item, "ThoriumMod") && !ShtunUtils.IsModItem(item, "CaamityMod"))
+            if (item.damage < 100000 && item.damage > 50000 && !CSEUtils.IsModItem(item, "SacredTools") && !CSEUtils.IsModItem(item, "FargowiltasSouls") && !CSEUtils.IsModItem(item, "ThoriumMod") && !CSEUtils.IsModItem(item, "CaamityMod"))
             {
                 damage *= 0.1f;
             }
-            if (item.damage > 100000 && !ShtunUtils.IsModItem(item, "SacredTools") && !ShtunUtils.IsModItem(item, "FargowiltasSouls") && !ShtunUtils.IsModItem(item, "ThoriumMod") && !ShtunUtils.IsModItem(item, "CaamityMod"))
+            if (item.damage > 100000 && !CSEUtils.IsModItem(item, "SacredTools") && !CSEUtils.IsModItem(item, "FargowiltasSouls") && !CSEUtils.IsModItem(item, "ThoriumMod") && !CSEUtils.IsModItem(item, "CaamityMod"))
             {
                 damage *= 0.01f;
             }
@@ -183,11 +183,11 @@ namespace ssm
             if (item.type == ModContent.ItemType<MutantsCurse>() || item.type == ModContent.ItemType<AbominationnVoodooDoll>())
             {
                 //tooltips.Add(new TooltipLine(Mod, "1m", "Mutant max life and damage scales with ammount of supported mods."));
-                //tooltips.Add(new TooltipLine(Mod, "2m", $"Points: {Math.Round(ShtunNpcs.multiplierM, 1)}, Max Life: {10000000 + Math.Round(ShtunNpcs.multiplierM, 1) * 10000000}, Damage: {500 + Math.Round(ShtunNpcs.multiplierM, 1) * (ModCompatibility.Calamity.Loaded ? 125 : 100)}"));
+                //tooltips.Add(new TooltipLine(Mod, "2m", $"Points: {Math.Round(CSENpcs.multiplierM, 1)}, Max Life: {10000000 + Math.Round(CSENpcs.multiplierM, 1) * 10000000}, Damage: {500 + Math.Round(CSENpcs.multiplierM, 1) * (ModCompatibility.Calamity.Loaded ? 125 : 100)}"));
                 //tooltips.Add(new TooltipLine(Mod, "3m", "Thorium adds 0.9 points. SoA adds 1.3. Calamity 1.8"));
                 //tooltips.Add(new TooltipLine(Mod, "4m", "If olnly one of supported mods active Thorium - 1 SoA - 2 Calamity 2.8"));
                 //tooltips.Add(new TooltipLine(Mod, "5m", "If Masochist mode enabled, points multiplied by 1.5"));
-                if (ModCompatibility.SacredTools.Loaded && ShtunConfig.Instance.ExperimentalContent)
+                if (ModCompatibility.SacredTools.Loaded && CSEConfig.Instance.ExperimentalContent)
                 {
                     tooltips.Add(new TooltipLine(Mod, "7m", "In first phase Mutant has Aura of Supression. After destroying aura second phase will start."));
                     tooltips.Add(new TooltipLine(Mod, "8m", "Aura can be destroyed only with Relic Weapons or Styx Armor set bonus. Mutant immune to damage if aura active."));
@@ -248,7 +248,7 @@ namespace ssm
         {
             if (item.CountsAsClass<UnitedModdedThrower>())
             {
-                velocity *= player.Shtun().throwerVelocity;
+                velocity *= player.CSE().throwerVelocity;
             }
         }
         public override void UpdateEquip(Item Item, Player player)

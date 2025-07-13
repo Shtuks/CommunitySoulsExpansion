@@ -19,7 +19,7 @@ namespace ssm.Content.Items.Lore
     {
         public override bool IsLoadingEnabled(Mod mod)
         {
-            return ShtunConfig.Instance.AlternativeSiblings;
+            return CSEConfig.Instance.AlternativeSiblings;
         }
         public override void SetStaticDefaults() => base.SetStaticDefaults();
 
@@ -171,7 +171,7 @@ namespace ssm.Content.Items.Lore
     {
         public override bool IsLoadingEnabled(Mod mod)
         {
-            return ShtunConfig.Instance.AlternativeSiblings;
+            return CSEConfig.Instance.AlternativeSiblings;
         }
         public override void SetStaticDefaults() => base.SetStaticDefaults();
 
@@ -212,7 +212,7 @@ namespace ssm.Content.Items.Lore
     {
         public override bool IsLoadingEnabled(Mod mod)
         {
-            return ShtunConfig.Instance.AlternativeSiblings;
+            return CSEConfig.Instance.AlternativeSiblings;
         }
         public override void SetStaticDefaults() => base.SetStaticDefaults();
 

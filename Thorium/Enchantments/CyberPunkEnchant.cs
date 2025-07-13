@@ -20,7 +20,7 @@ namespace ssm.Thorium.Enchantments
         private readonly Mod thorium = ModLoader.GetMod("ThoriumMod");
         public override bool IsLoadingEnabled(Mod mod)
         {
-            return ShtunConfig.Instance.Thorium;
+            return CSEConfig.Instance.Thorium;
         }
 
         public override void SetDefaults()
@@ -48,7 +48,7 @@ namespace ssm.Thorium.Enchantments
 
             public override void PostUpdate(Player player)
             {
-                player.GetModPlayer<ShtunThoriumPlayer>().cyberEnchant = true;
+                player.GetModPlayer<CSEThoriumPlayer>().cyberEnchant = true;
             }
         }
 

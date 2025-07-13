@@ -113,7 +113,7 @@ namespace ssm.Content.NPCs.MutantEX
             target.AddBuff(ModContent.BuffType<OceanicMaulBuff>(), 5400);
             target.AddBuff(ModContent.BuffType<MutantFangBuff>(), 180);
 
-            if (Main.npc[ShtunNpcs.mutantEX].ai[0] == -5)
+            if (Main.npc[CSENpcs.mutantEX].ai[0] == -5)
             {
                 if (!target.HasBuff(ModContent.BuffType<TimeFrozenBuff>()))
                     SoundEngine.PlaySound(new SoundStyle("FargowiltasSouls/Assets/Sounds/ZaWarudo"), target.Center);

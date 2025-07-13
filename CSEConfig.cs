@@ -4,10 +4,10 @@ using Terraria.ModLoader.Config;
 namespace ssm
 {
     [BackgroundColor(32, 50, 32, 216)]
-    public class ShtunConfig : ModConfig
+    public class CSEConfig : ModConfig
     {
         public override ConfigScope Mode => ConfigScope.ServerSide;
-        public static ShtunConfig Instance;
+        public static CSEConfig Instance;
 
         [Header("General")]
 

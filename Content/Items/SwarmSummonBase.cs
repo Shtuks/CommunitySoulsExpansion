@@ -54,7 +54,7 @@ namespace ssm.Content.Items
             ssm.SwarmNoHyperActive = ssm.SwarmItemsUsed < 5;
 
             int num2 = NPC.NewNPC(NPC.GetBossSpawnSource(player.whoAmI), (int)player.position.X + Main.rand.Next(-1000, 1000), (int)player.position.Y + Main.rand.Next(-1000, -400), npcType);
-            Main.npc[num2].GetGlobalNPC<ShtunNpcs>().SwarmActive = true;
+            Main.npc[num2].GetGlobalNPC<CSENpcs>().SwarmActive = true;
 
             player.inventory[player.selectedItem].stack -= num - 1;
             if (Main.netMode == 2)

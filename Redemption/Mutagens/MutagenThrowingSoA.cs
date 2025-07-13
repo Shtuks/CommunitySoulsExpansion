@@ -34,7 +34,7 @@ namespace ssm.Redemption.Mutagens
             player.GetDamage<UnitedModdedThrower>() += 0.20f;
             player.GetCritChance<UnitedModdedThrower>() += 10f;
             player.GetAttackSpeed<UnitedModdedThrower>() += 0.10f;
-            player.Shtun().throwerVelocity += 0.10f;
+            player.CSE().throwerVelocity += 0.10f;
         }
 
         //public override void AddRecipes()

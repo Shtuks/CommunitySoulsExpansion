@@ -24,7 +24,7 @@ namespace ssm.Content.Buffs.Minions
 
         public override void Update(Player player, ref int buffIndex)
         {
-            player.GetModPlayer<ShtunPlayer>().DevianttSoul = true;
+            player.GetModPlayer<CSEPlayer>().DevianttSoul = true;
             if (player.whoAmI == Main.myPlayer)
             {
                 const int damage = 10000;

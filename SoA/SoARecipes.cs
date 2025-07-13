@@ -17,6 +17,7 @@ using SacredTools.Content.Items.Armor.Oblivion;
 using SacredTools.Content.Items.Weapons.Relic;
 using FargowiltasSouls.Content.Items.Materials;
 using SacredTools.Content.Items.Accessories.Sigils;
+using ssm.Content.Items.DevItems;
 
 namespace ssm
 {
@@ -59,8 +60,16 @@ namespace ssm
                 {
                     recipe.AddIngredient<EmberOfOmen>(5);
                 }
+                
+                if (CSEConfig.Instance.DevItems)
+                {
+                    if (recipe.HasResult<Catlight>() && !recipe.HasIngredient<EmberOfOmen>())
+                    {
+                        recipe.AddIngredient<EmberOfOmen>(5);
+                    }
+                }
 
-                if (/*!ShtunConfig.Instance.ExperimentalContent && */recipe.HasResult<EternitySoul>() && !recipe.HasIngredient<SoASoul>())
+                if (/*!CSEConfig.Instance.ExperimentalContent && */recipe.HasResult<EternitySoul>() && !recipe.HasIngredient<SoASoul>())
                 {
                     recipe.AddIngredient<SoASoul>();
                 }

@@ -22,7 +22,7 @@ namespace ssm.Content.NPCs.MutantEX.Projectiles.Calamity
         public override string Texture => "CalamityMod/NPCs/OldDuke/OldDuke";
         public override bool IsLoadingEnabled(Mod mod)
         {
-            return ShtunConfig.Instance.AlternativeSiblings;
+            return CSEConfig.Instance.AlternativeSiblings;
         }
 
         public int p = -1;
@@ -94,7 +94,7 @@ namespace ssm.Content.NPCs.MutantEX.Projectiles.Calamity
             {
                 Projectile.localAI[1] = 1f;
                 SoundEngine.PlaySound(SoundID.Zombie20, (Vector2?)Projectile.Center);
-                p = ShtunUtils.AnyBossAlive() ? Main.npc[FargoSoulsGlobalNPC.boss].target : Player.FindClosest(Projectile.Center, 0, 0);
+                p = CSEUtils.AnyBossAlive() ? Main.npc[FargoSoulsGlobalNPC.boss].target : Player.FindClosest(Projectile.Center, 0, 0);
                 Projectile.netUpdate = true;
             }
             if ((Projectile.localAI[0] += 1f) > 85f)

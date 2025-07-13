@@ -25,7 +25,7 @@ namespace ssm.CrossMod.Boots
     {
         public override bool IsLoadingEnabled(Mod mod)
         {
-            return ShtunConfig.Instance.Boots && !ModCompatibility.Calamity.Loaded && !ModCompatibility.SBH.Loaded;
+            return CSEConfig.Instance.Boots && !ModCompatibility.Calamity.Loaded && !ModCompatibility.SBH.Loaded;
         }
         public override void PostAddRecipes()
         {
@@ -80,7 +80,7 @@ namespace ssm.CrossMod.Boots
     {
         public override bool IsLoadingEnabled(Mod mod)
         {
-            return ShtunConfig.Instance.Boots && !ModCompatibility.Calamity.Loaded && !ModCompatibility.SBH.Loaded;
+            return CSEConfig.Instance.Boots && !ModCompatibility.Calamity.Loaded && !ModCompatibility.SBH.Loaded;
         }
         public override bool InstancePerEntity => true;
 

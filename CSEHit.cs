@@ -9,14 +9,14 @@ using ssm.Core;
 
 namespace ssm
 {
-    public partial class ShtunHit : ModPlayer
+    public partial class CSEHit : ModPlayer
     {
         public override void ModifyHurt(ref Player.HurtModifiers modifiers)
         {
             double damageMult = 1D;
             modifiers.SourceDamage *= (float)damageMult;
 
-            if (Player.Shtun().equippedPhantasmalEnchantment)
+            if (Player.CSE().equippedPhantasmalEnchantment)
             {
                 modifiers.SetMaxDamage(1000);
             }
@@ -39,20 +39,20 @@ namespace ssm
         }
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
-            if (Player.Shtun().equippedPhantasmalEnchantment)
+            if (Player.CSE().equippedPhantasmalEnchantment)
                 target.AddBuff(ModContent.Find<ModBuff>(ModCompatibility.SoulsMod.Name, "MutantFangBuff").Type, 1000, false);
-            if (Player.Shtun().equippedAbominableEnchantment)
+            if (Player.CSE().equippedAbominableEnchantment)
                 target.AddBuff(ModContent.Find<ModBuff>(ModCompatibility.SoulsMod.Name, "AbomFangBuff").Type, 1000, false);
         }
     }
 
-    public partial class ShtunNPCHit : GlobalNPC
+    public partial class CSENPCHit : GlobalNPC
     {
         public override bool InstancePerEntity => true;
 
         public override void ModifyHitByProjectile(NPC npc, Projectile projectile, ref NPC.HitModifiers modifiers)
         {
-            if(npc.type != ModContent.NPCType<MutantEX>() && Main.player[projectile.owner].Shtun().lumberjackSet)
+            if(npc.type != ModContent.NPCType<MutantEX>() && Main.player[projectile.owner].CSE().lumberjackSet)
             {
                 npc.dontTakeDamage = false;
                 npc.dontTakeDamageFromHostiles = false;
@@ -62,7 +62,7 @@ namespace ssm
                 npc.checkDead();
             }
 
-            if (Main.player[projectile.owner].Shtun().lumberjackSet)
+            if (Main.player[projectile.owner].CSE().lumberjackSet)
             {
                 npc.AddBuff(ModContent.BuffType<ChtuxlagorInferno>(), 180);
             }
@@ -74,7 +74,7 @@ namespace ssm
         }
         public override void ModifyHitByItem(NPC npc, Player player, Item item, ref NPC.HitModifiers modifiers)
         {
-            if (npc.type != ModContent.NPCType<MutantEX>() && player.Shtun().lumberjackSet)
+            if (npc.type != ModContent.NPCType<MutantEX>() && player.CSE().lumberjackSet)
             {
                 npc.dontTakeDamage = false;
                 npc.dontTakeDamageFromHostiles = false;

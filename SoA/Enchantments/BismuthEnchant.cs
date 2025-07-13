@@ -20,7 +20,7 @@ namespace ssm.SoA.Enchantments
     {
         public override bool IsLoadingEnabled(Mod mod)
         {
-            return ShtunConfig.Instance.SacredTools;
+            return CSEConfig.Instance.SacredTools;
         }
         public override void SetDefaults()
         {
@@ -67,7 +67,7 @@ namespace ssm.SoA.Enchantments
                 {
                     float damageReduction = 0f;
 
-                    if (ShtunUtils.AnyBossAlive())
+                    if (CSEUtils.AnyBossAlive())
                     {
                         damageReduction = player.ForceEffect<BismuthEffect>() ? 0.1f : 0.05f;
                     }

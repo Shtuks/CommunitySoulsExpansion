@@ -31,7 +31,7 @@ public class MutantReticle : ModProjectile
 
 	public override void AI()
 	{
-		if (FargoSoulsUtil.BossIsAlive(ref ShtunNpcs.mutantEX, ModContent.NPCType<MutantEX>()) && !Main.npc[ShtunNpcs.mutantEX].dontTakeDamage)
+		if (FargoSoulsUtil.BossIsAlive(ref CSENpcs.mutantEX, ModContent.NPCType<MutantEX>()) && !Main.npc[CSENpcs.mutantEX].dontTakeDamage)
 		{
 			if (base.Projectile.localAI[0] == 0f)
 			{

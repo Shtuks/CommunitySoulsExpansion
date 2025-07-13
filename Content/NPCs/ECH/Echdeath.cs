@@ -124,7 +124,7 @@ namespace ssm.Content.NPCs.ECH
                 {
                     if (Main.npc[i].active && Main.npc[i].type != NPC.type && NPC.Distance(Main.npc[i].Center) < fullSize / 2)
                     {
-                        ShtunUtils.DisplayLocalizedText(":echdeath:", Color.Green);
+                        CSEUtils.DisplayLocalizedText(":echdeath:", Color.Green);
                         for (int j = 0; j < 100; j++)
                             CombatText.NewText(Main.npc[i].Hitbox, Color.Red, Main.rand.Next(NPC.damage), true);
                     }

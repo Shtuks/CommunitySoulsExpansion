@@ -21,7 +21,7 @@ namespace ssm.Content.Items.Accessories
     {
         public override bool IsLoadingEnabled(Mod mod)
         {
-            return ShtunConfig.Instance.AlternativeSiblings;
+            return CSEConfig.Instance.AlternativeSiblings;
         }
         public override void SetStaticDefaults()
         {
@@ -122,7 +122,7 @@ namespace ssm.Content.Items.Accessories
                 }
             }
 
-            if (ShtunConfig.Instance.EternityForce)
+            if (CSEConfig.Instance.EternityForce)
             {
                 ModContent.Find<ModItem>(Mod.Name, "EternityForce").UpdateAccessory(player, false);
             }
@@ -181,12 +181,12 @@ namespace ssm.Content.Items.Accessories
         {
             Recipe recipe = CreateRecipe(1);
 
-            if (ShtunConfig.Instance.EternityForce)
+            if (CSEConfig.Instance.EternityForce)
             {
                 recipe.AddIngredient<EternityForce>(1);
             }
             recipe.AddIngredient<EternitySoul>(1);
-            //if (ShtunConfig.Instance.ExperimentalContent) { recipe.AddIngredient<MacroverseSoul>(1); }
+            //if (CSEConfig.Instance.ExperimentalContent) { recipe.AddIngredient<MacroverseSoul>(1); }
             recipe.AddIngredient<CyclonicFin>(1);
 
             recipe.AddIngredient<Sadism>(30);

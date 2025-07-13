@@ -33,7 +33,7 @@ namespace ssm.Content.Items.Accessories
     {
         public override bool IsLoadingEnabled(Mod mod)
         {
-            return ShtunConfig.Instance.EternityForce;
+            return CSEConfig.Instance.EternityForce;
         }
         private readonly Mod FargoSoul = Terraria.ModLoader.ModLoader.GetMod("FargowiltasSouls");
 
@@ -63,7 +63,7 @@ namespace ssm.Content.Items.Accessories
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            player.GetModPlayer<ShtunPlayer>().equippedPhantasmalEnchantment = true;
+            player.GetModPlayer<CSEPlayer>().equippedPhantasmalEnchantment = true;
             ModContent.Find<ModItem>(FargoSoul.Name, "MutantEye").UpdateAccessory(player, true);
 
             if (player.AddEffect<PhantaplazmalEffect>(Item))

@@ -6,11 +6,11 @@ using Terraria.ModLoader;
 
 namespace ssm.Content.Items.DevItems
 {
-    public class SoltanBullyingPermissionSlip : DevItem
+    internal class SoltanBullyingPermissionSlip : DevItem
     {
         public override bool IsLoadingEnabled(Mod mod)
         {
-            return false;//ShtunConfig.Instance.DevItems;
+            return false;//CSEConfig.Instance.DevItems;
         }
         public override string devName => "Soltan";
         public override void SetDefaults()

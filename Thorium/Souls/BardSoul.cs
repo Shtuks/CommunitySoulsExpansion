@@ -20,7 +20,7 @@ namespace ssm.Thorium.Souls
     {
         public override bool IsLoadingEnabled(Mod mod)
         {
-            return ShtunConfig.Instance.Thorium;
+            return CSEConfig.Instance.Thorium;
         }
 
         private readonly Mod thorium = ModLoader.GetMod("ThoriumMod");

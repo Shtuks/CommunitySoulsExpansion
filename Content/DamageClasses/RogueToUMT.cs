@@ -11,7 +11,7 @@ namespace ssm.Content.DamageClasses
     {
         public override bool IsLoadingEnabled(Mod mod)
         {
-            return ShtunConfig.Instance.ThrowerMerge;
+            return CSEConfig.Instance.ThrowerMerge;
         }
         public override void SetDefaults(Item item)
         {
@@ -27,7 +27,7 @@ namespace ssm.Content.DamageClasses
     {
         public override bool IsLoadingEnabled(Mod mod)
         {
-            return ShtunConfig.Instance.ThrowerMerge;
+            return CSEConfig.Instance.ThrowerMerge;
         }
         public override void SetDefaults(Projectile item)
         {

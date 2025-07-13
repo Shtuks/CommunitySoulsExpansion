@@ -21,7 +21,7 @@ namespace ssm
     {
         public override bool IsLoadingEnabled(Mod mod)
         {
-            return FargoSoulsUtil.AprilFools && ShtunConfig.Instance.AlternativeSiblings;
+            return FargoSoulsUtil.AprilFools && CSEConfig.Instance.AlternativeSiblings;
         }
         public override void AddRecipes()
         {
@@ -33,7 +33,7 @@ namespace ssm
         }
     }
 
-    public class ShtunRecipes : ModSystem
+    public class CSERecipes : ModSystem
     {
         public override void PostAddRecipes()
         {
@@ -44,7 +44,7 @@ namespace ssm
                 {
                     recipe.AddIngredient<AbomEnergy>(10);
                 }
-                if ((recipe.HasResult(ModContent.ItemType<Penetrator>()) || recipe.HasResult(ModContent.ItemType<StyxGazer>()) || recipe.HasResult(ModContent.ItemType<SparklingLove>())) && !recipe.HasIngredient(ModContent.ItemType<Sadism>()) && ShtunConfig.Instance.AlternativeSiblings)
+                if ((recipe.HasResult(ModContent.ItemType<Penetrator>()) || recipe.HasResult(ModContent.ItemType<StyxGazer>()) || recipe.HasResult(ModContent.ItemType<SparklingLove>())) && !recipe.HasIngredient(ModContent.ItemType<Sadism>()) && CSEConfig.Instance.AlternativeSiblings)
                 {
                     recipe.AddIngredient<Sadism>(30);
                 }

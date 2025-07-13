@@ -36,7 +36,7 @@ namespace ssm.Redemption.Enchantments
 
         public override bool IsLoadingEnabled(Mod mod)
         {
-            return ShtunConfig.Instance.Redemption;
+            return CSEConfig.Instance.Redemption;
         }
         public override void SetDefaults()
         {

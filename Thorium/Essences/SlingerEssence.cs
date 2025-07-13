@@ -47,7 +47,7 @@ namespace ssm.Thorium.Essences
             ThoriumPlayer thoriumPlayer = player.GetModPlayer<ThoriumPlayer>();
             player.GetDamage<UnitedModdedThrower>() += 0.18f;
             player.GetCritChance<UnitedModdedThrower>() += 0.10f;
-            player.Shtun().throwerVelocity += 0.10f;
+            player.CSE().throwerVelocity += 0.10f;
         }
 
         public override void AddRecipes()

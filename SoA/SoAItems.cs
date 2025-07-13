@@ -104,15 +104,15 @@ namespace ssm.SoA
 
         //public override void UpdateAccessory(Item item, Player player, bool hideVisual)
         //{
-        //    if (ShtunConfig.Instance.ThrowerMerge)
+        //    if (CSEConfig.Instance.ThrowerMerge)
         //    {
         //        if(item.type == ModContent.ItemType<HeartOfTheCaverns>())
         //        {
-        //            player.Shtun().throwerVelocity += 0.2f;
+        //            player.CSE().throwerVelocity += 0.2f;
         //        }
         //        if (item.type == ModContent.ItemType<FeatherHairpin>())
         //        {
-        //            player.Shtun().throwerVelocity += 0.1f;
+        //            player.CSE().throwerVelocity += 0.1f;
         //            player.GetDamage<ThrowingDamageClass>() += 0.08f;
         //        }
         //        if (item.type == ModContent.ItemType<NinjaEmblem>())
@@ -128,7 +128,7 @@ namespace ssm.SoA
         //}
         //public override void UpdateEquip(Item item, Player player)
         //{
-        //    if (ShtunConfig.Instance.ThrowerMerge)
+        //    if (CSEConfig.Instance.ThrowerMerge)
         //    {
         //        if (item.type == ModContent.ItemType<BlightLegs>())
         //        {
@@ -158,39 +158,39 @@ namespace ssm.SoA
         //        if (item.type == ModContent.ItemType<BlightMask>())
         //        {
         //            player.GetCritChance<ThrowingDamageClass>() += 0.1f;
-        //            player.Shtun().throwerVelocity += 0.3f;
+        //            player.CSE().throwerVelocity += 0.3f;
         //        }
         //        if (item.type == ModContent.ItemType<MarstechPlate>())
         //        {
         //            player.GetDamage<ThrowingDamageClass>() += 0.25f;
-        //            player.Shtun().throwerVelocity += 0.27f;
+        //            player.CSE().throwerVelocity += 0.27f;
         //        }
         //        if (item.type == ModContent.ItemType<FlariumCowl>())
         //        {
         //            player.GetCritChance<ThrowingDamageClass>() += 0.21f;
         //            player.GetDamage<ThrowingDamageClass>() += 0.45f;
-        //            player.Shtun().throwerVelocity += 0.29f;
+        //            player.CSE().throwerVelocity += 0.29f;
         //        }
         //        if (item.type == ModContent.ItemType<AsthraltiteHelmetRevenant>())
         //        {
         //            player.GetCritChance<ThrowingDamageClass>() += 0.32f;
-        //            player.Shtun().throwerVelocity += 0.45f;
+        //            player.CSE().throwerVelocity += 0.45f;
         //        }
         //        if (item.type == ModContent.ItemType<FallenPrinceChest>())
         //        {
         //            player.GetCritChance<ThrowingDamageClass>() += 0.26f;
         //            player.GetDamage<ThrowingDamageClass>() += 0.20f;
-        //            player.Shtun().throwerVelocity += 0.26f;
+        //            player.CSE().throwerVelocity += 0.26f;
         //        }
         //        if (item.type == ModContent.ItemType<NovaBreastplate>())
         //        {
         //            player.GetDamage<ThrowingDamageClass>() += 0.28f;
-        //            player.Shtun().throwerVelocity += 0.35f;
+        //            player.CSE().throwerVelocity += 0.35f;
         //        }
         //        if (item.type == ModContent.ItemType<CairoCrusaderRobe>())
         //        {
         //            player.GetDamage<ThrowingDamageClass>() += 0.22f;
-        //            player.Shtun().throwerVelocity += 0.25f;
+        //            player.CSE().throwerVelocity += 0.25f;
         //        }
         //        if (item.type == ModContent.ItemType<FallenPrinceBoots>())
         //        {

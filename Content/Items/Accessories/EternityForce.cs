@@ -12,7 +12,7 @@ namespace ssm.Content.Items.Accessories
     {
         public override bool IsLoadingEnabled(Mod mod)
         {
-            return ShtunConfig.Instance.EternityForce;
+            return CSEConfig.Instance.EternityForce;
         }
         public override void SetStaticDefaults()
         {

@@ -12,7 +12,7 @@ namespace ssm.Content.Items.Materials
     {
         public override bool IsLoadingEnabled(Mod mod)
         {
-            return ShtunConfig.Instance.AlternativeSiblings;
+            return CSEConfig.Instance.AlternativeSiblings;
         }
         public override void SetDefaults()
         {

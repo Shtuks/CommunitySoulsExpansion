@@ -110,7 +110,7 @@ namespace ssm.Content.NPCs.MutantEX
 
         private void HandleSummonPhase()
         {
-            Owner.whoAmI.ToPlayer().Shtun().DiscordWhiteTheme(60, 2);
+            Owner.whoAmI.ToPlayer().CSE().DiscordWhiteTheme(60, 2);
 
             if (Timer % 10 == 0 && availableTextureIndices.Count > 0)
             {

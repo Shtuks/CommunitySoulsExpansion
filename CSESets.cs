@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace ssm
 {
-    public class ShtunSets : ModSystem
+    public class CSESets : ModSystem
     {
         public class NPCs
         {

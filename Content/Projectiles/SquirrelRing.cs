@@ -38,7 +38,7 @@ namespace ssm.Content.Projectiles
 
         public override void AI()
         {
-            if (Main.player[Projectile.owner].active && !Main.player[Projectile.owner].dead && Main.player[Projectile.owner].Shtun().lumberjackSet)
+            if (Main.player[Projectile.owner].active && !Main.player[Projectile.owner].dead && Main.player[Projectile.owner].CSE().lumberjackSet)
             {
                 Projectile.alpha = 0;
             }

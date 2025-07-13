@@ -8,15 +8,17 @@ using Terraria.ModLoader;
 using Terraria.GameContent.Personalities;
 using Fargowiltas.NPCs;
 using FargowiltasSouls;
+using ssm.Core;
+using NoxusBoss.Content.Items.MiscOPTools;
 
 namespace ssm.Content.NPCs
 {
     [AutoloadHead]
-    public class Monstrosity : ModNPC
+    public class Monstrosityy : ModNPC
     {
         public override bool IsLoadingEnabled(Mod mod)
         {
-            return ShtunConfig.Instance.AlternativeSiblings;
+            return CSEConfig.Instance.AlternativeSiblings;
         }
 
         private static int shopNum;
@@ -100,7 +102,6 @@ namespace ssm.Content.NPCs
             {
                 "You know the rules! And you will die. Im not going to rickroll you, that's only 0,00001% chance.",
                 "Yippe!",
-                "Soul of eternity is not enough to face me, let alone 2 of it.",
                 "Why would i be afraid of a cat? Well, it is long story.",
                 "Can I jump? Yes, I have a 'spacebar'.",
                 "It would be a calamity for you not to buy my products.",
@@ -125,12 +126,22 @@ namespace ssm.Content.NPCs
                 "There is a pipe bomb inside your walls.",
                 "A lot of things explode for no reason.",
                 "Also try Infernal Eclipse of Ragnarok!",
-                "Once I put Thunder Bird, Scarabeus, Desert Scourge, Cursed Coffin and Grand Antlion in one room to see who is strongest. Instead they started talking about politics.",
+                "Once I put Grand Thunder Bird, Scarabeus, Desert Scourge, Cursed Coffin and Grand Antlion in one room to see who is strongest. Instead they started talking about politics.",
             };
 
             if (WorldSavingSystem.DownedMutant)
             {
                 dialogue.Add("[c/FF0000:You are ready.]");
+            }
+
+            if (ModCompatibility.SacredTools.Loaded && ModCompatibility.Calamity.Loaded && ModCompatibility.Thorium.Loaded)
+            {
+                dialogue.Add("Go touch some grass.");
+            }
+
+            if (Main.LocalPlayer.FargoSouls().Eternity)
+            {
+                dialogue.Add("Soul of Eternity is not enough to face me, let alone 2 of it.");
             }
 
             return Main.rand.Next(dialogue);

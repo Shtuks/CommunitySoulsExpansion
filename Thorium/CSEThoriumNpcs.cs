@@ -23,7 +23,7 @@ namespace ssm.Thorium
 {
     [ExtendsFromMod(ModCompatibility.Thorium.Name)]
     [JITWhenModsEnabled(ModCompatibility.Thorium.Name)]
-    public partial class ShtunThoriumNpcs : GlobalNPC
+    public partial class CSEThoriumNpcs : GlobalNPC
     {
         private readonly Mod fargosouls = ModLoader.GetMod("FargowiltasSouls");
         public override bool InstancePerEntity => true;

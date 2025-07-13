@@ -45,7 +45,7 @@ namespace ssm.Content.NPCs.MutantEX
     {
         public override bool IsLoadingEnabled(Mod mod)
         {
-            return ShtunConfig.Instance.AlternativeSiblings;
+            return CSEConfig.Instance.AlternativeSiblings;
         }
         //public override string Texture => $"ssm/Content/NPCs/MutantEX/MutantEX{FargoSoulsUtil.TryAprilFoolsTexture}";
 
@@ -174,7 +174,7 @@ namespace ssm.Content.NPCs.MutantEX
 
         public override void AI()
         {
-            ShtunNpcs.mutantEX = NPC.whoAmI;
+            CSENpcs.mutantEX = NPC.whoAmI;
 
             NPC.dontTakeDamage = AttackChoice < 0;
 
@@ -2290,7 +2290,7 @@ namespace ssm.Content.NPCs.MutantEX
             {
                 if (!Main.dedServ && Main.LocalPlayer.active)
                 {
-                    Main.LocalPlayer.GetModPlayer<ShtunPlayer>().Screenshake = 2;
+                    Main.LocalPlayer.GetModPlayer<CSEPlayer>().Screenshake = 2;
                 }
                 if (Main.netMode != 1)
                 {
@@ -3344,7 +3344,7 @@ namespace ssm.Content.NPCs.MutantEX
             }
             if (NPC.ai[1] < 60f && !Main.dedServ && Main.LocalPlayer.active)
             {
-                Main.LocalPlayer.GetModPlayer<ShtunPlayer>().Screenshake = 2;
+                Main.LocalPlayer.GetModPlayer<CSEPlayer>().Screenshake = 2;
             }
             if (NPC.ai[1] == 360f)
             {

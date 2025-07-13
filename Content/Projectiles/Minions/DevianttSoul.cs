@@ -58,7 +58,7 @@ namespace ssm.Content.Projectiles.Minions
             Projectile.scale = 1;
 
             Player player = Main.player[Projectile.owner];
-            if (player.active && !player.dead && player.GetModPlayer<ShtunPlayer>().DevianttSoul)
+            if (player.active && !player.dead && player.GetModPlayer<CSEPlayer>().DevianttSoul)
                 Projectile.timeLeft = 2;
 
             if (Projectile.ai[0] >= 0 && Projectile.ai[0] < Main.maxNPCs) //has target

@@ -21,7 +21,7 @@ namespace ssm.SoA.Enchantments
     {
         public override bool IsLoadingEnabled(Mod mod)
         {
-            return ShtunConfig.Instance.SacredTools;
+            return CSEConfig.Instance.SacredTools;
         }
         public override void SetDefaults()
         {
@@ -96,7 +96,7 @@ namespace ssm.SoA.Enchantments
 
                 if (nearestEnemy != null)
                 {
-                    ShtunUtils.ProjectileRain(Main.LocalPlayer.GetSource_FromThis(), nearestEnemy.Center, 400, 100, 500, 800, 15, ModContent.ProjectileType<SpaceJunkProj>(), (int)Main.LocalPlayer.GetDamage<GenericDamageClass>().ApplyTo(player.HasEffect<GenerationsEffect>() ? 500 : 50), 1, Main.LocalPlayer.whoAmI);
+                    CSEUtils.ProjectileRain(Main.LocalPlayer.GetSource_FromThis(), nearestEnemy.Center, 400, 100, 500, 800, 15, ModContent.ProjectileType<SpaceJunkProj>(), (int)Main.LocalPlayer.GetDamage<GenericDamageClass>().ApplyTo(player.HasEffect<GenerationsEffect>() ? 500 : 50), 1, Main.LocalPlayer.whoAmI);
                 }
             }
         }

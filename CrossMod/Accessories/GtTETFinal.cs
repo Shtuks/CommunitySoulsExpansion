@@ -38,7 +38,7 @@ namespace ssm.CrossMod.Accessories
             calamityPlayer.filthyGlove = true;
             calamityPlayer.bloodyGlove = true;
             player.GetDamage<ThrowingDamageClass>() += 0.2f;
-            player.Shtun().throwerVelocity += 0.25f;
+            player.CSE().throwerVelocity += 0.25f;
             player.GetThoriumPlayer().throwGuide3 = true;
         }
 

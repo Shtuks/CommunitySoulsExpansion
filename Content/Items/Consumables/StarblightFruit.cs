@@ -28,14 +28,14 @@ namespace ssm.Content.Items.Consumables
 
         public override bool CanUseItem(Player player)
         {
-            return !player.Shtun().starlightFruit;
+            return !player.CSE().starlightFruit;
         }
 
         public override bool? UseItem(Player player)
         {
             if (player.itemAnimation > 0 && player.itemTime == 0)
             {
-                player.Shtun().starlightFruit = true;
+                player.CSE().starlightFruit = true;
             }
             return true;
         }
@@ -85,7 +85,7 @@ namespace ssm.Content.Items.Consumables
             if (!Player.active)
                 return false;
 
-            return Player.Shtun().starlightFruit && ((ModCompatibility.Calamity.Loaded && ModCompatibility.SacredTools.Loaded) || (ModCompatibility.Thorium.Loaded && ModCompatibility.SacredTools.Loaded) || (ModCompatibility.Thorium.Loaded && ModCompatibility.Calamity.Loaded));
+            return Player.CSE().starlightFruit && ((ModCompatibility.Calamity.Loaded && ModCompatibility.SacredTools.Loaded) || (ModCompatibility.Thorium.Loaded && ModCompatibility.SacredTools.Loaded) || (ModCompatibility.Thorium.Loaded && ModCompatibility.Calamity.Loaded));
         }
         public override bool IsHidden() => IsEmpty && !IsEnabled();
     }

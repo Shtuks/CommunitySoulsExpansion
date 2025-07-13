@@ -25,7 +25,7 @@ namespace ssm.Calamity
                 Item item = Player.inventory[i];
                 if (item.type == ModContent.ItemType<Terminus>() && item.active)
                 {
-                    item.SetDefaults(ModContent.ItemType<ShtunTerminus>());
+                    item.SetDefaults(ModContent.ItemType<CSETerminus>());
                 }
             }
         }

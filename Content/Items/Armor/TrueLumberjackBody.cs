@@ -65,7 +65,7 @@ namespace ssm.Content.Items.Armor
 
             recipe.AddIngredient<LumberjackBody>();
 
-            if (ShtunConfig.Instance.AlternativeSiblings) {recipe.AddIngredient<Sadism>(100); recipe.AddIngredient<StargateSoul>(4); }
+            if (CSEConfig.Instance.AlternativeSiblings) {recipe.AddIngredient<Sadism>(100); recipe.AddIngredient<StargateSoul>(4); }
             recipe.AddIngredient<EternalEnergy>(100);
             recipe.AddIngredient<Eridanium>(100);
             recipe.AddIngredient<AbomEnergy>(100);
