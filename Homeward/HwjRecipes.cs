@@ -4,8 +4,8 @@ using Terraria;
 using ssm.Core;
 using FargowiltasSouls.Content.Items.Accessories.Souls;
 using ContinentOfJourney.Items.Accessories;
-using FargowiltasCrossmod.Content.Calamity.Items.Accessories.Souls;
 using Terraria.ID;
+using FargowiltasSouls.Content.Items.Accessories.Masomode;
 
 namespace ssm.Homeward
 {
@@ -47,6 +47,19 @@ namespace ssm.Homeward
                 if (recipe.HasResult(ItemID.Zenith) && recipe.HasIngredient<EssenceofBright>())
                 {
                     recipe.RemoveIngredient(ModContent.ItemType<EssenceofBright>());
+                }
+                if (!ModCompatibility.Calamity.Loaded && !ModCompatibility.SacredTools.Loaded && !ModCompatibility.Thorium.Loaded) {
+                    if (recipe.HasResult(ModContent.ItemType<Horizon>()) && !recipe.HasIngredient<AeolusBoots>())
+                    {
+                        recipe.RemoveIngredient(5000);
+                        recipe.AddIngredient<AeolusBoots>(1);
+                    }
+                    //horizon to supersonic
+                    if (recipe.HasResult(ModContent.ItemType<SupersonicSoul>()) && recipe.HasIngredient(ModContent.ItemType<Horizon>()))
+                    {
+                        recipe.RemoveIngredient(ModContent.ItemType<AeolusBoots>());
+                        recipe.AddIngredient<Horizon>(1);
+                    }
                 }
             }
         }

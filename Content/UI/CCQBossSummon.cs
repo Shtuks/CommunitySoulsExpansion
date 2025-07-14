@@ -69,14 +69,14 @@ namespace ssm.Content.UI
         private void SpawnBoss(int type)
         {
             Player player = Main.LocalPlayer;
-            if (type != ModContent.NPCType<MutantEX>())
-            {
+            //if (type != ModContent.NPCType<MutantEX>())
+            //{
                 FargoSoulsUtil.SpawnBossNetcoded(player, type);
-            }
-            else
-            {
-                SpawnMonstrosity(player);
-            }
+            //}
+            //else
+            //{
+            //    SpawnMonstrosity(player);
+            //}
             ssm.Instance._showBossSummonUI = false;
         }
 

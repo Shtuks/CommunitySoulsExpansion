@@ -6,6 +6,7 @@ using FargowiltasSouls.Content.Bosses.MutantBoss;
 using ssm.Content.NPCs.MutantEX;
 using ssm.Content.Buffs;
 using ssm.Core;
+using System;
 
 namespace ssm
 {
@@ -30,11 +31,14 @@ namespace ssm
             }
             if (NPC.AnyNPCs(ModContent.NPCType<MutantEX>()))
             {
-                Player.statLife -= Player.statLife / 5;
+                modifiers.FinalDamage *= 0;
+
+                int healthDrain = (int)(Player.statLifeMax2 * 0.1f);
+                Player.statLife = Player.statLife - healthDrain;
             }
             if (NPC.AnyNPCs(ModContent.NPCType<MutantBoss>()))
             {
-                Player.statLife -= Player.statLife / 10;
+                Player.statLife -= Player.statLife / 5;
             }
         }
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)

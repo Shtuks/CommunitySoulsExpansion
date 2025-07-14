@@ -25,13 +25,15 @@ namespace ssm.Content.Items.Armor
             this.Item.rare = 11;
             this.Item.expert = true;
             this.Item.value = Item.sellPrice(10, 0, 0, 0);
-            this.Item.defense = 150;
+            this.Item.defense = 200;
         }
 
         public override void UpdateEquip(Player player)
         {
-            player.GetDamage(DamageClass.Generic) += 1f;
-            player.GetCritChance(DamageClass.Generic) += 2f;
+            player.GetDamage(DamageClass.Generic) += 2f;
+            player.GetCritChance(DamageClass.Generic) += 100f;
+            player.moveSpeed += 0.5f;
+            player.statLifeMax2 += 500;
         }
 
         public override bool PreDrawTooltipLine(DrawableTooltipLine line, ref int yOffset)

@@ -4,6 +4,8 @@ using ssm.Core;
 using ContinentOfJourney.Items.Material;
 using CalamityMod.Items.Materials;
 using FargowiltasCrossmod.Content.Calamity.Items.Accessories.Souls;
+using ContinentOfJourney.Items.Accessories;
+using CalamityMod.Items.Accessories.Wings;
 
 namespace ssm.Homeward
 {
@@ -21,10 +23,14 @@ namespace ssm.Homeward
                 {
                     recipe.AddIngredient<EssenceofBright>();
                 }
-
                 if (recipe.HasResult<VagabondsSoul>() && !recipe.HasIngredient<FinalBar>())
                 {
                     recipe.AddIngredient<FinalBar>(5);
+                }
+                if (recipe.HasResult<TracersElysian>() && !recipe.HasIngredient<Horizon>() && !ModCompatibility.SacredTools.Loaded)
+                {
+                    recipe.RemoveIngredient(ModContent.ItemType<TracersCelestial>());
+                    recipe.AddIngredient<Horizon>();
                 }
             }
         }

@@ -26,18 +26,19 @@ namespace ssm.Content.Items.Armor
             Item.rare = 11;
             Item.expert = true;
             Item.value = Item.sellPrice(10, 0, 0, 0);
-            Item.defense = 150;
+            Item.defense = 200;
         }
 
         public override void UpdateEquip(Player player)
         {
-            player.GetDamage(DamageClass.Generic) += 1f;
-            player.GetArmorPenetration(DamageClass.Generic) += 700f;
-            player.GetCritChance(DamageClass.Generic) += 2f;
+            player.GetDamage(DamageClass.Generic) += 2f;
+            player.GetArmorPenetration(DamageClass.Generic) += 1000f;
+            player.GetCritChance(DamageClass.Generic) += 100f;
             player.maxMinions += 20;
             player.maxTurrets += 20;
             player.manaCost -= 1;
             player.ammoCost75 = true;
+            player.statLifeMax2 += 500;
         }
 
         public override bool PreDrawTooltipLine(DrawableTooltipLine line, ref int yOffset)

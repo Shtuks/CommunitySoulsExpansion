@@ -17,7 +17,6 @@ using ssm.Core;
 using BombusApisBee.BeeDamageClass;
 using CalamityMod.CalPlayer;
 using ThoriumMod.Utilities;
-using CalamityMod.Events;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria.GameContent;
 

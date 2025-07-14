@@ -672,8 +672,9 @@ Mods: {
 				DisplayName: True Monstrosity Mask
 				Tooltip:
 					'''
-					100% increased damage and 33% increased critical strike chance
-					Drastically increases life regen, also increases armor penetration to 700.
+					200% increased damage and 100% increased critical strike chance
+					Increases max minion and sentries slots by 20, also increases armor penetration by 1000.
+					Increases max life by 500
 					'''
 			}
 
@@ -681,9 +682,9 @@ Mods: {
 				DisplayName: True Monstrosity Pants
 				Tooltip:
 					'''
-					100% increased damage and 33% increased critical strike chance
-					50% increased movement and 20% increased attack speed
-					Also increases armor penetration to 70.
+					200% increased damage and 100% increased critical strike chance
+					50% increased movement and 100% increased attack speed
+					Increases max life by 500
 					'''
 			}
 
@@ -691,8 +692,8 @@ Mods: {
 				DisplayName: True Monstrosity Suit
 				Tooltip:
 					'''
-					150% increased damage and 33% increased critical strike chance 
-					Increases max number of minions and sentries by 20
+					300% increased damage and 100% increased critical strike chance 
+					Drastically increases life regen
 					Increases damage reduction by 100%, Increases max life and mana by 1000
 					100% reduced mana usage, 25% chance not to consume ammo.
 					'''
@@ -1967,17 +1968,8 @@ Mods: {
 			}
 
 			GtTETFinal: {
-				Tooltip:
-					'''
-					Thrower projectiles create nanoblades as they travel
-					Stealth strikes summon nanobeams and sparks on enemy hits
-					Stealth strikes have +15 armor penetration, deal 5% more damage, and heal for 2 HP
-					20% increased Thrower damage and 25% increased Thrower velocity
-					Landing a stealth strike grants a 12% crit bonus to non-stealth strikes
-					This crit bonus decays over 5 seconds
-					25% of your Thrower damage is duplicated 
-					'''
-				DisplayName: Guide to Expert Throwing : Final Volume
+				Tooltip: This item does nothing
+				DisplayName: Removed
 			}
 
 			DemonShadeEnchant: {
@@ -3785,6 +3777,7 @@ Mods: {
 			ToxicCloudsProj.DisplayName: Toxic Clouds Proj
 			CatlightCat.DisplayName: Catlight Cat
 			CatlightDeathray.DisplayName: Catlight Deathray
+			TwigProj.DisplayName: Twig Proj
 		}
 
 		Bestiary: {

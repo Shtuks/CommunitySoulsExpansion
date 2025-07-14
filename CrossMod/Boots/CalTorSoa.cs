@@ -81,7 +81,7 @@ namespace ssm.CrossMod.Boots
                     recipe.RemoveIngredient(ModContent.ItemType<AeolusBoots>());
                 }
                 //celestial to spurs
-                if (recipe.HasResult(ModContent.ItemType<VoidSpurs>()) && recipe.HasIngredient<RoyalRunners>())
+                if (recipe.HasResult(ModContent.ItemType<VoidSpurs>()) && recipe.HasIngredient<RoyalRunners>() && !ModCompatibility.Homeward.Loaded)
                 {
                     recipe.RemoveIngredient(ModContent.ItemType<RoyalRunners>());
                     recipe.AddIngredient<TracersCelestial>(1);

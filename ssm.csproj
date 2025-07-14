@@ -8,32 +8,9 @@
 		
 	</PropertyGroup>
 	<ItemGroup>
-	  <AdditionalFiles Remove="Content\NPCs\StarlightCat\**" />
-	  <AdditionalFiles Remove="MagicStorage\**" />
-	  <AdditionalFiles Remove="Thorium\Swarm\**" />
-	  <Compile Remove="Content\NPCs\StarlightCat\**" />
-	  <Compile Remove="MagicStorage\**" />
-	  <Compile Remove="Thorium\Swarm\**" />
-	  <EmbeddedResource Remove="Content\NPCs\StarlightCat\**" />
-	  <EmbeddedResource Remove="MagicStorage\**" />
-	  <EmbeddedResource Remove="Thorium\Swarm\**" />
-	  <None Remove="Content\NPCs\StarlightCat\**" />
-	  <None Remove="MagicStorage\**" />
-	  <None Remove="Thorium\Swarm\**" />
-	</ItemGroup>
-	<ItemGroup>
-	  <None Remove="Thorium\Enchantments\BerserkerEnchant.cs.sex" />
-	  <None Remove="Thorium\Enchantments\DangerEnchant.cs.sex" />
-	  <None Remove="Thorium\Enchantments\HarbingerEnchant.cs.sex" />
-	</ItemGroup>
-	<ItemGroup>
-	  <Compile Include="Redemption\Mutagens\MutagenClicker.cs.bak" />
-	  <Compile Include="Thorium\Enchantments\BerserkerEnchant.cs.sex" />
-	  <Compile Include="Thorium\Enchantments\MagmaEnchant.cs.sex" />
-	</ItemGroup>
-	<ItemGroup>
-	  <None Include="Calamity\Addons\DivineEnchant.cs" />
-	  <None Include="Calamity\Addons\EmptinessEnchant.cs" />
+    	<AssemblyAttribute Include="System.Runtime.CompilerServices.IgnoresAccessChecksToAttribute">
+    	    <_Parameter1>SacredTools</_Parameter1>
+    	</AssemblyAttribute>
 	</ItemGroup>
 	<ItemGroup>
 	  <Reference Include="BombusApisBee">
@@ -47,6 +24,9 @@
 	  </Reference>
 	  <Reference Include="CalamityHunt">
 	    <HintPath>lib\CalamityHunt.dll</HintPath>
+	  </Reference>
+	  <Reference Include="CalamityInheritance">
+	    <HintPath>..\..\ModReader\CalamityInheritance\CalamityInheritance.dll</HintPath>
 	  </Reference>
 	  <Reference Include="CalamityMod">
 	    <HintPath>..\..\ModReader\CalamityMod\CalamityMod.dll</HintPath>

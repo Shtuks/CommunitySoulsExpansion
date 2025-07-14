@@ -6,6 +6,10 @@ using ssm.Core;
 using FargowiltasSouls.Content.Items.Accessories.Enchantments;
 using Redemption.Items.Armor.PreHM.LivingWood;
 using Redemption.Items.Weapons.PreHM.Summon;
+using FargowiltasSouls.Core.AccessoryEffectSystem;
+using ssm.Content.SoulToggles;
+using ssm.Content.Projectiles.Enchantments;
+using static ssm.Redemption.Enchantments.DragonLeadEnchant;
 
 namespace ssm.Redemption.Enchantments
 {
@@ -31,10 +35,41 @@ namespace ssm.Redemption.Enchantments
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            player.buffImmune[20] = true;
-            player.GetDamage(DamageClass.Summon) += 0.03f;
+            player.AddEffect<LivingWoodEffect2>(Item);
         }
 
+        public class LivingWoodEffect2 : AccessoryEffect
+        {
+            public override Header ToggleHeader => Header.GetHeader<AdvancementForceHeader>();
+            public override int ToggleItemType => ModContent.ItemType<LivingWoodEnchant2>();
+            
+            private int twigTimer;
+            public override void PostUpdate(Player player)
+            {
+                twigTimer++;
+                if (twigTimer >= 1200) 
+                {
+                    twigTimer = 0;
+                    DropTwig(player);
+                }
+            }
+
+            private void DropTwig(Player player)
+            {
+                if (player.whoAmI != Main.myPlayer) return;
+
+                Vector2 position = player.Center + new Vector2(Main.rand.Next(-20, 20), 20);
+                Projectile.NewProjectile(
+                    player.GetSource_FromThis(),
+                    position,
+                    Vector2.Zero,
+                    ModContent.ProjectileType<TwigProj>(),
+                    20, 
+                    0f,
+                    player.whoAmI
+                );
+            }
+        }
         public override void AddRecipes()
         {
             Recipe recipe = this.CreateRecipe();
