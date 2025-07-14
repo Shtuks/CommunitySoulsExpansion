@@ -3,7 +3,6 @@ using Terraria.Chat;
 using System;
 using Microsoft.Xna.Framework;
 using Terraria.Localization;
-using CalamityMod.Projectiles.Magic;
 using Terraria.DataStructures;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework.Graphics;
@@ -45,53 +44,6 @@ namespace ssm
             float distance = Vector2.Distance(playerPosition, npcPosition);
 
             return distance;
-        }
-
-        public static void RemoveFromChecklist(float weight)
-        {
-            object bossTracker = ModCompatibility.BossChecklist.Mod.GetType()
-                .GetField("bossTracker", BindingFlags.NonPublic | BindingFlags.Static)
-                .GetValue(null);
-
-            FieldInfo sortedEntriesField = bossTracker.GetType()
-                .GetField("SortedEntries", BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance);
-            object entriesBase = sortedEntriesField.GetValue(bossTracker);
-            List<object> entries = ((IEnumerable)entriesBase).Cast<object>().ToList();
-
-            PropertyInfo weightProperty = entries.First().GetType()
-                .GetProperty("progression", BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance);
-
-            FieldInfo weightField = weightProperty == null
-                ? entries.First().GetType().GetField("progression", BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance)
-                : null;
-
-            object newEntries = Activator.CreateInstance(entriesBase.GetType());
-            IList newEntriesCasted = (IList)newEntries;
-
-            foreach (object entry in entries)
-            {
-                float currentWeight = 0f;
-
-                if (weightProperty != null)
-                {
-                    currentWeight = (float)weightProperty.GetValue(entry);
-                }
-                else if (weightField != null)
-                {
-                    currentWeight = (float)weightField.GetValue(entry);
-                }
-                else
-                {
-                    continue;
-                }
-
-                if (Math.Abs(currentWeight - weight) > 0.001f)
-                {
-                    newEntriesCasted.Add(entry);
-                }
-            }
-
-            sortedEntriesField.SetValue(bossTracker, newEntries);
         }
         public static bool IsModItem(Item item, string mod)
         {

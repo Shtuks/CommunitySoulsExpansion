@@ -38,6 +38,7 @@ namespace ssm.Calamity.Souls
             ModContent.GetInstance<ElementsForce>().UpdateAccessory(player, hideVisual);
             if (ModCompatibility.Catalyst.Loaded || ModCompatibility.Goozma.Loaded || ModCompatibility.Clamity.Loaded) { ModContent.GetInstance<AddonsForce>().UpdateAccessory(player, hideVisual); }
             ModContent.GetInstance<ShatteredCommunity>().UpdateAccessory(player, hideVisual);
+            ModContent.GetInstance<TheCommunity>().UpdateAccessory(player, hideVisual);
             ModContent.GetInstance<ElementalArtifact>().UpdateAccessory(player, hideVisual);
             ModContent.GetInstance<PotJT>().UpdateAccessory(player, hideVisual);
             if (ModCompatibility.WrathoftheGods.Loaded) { ModContent.GetInstance<SolynsSigil>().UpdateAccessory(player, hideVisual); }

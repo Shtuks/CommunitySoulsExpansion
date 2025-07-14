@@ -23,9 +23,9 @@ namespace ssm.Calamity.Addons
             if (calamityInheritance == null)
                 return false; 
 
-            Type configType = calamityInheritance.GetType("CalamityInheritance.CIServerConfig");
+            Type configType = calamityInheritance.GetType("CalamityInheritance.System.Configs.CIServerConfig");
             if (configType == null)
-                return false;
+                return false; 
 
             PropertyInfo instanceProp = configType.GetProperty("Instance", BindingFlags.Public | BindingFlags.Static);
             if (instanceProp == null)
@@ -36,7 +36,7 @@ namespace ssm.Calamity.Addons
                 return false; 
 
             PropertyInfo inflationProp = configType.GetProperty("CalStatInflationBACK");
-            if (inflationProp == null)
+            if (inflationProp == null || inflationProp.PropertyType != typeof(bool))
                 return false; 
 
             return (bool)inflationProp.GetValue(configInstance);
@@ -53,7 +53,7 @@ namespace ssm.Calamity.Addons
                 if (npc.type == ModContent.NPCType<AbomBoss>())
                 {
                     npc.damage = 500;
-                    npc.lifeMax = 7700000;
+                    npc.lifeMax = 17000000;
                 }
             }
         }

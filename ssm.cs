@@ -25,26 +25,8 @@ using ssm.CrossMod.CraftingStations;
 using ssm.gunrightsmod;
 using ssm.SpiritMod;
 using Fargowiltas.Items.CaughtNPCs;
-using FargowiltasSouls.Content.Items;
-using SacredTools.Content.Items.Weapons.Dreadfire;
-using SacredTools.Content.Items.Weapons.Harpy;
-using SacredTools.Content.Items.Weapons.Mechs;
-using SacredTools.Items.Dev;
-using SacredTools.Items.Weapons.Flarium;
-using SacredTools.Items.Weapons.Lunatic;
-using SacredTools.Items.Weapons.Luxite;
-using SacredTools.Items.Weapons.Marstech;
-using SacredTools.Items.Weapons.Oblivion;
-using SacredTools.Items.Weapons.Pigman;
-using SacredTools.Items.Weapons.Special;
-using SacredTools.Items.Weapons.Venomite;
-using SacredTools.Items.Weapons;
-using ssm.Content.Items.DevItems;
-using FargowiltasSouls.Content.Bosses.MutantBoss;
-using Fargowiltas.NPCs;
-using FargowiltasSouls.Content.Bosses.AbomBoss;
-using FargowiltasSouls.Content.Bosses.DeviBoss;
-using ssm.Content.NPCs;
+using System.Collections;
+using CalamityMod.ILEditing;
 
 namespace ssm
 {
@@ -63,8 +45,6 @@ namespace ssm
         public static int SwarmTotal;
         public static int SwarmSpawned;
 
-        internal static ModKeybind dotMount;
-
         public UserInterface _bossSummonUI;
         public BossSummonUI _bossSummonState;
         public bool _showBossSummonUI;
@@ -77,7 +57,7 @@ namespace ssm
         public static readonly BindingFlags UniversalBindingFlags = BindingFlags.Instance | BindingFlags.Static | BindingFlags.Public | BindingFlags.NonPublic;
         public static bool legit;
         public static int OS;
-        public static int[] AllStationIDs { get; private set; }
+        public static readonly List<(string bossName, float newProgression)> bclChanges = new List<(string, float)>();
         public static string userName = Environment.UserName;
         public static string filePath = "C:/Users/" + userName + "/Documents/My Games/Terraria/tModLoader/StarlightSouls";
 
@@ -134,6 +114,125 @@ namespace ssm
                 );
             }
         }
+        public static void ChangeBossProgressions(params (string name, float newProgression)[] changes)
+        {
+            // get access to bossTracker
+            object bossTracker = ModCompatibility.BossChecklist.Mod.GetType()
+                .GetField("bossTracker", BindingFlags.NonPublic | BindingFlags.Static)
+                .GetValue(null);
+
+            // get entries list
+            FieldInfo sortedEntriesField = bossTracker.GetType()
+                .GetField("SortedEntries", BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance);
+            IList entries = (IList)sortedEntriesField.GetValue(bossTracker);
+
+            // prepare for reflection
+            PropertyInfo displayNameProperty = null;
+            FieldInfo progressionField = null;
+            var entriesToChange = new List<(object entry, float newProg)>();
+
+            // find all entries
+            foreach (object entry in entries)
+            {
+                if (displayNameProperty == null)
+                {
+                    displayNameProperty = entry.GetType().GetProperty("DisplayName",
+                        BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
+
+                    progressionField = entry.GetType().GetField("progression",
+                        BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
+
+                    if (displayNameProperty == null || progressionField == null)
+                        throw new InvalidOperationException("Required fields was not found.");
+                }
+
+                string currentName = (string)displayNameProperty.GetValue(entry);
+                foreach (var change in changes)
+                {
+                    if (currentName == change.name)
+                    {
+                        entriesToChange.Add((entry, change.newProgression));
+                        break;
+                    }
+                }
+            }
+
+            // apply edits
+            foreach (var change in entriesToChange)
+            {
+                progressionField.SetValue(change.entry, change.newProg);
+            }
+
+            // re-sort
+            List<object> sortedList = new List<object>();
+            foreach (object entry in entries)
+                sortedList.Add(entry);
+
+            sortedList.Sort((x, y) =>
+            {
+                float xProg = (float)progressionField.GetValue(x);
+                float yProg = (float)progressionField.GetValue(y);
+                return xProg.CompareTo(yProg);
+            });
+
+            // update original list
+            entries.Clear();
+            foreach (object entry in sortedList)
+                entries.Add(entry);
+        }
+
+        //basicaly same but for removing
+        private static void RemoveFromChecklist(params float[] progressions)
+        {
+            object bossTracker = ModCompatibility.BossChecklist.Mod.GetType()
+                .GetField("bossTracker", BindingFlags.NonPublic | BindingFlags.Static)
+                .GetValue(null);
+
+            FieldInfo sortedEntriesField = bossTracker.GetType()
+                .GetField("SortedEntries", BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance);
+            object originalEntries = sortedEntriesField.GetValue(bossTracker);
+
+            Type entryCollectionType = originalEntries.GetType();
+            object newEntries = Activator.CreateInstance(entryCollectionType);
+            IList newEntriesCasted = (IList)newEntries;
+
+            bool isFirst = true;
+            FieldInfo progressionField = null;
+
+            foreach (object entry in (IEnumerable)originalEntries)
+            {
+                if (isFirst)
+                {
+                    progressionField = entry.GetType()
+                        .GetField("progression", BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
+
+                    if (progressionField == null)
+                    {
+                        throw new InvalidOperationException("Не найдено поле 'progression' в записях боссов");
+                    }
+                    isFirst = false;
+                }
+
+                float entryProgression = (float)progressionField.GetValue(entry);
+
+                bool keepEntry = true;
+                foreach (float progression in progressions)
+                {
+                    if (Math.Abs(entryProgression - progression) < 0.001f)
+                    {
+                        keepEntry = false;
+                        break;
+                    }
+                }
+
+                if (keepEntry)
+                {
+                    newEntriesCasted.Add(entry);
+                }
+            }
+
+            sortedEntriesField.SetValue(bossTracker, newEntries);
+        }
         private void BossChecklistCompatibility()
         {
             if (ModLoader.TryGetMod("BossChecklist", out Mod bossChecklist))
@@ -189,8 +288,6 @@ namespace ssm
             Instance = this;
             OS = OSType();
 
-            dotMount = KeybindLoader.RegisterKeybind(this, "Dot Mount", "H");
-
             if (ModLoader.TryGetMod("ThoriumMod", out Mod tor))
             {
                 ThoriumCaughtNpcs.ThoriumRegisterItems();
@@ -237,12 +334,28 @@ namespace ssm
             BossChecklistCompatibility();
             if (ModCompatibility.Thorium.Loaded)
             {
+                //bclChanges.Union(ThoriumBCLEdits.BossChecklistValues);
                 PostSetupContentThorium.PostSetupContent_Thorium();
             }
             if (ModCompatibility.SacredTools.Loaded)
             {
+                //bclChanges.Union(SoABCLEdits.BossChecklistValues);
                 PostSetupContentSoA.PostSetupContent_Thorium();
             }
+
+            var changes = new List<(string, float)>
+            {
+                ("ThePrimordials", 19.5f),
+                ("Nihilus", 26.99f),
+                ("Erazor", 25f),
+                ("Abaddon, the Source of the Affliction", 18.9f),
+                ("Araghur, the Flare Serpent", 19.9f),
+                ("The Lost Siblings", 21.1f)
+            };
+
+            ChangeBossProgressions(changes.ToArray());
+            RemoveFromChecklist(22.16f);
+            //ChangeBossProgressions(bclChanges.ToArray());
 
             //if (CSEConfig.Instance.DevItems)
             //{

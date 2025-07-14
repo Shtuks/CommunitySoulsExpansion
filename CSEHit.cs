@@ -6,7 +6,7 @@ using FargowiltasSouls.Content.Bosses.MutantBoss;
 using ssm.Content.NPCs.MutantEX;
 using ssm.Content.Buffs;
 using ssm.Core;
-using System;
+using FargowiltasSouls.Core.Systems;
 
 namespace ssm
 {
@@ -29,12 +29,12 @@ namespace ssm
             {
                 Player.AddBuff(ModContent.BuffType<MonstrousMaul>(), 180);
             }
-            if (NPC.AnyNPCs(ModContent.NPCType<MutantEX>()))
+            if (NPC.AnyNPCs(ModContent.NPCType<MutantEX>()) && WorldSavingSystem.MasochistModeReal)
             {
                 modifiers.FinalDamage *= 0;
 
                 int healthDrain = (int)(Player.statLifeMax2 * 0.1f);
-                Player.statLife = Player.statLife - healthDrain;
+                Player.statLifeMax2 = Player.statLifeMax2 - healthDrain;
             }
             if (NPC.AnyNPCs(ModContent.NPCType<MutantBoss>()))
             {

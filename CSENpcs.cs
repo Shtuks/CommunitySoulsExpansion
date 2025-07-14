@@ -19,7 +19,8 @@ namespace ssm
     {
         public override bool InstancePerEntity => true;
         public int genTimer = 0;
-        
+        public bool mayo;
+
         public int chtuxlagorInferno;
         public static int ECH = -1;
         public static int DukeEX = -1;
@@ -51,7 +52,7 @@ namespace ssm
             //mutant max hp - 70 mil
             //monstrosity max hp - 600 mil
 
-            if (npc.type == ModContent.NPCType<MutantBoss>())
+            if (npc.type == ModContent.NPCType<MutantBoss>() && !ModCompatibility.Inheritance.Loaded)
             {
                 //cal omly
                 if (ModCompatibility.Calamity.Loaded && !ModCompatibility.SacredTools.Loaded && !ModCompatibility.Thorium.Loaded)
@@ -105,21 +106,14 @@ namespace ssm
                 //npc.damage = Main.getGoodWorld ? 2000 : (int)(500 + ((ModCompatibility.Calamity.Loaded && CSEConfig.Instance.DebugMode ? 90 : 100) * (Math.Round(multiplierM, 1))));
                 //npc.lifeMax = (int)(10000000 + (10000000 * Math.Round(multiplierM, 1))) / (Main.expertMode ? 1 : 2);
             }
-            if (npc.type == ModContent.NPCType<Mutant>())
-            {
-                npc.lifeMax = (int)(10000000 + (10000000 * Math.Round(multiplierM, 1))) / (Main.expertMode ? 1 : 2) / 10;
-            }
 
-            if (npc.type == ModContent.NPCType<AbomBoss>())
+            if (npc.type == ModContent.NPCType<AbomBoss>() && !ModCompatibility.Inheritance.Loaded)
             {
                 npc.damage = Main.getGoodWorld ? 1000 : (int)(250 + (15 * multiplierA));
                 npc.lifeMax = (int)(1400000 + (1000000 * multiplierA)) / (Main.expertMode ? 2 : 4);
             }
-            if (npc.type == ModContent.NPCType<Abominationn>())
-            {
-                npc.lifeMax = (int)(2800000 + (1000000 * multiplierA)) / (Main.expertMode ? 2 : 4)/10;
-            }
         }
+
         public override void SetStaticDefaults()
         {
             NPCID.Sets.ImmuneToRegularBuffs[ModContent.NPCType<MutantBoss>()] = true;
@@ -172,6 +166,21 @@ namespace ssm
 
         public override void AI(NPC npc)
         {
+            if (!mayo)
+            {
+                if (npc.type == ModContent.NPCType<Mutant>())
+                {
+                    npc.lifeMax = (int)(10000000 + (10000000 * Math.Round(multiplierM, 1))) / (Main.expertMode ? 1 : 2) / 10;
+                    npc.life = npc.lifeMax;
+                }
+                if (npc.type == ModContent.NPCType<Abominationn>())
+                {
+                    npc.lifeMax = (int)(2800000 + (1000000 * multiplierA)) / (Main.expertMode ? 2 : 4) / 10;
+                    npc.life = npc.lifeMax;
+                }
+                mayo = true;
+            }
+
             if (npc.type == ModContent.NPCType<MutantBoss>() && Main.npc[EModeGlobalNPC.mutantBoss].ai[0] > 10)
             {
                 genTimer++;

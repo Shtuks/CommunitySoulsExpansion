@@ -16,6 +16,7 @@ namespace ssm.Systems
         {
             public static void AdjustValues()
             {
+                ModCompatibility.SoulsMod.Mod.BossChecklistValues["CosmosChampion"] = 21.2f;
                 ModCompatibility.SoulsMod.Mod.BossChecklistValues["MutantBoss"] = int.MaxValue - 1;
                 ModCompatibility.SoulsMod.Mod.BossChecklistValues["AbomBoss"] = 22.9f;
             }
