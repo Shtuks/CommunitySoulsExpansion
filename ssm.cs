@@ -27,6 +27,7 @@ using ssm.SpiritMod;
 using Fargowiltas.Items.CaughtNPCs;
 using System.Collections;
 using CalamityMod.ILEditing;
+using ssm.AlchemistNPC;
 
 namespace ssm
 {
