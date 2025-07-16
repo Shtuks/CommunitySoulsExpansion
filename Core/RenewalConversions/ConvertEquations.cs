@@ -1,8 +1,8 @@
 using Terraria;
 using Terraria.ModLoader;
 using System;
-using Fargowiltas.Projectiles;
-using ssm.Core.RenewalConversions;
+using System.Collections.Generic;
+using Microsoft.Xna.Framework;
 
 namespace ssm.Core.RenewalConversions
 {
@@ -31,49 +31,60 @@ namespace ssm.Core.RenewalConversions
             }
             else
             {
-                int centerX = Main.maxTilesX / 2;
-                int centerY = Main.maxTilesY / 2;
-                for (int x = 0; x < centerX; x++)
+                ModContent.GetInstance<DelayedWorldConversionSystem>().StartConversion(ConvertInto);
+            }
+        }
+    }
+    public class DelayedWorldConversionSystem : ModSystem
+    {
+        private Queue<Point> tilesToConvert = new();
+        private string currentConversion = null;
+        private int tilesPerTick = 2500; // Adjust to balance performance
+
+        public void StartConversion(string convertInto)
+        {
+            currentConversion = convertInto;
+            tilesToConvert.Clear();
+
+            int maxX = Main.maxTilesX;
+            int maxY = Main.maxTilesY;
+
+            // Queue all world tiles
+            for (int x = 0; x < maxX; x++)
+            {
+                for (int y = 0; y < maxY; y++)
                 {
-                    for (int y = 0; y < centerY; y++)
-                    {
-                        if (ConvertInto == "Purity")
-                            ssmConvertToPurity.ConvertAllToPurity(centerX, centerY);
-                        // else if (ConvertInto == "Flarium")
-                    }
+                    tilesToConvert.Enqueue(new Point(x, y));
+                }
+            }
+
+            Main.NewText("Started Supreme Conversion: " + convertInto, Color.Orange);
+        }
+
+        public override void PreUpdateWorld()
+        {
+            if (tilesToConvert.Count == 0 || string.IsNullOrEmpty(currentConversion))
+                return;
+
+            int count = 0;
+
+            while (tilesToConvert.Count > 0 && count < tilesPerTick)
+            {
+                Point p = tilesToConvert.Dequeue();
+                count++;
+
+                Tile tile = Main.tile[p.X, p.Y];
+                if (tile.HasTile)
+                {
+
+                    if (currentConversion == "Purity")
+                        ssmConvertToPurity.ConvertAllToPurity(p.X, p.Y);
                 }
 
-                // Top-right corner
-                for (int x = centerX; x < Main.maxTilesX; x++)
+                if (tilesToConvert.Count == 0)
                 {
-                    for (int y = 0; y < centerY; y++)
-                    {
-                        if (ConvertInto == "Purity")
-                            ssmConvertToPurity.ConvertAllToPurity(centerX, centerY);
-                        // else if (ConvertInto == "Flarium")
-                    }
-                }
-
-                // Bottom-left corner
-                for (int x = 0; x < centerX; x++)
-                {
-                    for (int y = centerY; y < Main.maxTilesY; y++)
-                    {
-                        if (ConvertInto == "Purity")
-                            ssmConvertToPurity.ConvertAllToPurity(centerX, centerY);
-                        // else if (ConvertInto == "Flarium")
-                    }
-                }
-
-                // Bottom-right corner
-                for (int x = centerX; x < Main.maxTilesX; x++)
-                {
-                    for (int y = centerY; y < Main.maxTilesY; y++)
-                    {
-                        if (ConvertInto == "Purity")
-                            ssmConvertToPurity.ConvertAllToPurity(centerX, centerY);
-                        // else if (ConvertInto == "Flarium")
-                    }
+                    Main.NewText("Supreme Conversion Complete!", Color.LimeGreen);
+                    currentConversion = null;
                 }
             }
         }
