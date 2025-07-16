@@ -27,6 +27,7 @@ using ssm.SpiritMod;
 using Fargowiltas.Items.CaughtNPCs;
 using System.Collections;
 using CalamityMod.ILEditing;
+using ssm.AlchemistNPC;
 
 namespace ssm
 {
@@ -208,7 +209,7 @@ namespace ssm
 
                     if (progressionField == null)
                     {
-                        throw new InvalidOperationException("Не найдено поле 'progression' в записях боссов");
+                        throw new InvalidOperationException("пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ 'progression' пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ");
                     }
                     isFirst = false;
                 }
@@ -307,6 +308,10 @@ namespace ssm
             if (ModLoader.TryGetMod("SpiritMod", out Mod spr))
             {
                 SpiritModCaughtNpcs.SpiritModRegisterItems();
+            }
+            if (ModLoader.TryGetMod("AlchemistNPC", out Mod alch))
+            {
+                AlchemistNPCCaughtNpcs.AlchemistNPCCaughtNpcsRegisterItems();
             }
             SkyManager.Instance["ssm:MutantEX"] = new MutantEXSky();
 
