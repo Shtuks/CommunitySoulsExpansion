@@ -115,12 +115,6 @@ namespace ssm.Content.NPCs.MutantEX
             NPC.timeLeft = NPC.activeTime * 30;
             NPC.BossBar = ModContent.GetInstance<MonstrosityBossBar>();
 
-            if (WorldSaveSystem.enragedMutantEX)
-            {
-                NPC.damage = int.MaxValue;
-                NPC.defense = int.MaxValue;
-            }
-
             Music = MusicLoader.GetMusicSlot(Mod, "Assets/Sounds/Music/Axion");
 
             SceneEffectPriority = SceneEffectPriority.BossHigh;
@@ -189,8 +183,8 @@ namespace ssm.Content.NPCs.MutantEX
             }
             else
             {
-                NPC.lifeMax = Main.zenithWorld ? int.MaxValue : (int.MaxValue/2);
-                NPC.damage = Main.zenithWorld ? int.MaxValue : 5000;
+                NPC.lifeMax = Main.zenithWorld ? int.MaxValue-1 : (int.MaxValue/2);
+                NPC.damage = Main.zenithWorld ? int.MaxValue-1 : 7000;
                 NPC.life = NPC.lifeMax;
             }
             AuraCenter = NPC.Center;

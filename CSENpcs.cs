@@ -105,10 +105,10 @@ namespace ssm
                 }
 
                 //funnies
-                if (ModCompatibility.Inheritance.Loaded)
+                if (ModCompatibility.Inheritance.Loaded && !Main.zenithWorld || !Main.getGoodWorld)
                 {
                     npc.damage = 3000;
-                    npc.lifeMax = 277000000;
+                    npc.lifeMax = 300000000;
                 }
 
                 //npc.damage = Main.getGoodWorld ? 2000 : (int)(500 + ((ModCompatibility.Calamity.Loaded && CSEConfig.Instance.DebugMode ? 90 : 100) * (Math.Round(multiplierM, 1))));
