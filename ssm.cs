@@ -117,69 +117,72 @@ namespace ssm
         }
         public static void ChangeBossProgressions(params (string name, float newProgression)[] changes)
         {
-            // get access to bossTracker
-            object bossTracker = ModCompatibility.BossChecklist.Mod.GetType()
-                .GetField("bossTracker", BindingFlags.NonPublic | BindingFlags.Static)
-                .GetValue(null);
-
-            // get entries list
-            FieldInfo sortedEntriesField = bossTracker.GetType()
-                .GetField("SortedEntries", BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance);
-            IList entries = (IList)sortedEntriesField.GetValue(bossTracker);
-
-            // prepare for reflection
-            PropertyInfo displayNameProperty = null;
-            FieldInfo progressionField = null;
-            var entriesToChange = new List<(object entry, float newProg)>();
-
-            // find all entries
-            foreach (object entry in entries)
+            if (ModLoader.TryGetMod("BossChecklist", out Mod bossChecklist))
             {
-                if (displayNameProperty == null)
+                // get access to bossTracker
+                object bossTracker = ModCompatibility.BossChecklist.Mod.GetType()
+                    .GetField("bossTracker", BindingFlags.NonPublic | BindingFlags.Static)
+                    .GetValue(null);
+
+                // get entries list
+                FieldInfo sortedEntriesField = bossTracker.GetType()
+                    .GetField("SortedEntries", BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance);
+                IList entries = (IList)sortedEntriesField.GetValue(bossTracker);
+
+                // prepare for reflection
+                PropertyInfo displayNameProperty = null;
+                FieldInfo progressionField = null;
+                var entriesToChange = new List<(object entry, float newProg)>();
+
+                // find all entries
+                foreach (object entry in entries)
                 {
-                    displayNameProperty = entry.GetType().GetProperty("DisplayName",
-                        BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
-
-                    progressionField = entry.GetType().GetField("progression",
-                        BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
-
-                    if (displayNameProperty == null || progressionField == null)
-                        throw new InvalidOperationException("Required fields was not found.");
-                }
-
-                string currentName = (string)displayNameProperty.GetValue(entry);
-                foreach (var change in changes)
-                {
-                    if (currentName == change.name)
+                    if (displayNameProperty == null)
                     {
-                        entriesToChange.Add((entry, change.newProgression));
-                        break;
+                        displayNameProperty = entry.GetType().GetProperty("DisplayName",
+                            BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
+
+                        progressionField = entry.GetType().GetField("progression",
+                            BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
+
+                        if (displayNameProperty == null || progressionField == null)
+                            throw new InvalidOperationException("Required fields was not found.");
+                    }
+
+                    string currentName = (string)displayNameProperty.GetValue(entry);
+                    foreach (var change in changes)
+                    {
+                        if (currentName == change.name)
+                        {
+                            entriesToChange.Add((entry, change.newProgression));
+                            break;
+                        }
                     }
                 }
+
+                // apply edits
+                foreach (var change in entriesToChange)
+                {
+                    progressionField.SetValue(change.entry, change.newProg);
+                }
+
+                // re-sort
+                List<object> sortedList = new List<object>();
+                foreach (object entry in entries)
+                    sortedList.Add(entry);
+
+                sortedList.Sort((x, y) =>
+                {
+                    float xProg = (float)progressionField.GetValue(x);
+                    float yProg = (float)progressionField.GetValue(y);
+                    return xProg.CompareTo(yProg);
+                });
+
+                // update original list
+                entries.Clear();
+                foreach (object entry in sortedList)
+                    entries.Add(entry);
             }
-
-            // apply edits
-            foreach (var change in entriesToChange)
-            {
-                progressionField.SetValue(change.entry, change.newProg);
-            }
-
-            // re-sort
-            List<object> sortedList = new List<object>();
-            foreach (object entry in entries)
-                sortedList.Add(entry);
-
-            sortedList.Sort((x, y) =>
-            {
-                float xProg = (float)progressionField.GetValue(x);
-                float yProg = (float)progressionField.GetValue(y);
-                return xProg.CompareTo(yProg);
-            });
-
-            // update original list
-            entries.Clear();
-            foreach (object entry in sortedList)
-                entries.Add(entry);
         }
 
         //basicaly same but for removing
