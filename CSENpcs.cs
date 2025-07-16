@@ -33,6 +33,11 @@ namespace ssm
         public bool SwarmActive;
         public bool SwarmHealth;
         private int go = 1;
+
+        private int dpsLimit;
+        private int dpsTimer;
+        private bool IsInDpsThreshold;
+        private float DpsDivisor => 1.02f + dpsLimit * 0.005f;
         public override void Load()
         {
             if (ModCompatibility.Homeward.Loaded && !ModCompatibility.Calamity.Loaded && !ModCompatibility.SacredTools.Loaded) { multiplierM += 0.8f; }
@@ -105,7 +110,7 @@ namespace ssm
                 }
 
                 //funnies
-                if (ModCompatibility.Inheritance.Loaded && !Main.zenithWorld || !Main.getGoodWorld)
+                if (ModCompatibility.Inheritance.Loaded && !Main.zenithWorld && !Main.getGoodWorld)
                 {
                     npc.damage = 3000;
                     npc.lifeMax = 300000000;
@@ -174,6 +179,7 @@ namespace ssm
 
         public override void AI(NPC npc)
         {
+            IsInDpsThreshold = dpsLimit > npc.lifeMax * 0.0052f;
             if (!mayo)
             {
                 if (npc.type == ModContent.NPCType<Mutant>())
@@ -193,6 +199,12 @@ namespace ssm
             {
                 genTimer++;
             }
+
+            if (dpsTimer++ >= 20)
+            {
+                dpsLimit = (int)(dpsLimit * 0.5f);
+                dpsTimer = 0;
+            }
             base.AI(npc);
         }
         public void ApplyDPSDebuff(int lifeRegenValue, int damageValue, ref int lifeRegen, ref int damage)
@@ -207,6 +219,25 @@ namespace ssm
             {
                 damage = damageValue;
             }
+        }
+
+        public override void ModifyHitByProjectile(NPC npc, Projectile projectile, ref NPC.HitModifiers modifiers)
+        {
+            if (npc.type == ModContent.NPCType<MutantBoss>())
+            {
+                if (IsInDpsThreshold)
+                {
+                    modifiers.FinalDamage = modifiers.FinalDamage / DpsDivisor;
+                }
+            }
+        }
+        public override void OnHitByItem(NPC npc, Player player, Item item, NPC.HitInfo hit, int damage)
+        {
+            dpsLimit += damage;
+        }
+        public override void OnHitByProjectile(NPC npc, Projectile projectile, NPC.HitInfo hit, int damage)
+        {
+            dpsLimit += damage;
         }
         public override bool PreAI(NPC npc)
         {

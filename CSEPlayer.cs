@@ -59,10 +59,13 @@ namespace ssm
         }
         public override void PostUpdateBuffs()
         {
-            if (FargoSoulsUtil.BossIsAlive(ref CSENpcs.mutantEX, ModContent.NPCType<MutantEX>()) && Main.player[Main.myPlayer].CSE().lumberjackSet && WorldSaveSystem.enragedMutantEX)
+            if (CSEConfig.Instance.AlternativeSiblings)
             {
-                Main.LocalPlayer.statDefense*=0;
-                Main.LocalPlayer.endurance*=0;
+                if (FargoSoulsUtil.BossIsAlive(ref CSENpcs.mutantEX, ModContent.NPCType<MutantEX>()) && Main.player[Main.myPlayer].CSE().lumberjackSet && WorldSaveSystem.enragedMutantEX)
+                {
+                    Main.LocalPlayer.statDefense *= 0;
+                    Main.LocalPlayer.endurance *= 0;
+                }
             }
 
             //Player.statLifeMax2 = (int)(Player.statLifeMax2 * (monstrosityHits / 10));

@@ -1697,8 +1697,7 @@ Mods: {
 					'''
 					'It pulses with energy'
 					Shortlived Divermen will occasionally spawn when hitting enemies
-					Critical strikes ring a bell over your head, slowing all nearby enemies briefly
-					Effects of Crietz, Band of Replenishment, and Fan Letter
+					Effects of Crietz and Band of Replenishment
 					'''
 			}
 
@@ -1708,8 +1707,7 @@ Mods: {
 					'''
 					'Not just for hunting fish'
 					Critical strikes release a splash of foam, slowing nearby enemies
-					After four consecutive non-critical strikes, your next attack will mini-crit for 150% damage
-					Effects of Thumb Ring and Angler's Bowl
+					Effects of Angler's Bowl
 					'''
 			}
 

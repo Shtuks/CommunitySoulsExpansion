@@ -42,6 +42,8 @@ using Terraria.Graphics.Effects;
 using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
+using ThoriumMod.Empowerments;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace ssm.Content.NPCs.MutantEX
 {
@@ -77,6 +79,11 @@ namespace ssm.Content.NPCs.MutantEX
 
         public static float multiplierL = 0;
         public static float multiplierD = 0;
+
+        private int dpsLimit;
+        private int dpsTimer;
+        private bool IsInDpsThreshold => dpsLimit > NPC.lifeMax * 0.0052f;
+        private float DpsDivisor => 1.02f + dpsLimit * 0.005f;
         public override void SetStaticDefaults()
         {
             Main.npcFrameCount[NPC.type] = 4;
@@ -202,6 +209,12 @@ namespace ssm.Content.NPCs.MutantEX
 
         public override void AI()
         {
+            if (dpsTimer++ >= 20)
+            {
+                dpsLimit = (int)(dpsLimit * 0.5f);
+                dpsTimer = 0;
+            }
+
             CSEUtils.DisplayLocalizedText("ai[0] = " + NPC.ai[0].ToString() + "  ai[1] = " +NPC.ai[1].ToString() + "  ai[2] = " + NPC.ai[2].ToString() + "  ai[3] = " + NPC.ai[3].ToString() + "  localai[0] = " + NPC.localAI[0].ToString() + "  localai[1] = " + NPC.localAI[1].ToString() + "  localai[2] = " + NPC.localAI[2].ToString() + "  localai[3] = " + NPC.localAI[3].ToString());
              
             CSENpcs.mutantEX = NPC.whoAmI;
@@ -3505,6 +3518,11 @@ namespace ssm.Content.NPCs.MutantEX
         {
             if (WorldSavingSystem.AngryMutant)
                 modifiers.FinalDamage *= 0.07f;
+
+            if (IsInDpsThreshold)
+            {
+                modifiers.FinalDamage = modifiers.FinalDamage / DpsDivisor;
+            }
         }
 
         public override bool CheckDead()
@@ -3625,7 +3643,15 @@ namespace ssm.Content.NPCs.MutantEX
             spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, Main.DefaultSamplerState, DepthStencilState.None, Main.Rasterizer, null, Main.GameViewMatrix.TransformationMatrix);
 
         }
-        
+
+        public override void OnHitByItem(Player player, Item item, NPC.HitInfo hit, int damage)
+        {
+            dpsLimit += damage;
+        }
+        public override void OnHitByProjectile(Projectile projectile, NPC.HitInfo hit, int damage)
+        {
+            dpsLimit += damage;
+        }
         public static void ArenaAura(Vector2 center, float distance, bool reverse = false, int dustid = -1, Color color = default, params int[] buffs)
         {
             Player p = Main.LocalPlayer;

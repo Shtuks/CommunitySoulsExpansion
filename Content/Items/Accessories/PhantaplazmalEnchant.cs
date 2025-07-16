@@ -26,6 +26,7 @@ using FargowiltasSouls.Content.Items.Accessories.Masomode;
 using FargowiltasSouls.Content.Items.Accessories.Enchantments;
 using FargowiltasSouls.Content.Items.Weapons.FinalUpgrades;
 using FargowiltasSouls.Content.Items.Weapons.SwarmDrops;
+using FargowiltasSouls.Content.Items.Weapons.Challengers;
 
 namespace ssm.Content.Items.Accessories
 {
@@ -35,7 +36,7 @@ namespace ssm.Content.Items.Accessories
         {
             return CSEConfig.Instance.EternityForce;
         }
-        private readonly Mod FargoSoul = Terraria.ModLoader.ModLoader.GetMod("FargowiltasSouls");
+        private readonly Mod FargoSoul = ModLoader.GetMod("FargowiltasSouls");
 
         public override void SetStaticDefaults() => ItemID.Sets.ItemNoGravity[Type] = true;
 
@@ -79,10 +80,10 @@ namespace ssm.Content.Items.Accessories
         public override void AddRecipes()
         {
             Recipe recipe = CreateRecipe(1);
-            recipe.AddIngredient(FargoSoul, "MutantMask", 1);
-            recipe.AddIngredient(FargoSoul, "MutantBody", 1);
-            recipe.AddIngredient(FargoSoul, "MutantPants", 1);
-            recipe.AddIngredient(FargoSoul, "MutantEye", 1);
+            recipe.AddIngredient<MutantMask>();
+            recipe.AddIngredient<MutantBody>();
+            recipe.AddIngredient<MutantPants>();
+            recipe.AddIngredient<MutantEye>();
             recipe.AddIngredient<PhantasmalLeashOfCthulhu>(1);
             recipe.AddIngredient<GuardianTome>(1);
             recipe.AddTile(ModContent.Find<ModTile>("Fargowiltas", "CrucibleCosmosSheet"));

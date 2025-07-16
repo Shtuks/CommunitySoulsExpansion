@@ -21,17 +21,20 @@ namespace ssm
             {
                 modifiers.SetMaxDamage(1000);
             }
-            if (Player.HasBuff<MutantDesperationBuff>() && NPC.AnyNPCs(ModContent.NPCType<MutantEX>()))
+            if (CSEConfig.Instance.AlternativeSiblings)
             {
-                Player.AddBuff(ModContent.BuffType<TimeFrozenBuff>(), 10);
-            }
-            if (NPC.AnyNPCs(ModContent.NPCType<MutantEX>()))
-            {
-                Player.AddBuff(ModContent.BuffType<MonstrousMaul>(), 180);
-            }
-            if (NPC.AnyNPCs(ModContent.NPCType<MutantEX>()) && WorldSavingSystem.MasochistModeReal)
-            {
-                Player.CSE().monstrosityHits++;
+                if (Player.HasBuff<MutantDesperationBuff>() && NPC.AnyNPCs(ModContent.NPCType<MutantEX>()))
+                {
+                    Player.AddBuff(ModContent.BuffType<TimeFrozenBuff>(), 10);
+                }
+                if (NPC.AnyNPCs(ModContent.NPCType<MutantEX>()))
+                {
+                    Player.AddBuff(ModContent.BuffType<MonstrousMaul>(), 180);
+                }
+                if (NPC.AnyNPCs(ModContent.NPCType<MutantEX>()) && WorldSavingSystem.MasochistModeReal)
+                {
+                    Player.CSE().monstrosityHits++;
+                }
             }
             if (NPC.AnyNPCs(ModContent.NPCType<MutantBoss>()))
             {
@@ -70,7 +73,7 @@ namespace ssm
 
             if (npc.type == ModContent.NPCType<MutantBoss>() && !ModCompatibility.Inheritance.Loaded)
             {
-                modifiers.SetMaxDamage(50000);
+                //modifiers.SetMaxDamage(50000);
             }
 
             if(NPC.AnyNPCs(ModContent.NPCType<MutantEX>()) || NPC.AnyNPCs(ModContent.NPCType<MutantBoss>()))
