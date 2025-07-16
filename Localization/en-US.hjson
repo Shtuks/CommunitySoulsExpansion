@@ -3379,6 +3379,8 @@ Mods: {
 
 		NPCs: {
 			Monstrosity: {
+				DisplayName: Monstrosity
+
 				TownNPCMood: {
 					Content: I am content.
 					NoHome: I hate not having a home.
@@ -3386,15 +3388,11 @@ Mods: {
 					LoveSpace: I love having so much space.
 					DislikeCrowded: I dislike how crowded I am.
 					HateCrowded: I hate how crowded I am.
+					LikeNPC: I like {NPCName}.
+					DislikeNPC: I dislike {NPCName}.
 					LikeNPC_Princess: I like {NPCName}.
 					Princess_LovesNPC: I like {NPCName}.
-					LikeNPC: I like {NPCName}.
-					DislikeNPC: I like {NPCName}.
 				}
-
-				DisplayName: Monstrosity
-				DisplayNameApril: Уёбище
-				Census.SpawnCondition: Spawns when Moon Lord is defeated.
 			}
 
 			DukeFishronEX: {
@@ -3442,23 +3440,6 @@ Mods: {
 					DislikeCrowded: I dislike how crowded I am.
 					HateCrowded: I hate how crowded I am.
 					LoveNPC: I love {NPCName}.
-					LikeNPC_Princess: I like {NPCName}.
-					Princess_LovesNPC: I like {NPCName}.
-				}
-			}
-
-			Monstrosityy: {
-				DisplayName: Monstrosityy
-
-				TownNPCMood: {
-					Content: I am content.
-					NoHome: I hate not having a home.
-					FarFromHome: I am too far from home.
-					LoveSpace: I love having so much space.
-					DislikeCrowded: I dislike how crowded I am.
-					HateCrowded: I hate how crowded I am.
-					LikeNPC: I like {NPCName}.
-					DislikeNPC: I dislike {NPCName}.
 					LikeNPC_Princess: I like {NPCName}.
 					Princess_LovesNPC: I like {NPCName}.
 				}

@@ -17,7 +17,7 @@ namespace ssm.Content.NPCs
         {
             return CSEConfig.Instance.AlternativeSiblings;
         }
-        public override string Texture => "ssm/Content/NPCs/Monstrosityy";
+        public override string Texture => "ssm/Content/NPCs/Monstrosity";
         private static int shopNum;
         private static bool showCycleShop;
 

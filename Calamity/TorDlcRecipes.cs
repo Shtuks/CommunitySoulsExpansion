@@ -11,6 +11,7 @@ using ThoriumMod.Items.BossThePrimordials.Aqua;
 using ThoriumMod.Items.BossThePrimordials.Omni;
 using ThoriumMod.Items.BossThePrimordials.Slag;
 using FargowiltasCrossmod.Content.Calamity.Items.Accessories.Souls;
+using ThoriumMod.Items.Terrarium;
 
 namespace ssm.Calamity
 {
@@ -28,6 +29,12 @@ namespace ssm.Calamity
                 {
                     recipe.AddIngredient<ShadowspecBar>(5);
                 }
+
+                if (recipe.HasResult<MiracleMatter>() && !recipe.HasIngredient<TerrariumCore>())
+                {
+                    recipe.AddIngredient<TerrariumCore>(5);
+                }
+
 
                 if ((recipe.HasResult<VagabondsSoul>()) && !recipe.HasIngredient<OceanEssence>())
                 {

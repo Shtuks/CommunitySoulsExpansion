@@ -31,10 +31,7 @@ namespace ssm
             }
             if (NPC.AnyNPCs(ModContent.NPCType<MutantEX>()) && WorldSavingSystem.MasochistModeReal)
             {
-                modifiers.FinalDamage *= 0;
-
-                int healthDrain = (int)(Player.statLifeMax2 * 0.1f);
-                Player.statLifeMax2 = Player.statLifeMax2 - healthDrain;
+                Player.CSE().monstrosityHits++;
             }
             if (NPC.AnyNPCs(ModContent.NPCType<MutantBoss>()))
             {
@@ -71,7 +68,7 @@ namespace ssm
                 npc.AddBuff(ModContent.BuffType<ChtuxlagorInferno>(), 180);
             }
 
-            if (npc.type == ModContent.NPCType<MutantBoss>())
+            if (npc.type == ModContent.NPCType<MutantBoss>() && !ModCompatibility.Inheritance.Loaded)
             {
                 modifiers.SetMaxDamage(50000);
             }

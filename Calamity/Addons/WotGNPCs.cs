@@ -33,7 +33,7 @@ namespace ssm.Calamity.Addons
                 EmptinessSprayer.NPCsThatReflectSpray[ModContent.NPCType<MonocleCat>()] = true;
 
                 EmptinessSprayer.NPCsThatReflectSpray[ModContent.NPCType<MutantEX>()] = true;
-                EmptinessSprayer.NPCsThatReflectSpray[ModContent.NPCType<Monstrosityy>()] = true;
+                EmptinessSprayer.NPCsThatReflectSpray[ModContent.NPCType<Monstrosity>()] = true;
                 //EmptinessSprayer.NPCsThatReflectSpray[ModContent.NPCType<AmalgamBoss>()] = true;
                 //EmptinessSprayer.NPCsThatReflectSpray[ModContent.NPCType<Amalgamtionn>()] = true;
                 //EmptinessSprayer.NPCsThatReflectSpray[ModContent.NPCType<DivergenttBoss>()] = true;

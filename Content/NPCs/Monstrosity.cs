@@ -9,20 +9,17 @@ using Terraria.GameContent.Personalities;
 using Fargowiltas.NPCs;
 using FargowiltasSouls;
 using ssm.Core;
-using NoxusBoss.Content.Items.MiscOPTools;
 
 namespace ssm.Content.NPCs
 {
     [AutoloadHead]
-    public class Monstrosityy : ModNPC
+    public class Monstrosity : ModNPC
     {
         public override bool IsLoadingEnabled(Mod mod)
         {
             return CSEConfig.Instance.AlternativeSiblings;
         }
 
-        private static int shopNum;
-        private static bool showCycleShop;
         public static List<string> Names = new() {
             "Neko",
             "Starlight",
@@ -69,8 +66,8 @@ namespace ssm.Content.NPCs
             NPC.height = 54;
             NPC.aiStyle = 7;
             NPC.damage = 500;
-            NPC.defense = int.MaxValue;
-            NPC.lifeMax = int.MaxValue;
+            NPC.defense = int.MaxValue/10;
+            NPC.lifeMax = int.MaxValue/10;
             NPC.HitSound = SoundID.NPCHit1;
             NPC.DeathSound = SoundID.NPCDeath1;
             NPC.knockBackResist = 0.5f;
@@ -145,32 +142,6 @@ namespace ssm.Content.NPCs
             }
 
             return Main.rand.Next(dialogue);
-        }
-        public override void SetChatButtons(ref string button, ref string button2)
-        {
-            button = Language.GetTextValue("LegacyInterface.28");
-            if (showCycleShop)
-            {
-                button += $" {shopNum + 1}";
-                button2 = "Cycle Shop";
-            }
-        }
-        public override void OnChatButtonClicked(bool firstButton, ref string shopName)
-        {
-            if (firstButton)
-            {
-                shopName = "Shop";
-            }
-            else
-            {
-                shopNum++;
-            }
-        }
-        public override void AddShops()
-        {
-            var npcShop = new NPCShop(Type, "Shop");
-
-            npcShop.Register();
         }
         public override bool CanGoToStatue(bool toKingStatue)
         {

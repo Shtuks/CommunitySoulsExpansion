@@ -44,6 +44,7 @@ namespace ssm
         public bool equippedNekomiEnchantment;
         public bool equippedMonstrosityEnchantment;
 
+        public float monstrosityHits;
         public void DiscordWhiteTheme(float duration, float sharpness)
         {
             blindDuration = duration;
@@ -63,6 +64,8 @@ namespace ssm
                 Main.LocalPlayer.statDefense*=0;
                 Main.LocalPlayer.endurance*=0;
             }
+
+            //Player.statLifeMax2 = (int)(Player.statLifeMax2 * (monstrosityHits / 10));
         }
 
         public override void PostUpdateEquips()
@@ -271,6 +274,7 @@ namespace ssm
         public override void UpdateDead()
         {
             blindTime = 0;
+            monstrosityHits = 0;
         }
         public override void ResetEffects()
         {

@@ -10,6 +10,7 @@ using CalamityMod.Items.Weapons.Magic;
 using CalamityMod.Items.Potions;
 using FargowiltasSouls.Content.Items.Accessories.Souls;
 using FargowiltasCrossmod.Content.Calamity.Items.Accessories.Souls;
+using CalamityMod.Items.SummonItems;
 
 namespace ssm.Calamity
 {
@@ -57,6 +58,10 @@ namespace ssm.Calamity
             {
                 entity.defense = 15;
             }
+            if (entity.type == ModContent.ItemType<DimensionSoul>())
+            {
+                entity.defense = 20;
+            }
         }
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
         {
@@ -85,6 +90,14 @@ namespace ssm.Calamity
             {
                 tooltips.Add(new TooltipLine(Mod, "rebalance", $"[c/FFFF00:CSE Balance:] Canceled DLC buff."));
                 tooltips.Add(new TooltipLine(Mod, "rebalance", $"[c/FF0000:CSE Balance:] Damage decreased by 20%."));
+            }
+
+            for (int i = tooltips.Count - 1; i >= 0; i--)
+            {
+                if (tooltips[i].Text.Contains("Support", System.StringComparison.OrdinalIgnoreCase) && item.type == ModContent.ItemType<Terminus>())
+                {
+                    tooltips.RemoveAt(i); 
+                }
             }
         }
 

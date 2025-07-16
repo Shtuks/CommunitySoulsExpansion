@@ -42,72 +42,80 @@ namespace ssm
             if (ModCompatibility.Thorium.Loaded) { multiplierM += 0.6f; multiplierA += 1f; }
             if (ModCompatibility.Calamity.Loaded) { multiplierM += CSEConfig.Instance.DebugMode ? 8.8f : 2.8f; multiplierA += 6f; }
             if (ModCompatibility.SacredTools.Loaded) { multiplierM += 1.6f; multiplierA += 2f; }
+            if (ModCompatibility.Inheritance.Loaded) { multiplierA = 21f; }
         }
         public override void SetDefaults(NPC npc)
         {
             //devi max hp - 40 k
-            //divergentt max hp - 600 k
-            //abom max hp - 12.8 mil
+            //divergentt max hp - 500 k
+            //abom max hp - 10.8 mil
             //amalgamationn max hp - 30 mil
-            //mutant max hp - 70 mil
-            //monstrosity max hp - 600 mil
+            //mutant max hp - 60 mil
+            //monstrosity max hp - 800 mil
 
-            if (npc.type == ModContent.NPCType<MutantBoss>() && !ModCompatibility.Inheritance.Loaded)
+            if (npc.type == ModContent.NPCType<MutantBoss>())
             {
                 //cal omly
-                if (ModCompatibility.Calamity.Loaded && !ModCompatibility.SacredTools.Loaded && !ModCompatibility.Thorium.Loaded)
+                if (ModCompatibility.Calamity.Loaded && !ModCompatibility.SacredTools.Loaded && !ModCompatibility.Thorium.Loaded && !ModCompatibility.Inheritance.Loaded)
                 {
                     npc.damage = 750;
-                    npc.lifeMax = 45000000;
+                    npc.lifeMax = 40000000;
                 }
 
                 //soa only
-                if (ModCompatibility.SacredTools.Loaded && !ModCompatibility.Calamity.Loaded && !ModCompatibility.Thorium.Loaded)
+                if (ModCompatibility.SacredTools.Loaded && !ModCompatibility.Calamity.Loaded && !ModCompatibility.Thorium.Loaded && !ModCompatibility.Inheritance.Loaded)
                 {
                     npc.damage = 700;
-                    npc.lifeMax = 35000000;
+                    npc.lifeMax = 32000000;
                 }
 
                 //thorium only
-                if (ModCompatibility.Thorium.Loaded && !ModCompatibility.SacredTools.Loaded && !ModCompatibility.Calamity.Loaded)
+                if (ModCompatibility.Thorium.Loaded && !ModCompatibility.SacredTools.Loaded && !ModCompatibility.Calamity.Loaded && !ModCompatibility.Inheritance.Loaded)
                 {
                     npc.damage = 600;
                     npc.lifeMax = 18000000;
                 }
 
                 //thorium and soa
-                if (ModCompatibility.Thorium.Loaded && ModCompatibility.SacredTools.Loaded && !ModCompatibility.Calamity.Loaded)
+                if (ModCompatibility.Thorium.Loaded && ModCompatibility.SacredTools.Loaded && !ModCompatibility.Calamity.Loaded && !ModCompatibility.Inheritance.Loaded)
                 {
                     npc.damage = 750;
-                    npc.lifeMax = 45000000;
+                    npc.lifeMax = 40000000;
                 }
 
                 //thorium and cal
-                if (ModCompatibility.Thorium.Loaded && ModCompatibility.Calamity.Loaded && !ModCompatibility.SacredTools.Loaded)
+                if (ModCompatibility.Thorium.Loaded && ModCompatibility.Calamity.Loaded && !ModCompatibility.SacredTools.Loaded && !ModCompatibility.Inheritance.Loaded)
                 {
                     npc.damage = 800;
-                    npc.lifeMax = 50000000;
+                    npc.lifeMax = 45000000;
                 }
 
                 //soa and cal
-                if (ModCompatibility.SacredTools.Loaded && ModCompatibility.Calamity.Loaded && !ModCompatibility.Thorium.Loaded)
+                if (ModCompatibility.SacredTools.Loaded && ModCompatibility.Calamity.Loaded && !ModCompatibility.Thorium.Loaded && !ModCompatibility.Inheritance.Loaded)
                 {
                     npc.damage = 900;
-                    npc.lifeMax = 60000000;
+                    npc.lifeMax = 50000000;
                 }
 
                 //all mods
-                if (ModCompatibility.Thorium.Loaded && ModCompatibility.Calamity.Loaded && ModCompatibility.SacredTools.Loaded)
+                if (ModCompatibility.Thorium.Loaded && ModCompatibility.Calamity.Loaded && ModCompatibility.SacredTools.Loaded && !ModCompatibility.Inheritance.Loaded)
                 {
                     npc.damage = 1000;
-                    npc.lifeMax = 70000000;
+                    npc.lifeMax = 60000000;
+                }
+
+                //funnies
+                if (ModCompatibility.Inheritance.Loaded)
+                {
+                    npc.damage = 3000;
+                    npc.lifeMax = 277000000;
                 }
 
                 //npc.damage = Main.getGoodWorld ? 2000 : (int)(500 + ((ModCompatibility.Calamity.Loaded && CSEConfig.Instance.DebugMode ? 90 : 100) * (Math.Round(multiplierM, 1))));
                 //npc.lifeMax = (int)(10000000 + (10000000 * Math.Round(multiplierM, 1))) / (Main.expertMode ? 1 : 2);
             }
 
-            if (npc.type == ModContent.NPCType<AbomBoss>() && !ModCompatibility.Inheritance.Loaded)
+            if (npc.type == ModContent.NPCType<AbomBoss>())
             {
                 npc.damage = Main.getGoodWorld ? 1000 : (int)(250 + (15 * multiplierA));
                 npc.lifeMax = (int)(1400000 + (1000000 * multiplierA)) / (Main.expertMode ? 2 : 4);
@@ -128,7 +136,7 @@ namespace ssm
         }
         public override void ModifyIncomingHit(NPC npc, ref NPC.HitModifiers modifiers)
         {
-            if (npc.type == ModContent.NPCType<MutantBoss>() && Main.npc[EModeGlobalNPC.mutantBoss].ai[0] > 10 && ModCompatibility.IEoR.Loaded)
+            if (npc.type == ModContent.NPCType<MutantBoss>() && Main.npc[EModeGlobalNPC.mutantBoss].ai[0] > 10 && (ModCompatibility.IEoR.Loaded || ModCompatibility.Inheritance.Loaded))
             {
                 float LRM = Utilities.Saturate((float)npc.life / (float)npc.lifeMax);
                 float maxTimeNormal = 12000; // 4 min

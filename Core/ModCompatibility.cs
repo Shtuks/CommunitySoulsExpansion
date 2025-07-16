@@ -19,7 +19,7 @@ public static class ModCompatibility
     }
     public static class Inheritance
     {
-        public const string Name = "Inheritance";
+        public const string Name = "CalamityInheritance";
         public static bool Loaded => ModLoader.HasMod(Name);
         public static Mod Mod => ModLoader.GetMod(Name);
     }
