@@ -23,6 +23,8 @@ All things mod doing for now:
 
 - SoA / Thorium / Redemption / Polarities / Spooky / Consolaria / Spirit enchantments, forces, souls
 
+- Various cross-mod recipes changes
+
 Redemption and SoA Enchantments will be completely reworked soon.
 
 Mods with hightest level of compatibility: Shadows of Abaddon, Thorium, Redemption

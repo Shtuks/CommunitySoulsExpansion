@@ -343,18 +343,21 @@ namespace ssm
                 PostSetupContentSoA.PostSetupContent_Thorium();
             }
 
-            var changes = new List<(string, float)>
+            if (ModCompatibility.BossChecklist.Loaded)
             {
-                ("ThePrimordials", 19.5f),
-                ("Nihilus", 26.99f),
-                ("Erazor", 25f),
-                ("Abaddon, the Source of the Affliction", 18.9f),
-                ("Araghur, the Flare Serpent", 19.9f),
-                ("The Lost Siblings", 21.1f)
-            };
+                var changes = new List<(string, float)>
+                {
+                    ("ThePrimordials", 19.5f),
+                    ("Nihilus", 26.99f),
+                    ("Erazor", 25f),
+                    ("Abaddon, the Source of the Affliction", 18.9f),
+                    ("Araghur, the Flare Serpent", 19.9f),
+                    ("The Lost Siblings", 21.1f)
+                };
 
-            ChangeBossProgressions(changes.ToArray());
-            RemoveFromChecklist(22.16f);
+                ChangeBossProgressions(changes.ToArray());
+                RemoveFromChecklist(22.16f);
+            }
             //ChangeBossProgressions(bclChanges.ToArray());
 
             //if (CSEConfig.Instance.DevItems)

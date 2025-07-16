@@ -72,6 +72,14 @@ namespace ssm
             {
                 modifiers.SetMaxDamage(50000);
             }
+
+            if(NPC.AnyNPCs(ModContent.NPCType<MutantEX>()) || NPC.AnyNPCs(ModContent.NPCType<MutantBoss>()))
+            {
+                if(npc.type != ModContent.NPCType<MutantEX>() && npc.type != ModContent.NPCType<MutantBoss>())
+                {
+                    modifiers.FinalDamage *= 10;
+                }
+            }
         }
         public override void ModifyHitByItem(NPC npc, Player player, Item item, ref NPC.HitModifiers modifiers)
         {
