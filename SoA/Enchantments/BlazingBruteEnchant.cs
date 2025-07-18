@@ -10,6 +10,7 @@ using SacredTools.Items.Weapons.Lunatic;
 using ssm.Core;
 using FargowiltasSouls;
 using ssm.Content.Buffs;
+using FargowiltasSouls.Core.Globals;
 
 namespace ssm.SoA.Enchantments
 {
@@ -52,7 +53,7 @@ namespace ssm.SoA.Enchantments
                 {
                     player.AddBuff(ModContent.BuffType<RivalBuff>(), 60);
                     rivalTimer++;
-                    player.GetDamage<GenericDamageClass>() += 0.1f * rivalKillCount;
+                    player.GetDamage<GenericDamageClass>() += FargoSoulsUtil.BossIsAlive(ref EModeGlobalNPC.fishBossEX, NPCID.DukeFishron) ? 0.05f : 0.1f * rivalKillCount;
                 }
 
                 if (rivalTimer >= 300)

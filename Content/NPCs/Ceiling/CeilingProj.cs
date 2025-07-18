@@ -53,7 +53,7 @@ namespace ssm.Content.NPCs.Ceiling
 
         public override bool PreDraw(ref Color lightColor)
         {
-            Texture2D texture2D13 = TextureAssets.Npc[Projectile.type].Value;
+            Texture2D texture2D13 = TextureAssets.Projectile[Projectile.type].Value;
             int num156 = TextureAssets.Npc[Projectile.type].Height();
             int y3 = num156 * Projectile.frame;
             Rectangle rectangle = new Rectangle(0, y3, texture2D13.Width, num156);

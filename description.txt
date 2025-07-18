@@ -25,6 +25,8 @@ All things mod doing for now:
 
 - Various cross-mod recipes changes
 
+- Return of Echdeath, Duke Fishron EX, Guntera and Ceiling of Moonlord
+
 Redemption and SoA Enchantments will be completely reworked soon.
 
 Mods with hightest level of compatibility: Shadows of Abaddon, Thorium, Redemption
