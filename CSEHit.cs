@@ -7,7 +7,6 @@ using ssm.Content.NPCs.MutantEX;
 using ssm.Content.Buffs;
 using ssm.Core;
 using FargowiltasSouls.Core.Systems;
-using FargowiltasSouls.Core.Globals;
 using Terraria.ID;
 
 namespace ssm
@@ -81,7 +80,7 @@ namespace ssm
 
             if(NPC.AnyNPCs(ModContent.NPCType<MutantEX>()) || NPC.AnyNPCs(ModContent.NPCType<MutantBoss>()))
             {
-                if(npc.type != ModContent.NPCType<MutantEX>() && npc.type != ModContent.NPCType<MutantBoss>())
+                if(npc.type != ModContent.NPCType<MutantEX>() && npc.type != ModContent.NPCType<MutantBoss>() && npc.type != NPCID.DukeFishron)
                 {
                     modifiers.FinalDamage *= 10;
                 }

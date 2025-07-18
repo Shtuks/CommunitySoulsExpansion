@@ -391,12 +391,6 @@ namespace ssm.Content.NPCs.MutantEX
             if (player.immune || player.hurtCooldowns[0] != 0 || player.hurtCooldowns[1] != 0)
                 playerInvulTriggered = true;
 
-            if (WorldSavingSystem.DownedAbom && !WorldSavingSystem.DownedMutant && FargoSoulsUtil.HostCheck && NPC.HasPlayerTarget && !droppedSummon)
-            {
-                Item.NewItem(NPC.GetSource_Loot(), player.Hitbox, ModContent.ItemType<MutantsCurse>());
-                droppedSummon = true;
-            }
-
             if (Main.getGoodWorld && ++hyper > HyperMax + 1)
             {
                 hyper = 0;

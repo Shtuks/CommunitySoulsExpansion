@@ -39,7 +39,7 @@ namespace ssm.Content.Items.Consumables
             recipe.AddIngredient(ItemID.TruffleWorm, 10);
             recipe.AddIngredient(ItemID.ShrimpyTruffle);
             recipe.AddIngredient<AbomEnergy>(5);
-            recipe.AddIngredient<EternalEnergy>(5);
+            //recipe.AddIngredient<EternalEnergy>(5);
             recipe.AddIngredient<DeviatingEnergy>(5);
             recipe.AddIngredient<Eridanium>(5);
             recipe.AddTile(ModContent.TileType<CrucibleCosmosSheet>());

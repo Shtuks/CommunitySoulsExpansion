@@ -60,7 +60,7 @@ namespace ssm.SoA.Enchantments
                     vulcanTime = 0;
                 }
 
-                player.GetModPlayer<MiscEffectsPlayer>().bossDamage *= 1f + (vulcanStacks * 0.05f);
+                player.GetModPlayer<MiscEffectsPlayer>().bossDamage += vulcanStacks * 0.05f;
             }
 
             public override void OnHitNPCEither(Player player, NPC target, NPC.HitInfo hitInfo, DamageClass damageClass, int baseDamage, Projectile projectile, Item item)

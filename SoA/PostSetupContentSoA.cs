@@ -19,7 +19,6 @@ using SacredTools.Items.Weapons.Luxite;
 using SacredTools.Items.Weapons.Marstech;
 using SacredTools.Items.Weapons.Oblivion;
 using SacredTools.Items.Weapons.Pigman;
-using SacredTools.Content.NPCs.Town;
 using SacredTools.Items.Weapons.Primordia;
 using SacredTools.Items.Weapons.Special;
 using SacredTools.Items.Weapons.Venomite;
@@ -34,7 +33,7 @@ namespace ssm.SoA
         {
             int bossdmgItem = ItemType<RageSuppressor>();
             int accuracyItem = ItemType<CasterArcanum>();
-            Func<string> bardDamage = () => $"Boss Damage: {Main.LocalPlayer.GetModPlayer<MiscEffectsPlayer>().bossDamage}%";
+            Func<string> bardDamage = () => $"Boss Damage: {Main.LocalPlayer.GetModPlayer<MiscEffectsPlayer>().bossDamage.Multiplicative}%";
             Func<string> bardCrit = () => $"Accuracy: {Main.LocalPlayer.GetModPlayer<ModdedPlayer>().accuracy}";
             ModCompatibility.MutantMod.Mod.Call("AddStat", bossdmgItem, bardDamage);
             ModCompatibility.MutantMod.Mod.Call("AddStat", accuracyItem, bardCrit);

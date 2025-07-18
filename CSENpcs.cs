@@ -13,11 +13,13 @@ using Fargowiltas.NPCs;
 using ssm.Content.NPCs.MutantEX;
 using FargowiltasSouls.Content.Bosses.DeviBoss;
 using Terraria.DataStructures;
-using ssm.Content.Buffs;
 using FargowiltasSouls.Core.ItemDropRules.Conditions;
 using FargowiltasSouls;
 using Terraria.GameContent.ItemDropRules;
 using ssm.Content.Items.Accessories;
+using ssm.Content.Buffs;
+using Microsoft.Xna.Framework.Graphics;
+using Terraria.GameContent;
 
 namespace ssm
 {
@@ -44,7 +46,7 @@ namespace ssm
         private bool IsInDpsThreshold;
 
         public bool dukeEX;
-        private float DpsDivisor => 1.02f + dpsLimit * 0.005f;
+        private float DpsDivisor => 1.02f + dpsLimit * 0.0085f;
         public override void Load()
         {
             if (ModCompatibility.Homeward.Loaded && !ModCompatibility.Calamity.Loaded && !ModCompatibility.SacredTools.Loaded) { multiplierM += 0.8f; }
@@ -54,22 +56,22 @@ namespace ssm
             if (ModCompatibility.Thorium.Loaded) { multiplierM += 0.6f; multiplierA += 1f; }
             if (ModCompatibility.Calamity.Loaded) { multiplierM += CSEConfig.Instance.DebugMode ? 8.8f : 2.8f; multiplierA += 6f; }
             if (ModCompatibility.SacredTools.Loaded) { multiplierM += 1.6f; multiplierA += 2f; }
-            if (ModCompatibility.Inheritance.Loaded) { multiplierA = 21f; }
+            //if (ModCompatibility.Inheritance.Loaded) { multiplierA = 21f; }
         }
 
+        public override void OnHitNPC(NPC npc, NPC target, NPC.HitInfo hit)
+        {
+            if (npc.type == NPCID.DukeFishron && (EModeGlobalNPC.spawnFishronEX || dukeEX))
+            {
+                target.AddBuff(ModContent.BuffType<MonstrousMaul>(), 180);
+            }
+        }
         public override void OnSpawn(NPC npc, IEntitySource source)
         {
-            if (npc.type == NPCID.DukeFishron && WorldSavingSystem.DownedMutant && EModeGlobalNPC.spawnFishronEX)
+            if (npc.type == NPCID.DukeFishron && EModeGlobalNPC.spawnFishronEX)
             {
                 dukeEX = true;
                 EModeGlobalNPC.spawnFishronEX = false;
-            }
-        }
-        public override void OnHitPlayer(NPC npc, Player player, Player.HurtInfo hurtInfo)
-        {
-            if (npc.type == NPCID.DukeFishron && WorldSavingSystem.DownedMutant && dukeEX)
-            {
-                player.AddBuff(ModContent.BuffType<MonstrousMaul>(), 180);
             }
         }
         public override void SetDefaults(NPC npc)
@@ -134,14 +136,55 @@ namespace ssm
                 }
 
                 //funnies
-                if (ModCompatibility.Inheritance.Loaded && !Main.zenithWorld && !Main.getGoodWorld)
-                {
-                    npc.damage = 3000;
-                    npc.lifeMax = 300000000;
-                }
+                //if (ModCompatibility.Inheritance.Loaded && !Main.zenithWorld && !Main.getGoodWorld)
+                //{
+                //    npc.damage = 3000;
+                //    npc.lifeMax = 300000000;
+                //}
 
                 //npc.damage = Main.getGoodWorld ? 2000 : (int)(500 + ((ModCompatibility.Calamity.Loaded && CSEConfig.Instance.DebugMode ? 90 : 100) * (Math.Round(multiplierM, 1))));
                 //npc.lifeMax = (int)(10000000 + (10000000 * Math.Round(multiplierM, 1))) / (Main.expertMode ? 1 : 2);
+            }
+
+            if (npc.type == NPCID.DukeFishron && (EModeGlobalNPC.spawnFishronEX || dukeEX))
+            {
+                npc.defense = 400;
+                npc.defDefense = 400;
+                npc.damage = 500;
+                npc.defDamage = 500;
+
+                if (ModCompatibility.Calamity.Loaded && !ModCompatibility.SacredTools.Loaded && !ModCompatibility.Thorium.Loaded)
+                {
+                    npc.lifeMax = 20000000;
+                }
+                else if (ModCompatibility.SacredTools.Loaded && !ModCompatibility.Calamity.Loaded && !ModCompatibility.Thorium.Loaded)
+                {
+                    npc.lifeMax = 16000000;
+                }
+                else if (ModCompatibility.Thorium.Loaded && !ModCompatibility.SacredTools.Loaded && !ModCompatibility.Calamity.Loaded)
+                {
+                    npc.lifeMax = 9000000;
+                }
+                else if (ModCompatibility.Thorium.Loaded && ModCompatibility.SacredTools.Loaded && !ModCompatibility.Calamity.Loaded)
+                {
+                    npc.lifeMax = 20000000;
+                }
+                else if (ModCompatibility.Thorium.Loaded && ModCompatibility.Calamity.Loaded && !ModCompatibility.SacredTools.Loaded)
+                {
+                    npc.lifeMax = 22500000;
+                }
+                else if (ModCompatibility.SacredTools.Loaded && ModCompatibility.Calamity.Loaded && !ModCompatibility.Thorium.Loaded)
+                {
+                    npc.lifeMax = 25000000;
+                }
+                else if (ModCompatibility.Thorium.Loaded && ModCompatibility.Calamity.Loaded && ModCompatibility.SacredTools.Loaded)
+                {
+                    npc.lifeMax = 30000000;
+                }
+                else if(!ModCompatibility.Calamity.Loaded && !ModCompatibility.SacredTools.Loaded && !ModCompatibility.Thorium.Loaded)
+                {
+                    npc.lifeMax = 5000000;
+                }
             }
 
             if (npc.type == ModContent.NPCType<AbomBoss>())
@@ -156,6 +199,11 @@ namespace ssm
             NPCID.Sets.ImmuneToRegularBuffs[ModContent.NPCType<MutantEX>()] = true;
             NPCID.Sets.ImmuneToRegularBuffs[ModContent.NPCType<DeviBoss>()] = true;
             NPCID.Sets.ImmuneToRegularBuffs[ModContent.NPCType<AbomBoss>()] = true;
+
+            if (EModeGlobalNPC.spawnFishronEX || dukeEX)
+            {
+                NPCID.Sets.ImmuneToRegularBuffs[NPCID.DukeFishron] = true;
+            }
         }
         public override void UpdateLifeRegen(NPC npc, ref int damage)
         {
@@ -194,7 +242,7 @@ namespace ssm
             LeadingConditionRule emodeRule = new(new EModeDropCondition());
             npcLoot.Add(emodeRule);
 
-            if (npc.type == NPCID.DukeFishron && WorldSavingSystem.DownedFishronEX)
+            if (npc.type == NPCID.DukeFishron && WorldSavingSystem.DownedAbom)
             {
                 emodeRule.OnSuccess(FargoSoulsUtil.BossBagDropCustom(ModContent.ItemType<CyclonicFin>(), 1));
             }
@@ -215,12 +263,45 @@ namespace ssm
         {
             if (mayo == 20)
             {
-                if (npc.type == NPCID.DukeFishron && WorldSavingSystem.DownedMutant && (EModeGlobalNPC.spawnFishronEX || dukeEX))
+                if (npc.type == NPCID.DukeFishron && (EModeGlobalNPC.spawnFishronEX || dukeEX))
                 {
-                    npc.defense = 0;
-                    npc.defDefense = 0;
+                    npc.defense = 400;
+                    npc.defDefense = 400;
                     npc.damage = 500;
                     npc.defDamage = 500;
+
+                    if (ModCompatibility.Calamity.Loaded && !ModCompatibility.SacredTools.Loaded && !ModCompatibility.Thorium.Loaded)
+                    {
+                        npc.lifeMax = 25000000;
+                    }
+                    else if (ModCompatibility.SacredTools.Loaded && !ModCompatibility.Calamity.Loaded && !ModCompatibility.Thorium.Loaded)
+                    {
+                        npc.lifeMax = 20000000;
+                    }
+                    else if (ModCompatibility.Thorium.Loaded && !ModCompatibility.SacredTools.Loaded && !ModCompatibility.Calamity.Loaded)
+                    {
+                        npc.lifeMax = 15000000;
+                    }
+                    else if (ModCompatibility.Thorium.Loaded && ModCompatibility.SacredTools.Loaded && !ModCompatibility.Calamity.Loaded)
+                    {
+                        npc.lifeMax = 25000000;
+                    }
+                    else if (ModCompatibility.Thorium.Loaded && ModCompatibility.Calamity.Loaded && !ModCompatibility.SacredTools.Loaded)
+                    {
+                        npc.lifeMax = 25000000;
+                    }
+                    else if (ModCompatibility.SacredTools.Loaded && ModCompatibility.Calamity.Loaded && !ModCompatibility.Thorium.Loaded)
+                    {
+                        npc.lifeMax = 35000000;
+                    }
+                    else if (ModCompatibility.Thorium.Loaded && ModCompatibility.Calamity.Loaded && ModCompatibility.SacredTools.Loaded)
+                    {
+                        npc.lifeMax = 40000000;
+                    }
+                    else if (!ModCompatibility.Calamity.Loaded && !ModCompatibility.SacredTools.Loaded && !ModCompatibility.Thorium.Loaded)
+                    {
+                        npc.lifeMax = 7000000;
+                    }
                 }
                 if (npc.type == ModContent.NPCType<Mutant>())
                 {
@@ -232,7 +313,7 @@ namespace ssm
                     npc.lifeMax = (int)(2800000 + (1000000 * multiplierA)) / (Main.expertMode ? 2 : 4) / 10;
                     npc.life = npc.lifeMax;
                 }
-                if (npc.type == NPCID.DukeFishron && WorldSavingSystem.DownedMutant && (EModeGlobalNPC.spawnFishronEX || dukeEX))
+                if (npc.type == NPCID.DukeFishron && (EModeGlobalNPC.spawnFishronEX || dukeEX))
                 {
                     npc.life = npc.lifeMax;
                 }
@@ -245,11 +326,6 @@ namespace ssm
             {
                 genTimer++;
             }
-
-            //if (npc.type == NPCID.DukeFishron && WorldSavingSystem.DownedMutant && dukeEX)
-            //{
-            //    npc.velocity *= 1.5f;
-            //}
 
             if (dpsTimer++ >= 20)
             {
@@ -280,10 +356,6 @@ namespace ssm
                 {
                     modifiers.FinalDamage = modifiers.FinalDamage / DpsDivisor;
                 }
-            }
-            if (npc.type == NPCID.DukeFishron && WorldSavingSystem.DownedMutant && (EModeGlobalNPC.spawnFishronEX || dukeEX))
-            {
-                modifiers.FinalDamage *= 5;
             }
         }
         public override void OnHitByItem(NPC npc, Player player, Item item, NPC.HitInfo hit, int damage)
@@ -335,6 +407,38 @@ namespace ssm
             }
 
             return true;
+        }
+
+        public override bool PreDraw(NPC npc, SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
+        {
+            if (npc.type == NPCID.DukeFishron && (EModeGlobalNPC.spawnFishronEX || dukeEX))
+            {
+                Texture2D texture = TextureAssets.Npc[npc.type].Value;
+                Rectangle frame = npc.frame;
+                Vector2 origin = frame.Size() * 0.5f;
+                Vector2 position = npc.Center - Main.screenPosition + new Vector2(0f, npc.gfxOffY);
+
+                Color outlineColor = Color.Teal;
+
+                float outlineOffset = 2f;
+
+                for (int i = 0; i < 8; i++)
+                {
+                    Vector2 offset = Vector2.UnitX.RotatedBy(MathHelper.PiOver4 * i) * outlineOffset;
+                    Main.spriteBatch.Draw(
+                        texture,
+                        position + offset,
+                        frame,
+                        outlineColor,
+                        npc.rotation,
+                        origin,
+                        npc.scale,
+                        npc.spriteDirection == 1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally,
+                        0f
+                    );
+                }
+            }
+            return base.PreDraw(npc, spriteBatch, screenPos, drawColor);
         }
     }
 }

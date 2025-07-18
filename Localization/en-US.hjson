@@ -3291,6 +3291,11 @@ Mods: {
 				DisplayName: Truffle Worm EX
 				Tooltip: ""
 			}
+
+			BossWatcher: {
+				DisplayName: Boss Watcher
+				Tooltip: ""
+			}
 		}
 
 		Buffs: {
