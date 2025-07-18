@@ -35,6 +35,8 @@ using Terraria.Chat;
 using Terraria.ID;
 using FargowiltasSouls.Core.Systems;
 using ssm.Content.Items.Accessories;
+using ssm.Content.NPCs.Guntera;
+using ssm.Content.NPCs.Ceiling;
 
 namespace ssm
 {
@@ -275,9 +277,35 @@ namespace ssm
         {
             if (ModLoader.TryGetMod("BossChecklist", out Mod bossChecklist))
             {
+
+                AddBCL("Boss",
+                    "CeilingOfMoonlord",
+                    20,
+                    new List<int> { ModContent.NPCType<CeilingOfMoonLord>() },
+                    () => WorldSavingSystem.DownedFishronEX,
+                    () => true,
+                    new List<int> {
+                        ModContent.ItemType<CyclonicFin>(),
+                    },
+                    new List<int> { /*ModContent.ItemType<TruffleWormEX>()*/ },
+                    true
+                );
+                AddBCL("Boss",
+                    "Guntera",
+                    40,
+                    new List<int> { ModContent.NPCType<Guntera>() },
+                    () => WorldSavingSystem.DownedFishronEX,
+                    () => true,
+                    new List<int> {
+                        ModContent.ItemType<CyclonicFin>(),
+                    },
+                    new List<int> { /*ModContent.ItemType<TruffleWormEX>()*/ },
+                    true
+                );
+
                 AddBCL("Boss",
                     "DukeFishronEX",
-                    float.MaxValue,
+                    80,
                     new List<int> { NPCID.DukeFishron },
                     () => WorldSavingSystem.DownedFishronEX,
                     () => true,

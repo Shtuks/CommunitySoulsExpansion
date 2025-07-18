@@ -3383,6 +3383,16 @@ Mods: {
 				DisplayName: The Rich Buff
 				Description: Mods.ssm.Buffs.TheRichBuff.Description
 			}
+
+			Moonified: {
+				DisplayName: Moonified
+				Description: Mods.ssm.Buffs.Moonified.Description
+			}
+
+			Gun: {
+				DisplayName: Gun
+				Description: Mods.ssm.Buffs.Gun.Description
+			}
 		}
 
 		NPCs: {
@@ -3452,6 +3462,19 @@ Mods: {
 					Princess_LovesNPC: I like {NPCName}.
 				}
 			}
+
+			CeilingOfMoonLord.DisplayName: Ceiling Of Moon Lord
+			CeilingOfMoonLordEye.DisplayName: Ceiling Of Moon Lord Eye
+			CeilingOfMoonLordFace.DisplayName: Ceiling Of Moon Lord Face
+			GunCelebration.DisplayName: Gun Celebration
+			GunMagnum.DisplayName: Gun Magnum
+			GunQuad.DisplayName: Gun Quad
+			GunShotgun.DisplayName: Gun Shotgun
+			GunSniper.DisplayName: Gun Sniper
+			Guntera.DisplayName: Guntera
+			GunteraHook.DisplayName: Guntera Hook
+			GunteraTentacle.DisplayName: Guntera Tentacle
+			GunUzi.DisplayName: Gun Uzi
 		}
 
 		Toggler: {
@@ -3767,6 +3790,10 @@ Mods: {
 			CatlightCat.DisplayName: Catlight Cat
 			CatlightDeathray.DisplayName: Catlight Deathray
 			TwigProj.DisplayName: Twig Proj
+			CeilingDeathray.DisplayName: Ceiling Deathray
+			CeilingProj.DisplayName: Ceiling Proj
+			CeilingSphere.DisplayName: Ceiling Sphere
+			GunteraBullet.DisplayName: Guntera Bullet
 		}
 
 		Bestiary: {

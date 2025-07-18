@@ -155,35 +155,35 @@ namespace ssm
 
                 if (ModCompatibility.Calamity.Loaded && !ModCompatibility.SacredTools.Loaded && !ModCompatibility.Thorium.Loaded)
                 {
-                    npc.lifeMax = 20000000;
+                    npc.lifeMax = 25000000;
                 }
                 else if (ModCompatibility.SacredTools.Loaded && !ModCompatibility.Calamity.Loaded && !ModCompatibility.Thorium.Loaded)
                 {
-                    npc.lifeMax = 16000000;
+                    npc.lifeMax = 20000000;
                 }
                 else if (ModCompatibility.Thorium.Loaded && !ModCompatibility.SacredTools.Loaded && !ModCompatibility.Calamity.Loaded)
                 {
-                    npc.lifeMax = 9000000;
+                    npc.lifeMax = 15000000;
                 }
                 else if (ModCompatibility.Thorium.Loaded && ModCompatibility.SacredTools.Loaded && !ModCompatibility.Calamity.Loaded)
                 {
-                    npc.lifeMax = 20000000;
+                    npc.lifeMax = 25000000;
                 }
                 else if (ModCompatibility.Thorium.Loaded && ModCompatibility.Calamity.Loaded && !ModCompatibility.SacredTools.Loaded)
                 {
-                    npc.lifeMax = 22500000;
+                    npc.lifeMax = 25000000;
                 }
                 else if (ModCompatibility.SacredTools.Loaded && ModCompatibility.Calamity.Loaded && !ModCompatibility.Thorium.Loaded)
                 {
-                    npc.lifeMax = 25000000;
+                    npc.lifeMax = 35000000;
                 }
                 else if (ModCompatibility.Thorium.Loaded && ModCompatibility.Calamity.Loaded && ModCompatibility.SacredTools.Loaded)
                 {
-                    npc.lifeMax = 30000000;
+                    npc.lifeMax = 40000000;
                 }
-                else if(!ModCompatibility.Calamity.Loaded && !ModCompatibility.SacredTools.Loaded && !ModCompatibility.Thorium.Loaded)
+                else if (!ModCompatibility.Calamity.Loaded && !ModCompatibility.SacredTools.Loaded && !ModCompatibility.Thorium.Loaded)
                 {
-                    npc.lifeMax = 5000000;
+                    npc.lifeMax = 7000000;
                 }
             }
 
