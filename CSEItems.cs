@@ -44,15 +44,15 @@ namespace ssm
                 }
                 if (entity.type == ModContent.ItemType<MutantBody>())
                 {
-                    entity.defense = 90;
+                    entity.defense = 100;
                 }
                 if (entity.type == ModContent.ItemType<MutantMask>())
                 {
-                    entity.defense = 60;
+                    entity.defense = 70;
                 }
                 if (entity.type == ModContent.ItemType<MutantPants>())
                 {
-                    entity.defense = 60;
+                    entity.defense = 70;
                 }
             }
             if (entity.type == ModContent.ItemType<GuardianTome>())
@@ -108,45 +108,50 @@ namespace ssm
             {
                 if (!ModCompatibility.Calamity.Loaded && !ModCompatibility.SacredTools.Loaded)
                 {
-                    ModContent.Find<ModItem>(this.Mod.Name, "StalkerSoul").UpdateAccessory(player, hideVisual);
+                    ModContent.Find<ModItem>(Mod.Name, "StalkerSoul").UpdateAccessory(player, hideVisual);
                 }
             }
             if (ModCompatibility.Thorium.Loaded && (Item.type == ModContent.ItemType<UniverseSoul>() || Item.type == ModContent.ItemType<EternitySoul>() || Item.type == ModContent.ItemType<StargateSoul>()))
             {
-                ModContent.Find<ModItem>(this.Mod.Name, "BardSoul").UpdateAccessory(player, hideVisual);
-                ModContent.Find<ModItem>(this.Mod.Name, "GuardianAngelsSoul").UpdateAccessory(player, hideVisual);
+                ModContent.Find<ModItem>(Mod.Name, "BardSoul").UpdateAccessory(player, hideVisual);
+                ModContent.Find<ModItem>(Mod.Name, "GuardianAngelsSoul").UpdateAccessory(player, hideVisual);
             }
             if (ModCompatibility.BeekeeperClass.Loaded && (Item.type == ModContent.ItemType<UniverseSoul>() || Item.type == ModContent.ItemType<EternitySoul>() || Item.type == ModContent.ItemType<StargateSoul>()))
             {
-                ModContent.Find<ModItem>(this.Mod.Name, "BeekeeperSoul").UpdateAccessory(player, hideVisual);
+                ModContent.Find<ModItem>(Mod.Name, "BeekeeperSoul").UpdateAccessory(player, hideVisual);
             }
 
             //SoE
             if (ModCompatibility.SacredTools.Loaded && (Item.type == ModContent.ItemType<EternitySoul>() || Item.type == ModContent.ItemType<StargateSoul>()))
             {
-                ModContent.Find<ModItem>(this.Mod.Name, "SoASoul").UpdateAccessory(player, hideVisual);
+                ModContent.Find<ModItem>(Mod.Name, "SoASoul").UpdateAccessory(player, hideVisual);
             }
             if (ModCompatibility.Crossmod.Loaded && ModCompatibility.Calamity.Loaded && (Item.type == ModContent.ItemType<EternitySoul>() || Item.type == ModContent.ItemType<StargateSoul>()))
             {
-                ModContent.Find<ModItem>(this.Mod.Name, "CalamitySoul").UpdateAccessory(player, hideVisual);
+                ModContent.Find<ModItem>(Mod.Name, "CalamitySoul").UpdateAccessory(player, hideVisual);
             }
             if (ModCompatibility.Thorium.Loaded && (Item.type == ModContent.ItemType<EternitySoul>() || Item.type == ModContent.ItemType<StargateSoul>()))
             {
-                ModContent.Find<ModItem>(this.Mod.Name, "ThoriumSoul").UpdateAccessory(player, hideVisual);
+                ModContent.Find<ModItem>(Mod.Name, "ThoriumSoul").UpdateAccessory(player, hideVisual);
             }
             if (ModCompatibility.Polarities.Loaded && (Item.type == ModContent.ItemType<EternitySoul>() || Item.type == ModContent.ItemType<StargateSoul>()))
             {
-                ModContent.Find<ModItem>(this.Mod.Name, "WildernessForce").UpdateAccessory(player, hideVisual);
-                ModContent.Find<ModItem>(this.Mod.Name, "SpacetimeForce").UpdateAccessory(player, hideVisual);
+                ModContent.Find<ModItem>(Mod.Name, "WildernessForce").UpdateAccessory(player, hideVisual);
+                ModContent.Find<ModItem>(Mod.Name, "SpacetimeForce").UpdateAccessory(player, hideVisual);
             }
             if (ModCompatibility.Spooky.Loaded && (Item.type == ModContent.ItemType<EternitySoul>() || Item.type == ModContent.ItemType<StargateSoul>()))
             {
-                ModContent.Find<ModItem>(this.Mod.Name, "TerrorForce").UpdateAccessory(player, hideVisual);
-                ModContent.Find<ModItem>(this.Mod.Name, "HorrorForce").UpdateAccessory(player, hideVisual);
+                ModContent.Find<ModItem>(Mod.Name, "TerrorForce").UpdateAccessory(player, hideVisual);
+                ModContent.Find<ModItem>(Mod.Name, "HorrorForce").UpdateAccessory(player, hideVisual);
             }
             if (ModCompatibility.Redemption.Loaded && (Item.type == ModContent.ItemType<EternitySoul>() || Item.type == ModContent.ItemType<StargateSoul>()))
             {
-                ModContent.Find<ModItem>(this.Mod.Name, "AdvancementForce").UpdateAccessory(player, hideVisual);
+                ModContent.Find<ModItem>(Mod.Name, "AdvancementForce").UpdateAccessory(player, hideVisual);
+            }
+            if (Item.type == ModContent.ItemType<EternitySoul>() && !CSEConfig.Instance.AlternativeSiblings)
+            {
+                ModContent.Find<ModItem>(Mod.Name, "CyclonicFin").UpdateAccessory(player, hideVisual);
+                ModContent.Find<ModItem>(Mod.Name, "EternityForce").UpdateAccessory(player, hideVisual);
             }
         }
         public override void ModifyWeaponDamage(Item item, Player player, ref StatModifier damage)
@@ -234,7 +239,7 @@ namespace ssm
                 {
                     tooltips.Add(new TooltipLine(Mod, "caleffect", $"[c/00A36C:CSE Set Bonus:] Increased stealth by 200"));
                 }
-                if (item.type == ModContent.ItemType<StyxChestplate>() || item.type == ModContent.ItemType<StyxCrown>() || item.type == ModContent.ItemType<StyxLeggings>())
+                if (item.type == ModContent.ItemType<MutantBody>() || item.type == ModContent.ItemType<MutantMask>() || item.type == ModContent.ItemType<MutantPants>())
                 {
                     tooltips.Add(new TooltipLine(Mod, "caleffect", $"[c/00A36C:CSE Set Bonus:] Increased stealth by 500"));
                 }
@@ -257,18 +262,16 @@ namespace ssm
             {
                 if (Item.type == ModContent.ItemType<StyxCrown>())
                 {
-                    Item.defense = 35;
+                    player.GetCritChance(DamageClass.Generic) += 10f;
                     player.GetDamage(DamageClass.Generic) += 10 / 100f;
                     player.maxMinions += 5;
                 }
                 if (Item.type == ModContent.ItemType<StyxChestplate>())
                 {
-                    Item.defense = 45;
                     player.GetDamage(DamageClass.Generic) += 10 / 100f;
                 }
                 if (Item.type == ModContent.ItemType<StyxLeggings>())
                 {
-                    Item.defense = 40;
                     player.GetDamage(DamageClass.Generic) += 10 / 100f;
                 }
             }

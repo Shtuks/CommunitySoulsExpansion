@@ -19,6 +19,10 @@ using CalamityMod.CalPlayer;
 using ThoriumMod.Utilities;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria.GameContent;
+using Terraria.DataStructures;
+using FargowiltasSouls.Core.Systems;
+using Terraria.Chat;
+using ssm.Content.Items.Consumables;
 
 namespace ssm
 {
@@ -32,6 +36,7 @@ namespace ssm
         public bool MonstrosityPresence;
         public bool lumberjackSet;
         public bool starlightFruit;
+        public bool eternalMonolith;
 
         public int Screenshake;
         private float blindTime;
@@ -71,6 +76,47 @@ namespace ssm
             //Player.statLifeMax2 = (int)(Player.statLifeMax2 * (monstrosityHits / 10));
         }
 
+        public override void CatchFish(FishingAttempt attempt, ref int itemDrop, ref int npcSpawn, ref AdvancedPopupRequest sonar, ref Vector2 sonarPosition)
+        {
+            if (attempt.playerFishingConditions.BaitItemType == ModContent.ItemType<TruffleWormEX>())
+            {
+                itemDrop = 0;
+                bool spawned = false;
+                for (int i = 0; i < 1000; i++)
+                {
+                    if (Main.projectile[i].active && Main.projectile[i].bobber
+                        && Main.projectile[i].owner == Player.whoAmI && Player.whoAmI == Main.myPlayer)
+                    {
+                        Main.projectile[i].ai[0] = 2f;
+                        Main.projectile[i].netUpdate = true;
+
+                        if (!spawned && Main.projectile[i].wet && WorldSavingSystem.EternityMode && !NPC.AnyNPCs(NPCID.DukeFishron)) 
+                        {
+                            spawned = true;
+                            if (Main.netMode == NetmodeID.SinglePlayer) 
+                            {
+                                EModeGlobalNPC.spawnFishronEX = true;
+                                NPC.NewNPC(Main.projectile[i].GetSource_FromThis(),(int)Main.projectile[i].Center.X, (int)Main.projectile[i].Center.Y + 100,NPCID.DukeFishron, 0, 0f, 0f, 0f, 0f, Player.whoAmI);
+                                Main.NewText("Duke Fishron EX has awoken!", 50, 100, 255);
+                            }
+                            else if (Main.netMode == NetmodeID.MultiplayerClient)
+                            {
+                                var netMessage = Mod.GetPacket();
+                                netMessage.Write((byte)ssm.PacketID.SpawnFishronEX);
+                                netMessage.Write((byte)Player.whoAmI);
+                                netMessage.Write((int)Main.projectile[i].Center.X);
+                                netMessage.Write((int)Main.projectile[i].Center.Y + 100);
+                                netMessage.Send();
+                            }
+                            else if (Main.netMode == NetmodeID.Server)
+                            {
+                                ChatHelper.BroadcastChatMessage(NetworkText.FromLiteral("???????"), Color.White);
+                            }
+                        }
+                    }
+                }
+            }
+        }
         public override void PostUpdateEquips()
         {
             if (Player.FargoSouls().MutantSetBonusItem != null)
@@ -292,6 +338,7 @@ namespace ssm
             throwerVelocity = 1f;
             CyclonicFin = false;
             lumberjackSet = false;
+            eternalMonolith = false;
         }
     }
 }

@@ -7,6 +7,8 @@ using ssm.Content.NPCs.MutantEX;
 using ssm.Content.Buffs;
 using ssm.Core;
 using FargowiltasSouls.Core.Systems;
+using FargowiltasSouls.Core.Globals;
+using Terraria.ID;
 
 namespace ssm
 {
@@ -56,7 +58,8 @@ namespace ssm
 
         public override void ModifyHitByProjectile(NPC npc, Projectile projectile, ref NPC.HitModifiers modifiers)
         {
-            if(npc.type != ModContent.NPCType<MutantEX>() && Main.player[projectile.owner].CSE().lumberjackSet)
+
+            if (npc.type != ModContent.NPCType<MutantEX>() && Main.player[projectile.owner].CSE().lumberjackSet)
             {
                 npc.dontTakeDamage = false;
                 npc.dontTakeDamageFromHostiles = false;

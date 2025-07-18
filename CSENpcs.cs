@@ -12,6 +12,12 @@ using FargowiltasSouls.Core.Systems;
 using Fargowiltas.NPCs;
 using ssm.Content.NPCs.MutantEX;
 using FargowiltasSouls.Content.Bosses.DeviBoss;
+using Terraria.DataStructures;
+using ssm.Content.Buffs;
+using FargowiltasSouls.Core.ItemDropRules.Conditions;
+using FargowiltasSouls;
+using Terraria.GameContent.ItemDropRules;
+using ssm.Content.Items.Accessories;
 
 namespace ssm
 {
@@ -19,11 +25,10 @@ namespace ssm
     {
         public override bool InstancePerEntity => true;
         public int genTimer = 0;
-        public bool mayo;
+        public int mayo;
 
         public int chtuxlagorInferno;
         public static int ECH = -1;
-        public static int DukeEX = -1;
         public static int boss = -1;
         public static int mutantEX = -1;
 
@@ -37,6 +42,8 @@ namespace ssm
         private int dpsLimit;
         private int dpsTimer;
         private bool IsInDpsThreshold;
+
+        public bool dukeEX;
         private float DpsDivisor => 1.02f + dpsLimit * 0.005f;
         public override void Load()
         {
@@ -49,12 +56,29 @@ namespace ssm
             if (ModCompatibility.SacredTools.Loaded) { multiplierM += 1.6f; multiplierA += 2f; }
             if (ModCompatibility.Inheritance.Loaded) { multiplierA = 21f; }
         }
+
+        public override void OnSpawn(NPC npc, IEntitySource source)
+        {
+            if (npc.type == NPCID.DukeFishron && WorldSavingSystem.DownedMutant && EModeGlobalNPC.spawnFishronEX)
+            {
+                dukeEX = true;
+                EModeGlobalNPC.spawnFishronEX = false;
+            }
+        }
+        public override void OnHitPlayer(NPC npc, Player player, Player.HurtInfo hurtInfo)
+        {
+            if (npc.type == NPCID.DukeFishron && WorldSavingSystem.DownedMutant && dukeEX)
+            {
+                player.AddBuff(ModContent.BuffType<MonstrousMaul>(), 180);
+            }
+        }
         public override void SetDefaults(NPC npc)
         {
             //devi max hp - 40 k
             //divergentt max hp - 500 k
             //abom max hp - 10.8 mil
-            //amalgamationn max hp - 30 mil
+            //amalgamationn max hp - 20 mil
+            //duke ex - 30 mil
             //mutant max hp - 60 mil
             //monstrosity max hp - 800 mil
 
@@ -126,7 +150,6 @@ namespace ssm
                 npc.lifeMax = (int)(1400000 + (1000000 * multiplierA)) / (Main.expertMode ? 2 : 4);
             }
         }
-
         public override void SetStaticDefaults()
         {
             NPCID.Sets.ImmuneToRegularBuffs[ModContent.NPCType<MutantBoss>()] = true;
@@ -165,6 +188,17 @@ namespace ssm
                 }
             }
         }
+
+        public override void ModifyNPCLoot(NPC npc, NPCLoot npcLoot)
+        {
+            LeadingConditionRule emodeRule = new(new EModeDropCondition());
+            npcLoot.Add(emodeRule);
+
+            if (npc.type == NPCID.DukeFishron && WorldSavingSystem.DownedFishronEX)
+            {
+                emodeRule.OnSuccess(FargoSoulsUtil.BossBagDropCustom(ModContent.ItemType<CyclonicFin>(), 1));
+            }
+        }
         public override void PostAI(NPC npc)
         {
             if (chtuxlagorInferno > 0)
@@ -179,9 +213,15 @@ namespace ssm
 
         public override void AI(NPC npc)
         {
-            IsInDpsThreshold = dpsLimit > npc.lifeMax * 0.0052f;
-            if (!mayo)
+            if (mayo == 20)
             {
+                if (npc.type == NPCID.DukeFishron && WorldSavingSystem.DownedMutant && (EModeGlobalNPC.spawnFishronEX || dukeEX))
+                {
+                    npc.defense = 0;
+                    npc.defDefense = 0;
+                    npc.damage = 500;
+                    npc.defDamage = 500;
+                }
                 if (npc.type == ModContent.NPCType<Mutant>())
                 {
                     npc.lifeMax = (int)(10000000 + (10000000 * Math.Round(multiplierM, 1))) / (Main.expertMode ? 1 : 2) / 10;
@@ -192,13 +232,24 @@ namespace ssm
                     npc.lifeMax = (int)(2800000 + (1000000 * multiplierA)) / (Main.expertMode ? 2 : 4) / 10;
                     npc.life = npc.lifeMax;
                 }
-                mayo = true;
+                if (npc.type == NPCID.DukeFishron && WorldSavingSystem.DownedMutant && (EModeGlobalNPC.spawnFishronEX || dukeEX))
+                {
+                    npc.life = npc.lifeMax;
+                }
             }
+            mayo++;
+
+            IsInDpsThreshold = dpsLimit > npc.lifeMax * 0.002f;
 
             if (npc.type == ModContent.NPCType<MutantBoss>() && Main.npc[EModeGlobalNPC.mutantBoss].ai[0] > 10)
             {
                 genTimer++;
             }
+
+            //if (npc.type == NPCID.DukeFishron && WorldSavingSystem.DownedMutant && dukeEX)
+            //{
+            //    npc.velocity *= 1.5f;
+            //}
 
             if (dpsTimer++ >= 20)
             {
@@ -230,6 +281,10 @@ namespace ssm
                     modifiers.FinalDamage = modifiers.FinalDamage / DpsDivisor;
                 }
             }
+            if (npc.type == NPCID.DukeFishron && WorldSavingSystem.DownedMutant && (EModeGlobalNPC.spawnFishronEX || dukeEX))
+            {
+                modifiers.FinalDamage *= 5;
+            }
         }
         public override void OnHitByItem(NPC npc, Player player, Item item, NPC.HitInfo hit, int damage)
         {
@@ -239,6 +294,7 @@ namespace ssm
         {
             dpsLimit += damage;
         }
+
         public override bool PreAI(NPC npc)
         {
             if (ssm.SwarmNoHyperActive)

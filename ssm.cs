@@ -26,8 +26,15 @@ using ssm.gunrightsmod;
 using ssm.SpiritMod;
 using Fargowiltas.Items.CaughtNPCs;
 using System.Collections;
-using CalamityMod.ILEditing;
 using ssm.AlchemistNPC;
+using ssm.Content.SoulToggles;
+using System.IO;
+using NoxusBoss.Core.Netcode.Packets;
+using FargowiltasSouls.Core.Globals;
+using Terraria.Chat;
+using Terraria.ID;
+using FargowiltasSouls.Core.Systems;
+using ssm.Content.Items.Accessories;
 
 namespace ssm
 {
@@ -71,6 +78,33 @@ namespace ssm
             Dictionary<int, int> list = (Dictionary<int, int>)info.GetValue(info);
             list.Add(id, item.Type);
             info.SetValue(info, list);
+        }
+        public enum PacketID : byte
+        {
+            SpawnFishronEX
+        }
+        public override void HandlePacket(BinaryReader reader, int whoAmI)
+        {
+            byte data = reader.ReadByte();
+            if (Enum.IsDefined(typeof(PacketID), data))
+            {
+                switch ((PacketID)data)
+                {
+                    case PacketID.SpawnFishronEX:
+                        if (Main.netMode == NetmodeID.Server)
+                        {
+                            byte target = reader.ReadByte();
+                            int x = reader.ReadInt32();
+                            int y = reader.ReadInt32();
+                            EModeGlobalNPC.spawnFishronEX = true;
+                            NPC.NewNPC(NPC.GetBossSpawnSource(target), x, y, NPCID.DukeFishron, 0, 0f, 0f, 0f, 0f, target);
+                            ChatHelper.BroadcastChatMessage(NetworkText.FromKey("Announcement.HasAwoken", Language.GetTextValue("Mods.FargowiltasSouls.NPCs.DukeFishronEX.DisplayName")), new Color(50, 100, 255));
+                        }
+                        break;
+                    default:
+                        break;
+                }
+            }
         }
         public static int SwarmMinDamage
         {
@@ -241,18 +275,18 @@ namespace ssm
         {
             if (ModLoader.TryGetMod("BossChecklist", out Mod bossChecklist))
             {
-                //Add("Boss",
-                //    "DukeFishronEX",
-                //    int.MaxValue,
-                //    new List<int> { ModContent.NPCType<DukeFishronEX>() },
-                //    () => WorldSaveSystem.downedMutantEX,
-                //    () => true,
-                //    new List<int> {
-                //        ModContent.ItemType<Sadism>(),
-                //    },
-                //    new List<int> { ModContent.ItemType<MutantsForgeItem>() },
-                //    true
-                //);
+                AddBCL("Boss",
+                    "DukeFishronEX",
+                    float.MaxValue,
+                    new List<int> { NPCID.DukeFishron },
+                    () => WorldSavingSystem.DownedFishronEX,
+                    () => true,
+                    new List<int> {
+                        ModContent.ItemType<CyclonicFin>(),
+                    },
+                    new List<int> { ModContent.ItemType<TruffleWormEX>() },
+                    true
+                );
 
                 if (CSEConfig.Instance.AlternativeSiblings) {
                     AddBCL("Boss",
@@ -317,7 +351,7 @@ namespace ssm
                 AlchemistNPCCaughtNpcs.AlchemistNPCCaughtNpcsRegisterItems();
             }
             SkyManager.Instance["ssm:MutantEX"] = new MutantEXSky();
-
+            SkyManager.Instance["ssm:MutantMonolith"] = new MutantSkyMonolith();
         }
         public override void Unload()
         {
@@ -355,6 +389,7 @@ namespace ssm
             {
                 var changes = new List<(string, float)>
                 {
+                    ("Nebuleus", 26f),
                     ("ThePrimordials", 19.5f),
                     ("Nihilus", 26.99f),
                     ("Erazor", 25f),

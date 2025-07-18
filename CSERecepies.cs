@@ -10,8 +10,7 @@ using FargowiltasSouls.Content.Items.Weapons.FinalUpgrades;
 using FargowiltasSouls;
 using Fargowiltas.Items.Tiles;
 using ssm.CrossMod.CraftingStations;
-using Terraria.ID;
-using Redemption.Items.Materials.PostML;
+using ssm.Content.Items.Accessories;
 
 namespace ssm
 {
@@ -60,6 +59,12 @@ namespace ssm
                         recipe.RemoveIngredient(ModContent.ItemType<AbomEnergy>());
                     }
                 }
+                if (recipe.HasResult(ModContent.ItemType<EternitySoul>()) && !recipe.HasIngredient<EternityForce>() && !CSEConfig.Instance.AlternativeSiblings)
+                {
+                    recipe.AddIngredient<CyclonicFin>(1);
+                    recipe.AddIngredient<EternityForce>(1);
+                }
+
                 //trawler soul post abom is so stupid
                 if (recipe.HasResult(ModContent.ItemType<TrawlerSoul>()) && recipe.HasIngredient(ModContent.ItemType<AbomEnergy>()))
                 {

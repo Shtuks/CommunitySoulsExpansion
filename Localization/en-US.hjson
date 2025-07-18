@@ -3286,6 +3286,11 @@ Mods: {
 				DisplayName: Pucheblade
 				Tooltip: ""
 			}
+
+			TruffleWormEX: {
+				DisplayName: Truffle Worm EX
+				Tooltip: ""
+			}
 		}
 
 		Buffs: {

@@ -66,13 +66,13 @@ namespace ssm.Redemption
 
                 if (npc.type == ModContent.NPCType<Akka>())
                 {
-                    npc.lifeMax = num ? 5000000 : ModCompatibility.Calamity.Loaded ? 1600000 : 540000;
+                    npc.lifeMax = num ? 5000000 : ModCompatibility.Calamity.Loaded ? 1200000 : 540000;
                     npc.damage = 420;
                 }
 
                 if (npc.type == ModContent.NPCType<Ukko>())
                 {
-                    npc.lifeMax = num ? 6000000 : ModCompatibility.Calamity.Loaded ? 1800000 : 640000;
+                    npc.lifeMax = num ? 6000000 : ModCompatibility.Calamity.Loaded ? 1400000 : 640000;
                     npc.damage = 470;
                 }
 
@@ -90,19 +90,19 @@ namespace ssm.Redemption
 
                 if (npc.type == ModContent.NPCType<Calavia>())
                 {
-                    npc.lifeMax = ModCompatibility.Calamity.Loaded ? 14000 : 9000;
+                    npc.lifeMax = ModCompatibility.Calamity.Loaded ? 9000 : 6000;
                     npc.damage = 100;
                 }
 
                 if (npc.type == ModContent.NPCType<Thorn>())
                 {
-                    npc.lifeMax = 4000;
+                    npc.lifeMax = 3500;
                     npc.damage = 60;
                 }
 
                 if (npc.type == ModContent.NPCType<Erhan>())
                 {
-                    npc.lifeMax = 5600;
+                    npc.lifeMax = 4600;
                     npc.damage = 65;
                 }
 
@@ -120,25 +120,19 @@ namespace ssm.Redemption
 
                 if (npc.type == ModContent.NPCType<SoI>())
                 {
-                    npc.lifeMax = ModCompatibility.Calamity.Loaded ? 10000 : 8000;
-                    npc.damage = 90;
-                }
-
-                if (npc.type == ModContent.NPCType<SoI>())
-                {
-                    npc.lifeMax = ModCompatibility.Calamity.Loaded ? 10000 : 8000;
+                    npc.lifeMax = ModCompatibility.Calamity.Loaded ? 9000 : 6000;
                     npc.damage = 90;
                 }
 
                 if (npc.type == ModContent.NPCType<KS3>())
                 {
-                    npc.lifeMax = ModCompatibility.Calamity.Loaded ? 99000 : 60000;
+                    npc.lifeMax = ModCompatibility.Calamity.Loaded ? 77000 : 50000;
                     npc.damage = 190;
                 }
 
                 if (npc.type == ModContent.NPCType<OmegaCleaver>())
                 {
-                    npc.lifeMax = ModCompatibility.Calamity.Loaded ? 120000 : 90000;
+                    npc.lifeMax = ModCompatibility.Calamity.Loaded ? 100000 : 70000;
                     npc.damage = 220;
                 }
 
@@ -150,7 +144,7 @@ namespace ssm.Redemption
 
                 if (npc.type == ModContent.NPCType<OO>())
                 {
-                    npc.lifeMax = ModCompatibility.Calamity.Loaded ? 670000 : 340000;
+                    npc.lifeMax = (ModCompatibility.Calamity.Loaded ? 670000 : 340000);
                     npc.damage = 320;
                 }
             }

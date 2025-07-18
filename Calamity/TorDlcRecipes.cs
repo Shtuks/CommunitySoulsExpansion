@@ -35,7 +35,6 @@ namespace ssm.Calamity
                     recipe.AddIngredient<TerrariumCore>(5);
                 }
 
-
                 if ((recipe.HasResult<VagabondsSoul>()) && !recipe.HasIngredient<OceanEssence>())
                 {
                     recipe.AddIngredient<OceanEssence>(5);

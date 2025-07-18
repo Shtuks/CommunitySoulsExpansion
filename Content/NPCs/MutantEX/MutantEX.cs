@@ -104,7 +104,7 @@ namespace ssm.Content.NPCs.MutantEX
 
         public override void SetDefaults()
         {
-            NPC.lifeMax = 100000000;
+            NPC.lifeMax = 400000000;
             NPC.damage = 1000;
 
             NPC.width = 140;
@@ -175,25 +175,18 @@ namespace ssm.Content.NPCs.MutantEX
                         NetMessage.SendData(MessageID.SyncNPC, -1, -1, null, n);
                 }
             }
-            if (!ModCompatibility.Inheritance.Loaded)
-            {
-                multiplierD = 0;
-                multiplierL = 0;
 
-                if (ModCompatibility.Thorium.Loaded) { multiplierD += 0.5f; multiplierL += 1f; }
-                if (ModCompatibility.Calamity.Loaded) { multiplierD += 1f; multiplierL += 3f; }
-                if (ModCompatibility.SacredTools.Loaded) { multiplierD += 0.7f; multiplierL += 2f; }
+            multiplierD = 0;
+            multiplierL = 0;
 
-                NPC.lifeMax = Main.zenithWorld ? int.MaxValue : 200000000 + (int)(100000000 * multiplierL);
-                NPC.damage = Main.zenithWorld ? int.MaxValue : 1000 + (int)(1000 * multiplierD);
-                NPC.life = NPC.lifeMax;
-            }
-            else
-            {
-                NPC.lifeMax = Main.zenithWorld ? int.MaxValue-1 : (int.MaxValue/2);
-                NPC.damage = Main.zenithWorld ? int.MaxValue-1 : 7000;
-                NPC.life = NPC.lifeMax;
-            }
+            if (ModCompatibility.Thorium.Loaded) { multiplierD += 0.5f; multiplierL += 0.5f; }
+            if (ModCompatibility.Calamity.Loaded) { multiplierD += 1f; multiplierL += 1f; }
+            if (ModCompatibility.SacredTools.Loaded) { multiplierD += 0.7f; multiplierL += 0.8f; }
+
+            NPC.lifeMax = Main.zenithWorld ? int.MaxValue : 400000000 + (int)(100000000 * multiplierL);
+            NPC.damage = Main.zenithWorld ? int.MaxValue : 1000 + (int)(1000 * multiplierD);
+            NPC.life = NPC.lifeMax;
+            
             AuraCenter = NPC.Center;
         }
 

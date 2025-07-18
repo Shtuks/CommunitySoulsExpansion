@@ -62,14 +62,14 @@ namespace ssm.Calamity
                             //recipe.AddIngredient<MiracleMatter>(5);
                         }
                     }
-                    if (CSEConfig.Instance.DevItems)
+                }
+                if (CSEConfig.Instance.DevItems)
+                {
+                    if (recipe.HasResult<Catlight>() && !recipe.HasIngredient<ShadowspecBar>())
                     {
-                        if (recipe.HasResult<Catlight>() && !recipe.HasIngredient<ShadowspecBar>())
-                        {
-                            recipe.RemoveIngredient(ModContent.ItemType<AbomEnergy>());
-                            recipe.AddIngredient<Rock>(1);
-                            recipe.AddIngredient<ShadowspecBar>(5);
-                        }
+                        recipe.RemoveIngredient(ModContent.ItemType<AbomEnergy>());
+                        recipe.AddIngredient<Rock>(1);
+                        recipe.AddIngredient<ShadowspecBar>(5);
                     }
                 }
 
