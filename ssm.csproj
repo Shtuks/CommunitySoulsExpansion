@@ -13,6 +13,9 @@
     	</AssemblyAttribute>
 	</ItemGroup>
 	<ItemGroup>
+	  <Reference Include="AlchemistNPCLite">
+	    <HintPath>..\..\ModReader\AlchemistNPCLite\AlchemistNPCLite.dll</HintPath>
+	  </Reference>
 	  <Reference Include="BombusApisBee">
 	    <HintPath>lib\BombusApisBee.dll</HintPath>
 	  </Reference>

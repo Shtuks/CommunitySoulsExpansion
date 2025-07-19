@@ -20,6 +20,8 @@ using ssm.Content.Items.Accessories;
 using ssm.Content.Buffs;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria.GameContent;
+using ssm.Content.Items.Materials;
+using FargowiltasSouls.Content.Items.Materials;
 
 namespace ssm
 {
@@ -46,7 +48,7 @@ namespace ssm
         private bool IsInDpsThreshold;
 
         public bool dukeEX;
-        private float DpsDivisor => 1.02f + dpsLimit * 0.0085f;
+        private float DpsDivisor => 1.02f + dpsLimit * 0.01f;
         public override void Load()
         {
             if (ModCompatibility.Homeward.Loaded && !ModCompatibility.Calamity.Loaded && !ModCompatibility.SacredTools.Loaded) { multiplierM += 0.8f; }
@@ -59,6 +61,28 @@ namespace ssm
             //if (ModCompatibility.Inheritance.Loaded) { multiplierA = 21f; }
         }
 
+        public override bool CheckDead(NPC npc)
+        {
+            if (!(npc.ai[0] <= 9))
+            {
+                if (EModeGlobalNPC.fishBossEX == npc.whoAmI)
+                {
+                    npc.DropItemInstanced(npc.position, npc.Size, ModContent.ItemType<CyclonicFin>());
+                    int maxEX = Main.rand.Next(5) + 10;
+                    for (int i = 0; i < maxEX; i++)
+                        npc.DropItemInstanced(npc.position, npc.Size, ModContent.ItemType<EternalScale>());
+                    int maxAbom = Main.rand.Next(50) + 100;
+                    for (int i = 0; i < maxAbom; i++)
+                        npc.DropItemInstanced(npc.position, npc.Size, ModContent.ItemType<AbomEnergy>());
+                    int maxDevi = Main.rand.Next(100) + 200;
+                    for (int i = 0; i < maxDevi; i++)
+                        npc.DropItemInstanced(npc.position, npc.Size, ModContent.ItemType<DeviatingEnergy>());
+
+                    return false;
+                }
+            }
+            return base.CheckDead(npc);
+        }
         public override void OnHitNPC(NPC npc, NPC target, NPC.HitInfo hit)
         {
             if (npc.type == NPCID.DukeFishron && (EModeGlobalNPC.spawnFishronEX || dukeEX))
@@ -155,35 +179,35 @@ namespace ssm
 
                 if (ModCompatibility.Calamity.Loaded && !ModCompatibility.SacredTools.Loaded && !ModCompatibility.Thorium.Loaded)
                 {
-                    npc.lifeMax = 25000000;
+                    npc.lifeMax = 20000000;
                 }
                 else if (ModCompatibility.SacredTools.Loaded && !ModCompatibility.Calamity.Loaded && !ModCompatibility.Thorium.Loaded)
                 {
-                    npc.lifeMax = 20000000;
+                    npc.lifeMax = 16000000;
                 }
                 else if (ModCompatibility.Thorium.Loaded && !ModCompatibility.SacredTools.Loaded && !ModCompatibility.Calamity.Loaded)
                 {
-                    npc.lifeMax = 15000000;
+                    npc.lifeMax = 9000000;
                 }
                 else if (ModCompatibility.Thorium.Loaded && ModCompatibility.SacredTools.Loaded && !ModCompatibility.Calamity.Loaded)
                 {
-                    npc.lifeMax = 25000000;
+                    npc.lifeMax = 20000000;
                 }
                 else if (ModCompatibility.Thorium.Loaded && ModCompatibility.Calamity.Loaded && !ModCompatibility.SacredTools.Loaded)
                 {
-                    npc.lifeMax = 25000000;
+                    npc.lifeMax = 22500000;
                 }
                 else if (ModCompatibility.SacredTools.Loaded && ModCompatibility.Calamity.Loaded && !ModCompatibility.Thorium.Loaded)
                 {
-                    npc.lifeMax = 35000000;
+                    npc.lifeMax = 25000000;
                 }
                 else if (ModCompatibility.Thorium.Loaded && ModCompatibility.Calamity.Loaded && ModCompatibility.SacredTools.Loaded)
                 {
-                    npc.lifeMax = 40000000;
+                    npc.lifeMax = 30000000;
                 }
                 else if (!ModCompatibility.Calamity.Loaded && !ModCompatibility.SacredTools.Loaded && !ModCompatibility.Thorium.Loaded)
                 {
-                    npc.lifeMax = 7000000;
+                    npc.lifeMax = 5000000;
                 }
             }
 
@@ -212,29 +236,29 @@ namespace ssm
         }
         public override void ModifyIncomingHit(NPC npc, ref NPC.HitModifiers modifiers)
         {
-            if (npc.type == ModContent.NPCType<MutantBoss>() && Main.npc[EModeGlobalNPC.mutantBoss].ai[0] > 10 && (ModCompatibility.IEoR.Loaded || ModCompatibility.Inheritance.Loaded))
-            {
-                float LRM = Utilities.Saturate((float)npc.life / (float)npc.lifeMax);
-                float maxTimeNormal = 12000; // 4 min
-                float maxTimeMaso = 18000; // 4.5 min
-                float intendedDuration = WorldSavingSystem.MasochistModeReal ? maxTimeMaso : maxTimeNormal;
+            //if (npc.type == ModContent.NPCType<MutantBoss>() && Main.npc[EModeGlobalNPC.mutantBoss].ai[0] > 10 && (ModCompatibility.IEoR.Loaded || ModCompatibility.Inheritance.Loaded))
+            //{
+            //    float LRM = Utilities.Saturate((float)npc.life / (float)npc.lifeMax);
+            //    float maxTimeNormal = 12000; // 4 min
+            //    float maxTimeMaso = 18000; // 4.5 min
+            //    float intendedDuration = WorldSavingSystem.MasochistModeReal ? maxTimeMaso : maxTimeNormal;
 
-                // 0 = as intended, 1 = instakill
-                float fightProgress = Utilities.InverseLerp(0f, intendedDuration, genTimer);
-                float aheadOfSchedule = MathF.Max(0f, 1f - fightProgress - LRM);
+            //    // 0 = as intended, 1 = instakill
+            //    float fightProgress = Utilities.InverseLerp(0f, intendedDuration, genTimer);
+            //    float aheadOfSchedule = MathF.Max(0f, 1f - fightProgress - LRM);
 
-                float resistanceFactor = (float)Math.Pow(aheadOfSchedule, 0.1f); // lower value - sharper applying
+            //    float resistanceFactor = (float)Math.Pow(aheadOfSchedule, 0.1f); // lower value - sharper applying
 
-                if (aheadOfSchedule > 0.8f)
-                {
-                    modifiers.FinalDamage *= 0.01f;
-                }
-                else
-                {
-                    float damageMultiplier = 1f - resistanceFactor;
-                    modifiers.FinalDamage *= damageMultiplier;
-                }
-            }
+            //    if (aheadOfSchedule > 0.8f)
+            //    {
+            //        modifiers.FinalDamage *= 0.01f;
+            //    }
+            //    else
+            //    {
+            //        float damageMultiplier = 1f - resistanceFactor;
+            //        modifiers.FinalDamage *= damageMultiplier;
+            //    }
+            //}
         }
 
         public override void ModifyNPCLoot(NPC npc, NPCLoot npcLoot)
@@ -272,35 +296,35 @@ namespace ssm
 
                     if (ModCompatibility.Calamity.Loaded && !ModCompatibility.SacredTools.Loaded && !ModCompatibility.Thorium.Loaded)
                     {
-                        npc.lifeMax = 25000000;
+                        npc.lifeMax = 20000000;
                     }
                     else if (ModCompatibility.SacredTools.Loaded && !ModCompatibility.Calamity.Loaded && !ModCompatibility.Thorium.Loaded)
                     {
-                        npc.lifeMax = 20000000;
+                        npc.lifeMax = 16000000;
                     }
                     else if (ModCompatibility.Thorium.Loaded && !ModCompatibility.SacredTools.Loaded && !ModCompatibility.Calamity.Loaded)
                     {
-                        npc.lifeMax = 15000000;
+                        npc.lifeMax = 9000000;
                     }
                     else if (ModCompatibility.Thorium.Loaded && ModCompatibility.SacredTools.Loaded && !ModCompatibility.Calamity.Loaded)
                     {
-                        npc.lifeMax = 25000000;
+                        npc.lifeMax = 20000000;
                     }
                     else if (ModCompatibility.Thorium.Loaded && ModCompatibility.Calamity.Loaded && !ModCompatibility.SacredTools.Loaded)
                     {
-                        npc.lifeMax = 25000000;
+                        npc.lifeMax = 22500000;
                     }
                     else if (ModCompatibility.SacredTools.Loaded && ModCompatibility.Calamity.Loaded && !ModCompatibility.Thorium.Loaded)
                     {
-                        npc.lifeMax = 35000000;
+                        npc.lifeMax = 25000000;
                     }
                     else if (ModCompatibility.Thorium.Loaded && ModCompatibility.Calamity.Loaded && ModCompatibility.SacredTools.Loaded)
                     {
-                        npc.lifeMax = 40000000;
+                        npc.lifeMax = 30000000;
                     }
                     else if (!ModCompatibility.Calamity.Loaded && !ModCompatibility.SacredTools.Loaded && !ModCompatibility.Thorium.Loaded)
                     {
-                        npc.lifeMax = 7000000;
+                        npc.lifeMax = 5000000;
                     }
                 }
                 if (npc.type == ModContent.NPCType<Mutant>())

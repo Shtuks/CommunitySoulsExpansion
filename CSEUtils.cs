@@ -45,6 +45,20 @@ namespace ssm
 
             return distance;
         }
+
+        public static void AddToNextEmptySlot(ref int startIndex, Item[] items, int itemType, int price)
+        {
+            for (int i = startIndex; i < items.Length; i++)
+            {
+                if (items[i].type == ItemID.None)
+                {
+                    items[i] = new Item(itemType);
+                    items[i].shopCustomPrice = price;
+                    startIndex = i + 1;
+                    break;
+                }
+            }
+        }
         public static bool IsModItem(Item item, string mod)
         {
             if (item.ModItem is not null)

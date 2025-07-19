@@ -84,8 +84,8 @@ namespace ssm.Content.Items.Accessories
                     else if (player.controlLeft)
                     {
                         player.velocity.X -= player.mount.Acceleration * 4f;
-                        if (player.velocity.X < -16f)
-                            player.velocity.X = -16f;
+                        if (player.velocity.X < -14f)
+                            player.velocity.X = -14f;
                         if (!player.controlUseItem)
                             player.direction = -1;
                     }
@@ -93,8 +93,8 @@ namespace ssm.Content.Items.Accessories
                     else if (player.controlRight)
                     {
                         player.velocity.X += player.mount.Acceleration * 4f;
-                        if (player.velocity.X > 16f)
-                            player.velocity.X = 16f;
+                        if (player.velocity.X > 14f)
+                            player.velocity.X = 14f;
                         if (!player.controlUseItem)
                             player.direction = 1;
                     }
@@ -110,15 +110,15 @@ namespace ssm.Content.Items.Accessories
                     else if (player.controlUp)
                     {
                         player.velocity.Y -= player.mount.Acceleration * 4f;
-                        if (player.velocity.Y < -16f)
-                            player.velocity.Y = -16f;
+                        if (player.velocity.Y < -14f)
+                            player.velocity.Y = -14f;
                     }
 
                     else if (player.controlDown)
                     {
                         player.velocity.Y += player.mount.Acceleration * 4f;
-                        if (player.velocity.Y > 16f)
-                            player.velocity.Y = 16f;
+                        if (player.velocity.Y > 14f)
+                            player.velocity.Y = 14f;
                     }
                 }
             }

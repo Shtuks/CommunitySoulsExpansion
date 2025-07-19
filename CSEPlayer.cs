@@ -22,7 +22,7 @@ using Terraria.GameContent;
 using Terraria.DataStructures;
 using FargowiltasSouls.Core.Systems;
 using Terraria.Chat;
-using ssm.Content.Items.Consumables;
+using ssm.Content.Items.Summons;
 
 namespace ssm
 {

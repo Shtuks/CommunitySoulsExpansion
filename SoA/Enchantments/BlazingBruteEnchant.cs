@@ -53,7 +53,7 @@ namespace ssm.SoA.Enchantments
                 {
                     player.AddBuff(ModContent.BuffType<RivalBuff>(), 60);
                     rivalTimer++;
-                    player.GetDamage<GenericDamageClass>() += FargoSoulsUtil.BossIsAlive(ref EModeGlobalNPC.fishBossEX, NPCID.DukeFishron) ? 0.05f : 0.1f * rivalKillCount;
+                    player.GetDamage<GenericDamageClass>() += 0.1f * rivalKillCount;
                 }
 
                 if (rivalTimer >= 300)
@@ -67,7 +67,7 @@ namespace ssm.SoA.Enchantments
             {
                 if (target.life <= 0 && !target.friendly && target.type != NPCID.TargetDummy)
                 {
-                    if (rivalKillCount < 6)
+                    if (rivalKillCount < 5)
                     {
                         rivalKillCount++;
                     }

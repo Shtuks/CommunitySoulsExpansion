@@ -1966,7 +1966,7 @@ Mods: {
 			}
 
 			GtTETFinal: {
-				Tooltip: This item does nothing
+				Tooltip: This item does nothing and exist only for compat with IEoR / WHummus' Balancing
 				DisplayName: Removed
 			}
 
@@ -3294,6 +3294,26 @@ Mods: {
 
 			BossWatcher: {
 				DisplayName: Boss Watcher
+				Tooltip: ""
+			}
+
+			FutureSigil: {
+				DisplayName: Future Sigil
+				Tooltip: ""
+			}
+
+			GunterasFruit: {
+				DisplayName: Gunteras Fruit
+				Tooltip: ""
+			}
+
+			EternalScale: {
+				DisplayName: Eternal Scale
+				Tooltip: ""
+			}
+
+			tModLoadiumBar: {
+				DisplayName: t Mod Loadium Bar
 				Tooltip: ""
 			}
 		}

@@ -41,36 +41,36 @@ namespace ssm.Calamity
             BossDeathEffects.Add(NPCType<PrimordialWyrmHead>(), npc => { BossRushDialogueSystem.StartDialogue(DownedBossSystem.downedBossRush ? BossRushDialoguePhase.EndRepeat : BossRushDialoguePhase.End); });
         }
     }
-    //[ExtendsFromMod(ModCompatibility.Calamity.Name, ModCompatibility.WrathoftheGods.Name)]
-    //[JITWhenModsEnabled(ModCompatibility.Calamity.Name, ModCompatibility.WrathoftheGods.Name)]
-    //public class WotGBossRush2 : ModSystem
-    //{
-    //    public override bool IsLoadingEnabled(Mod mod)
-    //    {
-    //        return CSEConfig.Instance.BossRushPostMutant;
-    //    }
-    //    public override void PostSetupContent()
-    //    {
-    //        for (int i = Bosses.Count - 1; i >= 0; i--)
-    //        {
-    //            if (Bosses[i].EntityID == NPCType<SupremeCalamitas>())
-    //            {
-    //                Bosses[i].HostileNPCsToNotDelete.Add(NPCType<PrimordialWyrmTail>());
-    //                Bosses[i].HostileNPCsToNotDelete.Add(NPCType<PrimordialWyrmBody>());
-    //                Bosses[i].HostileNPCsToNotDelete.Add(NPCType<PrimordialWyrmBodyAlt>());
-    //                Bosses.Insert(i, new Boss(NPCType<PrimordialWyrmHead>()));
-    //            }
-    //            if (Bosses[i].EntityID == NPCType<MutantBoss>())
-    //            {
-    //                Bosses.Insert(i, new Boss(NPCType<AvatarRift>()));
-    //                Bosses.RemoveAt(i + 1);
-    //            }
-    //        }
+    [ExtendsFromMod(ModCompatibility.Calamity.Name, ModCompatibility.WrathoftheGods.Name)]
+    [JITWhenModsEnabled(ModCompatibility.Calamity.Name, ModCompatibility.WrathoftheGods.Name)]
+    public class WotGBossRush2 : ModSystem
+    {
+        public override bool IsLoadingEnabled(Mod mod)
+        {
+            return CSEConfig.Instance.BossRushPostMutant;
+        }
+        public override void PostSetupContent()
+        {
+            for (int i = Bosses.Count - 1; i >= 0; i--)
+            {
+                if (Bosses[i].EntityID == NPCType<SupremeCalamitas>())
+                {
+                    Bosses[i].HostileNPCsToNotDelete.Add(NPCType<PrimordialWyrmTail>());
+                    Bosses[i].HostileNPCsToNotDelete.Add(NPCType<PrimordialWyrmBody>());
+                    Bosses[i].HostileNPCsToNotDelete.Add(NPCType<PrimordialWyrmBodyAlt>());
+                    Bosses.Insert(i, new Boss(NPCType<PrimordialWyrmHead>()));
+                }
+                if (Bosses[i].EntityID == NPCType<MutantBoss>())
+                {
+                    Bosses.Insert(i, new Boss(NPCType<AvatarRift>()));
+                    Bosses.RemoveAt(i + 1);
+                }
+            }
 
-    //        BossIDsAfterDeath.Add(NPCType<AvatarRift>(), [NPCType<AvatarOfEmptiness>()]);
-    //        Bosses.Add(new Boss(NPCType<NamelessDeityBoss>()));
-    //        //BossDeathEffects.Add(NPCType<NamelessDeityBoss>(), npc => { BossRushDialogueSystem.StartDialogue(DownedBossSystem.downedBossRush ? BossRushDialoguePhase.EndRepeat : BossRushDialoguePhase.End); });
-    //        Bosses.Add(new Boss(NPCType<MutantBoss>()));
-    //    }
-    //}
+            BossIDsAfterDeath.Add(NPCType<AvatarRift>(), [NPCType<AvatarOfEmptiness>()]);
+            Bosses.Add(new Boss(NPCType<NamelessDeityBoss>()));
+            //BossDeathEffects.Add(NPCType<NamelessDeityBoss>(), npc => { BossRushDialogueSystem.StartDialogue(DownedBossSystem.downedBossRush ? BossRushDialoguePhase.EndRepeat : BossRushDialoguePhase.End); });
+            Bosses.Add(new Boss(NPCType<MutantBoss>()));
+        }
+    }
 }

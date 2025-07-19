@@ -9,12 +9,15 @@ using Terraria.GameContent.Personalities;
 using Fargowiltas.NPCs;
 using FargowiltasSouls;
 using ssm.Core;
+using ssm.Content.Items.Summons;
+using ssm.CrossMod.CraftingStations;
 
 namespace ssm.Content.NPCs
 {
     [AutoloadHead]
     public class Monstrosity : ModNPC
     {
+        public const string ShopName = "Shop";
         public override bool IsLoadingEnabled(Mod mod)
         {
             return CSEConfig.Instance.AlternativeSiblings;
@@ -131,6 +134,11 @@ namespace ssm.Content.NPCs
                 dialogue.Add("[c/FF0000:You are ready.]");
             }
 
+            //if (WorldSavingSystem.DownedFishronEX)
+            //{
+            //    dialogue.Add("");
+            //}
+
             if (ModCompatibility.SacredTools.Loaded && ModCompatibility.Calamity.Loaded && ModCompatibility.Thorium.Loaded)
             {
                 dialogue.Add("Go touch some grass.");
@@ -142,6 +150,17 @@ namespace ssm.Content.NPCs
             }
 
             return Main.rand.Next(dialogue);
+        }
+
+        public override void AddShops()
+        {
+            var npcShop = new NPCShop(Type, ShopName)
+                .Add(new Item(ModContent.ItemType<GunterasFruit>()) { shopCustomPrice = Item.buyPrice(copper: 400000) })
+                .Add(new Item(ModContent.ItemType<FutureSigil>()) { shopCustomPrice = Item.buyPrice(copper: 400000) })
+                .Add(new Item(ModContent.ItemType<MutantsForgeItem>()) { shopCustomPrice = Item.buyPrice(copper: 40000000) }, new Condition("Downed Mutant", () => WorldSavingSystem.DownedMutant))
+                .Add(new Item(ModContent.ItemType<TruffleWormEX>()) { shopCustomPrice = Item.buyPrice(copper: 400000) });
+
+            npcShop.Register();
         }
         public override bool CanGoToStatue(bool toKingStatue)
         {
