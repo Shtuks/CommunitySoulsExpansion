@@ -110,7 +110,7 @@ namespace ssm
             //abom max hp - 10.8 mil 14.4 in total
             //amalgamationn max hp - 40 mil 53 in total
             ////duke ex - 30 mil 60 in total
-            //mutant max hp - 65 mil 86 in total
+            //mutant max hp - 60 mil 80 in total
             //monstrosity max hp - 800 mil
 
             if (npc.type == ModContent.NPCType<MutantBoss>())
@@ -121,35 +121,35 @@ namespace ssm
                 if (ModCompatibility.Calamity.Loaded && !ModCompatibility.SacredTools.Loaded && !ModCompatibility.Thorium.Loaded && !ModCompatibility.Inheritance.Loaded)
                 {
                     npc.damage = 750;
-                    npc.lifeMax = 40000000;
+                    npc.lifeMax = CSEConfig.Instance.SecretBosses ? 40000000 : 35000000;
                 }
 
                 //soa only
                 if (ModCompatibility.SacredTools.Loaded && !ModCompatibility.Calamity.Loaded && !ModCompatibility.Thorium.Loaded && !ModCompatibility.Inheritance.Loaded)
                 {
                     npc.damage = 700;
-                    npc.lifeMax = 35000000;
+                    npc.lifeMax = CSEConfig.Instance.SecretBosses ? 35000000 : 30000000;
                 }
 
                 //thorium only
                 if (ModCompatibility.Thorium.Loaded && !ModCompatibility.SacredTools.Loaded && !ModCompatibility.Calamity.Loaded && !ModCompatibility.Inheritance.Loaded)
                 {
                     npc.damage = 600;
-                    npc.lifeMax = 20000000;
+                    npc.lifeMax = CSEConfig.Instance.SecretBosses ? 20000000 : 15000000;
                 }
 
                 //thorium and soa
                 if (ModCompatibility.Thorium.Loaded && ModCompatibility.SacredTools.Loaded && !ModCompatibility.Calamity.Loaded && !ModCompatibility.Inheritance.Loaded)
                 {
                     npc.damage = 750;
-                    npc.lifeMax = 40000000;
+                    npc.lifeMax = CSEConfig.Instance.SecretBosses ? 40000000 : 35000000;
                 }
 
                 //thorium and cal
                 if (ModCompatibility.Thorium.Loaded && ModCompatibility.Calamity.Loaded && !ModCompatibility.SacredTools.Loaded && !ModCompatibility.Inheritance.Loaded)
                 {
                     npc.damage = 800;
-                    npc.lifeMax = 4500000;
+                    npc.lifeMax = CSEConfig.Instance.SecretBosses ? 4500000 : 40000000;
                 }
 
                 //soa and cal
@@ -170,7 +170,7 @@ namespace ssm
                 if (!ModCompatibility.Calamity.Loaded && !ModCompatibility.SacredTools.Loaded && !ModCompatibility.Thorium.Loaded)
                 {
                     npc.damage = 500;
-                    npc.lifeMax = 15000000;
+                    npc.lifeMax = CSEConfig.Instance.SecretBosses ? 15000000 : 10000000;
                 }
 
                 //funnies
@@ -188,39 +188,45 @@ namespace ssm
             {
                 npc.defense = 0;
                 npc.defDefense = 0;
-                npc.damage = 400;
-                npc.defDamage = 400;
 
                 if (ModCompatibility.Calamity.Loaded && !ModCompatibility.SacredTools.Loaded && !ModCompatibility.Thorium.Loaded)
                 {
+                    npc.damage = 200;
                     npc.lifeMax = 20000000;
                 }
                 else if (ModCompatibility.SacredTools.Loaded && !ModCompatibility.Calamity.Loaded && !ModCompatibility.Thorium.Loaded)
                 {
-                    npc.lifeMax = 16000000;
+                    npc.damage = 200;
+                    npc.lifeMax = 15000000;
                 }
                 else if (ModCompatibility.Thorium.Loaded && !ModCompatibility.SacredTools.Loaded && !ModCompatibility.Calamity.Loaded)
                 {
-                    npc.lifeMax = 9000000;
+                    npc.damage = 200;
+                    npc.lifeMax = 10000000;
                 }
                 else if (ModCompatibility.Thorium.Loaded && ModCompatibility.SacredTools.Loaded && !ModCompatibility.Calamity.Loaded)
                 {
+                    npc.damage = 300;
                     npc.lifeMax = 20000000;
                 }
                 else if (ModCompatibility.Thorium.Loaded && ModCompatibility.Calamity.Loaded && !ModCompatibility.SacredTools.Loaded)
                 {
+                    npc.damage = 300;
                     npc.lifeMax = 22500000;
                 }
                 else if (ModCompatibility.SacredTools.Loaded && ModCompatibility.Calamity.Loaded && !ModCompatibility.Thorium.Loaded)
                 {
+                    npc.damage = 300;
                     npc.lifeMax = 25000000;
                 }
                 else if (ModCompatibility.Thorium.Loaded && ModCompatibility.Calamity.Loaded && ModCompatibility.SacredTools.Loaded)
                 {
+                    npc.damage = 400;
                     npc.lifeMax = 30000000;
                 }
                 else if (!ModCompatibility.Calamity.Loaded && !ModCompatibility.SacredTools.Loaded && !ModCompatibility.Thorium.Loaded)
                 {
+                    npc.damage = 100;
                     npc.lifeMax = 5000000;
                 }
             }
@@ -313,42 +319,47 @@ namespace ssm
                 {
                     npc.defense = 0;
                     npc.defDefense = 0;
-                    npc.damage = 400;
-                    npc.defDamage = 400;
 
                     if (ModCompatibility.Calamity.Loaded && !ModCompatibility.SacredTools.Loaded && !ModCompatibility.Thorium.Loaded)
                     {
+                        npc.damage = 200;
                         npc.lifeMax = 20000000;
                     }
                     else if (ModCompatibility.SacredTools.Loaded && !ModCompatibility.Calamity.Loaded && !ModCompatibility.Thorium.Loaded)
                     {
-                        npc.lifeMax = 16000000;
+                        npc.damage = 200;
+                        npc.lifeMax = 15000000;
                     }
                     else if (ModCompatibility.Thorium.Loaded && !ModCompatibility.SacredTools.Loaded && !ModCompatibility.Calamity.Loaded)
                     {
-                        npc.lifeMax = 9000000;
+                        npc.damage = 200;
+                        npc.lifeMax = 10000000;
                     }
                     else if (ModCompatibility.Thorium.Loaded && ModCompatibility.SacredTools.Loaded && !ModCompatibility.Calamity.Loaded)
                     {
+                        npc.damage = 300;
                         npc.lifeMax = 20000000;
                     }
                     else if (ModCompatibility.Thorium.Loaded && ModCompatibility.Calamity.Loaded && !ModCompatibility.SacredTools.Loaded)
                     {
+                        npc.damage = 300;
                         npc.lifeMax = 22500000;
                     }
                     else if (ModCompatibility.SacredTools.Loaded && ModCompatibility.Calamity.Loaded && !ModCompatibility.Thorium.Loaded)
                     {
+                        npc.damage = 300;
                         npc.lifeMax = 25000000;
                     }
                     else if (ModCompatibility.Thorium.Loaded && ModCompatibility.Calamity.Loaded && ModCompatibility.SacredTools.Loaded)
                     {
+                        npc.damage = 400;
                         npc.lifeMax = 30000000;
                     }
                     else if (!ModCompatibility.Calamity.Loaded && !ModCompatibility.SacredTools.Loaded && !ModCompatibility.Thorium.Loaded)
                     {
+                        npc.damage = 100;
                         npc.lifeMax = 5000000;
                     }
-                    //npc.ModNPC.Music = MusicLoader.GetMusicSlot("ssm/Assets/Sounds/Music/TrueMasochism");
                 }
                 if (npc.type == ModContent.NPCType<Mutant>())
                 {

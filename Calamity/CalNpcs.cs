@@ -40,7 +40,7 @@ namespace ssm.Calamity
         }
         public override void SetDefaults(NPC npc)
         {
-            if (npc.type == ModContent.NPCType<MutantBoss>() && ModCompatibility.SacredTools.Loaded)
+            if (npc.type == ModContent.NPCType<MutantBoss>() && ModCompatibility.SacredTools.Loaded && CSEConfig.Instance.SecretBosses)
             {
                 npc.DR_NERD(0.1f, 0.2f, 0.3f);
             }

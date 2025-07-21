@@ -10,6 +10,10 @@ namespace ssm.Content.NPCs.Guntera
 {
     public class GunteraHook : ModNPC
     {
+        public override bool IsLoadingEnabled(Mod mod)
+        {
+            return CSEConfig.Instance.SecretBosses;
+        }
         public override string Texture => "Terraria/Images/NPC_263";
 
         public override void SetStaticDefaults()

@@ -12,6 +12,10 @@ namespace ssm.Content.NPCs.ECH
     [AutoloadBossHead]
     public class Echdeath : ModNPC
     {
+        public override bool IsLoadingEnabled(Mod mod)
+        {
+            return CSEConfig.Instance.SecretBosses;
+        }
         public override void SetStaticDefaults()
         {
             Main.npcFrameCount[NPC.type] = 11;

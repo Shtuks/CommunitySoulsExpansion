@@ -10,6 +10,10 @@ namespace ssm.Content.NPCs.Guntera
 {
     public class GunteraTentacle : ModNPC
     {
+        public override bool IsLoadingEnabled(Mod mod)
+        {
+            return CSEConfig.Instance.SecretBosses;
+        }
         public override string Texture => "Terraria/Images/NPC_264";
 
         public override void SetStaticDefaults()

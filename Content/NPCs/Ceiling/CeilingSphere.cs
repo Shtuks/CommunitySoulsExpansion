@@ -10,6 +10,10 @@ namespace ssm.Content.NPCs.Ceiling
 {
     public class CeilingSphere : ModProjectile
     {
+        public override bool IsLoadingEnabled(Mod mod)
+        {
+            return CSEConfig.Instance.SecretBosses;
+        }
         public override string Texture => "Terraria/Images/Projectile_454";
 
         public override void SetStaticDefaults()

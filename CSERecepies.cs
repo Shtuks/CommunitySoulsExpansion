@@ -61,7 +61,10 @@ namespace ssm
                 }
                 if (recipe.HasResult(ModContent.ItemType<EternitySoul>()) && !recipe.HasIngredient<EternityForce>() && !CSEConfig.Instance.AlternativeSiblings)
                 {
-                    recipe.AddIngredient<CyclonicFin>(1);
+                    if (CSEConfig.Instance.SecretBosses)
+                    {
+                        recipe.AddIngredient<CyclonicFin>(1);
+                    }
                     recipe.AddIngredient<EternityForce>(1);
                 }
 

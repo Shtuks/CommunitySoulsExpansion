@@ -11,6 +11,10 @@ namespace ssm.Content.NPCs.Guntera
     [AutoloadBossHead]
     public class Guntera : ModNPC
     {
+        public override bool IsLoadingEnabled(Mod mod)
+        {
+            return CSEConfig.Instance.SecretBosses;
+        }
         public override void SetStaticDefaults()
         {
             Main.npcFrameCount[NPC.type] = 8;

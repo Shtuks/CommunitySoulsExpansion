@@ -7,6 +7,10 @@ namespace ssm.Content.NPCs.Guntera
 {
     public class GunteraBullet : ModProjectile
     {
+        public override bool IsLoadingEnabled(Mod mod)
+        {
+            return CSEConfig.Instance.SecretBosses;
+        }
         public override void SetDefaults()
         {
             Projectile.width = 4;

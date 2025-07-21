@@ -10,6 +10,10 @@ namespace ssm.Content.NPCs.Ceiling
 {
     public class CeilingDeathray : BaseDeathray
     {
+        public override bool IsLoadingEnabled(Mod mod)
+        {
+            return CSEConfig.Instance.SecretBosses;
+        }
         public CeilingDeathray() : base(120) { }
        
         public override bool CanHitPlayer(Player target)

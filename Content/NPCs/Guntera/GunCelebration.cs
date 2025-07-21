@@ -10,6 +10,10 @@ namespace ssm.Content.NPCs.Guntera
 {
     public class GunCelebration : ModNPC
     {
+        public override bool IsLoadingEnabled(Mod mod)
+        {
+            return CSEConfig.Instance.SecretBosses;
+        }
         public override void SetDefaults()
         {
             NPC.width = 78;

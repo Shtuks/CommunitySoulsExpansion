@@ -7,6 +7,10 @@ namespace ssm.Content.NPCs.Ceiling
 {
     public class CeilingOfMoonLordEye : ModNPC
     {
+        public override bool IsLoadingEnabled(Mod mod)
+        {
+            return CSEConfig.Instance.SecretBosses;
+        }
         public override void SetDefaults()
         {
             NPC.width = 74;

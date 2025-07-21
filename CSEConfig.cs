@@ -35,6 +35,11 @@ namespace ssm
         [DefaultValue(false)]
         public bool DevItems { get; set; }
 
+        [ReloadRequired]
+        [BackgroundColor(60, 200, 60, 192)]
+        [DefaultValue(true)]
+        public bool SecretBosses { get; set; }
+
         [Header("CrossMods")]
 
         [ReloadRequired]

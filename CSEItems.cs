@@ -149,7 +149,10 @@ namespace ssm
             }
             if (Item.type == ModContent.ItemType<EternitySoul>() && !CSEConfig.Instance.AlternativeSiblings)
             {
-                ModContent.Find<ModItem>(Mod.Name, "CyclonicFin").UpdateAccessory(player, hideVisual);
+                if (CSEConfig.Instance.SecretBosses)
+                {
+                    ModContent.Find<ModItem>(Mod.Name, "CyclonicFin").UpdateAccessory(player, hideVisual);
+                }
                 ModContent.Find<ModItem>(Mod.Name, "EternityForce").UpdateAccessory(player, hideVisual);
             }
         }

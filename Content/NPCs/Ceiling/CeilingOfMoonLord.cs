@@ -13,6 +13,10 @@ namespace ssm.Content.NPCs.Ceiling
     [AutoloadBossHead]
     public class CeilingOfMoonLord : ModNPC
     {
+        public override bool IsLoadingEnabled(Mod mod)
+        {
+            return CSEConfig.Instance.SecretBosses;
+        }
         private int ceilingProj = -1;
         public override void SetDefaults()
         {

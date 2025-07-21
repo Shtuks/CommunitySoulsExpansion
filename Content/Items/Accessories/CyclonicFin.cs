@@ -13,6 +13,10 @@ namespace ssm.Content.Items.Accessories
 {
     public class CyclonicFin : ModItem
     {
+        public override bool IsLoadingEnabled(Mod mod)
+        {
+            return CSEConfig.Instance.SecretBosses;
+        }
         public override void SetDefaults()
         {
             Item.width = 20;
