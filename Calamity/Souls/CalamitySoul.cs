@@ -69,6 +69,7 @@ namespace ssm.Calamity.Souls
             }
 
             recipe.AddIngredient<ShadowspecBar>(5);
+            recipe.AddIngredient<MiracleMatter>();
             recipe.AddTile<DemonshadeWorkbenchTile>();
 
             recipe.Register();

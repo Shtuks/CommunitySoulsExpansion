@@ -45,7 +45,7 @@ namespace ssm.SoA
             }
             if (entity.type == ModContent.ItemType<Tenebris>())
             {
-                entity.damage = (int)(entity.damage * (ModCompatibility.Calamity.Loaded ? 1.7f : 1.1f));
+                entity.damage = (int)(entity.damage * (ModCompatibility.Calamity.Loaded ? 1.5f : 1.1f));
             }
             if (entity.type == ModContent.ItemType<Desperatio>())
             {

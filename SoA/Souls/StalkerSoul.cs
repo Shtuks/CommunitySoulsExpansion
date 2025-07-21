@@ -1,5 +1,5 @@
 ﻿using Fargowiltas.Items.Tiles;
-using ssm.Content.DamageClasses;
+
 using Terraria.ModLoader;
 using Terraria;
 using FargowiltasSouls.Content.Items.Accessories.Souls;
@@ -40,9 +40,9 @@ namespace ssm.SoA.Souls
 
         private void Thorium(Player player)
         {
-            player.GetDamage<UnitedModdedThrower>() += 0.25f;
-            player.GetCritChance<UnitedModdedThrower>() += 10f;
-            player.GetAttackSpeed<UnitedModdedThrower>() += 0.15f;
+            player.GetDamage<ThrowingDamageClass>() += 0.25f;
+            player.GetCritChance<ThrowingDamageClass>() += 10f;
+            player.GetAttackSpeed<ThrowingDamageClass>() += 0.15f;
             player.CSE().throwerVelocity += 0.2f;
         }
 

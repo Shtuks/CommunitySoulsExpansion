@@ -28,6 +28,7 @@ namespace ssm.Calamity
                 if (recipe.HasResult<ThoriumSoul>() && !recipe.HasIngredient<ShadowspecBar>())
                 {
                     recipe.AddIngredient<ShadowspecBar>(5);
+                    recipe.AddIngredient<MiracleMatter>();
                 }
 
                 if (recipe.HasResult<MiracleMatter>() && !recipe.HasIngredient<TerrariumCore>())

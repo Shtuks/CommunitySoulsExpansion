@@ -6,14 +6,14 @@ Discord Server: https://discord.gg/frUcz2dQAy
 
 Official Wiki: https://terrariamods.wiki.gg/wiki/Community_Souls_Expansion
 
+Thrower Merge was moved to separate mod: Thrower Unification
+
 Most of SoA enchantments was reworked and no longer give armor set bonuses.
 
 All things mod doing for now:
 - Balancing part of Post-ML content
 
 - Compatibility with most of Calamity addons
-
-- Merge kinetic(SoA) thrower(Thorium) and rogue(Calamity) in one class
 
 - Reworked boots and shields progression
 

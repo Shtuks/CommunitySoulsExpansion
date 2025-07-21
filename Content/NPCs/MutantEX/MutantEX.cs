@@ -173,6 +173,7 @@ namespace ssm.Content.NPCs.MutantEX
                     Main.npc[n].active = false;
                     if (Main.netMode == NetmodeID.Server)
                         NetMessage.SendData(MessageID.SyncNPC, -1, -1, null, n);
+                    CSEUtils.DisplayLocalizedText("Music: Axion by Xi", Color.White);
                 }
             }
 

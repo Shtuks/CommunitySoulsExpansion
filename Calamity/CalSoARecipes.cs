@@ -29,6 +29,7 @@ namespace ssm.Calamity
                 if (recipe.HasResult<SoASoul>() && !recipe.HasIngredient<ShadowspecBar>())
                 {
                     recipe.AddIngredient<ShadowspecBar>(5);
+                    recipe.AddIngredient<MiracleMatter>();
                 }
                 if ((recipe.HasResult<NihilusObelisk>() || 
                     recipe.HasResult<PaleRuin>() ||

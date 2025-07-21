@@ -7,6 +7,10 @@ namespace ssm.CrossMod
 {
     public class ThrowerMergeTooltips : GlobalItem
     {
+        public override bool IsLoadingEnabled(Mod mod)
+        {
+            return !ModLoader.HasMod("ThrowerUnification");
+        }
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
         {
             if (item.defense > 0 || item.accessory)

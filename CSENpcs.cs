@@ -22,6 +22,8 @@ using Microsoft.Xna.Framework.Graphics;
 using Terraria.GameContent;
 using ssm.Content.Items.Materials;
 using FargowiltasSouls.Content.Items.Materials;
+using ThoriumMod.Empowerments;
+using ThoriumMod.Items.HealerItems;
 
 namespace ssm
 {
@@ -43,22 +45,25 @@ namespace ssm
         public bool SwarmHealth;
         private int go = 1;
 
+        public bool dukeEX;
+
         private int dpsLimit;
         private int dpsTimer;
         private bool IsInDpsThreshold;
-
-        public bool dukeEX;
-        private float DpsDivisor => 1.02f + dpsLimit * 0.01f;
+        private float DpsDivisor;
+        private float DpsThresholdPercent => 0.008333f; // 500k/60M = 0.008333 (0.8333%)
+        private float MaxDpsDivisor => 2f; 
+        private float DpsGrowthRate => 0.000001f;
         public override void Load()
         {
             if (ModCompatibility.Homeward.Loaded && !ModCompatibility.Calamity.Loaded && !ModCompatibility.SacredTools.Loaded) { multiplierM += 0.8f; }
 
             if (ModCompatibility.SacredTools.Loaded && !ModCompatibility.Calamity.Loaded) { multiplierM += 0.8f; }
 
-            if (ModCompatibility.Thorium.Loaded) { multiplierM += 0.6f; multiplierA += 1f; }
+            if (ModCompatibility.Thorium.Loaded) { multiplierM += 0.6f; multiplierA += 0.7f; }
             if (ModCompatibility.Calamity.Loaded) { multiplierM += CSEConfig.Instance.DebugMode ? 8.8f : 2.8f; multiplierA += 6f; }
-            if (ModCompatibility.SacredTools.Loaded) { multiplierM += 1.6f; multiplierA += 2f; }
-            //if (ModCompatibility.Inheritance.Loaded) { multiplierA = 21f; }
+            if (ModCompatibility.SacredTools.Loaded) { multiplierM += 1.6f; multiplierA += 1f; }
+            if (ModCompatibility.Inheritance.Loaded) { multiplierA = 21f; }
         }
 
         public override bool CheckDead(NPC npc)
@@ -102,14 +107,16 @@ namespace ssm
         {
             //devi max hp - 40 k
             //divergentt max hp - 500 k
-            //abom max hp - 10.8 mil
-            //amalgamationn max hp - 20 mil
-            //duke ex - 30 mil
-            //mutant max hp - 60 mil
+            //abom max hp - 10.8 mil 14.4 in total
+            //amalgamationn max hp - 40 mil 53 in total
+            ////duke ex - 30 mil 60 in total
+            //mutant max hp - 65 mil 86 in total
             //monstrosity max hp - 800 mil
 
             if (npc.type == ModContent.NPCType<MutantBoss>())
             {
+                npc.defense = 300;
+
                 //cal omly
                 if (ModCompatibility.Calamity.Loaded && !ModCompatibility.SacredTools.Loaded && !ModCompatibility.Thorium.Loaded && !ModCompatibility.Inheritance.Loaded)
                 {
@@ -121,14 +128,14 @@ namespace ssm
                 if (ModCompatibility.SacredTools.Loaded && !ModCompatibility.Calamity.Loaded && !ModCompatibility.Thorium.Loaded && !ModCompatibility.Inheritance.Loaded)
                 {
                     npc.damage = 700;
-                    npc.lifeMax = 32000000;
+                    npc.lifeMax = 35000000;
                 }
 
                 //thorium only
                 if (ModCompatibility.Thorium.Loaded && !ModCompatibility.SacredTools.Loaded && !ModCompatibility.Calamity.Loaded && !ModCompatibility.Inheritance.Loaded)
                 {
                     npc.damage = 600;
-                    npc.lifeMax = 18000000;
+                    npc.lifeMax = 20000000;
                 }
 
                 //thorium and soa
@@ -142,7 +149,7 @@ namespace ssm
                 if (ModCompatibility.Thorium.Loaded && ModCompatibility.Calamity.Loaded && !ModCompatibility.SacredTools.Loaded && !ModCompatibility.Inheritance.Loaded)
                 {
                     npc.damage = 800;
-                    npc.lifeMax = 45000000;
+                    npc.lifeMax = 4500000;
                 }
 
                 //soa and cal
@@ -159,12 +166,19 @@ namespace ssm
                     npc.lifeMax = 60000000;
                 }
 
+                //no mods (idk why are you even playing this)
+                if (!ModCompatibility.Calamity.Loaded && !ModCompatibility.SacredTools.Loaded && !ModCompatibility.Thorium.Loaded)
+                {
+                    npc.damage = 500;
+                    npc.lifeMax = 15000000;
+                }
+
                 //funnies
-                //if (ModCompatibility.Inheritance.Loaded && !Main.zenithWorld && !Main.getGoodWorld)
-                //{
-                //    npc.damage = 3000;
-                //    npc.lifeMax = 300000000;
-                //}
+                if (ModCompatibility.Inheritance.Loaded && !Main.zenithWorld && !Main.getGoodWorld)
+                {
+                    npc.damage = 3000;
+                    npc.lifeMax = 300000000;
+                }
 
                 //npc.damage = Main.getGoodWorld ? 2000 : (int)(500 + ((ModCompatibility.Calamity.Loaded && CSEConfig.Instance.DebugMode ? 90 : 100) * (Math.Round(multiplierM, 1))));
                 //npc.lifeMax = (int)(10000000 + (10000000 * Math.Round(multiplierM, 1))) / (Main.expertMode ? 1 : 2);
@@ -172,10 +186,10 @@ namespace ssm
 
             if (npc.type == NPCID.DukeFishron && (EModeGlobalNPC.spawnFishronEX || dukeEX))
             {
-                npc.defense = 400;
-                npc.defDefense = 400;
-                npc.damage = 500;
-                npc.defDamage = 500;
+                npc.defense = 0;
+                npc.defDefense = 0;
+                npc.damage = 400;
+                npc.defDamage = 400;
 
                 if (ModCompatibility.Calamity.Loaded && !ModCompatibility.SacredTools.Loaded && !ModCompatibility.Thorium.Loaded)
                 {
@@ -213,8 +227,8 @@ namespace ssm
 
             if (npc.type == ModContent.NPCType<AbomBoss>())
             {
-                npc.damage = Main.getGoodWorld ? 1000 : (int)(250 + (15 * multiplierA));
-                npc.lifeMax = (int)(1400000 + (1000000 * multiplierA)) / (Main.expertMode ? 2 : 4);
+                npc.damage = Main.getGoodWorld ? 1000 : (int)(250 + (20 * multiplierA));
+                npc.lifeMax = (int)(2800000 + (1000000 * multiplierA)) / (Main.expertMode ? 2 : 4);
             }
         }
         public override void SetStaticDefaults()
@@ -234,30 +248,38 @@ namespace ssm
             if (chtuxlagorInferno > 0)
                 ApplyDPSDebuff(npc.lifeMax / 10, npc.lifeMax / 100, ref npc.lifeRegen, ref damage);
         }
+
+        //    float LRM = Utilities.Saturate((float)npc.life / (float)npc.lifeMax);
+        //    float maxTimeNormal = 12000; // 4 min
+        //    float maxTimeMaso = 18000; // 4.5 min
+        //    float intendedDuration = WorldSavingSystem.MasochistModeReal ? maxTimeMaso : maxTimeNormal;
+
+        //    // 0 = as intended, 1 = instakill
+        //    float fightProgress = Utilities.InverseLerp(0f, intendedDuration, genTimer);
+        //    float aheadOfSchedule = MathF.Max(0f, 1f - fightProgress - LRM);
+
+        //    float resistanceFactor = (float)Math.Pow(aheadOfSchedule, 0.1f); // lower value - sharper applying
+
+        //    if (aheadOfSchedule > 0.8f)
+        //    {
+        //        modifiers.FinalDamage *= 0.01f;
+        //    }
+        //    else
+        //    {
+        //        float damageMultiplier = 1f - resistanceFactor;
+        //        modifiers.FinalDamage *= damageMultiplier;
+        //    }
         public override void ModifyIncomingHit(NPC npc, ref NPC.HitModifiers modifiers)
         {
-            //if (npc.type == ModContent.NPCType<MutantBoss>() && Main.npc[EModeGlobalNPC.mutantBoss].ai[0] > 10 && (ModCompatibility.IEoR.Loaded || ModCompatibility.Inheritance.Loaded))
+            //if (npc.type == ModContent.NPCType<MutantBoss>() && Main.npc[EModeGlobalNPC.mutantBoss].ai[0] > 10)
             //{
-            //    float LRM = Utilities.Saturate((float)npc.life / (float)npc.lifeMax);
-            //    float maxTimeNormal = 12000; // 4 min
-            //    float maxTimeMaso = 18000; // 4.5 min
-            //    float intendedDuration = WorldSavingSystem.MasochistModeReal ? maxTimeMaso : maxTimeNormal;
+            //    float desiredLifeRatio = 1f - LumUtils.InverseLerp(0f, 4 * 60 * 60, genTimer);
+            //    float aheadLifeRatioInterpolant = Utilities.Saturate((desiredLifeRatio - Utilities.Saturate(npc.life / npc.lifeMax)) * 2f);
 
-            //    // 0 = as intended, 1 = instakill
-            //    float fightProgress = Utilities.InverseLerp(0f, intendedDuration, genTimer);
-            //    float aheadOfSchedule = MathF.Max(0f, 1f - fightProgress - LRM);
+            //    float damageReductionInterpolant = (float)Math.Pow(aheadLifeRatioInterpolant, 1f / 2.5f);
 
-            //    float resistanceFactor = (float)Math.Pow(aheadOfSchedule, 0.1f); // lower value - sharper applying
-
-            //    if (aheadOfSchedule > 0.8f)
-            //    {
-            //        modifiers.FinalDamage *= 0.01f;
-            //    }
-            //    else
-            //    {
-            //        float damageMultiplier = 1f - resistanceFactor;
-            //        modifiers.FinalDamage *= damageMultiplier;
-            //    }
+            //    float damageReductionFactor = MathHelper.Lerp(1f, 1f - 0.9f, damageReductionInterpolant);
+            //    modifiers.FinalDamage *= damageReductionFactor;
             //}
         }
 
@@ -289,10 +311,10 @@ namespace ssm
             {
                 if (npc.type == NPCID.DukeFishron && (EModeGlobalNPC.spawnFishronEX || dukeEX))
                 {
-                    npc.defense = 400;
-                    npc.defDefense = 400;
-                    npc.damage = 500;
-                    npc.defDamage = 500;
+                    npc.defense = 0;
+                    npc.defDefense = 0;
+                    npc.damage = 400;
+                    npc.defDamage = 400;
 
                     if (ModCompatibility.Calamity.Loaded && !ModCompatibility.SacredTools.Loaded && !ModCompatibility.Thorium.Loaded)
                     {
@@ -326,6 +348,7 @@ namespace ssm
                     {
                         npc.lifeMax = 5000000;
                     }
+                    //npc.ModNPC.Music = MusicLoader.GetMusicSlot("ssm/Assets/Sounds/Music/TrueMasochism");
                 }
                 if (npc.type == ModContent.NPCType<Mutant>())
                 {
@@ -334,7 +357,7 @@ namespace ssm
                 }
                 if (npc.type == ModContent.NPCType<Abominationn>())
                 {
-                    npc.lifeMax = (int)(2800000 + (1000000 * multiplierA)) / (Main.expertMode ? 2 : 4) / 10;
+                    npc.lifeMax = (int)(1800000 + (1000000 * multiplierA)) / 10;
                     npc.life = npc.lifeMax;
                 }
                 if (npc.type == NPCID.DukeFishron && (EModeGlobalNPC.spawnFishronEX || dukeEX))
@@ -343,18 +366,22 @@ namespace ssm
                 }
             }
             mayo++;
+            
+            if (npc.type == ModContent.NPCType<MutantBoss>())
+            {
+                DpsDivisor = 1f + Math.Min(MaxDpsDivisor - 1f, (dpsLimit - npc.lifeMax * DpsThresholdPercent) * DpsGrowthRate);
+                IsInDpsThreshold = dpsLimit > npc.lifeMax * 0.008333f;
 
-            IsInDpsThreshold = dpsLimit > npc.lifeMax * 0.002f;
+                if (dpsTimer++ >= 20)
+                {
+                    dpsLimit = (int)(dpsLimit * 0.5f);
+                    dpsTimer = 0;
+                }
+            }
 
             if (npc.type == ModContent.NPCType<MutantBoss>() && Main.npc[EModeGlobalNPC.mutantBoss].ai[0] > 10)
             {
                 genTimer++;
-            }
-
-            if (dpsTimer++ >= 20)
-            {
-                dpsLimit = (int)(dpsLimit * 0.5f);
-                dpsTimer = 0;
             }
             base.AI(npc);
         }
@@ -378,14 +405,12 @@ namespace ssm
             {
                 if (IsInDpsThreshold)
                 {
-                    modifiers.FinalDamage = modifiers.FinalDamage / DpsDivisor;
+                    float divisor = 1f + Math.Min(1f, (dpsLimit - npc.lifeMax * 0.008333f) * 0.000001f);
+                    modifiers.FinalDamage /= divisor;
                 }
             }
         }
-        public override void OnHitByItem(NPC npc, Player player, Item item, NPC.HitInfo hit, int damage)
-        {
-            dpsLimit += damage;
-        }
+
         public override void OnHitByProjectile(NPC npc, Projectile projectile, NPC.HitInfo hit, int damage)
         {
             dpsLimit += damage;

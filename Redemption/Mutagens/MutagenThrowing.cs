@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 using Terraria;
 using ThoriumMod.Items.ThrownItems;
 using ssm.Thorium.Essences;
-using ssm.Content.DamageClasses;
+
 using ssm.Core;
 using ThoriumMod.Utilities;
 using ThoriumMod;
@@ -34,9 +34,9 @@ namespace ssm.Redemption.Mutagens
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            player.GetDamage<UnitedModdedThrower>() += 0.20f;
-            player.GetCritChance<UnitedModdedThrower>() += 10f;
-            player.GetAttackSpeed<UnitedModdedThrower>() += 0.10f;
+            player.GetDamage<ThrowingDamageClass>() += 0.20f;
+            player.GetCritChance<ThrowingDamageClass>() += 10f;
+            player.GetAttackSpeed<ThrowingDamageClass>() += 0.10f;
             player.CSE().throwerVelocity += 0.10f;
             player.GetModPlayer<ThoriumPlayer>().throwerExhaustionRegenBonus += 5;
         }

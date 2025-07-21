@@ -37,6 +37,7 @@ namespace ssm.Content.Items.Accessories
         {
             public override Header ToggleHeader => Header.GetHeader<DeviEnergyHeader>();
             public override int ToggleItemType => ModContent.ItemType<CyclonicFin>();
+            public override bool MutantsPresenceAffects => true;
         }
 
         public class SpectralFishEffect : AccessoryEffect
@@ -83,7 +84,7 @@ namespace ssm.Content.Items.Accessories
 
                     else if (player.controlLeft)
                     {
-                        player.velocity.X -= player.mount.Acceleration * 4f;
+                        player.velocity.X -= player.mount.Acceleration * 5f;
                         if (player.velocity.X < -14f)
                             player.velocity.X = -14f;
                         if (!player.controlUseItem)
@@ -92,7 +93,7 @@ namespace ssm.Content.Items.Accessories
 
                     else if (player.controlRight)
                     {
-                        player.velocity.X += player.mount.Acceleration * 4f;
+                        player.velocity.X += player.mount.Acceleration * 5f;
                         if (player.velocity.X > 14f)
                             player.velocity.X = 14f;
                         if (!player.controlUseItem)
@@ -109,14 +110,14 @@ namespace ssm.Content.Items.Accessories
 
                     else if (player.controlUp)
                     {
-                        player.velocity.Y -= player.mount.Acceleration * 4f;
+                        player.velocity.Y -= player.mount.Acceleration * 5f;
                         if (player.velocity.Y < -14f)
                             player.velocity.Y = -14f;
                     }
 
                     else if (player.controlDown)
                     {
-                        player.velocity.Y += player.mount.Acceleration * 4f;
+                        player.velocity.Y += player.mount.Acceleration * 5f;
                         if (player.velocity.Y > 14f)
                             player.velocity.Y = 14f;
                     }

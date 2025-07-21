@@ -6,7 +6,7 @@ using FargowiltasSouls.Content.Bosses.MutantBoss;
 using FargowiltasSouls.Content.Buffs.Boss;
 using FargowiltasSouls.Core.Globals;
 using ssm.Content.Buffs;
-using ssm.Content.DamageClasses;
+
 using ssm.Core;
 using ssm.Items;
 using Terraria;
@@ -30,13 +30,13 @@ namespace ssm.Calamity
             }
         }
 
-        public override void PostUpdateMiscEffects()
-        {
-            Player player = Main.LocalPlayer;
-            var CalPlayer = player.GetModPlayer<CalamityPlayer>();
+        //public override void PostUpdateMiscEffects()
+        //{
+        //    Player player = Main.LocalPlayer;
+        //    var CalPlayer = player.GetModPlayer<CalamityPlayer>();
 
-            Player.GetDamage<UnitedModdedThrower>() += CalPlayer.stealthDamage;
-        }
+        //    Player.GetDamage<Th>() += CalPlayer.stealthDamage;
+        //}
         public override void PostUpdateBuffs()
         {
             if (DownedBossSystem.downedExoMechs && !FargoSoulsUtil.BossIsAlive(ref EModeGlobalNPC.mutantBoss, ModContent.NPCType<MutantBoss>()))

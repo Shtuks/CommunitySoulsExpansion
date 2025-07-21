@@ -112,6 +112,7 @@ namespace ssm
                             {
                                 ChatHelper.BroadcastChatMessage(NetworkText.FromLiteral("???????"), Color.White);
                             }
+                            //CSEUtils.DisplayLocalizedText("Music: True Masochism by ENNWAY", Color.White);
                         }
                     }
                 }
@@ -219,7 +220,7 @@ namespace ssm
 
                 if (hit.Crit && CyclonicFinCD <= 0 && proj.type != ModContent.ProjectileType<RazorbladeTyphoonFriendly>())
                 {
-                    CyclonicFinCD = 360;
+                    CyclonicFinCD = 420;
 
                     float screenX = Main.screenPosition.X;
                     if (Player.direction < 0)
@@ -230,7 +231,7 @@ namespace ssm
                     Vector2 vel = target.Center - spawn;
                     vel.Normalize();
                     vel *= 27f;
-                    Projectile.NewProjectile(proj.GetSource_FromThis(), spawn, vel, ModContent.ProjectileType<SpectralFishron>(), 300, 10f, proj.owner, target.whoAmI, 300);
+                    Projectile.NewProjectile(proj.GetSource_FromThis(), spawn, vel, ModContent.ProjectileType<SpectralFishron>(), 200, 10f, proj.owner, target.whoAmI, 300);
                 }
             }
         }

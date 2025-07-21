@@ -59,7 +59,7 @@ namespace ssm.Calamity
                         if (recipe.RemoveIngredient(ModContent.ItemType<AshesofAnnihilation>()) && recipe.RemoveIngredient(ModContent.ItemType<ExoPrism>())) 
                         {
                             recipe.AddIngredient<ShadowspecBar>(5);
-                            //recipe.AddIngredient<MiracleMatter>(5);
+                            recipe.AddIngredient<MiracleMatter>();
                         }
                     }
                 }

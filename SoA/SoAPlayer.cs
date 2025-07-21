@@ -1,5 +1,5 @@
 ﻿using SacredTools;
-using ssm.Content.DamageClasses;
+
 using ssm.Core;
 using Terraria;
 using Terraria.ModLoader;
@@ -14,10 +14,10 @@ namespace ssm.SoA
 
         public override void PostUpdateEquips()
         {
-            if (Player.GetModPlayer<ModdedPlayer>().AstralSet)
-            {
-                Player.GetDamage<UnitedModdedThrower>() += 0.7f;
-            }
+            //if (Player.GetModPlayer<ModdedPlayer>().AstralSet)
+            //{
+            //    Player.GetDamage<UnitedModdedThrower>() += 0.7f;
+            //}
         }
     }
 }

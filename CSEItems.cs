@@ -7,7 +7,6 @@ using FargowiltasSouls.Content.Items.Weapons.FinalUpgrades;
 using FargowiltasSouls.Content.Items.Weapons.SwarmDrops;
 using FargowiltasSouls.Core.ItemDropRules.Conditions;
 using Microsoft.Xna.Framework;
-using ssm.Content.DamageClasses;
 using ssm.Content.Items.Accessories;
 using ssm.Core;
 using System;
@@ -251,7 +250,7 @@ namespace ssm
         }
         public override void ModifyShootStats(Item item, Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockBack)
         {
-            if (item.CountsAsClass<UnitedModdedThrower>())
+            if (item.CountsAsClass<ThrowingDamageClass>())
             {
                 velocity *= player.CSE().throwerVelocity;
             }
