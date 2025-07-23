@@ -133,15 +133,15 @@ namespace ssm.CrossMod.SoulsRecipes
             {
                 if (ModCompatibility.Homeward.Loaded)
                 {
-                    tooltips.Insert(5, new TooltipLine(Mod, "mayo1", Language.GetTextValue(key + "HWJBerserker")));
+                    tooltips.Insert(6, new TooltipLine(Mod, "mayo1", Language.GetTextValue(key + "HWJBerserker")));
                 }
                 if (ModCompatibility.SacredTools.Loaded)
                 {
-                    tooltips.Insert(5, new TooltipLine(Mod, "mayo2", Language.GetTextValue(key + "SoABerserker")));
+                    tooltips.Insert(6, new TooltipLine(Mod, "mayo2", Language.GetTextValue(key + "SoABerserker")));
                 }
                 if (ModCompatibility.Thorium.Loaded)
                 {
-                    tooltips.Insert(5, new TooltipLine(Mod, "mayo3", Language.GetTextValue(key + "ThoriumBerserker")));
+                    tooltips.Insert(6, new TooltipLine(Mod, "mayo3", Language.GetTextValue(key + "ThoriumBerserker")));
                 }
             }
         }

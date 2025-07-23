@@ -95,12 +95,12 @@ namespace ssm.CrossMod.SoulsRecipes
             {
                 if (ModCompatibility.Homeward.Loaded)
                 {
-                    tooltips.Insert(5, new TooltipLine(Mod, "mayo1", Language.GetTextValue(key + "HWJSniper")));
+                    tooltips.Insert(6, new TooltipLine(Mod, "mayo1", Language.GetTextValue(key + "HWJSniper")));
                     tooltips.Insert(6, new TooltipLine(Mod, "mayo2", Language.GetTextValue(key + "HWJStarSniper")));
                 }
                 if (ModCompatibility.SacredTools.Loaded)
                 {
-                    tooltips.Insert(5, new TooltipLine(Mod, "mayo2", Language.GetTextValue(key + "SoASniper")));
+                    tooltips.Insert(6, new TooltipLine(Mod, "mayo2", Language.GetTextValue(key + "SoASniper")));
                 }
             }
             if (ModCompatibility.Calamity.Loaded)

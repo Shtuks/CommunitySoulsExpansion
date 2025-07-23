@@ -566,7 +566,7 @@ Mods: {
 			AddedEffects: {
 				ThoriumWorldshaper: Effects of Geode Enchantment
 				ThoriumBerserker: Effects of Blizzard Pouch
-				ThoriumColossus: Effects of Blast Shield
+				ThoriumColossus: Effects of Blast Shield and Terrarium Defender
 				ThoriumSupersonic: Effects of The Omega Core
 				CalDefender: Effects of Asgard's Valor
 				ThoriumThrower: Effects of Pirate's Purse
@@ -583,7 +583,7 @@ Mods: {
 				SoABerserker: Effects of Flora Fist
 				SoASniper: Your weapons don't require reloading
 				SoASupersonic: Effects of Heart of the Plough, Advanced Dash Tech
-				SoAWorldshaper: Effects of Rage Supressor, Celestial ring
+				SoAWorldshaper: Effects of Rage Suppressor, Celestial ring
 				SoAConjurist: Effects of Starstream Veil
 				SoAThrower: Effects of Dreadflame Emblem
 				HWJBerserker: Effects of Philosopher's Stone, Godly Touch and Gauntlet of Commander
@@ -1151,18 +1151,6 @@ Mods: {
 					'''
 			}
 
-			BerserkerEnchant: {
-				DisplayName: Berserker Enchantment
-				Tooltip:
-					'''
-					'I'd rather fight for my life than live it'
-					Attack speed is increased by 5% at every 25% segment of life
-					Fire surrounds your armour and melee weapons
-					Enemies that you set on fire or singe will take additional damage over time
-					Effects of Spring Steps, Slag Stompers, Molten Spear Tip, and Rapier Badge
-					'''
-			}
-
 			BiotechEnchant: {
 				DisplayName: Biotech Enchantment
 				Tooltip:
@@ -1379,7 +1367,6 @@ Mods: {
 					50% increased mining speed
 					Shows the location of enemies, traps, and treasures
 					Light is emitted from the player
-					Effects of Crystal Spear Tip
 					'''
 			}
 
@@ -1454,7 +1441,7 @@ Mods: {
 					Healing spells will shortly increase the healed player's maximum life by 50
 					Your radiant damage has a 15% chance to release a blinding flash of light
 					The flash heals nearby allies equal to your bonus healing and confuses enemies
-					Effects of Dew Collector and Equalizer
+					Effects of Dew Collector, Heart of the Jungle and Equalizer
 					'''
 			}
 
@@ -1805,7 +1792,7 @@ Mods: {
 					'Elven mysteries unfold before you...'
 					All armor bonuses from Blooming, Assassin, Life Bloom, Life Binder, and Biotech
 					Effects of Petal Shield, Kick Petal, Fragrant Corsage, and Dart Pouch
-					Effects of Aloe Leaf and Equalizer
+					Effects of Dew Collector and Equalizer
 					'''
 			}
 
@@ -1828,6 +1815,7 @@ Mods: {
 					All armor bonuses from Silk, Spirit, Shade Master, Dream Weaver and Dread
 					Effects of Artificer's Focus, Artificer's Shield, Shinobi Sigil, and Artificer's Rocketeers
 					Effects of Crash Boots, Cursed Flail-Core, Inner Flame, and Scrying Glass
+					Effects of Demon Tongue, Dark Effigy, Inner Flame, and Shinobi Sigil
 					'''
 			}
 
@@ -1839,7 +1827,7 @@ Mods: {
 					All armor bonuses from Depth Diver, Yew Wood, and Tide Hunter
 					All armor bonuses from Naga Skin, Icy, Cryomancer, and Tide Turner
 					Effects of Sea Breeze Pendant, Bubble Magnet, Ocean's Retaliation and Drowned Doubloon
-					Effects of Thumb Ring, Agnor's Bowl, Plague Lord's flask and Ice Bound Strider Hide
+					Effects of Thumb Ring, Angler's Bowl, Plague Lord's flask and Ice Bound Strider Hide
 					'''
 			}
 
@@ -1851,9 +1839,9 @@ Mods: {
 					All armor bonuses from Lodestone, Valadium, Illumite, and Terrarium
 					All armor bonuses from Durasteel, Darksteel, Steel, and Thorium
 					Effects of Spiked Bracersand, Thorium Shield, and Obsidian Scale
-					Effects of Crietz, Astro-Beetle Husk, Sandweaver's Tiara, and Beholder's gaze
+					Effects of Crietz, Sandweaver's Tiara, and Beholder's gaze
 					Effects of Mirror of Beholder, Nuclear Option, Jazz Music Player and Band of Replenishmen
-					Effects of Terrarium Surround Buffer and Fan Letter
+					Effects of Terrarium Surround Buffer and Beholder's Gaze
 					'''
 			}
 
@@ -1886,8 +1874,8 @@ Mods: {
 					'Behold the craftsmanship of the Dark Elves...'
 					All armor bonuses from Granite, Yew Wood, and Titan
 					All armor bonuses from Jester, Astro, and Conduit
-					Effects of Heart of Stone, Thumb Ring, Fan Letter, and  Rock Music Player
-					Effects of Spiked Bracers, Mask of the Crystal Eye, and Abyssal Shell
+					Effects of Heart of Stone, Shock Absorber Fan Letter, and Rock Music Player
+					Effects of Mask of the Crystal Eye, and Abyssal Shell
 					'''
 			}
 
@@ -1898,7 +1886,7 @@ Mods: {
 					'Holds a glimpse of the future...'
 					All armor bonuses from Lich, Plague Doctor, and White Dwarf
 					All armor bonuses from Bronze, Fungus, Flight and Dragon
-					Effects of Lich's Gaze, Olympic Torch, Faberge Egg, Champion's Rebuttal and Ascension Statuette
+					Effects of Olympic Torch, Faberge Egg, Champion's Rebuttal and Ascension Statuette
 					Effects of Spartan Sandals, Dragon Talon Necklace, Disco Music Player and Phylactery
 					'''
 			}
@@ -1917,14 +1905,14 @@ Mods: {
 					All armor bonuses from Plague Doctor, Lich, White Dwarf, Celestial, and Shooting Star
 					All armor bonuses from Spirit Trapper, Dragon, Dread, Flesh and Demon Blood
 					All armor bonuses from Tide Turner, Assassin, Pyromancer, Dream Weaver, and Rhapsodist
-					Effects of Nightshade Flower, Flawless Chrysalis, Thumb Ring and Bee Booties
-					Effects of Goblin War Shield, Bubble Magnet, Agnor's Bowl, and Ice Bound Strider Hide
-					Effects of Demon Tongue, Dark Effigy, Aloe Leaf, Equalizer, Karmic Holder, Prydwen, and Rebirth Statuette
+					Effects of Hexing Talisman, Flawless Chrysalis and Thumb Ring, Inferno Lords Focus, Lihzahrd's Tail and The Ring
+					Effects of Bubble Magnet, Angler's Bowl, Ice Bound Strider Hide, Pocket Fusion Generator, Serpent Shield and Steam Keeper Watch and Crystal Scorpion
+					Effects of Demon Tongue, Dark Effigy, Dew Collector, Equalizer, Karmic Holder, Prydwen, Cape of the Survivor, Metabolic Pills and Monster Charm
 					Effects of Ring of Unity, Brass Cap, Waxy Rosin, Auto Tuner, Metal Music Player, Diss Track, Concert Tickets, Conductor's Baton, Full Score, and Metronome
-					Effects of Eye of the Storm, Champion's Rebuttal, Olympic Torch, Spartan Sandals, Spiked Bracers, Rock Music Player, Ogre Sandals, and Mask of the Crystal Eye
-					Effects of the Abyssal Shell, Astro-Beetle Husk, Obsidian Scale, Mirror of the Beholder, Jazz Music Player, Fan Letter, and Terrarium Surround Sound
-					Effects of Artificer's Shield, Artificer's Rocketeers, Inner Flame, Crash Boots, Vampire Gland, Spring Steps, Slag Stompers, and Shade Band
-					Effects of Lich's Gaze, Crietz, Band of Replenishment, Ascension Statuette, Dart Pouch, Mark of the Dream Eater
+					Effects of Heart of the Jungle, Champion's Rebuttal, Olympic Torch, Spartan Sandals, Spiked Bracers, Rock Music Player, and Mask of the Crystal Eye
+					Effects of the Abyssal Shell, Obsidian Scale, Mirror of the Beholder, Jazz Music Player, Fan Letter, and Terrarium Surround Sound
+					Effects of Artificer's Shield, Artificer's Rocketeers, Inner Flame, Crash Boots, Vampire Gland, Spring Steps, Slag Stompers, and Smothering Band
+					Effects of Beholder's Gaze, Crietz, Band of Replenishment, Nirvanna Statuette and Dart Pouch
 					'''
 			}
 
@@ -1952,7 +1940,8 @@ Mods: {
 				Tooltip:
 					'''
 					Effects of Inferno Lord’s Focus, Pocket Fusion Generator, Lihzahrd’s Tail, Serpent Shield, Metabolic Pills
-					Effects of Monster Charm, Hexing Talisman, Flawless Chrysalis and The Ring.
+					Effects of Monster Charm, Hexing Talisman, Flawless Chrysalis, Cape of the Survivor and The Ring
+					Effects of Steam Keeper Watch and Crystal Scorpon
 					'You feel pulses of energy being released from it.'
 					'''
 			}

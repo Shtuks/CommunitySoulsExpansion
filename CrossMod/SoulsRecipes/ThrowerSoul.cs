@@ -71,15 +71,15 @@ namespace ssm.CrossMod.SoulsRecipes
             {
                 if (ModCompatibility.Clamity.Loaded)
                 {
-                    tooltips.Insert(5, new TooltipLine(Mod, "mayo1", Language.GetTextValue(key + "ClamThrower")));
+                    tooltips.Insert(6, new TooltipLine(Mod, "mayo1", Language.GetTextValue(key + "ClamThrower")));
                 }
                 if (ModCompatibility.SacredTools.Loaded)
                 {
-                    tooltips.Insert(5, new TooltipLine(Mod, "mayo2", Language.GetTextValue(key + "SoAThrower")));
+                    tooltips.Insert(6, new TooltipLine(Mod, "mayo2", Language.GetTextValue(key + "SoAThrower")));
                 }
                 if (ModCompatibility.Thorium.Loaded)
                 {
-                    tooltips.Insert(5, new TooltipLine(Mod, "mayo2", Language.GetTextValue(key + "ThoriumThrower")));
+                    tooltips.Insert(6, new TooltipLine(Mod, "mayo2", Language.GetTextValue(key + "ThoriumThrower")));
                 }
             }
         }

@@ -20,9 +20,9 @@ namespace ssm.CrossMod.SoulsRecipes
 
                 if (recipe.HasResult(ModContent.ItemType<WorldShaperSoul>()))
                 {
-                    if (ModCompatibility.SacredTools.Loaded) { recipe.AddIngredient(ModCompatibility.SacredTools.Mod.Find<ModItem>("RageSupressor"), 1); recipe.AddIngredient(ModCompatibility.SacredTools.Mod.Find<ModItem>("LunarRing"), 1); }
+                    if (ModCompatibility.SacredTools.Loaded) { recipe.AddIngredient(ModCompatibility.SacredTools.Mod.Find<ModItem>("RageSuppressor"), 1); recipe.AddIngredient(ModCompatibility.SacredTools.Mod.Find<ModItem>("LunarRing"), 1); }
                     if (ModCompatibility.Homeward.Loaded) { recipe.AddIngredient(ModCompatibility.Homeward.Mod.Find<ModItem>("TimelessMiner"), 1); }
-                    if (ModCompatibility.Clamity.Loaded) { recipe.AddIngredient(ModCompatibility.Clamity.Mod.Find<ModItem>("RedDice"), 1); }
+                    if (ModCompatibility.Clamity.Loaded) { recipe.AddIngredient(ModCompatibility.Clamity.Mod.Find<ModItem>("RedDie"), 1); }
                     if (ModCompatibility.Ragnarok.Loaded) { recipe.AddIngredient(ModCompatibility.Ragnarok.Mod.Find<ModItem>("GoldenBatDroppings"), 1); }
                     if (ModCompatibility.Thorium.Loaded) { recipe.AddIngredient(this.Mod.Find<ModItem>("GeodeEnchant"), 1); }
                 }
@@ -39,7 +39,7 @@ namespace ssm.CrossMod.SoulsRecipes
             {
                 if (ModCompatibility.Clamity.Loaded)
                 {
-                    ModCompatibility.Clamity.Mod.Find<ModItem>("RedDice").UpdateAccessory(player, true);
+                    ModCompatibility.Clamity.Mod.Find<ModItem>("RedDie").UpdateAccessory(player, true);
                 }
                 if (ModCompatibility.Ragnarok.Loaded)
                 {
@@ -52,7 +52,7 @@ namespace ssm.CrossMod.SoulsRecipes
                 if (ModCompatibility.SacredTools.Loaded)
                 {
                     player.AddEffect<LunarRingEffect>(Item);
-                    ModCompatibility.Ragnarok.Mod.Find<ModItem>("RageSupressor").UpdateAccessory(player, true);
+                    ModCompatibility.SacredTools.Mod.Find<ModItem>("RageSuppressor").UpdateAccessory(player, true);
                 }
             }
         }

@@ -92,11 +92,11 @@ namespace ssm.CrossMod.SoulsRecipes
             {
                 if (ModCompatibility.Homeward.Loaded)
                 {
-                    tooltips.Insert(5, new TooltipLine(Mod, "mayo1", Language.GetTextValue(key + "HWJArchWizard")));
+                    tooltips.Insert(6, new TooltipLine(Mod, "mayo1", Language.GetTextValue(key + "HWJArchWizard")));
                 }
                 if (ModCompatibility.SacredTools.Loaded)
                 {
-                    tooltips.Insert(5, new TooltipLine(Mod, "mayo2", Language.GetTextValue(key + "SoAArchWizard")));
+                    tooltips.Insert(6, new TooltipLine(Mod, "mayo2", Language.GetTextValue(key + "SoAArchWizard")));
                 }
             }
             if (ModCompatibility.Calamity.Loaded)
@@ -105,7 +105,7 @@ namespace ssm.CrossMod.SoulsRecipes
                 {
                     if (ModCompatibility.Homeward.Loaded)
                     {
-                        tooltips.Insert(5, new TooltipLine(Mod, "mayo1", Language.GetTextValue(key + "HWJArchWizard")));
+                        tooltips.Insert(6, new TooltipLine(Mod, "mayo1", Language.GetTextValue(key + "HWJArchWizard")));
                     }
                 }
             }

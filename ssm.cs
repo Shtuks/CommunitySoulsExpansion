@@ -36,6 +36,7 @@ using FargowiltasSouls.Core.Systems;
 using ssm.Content.Items.Accessories;
 using ssm.Content.NPCs.Guntera;
 using ssm.Content.NPCs.Ceiling;
+using FargowiltasSouls.Content.Items.Materials;
 
 namespace ssm
 {
@@ -284,7 +285,7 @@ namespace ssm
                     () => WorldSavingSystem.DownedFishronEX,
                     () => true,
                     new List<int> {
-                        ModContent.ItemType<CyclonicFin>(),
+                        ModContent.ItemType<DeviatingEnergy>(),
                     },
                     new List<int> { /*ModContent.ItemType<TruffleWormEX>()*/ },
                     true
@@ -296,7 +297,7 @@ namespace ssm
                     () => WorldSavingSystem.DownedFishronEX,
                     () => true,
                     new List<int> {
-                        ModContent.ItemType<CyclonicFin>(),
+                        ModContent.ItemType<AbomEnergy>(),
                     },
                     new List<int> { /*ModContent.ItemType<TruffleWormEX>()*/ },
                     true
