@@ -417,6 +417,12 @@ namespace ssm
             {
                 var changes = new List<(string, float)>
                 {
+                    ("3rd Omega Prototype", 18.99f),
+                    ("Ordeals", 20.4f),
+                    ("The Overwatcher", 19.58f),
+                    ("The Materializer", 19.59f),
+                    ("Scarab Belif", 20.9f),
+                    ("World's End Everlasting Falling Whale", 21.9f),
                     ("Nebuleus", 26f),
                     ("ThePrimordials", 19.5f),
                     ("Nihilus", 26.99f),

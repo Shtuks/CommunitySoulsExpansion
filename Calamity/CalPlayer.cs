@@ -44,6 +44,8 @@ namespace ssm.Calamity
             if (Player.Calamity().dsSetBonus) {
                 Player.GetModPlayer<CalamityPlayer>().wearingRogueArmor = true;
                 Player.GetModPlayer<CalamityPlayer>().rogueStealthMax += 1.5f;
+                Player.GetDamage<GenericDamageClass>() += 0.3f;
+                Player.GetDamage<SummonDamageClass>() -= 0.3f;
             }
         }
         public override void PostUpdateBuffs()

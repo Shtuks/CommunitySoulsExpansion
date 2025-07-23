@@ -3500,8 +3500,8 @@ Mods: {
 
 		Toggler: {
 			//thorium
+			PiratesPurseEffect: Pirate's Purse
 			GraniteEffect: Shock Absorber
-			ThiefsWalletEffect: Pirate's Purse
 			BlastShieldEffect: Blast Shield
 			CrashEffect: Crash Boots
 			CairoEffect: Eternal Oasis
@@ -3559,6 +3559,7 @@ Mods: {
 			PyroEffect: Pyromancer Ignition
 			PlagueLordEffect: Plague Lord's Flask
 			LodestoneEffect2: Lodestone Shields
+			TheOmegaCoreEffect: The Omega Core
 			//soa
 			FoundationsForceHeader: Foundations Force
 			SyranForceHeader: Syran Force
@@ -3592,8 +3593,13 @@ Mods: {
 			RoyalGuardEffect: Royal Guard
 			MilinticaDashEffect: Advanced Dash
 			HeartOfThePloughEffect: Heart of the Plough
-			CalamitySoulHeader: Godseeker Soul
+			NubasBlessingEffect: Nuba's Blessing
+			StoneOfResonanceEffect: Stone of Resonance
+			StarstreamVeilEffect: Starstream Veil
+			DreadflameEmblemEffect: Dreadflame Emblem
+			LunarRingEffect: Celestial Ring
 			//cal
+			CalamitySoulHeader: Godseeker Soul
 			ShatteredCommunityEffect: Shattered Community
 			ClamitasEffect: Clams Minions
 			RedDevil: Demonshade Devil
@@ -3612,6 +3618,7 @@ Mods: {
 			HideofAstrumDeusEffect: Hide of Astrum Deus
 			AquaticHeartEffect: Aquatic Heart
 			Enrage: Demonshade Enrage
+			DraculasCharmEffect: Dracula's Charm
 			//other
 			GaiaEffect: Attacking mode
 			NekomiEffect: Nekomi armor set
@@ -3625,14 +3632,15 @@ Mods: {
 			CuteFishEXEffect: Fishron Ritual
 			EridanusEffect: Eridanus blessing
 			//redemption
-			AdvancementHeader: "{$Mods.FargoMoreSoulsCompat.Items.AdvancementForce.DisplayName}"
+			AdvancementHeader: Advancement Force
 			CommonGuardBauble: Soul Bauble
 			PureIronCross: Holy Shield
 			XenomiteNecklace: Necklace of Perception
 			XenomiteArmorEffect: Toxic Gas
 			HardlightEffect: Drones Summon
 			XeniumConcoction: Beelzebub Concoction
-			XeniumShield: Infected Thornshield Dash
+			InfectionShieldEffect: Infected Thornshield Dash
+			HEVSuitEffect: H.E.V Suit
 			//spirit
 			AdventurerHeader: Adventurer Force
 			BotanistHerbEffect: Glowing Herb
@@ -3688,11 +3696,18 @@ Mods: {
 			PhantasmalAura: Spectral Aura
 			PhantasmalJump: Shadowbound Jump
 			//hwj
-			CommandersGaunletEffect: Gauntlet of Commander
+			CommandersGauntletEffect: Gauntlet of Commander
 			GodlyTouchEffect: Divine Touch
 			WalnutOnFireEffect: Walnut on Fire
 			StarQuiverEffect: Star Quiver
 			PhilosophersStoneEffect: Philosopher's Stone
+			EruditeBookmarkEffect: Erudite Bookmark
+			DivineNecklaceEffect: Divine Necklace
+			TheBatterEffect: TheBatter
+			RejuvenatedCrossEffect: Rejuvenated Cross
+			OneGiantLeapEffect: Moonwalk
+			ArrowCaseEffect: Arrow Case
+			EdgewalkerEffect: Edgewalker
 		}
 
 		Tiles: {

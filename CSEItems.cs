@@ -265,16 +265,16 @@ namespace ssm
                 if (Item.type == ModContent.ItemType<StyxCrown>())
                 {
                     player.GetCritChance(DamageClass.Generic) += 10f;
-                    player.GetDamage(DamageClass.Generic) += 10 / 100f;
+                    player.GetDamage(DamageClass.Generic) += 5 / 100f;
                     player.maxMinions += 5;
                 }
                 if (Item.type == ModContent.ItemType<StyxChestplate>())
                 {
-                    player.GetDamage(DamageClass.Generic) += 10 / 100f;
+                    player.GetDamage(DamageClass.Generic) += 5 / 100f;
                 }
                 if (Item.type == ModContent.ItemType<StyxLeggings>())
                 {
-                    player.GetDamage(DamageClass.Generic) += 10 / 100f;
+                    player.GetDamage(DamageClass.Generic) += 5 / 100f;
                 }
             }
         }
