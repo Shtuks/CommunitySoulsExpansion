@@ -7,7 +7,6 @@ using System.Linq;
 using Terraria;
 using Terraria.Graphics.Shaders;
 
-// Lowest namespace for convenience. 
 namespace ssm
 {
     public class PrimDrawer
@@ -124,12 +123,6 @@ namespace ssm
         #endregion
 
         #region Helper Methods
-        /// <summary>
-        /// Cache this and use it to call draw from.
-        /// </summary>
-        /// <param name="widthFunc">The width function</param>
-        /// <param name="colorFunc">The color function</param>
-        /// <param name="shader">The shader, if any</param>
         public PrimDrawer(WidthTrailFunction widthFunc, ColorTrailFunction colorFunc, MiscShaderData shader = null)
         {
             WidthFunc = widthFunc;
@@ -146,30 +139,22 @@ namespace ssm
 
         private void UpdateBaseEffect(out Matrix effectProjection, out Matrix effectView)
         {
-            // Get the screen bounds.
             int height = Main.instance.GraphicsDevice.Viewport.Height;
 
-            // Get the zoom and the scaling zoom matrix from it.
             Vector2 zoom = Main.GameViewMatrix.Zoom;
             Matrix zoomScaleMatrix = Matrix.CreateScale(zoom.X, zoom.Y, 1f);
 
-            // Get a matrix that aims towards the Z axis (these calculations are relative to a 2D world).
             effectView = Matrix.CreateLookAt(Vector3.Zero, Vector3.UnitZ, Vector3.Up);
 
-            // Offset the matrix to the appropriate position based off the height.
             effectView *= Matrix.CreateTranslation(0f, -height, 0f);
 
-            // Flip the matrix around 180 degrees.
             effectView *= Matrix.CreateRotationZ(MathHelper.Pi);
 
-            // Account for the inverted gravity effect.
             if (Main.LocalPlayer.gravDir == -1f)
                 effectView *= Matrix.CreateScale(1f, -1f, 1f) * Matrix.CreateTranslation(0f, height, 0f);
 
-            // And account for the current zoom.
             effectView *= zoomScaleMatrix;
 
-            // Create a projection in 2D using the screen width/height, and the zoom.
             effectProjection = Matrix.CreateOrthographicOffCenter(0f, Main.screenWidth * zoom.X, 0f, Main.screenHeight * zoom.Y, 0f, 1f) * zoomScaleMatrix;
             BaseEffect.View = effectView;
             BaseEffect.Projection = effectProjection;
@@ -177,7 +162,6 @@ namespace ssm
 
         private void UpdateBaseEffectPixel(out Matrix effectProjetion, out Matrix effectView)
         {
-            // Get the screen bounds.
             effectProjetion = Matrix.CreateOrthographicOffCenter(0, Main.screenWidth, Main.screenHeight, 0, -1, 1);
             effectView = Matrix.Identity;
             BaseEffect.Projection = effectProjetion;
@@ -189,23 +173,18 @@ namespace ssm
             List<Vector2> newList = new();
             for (int i = 0; i < basePoints.Count(); i++)
             {
-                // Don't incorporate points that are zeroed out.
-                // They are almost certainly a result of incomplete oldPos arrays.
                 if (basePoints.ElementAt(i) == Vector2.Zero)
                     continue;
 
                 newList.Add(basePoints.ElementAt(i) + baseOffset);
             }
 
-            // WAYY less demanding smoothening.
             if (newList.Count <= 1)
                 return newList;
 
             List<Vector2> controlPoints = new();
             for (int i = 0; i < basePoints.Count(); i++)
             {
-                // Don't incorporate points that are zeroed out.
-                // They are almost certainly a result of incomplete oldPos arrays.
                 if (basePoints.ElementAt(i) == Vector2.Zero)
                     continue;
 
@@ -214,7 +193,6 @@ namespace ssm
             }
             List<Vector2> points = new();
 
-            // Avoid stupid index errors.
             if (controlPoints.Count <= 4)
                 return controlPoints;
 
@@ -229,8 +207,6 @@ namespace ssm
                 Vector2 right = controlPoints[localSplineIndex + 1];
                 Vector2 farRight;
 
-                // Special case: If the spline attempts to access the previous/next index but the index is already at the very beginning/end, simply
-                // cheat a little bit by creating a phantom point that's mirrored from the previous one.
                 if (localSplineIndex <= 0)
                 {
                     Vector2 mirrored = left * 2f - right;
@@ -250,7 +226,6 @@ namespace ssm
                 points.Add(Vector2.CatmullRom(farLeft, left, right, farRight, localSplineInterpolant));
             }
 
-            // Manually insert the front and end points.
             points.Insert(0, controlPoints.First());
             points.Add(controlPoints.Last());
 
@@ -261,36 +236,23 @@ namespace ssm
         {
             List<BasePrimTriangle> rectPrims = new();
 
-            // Loop throught the points, ignoring the final one as it doesnt need to connect to anything.
             for (int i = 0; i < points.Count - 1; i++)
             {
-                // How far along in the list of points we are.
                 float trailCompletionRatio = i / (float)points.Count;
 
-                // Get the current width and color from the delegates.
                 float width = WidthFunc(trailCompletionRatio);
                 Color color = ColorFunc(trailCompletionRatio);
 
-                // Get the current point, and the point ahead (next in the list).
                 Vector2 point = points[i];
                 Vector2 aheadPoint = points[i + 1];
 
-                // Get the direction to the ahead point, not calling DirectionTo for performance.
                 Vector2 directionToAhead = (aheadPoint - point).SafeNormalize(Vector2.Zero);
 
-                // Get the left and right coordinates, with the current trail completion for the X value.
                 Vector2 leftCurrentTextureCoord = new(trailCompletionRatio, 0f);
                 Vector2 rightCurrentTextureCoord = new(trailCompletionRatio, 1f);
 
-                // Point 90 degrees away from the direction towards the next point, and use it to mark the edges of a rectangle.
-                // This doesn't use RotatedBy for the sake of performance as well.
                 Vector2 sideDirection = new(-directionToAhead.Y, directionToAhead.X);
 
-                // This is defining a rectangle based on two triangles.
-                // See https://cdn.discordapp.com/attachments/770382926545813515/1050185533780934766/a.png for a visual of this.
-                // The two triangles can be imagined as the point being the tip, and the sides being the opposite side.
-                // How to connect it all is defined in the CreatePrimitiveIndices() function.
-                // The resulting rectangles combined are what make the trail itself.
                 rectPrims.Add(new BasePrimTriangle(point - sideDirection * width, color, leftCurrentTextureCoord));
                 rectPrims.Add(new BasePrimTriangle(point + sideDirection * width, color, rightCurrentTextureCoord));
             }
@@ -300,24 +262,12 @@ namespace ssm
 
         private static short[] CreatePrimitiveIndices(int totalPoints)
         {
-            // What this is doing is basically representing each point on the vertices list as
-            // indices. These indices should come together to create a tiny rectangle that acts
-            // as a segment on the trail. This is achieved here by splitting the indices (or rather, points)
-            // into 2 triangles, which requires 6 points. This is the aforementioned connecting of the
-            // triangles using the indices.
-
-            // Get the total number of indices, -1 because the last point doesn't connect to anything, and
-            // * 6 because each point has 6 indices.
             int totalIndices = (totalPoints - 1) * 6;
 
-            // Create an array to hold them with the correct size.
             short[] indices = new short[totalIndices];
 
-            // Loop through the points, creating each indice.
             for (int i = 0; i < totalPoints - 2; i++)
             {
-                // This might look confusing, but its basically going around the rectangle, and adding the points in the appropriate place.
-                // Use this as a visual aid. https://cdn.discordapp.com/attachments/864078125657751555/1050218596623716413/image.png
                 int startingTriangleIndex = i * 6;
                 int connectToIndex = i * 2;
                 indices[startingTriangleIndex] = (short)connectToIndex;
@@ -327,7 +277,6 @@ namespace ssm
                 indices[startingTriangleIndex + 4] = (short)(connectToIndex + 1);
                 indices[startingTriangleIndex + 5] = (short)(connectToIndex + 3);
             }
-            // Return the array.
             return indices;
         }
         #endregion

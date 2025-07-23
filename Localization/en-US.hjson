@@ -564,8 +564,12 @@ Mods: {
 			}
 
 			AddedEffects: {
-				ThoriumColossus: Effect of Blast Shield
+				ThoriumWorldshaper: Effects of Geode Enchantment
+				ThoriumBerserker: Effects of Blizzard Pouch
+				ThoriumColossus: Effects of Blast Shield
+				ThoriumSupersonic: Effects of The Omega Core
 				CalDefender: Effects of Asgard's Valor
+				ThoriumThrower: Effects of Pirate's Purse
 				ThoriumUniverse:
 					'''
 					Healing spells will heal 5 additional lifes
@@ -573,20 +577,27 @@ Mods: {
 					Increase inspiration by 20
 					20% increased throwing velocity
 					'''
-				SoARampart:
-					'''
-					Effects of Celestial Shield
-					Only grants effects of Shield of Reflections when True Mode is enabled.
-					'''
-				SoAColossus:
-					'''
-					Effects of Celestial Shield and Royal Guard
-					Only grants effects of Shield of Reflections when True Mode is enabled.
-					'''
+				SoARampart: Effects of Celestial Shield and Shield of Reflections
+				SoAColossus: Effects of Nightmare Blindfold, Shield of Reflections and Royal Guard
+				SoAArchWizard: Effects of Nuba's Blessing, Stone Of Resonance
 				SoABerserker: Effects of Flora Fist
-				SoASnipers: Your weapons don't require reloading
+				SoASniper: Your weapons don't require reloading
 				SoASupersonic: Effects of Heart of the Plough, Advanced Dash Tech
 				SoAWorldshaper: Effects of Rage Supressor, Celestial ring
+				SoAConjurist: Effects of Starstream Veil
+				SoAThrower: Effects of Dreadflame Emblem
+				HWJBerserker: Effects of Philosopher's Stone, Godly Touch and Gauntlet of Commander
+				HWJSniper: Effects of Crossbow Scope, Walnut On Fire and The Batter
+				HWJStarSniper: Effects of Star Quiver
+				HWJConjurist: Effects of Divine Hairpin
+				HWJArchWizard: Effects of Rejuvenated Cross and Erudite Bookmark
+				ClamThrower: Effects of Dracula's Charm
+				ClamWorldshaper: Effects of Red Dice
+				ClamColossus: Effects of Skull of the Blood God
+				RedSupersonic: Effects of Infected Thornshield
+				HWJSupersonic: Effects of Edgewalker and Arrow Case
+				HWJColossus: Effects of Moonwalk and Master Shield
+				RedColossus: Effects of H.E.V Suit
 			}
 
 			CalamitySoul: {
@@ -3687,6 +3698,12 @@ Mods: {
 			TitanRecoil: Ranged Recoil
 			PhantasmalAura: Spectral Aura
 			PhantasmalJump: Shadowbound Jump
+			//hwj
+			CommandersGaunletEffect: Gauntlet of Commander
+			GodlyTouchEffect: Divine Touch
+			WalnutOnFireEffect: Walnut on Fire
+			StarQuiverEffect: Star Quiver
+			PhilosophersStoneEffect: Philosopher's Stone
 		}
 
 		Tiles: {
@@ -3939,6 +3956,11 @@ Mods: {
 
 				DevItems: {
 					Label: Dev Items
+					Tooltip: ""
+				}
+
+				SecretBosses: {
+					Label: Secret Bosses
 					Tooltip: ""
 				}
 			}

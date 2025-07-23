@@ -322,42 +322,42 @@ namespace ssm
 
                     if (ModCompatibility.Calamity.Loaded && !ModCompatibility.SacredTools.Loaded && !ModCompatibility.Thorium.Loaded)
                     {
-                        npc.damage = 200;
+                        npc.defDamage = 200;
                         npc.lifeMax = 20000000;
                     }
                     else if (ModCompatibility.SacredTools.Loaded && !ModCompatibility.Calamity.Loaded && !ModCompatibility.Thorium.Loaded)
                     {
-                        npc.damage = 200;
+                        npc.defDamage = 200;
                         npc.lifeMax = 15000000;
                     }
                     else if (ModCompatibility.Thorium.Loaded && !ModCompatibility.SacredTools.Loaded && !ModCompatibility.Calamity.Loaded)
                     {
-                        npc.damage = 200;
+                        npc.defDamage = 200;
                         npc.lifeMax = 10000000;
                     }
                     else if (ModCompatibility.Thorium.Loaded && ModCompatibility.SacredTools.Loaded && !ModCompatibility.Calamity.Loaded)
                     {
-                        npc.damage = 300;
+                        npc.defDamage = 300;
                         npc.lifeMax = 20000000;
                     }
                     else if (ModCompatibility.Thorium.Loaded && ModCompatibility.Calamity.Loaded && !ModCompatibility.SacredTools.Loaded)
                     {
-                        npc.damage = 300;
+                        npc.defDamage = 300;
                         npc.lifeMax = 22500000;
                     }
                     else if (ModCompatibility.SacredTools.Loaded && ModCompatibility.Calamity.Loaded && !ModCompatibility.Thorium.Loaded)
                     {
-                        npc.damage = 300;
+                        npc.defDamage = 300;
                         npc.lifeMax = 25000000;
                     }
                     else if (ModCompatibility.Thorium.Loaded && ModCompatibility.Calamity.Loaded && ModCompatibility.SacredTools.Loaded)
                     {
-                        npc.damage = 400;
+                        npc.defDamage = 400;
                         npc.lifeMax = 30000000;
                     }
                     else if (!ModCompatibility.Calamity.Loaded && !ModCompatibility.SacredTools.Loaded && !ModCompatibility.Thorium.Loaded)
                     {
-                        npc.damage = 100;
+                        npc.defDamage = 100;
                         npc.lifeMax = 5000000;
                     }
                 }

@@ -1,5 +1,6 @@
 ﻿using CalamityMod;
 using CalamityMod.CalPlayer;
+using CalamityMod.Items.Armor.Demonshade;
 using CalamityMod.Items.SummonItems;
 using FargowiltasSouls;
 using FargowiltasSouls.Content.Bosses.MutantBoss;
@@ -37,6 +38,14 @@ namespace ssm.Calamity
 
         //    Player.GetDamage<Th>() += CalPlayer.stealthDamage;
         //}
+
+        public override void PostUpdateEquips()
+        {
+            if (Player.Calamity().dsSetBonus) {
+                Player.GetModPlayer<CalamityPlayer>().wearingRogueArmor = true;
+                Player.GetModPlayer<CalamityPlayer>().rogueStealthMax += 1.5f;
+            }
+        }
         public override void PostUpdateBuffs()
         {
             if (DownedBossSystem.downedExoMechs && !FargoSoulsUtil.BossIsAlive(ref EModeGlobalNPC.mutantBoss, ModContent.NPCType<MutantBoss>()))

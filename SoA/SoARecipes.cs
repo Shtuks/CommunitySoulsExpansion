@@ -74,54 +74,54 @@ namespace ssm
                     recipe.AddIngredient<SoASoul>();
                 }
 
-                if (recipe.HasResult<BerserkerSoul>() && recipe.HasIngredient(ItemID.CelestialShell))
-                {
-                    recipe.RemoveIngredient(ItemID.CelestialShell);
-                }
+                //if (recipe.HasResult<BerserkerSoul>() && recipe.HasIngredient(ItemID.CelestialShell))
+                //{
+                //    recipe.RemoveIngredient(ItemID.CelestialShell);
+                //}
 
-                if (recipe.HasResult<ConjuristsSoul>() && !recipe.HasIngredient<StarstreamVeil>())
-                {
-                    recipe.AddIngredient<StarstreamVeil>();
-                    recipe.RemoveIngredient(3812);
-                    recipe.RemoveIngredient(3810);
-                    recipe.RemoveIngredient(3811);
-                    recipe.RemoveIngredient(3809);
-                }
+                //if (recipe.HasResult<ConjuristsSoul>() && !recipe.HasIngredient<StarstreamVeil>())
+                //{
+                //    recipe.AddIngredient<StarstreamVeil>();
+                //    recipe.RemoveIngredient(3812);
+                //    recipe.RemoveIngredient(3810);
+                //    recipe.RemoveIngredient(3811);
+                //    recipe.RemoveIngredient(3809);
+                //}
 
-                if (recipe.HasResult<ColossusSoul>() && !recipe.HasIngredient<RoyalGuard>())
-                {
-                    recipe.AddIngredient<RoyalGuard>();
-                    recipe.AddIngredient<NightmareBlindfold>();
-                }
+                //if (recipe.HasResult<ColossusSoul>() && !recipe.HasIngredient<RoyalGuard>())
+                //{
+                //    recipe.AddIngredient<RoyalGuard>();
+                //    recipe.AddIngredient<NightmareBlindfold>();
+                //}
 
-                if (recipe.HasResult<SupersonicSoul>() && !recipe.HasIngredient<MilinticaDash>())
-                {
-                    recipe.AddIngredient<MilinticaDash>();
-                    recipe.AddIngredient<HeartOfThePlough>();
-                }
+                //if (recipe.HasResult<SupersonicSoul>() && !recipe.HasIngredient<MilinticaDash>())
+                //{
+                //    recipe.AddIngredient<MilinticaDash>();
+                //    recipe.AddIngredient<HeartOfThePlough>();
+                //}
 
-                if (recipe.HasResult<WorldShaperSoul>() && !recipe.HasIngredient<LunarRing>())
-                {
-                    recipe.AddIngredient<LunarRing>();
-                    recipe.AddIngredient<RageSuppressor>();
-                }
+                //if (recipe.HasResult<WorldShaperSoul>() && !recipe.HasIngredient<LunarRing>())
+                //{
+                //    recipe.AddIngredient<LunarRing>();
+                //    recipe.AddIngredient<RageSuppressor>();
+                //}
 
-                if (recipe.HasResult<BerserkerSoul>() && !recipe.HasIngredient<SolarSigil>())
-                {
-                    recipe.AddIngredient<SolarSigil>();
-                }
-                if (recipe.HasResult<ArchWizardsSoul>() && !recipe.HasIngredient<NebulaSigil>())
-                {
-                    recipe.AddIngredient<NebulaSigil>();
-                }
-                if (recipe.HasResult<SnipersSoul>() && !recipe.HasIngredient<VortexSigil>())
-                {
-                    recipe.AddIngredient<VortexSigil>();
-                }
-                if (recipe.HasResult<ConjuristsSoul>() && !recipe.HasIngredient<StardustSigil>())
-                {
-                    recipe.AddIngredient<StardustSigil>();
-                }
+                //if (recipe.HasResult<BerserkerSoul>() && !recipe.HasIngredient<SolarSigil>())
+                //{
+                //    recipe.AddIngredient<SolarSigil>();
+                //}
+                //if (recipe.HasResult<ArchWizardsSoul>() && !recipe.HasIngredient<NebulaSigil>())
+                //{
+                //    recipe.AddIngredient<NebulaSigil>();
+                //}
+                //if (recipe.HasResult<SnipersSoul>() && !recipe.HasIngredient<VortexSigil>())
+                //{
+                //    recipe.AddIngredient<VortexSigil>();
+                //}
+                //if (recipe.HasResult<ConjuristsSoul>() && !recipe.HasIngredient<StardustSigil>())
+                //{
+                //    recipe.AddIngredient<StardustSigil>();
+                //}
 
                 //if (recipe.HasResult<MasochistSoul>() && !recipe.HasIngredient<YataMirror>())
                 //{
@@ -129,14 +129,14 @@ namespace ssm
                 //    recipe.AddIngredient<PrimordialCore>();
                 //}
 
-                if (recipe.HasResult<BerserkerSoul>() && !recipe.HasIngredient<FloraFist>())
-                {
-                    if (recipe.HasIngredient(1343))
-                    {
-                        recipe.RemoveIngredient(1343);
-                    }
-                    recipe.AddIngredient<FloraFist>();
-                }
+                //if (recipe.HasResult<BerserkerSoul>() && !recipe.HasIngredient<FloraFist>())
+                //{
+                //    if (recipe.HasIngredient(1343))
+                //    {
+                //        recipe.RemoveIngredient(1343);
+                //    }
+                //    recipe.AddIngredient<FloraFist>();
+                //}
 
                 if (recipe.HasResult<FlightMasterySoul>() && !recipe.HasIngredient<GrandWings>())
                 {

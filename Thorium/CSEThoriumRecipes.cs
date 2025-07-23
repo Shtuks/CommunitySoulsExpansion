@@ -97,10 +97,10 @@ namespace ssm.Thorium
                     recipe.AddIngredient(ItemID.NaturesGift);
                 }
 
-                if (recipe.HasResult<WorldShaperSoul>() && !recipe.HasIngredient<GeodeEnchant>())
-                {
-                    recipe.AddIngredient<GeodeEnchant>();
-                }
+                //if (recipe.HasResult<WorldShaperSoul>() && !recipe.HasIngredient<GeodeEnchant>())
+                //{
+                //    recipe.AddIngredient<GeodeEnchant>();
+                //}
 
                 if (recipe.HasResult<StyxCrown>() && recipe.HasIngredient(549))
                 {

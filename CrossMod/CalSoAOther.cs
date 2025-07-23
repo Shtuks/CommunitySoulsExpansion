@@ -17,7 +17,7 @@ namespace ssm.CrossMod
             {
                 Recipe recipe = Main.recipe[i];
 
-                //flora fist to gaunlet
+                //flora fist to gauntlet
                 if (recipe.HasResult(ModContent.ItemType<ElementalGauntlet>()) && recipe.HasIngredient(1613))
                 {
                     recipe.RemoveIngredient(1613);

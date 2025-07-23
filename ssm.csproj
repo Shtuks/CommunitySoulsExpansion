@@ -19,9 +19,6 @@
 	  <Reference Include="BombusApisBee">
 	    <HintPath>lib\BombusApisBee.dll</HintPath>
 	  </Reference>
-	  <Reference Include="BossChecklist">
-	    <HintPath>lib\BossChecklist.dll</HintPath>
-	  </Reference>
 	  <Reference Include="CalamityBardHealer">
 	    <HintPath>lib\CalamityBardHealer.dll</HintPath>
 	  </Reference>
@@ -58,15 +55,6 @@
 	  <Reference Include="FargoMoreSoulsCompat">
 	    <HintPath>Libraries\FargoMoreSoulsCompat_v0.4.2.dll</HintPath>
 	  </Reference>
-	  <Reference Include="FargoMoreSoulsCompat">
-	    <HintPath>Libraries\FargoMoreSoulsCompat_v0.4.2.dll</HintPath>
-	  </Reference>
-	  <Reference Include="FargoMoreSoulsCompat">
-	    <HintPath>Libraries\FargoMoreSoulsCompat_v0.4.2.dll</HintPath>
-	  </Reference>
-	  <Reference Include="FargoMoreSoulsCompat">
-	    <HintPath>Libraries\FargoMoreSoulsCompat_v0.4.2.dll</HintPath>
-	  </Reference>
 	  <Reference Include="Fargowiltas">
 	    <HintPath>lib\Fargowiltas.dll</HintPath>
 	  </Reference>
@@ -75,15 +63,6 @@
 	  </Reference>
 	  <Reference Include="FargowiltasSouls">
 	    <HintPath>lib\FargowiltasSouls.dll</HintPath>
-	  </Reference>
-	  <Reference Include="HEROsMod">
-	    <HintPath>lib\HEROsMod.dll</HintPath>
-	  </Reference>
-	  <Reference Include="InfernalEclipseAPI">
-	    <HintPath>..\..\ModReader\InfernalEclipseAPI\InfernalEclipseAPI.dll</HintPath>
-	  </Reference>
-	  <Reference Include="InfernumMode">
-	    <HintPath>..\..\ModReader\InfernumMode\InfernumMode.dll</HintPath>
 	  </Reference>
 	  <Reference Include="Luminance">
 	    <HintPath>lib\Luminance.dll</HintPath>
@@ -96,9 +75,6 @@
 	  </Reference>
 	  <Reference Include="Polarities">
 	    <HintPath>lib\Polarities.dll</HintPath>
-	  </Reference>
-	  <Reference Include="RagnarokMod">
-	    <HintPath>lib\RagnarokMod.dll</HintPath>
 	  </Reference>
 	  <Reference Include="Redemption">
 	    <HintPath>Libraries\Redemption.dll</HintPath>

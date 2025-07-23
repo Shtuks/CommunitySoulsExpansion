@@ -61,7 +61,7 @@ namespace ssm.Redemption
                     if (ModCompatibility.Calamity.Loaded) { multiplier += 0.5f; }
 
                     npc.lifeMax = (int)(3700000 + (1000000 * multiplier));
-                    npc.damage = 700;
+                    npc.damage = 600;
                 }
 
                 if (npc.type == ModContent.NPCType<Akka>())

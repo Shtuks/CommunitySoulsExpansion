@@ -23,6 +23,12 @@ public static class ModCompatibility
         public static bool Loaded => ModLoader.HasMod(Name);
         public static Mod Mod => ModLoader.GetMod(Name);
     }
+    public static class Vitality
+    {
+        public const string Name = "VitalityMod";
+        public static bool Loaded => ModLoader.HasMod(Name);
+        public static Mod Mod => ModLoader.GetMod(Name);
+    }
     public static class CatTech
     {
         public const string Name = "CatTech";

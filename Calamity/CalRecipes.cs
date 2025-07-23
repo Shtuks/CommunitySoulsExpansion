@@ -2,10 +2,7 @@ using Terraria;
 using FargowiltasSouls.Content.Items.Accessories.Souls;
 using Terraria.ModLoader;
 using Terraria.Localization;
-using CalamityMod.Items.Armor.Vanity;
 using CalamityMod.Items.Materials;
-using CalamityMod.Items.Armor.Brimflame;
-using CalamityMod.Tiles.Furniture.CraftingStations;
 using ssm.Core;
 using CalamityMod.Items.Armor.Auric;
 using CalamityMod.Items.Armor.GodSlayer;
@@ -17,6 +14,7 @@ using FargowiltasSouls.Content.Items.Summons;
 using Terraria.ID;
 using ssm.Content.Items.DevItems;
 using FargowiltasSouls.Content.Items.Materials;
+using SacredTools.Content.Items.Materials;
 
 namespace ssm.Calamity
 {
@@ -26,9 +24,16 @@ namespace ssm.Calamity
     {
         public override void AddRecipes()
         {
-            Recipe.Create(ModContent.ItemType<SCalMask>(), 1).AddIngredient<AshesofAnnihilation>(10).AddIngredient<CoreofHavoc>(8).AddIngredient<GalacticaSingularity>(5).AddIngredient<BrimflameScowl>(1).AddTile<CosmicAnvil>().Register();
-            Recipe.Create(ModContent.ItemType<SCalRobes>(), 1).AddIngredient<AshesofAnnihilation>(15).AddIngredient<CoreofHavoc>(10).AddIngredient<GalacticaSingularity>(7).AddIngredient<BrimflameRobes>(1).AddTile<CosmicAnvil>().Register();
-            Recipe.Create(ModContent.ItemType<SCalBoots>(), 1).AddIngredient<AshesofAnnihilation>(12).AddIngredient<CoreofHavoc>(7).AddIngredient<GalacticaSingularity>(6).AddIngredient<BrimflameBoots>(1).AddTile<CosmicAnvil>().Register();
+            Recipe recipe = ModContent.GetInstance<GalacticaSingularity>().CreateRecipe(1);
+            recipe.AddIngredient(ItemID.FragmentNebula);
+            recipe.AddIngredient(ItemID.FragmentSolar);
+            recipe.AddIngredient(ItemID.FragmentStardust);
+            recipe.AddIngredient(ItemID.FragmentVortex);
+            //if (ModCompatibility.SacredTools.Loaded) { recipe.AddIngredient(ModContent.Find<ModItem>("FragmentQuasar"), 1); }
+            //if (ModCompatibility.Thorium.Loaded) { recipe.AddIngredient(ModContent.Find<ModItem>("ShootingStarFragment"), 1); recipe.AddIngredient(ModContent.Find<ModItem>("WhiteDwarfFragment"), 1); recipe.AddIngredient(ModContent.Find<ModItem>("CelestialFragment"), 1); }
+            recipe.AddTile(TileID.LunarCraftingStation);
+            recipe.DisableDecraft();
+            recipe.Register();
         }
 
         public override void AddRecipeGroups()
@@ -88,6 +93,11 @@ namespace ssm.Calamity
                 if (!recipe.HasIngredient<Rock>() && recipe.HasResult<AbominationnVoodooDoll>())
                 {
                     recipe.AddIngredient<Rock>(1);
+                }
+
+                if (recipe.HasResult<GalacticaSingularity>() && !recipe.DecraftDisabled)
+                {
+                    recipe.DisableRecipe();
                 }
 
                 if (recipe.HasResult(ItemID.DrillContainmentUnit) && !recipe.HasIngredient<AerialiteBar>())
