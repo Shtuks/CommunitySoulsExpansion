@@ -184,7 +184,7 @@ Mods: {
 
 			ElderbarkEnchant: {
 				DisplayName: Elderbark Enchantment
-				Tooltip: Increases all item damage by 2
+				Tooltip: Increases base damage for all items by 2
 			}
 
 			DriftwoodEnchant: {
@@ -210,7 +210,7 @@ Mods: {
 				DisplayName: Wayfarer Enchantment
 				Tooltip:
 					'''
-					Killing enemies, breaking pots, mining ore grants stacking buffs. All buffs stack up to 4 times.
+					Killing enemies, breaking pots, and mining ore grant stacking buffs. All buffs stack up to 4 times.
 					Effect of Explorer's Treads
 					Effect of Metal Band
 					'''
