@@ -22,7 +22,7 @@ namespace ssm.Thorium.Enchantments
     {
         public override bool IsLoadingEnabled(Mod mod)
         {
-            return ShtunConfig.Instance.Thorium;
+            return CSEConfig.Instance.Thorium;
         }
 
         private readonly Mod thorium = ModLoader.GetMod("ThoriumMod");
@@ -47,7 +47,7 @@ namespace ssm.Thorium.Enchantments
             player.buffImmune[24] = true;
             player.noKnockback = true;
 
-            //if (!player.GetModPlayer<ShtunThoriumPlayer>().ThoriumSoul)
+            //if (!player.GetModPlayer<CSEThoriumPlayer>().ThoriumSoul)
             //{
                 //player.moveSpeed -= 0.5f;
                 //player.maxRunSpeed = 4f;

@@ -170,7 +170,7 @@ public class MutantPillar : ModProjectile
 	{
 		if (Main.LocalPlayer.active && !Main.dedServ)
 		{
-			Main.LocalPlayer.GetModPlayer<ShtunPlayer>().Screenshake = 30;
+			Main.LocalPlayer.GetModPlayer<CSEPlayer>().Screenshake = 30;
 		}
 		SoundEngine.PlaySound(SoundID.Item92, (Vector2?)base.Projectile.Center);
 		int type = (int)base.Projectile.ai[0] switch
@@ -198,9 +198,9 @@ public class MutantPillar : ModProjectile
 			return;
 		}
 		int fragmentDuration = 240;
-		if (FargoSoulsUtil.BossIsAlive(ref ShtunNpcs.mutantEX, ModContent.NPCType<MutantEX>()) && Main.npc[ShtunNpcs.mutantEX].ai[0] == 19f)
+		if (FargoSoulsUtil.BossIsAlive(ref CSENpcs.mutantEX, ModContent.NPCType<MutantEX>()) && Main.npc[CSENpcs.mutantEX].ai[0] == 19f)
 		{
-			fragmentDuration = (int)Main.npc[ShtunNpcs.mutantEX].localAI[0];
+			fragmentDuration = (int)Main.npc[CSENpcs.mutantEX].localAI[0];
 		}
 		float speed = 5.5f;
 		for (int j = 0; j < 4; j++)

@@ -11,7 +11,7 @@ namespace ssm.Items;
 [ExtendsFromMod(ModCompatibility.Calamity.Name)]
 [JITWhenModsEnabled(ModCompatibility.Calamity.Name)]
 [LegacyName(new string[] { "BossRush" })]
-public class ShtunTerminus : ModItem, ILocalizedModType, IModType
+public class CSETerminus : ModItem, ILocalizedModType, IModType
 {
     public override string Texture => "CalamityMod/Items/SummonItems/Terminus";
     public override void SetDefaults()

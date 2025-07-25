@@ -22,7 +22,7 @@ namespace ssm.Thorium.Enchantments
         private readonly Mod thorium = ModLoader.GetMod("ThoriumMod");
         public override bool IsLoadingEnabled(Mod mod)
         {
-            return ShtunConfig.Instance.Thorium;
+            return CSEConfig.Instance.Thorium;
         }
 
         public override void SetDefaults()
@@ -39,7 +39,7 @@ namespace ssm.Thorium.Enchantments
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            ShtunThoriumPlayer modPlayer = player.GetModPlayer<ShtunThoriumPlayer>();
+            CSEThoriumPlayer modPlayer = player.GetModPlayer<CSEThoriumPlayer>();
             ThoriumPlayer thoriumPlayer = player.GetModPlayer<ThoriumPlayer>();
 
             if (player.AddEffect<DreadEffect>(Item))

@@ -10,7 +10,7 @@ using ssm.Content.SoulToggles;
 using Redemption.Items.Accessories.PreHM;
 using Redemption.Items.Armor.PreHM.PureIron;
 using Redemption.Items.Weapons.PreHM.Melee;
-using Redemption.BaseExtension;
+using Redemption.Buffs.Debuffs;
 
 namespace ssm.Redemption.Enchantments
 {
@@ -20,7 +20,7 @@ namespace ssm.Redemption.Enchantments
     {
         public override bool IsLoadingEnabled(Mod mod)
         {
-            return ShtunConfig.Instance.Redemption;
+            return CSEConfig.Instance.Redemption;
         }
         public override void SetDefaults()
         {
@@ -36,21 +36,27 @@ namespace ssm.Redemption.Enchantments
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            if (player.AddEffect<PureIronCross>(base.Item))
-            {
-                ModContent.Find<ModItem>(ModCompatibility.Redemption.Name, "ErhanCross").UpdateAccessory(player, hideVisual: false);
-            }
-
-            player.RedemptionPlayerBuff().ElementalResistance[2] += 0.2f;
-            player.RedemptionPlayerBuff().pureIronBonus = true;
-            player.RedemptionPlayerBuff().MetalSet = true;
+            player.AddEffect<PureIronEffect>(Item);
         }
 
-        public class PureIronCross : AccessoryEffect
+        public class PureIronEffect : AccessoryEffect
         {
             public override Header ToggleHeader => Header.GetHeader<AdvancementForceHeader>();
-
             public override int ToggleItemType => ModContent.ItemType<PureIronEnchant>();
+            public override void OnHitNPCEither(Player player, NPC target, NPC.HitInfo hitInfo, DamageClass damageClass, int baseDamage, Projectile projectile, Item item)
+            {
+                if (player.HasEffect<PureIronEffect>())
+                {
+                    if (Main.rand.NextBool())
+                    {
+                        target.AddBuff(ModContent.BuffType<PureChillDebuff>(), 1200);
+                    }
+                }
+                else
+                {
+                    target.AddBuff(ModContent.BuffType<PureChillDebuff>(), 1200);
+                }
+            }
         }
         public override void AddRecipes()
         {

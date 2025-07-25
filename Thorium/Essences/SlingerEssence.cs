@@ -6,7 +6,7 @@ using Microsoft.Xna.Framework;
 using ssm.Core;
 using FargowiltasSouls.Content.Items.Accessories.Essences;
 using ThoriumMod.Items.BossStarScouter;
-using ssm.Content.DamageClasses;
+
 using ThoriumMod.Items.ThrownItems;
 using ThoriumMod.Items.Donate;
 using ThoriumMod.Items.BossBuriedChampion;
@@ -45,9 +45,9 @@ namespace ssm.Thorium.Essences
         private void HealEffect(Player player)
         {
             ThoriumPlayer thoriumPlayer = player.GetModPlayer<ThoriumPlayer>();
-            player.GetDamage<UnitedModdedThrower>() += 0.18f;
-            player.GetCritChance<UnitedModdedThrower>() += 0.10f;
-            player.Shtun().throwerVelocity += 0.10f;
+            player.GetDamage<ThrowingDamageClass>() += 0.18f;
+            player.GetCritChance<ThrowingDamageClass>() += 0.10f;
+            player.CSE().throwerVelocity += 0.10f;
         }
 
         public override void AddRecipes()

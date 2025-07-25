@@ -34,7 +34,7 @@ namespace ssm.CrossMod.Boots
     {
         public override bool IsLoadingEnabled(Mod mod)
         {
-            return ShtunConfig.Instance.Boots;
+            return CSEConfig.Instance.Boots;
         }
         public override void PostAddRecipes()
         {
@@ -81,7 +81,7 @@ namespace ssm.CrossMod.Boots
                     recipe.RemoveIngredient(ModContent.ItemType<AeolusBoots>());
                 }
                 //celestial to spurs
-                if (recipe.HasResult(ModContent.ItemType<VoidSpurs>()) && recipe.HasIngredient<RoyalRunners>())
+                if (recipe.HasResult(ModContent.ItemType<VoidSpurs>()) && recipe.HasIngredient<RoyalRunners>() && !ModCompatibility.Homeward.Loaded)
                 {
                     recipe.RemoveIngredient(ModContent.ItemType<RoyalRunners>());
                     recipe.AddIngredient<TracersCelestial>(1);
@@ -101,7 +101,7 @@ namespace ssm.CrossMod.Boots
     {
         public override bool IsLoadingEnabled(Mod mod)
         {
-            return ShtunConfig.Instance.Boots;
+            return CSEConfig.Instance.Boots;
         }
         public override bool InstancePerEntity => true;
 

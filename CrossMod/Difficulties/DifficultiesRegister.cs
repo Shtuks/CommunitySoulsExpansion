@@ -10,7 +10,7 @@ namespace ssm.CrossMod.Difficulties
     {
         public override bool IsLoadingEnabled(Mod mod)
         {
-            return ShtunConfig.Instance.ExperimentalContent;
+            return CSEConfig.Instance.ExperimentalContent;
         }
         public override void PostSetupContent()
         {

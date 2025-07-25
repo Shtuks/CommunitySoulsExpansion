@@ -22,7 +22,7 @@ namespace ssm.CrossMod.Shields
     {
         public override bool IsLoadingEnabled(Mod mod)
         {
-            return ShtunConfig.Instance.Shields;
+            return CSEConfig.Instance.Shields;
         }
         public override void PostAddRecipes()
         {
@@ -62,7 +62,7 @@ namespace ssm.CrossMod.Shields
     {
         public override bool IsLoadingEnabled(Mod mod)
         {
-            return ShtunConfig.Instance.Shields;
+            return CSEConfig.Instance.Shields;
         }
         public override bool InstancePerEntity => true;
 

@@ -10,7 +10,7 @@ using ssm.Core;
 using Terraria;
 using Terraria.ModLoader;
 
-namespace ssm.Content.Items
+namespace ssm.Content.Items.Lore
 {
     [ExtendsFromMod(ModCompatibility.Calamity.Name)]
     [JITWhenModsEnabled(ModCompatibility.Calamity.Name)]
@@ -19,7 +19,7 @@ namespace ssm.Content.Items
     {
         public override bool IsLoadingEnabled(Mod mod)
         {
-            return ShtunConfig.Instance.AlternativeSiblings;
+            return CSEConfig.Instance.AlternativeSiblings;
         }
         public override void SetStaticDefaults() => base.SetStaticDefaults();
 
@@ -171,7 +171,7 @@ namespace ssm.Content.Items
     {
         public override bool IsLoadingEnabled(Mod mod)
         {
-            return ShtunConfig.Instance.AlternativeSiblings;
+            return CSEConfig.Instance.AlternativeSiblings;
         }
         public override void SetStaticDefaults() => base.SetStaticDefaults();
 
@@ -212,7 +212,7 @@ namespace ssm.Content.Items
     {
         public override bool IsLoadingEnabled(Mod mod)
         {
-            return ShtunConfig.Instance.AlternativeSiblings;
+            return CSEConfig.Instance.AlternativeSiblings;
         }
         public override void SetStaticDefaults() => base.SetStaticDefaults();
 

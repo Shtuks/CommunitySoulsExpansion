@@ -15,7 +15,7 @@ namespace ssm.Content.Buffs
         }
         public override void Update(Player player, ref int buffIndex)
         {
-            player.Shtun().MonstrosityPresence = true;
+            player.CSE().MonstrosityPresence = true;
             player.FargoSouls().OceanicMaul = true;
             player.FargoSouls().TinEternityDamage = 0;
             player.FargoSouls().noDodge = true;

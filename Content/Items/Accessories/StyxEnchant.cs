@@ -1,34 +1,18 @@
-    using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria;
 using Terraria.ModLoader;
 using Terraria.DataStructures;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Terraria.GameContent;
 using Terraria.Graphics.Shaders;
-using FargowiltasSouls.Content.Items.Materials;
 using Terraria.ID;
-using FargowiltasSouls.Content.Items;
 using FargowiltasSouls.Content.Items.Armor;
-using FargowiltasSouls.Content.Items.Accessories.Masomode;
-using FargowiltasSouls.Content.Items.Accessories.Souls;
-using Fargowiltas.Items.Tiles;
-using Terraria.Localization;
-using Terraria.DataStructures;
-using FargowiltasSouls.Core.Toggler;
-using Fargowiltas.Items.Tiles;
 using FargowiltasSouls.Core.AccessoryEffectSystem;
 using ssm.Content.SoulToggles;
-using ssm.Content.Items.Accessories;
-using ssm.Core;
 using ssm.Content.Buffs.Minions;
 using FargowiltasSouls.Content.Items.Accessories.Enchantments;
 using FargowiltasSouls.Content.Patreon.Volknet;
 using FargowiltasSouls.Content.Items.Weapons.SwarmDrops;
+using FargowiltasSouls.Content.Patreon.DemonKing;
 
 namespace ssm.Content.Items.Accessories
 {
@@ -36,7 +20,7 @@ namespace ssm.Content.Items.Accessories
     {
         public override bool IsLoadingEnabled(Mod mod)
         {
-            return ShtunConfig.Instance.EternityForce;
+            return CSEConfig.Instance.EternityForce;
         }
         private readonly Mod FargoSoul = Terraria.ModLoader.ModLoader.GetMod("FargowiltasSouls");
 
@@ -73,7 +57,7 @@ namespace ssm.Content.Items.Accessories
 
             if (player.AddEffect<StyxEffect>(Item))
             {
-                player.GetModPlayer<ShtunPlayer>().equippedAbominableEnchantment = true;
+                player.GetModPlayer<CSEPlayer>().equippedAbominableEnchantment = true;
                 ModContent.Find<ModItem>(FargoSoul.Name, "StyxCrown").UpdateArmorSet(player);
                 ModContent.Find<ModItem>(FargoSoul.Name, "StyxChestplate").UpdateArmorSet(player);
                 ModContent.Find<ModItem>(FargoSoul.Name, "StyxLeggings").UpdateArmorSet(player);
@@ -90,7 +74,7 @@ namespace ssm.Content.Items.Accessories
             recipe.AddIngredient(FargoSoul, "StyxLeggings", 1);
             recipe.AddIngredient(FargoSoul, "AbominableWand", 1);
             recipe.AddIngredient<NanoCore>(1);
-            recipe.AddIngredient<NukeFishron>(1);
+            recipe.AddIngredient<StaffOfUnleashedOcean>(1);
 
             recipe.AddTile(ModContent.Find<ModTile>("Fargowiltas", "CrucibleCosmosSheet"));
             recipe.Register();

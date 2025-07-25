@@ -1,31 +1,15 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria;
 using Terraria.ModLoader;
-using Terraria.DataStructures;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using Terraria.GameContent;
-using Terraria.Graphics.Shaders;
-using FargowiltasSouls.Content.Items.Materials;
 using Terraria.ID;
-using FargowiltasSouls.Content.Items;
 using FargowiltasSouls.Content.Items.Armor;
-using FargowiltasSouls.Content.Items.Accessories.Souls;
-using Fargowiltas.Items.Tiles;
-using Terraria.Localization;
-using Terraria.DataStructures;
-using FargowiltasSouls.Core.Toggler;
-using Fargowiltas.Items.Tiles;
 using FargowiltasSouls.Core.AccessoryEffectSystem;
 using ssm.Content.SoulToggles;
-using ssm.Content.Items.Accessories;
-using ssm.Core;
 using FargowiltasSouls.Content.Items.Accessories.Enchantments;
+using ssm.Core;
 using FargowiltasSouls.Content.Items.Accessories.Expert;
+using FargowiltasSouls.Content.Patreon.Sasha;
+using FargowiltasSouls.Content.Patreon.DevAesthetic;
 
 namespace ssm.Content.Items.Accessories
 {
@@ -33,21 +17,19 @@ namespace ssm.Content.Items.Accessories
     {
         public override bool IsLoadingEnabled(Mod mod)
         {
-            return ShtunConfig.Instance.EternityForce;
+            return CSEConfig.Instance.EternityForce;
         }
-
-        private readonly Mod FargoSoul = Terraria.ModLoader.ModLoader.GetMod("FargowiltasSouls");
-
-        public override void SetStaticDefaults() => ItemID.Sets.ItemNoGravity[this.Type] = true;
+        public override void SetStaticDefaults() => ItemID.Sets.ItemNoGravity[Type] = true;
 
         public override Color nameColor => new(100, 40, 130);
 
         public override void SetDefaults()
         {
-            this.Item.value = Item.buyPrice(1, 0, 0, 0);
-            this.Item.rare = ItemRarityID.Purple;
-            this.Item.accessory = true;
+            Item.value = Item.buyPrice(1, 0, 0, 0);
+            Item.rare = ItemRarityID.Purple;
+            Item.accessory = true;
         }
+
         /*public override bool PreDrawTooltipLine(DrawableTooltipLine line, ref int yOffset)
         {
           if (!(((TooltipLine) line).Mod == "Terraria") || !(((TooltipLine) line).Name == "ItemName"))
@@ -63,24 +45,25 @@ namespace ssm.Content.Items.Accessories
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            ModContent.Find<ModItem>(this.FargoSoul.Name, "UniverseCore").UpdateAccessory(player, true);
+            ModContent.Find<ModItem>(ModCompatibility.SoulsMod.Name, "UniverseCore").UpdateAccessory(player, true);
 
             if (player.AddEffect<EridanusEffect>(Item))
             {
-                ModContent.Find<ModItem>(this.FargoSoul.Name, "EridanusBattleplate").UpdateArmorSet(player);
-                ModContent.Find<ModItem>(this.FargoSoul.Name, "EridanusHat").UpdateArmorSet(player);
-                ModContent.Find<ModItem>(this.FargoSoul.Name, "EridanusLegwear").UpdateArmorSet(player);
+                ModContent.Find<ModItem>(ModCompatibility.SoulsMod.Name, "EridanusBattleplate").UpdateArmorSet(player);
+                ModContent.Find<ModItem>(ModCompatibility.SoulsMod.Name, "EridanusHat").UpdateArmorSet(player);
+                ModContent.Find<ModItem>(ModCompatibility.SoulsMod.Name, "EridanusLegwear").UpdateArmorSet(player);
             }
         }
 
         public override void AddRecipes()
         {
-            Recipe recipe = this.CreateRecipe(1);
-            recipe.AddIngredient(this.FargoSoul, "Eridanium", 50);
-            recipe.AddIngredient(this.FargoSoul, "EridanusBattleplate", 1);
-            recipe.AddIngredient<UniverseCore>(1);
-            recipe.AddIngredient(this.FargoSoul, "EridanusHat", 1);
-            recipe.AddIngredient(this.FargoSoul, "EridanusLegwear", 1);
+            Recipe recipe = CreateRecipe(1);
+            recipe.AddIngredient<EridanusHat>();
+            recipe.AddIngredient<EridanusBattleplate>();
+            recipe.AddIngredient<EridanusLegwear>();
+            recipe.AddIngredient<UniverseCore>();
+            recipe.AddIngredient<MissDrakovisFishingPole>();
+            recipe.AddIngredient<DeviousAestheticus>();
             recipe.AddTile(ModContent.Find<ModTile>("Fargowiltas", "CrucibleCosmosSheet"));
             recipe.Register();
         }

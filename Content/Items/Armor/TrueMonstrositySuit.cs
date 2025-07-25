@@ -14,7 +14,7 @@ namespace ssm.Content.Items.Armor
     {
         public override bool IsLoadingEnabled(Mod mod)
         {
-            return ShtunConfig.Instance.AlternativeSiblings;
+            return CSEConfig.Instance.AlternativeSiblings;
         }
         public override void SetDefaults()
         {
@@ -23,19 +23,19 @@ namespace ssm.Content.Items.Armor
             this.Item.rare = 11;
             this.Item.expert = true;
             this.Item.value = Item.sellPrice(10, 0, 0, 0);
-            this.Item.defense = 200;
+            this.Item.defense = 300;
         }
 
         public override void UpdateEquip(Player player)
         {
-            player.GetDamage(DamageClass.Generic) += 1.5f;
-            player.GetCritChance(DamageClass.Generic) += 2f;
+            player.GetDamage(DamageClass.Generic) += 3f;
+            player.GetCritChance(DamageClass.Generic) += 100f;
             player.statLifeMax2 += 1000;
             player.statManaMax2 += 1000;
             player.endurance += 1;
-            player.lifeRegen += 10;
-            player.lifeRegenCount += 10;
-            player.lifeRegenTime += 10;
+            player.lifeRegen += 15;
+            player.lifeRegenCount += 15;
+            player.lifeRegenTime += 15;
         }
 
         public override bool PreDrawTooltipLine(DrawableTooltipLine line, ref int yOffset)

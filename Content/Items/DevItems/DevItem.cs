@@ -7,8 +7,12 @@ using Terraria.ModLoader;
 
 namespace ssm.Content.Items.DevItems
 {
-    public abstract class DevItem : ModItem
+    internal abstract class DevItem : ModItem
     {
+        public override bool IsLoadingEnabled(Mod mod)
+        {
+            return CSEConfig.Instance.DevItems;
+        }
         public abstract string devName { get;}
         public override void ModifyTooltips(List<TooltipLine> tooltips)
         {

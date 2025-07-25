@@ -13,7 +13,7 @@ namespace ssm.Spooky.Forces
     {
         public override bool IsLoadingEnabled(Mod mod)
         {
-            return ShtunConfig.Instance.Spooky;
+            return CSEConfig.Instance.Spooky;
         }
         public override void SetDefaults()
         {

@@ -21,6 +21,8 @@ using ssm.Core;
 using FargowiltasSouls.Content.Items.Accessories.Enchantments;
 using FargowiltasSouls;
 using FargowiltasSouls.Content.Patreon.Tiger;
+using FargowiltasSouls.Content.Items.Weapons.Challengers;
+using FargowiltasSouls.Content.Items.Accessories.Masomode;
 
 namespace ssm.Content.Items.Accessories
 {
@@ -28,7 +30,7 @@ namespace ssm.Content.Items.Accessories
     {
         public override bool IsLoadingEnabled(Mod mod)
         {
-            return ShtunConfig.Instance.EternityForce;
+            return CSEConfig.Instance.EternityForce;
         }
 
         private readonly Mod FargoSoul = Terraria.ModLoader.ModLoader.GetMod("FargowiltasSouls");
@@ -59,7 +61,7 @@ namespace ssm.Content.Items.Accessories
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            player.GetModPlayer<ShtunPlayer>().equippedNekomiEnchantment = true;
+            player.GetModPlayer<CSEPlayer>().equippedNekomiEnchantment = true;
             ModContent.Find<ModItem>(this.FargoSoul.Name, "SparklingAdoration").UpdateAccessory(player, false);
             
             if (player.AddEffect<NekomiEffect>(Item))
@@ -78,10 +80,11 @@ namespace ssm.Content.Items.Accessories
         public override void AddRecipes()
         {
             Recipe recipe = this.CreateRecipe(1);
-            recipe.AddIngredient(this.FargoSoul, "SparklingAdoration", 1);
-            recipe.AddIngredient(this.FargoSoul, "NekomiHood", 1);
-            recipe.AddIngredient(this.FargoSoul, "NekomiHoodie", 1);
-            recipe.AddIngredient(this.FargoSoul, "NekomiLeggings", 1);
+            recipe.AddIngredient<NekomiHood>();
+            recipe.AddIngredient<NekomiHoodie>();
+            recipe.AddIngredient<NekomiLeggings>();
+            recipe.AddIngredient<SparklingAdoration>();
+            recipe.AddIngredient<TheLightningRod>();
             recipe.AddIngredient<TouhouStaff>(1);
             recipe.AddTile(TileID.DemonAltar);
             recipe.Register();

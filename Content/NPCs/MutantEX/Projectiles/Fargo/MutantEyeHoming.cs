@@ -26,7 +26,7 @@ public class MutantEyeHoming : MutantEye
 
         bool stopAttacking = false;
 
-        NPC npc = FargoSoulsUtil.NPCExists(ShtunNpcs.mutantEX, ModContent.NPCType<MutantEX>());
+        NPC npc = FargoSoulsUtil.NPCExists(CSENpcs.mutantEX, ModContent.NPCType<MutantEX>());
         int[] spearSpinAIs = new int[] { 4, 5, 6, 13, 14, 15, 21, 22, 23 };
         if ((npc == null || !spearSpinAIs.Contains((int)npc.ai[0]))
             && !(WorldSavingSystem.MasochistModeReal && npc.ai[0] > 10)

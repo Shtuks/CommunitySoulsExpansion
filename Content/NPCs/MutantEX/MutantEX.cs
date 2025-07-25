@@ -42,6 +42,8 @@ using Terraria.Graphics.Effects;
 using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
+using ThoriumMod.Empowerments;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace ssm.Content.NPCs.MutantEX
 {
@@ -50,7 +52,7 @@ namespace ssm.Content.NPCs.MutantEX
     {
         public override bool IsLoadingEnabled(Mod mod)
         {
-            return ShtunConfig.Instance.AlternativeSiblings;
+            return CSEConfig.Instance.AlternativeSiblings;
         }
         public override string Texture => $"ssm/Content/NPCs/MutantEX/MutantEX{FargoSoulsUtil.TryAprilFoolsTexture}";
 
@@ -77,6 +79,11 @@ namespace ssm.Content.NPCs.MutantEX
 
         public static float multiplierL = 0;
         public static float multiplierD = 0;
+
+        private int dpsLimit;
+        private int dpsTimer;
+        private bool IsInDpsThreshold => dpsLimit > NPC.lifeMax * 0.0052f;
+        private float DpsDivisor => 1.02f + dpsLimit * 0.005f;
         public override void SetStaticDefaults()
         {
             Main.npcFrameCount[NPC.type] = 4;
@@ -97,7 +104,7 @@ namespace ssm.Content.NPCs.MutantEX
 
         public override void SetDefaults()
         {
-            NPC.lifeMax = 100000000;
+            NPC.lifeMax = 400000000;
             NPC.damage = 1000;
 
             NPC.width = 140;
@@ -114,12 +121,6 @@ namespace ssm.Content.NPCs.MutantEX
             NPC.netAlways = true;
             NPC.timeLeft = NPC.activeTime * 30;
             NPC.BossBar = ModContent.GetInstance<MonstrosityBossBar>();
-
-            if (WorldSaveSystem.enragedMutantEX)
-            {
-                NPC.damage = int.MaxValue;
-                NPC.defense = int.MaxValue;
-            }
 
             Music = MusicLoader.GetMusicSlot(Mod, "Assets/Sounds/Music/Axion");
 
@@ -172,19 +173,21 @@ namespace ssm.Content.NPCs.MutantEX
                     Main.npc[n].active = false;
                     if (Main.netMode == NetmodeID.Server)
                         NetMessage.SendData(MessageID.SyncNPC, -1, -1, null, n);
+                    CSEUtils.DisplayLocalizedText("Music: Axion by Xi", Color.White);
                 }
             }
+
             multiplierD = 0;
             multiplierL = 0;
 
-            if (ModCompatibility.Thorium.Loaded) { multiplierD += 0.5f; multiplierL += 1f; }
-            if (ModCompatibility.Calamity.Loaded) { multiplierD += 1f; multiplierL += 3f; }
-            if (ModCompatibility.SacredTools.Loaded) { multiplierD += 0.7f; multiplierL += 2f; }
+            if (ModCompatibility.Thorium.Loaded) { multiplierD += 0.5f; multiplierL += 0.5f; }
+            if (ModCompatibility.Calamity.Loaded) { multiplierD += 1f; multiplierL += 1f; }
+            if (ModCompatibility.SacredTools.Loaded) { multiplierD += 0.7f; multiplierL += 0.8f; }
 
-            NPC.lifeMax = 100000000 + (int)(100000000 * multiplierL);
-            NPC.damage = 1000 + (int)(1000 * multiplierD);
+            NPC.lifeMax = Main.zenithWorld ? int.MaxValue : 400000000 + (int)(100000000 * multiplierL);
+            NPC.damage = Main.zenithWorld ? int.MaxValue : 1000 + (int)(1000 * multiplierD);
             NPC.life = NPC.lifeMax;
-
+            
             AuraCenter = NPC.Center;
         }
 
@@ -200,9 +203,15 @@ namespace ssm.Content.NPCs.MutantEX
 
         public override void AI()
         {
-            ShtunUtils.DisplayLocalizedText("ai[0] = " + NPC.ai[0].ToString() + "  ai[1] = " +NPC.ai[1].ToString() + "  ai[2] = " + NPC.ai[2].ToString() + "  ai[3] = " + NPC.ai[3].ToString() + "  localai[0] = " + NPC.localAI[0].ToString() + "  localai[1] = " + NPC.localAI[1].ToString() + "  localai[2] = " + NPC.localAI[2].ToString() + "  localai[3] = " + NPC.localAI[3].ToString());
+            if (dpsTimer++ >= 20)
+            {
+                dpsLimit = (int)(dpsLimit * 0.5f);
+                dpsTimer = 0;
+            }
+
+            CSEUtils.DisplayLocalizedText("ai[0] = " + NPC.ai[0].ToString() + "  ai[1] = " +NPC.ai[1].ToString() + "  ai[2] = " + NPC.ai[2].ToString() + "  ai[3] = " + NPC.ai[3].ToString() + "  localai[0] = " + NPC.localAI[0].ToString() + "  localai[1] = " + NPC.localAI[1].ToString() + "  localai[2] = " + NPC.localAI[2].ToString() + "  localai[3] = " + NPC.localAI[3].ToString());
              
-            ShtunNpcs.mutantEX = NPC.whoAmI;
+            CSENpcs.mutantEX = NPC.whoAmI;
 
             NPC.dontTakeDamage = AttackChoice < 0;
 
@@ -382,12 +391,6 @@ namespace ssm.Content.NPCs.MutantEX
 
             if (player.immune || player.hurtCooldowns[0] != 0 || player.hurtCooldowns[1] != 0)
                 playerInvulTriggered = true;
-
-            if (WorldSavingSystem.DownedAbom && !WorldSavingSystem.DownedMutant && FargoSoulsUtil.HostCheck && NPC.HasPlayerTarget && !droppedSummon)
-            {
-                Item.NewItem(NPC.GetSource_Loot(), player.Hitbox, ModContent.ItemType<MutantsCurse>());
-                droppedSummon = true;
-            }
 
             if (Main.getGoodWorld && ++hyper > HyperMax + 1)
             {
@@ -1505,192 +1508,6 @@ namespace ssm.Content.NPCs.MutantEX
                 ChooseNextAttack(obj);
             }
         }
-
-        private void PillarDunk()
-        {
-            if (!AliveCheck(player))
-            {
-                return;
-            }
-            int pillarAttackDelay = 60;
-            if (NPC.ai[2] == 0f && NPC.ai[3] == 0f)
-            {
-                SoundEngine.PlaySound(new("FargowiltasSouls/Assets/Sounds/DifficultyEmode"), NPC.Center);
-                if (Main.netMode != 1)
-                {
-                    Clone(-1f, 1f, pillarAttackDelay * 4);
-                    Clone(1f, -1f, pillarAttackDelay * 2);
-                    Clone(1f, 1f, pillarAttackDelay * 3);
-                    Clone(1f, 1f, pillarAttackDelay * 6);
-                }
-                NPC.netUpdate = true;
-                NPC.ai[2] = NPC.Center.X;
-                NPC.ai[3] = NPC.Center.Y;
-                for (int i = 0; i < 1000; i++)
-                {
-                    if (Main.projectile[i].active && Main.projectile[i].type == ModContent.ProjectileType<MonstrosityRitual>() && Main.projectile[i].ai[1] == (float)NPC.whoAmI)
-                    {
-                        NPC.ai[2] = Main.projectile[i].Center.X;
-                        NPC.ai[3] = Main.projectile[i].Center.Y;
-                        break;
-                    }
-                }
-                Vector2 offset = 1000f * Vector2.UnitX.RotatedBy(MathHelper.ToRadians(45f));
-                if (Main.rand.NextBool())
-                {
-                    if (player.Center.X > NPC.ai[2])
-                    {
-                        offset.X *= -1f;
-                    }
-                    if (Main.rand.NextBool())
-                    {
-                        offset.Y *= -1f;
-                    }
-                }
-                else
-                {
-                    if (Main.rand.NextBool())
-                    {
-                        offset.X *= -1f;
-                    }
-                    if (player.Center.Y > NPC.ai[3])
-                    {
-                        offset.Y *= -1f;
-                    }
-                }
-                NPC.localAI[1] = NPC.ai[2];
-                NPC.localAI[2] = NPC.ai[3];
-                NPC.ai[2] = offset.Length();
-                NPC.ai[3] = offset.ToRotation();
-            }
-            Vector2 targetPos = player.Center;
-            targetPos.X += ((NPC.Center.X < player.Center.X) ? (-700) : 700);
-            targetPos.Y += ((NPC.ai[1] < 240f) ? 400 : 150);
-            if (NPC.Distance(targetPos) > 50f)
-            {
-                Movement(targetPos, 1f);
-            }
-            int endTime = 240 + pillarAttackDelay * 4 + 60;
-            endTime += pillarAttackDelay * 2;
-            NPC.localAI[0] = (float)endTime - NPC.ai[1];
-            NPC.localAI[0] += 60f + 60f * (1f - NPC.ai[1] / (float)endTime);
-            if (NPC.ai[1] == 95f || NPC.ai[1] == 135f || NPC.ai[1] == (float)(endTime - 30))
-            {
-                for (int i = 0; i < 3; i++)
-                {
-                    Vector2 dir = player.Center - NPC.Center;
-                    float ai1New = (Main.rand.NextBool() ? 1 : (-1));
-                    Vector2 vel = Vector2.Normalize(dir.RotatedByRandom(Math.PI / 4.0)) * 38f;
-                    Projectile.NewProjectile(NPC.GetSource_FromThis(), NPC.Center, vel, ModContent.ProjectileType<HostileLightning>(), 30, 0f, Main.myPlayer, dir.ToRotation(), ai1New);
-                }
-            }
-            if ((NPC.ai[1] += 1f) > (float)endTime)
-            {
-                ChooseNextAttack(11, 13, 20, 21, 26, 33, 41, 44, 47, 49);
-            }
-            else if (NPC.ai[1] == (float)pillarAttackDelay)
-            {
-                if (Main.netMode != 1)
-                {
-                    Projectile.NewProjectile(NPC.GetSource_FromThis(), NPC.Center, Vector2.UnitY * -5f, ModContent.ProjectileType<MutantPillar>(), FargoSoulsUtil.ScaledProjectileDamage(NPC.damage, 1.3333334f), 0f, Main.myPlayer, 3f, (float)NPC.whoAmI);
-                }
-            }
-            else if (NPC.ai[1] == (float)(pillarAttackDelay * 5) && Main.netMode != 1)
-            {
-                Projectile.NewProjectile(NPC.GetSource_FromThis(), NPC.Center, Vector2.UnitY * -5f, ModContent.ProjectileType<MutantPillar>(), FargoSoulsUtil.ScaledProjectileDamage(NPC.damage, 1.3333334f), 0f, Main.myPlayer, 1f, (float)NPC.whoAmI);
-            }
-            void Clone(float ai1, float ai2, float ai3)
-            {
-                FargoSoulsUtil.NewNPCEasy(NPC.GetSource_FromAI(), NPC.Center, ModContent.NPCType<MutantIllusion>(), NPC.whoAmI, NPC.whoAmI, ai1, ai2, ai3);
-            }
-        }
-
-        private void EOCStarSickles()
-        {
-            if (!AliveCheck(player))
-            {
-                return;
-            }
-            if (NPC.ai[1] == 0f)
-            {
-                float ai1 = 30f;
-                NPC.ai[1] = 30f;
-                if (Main.netMode != 1)
-                {
-                    int p = Projectile.NewProjectile(NPC.GetSource_FromThis(), NPC.Center, -Vector2.UnitY, ModContent.ProjectileType<MutantEyeOfCthulhu>(), FargoSoulsUtil.ScaledProjectileDamage(NPC.damage), 0f, Main.myPlayer, (float)NPC.target, ai1);
-                    if (p != 1000)
-                    {
-                        Main.projectile[p].timeLeft -= 30;
-                    }
-                }
-            }
-            if (NPC.ai[1] < 120f)
-            {
-                NPC.ai[2] = player.Center.X;
-                NPC.ai[3] = player.Center.Y;
-            }
-            if (NPC.ai[1] == 120f || NPC.ai[1] == 156f)
-            {
-                SoundEngine.PlaySound(new("FargowiltasSouls/Assets/Sounds/DifficultyEmode"), NPC.Center);
-                Vector2 offset = NPC.Center - player.Center;
-                Vector2 spawnPos = player.Center;
-                switch (Main.rand.Next(4))
-                {
-                    case 0:
-                        LaserSpread(new Vector2(spawnPos.X + offset.X, spawnPos.Y + offset.Y));
-                        LaserSpread(new Vector2(spawnPos.X + offset.X, spawnPos.Y - offset.Y));
-                        TelegraphConfusion(new Vector2(spawnPos.X + offset.X, spawnPos.Y - offset.Y));
-                        TelegraphConfusion(new Vector2(spawnPos.X + offset.X, spawnPos.Y + offset.Y));
-                        break;
-                    case 1:
-                        LaserSpread(new Vector2(spawnPos.X + offset.X, spawnPos.Y - offset.Y));
-                        TelegraphConfusion(new Vector2(spawnPos.X + offset.X, spawnPos.Y - offset.Y));
-                        LaserSpread(new Vector2(spawnPos.X - offset.X, spawnPos.Y + offset.Y));
-                        TelegraphConfusion(new Vector2(spawnPos.X - offset.X, spawnPos.Y + offset.Y));
-                        break;
-                    case 2:
-                        LaserSpread(new Vector2(spawnPos.X - offset.X, spawnPos.Y + offset.Y));
-                        TelegraphConfusion(new Vector2(spawnPos.X - offset.X, spawnPos.Y + offset.Y));
-                        LaserSpread(new Vector2(spawnPos.X - offset.X, spawnPos.Y - offset.Y));
-                        TelegraphConfusion(new Vector2(spawnPos.X - offset.X, spawnPos.Y - offset.Y));
-                        break;
-                    case 3:
-                        LaserSpread(new Vector2(spawnPos.X - offset.X, spawnPos.Y - offset.Y));
-                        TelegraphConfusion(new Vector2(spawnPos.X - offset.X, spawnPos.Y - offset.Y));
-                        LaserSpread(new Vector2(spawnPos.X + offset.X, spawnPos.Y + offset.Y));
-                        TelegraphConfusion(new Vector2(spawnPos.X + offset.X, spawnPos.Y + offset.Y));
-                        break;
-                }
-            }
-            Vector2 targetPos = new Vector2(NPC.ai[2], NPC.ai[3]);
-            targetPos += NPC.DirectionFrom(targetPos).RotatedBy(MathHelper.ToRadians(-5f)) * 450f;
-            if (NPC.Distance(targetPos) > 50f)
-            {
-                Movement(targetPos, 0.25f);
-            }
-            if ((NPC.ai[1] += 1f) > 450f)
-            {
-                ChooseNextAttack(11, 13, 16, 21, 26, 29, 31, 33, 35, 37, 41, 44, 46, 47, 49);
-            }
-            void LaserSpread(Vector2 spawn)
-            {
-                int max = 3;
-                int degree = 1;
-                int laserDamage = FargoSoulsUtil.ScaledProjectileDamage(NPC.damage, 1.3333334f);
-                Projectile.NewProjectile(NPC.GetSource_FromThis(), spawn, new Vector2(0f, -4f), ModContent.ProjectileType<BrainofConfusion>(), 0, 0f, Main.myPlayer, 0f, 0f);
-                for (int i = -max; i <= max; i++)
-                {
-                    Projectile.NewProjectile(NPC.GetSource_FromThis(), spawn, 0.2f * player.DirectionFrom(spawn).RotatedBy(MathHelper.ToRadians(degree) * (float)i), ModContent.ProjectileType<DestroyerLaser>(), laserDamage, 0f, Main.myPlayer, 0f, 0f);
-                }
-            }
-            void TelegraphConfusion(Vector2 spawn)
-            {
-                Projectile.NewProjectile(NPC.GetSource_FromThis(), spawn, Vector2.Zero, ModContent.ProjectileType<GlowRingHollow>(), 0, 0f, Main.myPlayer, 8f, 180f);
-                Projectile.NewProjectile(NPC.GetSource_FromThis(), spawn, Vector2.Zero, ModContent.ProjectileType<GlowRingHollow>(), 0, 0f, Main.myPlayer, 8f, 200f);
-                Projectile.NewProjectile(NPC.GetSource_FromThis(), spawn, Vector2.Zero, ModContent.ProjectileType<GlowRingHollow>(), 0, 0f, Main.myPlayer, 8f, 220f);
-            }
-        }
-        
         private void PrepareSpearDashDirectP2()
         {
             if (NPC.ai[3] == 0f)
@@ -2136,7 +1953,7 @@ namespace ssm.Content.NPCs.MutantEX
             {
                 if (!Main.dedServ && Main.LocalPlayer.active)
                 {
-                    Main.LocalPlayer.GetModPlayer<ShtunPlayer>().Screenshake = 2;
+                    Main.LocalPlayer.GetModPlayer<CSEPlayer>().Screenshake = 2;
                 }
                 if (Main.netMode != 1)
                 {
@@ -3190,7 +3007,7 @@ namespace ssm.Content.NPCs.MutantEX
             }
             if (NPC.ai[1] < 60f && !Main.dedServ && Main.LocalPlayer.active)
             {
-                Main.LocalPlayer.GetModPlayer<ShtunPlayer>().Screenshake = 2;
+                Main.LocalPlayer.GetModPlayer<CSEPlayer>().Screenshake = 2;
             }
             if (NPC.ai[1] == 360f)
             {
@@ -3434,6 +3251,8 @@ namespace ssm.Content.NPCs.MutantEX
 
         private void FinalSpark()
         {
+            NPC.ai[0] -= 1f;
+
             if (NPC.localAI[2] > 30f)
             {
                 NPC.localAI[2] += 1f;
@@ -3687,6 +3506,11 @@ namespace ssm.Content.NPCs.MutantEX
         {
             if (WorldSavingSystem.AngryMutant)
                 modifiers.FinalDamage *= 0.07f;
+
+            if (IsInDpsThreshold)
+            {
+                modifiers.FinalDamage = modifiers.FinalDamage / DpsDivisor;
+            }
         }
 
         public override bool CheckDead()
@@ -3807,7 +3631,15 @@ namespace ssm.Content.NPCs.MutantEX
             spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, Main.DefaultSamplerState, DepthStencilState.None, Main.Rasterizer, null, Main.GameViewMatrix.TransformationMatrix);
 
         }
-        
+
+        public override void OnHitByItem(Player player, Item item, NPC.HitInfo hit, int damage)
+        {
+            dpsLimit += damage;
+        }
+        public override void OnHitByProjectile(Projectile projectile, NPC.HitInfo hit, int damage)
+        {
+            dpsLimit += damage;
+        }
         public static void ArenaAura(Vector2 center, float distance, bool reverse = false, int dustid = -1, Color color = default, params int[] buffs)
         {
             Player p = Main.LocalPlayer;

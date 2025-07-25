@@ -52,22 +52,22 @@ namespace ssm.Redemption
                         recipe.AddIngredient<RoboBrain>();
                 }
 
-                if (recipe.HasResult<FlightMasterySoul>() && !recipe.HasIngredient<NebWings>())
-                {
-                    //recipe.AddIngredient<NebWings>();
-                    recipe.AddIngredient<XenomiteJetpack>();
-                }
+                //if (recipe.HasResult<FlightMasterySoul>() && !recipe.HasIngredient<NebWings>())
+                //{
+                //    //recipe.AddIngredient<NebWings>();
+                //    recipe.AddIngredient<XenomiteJetpack>();
+                //}
 
-                if (recipe.HasResult<ColossusSoul>() && !recipe.HasIngredient<HEVSuit>())
-                {
-                    recipe.AddIngredient<HEVSuit>();
-                }
+                //if (recipe.HasResult<ColossusSoul>() && !recipe.HasIngredient<HEVSuit>())
+                //{
+                //    recipe.AddIngredient<HEVSuit>();
+                //}
 
-                if (recipe.HasResult<SupersonicSoul>() && !recipe.HasIngredient<InfectionShield>())
-                {
-                    recipe.RemoveIngredient(ItemID.EoCShield);
-                    recipe.AddIngredient<InfectionShield>();
-                }
+                //if (recipe.HasResult<SupersonicSoul>() && !recipe.HasIngredient<InfectionShield>())
+                //{
+                //    recipe.RemoveIngredient(ItemID.EoCShield);
+                //    recipe.AddIngredient<InfectionShield>();
+                //}
 
                 if (recipe.HasResult(ItemID.Zenith) && recipe.HasIngredient<LifeFragment>())
                 {
@@ -106,26 +106,26 @@ namespace ssm.Redemption
                     recipe.RemoveIngredient(ItemID.DestroyerEmblem);
                 }
 
-                if (recipe.HasResult<ArchWizardsSoul>() && !recipe.HasResult<MutagenMagic>())
-                {
-                    recipe.RemoveIngredient(ModContent.ItemType<ApprenticesEssence>());
-                    recipe.AddIngredient<MutagenMagic>();
-                }
-                if (recipe.HasResult<BerserkerSoul>() && !recipe.HasResult<MutagenMelee>())
-                {
-                    recipe.AddIngredient<MutagenMelee>();
-                    recipe.RemoveIngredient(ModContent.ItemType<BarbariansEssence>());
-                }
-                if (recipe.HasResult<ConjuristsSoul>() && !recipe.HasResult<MutagenSummon>())
-                {
-                    recipe.AddIngredient<MutagenSummon>();
-                    recipe.RemoveIngredient(ModContent.ItemType<OccultistsEssence>());
-                }
-                if (recipe.HasResult<SnipersSoul>() && !recipe.HasResult<MutagenRanged>())
-                {
-                    recipe.AddIngredient<MutagenRanged>();
-                    recipe.RemoveIngredient(ModContent.ItemType<SharpshootersEssence>());
-                }
+                //if (recipe.HasResult<ArchWizardsSoul>() && !recipe.HasResult<MutagenMagic>())
+                //{
+                //    recipe.RemoveIngredient(ModContent.ItemType<ApprenticesEssence>());
+                //    recipe.AddIngredient<MutagenMagic>();
+                //}
+                //if (recipe.HasResult<BerserkerSoul>() && !recipe.HasResult<MutagenMelee>())
+                //{
+                //    recipe.AddIngredient<MutagenMelee>();
+                //    recipe.RemoveIngredient(ModContent.ItemType<BarbariansEssence>());
+                //}
+                //if (recipe.HasResult<ConjuristsSoul>() && !recipe.HasResult<MutagenSummon>())
+                //{
+                //    recipe.AddIngredient<MutagenSummon>();
+                //    recipe.RemoveIngredient(ModContent.ItemType<OccultistsEssence>());
+                //}
+                //if (recipe.HasResult<SnipersSoul>() && !recipe.HasResult<MutagenRanged>())
+                //{
+                //    recipe.AddIngredient<MutagenRanged>();
+                //    recipe.RemoveIngredient(ModContent.ItemType<SharpshootersEssence>());
+                //}
             }
         }
     }

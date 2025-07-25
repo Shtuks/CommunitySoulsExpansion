@@ -24,7 +24,7 @@ namespace ssm.Thorium
             }
             if (item.type == ModContent.ItemType<OmniCannon>())
             {
-                item.damage = (int)(item.damage * 0.8f);
+                item.damage = (int)(item.damage * 0.85f);
             }
         }
 
@@ -33,23 +33,23 @@ namespace ssm.Thorium
         {
             if (item.type == ModContent.ItemType<OmniCannon>())
             {
-                velocity *= 1.3f;
+                velocity *= 1.5f;
             }
         }
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
         {
             if (item.type == ModContent.ItemType<OmniCannon>())
             {
-                tooltips.Add(new TooltipLine(Mod, "rebalance", $"[c/00A36C:Cross-Mod Balance:] Damage decreased by 20% but increased projectile velocity by 20%"));
+                tooltips.Add(new TooltipLine(Mod, "rebalance", $"[c/00A36C:Cross-Mod Balance:] Damage decreased by 15% but increased projectile velocity by 40%"));
             }
         }
         public override void OnHitNPC(Item item, Player player, NPC target, NPC.HitInfo hit, int damageDone)
         {
-            if (player.GetModPlayer<ShtunThoriumPlayer>().ThunderTalonEternity)
+            if (player.GetModPlayer<CSEThoriumPlayer>().ThunderTalonEternity)
             {
                 target.AddBuff(BuffID.BoneJavelin, 300);
             }
-            if (player.GetModPlayer<ShtunThoriumPlayer>().DarkenedCloak)
+            if (player.GetModPlayer<CSEThoriumPlayer>().DarkenedCloak)
             {
                 if (Main.rand.NextBool(4))
                 {

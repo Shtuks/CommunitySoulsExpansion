@@ -12,7 +12,7 @@ namespace ssm.Thorium.EternityAccessories
     {
         public override bool IsLoadingEnabled(Mod mod)
         {
-            return ShtunConfig.Instance.ExperimentalContent;
+            return CSEConfig.Instance.ExperimentalContent;
         }
         public override void SetDefaults()
         {
@@ -23,7 +23,7 @@ namespace ssm.Thorium.EternityAccessories
         }
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            player.GetModPlayer<ShtunThoriumPlayer>().ThunderTalonEternity = true;
+            player.GetModPlayer<CSEThoriumPlayer>().ThunderTalonEternity = true;
         }
         public override bool PreDrawInInventory(SpriteBatch spriteBatch, Vector2 position, Rectangle frame, Color drawColor, Color itemColor, Vector2 origin, float scale)
         {

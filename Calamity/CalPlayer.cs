@@ -1,12 +1,13 @@
 ﻿using CalamityMod;
 using CalamityMod.CalPlayer;
+using CalamityMod.Items.Armor.Demonshade;
 using CalamityMod.Items.SummonItems;
 using FargowiltasSouls;
 using FargowiltasSouls.Content.Bosses.MutantBoss;
 using FargowiltasSouls.Content.Buffs.Boss;
 using FargowiltasSouls.Core.Globals;
 using ssm.Content.Buffs;
-using ssm.Content.DamageClasses;
+
 using ssm.Core;
 using ssm.Items;
 using Terraria;
@@ -25,17 +26,27 @@ namespace ssm.Calamity
                 Item item = Player.inventory[i];
                 if (item.type == ModContent.ItemType<Terminus>() && item.active)
                 {
-                    item.SetDefaults(ModContent.ItemType<ShtunTerminus>());
+                    item.SetDefaults(ModContent.ItemType<CSETerminus>());
                 }
             }
         }
 
-        public override void PostUpdateMiscEffects()
-        {
-            Player player = Main.LocalPlayer;
-            var CalPlayer = player.GetModPlayer<CalamityPlayer>();
+        //public override void PostUpdateMiscEffects()
+        //{
+        //    Player player = Main.LocalPlayer;
+        //    var CalPlayer = player.GetModPlayer<CalamityPlayer>();
 
-            Player.GetDamage<UnitedModdedThrower>() += CalPlayer.stealthDamage;
+        //    Player.GetDamage<Th>() += CalPlayer.stealthDamage;
+        //}
+
+        public override void PostUpdateEquips()
+        {
+            if (Player.Calamity().dsSetBonus) {
+                Player.GetModPlayer<CalamityPlayer>().wearingRogueArmor = true;
+                Player.GetModPlayer<CalamityPlayer>().rogueStealthMax += 1.5f;
+                Player.GetDamage<GenericDamageClass>() += 0.3f;
+                Player.GetDamage<SummonDamageClass>() -= 0.3f;
+            }
         }
         public override void PostUpdateBuffs()
         {

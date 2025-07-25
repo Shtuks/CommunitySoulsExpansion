@@ -21,7 +21,7 @@ namespace ssm.Content.Items.Accessories
     {
         public override bool IsLoadingEnabled(Mod mod)
         {
-            return ShtunConfig.Instance.AlternativeSiblings;
+            return CSEConfig.Instance.AlternativeSiblings;
         }
 
         public override void SetStaticDefaults() => ItemID.Sets.ItemNoGravity[this.Type] = true;
@@ -50,7 +50,7 @@ namespace ssm.Content.Items.Accessories
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            player.GetModPlayer<ShtunPlayer>().equippedMonstrosityEnchantment = true;
+            player.GetModPlayer<CSEPlayer>().equippedMonstrosityEnchantment = true;
             if (player.AddEffect<MonstrosityEffect>(Item))
             {
                 ModContent.GetInstance<MonstrosityMask>().UpdateArmorSet(player);

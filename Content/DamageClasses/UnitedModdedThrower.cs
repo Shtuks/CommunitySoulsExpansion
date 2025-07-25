@@ -1,54 +1,67 @@
-﻿using Terraria.ModLoader;
-using ssm.Core;
-using Microsoft.Xna.Framework;
+﻿//using Terraria.ModLoader;
+//using ssm.Core;
+//using Microsoft.Xna.Framework;
 
-namespace ssm.Content.DamageClasses
-{
-    public partial class UnitedModdedThrower : DamageClass, ColoredDamageTypesSupport.IDamageColor
-    {
-        internal static UnitedModdedThrower Instance;
-        Color ColoredDamageTypesSupport.IDamageColor.DamageColor => new Color(255, 100, 100);
+//namespace ssm.Content.DamageClasses
+//{
+//    public partial class UnitedModdedThrower : DamageClass, ColoredDamageTypesSupport.IDamageColor
+//    {
 
-        public override void Load()
-        {
-            Instance = this;
-        }
+//        internal static UnitedModdedThrower Instance;
+//        Color ColoredDamageTypesSupport.IDamageColor.DamageColor => new Color(255, 100, 100);
 
-        public override void Unload()
-        {
-            Instance = null;
-        }
+//        public override void Load()
+//        {
+//            Instance = this;
+//        }
 
-        public override bool GetPrefixInheritance(DamageClass damageClass)
-        {
-            return damageClass == Ranged;
-        }
-        public override StatInheritanceData GetModifierInheritance(DamageClass damageClass)
-        {
-            if (damageClass == Throwing || damageClass == Generic)
-            {
-                return StatInheritanceData.Full;
-            }
+//        public override void Unload()
+//        {
+//            Instance = null;
+//        }
 
-            return StatInheritanceData.None;
-        }
+//        public override bool GetPrefixInheritance(DamageClass damageClass)
+//        {
+//            return damageClass == Ranged;
+//        }
+//        public override StatInheritanceData GetModifierInheritance(DamageClass damageClass)
+//        {
+//            if (damageClass == Throwing || damageClass == Generic)
+//            {
+//                return StatInheritanceData.Full;
+//            }
+//            if (ModCompatibility.SacredTools.Loaded)
+//            {
+//                return SoAUMT.SoAUMTAdd(damageClass);
+//            }
 
-        public override bool GetEffectInheritance(DamageClass damageClass)
-        {
-            if(damageClass == Throwing)
-            {
-                return true;
-            }
+//            return StatInheritanceData.None;
+//        }
 
-            if (ModCompatibility.SacredTools.Loaded)
-            {
-                if (damageClass == SoAUMT.GetEffectInheritance(damageClass))
-                {
-                    return true;
-                }
-            }
+//        public override bool GetEffectInheritance(DamageClass damageClass)
+//        {
+//            if(damageClass == Throwing)
+//            {
+//                return true;
+//            }
 
-            return false;
-        }
-    }
-}
+//            if (ModCompatibility.SacredTools.Loaded)
+//            {
+//                if (damageClass == SoAUMT.GetEffectInheritance(damageClass))
+//                {
+//                    return true;
+//                }
+//            }
+
+//            if (ModCompatibility.Calamity.Loaded)
+//            {
+//                if (damageClass == CalUMT.GetEffectInheritance(damageClass))
+//                {
+//                    return true;
+//                }
+//            }
+
+//            return false;
+//        }
+//    }
+//}

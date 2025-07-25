@@ -45,6 +45,8 @@ Mods: {
 					Lore: What a calamity
 					DisplayName: Lore - Deviantt
 				}
+
+				AmalgamLore.DisplayName: Amalgam Lore
 			}
 
 			OstaraEnchant: {
@@ -562,8 +564,12 @@ Mods: {
 			}
 
 			AddedEffects: {
-				ThoriumColossus: Effect of Blast Shield
+				ThoriumWorldshaper: Effects of Geode Enchantment
+				ThoriumBerserker: Effects of Blizzard Pouch
+				ThoriumColossus: Effects of Blast Shield and Terrarium Defender
+				ThoriumSupersonic: Effects of The Omega Core
 				CalDefender: Effects of Asgard's Valor
+				ThoriumThrower: Effects of Pirate's Purse
 				ThoriumUniverse:
 					'''
 					Healing spells will heal 5 additional lifes
@@ -571,20 +577,27 @@ Mods: {
 					Increase inspiration by 20
 					20% increased throwing velocity
 					'''
-				SoARampart:
-					'''
-					Effects of Celestial Shield
-					Only grants effects of Shield of Reflections when True Mode is enabled.
-					'''
-				SoAColossus:
-					'''
-					Effects of Celestial Shield and Royal Guard
-					Only grants effects of Shield of Reflections when True Mode is enabled.
-					'''
+				SoARampart: Effects of Celestial Shield and Shield of Reflections
+				SoAColossus: Effects of Nightmare Blindfold, Shield of Reflections and Royal Guard
+				SoAArchWizard: Effects of Nuba's Blessing, Stone Of Resonance
 				SoABerserker: Effects of Flora Fist
-				SoASnipers: Your weapons don't require reloading
+				SoASniper: Your weapons don't require reloading
 				SoASupersonic: Effects of Heart of the Plough, Advanced Dash Tech
-				SoAWorldshaper: Effects of Rage Supressor, Celestial ring
+				SoAWorldshaper: Effects of Rage Suppressor, Celestial ring
+				SoAConjurist: Effects of Starstream Veil
+				SoAThrower: Effects of Dreadflame Emblem
+				HWJBerserker: Effects of Philosopher's Stone, Godly Touch and Gauntlet of Commander
+				HWJSniper: Effects of Crossbow Scope, Walnut On Fire and The Batter
+				HWJStarSniper: Effects of Star Quiver
+				HWJConjurist: Effects of Divine Hairpin
+				HWJArchWizard: Effects of Rejuvenated Cross and Erudite Bookmark
+				ClamThrower: Effects of Dracula's Charm
+				ClamWorldshaper: Effects of Red Dice
+				ClamColossus: Effects of Skull of the Blood God
+				RedSupersonic: Effects of Infected Thornshield
+				HWJSupersonic: Effects of Edgewalker and Arrow Case
+				HWJColossus: Effects of Moonwalk and Master Shield
+				RedColossus: Effects of H.E.V Suit
 			}
 
 			CalamitySoul: {
@@ -623,6 +636,7 @@ Mods: {
 					[i:FargowiltasSouls/NekomiHood] Increases life regeneration when damaged at the cost of some energy
 					[i:FargowiltasSouls/NekomiHood] Double tap down key to release energy as life draining heart
 					[i:FargowiltasSouls/NekomiHood] Wield a demon axe of love and justice when fully charged
+					'It's never getting fixed'
 					'''
 			}
 
@@ -670,8 +684,9 @@ Mods: {
 				DisplayName: True Monstrosity Mask
 				Tooltip:
 					'''
-					100% increased damage and 33% increased critical strike chance
-					Drastically increases life regen, also increases armor penetration to 700.
+					200% increased damage and 100% increased critical strike chance
+					Increases max minion and sentries slots by 20, also increases armor penetration by 1000.
+					Increases max life by 500
 					'''
 			}
 
@@ -679,9 +694,9 @@ Mods: {
 				DisplayName: True Monstrosity Pants
 				Tooltip:
 					'''
-					100% increased damage and 33% increased critical strike chance
-					50% increased movement and 20% increased attack speed
-					Also increases armor penetration to 70.
+					200% increased damage and 100% increased critical strike chance
+					50% increased movement and 100% increased attack speed
+					Increases max life by 500
 					'''
 			}
 
@@ -689,8 +704,8 @@ Mods: {
 				DisplayName: True Monstrosity Suit
 				Tooltip:
 					'''
-					150% increased damage and 33% increased critical strike chance 
-					Increases max number of minions and sentries by 20
+					300% increased damage and 100% increased critical strike chance 
+					Drastically increases life regen
 					Increases damage reduction by 100%, Increases max life and mana by 1000
 					100% reduced mana usage, 25% chance not to consume ammo.
 					'''
@@ -1065,7 +1080,7 @@ Mods: {
 			}
 
 			BardEssence: {
-				DisplayName: Musician Essence
+				DisplayName: Musician's Essence
 				Tooltip:
 					'''
 					18% increased symphonic damage
@@ -1076,7 +1091,7 @@ Mods: {
 			}
 
 			HealerEssence: {
-				DisplayName: Crusader Essence
+				DisplayName: Crusader's Essence
 				Tooltip:
 					'''
 					18% increased radiant damage
@@ -1087,7 +1102,7 @@ Mods: {
 			}
 
 			SlingerEssence: {
-				DisplayName: Slinger Essence
+				DisplayName: Slinger's Essence
 				Tooltip:
 					'''
 					18% increased thrower damage
@@ -1098,37 +1113,30 @@ Mods: {
 			}
 
 			BardSoul: {
-				DisplayName: Bard Soul
+				DisplayName: Bard's Soul
 				Tooltip:
 					'''
 					'Every note you produce births a new world'
-					22% increased symphonic damage
+					25% increased symphonic damage
 					20% increased symphonic playing speed
 					10% increased symphonic critical strike chance
 					Increases maximum inspiration by 20
-					Percussion critical strikes will deal 10% more damage
-					Percussion critical strikes will briefly stun enemies
-					Your wind instrument attacks now attempt to quickly home in on enemies
-					If the attack already homes onto enemies, it does so far more quickly
-					String weapon projectiles bounce five additional times
-					Critical strikes caused by brass instrument attacks release a spread of energy
+					Effects of Terrarium Surround Sound, Straight Mute
+					Effects of Digital Tuner, Epic Mouthpice, Guitar Pick Claw
 					'''
 			}
 
 			GuardianAngelsSoul: {
-				DisplayName: Guardian Angels Soul
+				DisplayName: Guardian Angel's Soul
 				Tooltip:
 					'''
 					'Divine Intervention'
-					22% increased radiant damage
+					25% increased radiant damage
 					20% increased healing and radiant casting speed
 					10% increased radiant critical strike chance
 					Healing spells will heal an additional 5 life
-					Points you towards the ally with the least health
-					Healing an ally will increase your movement speed and increase their life regen and defense
-					Upon drinking a healing potion, all allies will recover 25 life and 50 mana
-					Nearby allies take 10% reduced damage
-					Nearby allies that die drop a wisp of spirit energy
+					Effects of Support Sash, Saving Grace, Soul Guard
+					Effects of Medical Bag
 					'''
 			}
 
@@ -1140,18 +1148,6 @@ Mods: {
 					Attacks have a 10% chance to duplicate and become increased by 15%
 					Attacks have a 5% chance to instantly kill the enemy
 					Effects of Dart Pouch
-					'''
-			}
-
-			BerserkerEnchant: {
-				DisplayName: Berserker Enchantment
-				Tooltip:
-					'''
-					'I'd rather fight for my life than live it'
-					Attack speed is increased by 5% at every 25% segment of life
-					Fire surrounds your armour and melee weapons
-					Enemies that you set on fire or singe will take additional damage over time
-					Effects of Spring Steps, Slag Stompers, Molten Spear Tip, and Rapier Badge
 					'''
 			}
 
@@ -1371,7 +1367,6 @@ Mods: {
 					50% increased mining speed
 					Shows the location of enemies, traps, and treasures
 					Light is emitted from the player
-					Effects of Crystal Spear Tip
 					'''
 			}
 
@@ -1446,7 +1441,7 @@ Mods: {
 					Healing spells will shortly increase the healed player's maximum life by 50
 					Your radiant damage has a 15% chance to release a blinding flash of light
 					The flash heals nearby allies equal to your bonus healing and confuses enemies
-					Effects of Dew Collector and Equalizer
+					Effects of Dew Collector, Heart of the Jungle and Equalizer
 					'''
 			}
 
@@ -1701,8 +1696,7 @@ Mods: {
 					'''
 					'It pulses with energy'
 					Shortlived Divermen will occasionally spawn when hitting enemies
-					Critical strikes ring a bell over your head, slowing all nearby enemies briefly
-					Effects of Crietz, Band of Replenishment, and Fan Letter
+					Effects of Crietz and Band of Replenishment
 					'''
 			}
 
@@ -1712,8 +1706,7 @@ Mods: {
 					'''
 					'Not just for hunting fish'
 					Critical strikes release a splash of foam, slowing nearby enemies
-					After four consecutive non-critical strikes, your next attack will mini-crit for 150% damage
-					Effects of Thumb Ring and Angler's Bowl
+					Effects of Angler's Bowl
 					'''
 			}
 
@@ -1799,7 +1792,7 @@ Mods: {
 					'Elven mysteries unfold before you...'
 					All armor bonuses from Blooming, Assassin, Life Bloom, Life Binder, and Biotech
 					Effects of Petal Shield, Kick Petal, Fragrant Corsage, and Dart Pouch
-					Effects of Aloe Leaf and Equalizer
+					Effects of Dew Collector and Equalizer
 					'''
 			}
 
@@ -1822,6 +1815,7 @@ Mods: {
 					All armor bonuses from Silk, Spirit, Shade Master, Dream Weaver and Dread
 					Effects of Artificer's Focus, Artificer's Shield, Shinobi Sigil, and Artificer's Rocketeers
 					Effects of Crash Boots, Cursed Flail-Core, Inner Flame, and Scrying Glass
+					Effects of Demon Tongue, Dark Effigy, Inner Flame, and Shinobi Sigil
 					'''
 			}
 
@@ -1833,7 +1827,7 @@ Mods: {
 					All armor bonuses from Depth Diver, Yew Wood, and Tide Hunter
 					All armor bonuses from Naga Skin, Icy, Cryomancer, and Tide Turner
 					Effects of Sea Breeze Pendant, Bubble Magnet, Ocean's Retaliation and Drowned Doubloon
-					Effects of Thumb Ring, Agnor's Bowl, Plague Lord's flask and Ice Bound Strider Hide
+					Effects of Thumb Ring, Angler's Bowl, Plague Lord's flask and Ice Bound Strider Hide
 					'''
 			}
 
@@ -1845,9 +1839,9 @@ Mods: {
 					All armor bonuses from Lodestone, Valadium, Illumite, and Terrarium
 					All armor bonuses from Durasteel, Darksteel, Steel, and Thorium
 					Effects of Spiked Bracersand, Thorium Shield, and Obsidian Scale
-					Effects of Crietz, Astro-Beetle Husk, Sandweaver's Tiara, and Beholder's gaze
+					Effects of Crietz, Sandweaver's Tiara, and Beholder's gaze
 					Effects of Mirror of Beholder, Nuclear Option, Jazz Music Player and Band of Replenishmen
-					Effects of Terrarium Surround Buffer and Fan Letter
+					Effects of Terrarium Surround Buffer and Beholder's Gaze
 					'''
 			}
 
@@ -1880,8 +1874,8 @@ Mods: {
 					'Behold the craftsmanship of the Dark Elves...'
 					All armor bonuses from Granite, Yew Wood, and Titan
 					All armor bonuses from Jester, Astro, and Conduit
-					Effects of Heart of Stone, Thumb Ring, Fan Letter, and  Rock Music Player
-					Effects of Spiked Bracers, Mask of the Crystal Eye, and Abyssal Shell
+					Effects of Heart of Stone, Shock Absorber Fan Letter, and Rock Music Player
+					Effects of Mask of the Crystal Eye, and Abyssal Shell
 					'''
 			}
 
@@ -1892,7 +1886,7 @@ Mods: {
 					'Holds a glimpse of the future...'
 					All armor bonuses from Lich, Plague Doctor, and White Dwarf
 					All armor bonuses from Bronze, Fungus, Flight and Dragon
-					Effects of Lich's Gaze, Olympic Torch, Faberge Egg, Champion's Rebuttal and Ascension Statuette
+					Effects of Olympic Torch, Faberge Egg, Champion's Rebuttal and Ascension Statuette
 					Effects of Spartan Sandals, Dragon Talon Necklace, Disco Music Player and Phylactery
 					'''
 			}
@@ -1911,14 +1905,14 @@ Mods: {
 					All armor bonuses from Plague Doctor, Lich, White Dwarf, Celestial, and Shooting Star
 					All armor bonuses from Spirit Trapper, Dragon, Dread, Flesh and Demon Blood
 					All armor bonuses from Tide Turner, Assassin, Pyromancer, Dream Weaver, and Rhapsodist
-					Effects of Nightshade Flower, Flawless Chrysalis, Thumb Ring and Bee Booties
-					Effects of Goblin War Shield, Bubble Magnet, Agnor's Bowl, and Ice Bound Strider Hide
-					Effects of Demon Tongue, Dark Effigy, Aloe Leaf, Equalizer, Karmic Holder, Prydwen, and Rebirth Statuette
+					Effects of Hexing Talisman, Flawless Chrysalis and Thumb Ring, Inferno Lords Focus, Lihzahrd's Tail and The Ring
+					Effects of Bubble Magnet, Angler's Bowl, Ice Bound Strider Hide, Pocket Fusion Generator, Serpent Shield and Steam Keeper Watch and Crystal Scorpion
+					Effects of Demon Tongue, Dark Effigy, Dew Collector, Equalizer, Karmic Holder, Prydwen, Cape of the Survivor, Metabolic Pills and Monster Charm
 					Effects of Ring of Unity, Brass Cap, Waxy Rosin, Auto Tuner, Metal Music Player, Diss Track, Concert Tickets, Conductor's Baton, Full Score, and Metronome
-					Effects of Eye of the Storm, Champion's Rebuttal, Olympic Torch, Spartan Sandals, Spiked Bracers, Rock Music Player, Ogre Sandals, and Mask of the Crystal Eye
-					Effects of the Abyssal Shell, Astro-Beetle Husk, Obsidian Scale, Mirror of the Beholder, Jazz Music Player, Fan Letter, and Terrarium Surround Sound
-					Effects of Artificer's Shield, Artificer's Rocketeers, Inner Flame, Crash Boots, Vampire Gland, Spring Steps, Slag Stompers, and Shade Band
-					Effects of Lich's Gaze, Crietz, Band of Replenishment, Ascension Statuette, Dart Pouch, Mark of the Dream Eater
+					Effects of Heart of the Jungle, Champion's Rebuttal, Olympic Torch, Spartan Sandals, Spiked Bracers, Rock Music Player, and Mask of the Crystal Eye
+					Effects of the Abyssal Shell, Obsidian Scale, Mirror of the Beholder, Jazz Music Player, Fan Letter, and Terrarium Surround Sound
+					Effects of Artificer's Shield, Artificer's Rocketeers, Inner Flame, Crash Boots, Vampire Gland, Spring Steps, Slag Stompers, and Smothering Band
+					Effects of Beholder's Gaze, Crietz, Band of Replenishment, Nirvanna Statuette and Dart Pouch
 					'''
 			}
 
@@ -1946,7 +1940,8 @@ Mods: {
 				Tooltip:
 					'''
 					Effects of Inferno Lord’s Focus, Pocket Fusion Generator, Lihzahrd’s Tail, Serpent Shield, Metabolic Pills
-					Effects of Monster Charm, Hexing Talisman, Flawless Chrysalis and The Ring.
+					Effects of Monster Charm, Hexing Talisman, Flawless Chrysalis, Cape of the Survivor and The Ring
+					Effects of Steam Keeper Watch and Crystal Scorpon
 					'You feel pulses of energy being released from it.'
 					'''
 			}
@@ -1972,17 +1967,8 @@ Mods: {
 			}
 
 			GtTETFinal: {
-				Tooltip:
-					'''
-					Thrower projectiles create nanoblades as they travel
-					Stealth strikes summon nanobeams and sparks on enemy hits
-					Stealth strikes have +15 armor penetration, deal 5% more damage, and heal for 2 HP
-					20% increased Thrower damage and 25% increased Thrower velocity
-					Landing a stealth strike grants a 12% crit bonus to non-stealth strikes
-					This crit bonus decays over 5 seconds
-					25% of your Thrower damage is duplicated 
-					'''
-				DisplayName: Guide to Expert Throwing : Final Volume
+				Tooltip: This item does nothing and exist only for compat with IEoR / WHummus' Balancing
+				DisplayName: Removed
 			}
 
 			DemonShadeEnchant: {
@@ -2635,7 +2621,7 @@ Mods: {
 				DisplayName: True Lumberjack Body
 			}
 
-			ShtunTerminus: {
+			CSETerminus: {
 				DisplayName: Terminus
 				Tooltip: Summons Boss Rush. If WotG enabled summons Nameless Deity on RMB.
 			}
@@ -3296,6 +3282,41 @@ Mods: {
 				DisplayName: Shadow Energy
 				Tooltip: ""
 			}
+
+			Pucheblade: {
+				DisplayName: Pucheblade
+				Tooltip: ""
+			}
+
+			TruffleWormEX: {
+				DisplayName: Truffle Worm EX
+				Tooltip: ""
+			}
+
+			BossWatcher: {
+				DisplayName: Boss Watcher
+				Tooltip: ""
+			}
+
+			FutureSigil: {
+				DisplayName: Future Sigil
+				Tooltip: ""
+			}
+
+			GunterasFruit: {
+				DisplayName: Gunteras Fruit
+				Tooltip: ""
+			}
+
+			EternalScale: {
+				DisplayName: Eternal Scale
+				Tooltip: ""
+			}
+
+			tModLoadiumBar: {
+				DisplayName: t Mod Loadium Bar
+				Tooltip: ""
+			}
 		}
 
 		Buffs: {
@@ -3383,10 +3404,22 @@ Mods: {
 				DisplayName: The Rich Buff
 				Description: Mods.ssm.Buffs.TheRichBuff.Description
 			}
+
+			Moonified: {
+				DisplayName: Moonified
+				Description: Mods.ssm.Buffs.Moonified.Description
+			}
+
+			Gun: {
+				DisplayName: Gun
+				Description: Mods.ssm.Buffs.Gun.Description
+			}
 		}
 
 		NPCs: {
 			Monstrosity: {
+				DisplayName: Monstrosity
+
 				TownNPCMood: {
 					Content: I am content.
 					NoHome: I hate not having a home.
@@ -3394,15 +3427,11 @@ Mods: {
 					LoveSpace: I love having so much space.
 					DislikeCrowded: I dislike how crowded I am.
 					HateCrowded: I hate how crowded I am.
+					LikeNPC: I like {NPCName}.
+					DislikeNPC: I dislike {NPCName}.
 					LikeNPC_Princess: I like {NPCName}.
 					Princess_LovesNPC: I like {NPCName}.
-					LikeNPC: I like {NPCName}.
-					DislikeNPC: I like {NPCName}.
 				}
-
-				DisplayName: Monstrosity
-				DisplayNameApril: Уёбище
-				Census.SpawnCondition: Spawns when Moon Lord is defeated.
 			}
 
 			DukeFishronEX: {
@@ -3454,12 +3483,25 @@ Mods: {
 					Princess_LovesNPC: I like {NPCName}.
 				}
 			}
+
+			CeilingOfMoonLord.DisplayName: Ceiling Of Moon Lord
+			CeilingOfMoonLordEye.DisplayName: Ceiling Of Moon Lord Eye
+			CeilingOfMoonLordFace.DisplayName: Ceiling Of Moon Lord Face
+			GunCelebration.DisplayName: Gun Celebration
+			GunMagnum.DisplayName: Gun Magnum
+			GunQuad.DisplayName: Gun Quad
+			GunShotgun.DisplayName: Gun Shotgun
+			GunSniper.DisplayName: Gun Sniper
+			Guntera.DisplayName: Guntera
+			GunteraHook.DisplayName: Guntera Hook
+			GunteraTentacle.DisplayName: Guntera Tentacle
+			GunUzi.DisplayName: Gun Uzi
 		}
 
 		Toggler: {
 			//thorium
+			PiratesPurseEffect: Pirate's Purse
 			GraniteEffect: Shock Absorber
-			ThiefsWalletEffect: Pirate's Purse
 			BlastShieldEffect: Blast Shield
 			CrashEffect: Crash Boots
 			CairoEffect: Eternal Oasis
@@ -3517,6 +3559,7 @@ Mods: {
 			PyroEffect: Pyromancer Ignition
 			PlagueLordEffect: Plague Lord's Flask
 			LodestoneEffect2: Lodestone Shields
+			TheOmegaCoreEffect: The Omega Core
 			//soa
 			FoundationsForceHeader: Foundations Force
 			SyranForceHeader: Syran Force
@@ -3550,8 +3593,13 @@ Mods: {
 			RoyalGuardEffect: Royal Guard
 			MilinticaDashEffect: Advanced Dash
 			HeartOfThePloughEffect: Heart of the Plough
-			CalamitySoulHeader: Godseeker Soul
+			NubasBlessingEffect: Nuba's Blessing
+			StoneOfResonanceEffect: Stone of Resonance
+			StarstreamVeilEffect: Starstream Veil
+			DreadflameEmblemEffect: Dreadflame Emblem
+			LunarRingEffect: Celestial Ring
 			//cal
+			CalamitySoulHeader: Godseeker Soul
 			ShatteredCommunityEffect: Shattered Community
 			ClamitasEffect: Clams Minions
 			RedDevil: Demonshade Devil
@@ -3570,6 +3618,7 @@ Mods: {
 			HideofAstrumDeusEffect: Hide of Astrum Deus
 			AquaticHeartEffect: Aquatic Heart
 			Enrage: Demonshade Enrage
+			DraculasCharmEffect: Dracula's Charm
 			//other
 			GaiaEffect: Attacking mode
 			NekomiEffect: Nekomi armor set
@@ -3583,14 +3632,15 @@ Mods: {
 			CuteFishEXEffect: Fishron Ritual
 			EridanusEffect: Eridanus blessing
 			//redemption
-			AdvancementHeader: "{$Mods.FargoMoreSoulsCompat.Items.AdvancementForce.DisplayName}"
+			AdvancementHeader: Advancement Force
 			CommonGuardBauble: Soul Bauble
 			PureIronCross: Holy Shield
 			XenomiteNecklace: Necklace of Perception
 			XenomiteArmorEffect: Toxic Gas
 			HardlightEffect: Drones Summon
 			XeniumConcoction: Beelzebub Concoction
-			XeniumShield: Infected Thornshield Dash
+			InfectionShieldEffect: Infected Thornshield Dash
+			HEVSuitEffect: H.E.V Suit
 			//spirit
 			AdventurerHeader: Adventurer Force
 			BotanistHerbEffect: Glowing Herb
@@ -3645,6 +3695,19 @@ Mods: {
 			TitanRecoil: Ranged Recoil
 			PhantasmalAura: Spectral Aura
 			PhantasmalJump: Shadowbound Jump
+			//hwj
+			CommandersGauntletEffect: Gauntlet of Commander
+			GodlyTouchEffect: Divine Touch
+			WalnutOnFireEffect: Walnut on Fire
+			StarQuiverEffect: Star Quiver
+			PhilosophersStoneEffect: Philosopher's Stone
+			EruditeBookmarkEffect: Erudite Bookmark
+			DivineNecklaceEffect: Divine Necklace
+			TheBatterEffect: TheBatter
+			RejuvenatedCrossEffect: Rejuvenated Cross
+			OneGiantLeapEffect: Moonwalk
+			ArrowCaseEffect: Arrow Case
+			EdgewalkerEffect: Edgewalker
 		}
 
 		Tiles: {
@@ -3764,6 +3827,15 @@ Mods: {
 			MonstrosityAxe.DisplayName: Monstrosity Axe
 			SteelSwordProjectile.DisplayName: Steel Sword Projectile
 			SwordRainProjectile.DisplayName: Sword Rain Projectile
+			SpawnCutsceneProj.DisplayName: Spawn Cutscene Proj
+			ToxicCloudsProj.DisplayName: Toxic Clouds Proj
+			CatlightCat.DisplayName: Catlight Cat
+			CatlightDeathray.DisplayName: Catlight Deathray
+			TwigProj.DisplayName: Twig Proj
+			CeilingDeathray.DisplayName: Ceiling Deathray
+			CeilingProj.DisplayName: Ceiling Proj
+			CeilingSphere.DisplayName: Ceiling Sphere
+			GunteraBullet.DisplayName: Guntera Bullet
 		}
 
 		Bestiary: {
@@ -3772,7 +3844,7 @@ Mods: {
 		}
 
 		Configs: {
-			ShtunConfig: {
+			CSEConfig: {
 				Headers: {
 					General: General
 					CrossMods: Cross-Mods
@@ -3883,6 +3955,16 @@ Mods: {
 
 				BossRushPostMutant: {
 					Label: Boss Rush Post Mutant
+					Tooltip: ""
+				}
+
+				DevItems: {
+					Label: Dev Items
+					Tooltip: ""
+				}
+
+				SecretBosses: {
+					Label: Secret Bosses
 					Tooltip: ""
 				}
 			}

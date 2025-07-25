@@ -10,6 +10,7 @@ using SacredTools.Items.Weapons.Lunatic;
 using ssm.Core;
 using FargowiltasSouls;
 using ssm.Content.Buffs;
+using FargowiltasSouls.Core.Globals;
 
 namespace ssm.SoA.Enchantments
 {
@@ -19,7 +20,7 @@ namespace ssm.SoA.Enchantments
     {
         public override bool IsLoadingEnabled(Mod mod)
         {
-            return ShtunConfig.Instance.SacredTools;
+            return CSEConfig.Instance.SacredTools;
         }
         public override void SetDefaults()
         {
@@ -66,7 +67,7 @@ namespace ssm.SoA.Enchantments
             {
                 if (target.life <= 0 && !target.friendly && target.type != NPCID.TargetDummy)
                 {
-                    if (rivalKillCount < 6)
+                    if (rivalKillCount < 5)
                     {
                         rivalKillCount++;
                     }

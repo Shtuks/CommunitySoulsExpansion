@@ -8,45 +8,25 @@
 		
 	</PropertyGroup>
 	<ItemGroup>
-	  <AdditionalFiles Remove="Content\NPCs\StarlightCat\**" />
-	  <AdditionalFiles Remove="MagicStorage\**" />
-	  <AdditionalFiles Remove="Thorium\Swarm\**" />
-	  <Compile Remove="Content\NPCs\StarlightCat\**" />
-	  <Compile Remove="MagicStorage\**" />
-	  <Compile Remove="Thorium\Swarm\**" />
-	  <EmbeddedResource Remove="Content\NPCs\StarlightCat\**" />
-	  <EmbeddedResource Remove="MagicStorage\**" />
-	  <EmbeddedResource Remove="Thorium\Swarm\**" />
-	  <None Remove="Content\NPCs\StarlightCat\**" />
-	  <None Remove="MagicStorage\**" />
-	  <None Remove="Thorium\Swarm\**" />
+    	<AssemblyAttribute Include="System.Runtime.CompilerServices.IgnoresAccessChecksToAttribute">
+    	    <_Parameter1>SacredTools</_Parameter1>
+    	</AssemblyAttribute>
 	</ItemGroup>
 	<ItemGroup>
-	  <None Remove="Thorium\Enchantments\BerserkerEnchant.cs.sex" />
-	  <None Remove="Thorium\Enchantments\DangerEnchant.cs.sex" />
-	  <None Remove="Thorium\Enchantments\HarbingerEnchant.cs.sex" />
-	</ItemGroup>
-	<ItemGroup>
-	  <Compile Include="Redemption\Mutagens\MutagenClicker.cs.bak" />
-	  <Compile Include="Thorium\Enchantments\BerserkerEnchant.cs.sex" />
-	  <Compile Include="Thorium\Enchantments\MagmaEnchant.cs.sex" />
-	</ItemGroup>
-	<ItemGroup>
-	  <None Include="Calamity\Addons\DivineEnchant.cs" />
-	  <None Include="Calamity\Addons\EmptinessEnchant.cs" />
-	</ItemGroup>
-	<ItemGroup>
+	  <Reference Include="AlchemistNPCLite">
+	    <HintPath>..\..\ModReader\AlchemistNPCLite\AlchemistNPCLite.dll</HintPath>
+	  </Reference>
 	  <Reference Include="BombusApisBee">
 	    <HintPath>lib\BombusApisBee.dll</HintPath>
-	  </Reference>
-	  <Reference Include="BossChecklist">
-	    <HintPath>lib\BossChecklist.dll</HintPath>
 	  </Reference>
 	  <Reference Include="CalamityBardHealer">
 	    <HintPath>lib\CalamityBardHealer.dll</HintPath>
 	  </Reference>
 	  <Reference Include="CalamityHunt">
 	    <HintPath>lib\CalamityHunt.dll</HintPath>
+	  </Reference>
+	  <Reference Include="CalamityInheritance">
+	    <HintPath>..\..\ModReader\CalamityInheritance\CalamityInheritance.dll</HintPath>
 	  </Reference>
 	  <Reference Include="CalamityMod">
 	    <HintPath>..\..\ModReader\CalamityMod\CalamityMod.dll</HintPath>
@@ -75,15 +55,6 @@
 	  <Reference Include="FargoMoreSoulsCompat">
 	    <HintPath>Libraries\FargoMoreSoulsCompat_v0.4.2.dll</HintPath>
 	  </Reference>
-	  <Reference Include="FargoMoreSoulsCompat">
-	    <HintPath>Libraries\FargoMoreSoulsCompat_v0.4.2.dll</HintPath>
-	  </Reference>
-	  <Reference Include="FargoMoreSoulsCompat">
-	    <HintPath>Libraries\FargoMoreSoulsCompat_v0.4.2.dll</HintPath>
-	  </Reference>
-	  <Reference Include="FargoMoreSoulsCompat">
-	    <HintPath>Libraries\FargoMoreSoulsCompat_v0.4.2.dll</HintPath>
-	  </Reference>
 	  <Reference Include="Fargowiltas">
 	    <HintPath>lib\Fargowiltas.dll</HintPath>
 	  </Reference>
@@ -92,15 +63,6 @@
 	  </Reference>
 	  <Reference Include="FargowiltasSouls">
 	    <HintPath>lib\FargowiltasSouls.dll</HintPath>
-	  </Reference>
-	  <Reference Include="HEROsMod">
-	    <HintPath>lib\HEROsMod.dll</HintPath>
-	  </Reference>
-	  <Reference Include="InfernalEclipseAPI">
-	    <HintPath>..\..\ModReader\InfernalEclipseAPI\InfernalEclipseAPI.dll</HintPath>
-	  </Reference>
-	  <Reference Include="InfernumMode">
-	    <HintPath>..\..\ModReader\InfernumMode\InfernumMode.dll</HintPath>
 	  </Reference>
 	  <Reference Include="Luminance">
 	    <HintPath>lib\Luminance.dll</HintPath>
@@ -113,9 +75,6 @@
 	  </Reference>
 	  <Reference Include="Polarities">
 	    <HintPath>lib\Polarities.dll</HintPath>
-	  </Reference>
-	  <Reference Include="RagnarokMod">
-	    <HintPath>lib\RagnarokMod.dll</HintPath>
 	  </Reference>
 	  <Reference Include="Redemption">
 	    <HintPath>Libraries\Redemption.dll</HintPath>

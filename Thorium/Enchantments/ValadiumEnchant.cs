@@ -25,7 +25,7 @@ namespace ssm.Thorium.Enchantments
     {
         public override bool IsLoadingEnabled(Mod mod)
         {
-            return ShtunConfig.Instance.Thorium;
+            return CSEConfig.Instance.Thorium;
         }
 
         private readonly Mod thorium = ModLoader.GetMod("ThoriumMod");
@@ -46,7 +46,7 @@ namespace ssm.Thorium.Enchantments
         {
 
 
-            ShtunPlayer modPlayer = player.GetModPlayer<ShtunPlayer>();
+            CSEPlayer modPlayer = player.GetModPlayer<CSEPlayer>();
 
             //set bonus
             if (player.gravDir == -1f)

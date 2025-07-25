@@ -7,7 +7,7 @@ using ssm.SoA.Souls;
 using CalamityMod.Items.Materials;
 using SacredTools.Content.Items.Weapons.Relic;
 using SacredTools.Content.Items.Armor.Asthraltite;
-using SacredTools.Items.Tools;
+using SacredTools.Content.Items.Placeable.Obelisks;
 
 namespace ssm.Calamity
 {
@@ -28,8 +28,10 @@ namespace ssm.Calamity
                 if (recipe.HasResult<SoASoul>() && !recipe.HasIngredient<ShadowspecBar>())
                 {
                     recipe.AddIngredient<ShadowspecBar>(5);
+                    recipe.AddIngredient<MiracleMatter>();
                 }
-                if ((recipe.HasResult<PaleRuin>() ||
+                if ((recipe.HasResult<NihilusObelisk>() || 
+                    recipe.HasResult<PaleRuin>() ||
                     recipe.HasResult<AshenWake>() ||
                     recipe.HasResult<CeruleanCyclone>() ||
                     recipe.HasResult<Malevolence>() ||
@@ -49,6 +51,11 @@ namespace ssm.Calamity
                     recipe.HasResult<AsthralSummon>()) && !recipe.HasIngredient<AuricBar>())
                 {
                     recipe.AddIngredient<AuricBar>(1);
+                }
+
+                if (recipe.HasResult<GalacticaSingularity>() && !recipe.HasIngredient<FragmentQuasar>())
+                {
+                    recipe.AddIngredient<FragmentQuasar>(1);
                 }
 
                 //Waiting for erazor rework

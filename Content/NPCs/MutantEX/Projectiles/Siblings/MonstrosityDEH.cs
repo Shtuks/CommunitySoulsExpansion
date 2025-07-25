@@ -65,7 +65,7 @@ namespace ssm.Content.NPCs.MutantEX.Projectiles.Siblings
         {
             FargoSoulsUtil.HeartDust(Projectile.Center, Projectile.rotation + MathHelper.PiOver2);
             SoundEngine.PlaySound(FargosSoundRegistry.DeviHeartExplosion with { MaxInstances = 0, Volume = 0.33f }, Projectile.Center);
-            if (FargoSoulsUtil.BossIsAlive(ref ShtunNpcs.mutantEX, ModContent.NPCType<MutantEX>()))
+            if (FargoSoulsUtil.BossIsAlive(ref CSENpcs.mutantEX, ModContent.NPCType<MutantEX>()))
             {
                 if (FargoSoulsUtil.HostCheck)
                 {

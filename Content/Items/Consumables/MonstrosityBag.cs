@@ -14,7 +14,7 @@ namespace ssm.Content.Items.Consumables
     {
         public override bool IsLoadingEnabled(Mod mod)
         {
-            return ShtunConfig.Instance.AlternativeSiblings;
+            return CSEConfig.Instance.AlternativeSiblings;
         }
         protected override bool IsPreHMBag => false;
 

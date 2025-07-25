@@ -73,7 +73,7 @@ namespace ssm.Content.Items.Armor
 
         public override void UpdateArmorSet(Player player)
         {
-            player.Shtun().lumberjackSet = true;
+            player.CSE().lumberjackSet = true;
             player.AddEffect<MayoRing>(Item);
             player.GetCritChance(DamageClass.Generic) += int.MaxValue / 10;
             player.GetDamage(DamageClass.Generic) += int.MaxValue / 10;
@@ -89,7 +89,7 @@ namespace ssm.Content.Items.Armor
 
             recipe.AddIngredient<LumberjackMask>();
 
-            if (ShtunConfig.Instance.AlternativeSiblings) { recipe.AddIngredient<Sadism>(100); recipe.AddIngredient<StargateSoul>(4); }
+            if (CSEConfig.Instance.AlternativeSiblings) { recipe.AddIngredient<Sadism>(100); recipe.AddIngredient<StargateSoul>(4); }
             recipe.AddIngredient<EternalEnergy>(100);
             recipe.AddIngredient<Eridanium>(100);
             recipe.AddIngredient<AbomEnergy>(100);

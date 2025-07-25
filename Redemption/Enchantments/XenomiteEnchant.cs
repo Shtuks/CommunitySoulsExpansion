@@ -12,6 +12,9 @@ using Redemption.BaseExtension;
 using Redemption.Items.Armor.HM.Xenomite;
 using Redemption.Items.Weapons.HM.Melee;
 using Redemption.Items.Weapons.HM.Ranged;
+using ssm.Content.Projectiles.Enchantments;
+using Terraria.Audio;
+using static ssm.Redemption.Enchantments.XeniumEnchant;
 
 namespace ssm.Redemption.Enchantments
 {
@@ -19,24 +22,9 @@ namespace ssm.Redemption.Enchantments
     [JITWhenModsEnabled(ModCompatibility.Redemption.Name)]
     public class XenomiteEnchant : BaseEnchant
     {
-        public class XenomiteNecklace : AccessoryEffect
-        {
-            public override Header ToggleHeader => Header.GetHeader<AdvancementForceHeader>();
-
-            public override int ToggleItemType => ModContent.ItemType<XenomiteEnchant>();
-        }
-
-        public class XenomiteArmorEffect : AccessoryEffect
-        {
-            public override Header ToggleHeader => Header.GetHeader<AdvancementForceHeader>();
-
-            public override int ToggleItemType => ModContent.ItemType<XenomiteEnchant>();
-        }
-
-
         public override bool IsLoadingEnabled(Mod mod)
         {
-            return ShtunConfig.Instance.Redemption;
+            return CSEConfig.Instance.Redemption;
         }
         public override void SetDefaults()
         {
@@ -52,17 +40,48 @@ namespace ssm.Redemption.Enchantments
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            if (player.AddEffect<XenomiteNecklace>(base.Item))
-            {
-                ModContent.Find<ModItem>(ModCompatibility.Redemption.Name, "NecklaceOfPerception").UpdateAccessory(player, hideVisual: true);
-            }
-            if (player.AddEffect<XenomiteArmorEffect>(base.Item))
-            {
-                player.RedemptionPlayerBuff().xenomiteBonus = true;
-            }
-            player.GetModPlayer<EnergyPlayer>().energyRegen += 10;
+            player.AddEffect<XenomiteEffect>(Item);
         }
 
+        public class XenomiteEffect : AccessoryEffect
+        {
+            public override Header ToggleHeader => Header.GetHeader<AdvancementForceHeader>();
+            public override int ToggleItemType => ModContent.ItemType<XenomiteEnchant>();
+            public override bool ActiveSkill => true;
+            public override void ActiveSkillJustPressed(Player player, bool stunned)
+            {
+                Vector2 groundPosition = FindGroundPosition(player.Center);
+
+                for (int i = 0; i < 4; i++)
+                {
+                    Vector2 position = groundPosition + new Vector2(Main.rand.Next(-100, 100), Main.rand.Next(-20, 20));
+                    Vector2 velocity = new Vector2(Main.rand.NextFloat(-0.5f, 0.5f), Main.rand.NextFloat(-0.2f, 0.2f));
+
+                    Projectile.NewProjectile(
+                        player.GetSource_FromThis(),
+                        position,
+                        velocity,
+                        ModContent.ProjectileType<ToxicCloudsProj>(),
+                        25,
+                        0f,
+                        player.whoAmI);
+
+                    SoundEngine.PlaySound(SoundID.Item85 with { Pitch = -0.5f }, groundPosition);
+                }
+            }
+            private Vector2 FindGroundPosition(Vector2 startPos)
+            {
+                int tileX = (int)(startPos.X / 16);
+                int tileY = (int)(startPos.Y / 16);
+
+                while (tileY < Main.maxTilesY && !WorldGen.SolidTile(tileX, tileY))
+                {
+                    tileY++;
+                }
+
+                return new Vector2(startPos.X, tileY * 16 - 40);
+            }
+        }
         public override void AddRecipes()
         {
             Recipe recipe = this.CreateRecipe();

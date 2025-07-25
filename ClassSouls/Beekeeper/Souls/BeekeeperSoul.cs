@@ -16,7 +16,7 @@ namespace ssm.ClassSouls.Beekeeper.Souls
     {
         public override bool IsLoadingEnabled(Mod mod)
         {
-            return ShtunConfig.Instance.Beekeeper;
+            return CSEConfig.Instance.Beekeeper;
         }
         public override void SetDefaults()
         {

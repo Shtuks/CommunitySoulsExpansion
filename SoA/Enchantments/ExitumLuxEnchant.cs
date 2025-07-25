@@ -24,7 +24,7 @@ namespace ssm.SoA.Enchantments
     {
         public override bool IsLoadingEnabled(Mod mod)
         {
-            return ShtunConfig.Instance.SacredTools;
+            return CSEConfig.Instance.SacredTools;
         }
 
         private readonly Mod soa = ModLoader.GetMod("SacredTools");

@@ -23,7 +23,7 @@ namespace ssm.Thorium.Enchantments
         public int timer;
         public override bool IsLoadingEnabled(Mod mod)
         {
-            return ShtunConfig.Instance.Thorium;
+            return CSEConfig.Instance.Thorium;
         }
 
         public override void SetDefaults()

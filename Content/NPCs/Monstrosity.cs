@@ -8,19 +8,21 @@ using Terraria.ModLoader;
 using Terraria.GameContent.Personalities;
 using Fargowiltas.NPCs;
 using FargowiltasSouls;
+using ssm.Core;
+using ssm.Content.Items.Summons;
+using ssm.CrossMod.CraftingStations;
 
 namespace ssm.Content.NPCs
 {
     [AutoloadHead]
     public class Monstrosity : ModNPC
     {
+        public const string ShopName = "Shop";
         public override bool IsLoadingEnabled(Mod mod)
         {
-            return ShtunConfig.Instance.AlternativeSiblings;
+            return CSEConfig.Instance.AlternativeSiblings;
         }
 
-        private static int shopNum;
-        private static bool showCycleShop;
         public static List<string> Names = new() {
             "Neko",
             "Starlight",
@@ -67,8 +69,8 @@ namespace ssm.Content.NPCs
             NPC.height = 54;
             NPC.aiStyle = 7;
             NPC.damage = 500;
-            NPC.defense = int.MaxValue;
-            NPC.lifeMax = int.MaxValue;
+            NPC.defense = int.MaxValue/10;
+            NPC.lifeMax = int.MaxValue/10;
             NPC.HitSound = SoundID.NPCHit1;
             NPC.DeathSound = SoundID.NPCDeath1;
             NPC.knockBackResist = 0.5f;
@@ -100,7 +102,6 @@ namespace ssm.Content.NPCs
             {
                 "You know the rules! And you will die. Im not going to rickroll you, that's only 0,00001% chance.",
                 "Yippe!",
-                "Soul of eternity is not enough to face me, let alone 2 of it.",
                 "Why would i be afraid of a cat? Well, it is long story.",
                 "Can I jump? Yes, I have a 'spacebar'.",
                 "It would be a calamity for you not to buy my products.",
@@ -125,7 +126,7 @@ namespace ssm.Content.NPCs
                 "There is a pipe bomb inside your walls.",
                 "A lot of things explode for no reason.",
                 "Also try Infernal Eclipse of Ragnarok!",
-                "Once I put Thunder Bird, Scarabeus, Desert Scourge, Cursed Coffin and Grand Antlion in one room to see who is strongest. Instead they started talking about politics.",
+                "Once I put Grand Thunder Bird, Scarabeus, Desert Scourge, Cursed Coffin and Grand Antlion in one room to see who is strongest. Instead they started talking about politics.",
             };
 
             if (WorldSavingSystem.DownedMutant)
@@ -133,31 +134,31 @@ namespace ssm.Content.NPCs
                 dialogue.Add("[c/FF0000:You are ready.]");
             }
 
+            //if (WorldSavingSystem.DownedFishronEX)
+            //{
+            //    dialogue.Add("");
+            //}
+
+            if (ModCompatibility.SacredTools.Loaded && ModCompatibility.Calamity.Loaded && ModCompatibility.Thorium.Loaded)
+            {
+                dialogue.Add("Go touch some grass.");
+            }
+
+            if (Main.LocalPlayer.FargoSouls().Eternity)
+            {
+                dialogue.Add("Soul of Eternity is not enough to face me, let alone 2 of it.");
+            }
+
             return Main.rand.Next(dialogue);
         }
-        public override void SetChatButtons(ref string button, ref string button2)
-        {
-            button = Language.GetTextValue("LegacyInterface.28");
-            if (showCycleShop)
-            {
-                button += $" {shopNum + 1}";
-                button2 = "Cycle Shop";
-            }
-        }
-        public override void OnChatButtonClicked(bool firstButton, ref string shopName)
-        {
-            if (firstButton)
-            {
-                shopName = "Shop";
-            }
-            else
-            {
-                shopNum++;
-            }
-        }
+
         public override void AddShops()
         {
-            var npcShop = new NPCShop(Type, "Shop");
+            var npcShop = new NPCShop(Type, ShopName)
+                .Add(new Item(ModContent.ItemType<GunterasFruit>()) { shopCustomPrice = Item.buyPrice(copper: 400000) })
+                .Add(new Item(ModContent.ItemType<FutureSigil>()) { shopCustomPrice = Item.buyPrice(copper: 400000) })
+                .Add(new Item(ModContent.ItemType<MutantsForgeItem>()) { shopCustomPrice = Item.buyPrice(copper: 40000000) }, new Condition("Downed Mutant", () => WorldSavingSystem.DownedMutant))
+                .Add(new Item(ModContent.ItemType<TruffleWormEX>()) { shopCustomPrice = Item.buyPrice(copper: 400000) });
 
             npcShop.Register();
         }

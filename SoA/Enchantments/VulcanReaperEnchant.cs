@@ -12,6 +12,7 @@ using SacredTools.Items.Placeable.Paintings;
 using ssm.Core;
 using SacredTools.Common.Players;
 using FargowiltasSouls;
+using FargowiltasSouls.Core.Globals;
 
 namespace ssm.SoA.Enchantments
 {
@@ -21,7 +22,7 @@ namespace ssm.SoA.Enchantments
     {
         public override bool IsLoadingEnabled(Mod mod)
         {
-            return ShtunConfig.Instance.SacredTools;
+            return CSEConfig.Instance.SacredTools;
         }
         public override void SetDefaults()
         {
@@ -49,23 +50,18 @@ namespace ssm.SoA.Enchantments
             public override int ToggleItemType => ModContent.ItemType<VulcanReaperEnchant>();
             public override void PostUpdateEquips(Player player)
             {
-                if (vulcanStacks > 0)
-                {
-                    vulcanTime++;
-                }
-
                 if (vulcanTime >= 300)
                 {
                     vulcanStacks--;
                     vulcanTime = 0;
                 }
 
-                player.GetModPlayer<MiscEffectsPlayer>().bossDamage *= 1f + (vulcanStacks * 0.05f);
+                player.GetModPlayer<MiscEffectsPlayer>().bossDamage += vulcanStacks * 0.05f;
             }
 
             public override void OnHitNPCEither(Player player, NPC target, NPC.HitInfo hitInfo, DamageClass damageClass, int baseDamage, Projectile projectile, Item item)
             {
-                if (target.life <= 0 && !target.friendly && target.type != NPCID.TargetDummy)
+                if (target.life <= 0 && !target.friendly && target.type != NPCID.TargetDummy && vulcanStacks < 5)
                 {
                     vulcanStacks++;
                 }

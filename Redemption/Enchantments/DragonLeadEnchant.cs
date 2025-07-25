@@ -10,6 +10,13 @@ using System;
 using Redemption.Items.Armor.PreHM.DragonLead;
 using Redemption.Items.Weapons.PreHM.Melee;
 using Redemption.Items.Weapons.PreHM.Ranged;
+using FargowiltasSouls.Content.UI.Elements;
+using FargowiltasSouls.Core.AccessoryEffectSystem;
+using FargowiltasSouls;
+using Microsoft.Xna.Framework.Graphics;
+using ssm.Content.SoulToggles;
+using Redemption.Buffs.NPCBuffs;
+using static ssm.Redemption.Enchantments.CommonGuardEnchant;
 
 namespace ssm.Redemption.Enchantments
 {
@@ -19,7 +26,7 @@ namespace ssm.Redemption.Enchantments
     {
         public override bool IsLoadingEnabled(Mod mod)
         {
-            return ShtunConfig.Instance.Redemption;
+            return CSEConfig.Instance.Redemption;
         }
         public override void SetDefaults()
         {
@@ -35,12 +42,31 @@ namespace ssm.Redemption.Enchantments
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            player.RedemptionPlayerBuff().ElementalResistance[4] += 0.2f;
-            player.RedemptionPlayerBuff().dragonLeadBonus = true;
-            player.RedemptionPlayerBuff().MetalSet = true;
-            ModContent.Find<ModItem>(ModCompatibility.Redemption.Name, "HeartInsignia").UpdateAccessory(player, hideVisual);
+            player.AddEffect<DragonLeadEffect>(Item);
         }
 
+        public class DragonLeadEffect : AccessoryEffect
+        {
+            public override Header ToggleHeader => Header.GetHeader<AdvancementForceHeader>();
+            public override int ToggleItemType => ModContent.ItemType<DragonLeadEnchant>();
+
+            public int cd;
+            public override void PostUpdateEquips(Player player)
+            {
+                if (cd > 0) { cd--; }
+            }
+            public override void OnHitByEither(Player player, NPC npc, Projectile proj)
+            {
+                cd += 600;
+            }
+            public override void OnHitNPCEither(Player player, NPC target, NPC.HitInfo hitInfo, DamageClass damageClass, int baseDamage, Projectile projectile, Item item)
+            {
+                if(cd > 0)
+                {
+                    target.AddBuff(ModContent.BuffType<DragonblazeDebuff>(), 1200);
+                }
+            }
+        }
         public override void AddRecipes()
         {
             Recipe recipe = this.CreateRecipe();

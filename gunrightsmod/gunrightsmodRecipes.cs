@@ -13,7 +13,7 @@ namespace ssm.gunrightsmod
     {
         public override bool IsLoadingEnabled(Mod mod)
         {
-            return ShtunConfig.Instance.TerMerica;
+            return CSEConfig.Instance.TerMerica;
         }
 
         public override void AddRecipeGroups()

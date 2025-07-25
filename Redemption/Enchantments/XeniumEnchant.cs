@@ -7,7 +7,6 @@ using FargowiltasSouls.Content.Items.Accessories.Enchantments;
 using FargowiltasSouls.Core.AccessoryEffectSystem;
 using ssm.Content.SoulToggles;
 using Redemption.Items.Accessories.PreHM;
-using Redemption.Globals.Player;
 using Redemption.Items.Accessories.HM;
 using Redemption.Items.Armor.PostML.Xenium;
 using Redemption.Items.Weapons.PostML.Summon;
@@ -18,23 +17,14 @@ namespace ssm.Redemption.Enchantments
     [JITWhenModsEnabled(ModCompatibility.Redemption.Name)]
     public class XeniumEnchant : BaseEnchant
     {
-        public class XeniumConcoction : AccessoryEffect
+        public class XeniumEffect : AccessoryEffect
         {
             public override Header ToggleHeader => Header.GetHeader<AdvancementForceHeader>();
-
             public override int ToggleItemType => ModContent.ItemType<XeniumEnchant>();
         }
-
-        public class XeniumShield : AccessoryEffect
-        {
-            public override Header ToggleHeader => Header.GetHeader<AdvancementForceHeader>();
-
-            public override int ToggleItemType => ModContent.ItemType<XeniumEnchant>();
-        }
-
         public override bool IsLoadingEnabled(Mod mod)
         {
-            return ShtunConfig.Instance.Redemption;
+            return CSEConfig.Instance.Redemption;
         }
         public override void SetDefaults()
         {
@@ -50,15 +40,7 @@ namespace ssm.Redemption.Enchantments
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            if (player.AddEffect<XeniumConcoction>(base.Item))
-            {
-                ModContent.Find<ModItem>(ModCompatibility.Redemption.Name, "BeelzebubConcoction").UpdateAccessory(player, hideVisual: true);
-            }
-            if (player.AddEffect<XeniumShield>(base.Item))
-            {
-                ModContent.Find<ModItem>(ModCompatibility.Redemption.Name, "InfectionShield").UpdateAccessory(player, hideVisual: false);
-            }
-            player.GetModPlayer<EnergyPlayer>().energyRegen += 20;
+            player.AddEffect<XeniumEffect>(Item);
         }
         public override void AddRecipes()
         {

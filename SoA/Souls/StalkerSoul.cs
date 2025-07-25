@@ -1,5 +1,5 @@
 ﻿using Fargowiltas.Items.Tiles;
-using ssm.Content.DamageClasses;
+
 using Terraria.ModLoader;
 using Terraria;
 using FargowiltasSouls.Content.Items.Accessories.Souls;
@@ -22,7 +22,7 @@ namespace ssm.SoA.Souls
     {
         public override bool IsLoadingEnabled(Mod mod)
         {
-            return !ModLoader.HasMod(ModCompatibility.Calamity.Name) && !ModLoader.HasMod(ModCompatibility.Thorium.Name) && ShtunConfig.Instance.SacredTools;
+            return !ModLoader.HasMod(ModCompatibility.Calamity.Name) && !ModLoader.HasMod(ModCompatibility.Thorium.Name) && CSEConfig.Instance.SacredTools;
         }
         public override void SetDefaults()
         {
@@ -40,10 +40,10 @@ namespace ssm.SoA.Souls
 
         private void Thorium(Player player)
         {
-            player.GetDamage<UnitedModdedThrower>() += 0.25f;
-            player.GetCritChance<UnitedModdedThrower>() += 10f;
-            player.GetAttackSpeed<UnitedModdedThrower>() += 0.15f;
-            player.Shtun().throwerVelocity += 0.2f;
+            player.GetDamage<ThrowingDamageClass>() += 0.25f;
+            player.GetCritChance<ThrowingDamageClass>() += 10f;
+            player.GetAttackSpeed<ThrowingDamageClass>() += 0.15f;
+            player.CSE().throwerVelocity += 0.2f;
         }
 
         public override void AddRecipes()

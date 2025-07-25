@@ -19,7 +19,7 @@ namespace ssm.Spooky.Enchantments
     {
         public override bool IsLoadingEnabled(Mod mod)
         {
-            return ShtunConfig.Instance.Spooky;
+            return CSEConfig.Instance.Spooky;
         }
         public override void SetDefaults()
         {

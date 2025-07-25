@@ -21,7 +21,7 @@ namespace ssm.Consolaria
 
             if (npc.type == ModContent.NPCType<TurkortheUngrateful>())
             {
-                npc.lifeMax = ModCompatibility.Calamity.Loaded ? 21000 : 16000;
+                npc.lifeMax = ModCompatibility.Calamity.Loaded ? 18000 : 13000;
                 npc.damage = 420;
             }
 
