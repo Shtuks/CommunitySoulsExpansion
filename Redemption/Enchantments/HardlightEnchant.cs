@@ -41,33 +41,8 @@ namespace ssm.Redemption.Enchantments
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            if (player.AddEffect<HardlightEffect>(base.Item))
-            {
-                if (player.HeldItem.DamageType == DamageClass.Magic)
-                {
-                    player.RedemptionPlayerBuff().hardlightBonus = 2;
-                }
-                if (player.HeldItem.DamageType == DamageClass.Melee)
-                {
-                    player.RedemptionPlayerBuff().hardlightBonus = 3;
-                }
-                if (player.HeldItem.DamageType == DamageClass.Summon)
-                {
-                    player.RedemptionPlayerBuff().hardlightBonus = 4;
-                }
-                if (player.HeldItem.DamageType == DamageClass.Ranged)
-                {
-                    player.RedemptionPlayerBuff().hardlightBonus = 5;
-                }
-            }
-            if (player.AddEffect<ShieldGeneratorEffect>(base.Item))
-            {
-                player.RedemptionPlayerBuff().shieldGenerator = true;
-            }
-            if (player.AddEffect<SlayerEffect>(base.Item))
-            {
-                player.RedemptionPlayerBuff().shieldGenerator = true;
-            }
+            player.AddEffect<HardlightEffect>(Item);
+            player.AddEffect<ShieldGeneratorEffect>(Item);
         }
 
         public class HardlightEffect : AccessoryEffect
@@ -82,14 +57,12 @@ namespace ssm.Redemption.Enchantments
             public override Header ToggleHeader => Header.GetHeader<AdvancementForceHeader>();
 
             public override int ToggleItemType => ModContent.ItemType<HardlightEnchant>();
-        }
-        public class SlayerEffect : AccessoryEffect
-        {
-            public override Header ToggleHeader => Header.GetHeader<AdvancementForceHeader>();
 
-            public override int ToggleItemType => ModContent.ItemType<HardlightEnchant>();
+            public override void PostUpdateMiscEffects(Player player)
+            {
+                player.RedemptionPlayerBuff().shieldGenerator = true;
+            }
         }
-
         public override void AddRecipes()
         {
             Recipe recipe = this.CreateRecipe();

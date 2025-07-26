@@ -15,6 +15,7 @@ using SacredTools.Content.Items.Weapons.Dreadfire;
 using SacredTools.Content.Items.Armor.Exodus;
 using SacredTools.Content.Items.LuxShards;
 using SacredTools.Items.Weapons.Luxite;
+using SacredTools.Common.GlobalItems;
 
 namespace ssm.SoA.Enchantments
 {
@@ -43,20 +44,23 @@ namespace ssm.SoA.Enchantments
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            ModdedPlayer modPlayer = player.GetModPlayer<ModdedPlayer>();
-            //set bonus
-            modPlayer.exodusHelmet = true;
-            modPlayer.exodusChest = true;
-            modPlayer.exodusLegs = true;
-
-            //stone of resonance
-            ModContent.Find<ModItem>(this.soa.Name, "StoneOfResonance").UpdateAccessory(player, false);
+            player.AddEffect<ExitumLuxEffect>(Item);
         }
 
         public class ExitumLuxEffect : AccessoryEffect
         {
             public override Header ToggleHeader => Header.GetHeader<SyranForceHeader>();
             public override int ToggleItemType => ModContent.ItemType<ExitumLuxEnchant>();
+
+            public override void PostUpdateEquips(Player player)
+            {
+                if(player.HeldItem.ModItem is IRelicItem)
+                {
+                    player.GetDamage<GenericDamageClass>() += 0.1f;
+                    player.GetCritChance<GenericDamageClass>() += 0.1f;
+                    player.GetAttackSpeed<GenericDamageClass>() += 0.1f;
+                }
+            }
         }
 
         public override void AddRecipes()
@@ -65,7 +69,6 @@ namespace ssm.SoA.Enchantments
             recipe.AddIngredient<ExodusHelmet>();
             recipe.AddIngredient<ExodusChest>();
             recipe.AddIngredient<ExodusLegs>();
-            recipe.AddIngredient<StoneOfResonance>();
             recipe.AddIngredient<LuxDustThrown>();
             recipe.AddIngredient<Claymarine>();
             recipe.AddTile(412);

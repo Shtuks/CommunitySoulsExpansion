@@ -46,6 +46,8 @@ namespace ssm.Calamity
                 Player.GetModPlayer<CalamityPlayer>().rogueStealthMax += 1.5f;
                 Player.GetDamage<GenericDamageClass>() += 0.3f;
                 Player.GetDamage<SummonDamageClass>() -= 0.3f;
+                //yay 3k hp with all mods pre mutant
+                Player.statLifeMax2 += 100;
             }
         }
         public override void PostUpdateBuffs()

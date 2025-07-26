@@ -12,6 +12,8 @@ using SacredTools.Items.Weapons.Decree;
 using SacredTools.Items.Weapons;
 using FargowiltasSouls;
 using ssm.Content.Projectiles.Enchantments;
+using ssm.SoA.Forces;
+using static ssm.SoA.Forces.FoundationsForce;
 
 namespace ssm.SoA.Enchantments
 {
@@ -48,7 +50,7 @@ namespace ssm.SoA.Enchantments
             public void CreateFrostExplosion(Vector2 pos, bool isCluster, Projectile proj, Player player)
             {
                 float radius = isCluster ? 100f : 150f;
-                int damage = (int)(player.GetDamage(DamageClass.Generic).ApplyTo(15));
+                int damage = (int)(player.GetDamage(DamageClass.Generic).ApplyTo(player.HasEffect<FoundationsEffect>() ? 150 : 15));
                 float knockback = 3f;
 
                 for (int i = 0; i < Main.maxNPCs; i++)
@@ -75,7 +77,7 @@ namespace ssm.SoA.Enchantments
             public void CreateSmallFrostExplosion(Vector2 pos, Projectile proj, Player player)
             {
                 float radius = 60f;
-                int damage = (int)(player.GetDamage(DamageClass.Generic).ApplyTo(10));
+                int damage = (int)(player.GetDamage(DamageClass.Generic).ApplyTo(player.HasEffect<FoundationsEffect>() ? 100 : 10));
                 float knockback = 1.5f;
 
                 for (int i = 0; i < Main.maxNPCs; i++)

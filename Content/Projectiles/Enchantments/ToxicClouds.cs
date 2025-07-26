@@ -32,7 +32,7 @@ namespace ssm.Content.Projectiles.Enchantments
             if (expandTimer < 120) 
             {
                 float progress = expandTimer / 120f;
-                Projectile.scale = initialScale + progress * 1.0f; // От 0.5 до 1.5
+                Projectile.scale = initialScale + progress * 1.0f; 
                 Projectile.width = (int)(40 * Projectile.scale);
                 Projectile.height = (int)(40 * Projectile.scale);
             }

@@ -13,6 +13,7 @@ using SacredTools.Content.Items.Armor.Marstech;
 using SacredTools.Items.Claymarine;
 using ssm.Core;
 using static ssm.SoA.Enchantments.SpaceJunkEnchant;
+using ssm.Content.Projectiles.Enchantments;
 
 namespace ssm.SoA.Enchantments
 {
@@ -40,13 +41,38 @@ namespace ssm.SoA.Enchantments
         {
             player.AddEffect<MarstechEffect>(Item);
             player.AddEffect<SpaceJunkEffect>(Item);
-            player.AddEffect<SpaceJunkAbilityEffect>(Item);
         }
 
         public class MarstechEffect : AccessoryEffect
         {
             public override Header ToggleHeader => Header.GetHeader<GenerationsForceHeader>();
             public override int ToggleItemType => ModContent.ItemType<MarstechEnchant>();
+            public override bool ActiveSkill => true;
+
+            private int cd;
+            public override void PostUpdateEquips(Player player)
+            {
+                if (cd > 0)
+                {
+                    cd--;
+                }
+            }
+            public override void ActiveSkillJustPressed(Player player, bool stunned)
+            {
+                if(!(cd > 0))
+                {
+                    Projectile.NewProjectile(
+                        player.GetSource_GiftOrReward(),
+                        player.Center,
+                        new Vector2(0, -5f),
+                        ModContent.ProjectileType<MartianProbe>(),
+                        50,
+                        5f,
+                        player.whoAmI
+                    );
+                    cd += 15 * 60;
+                }
+            }
         }
 
         public override void AddRecipes()

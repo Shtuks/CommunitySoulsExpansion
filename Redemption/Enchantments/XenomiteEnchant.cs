@@ -48,39 +48,55 @@ namespace ssm.Redemption.Enchantments
             public override Header ToggleHeader => Header.GetHeader<AdvancementForceHeader>();
             public override int ToggleItemType => ModContent.ItemType<XenomiteEnchant>();
             public override bool ActiveSkill => true;
+
+            public int cd;
+
+            public override void PostUpdateMiscEffects(Player player)
+            {
+                if (cd > 0)
+                {
+                    cd--;
+                }
+            }
             public override void ActiveSkillJustPressed(Player player, bool stunned)
             {
-                Vector2 groundPosition = FindGroundPosition(player.Center);
-
-                for (int i = 0; i < 4; i++)
+                if (!(cd > 0))
                 {
-                    Vector2 position = groundPosition + new Vector2(Main.rand.Next(-100, 100), Main.rand.Next(-20, 20));
-                    Vector2 velocity = new Vector2(Main.rand.NextFloat(-0.5f, 0.5f), Main.rand.NextFloat(-0.2f, 0.2f));
+                    //Vector2 groundPosition = FindGroundPosition(player.Center);
 
-                    Projectile.NewProjectile(
-                        player.GetSource_FromThis(),
-                        position,
-                        velocity,
-                        ModContent.ProjectileType<ToxicCloudsProj>(),
-                        25,
-                        0f,
-                        player.whoAmI);
+                    for (int i = 0; i < 4; i++)
+                    {
+                        Vector2 position = player.Center + new Vector2(Main.rand.Next(-100, 100), Main.rand.Next(-20, 20));
+                        Vector2 velocity = new Vector2(Main.rand.NextFloat(-0.5f, 0.5f), Main.rand.NextFloat(-0.2f, 0.2f));
 
-                    SoundEngine.PlaySound(SoundID.Item85 with { Pitch = -0.5f }, groundPosition);
+                        Projectile.NewProjectile(
+                            player.GetSource_FromThis(),
+                            position,
+                            velocity,
+                            ModContent.ProjectileType<ToxicCloudsProj>(),
+                            30,
+                            0f,
+                            player.whoAmI);
+
+                        SoundEngine.PlaySound(SoundID.Item85 with { Pitch = -0.5f }, player.Center);
+                    }
+                    cd += 1200;
                 }
             }
-            private Vector2 FindGroundPosition(Vector2 startPos)
-            {
-                int tileX = (int)(startPos.X / 16);
-                int tileY = (int)(startPos.Y / 16);
+            //works really bad
+            //instead use players center
+            //private Vector2 FindGroundPosition(Vector2 startPos)
+            //{
+            //    int tileX = (int)(startPos.X / 16);
+            //    int tileY = (int)(startPos.Y / 16);
 
-                while (tileY < Main.maxTilesY && !WorldGen.SolidTile(tileX, tileY))
-                {
-                    tileY++;
-                }
+            //    while (tileY < Main.maxTilesY && !WorldGen.SolidTile(tileX, tileY))
+            //    {
+            //        tileY++;
+            //    }
 
-                return new Vector2(startPos.X, tileY * 16 - 40);
-            }
+            //    return new Vector2(startPos.X, tileY * 16 - 40);
+            //}
         }
         public override void AddRecipes()
         {

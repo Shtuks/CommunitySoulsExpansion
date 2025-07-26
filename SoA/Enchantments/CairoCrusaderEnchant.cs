@@ -1,9 +1,7 @@
 ﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria.Localization;
 using SacredTools;
-using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using FargowiltasSouls.Content.Items.Accessories.Enchantments;
 using FargowiltasSouls.Core.AccessoryEffectSystem;
@@ -14,7 +12,7 @@ using SacredTools.Items.Weapons.Sand;
 using SacredTools.Items.Tools;
 using SacredTools.Items.Weapons;
 using SacredTools.Projectiles.Minions.EternalOasis;
-using FargowiltasSouls;
+using static ssm.SoA.Forces.FoundationsForce;
 
 namespace ssm.SoA.Enchantments
 {
@@ -52,10 +50,10 @@ namespace ssm.SoA.Enchantments
 
             public override void PostUpdateEquips(Player player)
             {
-                if (player.whoAmI == Main.myPlayer)
+                player.GetModPlayer<ModdedPlayer>().cairoCrusader = true;
+                if (player.ownedProjectileCounts[ModContent.ProjectileType<EternalOasis>()] <= 0 && player.whoAmI == Main.myPlayer)
                 {
-                    if (player.ownedProjectileCounts[ModContent.ProjectileType<EternalOasis>()] < 1)
-                        FargoSoulsUtil.NewSummonProjectile(player.GetSource_FromThis(), player.Center, Vector2.Zero, ModContent.ProjectileType<EternalOasis>(), (int)player.GetDamage<GenericDamageClass>().ApplyTo(50), 8f, player.whoAmI);
+                    Projectile.NewProjectile(player.GetSource_FromThis("SetBonus_CairoCrusader"), player.Center, Vector2.Zero, ModContent.ProjectileType<EternalOasis>(), (int)player.GetTotalDamage<ThrowingDamageClass>().ApplyTo(player.HasEffect<FoundationsEffect>() ? 1000f : 100f), 0f, player.whoAmI);
                 }
             }
         }

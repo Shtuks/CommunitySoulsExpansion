@@ -61,7 +61,7 @@ namespace ssm.SoA.Enchantments
                 Vector2 vector = Vector2.Normalize(Main.MouseWorld - center);
                 for (int i = 0; i < (player.ForceEffect<BlightboneEffect>() ? 3 : 1); i++)
                 {
-                    Projectile.NewProjectile(GetSource_EffectItem(player), center, vector.RotatedByRandom(Math.PI / 2.0) * Main.rand.NextFloat(6f, 10f) * 2, ModContent.ProjectileType<Blightbone>(), (int)(num * player.ActualClassDamage(DamageClass.Throwing)), 9f, player.whoAmI);
+                    Projectile.NewProjectile(GetSource_EffectItem(player), center, vector.RotatedByRandom(Math.PI / 6.0) * Main.rand.NextFloat(6f, 10f) * 2, ModContent.ProjectileType<Blightbone>(), (int)(num * player.ActualClassDamage(DamageClass.Throwing)), 9f, player.whoAmI);
                 }
             }
             public override void PostUpdateEquips(Player player)

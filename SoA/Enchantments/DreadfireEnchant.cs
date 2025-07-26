@@ -84,6 +84,25 @@ namespace ssm.SoA.Enchantments
                         }
                     }
                 }
+
+                for (int i = 0; i < Main.maxPlayers; i++)
+                {
+                    Player targetPlayer = Main.player[i];
+                    if (targetPlayer.active &&
+                        !targetPlayer.dead &&
+                        targetPlayer.whoAmI != player.whoAmI && 
+                        targetPlayer.team == player.team &&      
+                        player.team != 0)  
+                    {
+                        Vector2 targetComparePoint = targetPlayer.Center; 
+
+                        if (player.Distance(targetComparePoint) < dist &&
+                            (forceEffect || Collision.CanHitLine(player.Center, 0, 0, targetComparePoint, 0, 0)))
+                        {
+                            targetPlayer.AddBuff(ModContent.BuffType<DreadflameAura>(), 120);
+                        }
+                    }
+                }
             }
         }
         public override void AddRecipes()

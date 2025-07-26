@@ -10,6 +10,20 @@ Mods: {
 		}
 
 		Items: {
+			CalWingEffects: {
+				Asthral: 50% increased supression when wearing full set of Asthraltite armor
+				Aurora: ""
+				Devil: ""
+				Cryo: ""
+				Quasar: 15% increased thrower velocity and 10% increased crit chance
+				Flarium: You will be revived with full helath instead of 1/3
+				Despair:
+					'''
+					15% increased damage if Void Warden scale mail equipped.
+					20% increased damage reduction if Void Warden chestplate equipped.
+					'''
+			}
+
 			Lore: {
 				MonstrosityLore: {
 					Lore: What a calamity
@@ -570,6 +584,7 @@ Mods: {
 				ThoriumSupersonic: Effects of The Omega Core
 				CalDefender: Effects of Asgard's Valor
 				ThoriumThrower: Effects of Pirate's Purse
+				ThoriumThrower2: You will never exhaust
 				ThoriumUniverse:
 					'''
 					Healing spells will heal 5 additional lifes
@@ -974,9 +989,9 @@ Mods: {
 					'''
 					[i:ssm/BlightboneEnchant] Chance for a frosted bone to support your attack
 					[i:ssm/FrosthunterEnchant] Bones explode into frost explosion and freeze enemies
-					[i:ssm/PraireEnchant] Bones damage and velocity affected by speed of wind
+					[i:ssm/PrairieEnchant] Bones damage and velocity affected by speed of wind
 					[i:ssm/LapisEnchant] Being near frost explosion grants max lapis speed and Defense
-					[i:ssm/CairoCrusaderEnchant] Frost Explosion can enevelop player in blizzar that can ignore attack
+					[i:ssm/CairoCrusaderEnchant] Frost Explosion can enevelop player in blizzard that can ignore attack
 					':HeyMF:'
 					'''
 			}
@@ -1008,17 +1023,9 @@ Mods: {
 					'''
 			}
 
-			SyrainForce: {
+			SyrianForce: {
 				DisplayName: Syran Force
-				Tooltip:
-					'''
-					[i:ssm/VoidWardenEnchant] [i:ssm/AsthraltiteEnchant] Grants ring of void lanterns that decrease agression and shoot enemies
-					[i:ssm/VoidWardenEnchant] Hitting enemy inflict Fear that makes them attack other enemies
-					[i:ssm/FlariumEnchant] Lanterns sometimes spur abyssal flame geysers
-					[i:ssm/VulcanReaperEnchant] If lanterns kill enemy while any boss active your boss damage increases
-					[i:ssm/ExitumLuxEnchant] Attacking with relic weapon grants 20% damage buff
-					'Dragon Rage empowers you, and encourages you to go on'
-					'''
+				Tooltip: ""
 			}
 
 			SoASoul: {
@@ -2793,11 +2800,6 @@ Mods: {
 				DisplayName: Swarm Deactivator Debug
 			}
 
-			SyrianForce: {
-				DisplayName: Syran Force
-				Tooltip: ""
-			}
-
 			AquaQuiver: {
 				DisplayName: Aqua Quiver
 				Tooltip: ""
@@ -3325,6 +3327,16 @@ Mods: {
 				Description: OOOHHHH NOOOO YOU dAed
 			}
 
+			SniperBuff: {
+				DisplayName: Sniper Focus
+				Description: +125% damage, -25% defense, reduced enemy attention
+			}
+
+			SniperCooldownBuff: {
+				DisplayName: Sniper Fatigue
+				Description: +30% defense, -25% damage
+			}
+
 			MonstrousMaul: {
 				DisplayName: Monstrous Maul
 				Description: The power of Eternity Mode compels you
@@ -3413,6 +3425,11 @@ Mods: {
 			Gun: {
 				DisplayName: Gun
 				Description: Mods.ssm.Buffs.Gun.Description
+			}
+
+			FearBuff: {
+				DisplayName: Fear Buff
+				Description: Mods.ssm.Buffs.FearBuff.Description
 			}
 		}
 
@@ -3575,7 +3592,6 @@ Mods: {
 			EerieEffect: Eerie Pulses
 			PrairieEffect: Wind Speed
 			FrosthunterEffect: Frost Explosions
-			CosmicCommanderEffect: Very annoying effect. Turn it off.
 			GenerationsForceHeader: Generations Force
 			SoranForceHeader: Soran Force
 			BlazingBruteEffect: Rival Streak
@@ -3587,7 +3603,6 @@ Mods: {
 			QuasarEffect: ech
 			BismuthEffect: Bismuth Crystal
 			DreadfireEffect: Dreadfire Aura
-			MarstechEffect: Force Fields
 			FloraFistEffect: Flora Fist
 			SoAMasoSoulHeader: Soul of Master
 			RoyalGuardEffect: Royal Guard
@@ -3640,7 +3655,7 @@ Mods: {
 			HardlightEffect: Drones Summon
 			XeniumConcoction: Beelzebub Concoction
 			InfectionShieldEffect: Infected Thornshield Dash
-			HEVSuitEffect: H.E.V Suit
+			HEVEffect: H.E.V Suit
 			//spirit
 			AdventurerHeader: Adventurer Force
 			BotanistHerbEffect: Glowing Herb
@@ -3836,6 +3851,10 @@ Mods: {
 			CeilingProj.DisplayName: Ceiling Proj
 			CeilingSphere.DisplayName: Ceiling Sphere
 			GunteraBullet.DisplayName: Guntera Bullet
+			FlariumGeyser2.DisplayName: Flarium Geyser2
+			MartianProbe.DisplayName: Martian Probe
+			NightmareBubble.DisplayName: Nightmare Bubble
+			Shrapnel.DisplayName: Shrapnel
 		}
 
 		Bestiary: {
@@ -3849,6 +3868,7 @@ Mods: {
 					General: General
 					CrossMods: Cross-Mods
 					EnchantsLoad: Enchantments Loading
+					EmodeAccesLoad: Emode Acces Load Header
 				}
 
 				DisplayName: Mod Config
@@ -3965,6 +3985,21 @@ Mods: {
 
 				SecretBosses: {
 					Label: Secret Bosses
+					Tooltip: ""
+				}
+
+				EmodeThorium: {
+					Label: Emode Thorium
+					Tooltip: ""
+				}
+
+				EmodeRedemption: {
+					Label: Emode Redemption
+					Tooltip: ""
+				}
+
+				EmodeSoA: {
+					Label: Emode So A
 					Tooltip: ""
 				}
 			}

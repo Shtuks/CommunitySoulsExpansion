@@ -22,8 +22,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Terraria.GameContent;
 using ssm.Content.Items.Materials;
 using FargowiltasSouls.Content.Items.Materials;
-using ThoriumMod.Empowerments;
-using ThoriumMod.Items.HealerItems;
+using ssm.Content.NPCs;
 
 namespace ssm
 {
@@ -46,14 +45,6 @@ namespace ssm
         private int go = 1;
 
         public bool dukeEX;
-
-        private int dpsLimit;
-        private int dpsTimer;
-        private bool IsInDpsThreshold;
-        private float DpsDivisor;
-        private float DpsThresholdPercent => 0.008333f; // 500k/60M = 0.008333 (0.8333%)
-        private float MaxDpsDivisor => 2f; 
-        private float DpsGrowthRate => 0.000001f;
         public override void Load()
         {
             if (ModCompatibility.Homeward.Loaded && !ModCompatibility.Calamity.Loaded && !ModCompatibility.SacredTools.Loaded) { multiplierM += 0.8f; }
@@ -63,9 +54,8 @@ namespace ssm
             if (ModCompatibility.Thorium.Loaded) { multiplierM += 0.6f; multiplierA += 0.7f; }
             if (ModCompatibility.Calamity.Loaded) { multiplierM += CSEConfig.Instance.DebugMode ? 8.8f : 2.8f; multiplierA += 6f; }
             if (ModCompatibility.SacredTools.Loaded) { multiplierM += 1.6f; multiplierA += 1f; }
-            if (ModCompatibility.Inheritance.Loaded) { multiplierA = 21f; }
+            if (ModCompatibility.Inheritance.Loaded) { multiplierA = 16f; }
         }
-
         public override bool CheckDead(NPC npc)
         {
             if (!(npc.ai[0] <= 9))
@@ -177,7 +167,7 @@ namespace ssm
                 if (ModCompatibility.Inheritance.Loaded && !Main.zenithWorld && !Main.getGoodWorld)
                 {
                     npc.damage = 3000;
-                    npc.lifeMax = 300000000;
+                    npc.lifeMax = 440000000;
                 }
 
                 //npc.damage = Main.getGoodWorld ? 2000 : (int)(500 + ((ModCompatibility.Calamity.Loaded && CSEConfig.Instance.DebugMode ? 90 : 100) * (Math.Round(multiplierM, 1))));
@@ -377,18 +367,6 @@ namespace ssm
                 }
             }
             mayo++;
-            
-            if (npc.type == ModContent.NPCType<MutantBoss>())
-            {
-                DpsDivisor = 1f + Math.Min(MaxDpsDivisor - 1f, (dpsLimit - npc.lifeMax * DpsThresholdPercent) * DpsGrowthRate);
-                IsInDpsThreshold = dpsLimit > npc.lifeMax * 0.008333f;
-
-                if (dpsTimer++ >= 20)
-                {
-                    dpsLimit = (int)(dpsLimit * 0.5f);
-                    dpsTimer = 0;
-                }
-            }
 
             if (npc.type == ModContent.NPCType<MutantBoss>() && Main.npc[EModeGlobalNPC.mutantBoss].ai[0] > 10)
             {
@@ -409,24 +387,6 @@ namespace ssm
                 damage = damageValue;
             }
         }
-
-        public override void ModifyHitByProjectile(NPC npc, Projectile projectile, ref NPC.HitModifiers modifiers)
-        {
-            if (npc.type == ModContent.NPCType<MutantBoss>())
-            {
-                if (IsInDpsThreshold)
-                {
-                    float divisor = 1f + Math.Min(1f, (dpsLimit - npc.lifeMax * 0.008333f) * 0.000001f);
-                    modifiers.FinalDamage /= divisor;
-                }
-            }
-        }
-
-        public override void OnHitByProjectile(NPC npc, Projectile projectile, NPC.HitInfo hit, int damage)
-        {
-            dpsLimit += damage;
-        }
-
         public override bool PreAI(NPC npc)
         {
             if (ssm.SwarmNoHyperActive)

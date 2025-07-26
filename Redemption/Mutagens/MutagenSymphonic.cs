@@ -32,7 +32,7 @@ namespace ssm.Redemption.Mutagens
             player.GetDamage<BardDamage>() += 0.20f;
             player.GetCritChance<BardDamage>() += 0.10f;
             player.GetAttackSpeed<BardDamage>() += 0.10f;
-            player.GetModPlayer<ThoriumPlayer>().bardBuffDuration += 2000;
+            player.GetModPlayer<ThoriumPlayer>().bardBuffDuration += 900;
             player.GetModPlayer<ThoriumPlayer>().bardResource += 10;
         }
 
