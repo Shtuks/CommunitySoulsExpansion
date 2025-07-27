@@ -14,7 +14,8 @@ using FargowiltasSouls.Content.Items.Summons;
 using Terraria.ID;
 using ssm.Content.Items.DevItems;
 using FargowiltasSouls.Content.Items.Materials;
-using SacredTools.Content.Items.Materials;
+using System;
+using FargowiltasSouls.Core.Systems;
 
 namespace ssm.Calamity
 {
@@ -24,13 +25,12 @@ namespace ssm.Calamity
     {
         public override void AddRecipes()
         {
+            //prevent double recipes
             Recipe recipe = ModContent.GetInstance<GalacticaSingularity>().CreateRecipe(1);
             recipe.AddIngredient(ItemID.FragmentNebula);
             recipe.AddIngredient(ItemID.FragmentSolar);
             recipe.AddIngredient(ItemID.FragmentStardust);
             recipe.AddIngredient(ItemID.FragmentVortex);
-            //if (ModCompatibility.SacredTools.Loaded) { recipe.AddIngredient(ModContent.Find<ModItem>("FragmentQuasar"), 1); }
-            //if (ModCompatibility.Thorium.Loaded) { recipe.AddIngredient(ModContent.Find<ModItem>("ShootingStarFragment"), 1); recipe.AddIngredient(ModContent.Find<ModItem>("WhiteDwarfFragment"), 1); recipe.AddIngredient(ModContent.Find<ModItem>("CelestialFragment"), 1); }
             recipe.AddTile(TileID.LunarCraftingStation);
             recipe.DisableDecraft();
             recipe.Register();
@@ -50,7 +50,12 @@ namespace ssm.Calamity
             RecipeGroup.RegisterGroup("ssm:Bloodflare", rec5);
         }
 
-
+        public override void PostSetupContent()
+        {
+            //not related to recipes but who cares
+            //Why i added it? Just because i can
+            ModCompatibility.Calamity.Mod.Call("CreateCodebreakerDialogOption", Language.GetTextValue("Mods.FargowiltasSoul.NPCs.Mutant.DisplayName"), Language.GetTextValue("Mods.ssm.CodebreakerOptions.Mutant"), (Func<bool>)(() => WorldSavingSystem.DownedMutant));
+        }
         public override void PostAddRecipes()
         {
             for (int i = 0; i < Recipe.numRecipes; i++)

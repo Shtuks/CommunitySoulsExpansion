@@ -9,6 +9,7 @@ using SacredTools.Content.Items.Armor.Lunar.Quasar;
 using SacredTools.Content.Items.Accessories.ChallengeItems;
 using SacredTools.Items.Weapons.Lunatic;
 using ssm.Core;
+using static ssm.SoA.Enchantments.QuasarEnchant;
 
 namespace ssm.SoA.Enchantments
 {
@@ -39,16 +40,10 @@ namespace ssm.SoA.Enchantments
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             player.AddEffect<SupernovaEffect>(Item);
-            player.AddEffect<GravityEffect>(Item);
+            player.AddEffect<QuasarEffect>(Item);
         }
 
         public class SupernovaEffect : AccessoryEffect
-        {
-            public override Header ToggleHeader => Header.GetHeader<SoranForceHeader>();
-            public override int ToggleItemType => ModContent.ItemType<FallenPrinceEnchant>();
-        }
-
-        public class GravityEffect : AccessoryEffect
         {
             public override Header ToggleHeader => Header.GetHeader<SoranForceHeader>();
             public override int ToggleItemType => ModContent.ItemType<FallenPrinceEnchant>();
@@ -60,7 +55,7 @@ namespace ssm.SoA.Enchantments
             recipe.AddIngredient<FallenPrinceHelm>();
             recipe.AddIngredient<FallenPrinceChest>();
             recipe.AddIngredient<FallenPrinceBoots>();
-            recipe.AddIngredient<NovanielResolve>();
+            recipe.AddIngredient<QuasarEnchant>();
             recipe.AddIngredient<CosmicDesolation>();
             recipe.AddIngredient<LunaticsGamble>();
             recipe.AddTile(412);

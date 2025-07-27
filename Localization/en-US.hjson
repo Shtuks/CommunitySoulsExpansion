@@ -1,5 +1,13 @@
 Mods: {
 	ssm: {
+		CodebreakerOptions.Mutant: Mutant
+
+		ActiveSkills:{
+			MarstechEffect.DisplayName: Marstech Probe
+			DreadfireEffect.DisplayName: Dreadfire
+			CosmicCommanderEffect.DisplayName: Sniper's state
+		}
+
 		SetBonus: {
 			Monstrosity.SetBonus: WIP
 			TrueLumberjak.SetBonus:
@@ -493,72 +501,45 @@ Mods: {
 				DisplayName: Common Guard Enchantment
 				Tooltip:
 					'''
-					+12% increased melee speed 
-					Reduces damage taken by 6%
-					Effect of Trapped Soul Bauble
+					Active skill halves Guard points of enemies
+					Has a cooldown of 20 seconds
 					'''
 			}
 
 			DragonLeadEnchant: {
 				DisplayName: Dragon Lead Enchantment
-				Tooltip:
-					'''
-					20% increased Ice elemental resistance
-					33% chance for weapons to inflict Dragonblaze 
-					100% chance for all Dragon-Lead weapons to inflict Dragonblaze
-					Effect of Heart Insignia
-					- Good Route -
-					'''
+				Tooltip: Taking damage makes weapons deal Dragonblaze debuff for 10 seconds
 			}
 
 			PureIronEnchant: {
 				DisplayName: Pure Iron Enchantment
-				Tooltip:
-					'''
-					20% increased Fire elemental resistance 
-					33% chance for weapons to inflict Pure Chill 
-					100% chance for all Pure-Iron weapons to inflict Pure Chill
-					Effect of Erhan's Cross
-					- Bad Route -
-					'''
+				Tooltip: Your attacks inflict Pure Chill if you was not hit for 5 seconds
 			}
 
 			HardlightEnchant: {
 				DisplayName: Hardlight Enchantment
 				Tooltip:
 					'''
-					Press 'Special Ability Key' to get different effects of Hardlight Armor
-					Effects depend on what weapon class you are using and will not work if you aren't holding any
-					Melee: Summons 2 orbiting mini spaceships that fire lasers whenever you attack using a melee weapon
-					Ranged: Fires a missile barrage, targetting the enemy nearest to the cursor position
-					Magic: Summons a drone that gives a continuous feed of mana for 10 seconds
-					Summon: Summons 2 missile drones and a magnet drone
+					WIP
+					Effects of Pocket Shield Generator
 					'''
 			}
 
 			LivingTwigEnchant: {
 				DisplayName: Living Twig Enchantment
-				Tooltip:
-					'''
-					Immunity to the Poisoned debuff 
-					3% Increased minions damage
-					'''
+				Tooltip: "Depending on what biome your in you occasionally drop twigs that trip and deal damage to enemies "
 			}
 
 			XeniumEnchant: {
 				DisplayName: Xenium Enchantment
-				Tooltip:
-					'''
-					+10 increased Energy regeneration 			
-					Effects of Beelzebub Concoction and Infected Thornshield
-					'''
+				Tooltip: Gives the player a mounted shoulder rocket launcher that follows and shoot homing rockets at enemies
 			}
 
 			XenomiteEnchant: {
 				DisplayName: Xenomite Enchantment
 				Tooltip:
 					'''
-					Press 'Special Ability Key' to unleash toxic gas in a radius around the player, inflicting Burning Acid
+					Ability unleash toxic gas in a radius around the player, inflicting Burning Acid
 					Effect of Necklace of Perception
 					'''
 			}
@@ -567,13 +548,13 @@ Mods: {
 				DisplayName: Force of Advancement
 				Tooltip:
 					'''
-					[i:ssm/LivingWoodEnchant2] Immunity to the Poisoned debuff 
-					[i:ssm/CommonGuardEnchant] +12% increased melee speed and reduces damage taken by 6%
-					[i:ssm/PureIronEnchant][i:ssm/DragonLeadEnchant] 33% chance for weapons to inflict Pure Chill and Dragonblaze  
-					[i:ssm/PureIronEnchant][i:ssm/DragonLeadEnchant] 100% chance for all Dragon-Lead weapons to inflict Pure Chill and Dragonblaze
-					[i:ssm/PureIronEnchant][i:ssm/DragonLeadEnchant] 20% increased Ice and Fire elemental resistance 
-					[i:ssm/HardlightEnchant] Press 'Special Ability Key' to get different effects of Hardlight Armor
-					[i:ssm/XeniumEnchant] +10 increased Energy regeneration
+					[i:ssm/LivingWoodEnchant2] Depending on what biome your in you drop twigs that deal elememtal damage to enemies 
+					[i:ssm/CommonGuardEnchant] Active skill halves Guard points of enemies
+					[i:ssm/PureIronEnchant] Your attacks inflict Pure Chill if you was not hit for 5 seconds
+					[i:ssm/DragonLeadEnchant] Taking damage makes weapons deal Dragonblaze debuff for 10 seconds
+					[i:ssm/XenomiteEnchant] Ability unleash toxic gas in a radius around the player, inflicting Burning Acid
+					[i:ssm/HardlightEnchant] 
+					[i:ssm/XeniumEnchant] Gives the player a mounted shoulder rocket launcher that follows and shoot homing rockets at enemies
 					'''
 			}
 
@@ -646,11 +627,7 @@ Mods: {
 					[i:FargowiltasSouls/SparklingAdoration] Graze attacks to gain up to x1.25 increased damage
 					[i:FargowiltasSouls/SparklingAdoration] Damage bonus decreases over time and is fully lost on hit
 					[i:FargowiltasSouls/SparklingAdoration] Your attacks periodically summon life draining heart
-					[i:FargowiltasSouls/NekomiHood] 7% increased damage & critical strike chance for your current weapon class
-					[i:FargowiltasSouls/NekomiHood] Increases Sparkling Adoration graze radius, graze attacks to temporarily charge energy
-					[i:FargowiltasSouls/NekomiHood] Increases life regeneration when damaged at the cost of some energy
-					[i:FargowiltasSouls/NekomiHood] Double tap down key to release energy as life draining heart
-					[i:FargowiltasSouls/NekomiHood] Wield a demon axe of love and justice when fully charged
+
 					'It's never getting fixed'
 					'''
 			}
@@ -665,6 +642,7 @@ Mods: {
 					[i:FargowiltasSouls/MutantEye] Press the bomb key to unleash a wave of spheres and destroy most hostile projectiles, it has 60 second cooldown
 					[i:FargowiltasSouls/MutantMask] Phantasmal eyes will shoot phantasmal deathray at nearby enemies
 					[i:FargowiltasSouls/MutantMask] Summons spectral abomination, you erupt into a massive deathray when revived, 20% increased weapon use speed
+					“Champion of eternity”
 					'''
 			}
 
@@ -677,6 +655,7 @@ Mods: {
 					[i:FargowiltasSouls/StyxCrown] 20% Increased damage for current weapon class
 					[i:FargowiltasSouls/StyxCrown] Attack enemies to charge energy, reduces damage taken for energy, Your attacks inflict Abominable Fang
 					[i:FargowiltasSouls/StyxCrown] Double tap down key to release energy as homing shots & brandish a blade of infernal magic when fully charged
+					“Why did this fight feel harder than the last one”
 					'''
 			}
 
@@ -777,6 +756,7 @@ Mods: {
 					30% damage and 15% crit chance increase for current class
 					increase armor penetration by 20
 					Decrease defense by 20, endurance by 15% and max life by 10%
+					“The world revolving…..around you”
 					'''
 			}
 
@@ -826,7 +806,10 @@ Mods: {
 				Tooltip:
 					'''
 					'Make Soran great again'
-					WIP
+					Makes enemies less likely to hit you
+					You deal 125% more damage but your defense is reduced by 25% in sniper state
+					This state lasts for 15 seconds and after you will deal 25% less damage but with 30% increased defense 
+					Getting hit while in sniper state will instantly end it
 					'''
 			}
 
@@ -906,12 +889,14 @@ Mods: {
 				Tooltip:
 					'''
 					'Who needs magic when you have technology?'
-					WIP
+					Pressing the ability key sends out a homing martian probe that explodes into multiple damaging shrapnels
+					Shrapnels stay on grounds/platforms and disappear after a few seconds
+					When being damaged, there is a 50% chance for 2-4 shrapnels to fall off your armor
 					'''
 			}
 
 			NebulousApprenticeEnchant: {
-				DisplayName: Nebulous Apprentice Enchantment
+				DisplayName: Saving Grace Enchantment
 				Tooltip:
 					'''
 					'Nuba would be proud'
@@ -925,7 +910,7 @@ Mods: {
 				Tooltip:
 					'''
 					'Subdued Serenity'
-					Depending on the wind speed all speed stats are increased by 2% to 5%
+					Depending on the wind speed all speed stats are increased by 5%-10%
 					'''
 			}
 
@@ -934,7 +919,7 @@ Mods: {
 				Tooltip:
 					'''
 					'It's time to shine'
-					WIP
+					When throwing a weapon enemies are pulled closer to it by gravity 
 					'''
 			}
 
@@ -943,15 +928,11 @@ Mods: {
 				Tooltip1:
 					'''
 					'I'm da spaceman!'
-					Pressing the ability key sends out a falling satellite that explodes into multiple damaging shrapnels
+					Pressing the ability key sends a falling satellite from sky that explodes into multiple damaging shrapnels
 					Shrapnels stay on grounds/platforms and disappear after a few seconds
 					When being damaged, there is a 33% chance for 1-2 shrapnels to fall off your armor
 					'''
-				Tooltip:
-					'''
-					'I'm da spaceman!'
-					WIP
-					'''
+				Tooltip: ""
 			}
 
 			StellarPriestEnchant: {
@@ -1012,8 +993,8 @@ Mods: {
 				DisplayName: Soran Force
 				Tooltip:
 					'''
-					[i:ssm/BlazingBruteEnchant] [i:ssm/CosmicCommanderEnchant] Marks bosses with crosshair
-					[i:ssm/BlazingBruteEnchant] [i:ssm/CosmicCommanderEnchant] The longer you hit in crosshairs, the more damsge boost you get
+					[i:ssm/CosmicCommanderEnchant] In sniper state you deal 300% more damage but defense is reduced by 15%
+					[i:ssm/BlazingBruteEnchant] Every time you kill an enemy in sniper state you gain a 75% increase this stacks up to 5 times
 					[i:ssm/QuasarEnchant] [i:ssm/FallenPrinceEnchant] Hitting enemies have chance to reate quasar that pull weak enemies
 					[i:ssm/FallenPrinceEnchant] [i:ssm/NebulousApprenticeEnchant] Upon death you will be revived in supernova explosion
 					[i:ssm/FallenPrinceEnchant] [i:ssm/NebulousApprenticeEnchant] After respawning Shadow of Nuba will protect you for few seconds
@@ -1025,15 +1006,18 @@ Mods: {
 
 			SyrianForce: {
 				DisplayName: Syran Force
-				Tooltip: ""
+				Tooltip: 
+					'''
+					
+					'''
 			}
 
 			SoASoul: {
 				DisplayName: Soul of Two Realms
 				Tooltip:
 					'''
-					[i:ssm/SyrianForce] Gain void lanterns ring that can spur gaysers, buffs relic weapons, increases boss damage if enemy killed
-					[i:ssm/SoranForce] Marks bosses with crosshair that boost your damage, creates quasars when hitting enemy, supernova revival
+					[i:ssm/SyranForce] Gain void lanterns ring that can spur gaysers, buffs relic weapons, increases boss damage if enemy killed
+					[i:ssm/SoranForce] Sniper state ability, creates quasars when hitting enemy, supernova revival
 					[i:ssm/SoranForce] Release buff wisps whan attacking, minions summon starstream worms
 					[i:ssm/GenerationsForce] Aura inflicting dreadfire, bismuth crystals that release eerie pulses when broken, 
 					[i:ssm/FoundationsForce] Blightbone support, bones explode and grant lapis shield and speed, envelop player in blizzard
@@ -3855,6 +3839,8 @@ Mods: {
 			MartianProbe.DisplayName: Martian Probe
 			NightmareBubble.DisplayName: Nightmare Bubble
 			Shrapnel.DisplayName: Shrapnel
+			XeniumRocket.DisplayName: Xenium Rocket
+			XeniumTurret.DisplayName: Xenium Turret
 		}
 
 		Bestiary: {
@@ -3869,6 +3855,7 @@ Mods: {
 					CrossMods: Cross-Mods
 					EnchantsLoad: Enchantments Loading
 					EmodeAccesLoad: Emode Acces Load Header
+					EmodeWeaponsLoad: Emode Weapons Load Header
 				}
 
 				DisplayName: Mod Config
@@ -4000,6 +3987,21 @@ Mods: {
 
 				EmodeSoA: {
 					Label: Emode So A
+					Tooltip: ""
+				}
+
+				EmodeThoriumW: {
+					Label: Emode Thorium W
+					Tooltip: ""
+				}
+
+				EmodeRedemptionW: {
+					Label: Emode Redemption W
+					Tooltip: ""
+				}
+
+				EmodeSoAW: {
+					Label: Emode So A W
 					Tooltip: ""
 				}
 			}

@@ -12,6 +12,7 @@ using SacredTools.Content.Items.Weapons.Dreadfire;
 using ssm.Content.Buffs;
 using FargowiltasSouls;
 using ssm.Content.Projectiles;
+using System.Collections.Generic;
 
 namespace ssm.SoA.Enchantments
 {
@@ -19,6 +20,8 @@ namespace ssm.SoA.Enchantments
     [JITWhenModsEnabled(ModCompatibility.SacredTools.Name)]
     public class DreadfireEnchant : BaseEnchant
     {
+        public override List<AccessoryEffect> ActiveSkillTooltips =>
+            [AccessoryEffectLoader.GetEffect<DreadfireEffect>()];
         public override bool IsLoadingEnabled(Mod mod)
         {
             return CSEConfig.Instance.SacredTools;

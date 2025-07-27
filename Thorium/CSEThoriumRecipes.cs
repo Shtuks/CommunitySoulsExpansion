@@ -18,6 +18,8 @@ using ThoriumMod.Items.ThrownItems;
 using ThoriumMod.Items.HealerItems;
 using ThoriumMod.Items.BossThePrimordials.Slag;
 using ssm.Thorium.Enchantments;
+using FargowiltasSouls.Content.Items.Accessories.Forces;
+using SacredTools.Content.Items.Materials;
 
 namespace ssm.Thorium
 {
@@ -95,6 +97,13 @@ namespace ssm.Thorium
                 {
                     recipe.RemoveIngredient(ItemID.ManaFlower);
                     recipe.AddIngredient(ItemID.NaturesGift);
+                }
+
+                if (recipe.HasResult<CosmoForce>() && !recipe.HasIngredient<OceanEssence>())
+                {
+                    recipe.AddIngredient<OceanEssence>(2);
+                    recipe.AddIngredient<InfernoEssence>(2);
+                    recipe.AddIngredient<DeathEssence>(2);
                 }
 
                 //if (recipe.HasResult<WorldShaperSoul>() && !recipe.HasIngredient<GeodeEnchant>())

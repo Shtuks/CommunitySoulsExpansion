@@ -48,7 +48,7 @@ namespace ssm.SoA
                         if (ModCompatibility.Calamity.Loaded) { multiplier += 1f; }
 
                         npc.lifeMax = (int)(3500000 + (1000000 * multiplier));
-                        npc.damage = 530;
+                        npc.damage = 480;
                     }
 
                     if (npc.type == ModContent.NPCType<Novaniel>())
@@ -79,32 +79,32 @@ namespace ssm.SoA
                     if (npc.type == ModContent.NPCType<AraghurHead>() || npc.type == ModContent.NPCType<AraghurBody>() || npc.type == ModContent.NPCType<AraghurTail>())
                     {
                         npc.lifeMax = 1800000;
-                        npc.damage = 500;
+                        npc.damage = 400;
                     }
                     if (npc.type == ModContent.NPCType<Abaddon>())
                     {
-                        npc.lifeMax = 720000;
-                        npc.damage = 400;
+                        npc.lifeMax = 770000;
+                        npc.damage = 200;
                     }
                     if (npc.type == ModContent.NPCType<Primordia>())
                     {
                         npc.lifeMax = 120000;
-                        npc.damage = 180;
+                        npc.damage = 110;
                     }
                     if (npc.type == ModContent.NPCType<Primordia2>())
                     {
                         npc.lifeMax = 90000;
-                        npc.damage = 170;
+                        npc.damage = 120;
                     }
                     if (npc.type == ModContent.NPCType<Araneas>())
                     {
                         npc.lifeMax = 70000;
-                        npc.damage = 110;
+                        npc.damage = 90;
                     }
                     if (npc.type == ModContent.NPCType<Jensen>() || npc.type == ModContent.NPCType<JensenLegacy>())
                     {
                         npc.lifeMax = 10000;
-                        npc.damage = 100;
+                        npc.damage = 80;
                     }
                     if (npc.type == ModContent.NPCType<Decree>() || npc.type == ModContent.NPCType<DecreeLegacy>())
                     {

@@ -28,8 +28,6 @@ namespace ssm
 {
     public partial class CSEPlayer : ModPlayer
     {
-        public bool MutantSoul;
-        public bool DevianttSoul;
         public float throwerVelocity = 1f;
         public bool CyclonicFin;
         public int CyclonicFinCD;
@@ -405,8 +403,6 @@ namespace ssm
             equippedPhantasmalEnchantment = false;
             equippedAbominableEnchantment = false;
             equippedNekomiEnchantment = false;
-            DevianttSoul = false;
-            MutantSoul = false;
             throwerVelocity = 1f;
             CyclonicFin = false;
             lumberjackSet = false;

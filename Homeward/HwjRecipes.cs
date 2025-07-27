@@ -6,6 +6,7 @@ using FargowiltasSouls.Content.Items.Accessories.Souls;
 using ContinentOfJourney.Items.Accessories;
 using Terraria.ID;
 using FargowiltasSouls.Content.Items.Accessories.Masomode;
+using FargowiltasSouls.Content.Items.Accessories.Forces;
 
 namespace ssm.Homeward
 {
@@ -26,6 +27,13 @@ namespace ssm.Homeward
                         recipe.AddIngredient<EssenceofBright>(5);
                     }
                 }
+
+                if (recipe.createItem.ModItem is BaseForce)
+                {
+                    if (!recipe.HasIngredient<SolarFlareScoria>())
+                        recipe.AddIngredient<SolarFlareScoria>(4);
+                }
+
                 if (recipe.HasResult<FlightMasterySoul>() && !recipe.HasIngredient<Altitude>())
                 {
                     recipe.RemoveIngredient(1131);

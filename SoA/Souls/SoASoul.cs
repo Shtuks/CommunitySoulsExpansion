@@ -13,7 +13,7 @@ using static ssm.SoA.Enchantments.ExitumLuxEnchant;
 using static ssm.SoA.Enchantments.FlariumEnchant;
 using static ssm.SoA.Enchantments.VoidWardenEnchant;
 using static ssm.SoA.Enchantments.VulcanReaperEnchant;
-using static ssm.SoA.Forces.SyrianForce;
+using static ssm.SoA.Forces.SyranForce;
 using static ssm.SoA.Enchantments.BlazingBruteEnchant;
 using static ssm.SoA.Enchantments.CosmicCommanderEnchant;
 using static ssm.SoA.Enchantments.FallenPrinceEnchant;
@@ -32,6 +32,7 @@ using static ssm.SoA.Enchantments.FrosthunterEnchant;
 using static ssm.SoA.Enchantments.LapisEnchant;
 using static ssm.SoA.Enchantments.PrairieEnchant;
 using static ssm.SoA.Forces.FoundationsForce;
+using static ssm.SoA.Enchantments.QuasarEnchant;
 
 namespace ssm.SoA.Souls
 {
@@ -63,7 +64,7 @@ namespace ssm.SoA.Souls
             player.AddEffect<VulcanReaperEffect>(Item);
             player.AddEffect<ExitumLuxEffect>(Item);
             player.AddEffect<FlariumEffect>(Item);
-            player.AddEffect<SyrianEffect>(Item);
+            player.AddEffect<SyranEffect>(Item);
 
             //soran
             player.AddEffect<CosmicCommanderEffect>(Item);
@@ -71,7 +72,7 @@ namespace ssm.SoA.Souls
             player.AddEffect<NebulousApprenticeEffect>(Item);
             player.AddEffect<StellarPriestEffect>(Item);
             player.AddEffect<SupernovaEffect>(Item);
-            player.AddEffect<GravityEffect>(Item);
+            player.AddEffect<QuasarEffect>(Item);
             player.AddEffect<SoranEffect>(Item);
 
             //generations
@@ -106,7 +107,7 @@ namespace ssm.SoA.Souls
             recipe.AddIngredient<FoundationsForce>();
             recipe.AddIngredient<GenerationsForce>();
             recipe.AddIngredient<SoranForce>();
-            recipe.AddIngredient<SyrianForce>();
+            recipe.AddIngredient<SyranForce>();
             if (!ModCompatibility.Calamity.Loaded) { recipe.AddIngredient<AbomEnergy>(10); }
             recipe.AddIngredient<EmberOfOmen>(5);
             recipe.AddTile<SyranCraftingStationTile>();

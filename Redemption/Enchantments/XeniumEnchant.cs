@@ -10,6 +10,7 @@ using Redemption.Items.Accessories.PreHM;
 using Redemption.Items.Accessories.HM;
 using Redemption.Items.Armor.PostML.Xenium;
 using Redemption.Items.Weapons.PostML.Summon;
+using ssm.Content.Projectiles.Enchantments;
 
 namespace ssm.Redemption.Enchantments
 {
@@ -21,6 +22,25 @@ namespace ssm.Redemption.Enchantments
         {
             public override Header ToggleHeader => Header.GetHeader<AdvancementForceHeader>();
             public override int ToggleItemType => ModContent.ItemType<XeniumEnchant>();
+            public override bool MinionEffect => true;
+            public override void PostUpdateMiscEffects(Player player)
+            {
+                if (player.whoAmI == Main.myPlayer)
+                {
+                    if (player.ownedProjectileCounts[ModContent.ProjectileType<XeniumTurret>()] < 1)
+                    {
+                        Projectile.NewProjectile(
+                            player.GetSource_FromThis(),
+                            player.Center,
+                            Vector2.Zero,
+                            ModContent.ProjectileType<XeniumTurret>(),
+                            0,
+                            0f,
+                            player.whoAmI
+                        );
+                    }
+                }
+            }
         }
         public override bool IsLoadingEnabled(Mod mod)
         {

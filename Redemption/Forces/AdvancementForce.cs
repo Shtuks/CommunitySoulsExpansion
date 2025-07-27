@@ -2,6 +2,14 @@
 using Terraria.ModLoader;
 using Terraria;
 using ssm.Redemption.Enchantments;
+using FargowiltasSouls.Core.AccessoryEffectSystem;
+using static ssm.Redemption.Enchantments.CommonGuardEnchant;
+using static ssm.Redemption.Enchantments.PureIronEnchant;
+using static ssm.Redemption.Enchantments.DragonLeadEnchant;
+using static ssm.Redemption.Enchantments.HardlightEnchant;
+using static ssm.Redemption.Enchantments.XeniumEnchant;
+using static ssm.Redemption.Enchantments.XenomiteEnchant;
+using static ssm.Thorium.Enchantments.LivingWoodEnchant;
 
 namespace ssm.Redemption.Forces
 {
@@ -9,28 +17,45 @@ namespace ssm.Redemption.Forces
     [ExtendsFromMod(new string[] { "Redemption" })]
     public class AdvancementForce : BaseForce
     {
+        public override void SetStaticDefaults()
+        {
+            Enchants[Type] = new int[7]
+            {
+                ModContent.ItemType<LivingWoodEnchant2>(),
+                ModContent.ItemType<CommonGuardEnchant>(),
+                ModContent.ItemType<PureIronEnchant>(),
+                ModContent.ItemType<DragonLeadEnchant>(),
+                ModContent.ItemType<XeniumEnchant>(),
+                ModContent.ItemType<XenomiteEnchant>(),
+                ModContent.ItemType<HardlightEnchant>()
+            };
+        }
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            ModContent.Find<ModItem>(base.Mod.Name, "LivingWoodEnchant2").UpdateAccessory(player, hideVisual: false);
-            ModContent.Find<ModItem>(base.Mod.Name, "CommonGuardEnchant").UpdateAccessory(player, hideVisual: false);
-            ModContent.Find<ModItem>(base.Mod.Name, "PureIronEnchant").UpdateAccessory(player, hideVisual: false);
-            ModContent.Find<ModItem>(base.Mod.Name, "DragonLeadEnchant").UpdateAccessory(player, hideVisual: false);
-            ModContent.Find<ModItem>(base.Mod.Name, "HardlightEnchant").UpdateAccessory(player, hideVisual: false);
-            ModContent.Find<ModItem>(base.Mod.Name, "XeniumEnchant").UpdateAccessory(player, hideVisual: false);
-            ModContent.Find<ModItem>(base.Mod.Name, "XenomiteEnchant").UpdateAccessory(player, hideVisual: false);
+            player.AddEffect<CommonGuardEffect>(Item);
+            player.AddEffect<DragonLeadEffect>(Item);
+            player.AddEffect<PureIronEffect>(Item);
+            player.AddEffect<HardlightEffect>(Item);
+            player.AddEffect<XeniumEffect>(Item);
+            player.AddEffect<XenomiteEffect>(Item);
+            player.AddEffect<LivingWoodEffect>(Item);
+            player.AddEffect<AdvancementEffect>(Item);
+
+            player.AddEffect<LivingWoodEffect>(Item);
         }
 
+        public class AdvancementEffect : AccessoryEffect
+        {
+            public override Header ToggleHeader => null;
+        }
         public override void AddRecipes()
         {
-            Recipe recipe = base.CreateRecipe();
-
-            recipe.AddIngredient<LivingWoodEnchant2>();
-            recipe.AddIngredient<CommonGuardEnchant>();
-            recipe.AddIngredient<PureIronEnchant>();
-            recipe.AddIngredient<DragonLeadEnchant>();
-            recipe.AddIngredient<HardlightEnchant>();
-            recipe.AddIngredient<XeniumEnchant>();
-            recipe.AddIngredient<XenomiteEnchant>();
+            Recipe recipe = CreateRecipe();
+            int[] array = Enchants[Type];
+            foreach (int itemID in array)
+            {
+                recipe.AddIngredient(itemID);
+            }
 
             recipe.AddTile(ModContent.Find<ModTile>("Fargowiltas", "CrucibleCosmosSheet"));
             recipe.Register();

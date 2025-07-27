@@ -16,6 +16,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using static ssm.SoA.Enchantments.FallenPrinceEnchant;
 using static ssm.SoA.Enchantments.FlariumEnchant;
+using static ssm.SoA.Enchantments.QuasarEnchant;
 using static ssm.SoA.Forces.SyrianForce;
 
 namespace ssm.SoA
@@ -71,7 +72,7 @@ namespace ssm.SoA
                 }
             }
 
-            if (projectile.DamageType == DamageClass.Throwing && projectile.owner.ToPlayer().HasEffect<GravityEffect>())
+            if (projectile.DamageType == DamageClass.Throwing && projectile.owner.ToPlayer().HasEffect<QuasarEffect>())
             {
                 CreateGravityField(projectile, projectile.damage);
             }

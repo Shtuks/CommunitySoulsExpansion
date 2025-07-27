@@ -23,6 +23,8 @@ using Terraria.GameContent;
 using ssm.Content.Items.Materials;
 using FargowiltasSouls.Content.Items.Materials;
 using ssm.Content.NPCs;
+using FargowiltasSouls.Content.Projectiles.BossWeapons;
+using Spooky.Core;
 
 namespace ssm
 {

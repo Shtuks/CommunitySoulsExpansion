@@ -15,7 +15,7 @@ namespace ssm.SoA.Forces
 {
     [ExtendsFromMod(ModCompatibility.SacredTools.Name)]
     [JITWhenModsEnabled(ModCompatibility.SacredTools.Name)]
-    public class SyrianForce : BaseForce
+    public class SyranForce : BaseForce
     {
         public override bool IsLoadingEnabled(Mod mod)
         {
@@ -50,10 +50,10 @@ namespace ssm.SoA.Forces
             player.AddEffect<ExitumLuxEffect>(Item);
             player.AddEffect<FlariumEffect>(Item);
 
-            player.AddEffect<SyrianEffect>(Item);
+            player.AddEffect<SyranEffect>(Item);
         }
 
-        public class SyrianEffect : AccessoryEffect
+        public class SyranEffect : AccessoryEffect
         {
             public override Header ToggleHeader => null;
         }

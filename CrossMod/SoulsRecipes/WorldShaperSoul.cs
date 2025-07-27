@@ -7,6 +7,7 @@ using Terraria.Localization;
 using FargowiltasSouls.Core.AccessoryEffectSystem;
 using FargowiltasSouls.Core.Toggler.Content;
 using SacredTools.Content.Items.Accessories;
+using Clamity.Content.Items.Accessories;
 
 namespace ssm.CrossMod.SoulsRecipes
 {
@@ -22,7 +23,7 @@ namespace ssm.CrossMod.SoulsRecipes
                 {
                     if (ModCompatibility.SacredTools.Loaded) { recipe.AddIngredient(ModCompatibility.SacredTools.Mod.Find<ModItem>("RageSuppressor"), 1); recipe.AddIngredient(ModCompatibility.SacredTools.Mod.Find<ModItem>("LunarRing"), 1); }
                     if (ModCompatibility.Homeward.Loaded) { recipe.AddIngredient(ModCompatibility.Homeward.Mod.Find<ModItem>("TimelessMiner"), 1); }
-                    if (ModCompatibility.Clamity.Loaded) { recipe.AddIngredient(ModCompatibility.Clamity.Mod.Find<ModItem>("RedDie"), 1); }
+                    if (ModCompatibility.Clamity.Loaded) { recipe.AddIngredient(ModCompatibility.Clamity.Mod.Find<ModItem>("RedDie"), 1); recipe.AddIngredient(ModCompatibility.Clamity.Mod.Find<ModItem>("EidolonAmulet"), 1); }
                     if (ModCompatibility.Ragnarok.Loaded) { recipe.AddIngredient(ModCompatibility.Ragnarok.Mod.Find<ModItem>("GoldenBatDroppings"), 1); }
                     if (ModCompatibility.Thorium.Loaded) { recipe.AddIngredient(this.Mod.Find<ModItem>("GeodeEnchant"), 1); }
                 }
@@ -40,6 +41,7 @@ namespace ssm.CrossMod.SoulsRecipes
                 if (ModCompatibility.Clamity.Loaded)
                 {
                     ModCompatibility.Clamity.Mod.Find<ModItem>("RedDie").UpdateAccessory(player, true);
+                    player.AddEffect<EidolonAmuletEffect>(Item);
                 }
                 if (ModCompatibility.Ragnarok.Loaded)
                 {
@@ -47,7 +49,7 @@ namespace ssm.CrossMod.SoulsRecipes
                 }
                 if (ModCompatibility.Thorium.Loaded)
                 {
-                    this.Mod.Find<ModItem>("GeodeEnchant").UpdateAccessory(player, true);
+                    Mod.Find<ModItem>("GeodeEnchant").UpdateAccessory(player, true);
                 }
                 if (ModCompatibility.SacredTools.Loaded)
                 {
@@ -86,6 +88,17 @@ namespace ssm.CrossMod.SoulsRecipes
             public override void PostUpdateEquips(Player player)
             {
                 ModCompatibility.SacredTools.Mod.Find<ModItem>("LunarRing").UpdateAccessory(player, true);
+            }
+        }
+        [ExtendsFromMod(ModCompatibility.Clamity.Name)]
+        public class EidolonAmuletEffect : AccessoryEffect
+        {
+            public override Header ToggleHeader => Header.GetHeader<WorldShaperHeader>();
+            public override int ToggleItemType => ModContent.ItemType<EidolonAmulet>();
+
+            public override void PostUpdateEquips(Player player)
+            {
+                ModCompatibility.Clamity.Mod.Find<ModItem>("EidolonAmulet").UpdateAccessory(player, true);
             }
         }
     }

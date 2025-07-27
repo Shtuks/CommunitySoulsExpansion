@@ -19,6 +19,8 @@ using Terraria.ID;
 using ssm.Content.Items;
 using ssm.Content.Projectiles;
 using ssm.Content.Projectiles.Minions;
+using FargowiltasSouls.Core.AccessoryEffectSystem;
+using static ssm.Content.Items.Accessories.PhantaplazmalEnchant;
 
 namespace ssm.Content.Projectiles.Minions
 {
@@ -57,7 +59,7 @@ namespace ssm.Content.Projectiles.Minions
             Projectile.scale = 1;
 
             Player player = Main.player[Projectile.owner];
-            if (player.active && !player.dead && player.GetModPlayer<CSEPlayer>().MutantSoul)
+            if (player.active && !player.dead && player.HasEffect<PhantaplazmalEffect>())
                 Projectile.timeLeft = 2;
 
             if (Projectile.ai[0] >= 0 && Projectile.ai[0] < Main.maxNPCs) //has target

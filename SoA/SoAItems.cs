@@ -39,7 +39,7 @@ namespace ssm.SoA
             }
             if (entity.type == ModContent.ItemType<Desperatio>())
             {
-                entity.damage = (int)(entity.damage * (ModCompatibility.Calamity.Loaded ? 2f : 1.2f));
+                entity.damage = (int)(entity.damage * (ModCompatibility.Calamity.Loaded ? 1.9f : 1.2f));
             }
             if (entity.type == ModContent.ItemType<Eschaton>())
             {

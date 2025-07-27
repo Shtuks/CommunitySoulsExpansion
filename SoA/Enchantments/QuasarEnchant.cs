@@ -42,18 +42,13 @@ namespace ssm.SoA.Enchantments
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            ModdedPlayer modPlayer = player.GetModPlayer<ModdedPlayer>();
-            if (player.AddEffect<QuasarEffect>(Item))
-            {
-                //set bonus
-                modPlayer.NovaSetEffect = true;
-            }
+            player.AddEffect<QuasarEffect>(Item);
         }
 
         public class QuasarEffect : AccessoryEffect
         {
             public override Header ToggleHeader => Header.GetHeader<SoranForceHeader>();
-            public override int ToggleItemType => ModContent.ItemType<QuasarEnchant>();
+            public override int ToggleItemType => ModContent.ItemType<FallenPrinceEnchant>();
         }
 
         public override void AddRecipes()

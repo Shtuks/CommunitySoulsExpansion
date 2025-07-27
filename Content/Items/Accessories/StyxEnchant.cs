@@ -50,20 +50,7 @@ namespace ssm.Content.Items.Accessories
         {
             ModContent.Find<ModItem>(FargoSoul.Name, "AbominableWand").UpdateAccessory(player, false);
 
-            if (player.AddEffect<DeviEffect>(Item))
-            {
-                player.AddBuff(ModContent.BuffType<DeviSoulBuff>(), 2);
-            }
-
-            if (player.AddEffect<StyxEffect>(Item))
-            {
-                player.GetModPlayer<CSEPlayer>().equippedAbominableEnchantment = true;
-                ModContent.Find<ModItem>(FargoSoul.Name, "StyxCrown").UpdateArmorSet(player);
-                ModContent.Find<ModItem>(FargoSoul.Name, "StyxChestplate").UpdateArmorSet(player);
-                ModContent.Find<ModItem>(FargoSoul.Name, "StyxLeggings").UpdateArmorSet(player);
-            }
-
-            player.buffImmune[ModContent.Find<ModBuff>(FargoSoul.Name, "GodEaterBuff").Type] = true;
+            player.AddEffect<StyxEffect>(Item);
         }
 
         public override void AddRecipes()
@@ -80,18 +67,11 @@ namespace ssm.Content.Items.Accessories
             recipe.Register();
         }
 
-        public class DeviEffect : AccessoryEffect
-        {
-            public override Header ToggleHeader => Header.GetHeader<EternityForceHeader>();
-            public override int ToggleItemType => ModContent.ItemType<StyxEnchant>();
-            public override bool MinionEffect => true;
-        }
-
         public class StyxEffect : AccessoryEffect
         {
             public override Header ToggleHeader => Header.GetHeader<EternityForceHeader>();
             public override int ToggleItemType => ModContent.ItemType<StyxCrown>();
-            //public override bool MutantsPresenceAffects => true;
+            
         }
     }
 }

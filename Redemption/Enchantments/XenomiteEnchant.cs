@@ -15,6 +15,7 @@ using Redemption.Items.Weapons.HM.Ranged;
 using ssm.Content.Projectiles.Enchantments;
 using Terraria.Audio;
 using static ssm.Redemption.Enchantments.XeniumEnchant;
+using System.Collections.Generic;
 
 namespace ssm.Redemption.Enchantments
 {
@@ -22,6 +23,8 @@ namespace ssm.Redemption.Enchantments
     [JITWhenModsEnabled(ModCompatibility.Redemption.Name)]
     public class XenomiteEnchant : BaseEnchant
     {
+        public override List<AccessoryEffect> ActiveSkillTooltips =>
+            [AccessoryEffectLoader.GetEffect<XenomiteEffect>()];
         public override bool IsLoadingEnabled(Mod mod)
         {
             return CSEConfig.Instance.Redemption;
