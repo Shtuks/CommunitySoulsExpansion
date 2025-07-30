@@ -10,6 +10,8 @@ using static ssm.SoA.Enchantments.BlazingBruteEnchant;
 using static ssm.SoA.Enchantments.NebulousApprenticeEnchant;
 using static ssm.SoA.Enchantments.StellarPriestEnchant;
 using ssm.SoA.Enchantments;
+using static ssm.SoA.Enchantments.QuasarEnchant;
+using System.Collections.Generic;
 
 namespace ssm.SoA.Forces
 {
@@ -17,6 +19,8 @@ namespace ssm.SoA.Forces
     [JITWhenModsEnabled(ModCompatibility.SacredTools.Name)]
     public class SoranForce : BaseForce
     {
+        public override List<AccessoryEffect> ActiveSkillTooltips =>
+            [AccessoryEffectLoader.GetEffect<CosmicCommanderEffect>()];
         public override bool IsLoadingEnabled(Mod mod)
         {
             return CSEConfig.Instance.SacredTools;
@@ -50,7 +54,7 @@ namespace ssm.SoA.Forces
             player.AddEffect<NebulousApprenticeEffect>(Item);
             player.AddEffect<StellarPriestEffect>(Item);
             player.AddEffect<SupernovaEffect>(Item);
-            player.AddEffect<GravityEffect>(Item);
+            player.AddEffect<QuasarEffect>(Item);
 
             player.AddEffect<SoranEffect>(Item);
         }

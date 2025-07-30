@@ -118,5 +118,39 @@ namespace ssm
         [BackgroundColor(60, 200, 60, 192)]
         [DefaultValue(true)]
         public bool Consolaria { get; set; }
+
+        [Header("EmodeAccesLoad")]
+
+        [ReloadRequired]
+        [BackgroundColor(60, 200, 60, 192)]
+        [DefaultValue(true)]
+        public bool EmodeThorium { get; set; }
+
+        [ReloadRequired]
+        [BackgroundColor(60, 200, 60, 192)]
+        [DefaultValue(true)]
+        public bool EmodeRedemption { get; set; }
+
+        [ReloadRequired]
+        [BackgroundColor(60, 200, 60, 192)]
+        [DefaultValue(true)]
+        public bool EmodeSoA { get; set; }
+
+        [Header("EmodeWeaponsLoad")]
+
+        [ReloadRequired]
+        [BackgroundColor(60, 200, 60, 192)]
+        [DefaultValue(true)]
+        public bool EmodeThoriumW { get; set; }
+
+        [ReloadRequired]
+        [BackgroundColor(60, 200, 60, 192)]
+        [DefaultValue(true)]
+        public bool EmodeRedemptionW { get; set; }
+
+        [ReloadRequired]
+        [BackgroundColor(60, 200, 60, 192)]
+        [DefaultValue(true)]
+        public bool EmodeSoAW { get; set; }
     }
 }

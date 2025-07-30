@@ -56,6 +56,11 @@ namespace ssm
                     }
                 }
 
+                if (recipe.HasResult<CosmoForce>() && !recipe.HasIngredient<LuminousEnergy>())
+                {
+                    recipe.AddIngredient<LuminousEnergy>(5);
+                }
+
                 if ((recipe.HasResult<UniverseSoul>() || recipe.HasResult<TerrariaSoul>() || recipe.HasResult<MasochistSoul>() || recipe.HasResult<DimensionSoul>()) && !recipe.HasIngredient<EmberOfOmen>())
                 {
                     recipe.AddIngredient<EmberOfOmen>(5);

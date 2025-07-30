@@ -131,17 +131,17 @@ namespace ssm.CrossMod.SoulsRecipes
             public override Header ToggleHeader => Header.GetHeader<ColossusHeader>();
             public override void PostUpdateEquips(Player player)
             {
-                ModCompatibility.Thorium.Mod.Find<ModItem>("HEVSuit").UpdateAccessory(player, true);
+                ModCompatibility.Redemption.Mod.Find<ModItem>("HEVSuit").UpdateAccessory(player, true);
             }
         }
-        [ExtendsFromMod(ModCompatibility.Redemption.Name)]
+        [ExtendsFromMod(ModCompatibility.Homeward.Name)]
         public class OneGiantLeapEffect : AccessoryEffect
         {
             public override int ToggleItemType => ModContent.ItemType<OneGiantLeap>();
             public override Header ToggleHeader => Header.GetHeader<ColossusHeader>();
             public override void PostUpdateEquips(Player player)
             {
-                ModCompatibility.Thorium.Mod.Find<ModItem>("OneGiantLeap").UpdateAccessory(player, true);
+                ModCompatibility.Homeward.Mod.Find<ModItem>("OneGiantLeap").UpdateAccessory(player, true);
             }
         }
     }

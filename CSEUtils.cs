@@ -4,15 +4,7 @@ using System;
 using Microsoft.Xna.Framework;
 using Terraria.Localization;
 using Terraria.DataStructures;
-using System.Collections.Generic;
-using Microsoft.Xna.Framework.Graphics;
-using ReLogic.Content;
 using Terraria.ID;
-using Terraria.ModLoader;
-using System.Collections;
-using System.Linq;
-using System.Reflection;
-using ssm.Core;
 
 namespace ssm
 {

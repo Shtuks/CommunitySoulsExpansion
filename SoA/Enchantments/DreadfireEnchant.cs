@@ -12,6 +12,7 @@ using SacredTools.Content.Items.Weapons.Dreadfire;
 using ssm.Content.Buffs;
 using FargowiltasSouls;
 using ssm.Content.Projectiles;
+using System.Collections.Generic;
 
 namespace ssm.SoA.Enchantments
 {
@@ -19,6 +20,8 @@ namespace ssm.SoA.Enchantments
     [JITWhenModsEnabled(ModCompatibility.SacredTools.Name)]
     public class DreadfireEnchant : BaseEnchant
     {
+        public override List<AccessoryEffect> ActiveSkillTooltips =>
+            [AccessoryEffectLoader.GetEffect<DreadfireEffect>()];
         public override bool IsLoadingEnabled(Mod mod)
         {
             return CSEConfig.Instance.SacredTools;
@@ -81,6 +84,25 @@ namespace ssm.SoA.Enchantments
                         if (player.Distance(npcComparePoint) < dist && (forceEffect || Collision.CanHitLine(player.Center, 0, 0, npcComparePoint, 0, 0)))
                         {
                             npc.AddBuff(ModContent.BuffType<DreadflameAura>(), 120);
+                        }
+                    }
+                }
+
+                for (int i = 0; i < Main.maxPlayers; i++)
+                {
+                    Player targetPlayer = Main.player[i];
+                    if (targetPlayer.active &&
+                        !targetPlayer.dead &&
+                        targetPlayer.whoAmI != player.whoAmI && 
+                        targetPlayer.team == player.team &&      
+                        player.team != 0)  
+                    {
+                        Vector2 targetComparePoint = targetPlayer.Center; 
+
+                        if (player.Distance(targetComparePoint) < dist &&
+                            (forceEffect || Collision.CanHitLine(player.Center, 0, 0, targetComparePoint, 0, 0)))
+                        {
+                            targetPlayer.AddBuff(ModContent.BuffType<DreadflameAura>(), 120);
                         }
                     }
                 }

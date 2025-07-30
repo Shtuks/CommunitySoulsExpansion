@@ -7,6 +7,7 @@ using ThoriumMod.Items.BossThePrimordials.Omni;
 using ThoriumMod.Items.Terrarium;
 using Terraria.ID;
 using ssm.Thorium.Buffs;
+using ThoriumMod.Items.Donate;
 
 namespace ssm.Thorium
 {
@@ -33,14 +34,22 @@ namespace ssm.Thorium
         {
             if (item.type == ModContent.ItemType<OmniCannon>())
             {
-                velocity *= 1.5f;
+                velocity *= 1.6f;
+            }
+            if (item.type == ModContent.ItemType<QuasarsFlare>())
+            {
+                velocity *= 1.7f;
             }
         }
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
         {
             if (item.type == ModContent.ItemType<OmniCannon>())
             {
-                tooltips.Add(new TooltipLine(Mod, "rebalance", $"[c/00A36C:Cross-Mod Balance:] Damage decreased by 15% but increased projectile velocity by 40%"));
+                tooltips.Add(new TooltipLine(Mod, "rebalance", $"[c/00A36C:Cross-Mod Balance:] Damage decreased by 15% but increased projectile velocity by 50%"));
+            }
+            if (item.type == ModContent.ItemType<QuasarsFlare>())
+            {
+                tooltips.Add(new TooltipLine(Mod, "buff", $"[c/00A36C:Cross-Mod Balance:] Increased projectile velocity by 50%"));
             }
         }
         public override void OnHitNPC(Item item, Player player, NPC target, NPC.HitInfo hit, int damageDone)

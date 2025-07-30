@@ -28,8 +28,6 @@ namespace ssm
 {
     public partial class CSEPlayer : ModPlayer
     {
-        public bool MutantSoul;
-        public bool DevianttSoul;
         public float throwerVelocity = 1f;
         public bool CyclonicFin;
         public int CyclonicFinCD;
@@ -50,29 +48,75 @@ namespace ssm
         public bool equippedMonstrosityEnchantment;
 
         public float monstrosityHits;
+        private bool wasGhost = false;
+        private int ghostTimer = 0;
         public void DiscordWhiteTheme(float duration, float sharpness)
         {
             blindDuration = duration;
             blindTime = duration;
             blindSharpness = MathHelper.Clamp(sharpness, 1f, 10f);
         }
+
         private float CalculateIntensity()
         {
             float progress = blindTime / blindDuration;
 
             return 1f - MathHelper.Clamp((1f - progress) * blindSharpness, 0f, 1f);
         }
-        public override void PostUpdateBuffs()
+        public override void UpdateEquips()
         {
-            if (CSEConfig.Instance.AlternativeSiblings)
+            if (Player.name.ToLower().Contains("starlightcatt"))
             {
-                if (FargoSoulsUtil.BossIsAlive(ref CSENpcs.mutantEX, ModContent.NPCType<MutantEX>()) && Main.player[Main.myPlayer].CSE().lumberjackSet && WorldSaveSystem.enragedMutantEX)
+                Player.manaRegenBuff = true;
+                Player.archery = true;
+                Player.ammoPotion = true;
+                Player.lavaImmune = true;
+                Player.fireWalk = true;
+                Player.buffImmune[24] = true;
+                Player.buffImmune[29] = true;
+                Player.buffImmune[39] = true;
+                Player.buffImmune[44] = true;
+                Player.buffImmune[46] = true;
+                Player.buffImmune[47] = true;
+                Player.buffImmune[69] = true;
+                Player.buffImmune[110] = true;
+                Player.buffImmune[112] = true;
+                Player.buffImmune[113] = true;
+                Player.buffImmune[114] = true;
+                Player.buffImmune[115] = true;
+                Player.buffImmune[117] = true;
+                Player.buffImmune[150] = true;
+                Player.buffImmune[348] = true;
+                Player.buffImmune[1] = true;
+                Player.buffImmune[2] = true;
+                Player.buffImmune[5] = true;
+                Player.buffImmune[6] = true;
+                Player.buffImmune[7] = true;
+                Player.buffImmune[14] = true;
+                Player.maxMinions+=2;
+                Player.statDefense += 10;
+                Player.lifeRegen += 5;
+                Player.lifeForce = true;
+                Player.moveSpeed += 0.25f;
+                Player.endurance += 0.1f;
+                Player.statManaMax2 += 20;
+                Player.manaCost -= 0.2f;
+                Player.ammoBox = true;
+                Player.pickSpeed -= 0.2f;
+                Player.moveSpeed += 0.2f;
+                Player.manaRegenBonus += 2;
+                Main.SceneMetrics.HasHeartLantern = true;
+                Main.SceneMetrics.HasCampfire = true;
+                ++Player.maxTurrets;
+                Player.GetDamage(DamageClass.Generic) += 0.1f;
+                Player.GetCritChance(DamageClass.Generic) += 0.1f;
+                Player.GetArmorPenetration(DamageClass.Generic) += 15;
+                Player.statLifeMax2 += Player.statLifeMax / 5 / 20 * 20;
+                if (Player.thorns < 1.0)
                 {
-                    Main.LocalPlayer.statDefense *= 0;
-                    Main.LocalPlayer.endurance *= 0;
+                    Player.thorns = 0.3333333f;
                 }
             }
-
             //Player.statLifeMax2 = (int)(Player.statLifeMax2 * (monstrosityHits / 10));
         }
 
@@ -248,10 +292,35 @@ namespace ssm
             if (blindTime > 0) blindTime--;
 
             //No "free dps"
-            if (FargoSoulsUtil.BossIsAlive(ref EModeGlobalNPC.mutantBoss, ModContent.NPCType<MutantBoss>()) && Player.HeldItem != null && !Player.HeldItem.IsAir && (Player.HeldItem.DamageType != DamageClass.Summon || Player.HeldItem.DamageType != DamageClass.SummonMeleeSpeed))
+            if (FargoSoulsUtil.BossIsAlive(ref EModeGlobalNPC.mutantBoss, ModContent.NPCType<MutantBoss>()) && Player.HeldItem != null && !Player.HeldItem.IsAir && Player.HeldItem.DamageType != DamageClass.Summon && Player.HeldItem.DamageType != DamageClass.SummonMeleeSpeed)
             {
                 Player.maxMinions = 0;
             }
+
+            //auto revive for ech, mutant and monstrosity
+            //if (Player.ghost && !wasGhost && !(Player.difficulty == 2))
+            //{
+            //    ChatHelper.BroadcastChatMessage(NetworkText.FromLiteral("You will be revived in 5 seconds!"), new Color(255, 255, 255));
+            //    ghostTimer = 300;
+            //    wasGhost = true;
+            //}
+
+            //else if (!Player.ghost)
+            //{
+            //    wasGhost = false;
+            //    ghostTimer = 0;
+            //}
+
+            //if (ghostTimer > 0)
+            //{
+            //    ghostTimer--;
+
+            //    if (ghostTimer <= 0)
+            //    {
+            //        Player.ghost = false;
+            //        Player.dead = false;
+            //    }
+            //}
         }
 
 
@@ -334,8 +403,6 @@ namespace ssm
             equippedPhantasmalEnchantment = false;
             equippedAbominableEnchantment = false;
             equippedNekomiEnchantment = false;
-            DevianttSoul = false;
-            MutantSoul = false;
             throwerVelocity = 1f;
             CyclonicFin = false;
             lumberjackSet = false;

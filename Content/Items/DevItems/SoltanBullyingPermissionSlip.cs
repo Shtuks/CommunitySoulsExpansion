@@ -1,4 +1,5 @@
-﻿using Luminance.Core.Graphics;
+﻿using FargowiltasSouls;
+using Luminance.Core.Graphics;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
@@ -10,7 +11,7 @@ namespace ssm.Content.Items.DevItems
     {
         public override bool IsLoadingEnabled(Mod mod)
         {
-            return false;//CSEConfig.Instance.DevItems;
+            return CSEConfig.Instance.DevItems && FargoSoulsUtil.AprilFools;
         }
         public override string devName => "Soltan";
         public override void SetDefaults()

@@ -5,18 +5,12 @@ using Microsoft.Xna.Framework;
 using ssm.Core;
 using FargowiltasSouls.Content.Items.Accessories.Enchantments;
 using Redemption.Items.Accessories.PreHM;
-using Redemption.BaseExtension;
-using System;
 using Redemption.Items.Armor.PreHM.DragonLead;
 using Redemption.Items.Weapons.PreHM.Melee;
 using Redemption.Items.Weapons.PreHM.Ranged;
-using FargowiltasSouls.Content.UI.Elements;
 using FargowiltasSouls.Core.AccessoryEffectSystem;
-using FargowiltasSouls;
-using Microsoft.Xna.Framework.Graphics;
 using ssm.Content.SoulToggles;
 using Redemption.Buffs.NPCBuffs;
-using static ssm.Redemption.Enchantments.CommonGuardEnchant;
 
 namespace ssm.Redemption.Enchantments
 {

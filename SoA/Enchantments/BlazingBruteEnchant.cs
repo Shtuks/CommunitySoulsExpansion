@@ -11,6 +11,7 @@ using ssm.Core;
 using FargowiltasSouls;
 using ssm.Content.Buffs;
 using FargowiltasSouls.Core.Globals;
+using SacredTools.Buffs;
 
 namespace ssm.SoA.Enchantments
 {
@@ -42,6 +43,9 @@ namespace ssm.SoA.Enchantments
         {
             public int rivalKillCount = 0;
             public int rivalTimer = 0;
+
+            public int rivalKillCountSniper = 0;
+            public int rivalTimerSniper = 0;
             public override Header ToggleHeader => Header.GetHeader<SoranForceHeader>();
             public override int ToggleItemType => ModContent.ItemType<BlazingBruteEnchant>();
 
@@ -53,7 +57,13 @@ namespace ssm.SoA.Enchantments
                 {
                     player.AddBuff(ModContent.BuffType<RivalBuff>(), 60);
                     rivalTimer++;
-                    player.GetDamage<GenericDamageClass>() += 0.1f * rivalKillCount;
+                    player.GetDamage<GenericDamageClass>() += 0.2f * rivalKillCount;
+                }
+                if (rivalKillCountSniper > 0)
+                {
+                    player.AddBuff(ModContent.BuffType<RivalBuff>(), 60);
+                    rivalTimerSniper++;
+                    player.GetDamage<GenericDamageClass>() += 0.5f * rivalKillCount;
                 }
 
                 if (rivalTimer >= 300)
@@ -61,15 +71,27 @@ namespace ssm.SoA.Enchantments
                     rivalKillCount--;
                     rivalTimer = 0;
                 }
+                if (rivalTimerSniper >= 300)
+                {
+                    rivalKillCount--;
+                    rivalTimerSniper = 0;
+                }
             }
 
             public override void OnHitNPCEither(Player player, NPC target, NPC.HitInfo hitInfo, DamageClass damageClass, int baseDamage, Projectile projectile, Item item)
             {
-                if (target.life <= 0 && !target.friendly && target.type != NPCID.TargetDummy)
+                if (target.life <= 0 && !target.friendly && target.type != NPCID.TargetDummy && !player.HasBuff<SniperState>())
                 {
                     if (rivalKillCount < 5)
                     {
                         rivalKillCount++;
+                    }
+                }
+                if (target.life <= 0 && !target.friendly && target.type != NPCID.TargetDummy && player.HasBuff<SniperState>())
+                {
+                    if (rivalKillCountSniper < 5)
+                    {
+                        rivalKillCountSniper++;
                     }
                 }
             }

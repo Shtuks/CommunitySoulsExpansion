@@ -37,6 +37,9 @@ using ssm.Content.Items.Accessories;
 using ssm.Content.NPCs.Guntera;
 using ssm.Content.NPCs.Ceiling;
 using FargowiltasSouls.Content.Items.Materials;
+using ssm.Content.NPCs.MutantEX.HitPlayer;
+using ssm.Content.NPCs;
+using FargowiltasSouls.Content.Bosses.MutantBoss;
 
 namespace ssm
 {
@@ -83,7 +86,8 @@ namespace ssm
         }
         public enum PacketID : byte
         {
-            SpawnFishronEX
+            SpawnFishronEX,
+            HealthDataSync
         }
         public override void HandlePacket(BinaryReader reader, int whoAmI)
         {
@@ -93,18 +97,54 @@ namespace ssm
                 switch ((PacketID)data)
                 {
                     case PacketID.SpawnFishronEX:
-                        if (Main.netMode == NetmodeID.Server)
-                        {
-                            byte target = reader.ReadByte();
-                            int x = reader.ReadInt32();
-                            int y = reader.ReadInt32();
-                            EModeGlobalNPC.spawnFishronEX = true;
-                            NPC.NewNPC(NPC.GetBossSpawnSource(target), x, y, NPCID.DukeFishron, 0, 0f, 0f, 0f, 0f, target);
-                            ChatHelper.BroadcastChatMessage(NetworkText.FromKey("Announcement.HasAwoken", Language.GetTextValue("Mods.FargowiltasSouls.NPCs.DukeFishronEX.DisplayName")), new Color(50, 100, 255));
-                        }
+                        HandleSpawnFishronEX(reader, whoAmI);
                         break;
-                    default:
+
+                    case PacketID.HealthDataSync:
+                        HandleHealthDataSync(reader, whoAmI);
                         break;
+                }
+            }
+        }
+
+        private void HandleSpawnFishronEX(BinaryReader reader, int whoAmI)
+        {
+            if (Main.netMode == NetmodeID.Server)
+            {
+                byte target = reader.ReadByte();
+                int x = reader.ReadInt32();
+                int y = reader.ReadInt32();
+                EModeGlobalNPC.spawnFishronEX = true;
+                NPC.NewNPC(NPC.GetBossSpawnSource(target), x, y, NPCID.DukeFishron, 0, 0f, 0f, 0f, 0f, target);
+                ChatHelper.BroadcastChatMessage(
+                    NetworkText.FromKey("Announcement.HasAwoken",
+                    Language.GetTextValue("Mods.FargowiltasSouls.NPCs.DukeFishronEX.DisplayName")),
+                    new Color(50, 100, 255));
+            }
+        }
+
+        private void HandleHealthDataSync(BinaryReader reader, int whoAmI)
+        {
+            byte playerId = reader.ReadByte();
+            Player player = Main.player[playerId];
+
+            if (player.TryGetModPlayer(out MonstrHealthPlayer modPlayer))
+            {
+                modPlayer.OriginalMaxLife = reader.ReadInt32();
+                modPlayer.HealthReduction = reader.ReadInt32();
+
+                if (Main.netMode == NetmodeID.Server)
+                {
+                    modPlayer.SyncData();
+                }
+
+                if (Main.netMode == NetmodeID.MultiplayerClient)
+                {
+                    player.statLifeMax = modPlayer.OriginalMaxLife - modPlayer.HealthReduction;
+                    if (player.statLife > player.statLifeMax)
+                    {
+                        player.statLife = player.statLifeMax;
+                    }
                 }
             }
         }
@@ -397,6 +437,10 @@ namespace ssm
         }
         public override void PostSetupContent()
         {
+            if (!ModCompatibility.Inheritance.Loaded)
+            {
+                DPSLimitGlobalNPC.BossDPSLimits.Add(ModContent.NPCType<MutantBoss>(), 600000);
+            }
             if (ModLoader.TryGetMod("Wikithis", out Mod wikithis) && !Main.dedServ)
             {
                 wikithis.Call("AddModURL", this, "https://terrariamods.wiki.gg/wiki/Community_Souls_Expansion/{}");
@@ -417,11 +461,12 @@ namespace ssm
             {
                 var changes = new List<(string, float)>
                 {
+                    ("Slime God", 18.7f),
                     ("3rd Omega Prototype", 18.99f),
                     ("Ordeals", 20.4f),
                     ("The Overwatcher", 19.58f),
                     ("The Materializer", 19.59f),
-                    ("Scarab Belif", 20.9f),
+                    ("Scarab Belief", 20.9f),
                     ("World's End Everlasting Falling Whale", 21.9f),
                     ("Nebuleus", 26f),
                     ("ThePrimordials", 19.5f),
@@ -443,7 +488,6 @@ namespace ssm
             //    SwordGlobalItem.AllowedModdedSwords = SwordGlobalItem.AllowedModdedSwords.Union(SwordsToApplyRework).ToArray();
             //}
         }
-
         public int OSType()
         {
             OperatingSystem os = Environment.OSVersion;

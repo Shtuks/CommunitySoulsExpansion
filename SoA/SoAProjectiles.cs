@@ -2,9 +2,12 @@
 using FargowiltasSouls.Core.AccessoryEffectSystem;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Redemption.NPCs.Friendly.TownNPCs;
 using ReLogic.Content;
+using SacredTools.Content.Items.Armor.Lunar.Quasar;
 using SacredTools.Content.Projectiles.Weapons.Dreamscape.Nihilus;
 using SacredTools.Projectiles.Dreamscape;
+using SacredTools.Projectiles.Lunar;
 using ssm.Content.NPCs;
 using ssm.Content.Projectiles.Enchantments;
 using ssm.Core;
@@ -13,6 +16,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using static ssm.SoA.Enchantments.FallenPrinceEnchant;
 using static ssm.SoA.Enchantments.FlariumEnchant;
+using static ssm.SoA.Enchantments.QuasarEnchant;
 using static ssm.SoA.Forces.SyrianForce;
 
 namespace ssm.SoA
@@ -30,6 +34,10 @@ namespace ssm.SoA
             if (proj.type == ModContent.ProjectileType<DesperatioFlame>())
             {
                 proj.damage -= (int)(proj.damage * 0.3f);
+            }
+            if (proj.type == ModContent.ProjectileType<EnergyBlade>())
+            {
+                proj.damage += (int)(proj.damage * 0.5f);
             }
         }
         public override void AI(Projectile projectile)
@@ -64,7 +72,7 @@ namespace ssm.SoA
                 }
             }
 
-            if (projectile.DamageType == DamageClass.Throwing && projectile.owner.ToPlayer().HasEffect<GravityEffect>())
+            if (projectile.DamageType == DamageClass.Throwing && projectile.owner.ToPlayer().HasEffect<QuasarEffect>())
             {
                 CreateGravityField(projectile, projectile.damage);
             }
@@ -99,43 +107,27 @@ namespace ssm.SoA
                 }
             }
         }
-
-        public override void OnKill(Projectile projectile, int timeLeft)
+        public override bool OnTileCollide(Projectile projectile, Vector2 oldVelocity)
         {
-            if (projectile.owner == Main.myPlayer &&
-                projectile.friendly &&
-                !projectile.hostile &&
-                projectile.damage > 0 &&
-                projectile.owner == Main.player[projectile.owner].whoAmI)
-            {
-                Player player = Main.player[projectile.owner];
-                if (player.HasEffect<FlariumEffect>())
-                {
-                    if (projectile.velocity.Y != 0 &&
-                        projectile.position.Y / 16 < Main.worldSurface &&
-                        !projectile.wet &&
-                        !Collision.LavaCollision(projectile.position, projectile.width, projectile.height))
-                    {
-                        if (Main.rand.NextFloat() < 0.15f)
-                        {
-                            int duration = Main.rand.Next(120, 300);
-                            int damage = player.HasEffect<SyrianEffect>() ? 1000 : 100;
-                            Vector2 position = projectile.Center;
+            if (projectile.owner != Main.myPlayer) return base.OnTileCollide(projectile, oldVelocity);
 
-                            Projectile.NewProjectile(
-                                projectile.GetSource_FromThis(),
-                                position,
-                                Vector2.Zero,
-                                ModContent.ProjectileType<FlariumGeyser>(),
-                                damage,
-                                0f,
-                                projectile.owner,
-                                duration
-                            );
-                        }
-                    }
-                }
+            Player owner = Main.player[projectile.owner];
+            if (!owner.active || owner.dead) return base.OnTileCollide(projectile, oldVelocity);
+
+            if (owner.HasEffect<FlariumEffect>() && Main.rand.NextFloat() < 0.15f)
+            {
+                Vector2 spawnPosition = projectile.Center;
+                Projectile.NewProjectile(
+                    projectile.GetSource_FromThis(),
+                    spawnPosition,
+                    Vector2.Zero,
+                    ModContent.ProjectileType<FlariumGeyser>(),
+                    100, 
+                    0,
+                    projectile.owner
+                );
             }
+            return base.OnTileCollide(projectile, oldVelocity);
         }
 
         public override bool PreDraw(Projectile npc, ref Color lightColor)

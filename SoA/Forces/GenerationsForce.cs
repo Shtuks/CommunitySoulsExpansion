@@ -11,6 +11,7 @@ using static ssm.SoA.Enchantments.BismuthEnchant;
 using static ssm.SoA.Enchantments.DreadfireEnchant;
 using static ssm.SoA.Enchantments.MarstechEnchant;
 using static ssm.SoA.Enchantments.SpaceJunkEnchant;
+using System.Collections.Generic;
 
 namespace ssm.SoA.Forces
 {
@@ -18,6 +19,8 @@ namespace ssm.SoA.Forces
     [JITWhenModsEnabled(ModCompatibility.SacredTools.Name)]
     public class GenerationsForce : BaseForce
     {
+        public override List<AccessoryEffect> ActiveSkillTooltips =>
+            [AccessoryEffectLoader.GetEffect<MarstechEffect>(), AccessoryEffectLoader.GetEffect<DreadfireEffect>()];
         public override bool IsLoadingEnabled(Mod mod)
         {
             return CSEConfig.Instance.SacredTools;

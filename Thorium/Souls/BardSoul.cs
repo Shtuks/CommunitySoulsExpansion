@@ -11,6 +11,7 @@ using ThoriumMod.Items.BossThePrimordials.Rhapsodist;
 using ThoriumMod.Items.BossThePrimordials.Aqua;
 using ThoriumMod.Items.BossThePrimordials.Omni;
 using ThoriumMod.Items.BossThePrimordials.Slag;
+using MonoMod.ModInterop;
 
 namespace ssm.Thorium.Souls
 {
@@ -96,10 +97,14 @@ namespace ssm.Thorium.Souls
                 recipe.AddIngredient<TheSet>();
                 recipe.AddIngredient(ModContent.Find<ModItem>(ModCompatibility.CalBardHealer.Name, "TreeWhisperersHarp"));
                 recipe.AddIngredient(ModContent.Find<ModItem>(ModCompatibility.CalBardHealer.Name, "FeralKeytar"));
-                //recipe.AddIngredient(ModContent.Find<ModItem>(ModCompatibility.CalBardHealer.Name, "UnbreakableCombatUkulele"));
                 recipe.AddIngredient(ModContent.Find<ModItem>(ModCompatibility.CalBardHealer.Name, "FaceMelter"));
                 recipe.AddIngredient(ModContent.Find<ModItem>(ModCompatibility.CalBardHealer.Name, "SongoftheCosmos"));
                 recipe.AddIngredient(ModContent.Find<ModItem>(ModCompatibility.CalBardHealer.Name, "YharimsJam"));
+            }
+
+            if (ModCompatibility.ThoriumRework.Loaded)
+            {
+                recipe.AddIngredient(ModCompatibility.ThoriumRework.Mod.Find<ModItem>("FanDonations"));
             }
 
             recipe.AddIngredient<OceanEssence>(5);

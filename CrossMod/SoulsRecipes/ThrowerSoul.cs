@@ -14,6 +14,7 @@ using FargowiltasCrossmod.Content.Calamity.Items.Accessories.Essences;
 using Clamity.Content.Items.Accessories;
 using SacredTools.Content.Items.Accessories;
 using ThoriumMod.Items.ThrownItems;
+using ThoriumMod;
 
 namespace ssm.CrossMod.SoulsRecipes
 {
@@ -51,6 +52,7 @@ namespace ssm.CrossMod.SoulsRecipes
                 if (ModCompatibility.Thorium.Loaded)
                 {
                     player.AddEffect<PiratesPurseEffect>(Item);
+                    player.GetModPlayer<ThoriumPlayer>().throwerExhaustion = 0;
                 }
                 if (ModCompatibility.SacredTools.Loaded)
                 {
@@ -80,6 +82,7 @@ namespace ssm.CrossMod.SoulsRecipes
                 if (ModCompatibility.Thorium.Loaded)
                 {
                     tooltips.Insert(6, new TooltipLine(Mod, "mayo2", Language.GetTextValue(key + "ThoriumThrower")));
+                    tooltips.Insert(6, new TooltipLine(Mod, "mayo2", Language.GetTextValue(key + "ThoriumThrower2")));
                 }
             }
         }

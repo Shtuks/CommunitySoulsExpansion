@@ -13,6 +13,7 @@ using ssm.Content.SoulToggles;
 using FargowiltasSouls;
 using FargowiltasSouls.Content.UI.Elements;
 using Microsoft.Xna.Framework.Graphics;
+using System.Collections.Generic;
 
 namespace ssm.Redemption.Enchantments
 {
@@ -20,6 +21,8 @@ namespace ssm.Redemption.Enchantments
     [JITWhenModsEnabled(ModCompatibility.Redemption.Name)]
     public class CommonGuardEnchant : BaseEnchant
     {
+        public override List<AccessoryEffect> ActiveSkillTooltips =>
+            [AccessoryEffectLoader.GetEffect<CommonGuardEffect>()];
         public override bool IsLoadingEnabled(Mod mod)
         {
             return CSEConfig.Instance.Redemption;

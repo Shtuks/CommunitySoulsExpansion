@@ -10,7 +10,7 @@ namespace ssm.Thorium.EternityAccessories
     {
         public override bool IsLoadingEnabled(Mod mod)
         {
-            return CSEConfig.Instance.ExperimentalContent;
+            return CSEConfig.Instance.EmodeThorium;
         }
 
         public override void SetDefaults()

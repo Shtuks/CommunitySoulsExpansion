@@ -67,7 +67,7 @@ namespace ssm.Redemption.Enchantments
             recipe.AddIngredient<PureIronGreaves>();
             recipe.AddIngredient<AntlerStaff>();
             recipe.AddIngredient<PureIronSword>();
-            recipe.AddIngredient<ErhanCross>();
+            recipe.AddIngredient<CrystallizedKnowledge>();
             recipe.AddTile(26);
 
             recipe.Register();

@@ -22,6 +22,7 @@ using SacredTools.NPCs.Boss.Primordia;
 using SacredTools.NPCs.Boss.Abaddon;
 using SacredTools.NPCs.Boss.Araghur;
 using FargowiltasSouls.Core.Globals;
+using Terraria.ID;
 
 namespace ssm.SoA
 {
@@ -32,6 +33,8 @@ namespace ssm.SoA
         public bool summonedShieldOnce = false;
         public override bool InstancePerEntity => true;
 
+        private int attackCooldown = 0;
+        private const int CooldownTime = 20;
         public override void SendExtraAI(NPC npc, BitWriter bitWriter, BinaryWriter writer)
         {
             writer.Write(summonedShieldOnce);
@@ -70,6 +73,53 @@ namespace ssm.SoA
                 }
             }
         }
+
+        public override void ResetEffects(NPC npc)
+        {
+            if (!npc.HasBuff(BuffType<FearBuff>()))
+            {
+                attackCooldown = 0;
+            }
+        }
+
+        private void CheckNPCCollisions(NPC sourceNpc)
+        {
+            for (int i = 0; i < Main.maxNPCs; i++)
+            {
+                NPC targetNpc = Main.npc[i];
+
+                if (!targetNpc.active || targetNpc.friendly || targetNpc.life <= 0)
+                    continue;
+
+                if (sourceNpc.whoAmI == targetNpc.whoAmI)
+                    continue;
+
+                if (sourceNpc.Hitbox.Intersects(targetNpc.Hitbox))
+                {
+                    AttackOtherNPC(sourceNpc, targetNpc);
+                    attackCooldown = CooldownTime;
+                    break;
+                }
+            }
+        }
+
+        private void AttackOtherNPC(NPC attacker, NPC target)
+        {
+            int direction = attacker.position.X < target.position.X ? 1 : -1;
+
+            target.SimpleStrikeNPC(attacker.damage, direction);
+
+            if (Main.netMode != NetmodeID.SinglePlayer)
+            {
+                NetMessage.SendData(MessageID.DamageNPC, -1, -1, null, target.whoAmI, attacker.damage, 2f, direction);
+            }
+
+            for (int i = 0; i < 5; i++)
+            {
+                Dust.NewDust(target.position, target.width, target.height,
+                            DustID.Blood, 0f, 0f, 100, default, 1.5f);
+            }
+        }
         public override void OnKill(NPC npc)
         {
             if(npc.type == NPCType<Nihilus>() && !WorldSaveSystem.downedNihilus)
@@ -97,6 +147,27 @@ namespace ssm.SoA
                     IEntitySource source = npc.GetSource_FromAI();
                     int shield = NPC.NewNPC(source, (int)npc.Center.X, (int)npc.position.Y + npc.height, NPCType<MutantAuraOfSupression>());
                     Main.npc[shield].ai[0] = npc.whoAmI;
+                }
+            }
+
+            if (npc.HasBuff(BuffType<FearBuff>()))
+            {
+                if (attackCooldown > 0)
+                    attackCooldown--;
+
+                npc.velocity.X *= 0.9f;
+                if (npc.collideX)
+                {
+                    npc.velocity.X = npc.oldVelocity.X * -0.5f;
+                }
+                if (npc.collideY)
+                {
+                    npc.velocity.Y = npc.oldVelocity.Y * -0.5f;
+                }
+
+                if (attackCooldown <= 0)
+                {
+                    CheckNPCCollisions(npc);
                 }
             }
         }
