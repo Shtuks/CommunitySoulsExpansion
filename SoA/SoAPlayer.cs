@@ -13,6 +13,8 @@ namespace ssm.SoA
     public class SoAPlayer : ModPlayer
     {
         public int rivalStreak;
+        public int EerieEnchantCooldown;
+        
         public override void PreUpdateMovement()
         {
             if (Player.HasBuff(ModContent.BuffType<SniperBuff>()))

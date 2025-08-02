@@ -9,6 +9,10 @@ using ssm.Core;
 using SacredTools.Content.Items.Armor.Eerie;
 using SacredTools.Items.Weapons;
 using ssm.Content.Projectiles.Enchantments;
+using Microsoft.Xna.Framework.Graphics;
+using FargowiltasSouls.Content.UI.Elements;
+using ssm.Thorium;
+
 
 namespace ssm.SoA.Enchantments
 {
@@ -43,13 +47,38 @@ namespace ssm.SoA.Enchantments
             public override int ToggleItemType => ModContent.ItemType<EerieEnchant>();
             public override void OnHitByProjectile(Player player, Projectile proj, Player.HurtInfo hurtInfo)
             {
-                Projectile.NewProjectile(player.GetSource_FromThis(), player.Center, Vector2.Zero, ModContent.ProjectileType<EeriePulse>(), 0, 0);
+                if (!player.HasEffectEnchant<EerieEffect>())
+                    return;
+                SoAPlayer modPlayer = player.GetModPlayer<SoAPlayer>();
+                if (modPlayer.EerieEnchantCooldown <= 0)
+                {
+                    Projectile.NewProjectile(player.GetSource_FromThis(), player.Center, Vector2.Zero, ModContent.ProjectileType<EeriePulse>(), 0, 0);
+                    modPlayer.EerieEnchantCooldown = 60 * 20;
+                }
             }
             public override void OnHitByNPC(Player player, NPC npc, Player.HurtInfo hurtInfo)
             {
-                Projectile.NewProjectile(player.GetSource_FromThis(), player.Center, Vector2.Zero, ModContent.ProjectileType<EeriePulse>(), 0, 0);
+                if (!player.HasEffectEnchant<EerieEffect>())
+                    return;
+                SoAPlayer modPlayer = player.GetModPlayer<SoAPlayer>();
+                if (modPlayer.EerieEnchantCooldown <= 0)
+                {
+                    Projectile.NewProjectile(player.GetSource_FromThis(), player.Center, Vector2.Zero, ModContent.ProjectileType<EeriePulse>(), 0, 0);
+                    modPlayer.EerieEnchantCooldown = 60 * 20;
+                }
+            }
+
+            public override void PostUpdateEquips(Player player)
+            {
+                SoAPlayer modPlayer = player.GetModPlayer<SoAPlayer>();
+                if (modPlayer.EerieEnchantCooldown > 0)
+                    modPlayer.EerieEnchantCooldown--;
+                CooldownBarManager.Activate("EerieEnchantCooldown", ModContent.Request<Texture2D>("ssm/SoA/Enchantments/EerieEnchant").Value, new(237, 73, 78),
+                    () => Main.LocalPlayer.GetModPlayer<SoAPlayer>().EerieEnchantCooldown / (60f * 20), true, activeFunction: player.HasEffect<EerieEffect>);
             }
         }
+
+
         public override void AddRecipes()
         {
             Recipe recipe = this.CreateRecipe();

@@ -7,6 +7,8 @@ using ssm.Core;
 using ssm.Thorium.Enchantments;
 using Fargowiltas.Items.Tiles;
 using FargowiltasSouls.Content.Items.Accessories.Forces;
+using FargowiltasSouls.Content.UI.Elements;
+
 
 namespace ssm.Thorium.Forces
 {
