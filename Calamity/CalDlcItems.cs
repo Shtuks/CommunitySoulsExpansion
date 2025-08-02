@@ -5,6 +5,7 @@ using ssm.Core;
 using FargowiltasSouls.Content.Items.Summons;
 using NoxusBoss.Core.World.WorldSaving;
 using NoxusBoss.Content.NPCs.Bosses.NamelessDeity;
+using Terraria.Localization;
 
 namespace ssm.Calamity
 {
@@ -15,9 +16,9 @@ namespace ssm.Calamity
         public override bool InstancePerEntity => true;
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
         {
-            if (item.type == ModContent.ItemType<MutantsCurse>())
+            if (item.type == ModContent.ItemType<MutantsCurse>() && !BossDownedSaveSystem.HasDefeated<NamelessDeityBoss>())
             {
-                tooltips.Add(new TooltipLine(Mod, "PostND", $"[c/FF0000:Cross-mod Balance:] Can be used after defeating the Nameless Deity"));
+                tooltips.Add(new TooltipLine(Mod, "PostND", $"{Language.GetTextValue("Mods.ssm.Balance.PostND")}"));
             }
         }
 

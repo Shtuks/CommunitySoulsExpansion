@@ -107,8 +107,8 @@ namespace ssm.Calamity
 
                 if (recipe.HasResult(ItemID.DrillContainmentUnit) && !recipe.HasIngredient<AerialiteBar>())
                 {
-                    recipe.AddIngredient<LifeAlloy>(40);
-                    recipe.AddIngredient<AerialiteBar>(40);
+                    recipe.AddIngredient<LifeAlloy>(20);
+                    recipe.AddIngredient<AerialiteBar>(20);
                 }
             }
         }

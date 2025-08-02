@@ -13,6 +13,8 @@ Mods: {
 			Homing: Weapon's pojectiles are homing in on enemies
 			CancelBuff: Canceled DLC buff
 			CancelDebuff: Canceled DLC debuff
+			PostND: "[c/FF0000:Cross-mod Balance:] Can be only used after defeating the Nameless Deity"
+			PostND: "Fire column deal 50% less damage"
 		}
 
 		CodebreakerOptions.Mutant: Mutant
@@ -602,7 +604,7 @@ Mods: {
 				ClamWorldshaper: Effects of Red Dice
 				ClamColossus: Effects of Skull of the Blood God
 				RedSupersonic: Effects of Infected Thornshield
-				HWJSupersonic: Effects of Edgewalker and Arrow Case
+				HWJSupersonic: Effects of Edgewalker and Hour Hand
 				HWJColossus: Effects of Moonwalk and Master Shield
 				RedColossus: Effects of H.E.V Suit
 				Aeolus: Effects of Aeolus Boots
@@ -3753,10 +3755,10 @@ Mods: {
 			PhilosophersStoneEffect: Philosopher's Stone
 			EruditeBookmarkEffect: Erudite Bookmark
 			DivineNecklaceEffect: Divine Necklace
-			TheBatterEffect: TheBatter
+			TheBatterEffect: The Batter
 			RejuvenatedCrossEffect: Rejuvenated Cross
 			OneGiantLeapEffect: Moonwalk
-			ArrowCaseEffect: Arrow Case
+			HourHandEffect: Hour Hand
 			EdgewalkerEffect: Edgewalker
 		}
 

@@ -20,6 +20,12 @@ using ThoriumMod.Items.BossThePrimordials.Slag;
 using ssm.Thorium.Enchantments;
 using FargowiltasSouls.Content.Items.Accessories.Forces;
 using SacredTools.Content.Items.Materials;
+using ThoriumMod.Items.Sandstone;
+using ThoriumMod.Items.Darksteel;
+using ThoriumMod.Items.Depths;
+using ThoriumMod.Items.Lodestone;
+using ThoriumMod.Items.Illumite;
+using ThoriumMod.Items.Valadium;
 
 namespace ssm.Thorium
 {
@@ -165,7 +171,14 @@ namespace ssm.Thorium
                     recipe.RemoveIngredient(ItemID.ShroomiteBar);
                     recipe.RemoveIngredient(ItemID.SpectreBar);
                     recipe.RemoveIngredient(ItemID.ChlorophyteBar);
-                    recipe.AddIngredient<TerrariumCore>(40);
+                    recipe.AddIngredient<TerrariumCore>(20);
+                    recipe.AddIngredient<TitanicBar>(20);
+                    recipe.AddIngredient<SandstoneIngot>(20);
+                    recipe.AddIngredient<aDarksteelAlloy>(20);
+                    recipe.AddIngredient<AquaiteBar>(20);
+                    recipe.AddIngredient<LodeStoneIngot>(20);
+                    recipe.AddIngredient<IllumiteIngot>(20);
+                    recipe.AddIngredient<ValadiumIngot>(20);
                 }
             }
 		}
