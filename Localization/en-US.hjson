@@ -1,16 +1,20 @@
 Mods: {
 	ssm: {
 		Balance: {
-			Buff: "[c/00A36C:Cross-Mod Balance:]" //green
-			ReBalance: "[c/FFFF00:CSE Re-Balance:]" //yellow
-			Nerf: "[c/FF0000:Cross-Mod Balance:]" //red
-			DamageUP: Increased damage by 
-			DamageDown: Decreased damage by 
+			Buff: "[c/00A36C:Cross-Mod Balance:]"
+			//green
+			ReBalance: "[c/FFFF00:CSE Re-Balance:]"
+			//yellow
+			Nerf: "[c/FF0000:Cross-Mod Balance:]"
+			//red
+			DamageUP: Increased damage by
+			DamageDown: Decreased damage by
 			VelUP: Projectile velocity increased by
 			Homing: Weapon's pojectiles are homing in on enemies
 			CancelBuff: Canceled DLC buff
 			CancelDebuff: Canceled DLC debuff
 		}
+
 		CodebreakerOptions.Mutant: Mutant
 
 		ActiveSkills: {
@@ -32,11 +36,11 @@ Mods: {
 		Items: {
 			CalWingEffects: {
 				Xenomite: Immunity to some xenium related debuffs when wearing Xenomite armor set
-				Asthral: "50% increased supression when wearing full set of Asthraltite armor"
+				Asthral: 50% increased supression when wearing full set of Asthraltite armor
 				Aurora: ""
 				Devil: ""
 				Cryo: ""
-				Quasar: "15% increased thrower velocity and 10% increased crit chance"
+				Quasar: 15% increased thrower velocity and 10% increased crit chance
 				Flarium: You will be revived with full helath instead of 1/3
 				Despair:
 					'''
@@ -3315,12 +3319,38 @@ Mods: {
 
 			BardSigil: {
 				DisplayName: Bard Sigil
-				Tooltip: ""
+				Tooltip:
+					'''
+					25% increased bard Damage
+					10% increased bard crit chance
+					'''
 			}
 
 			HealerSigil: {
 				DisplayName: Healer Sigil
-				Tooltip: ""
+				Tooltip:
+					'''
+					25% increased radiant Damage
+					10% increased radiant crit chance
+					'''
+			}
+
+			HealerBadge: {
+				Tooltip:
+					'''
+					20% increased radiant Damage
+					5% increased radiant crit chance
+					'''
+				DisplayName: Healer Badge
+			}
+
+			BardBadge: {
+				Tooltip:
+					'''
+					20% increased bard Damage
+					5% increased bard crit chance
+					'''
+				DisplayName: Bard Badge
 			}
 		}
 
@@ -3580,6 +3610,7 @@ Mods: {
 			PlagueLordEffect: Plague Lord's Flask
 			LodestoneEffect2: Lodestone Shields
 			TheOmegaCoreEffect: The Omega Core
+			ThrowerSoulEffect: Removal of exhaustion
 			//soa
 			FoundationsForceHeader: Foundations Force
 			SyranForceHeader: Syran Force
@@ -3637,6 +3668,7 @@ Mods: {
 			AquaticHeartEffect: Aquatic Heart
 			Enrage: Demonshade Enrage
 			DraculasCharmEffect: Dracula's Charm
+			EidolonAmuletEffect: Eidolon Amulet
 			//other
 			GaiaEffect: Attacking mode
 			NekomiEffect: Nekomi armor set

@@ -247,10 +247,6 @@ namespace ssm
             {
                 Main.NewText(Language.GetTextValue($"Mods.ssm.Message.NoBalancing"), Color.LimeGreen);
             }
-            if (ModLoader.TryGetMod("InfernalEclipseAPI", out Mod _) || ModLoader.TryGetMod("WHummusMultiModBalancing", out Mod _))
-            {
-                Main.NewText(Language.GetTextValue($"Mods.ssm.Message.IHateRogue"), Color.LimeGreen);
-            }
 
             //if (!ModLoader.TryGetMod("SoABardHealer", out Mod _) && ModLoader.TryGetMod("SoA", out Mod _) && ModLoader.TryGetMod("ThoriumMod", out Mod _))
             //{

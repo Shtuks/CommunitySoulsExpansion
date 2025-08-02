@@ -34,9 +34,12 @@ namespace ssm.CrossMod.SoulsRecipes
                 {
                     if (recipe.HasResult(ModCompatibility.Calamity.Mod.Find<ModItem>("EtherealTalisman")))
                     {
-                        if (!recipe.HasIngredient(ModCompatibility.Thorium.Mod.Find<ModItem>("TerrariumCore")) && ModCompatibility.Thorium.Loaded)
+                        if (ModCompatibility.Thorium.Loaded)
                         {
-                            recipe.AddIngredient(ModCompatibility.Thorium.Mod.Find<ModItem>("TerrariumCore"), 3);
+                            if (!recipe.HasIngredient(ModCompatibility.Thorium.Mod.Find<ModItem>("TerrariumCore")))
+                            {
+                                recipe.AddIngredient(ModCompatibility.Thorium.Mod.Find<ModItem>("TerrariumCore"), 3); 
+                            }
                         }
                         if (ModCompatibility.Homeward.Loaded) { recipe.AddIngredient(ModCompatibility.Homeward.Mod.Find<ModItem>("EruditeBookmark"), 1); recipe.AddIngredient(ModCompatibility.Homeward.Mod.Find<ModItem>("RejuvenatedCross"), 1); }
                         //if (ModCompatibility.SacredTools.Loaded) { recipe.AddIngredient(ModCompatibility.SacredTools.Mod.Find<ModItem>("LuminousEnergy"), 5); }
