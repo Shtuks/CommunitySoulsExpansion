@@ -10,6 +10,6 @@ namespace ssm.Content.SoulToggles
     public class SyranForceHeader : SoulHeader
     {
         public override float Priority => 6.5f;
-        public override int Item => ModContent.ItemType<SyrianForce>();
+        public override int Item => ModContent.ItemType<SyranForce>();
     }
 }

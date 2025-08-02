@@ -122,7 +122,7 @@ namespace ssm.Content.NPCs.MutantEX
             NPC.timeLeft = NPC.activeTime * 30;
             NPC.BossBar = ModContent.GetInstance<MonstrosityBossBar>();
 
-            Music = MusicLoader.GetMusicSlot(Mod, "Assets/Sounds/Music/Axion");
+           // Music = MusicLoader.GetMusicSlot(Mod, "Assets/Sounds/Music/Axion");
 
             SceneEffectPriority = SceneEffectPriority.BossHigh;
 

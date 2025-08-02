@@ -117,7 +117,7 @@ namespace ssm.CrossMod.SoulsRecipes
         [ExtendsFromMod(ModCompatibility.Thorium.Name)]
         public class BlastShieldEffect : AccessoryEffect
         {
-            public override int ToggleItemType => ModContent.ItemType<BlastShield>();
+            public override int ToggleItemType => ModCompatibility.Thorium.Mod.Find<ModItem>("BlastShield").Type;
             public override Header ToggleHeader => Header.GetHeader<ColossusHeader>();
             public override void PostUpdateEquips(Player player)
             {

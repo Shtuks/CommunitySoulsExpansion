@@ -73,6 +73,11 @@ namespace ssm.Thorium.Souls
             {
                 ModContent.Find<ModItem>(ModCompatibility.CalBardHealer.Name, "ElementalBloom").UpdateAccessory(player, false);
             }
+
+            if (ModCompatibility.ThoriumRework.Loaded)
+            {
+                ModContent.Find<ModItem>(ModCompatibility.ThoriumRework.Name, "SealedContract").UpdateAccessory(player, false);
+            }
         }
 
         public class GuardianEffect : AccessoryEffect
@@ -116,6 +121,10 @@ namespace ssm.Thorium.Souls
                 recipe.AddIngredient(ModContent.Find<ModItem>(ModCompatibility.CalBardHealer.Name, "WilloftheRagnarok"));
                 recipe.AddIngredient(ModContent.Find<ModItem>(ModCompatibility.CalBardHealer.Name, "PhoenicianBeak"));
                 recipe.AddIngredient(ModContent.Find<ModItem>(ModCompatibility.CalBardHealer.Name, "MilkyWay"));
+            }
+            if (ModCompatibility.ThoriumRework.Loaded)
+            {
+                recipe.AddIngredient(ModCompatibility.ThoriumRework.Mod.Find<ModItem>("SealedContract"));
             }
 
             recipe.AddIngredient<OceanEssence>(5);

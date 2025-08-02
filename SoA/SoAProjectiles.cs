@@ -17,7 +17,7 @@ using Terraria.ModLoader;
 using static ssm.SoA.Enchantments.FallenPrinceEnchant;
 using static ssm.SoA.Enchantments.FlariumEnchant;
 using static ssm.SoA.Enchantments.QuasarEnchant;
-using static ssm.SoA.Forces.SyrianForce;
+using static ssm.SoA.Forces.SyranForce;
 
 namespace ssm.SoA
 {

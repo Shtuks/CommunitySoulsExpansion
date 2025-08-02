@@ -64,7 +64,10 @@ namespace ssm
             {
                 if (EModeGlobalNPC.fishBossEX == npc.whoAmI)
                 {
-                    npc.DropItemInstanced(npc.position, npc.Size, ModContent.ItemType<CyclonicFin>());
+                    if (WorldSavingSystem.EternityMode)
+                    {
+                        npc.DropItemInstanced(npc.position, npc.Size, ModContent.ItemType<CyclonicFin>());
+                    }
                     int maxEX = Main.rand.Next(5) + 10;
                     for (int i = 0; i < maxEX; i++)
                         npc.DropItemInstanced(npc.position, npc.Size, ModContent.ItemType<EternalScale>());

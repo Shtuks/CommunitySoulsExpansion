@@ -50,17 +50,17 @@ namespace ssm.SoA.InfAmmo
             base.SetStaticDefaults();
         }
     }
-    [ExtendsFromMod(ModCompatibility.SacredTools.Name)]
-    [JITWhenModsEnabled(ModCompatibility.SacredTools.Name)]
-    public class AsthralQuiver : BaseAmmo
-    {
-        public override int AmmunitionItem => ModContent.ItemType<AsthralArrow>();
+    //[ExtendsFromMod(ModCompatibility.SacredTools.Name)]
+    //[JITWhenModsEnabled(ModCompatibility.SacredTools.Name)]
+    //public class AsthralQuiver : BaseAmmo
+    //{
+    //    public override int AmmunitionItem => ModContent.ItemType<AsthralArrow>();
 
-        public override void SetStaticDefaults()
-        {
-            base.SetStaticDefaults();
-        }
-    }
+    //    public override void SetStaticDefaults()
+    //    {
+    //        base.SetStaticDefaults();
+    //    }
+    //}
     [ExtendsFromMod(ModCompatibility.SacredTools.Name)]
     [JITWhenModsEnabled(ModCompatibility.SacredTools.Name)]
     public class AdamantiteJar : BaseAmmo
