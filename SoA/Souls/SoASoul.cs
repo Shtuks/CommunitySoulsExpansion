@@ -58,7 +58,7 @@ namespace ssm.SoA.Souls
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            //syrian
+            //syran
             player.AddEffect<AsthraltiteEffect>(Item);
             player.AddEffect<VoidWardenEffect>(Item);
             player.AddEffect<VulcanReaperEffect>(Item);

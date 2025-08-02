@@ -14,6 +14,7 @@ using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using Terraria;
 using Terraria.GameContent.ItemDropRules;
+using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace ssm
@@ -171,6 +172,14 @@ namespace ssm
         }
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
         {
+            if (CSEConfig.Instance.DebugMode)
+            {
+                string internalName = CSEUtils.GetItemInternalName(item);
+                TooltipLine internalNameLine = new TooltipLine(Mod, "internalName", $"ItemID:{item.type}\nInternalName:{internalName}");
+                internalNameLine.OverrideColor = Color.Red;
+                tooltips.Add(internalNameLine);
+            }
+
             if (item.ModItem is BaseSoul)
             {
                 for (int i = 0; i < tooltips.Count; i++)
@@ -178,15 +187,15 @@ namespace ssm
                     tooltips[i].Text = Regex.Replace(tooltips[i].Text, "22%", "25%", RegexOptions.IgnoreCase);
                 }
             }
-            if (item.type == ModContent.ItemType<UniverseSoul>() && ModCompatibility.SacredTools.Loaded && ModCompatibility.Thorium.Loaded && ModCompatibility.Calamity.Loaded)
-            {
-                tooltips.Add(new TooltipLine(Mod, "balance", $"[c/00A36C:CSE Balance:] Additional 2 minion slots."));
-            }
+            //if (item.type == ModContent.ItemType<UniverseSoul>() && ModCompatibility.SacredTools.Loaded && ModCompatibility.Thorium.Loaded && ModCompatibility.Calamity.Loaded)
+            //{
+            //    tooltips.Add(new TooltipLine(Mod, "balance", $"[c/00A36C:CSE Balance:] Additional 2 minion slots."));
+            //}
             if (ModCompatibility.Crossmod.Loaded)
             {
                 if (item.type == ModContent.ItemType<SlimeRain>() || item.type == ModContent.ItemType<GuardianTome>() || item.type == ModContent.ItemType<TheBiggestSting>() || item.type == ModContent.ItemType<PhantasmalLeashOfCthulhu>() || item.type == ModContent.ItemType<TheBiggestSting>())
                 {
-                    tooltips.Add(new TooltipLine(Mod, "balance", $"[c/FF0000:CSE Balance:] No."));
+                    tooltips.Add(new TooltipLine(Mod, "balance", $"{Language.GetTextValue("Mods.ssm.Balance.Buff")} No."));
                 }
             }
             if (item.type == ModContent.ItemType<MutantsCurse>() || item.type == ModContent.ItemType<AbominationnVoodooDoll>())

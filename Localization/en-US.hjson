@@ -1,11 +1,29 @@
 Mods: {
 	ssm: {
+		Balance: {
+			Buff: "[c/00A36C:Cross-Mod Balance:]"
+			//green
+			ReBalance: "[c/FFFF00:CSE Re-Balance:]"
+			//yellow
+			Nerf: "[c/FF0000:Cross-Mod Balance:]"
+			//red
+			DamageUP: Increased damage by
+			DamageDown: Decreased damage by
+			VelUP: Projectile velocity increased by
+			Homing: Weapon's pojectiles are homing in on enemies
+			CancelBuff: Canceled DLC buff
+			CancelDebuff: Canceled DLC debuff
+			PostND: "[c/FF0000:Cross-mod Balance:] Can be only used after defeating the Nameless Deity"
+			PostND: "Fire column deal 50% less damage"
+		}
+
 		CodebreakerOptions.Mutant: Mutant
 
-		ActiveSkills:{
+		ActiveSkills: {
 			MarstechEffect.DisplayName: Marstech Probe
 			DreadfireEffect.DisplayName: Dreadfire
 			CosmicCommanderEffect.DisplayName: Sniper's state
+			XenomiteEffect.DisplayName: Xenomite Clouds
 		}
 
 		SetBonus: {
@@ -19,6 +37,7 @@ Mods: {
 
 		Items: {
 			CalWingEffects: {
+				Xenomite: Immunity to some xenium related debuffs when wearing Xenomite armor set
 				Asthral: 50% increased supression when wearing full set of Asthraltite armor
 				Aurora: ""
 				Devil: ""
@@ -58,17 +77,15 @@ Mods: {
 					DisplayName: Lore - Mutant
 				}
 
-				AmalgamationnLore: {
+				AmalgamLore: {
 					Lore: What a calamity
-					DisplayName: Lore - Amalgamationn
+					DisplayName: Amalgam Lore
 				}
 
 				DeviLore: {
 					Lore: What a calamity
 					DisplayName: Lore - Deviantt
 				}
-
-				AmalgamLore.DisplayName: Amalgam Lore
 			}
 
 			OstaraEnchant: {
@@ -525,9 +542,9 @@ Mods: {
 					'''
 			}
 
-			LivingTwigEnchant: {
-				DisplayName: Living Twig Enchantment
-				Tooltip: "Depending on what biome your in you occasionally drop twigs that trip and deal damage to enemies "
+			LivingWoodEnchant2: {
+				DisplayName: Living Wood Enchant2
+				Tooltip: ""
 			}
 
 			XeniumEnchant: {
@@ -537,11 +554,7 @@ Mods: {
 
 			XenomiteEnchant: {
 				DisplayName: Xenomite Enchantment
-				Tooltip:
-					'''
-					Ability unleash toxic gas in a radius around the player, inflicting Burning Acid
-					Effect of Necklace of Perception
-					'''
+				Tooltip: Ability unleash toxic gas in a radius around the player, inflicting Burning Acid
 			}
 
 			AdvancementForce: {
@@ -591,9 +604,10 @@ Mods: {
 				ClamWorldshaper: Effects of Red Dice
 				ClamColossus: Effects of Skull of the Blood God
 				RedSupersonic: Effects of Infected Thornshield
-				HWJSupersonic: Effects of Edgewalker and Arrow Case
+				HWJSupersonic: Effects of Edgewalker and Hour Hand
 				HWJColossus: Effects of Moonwalk and Master Shield
 				RedColossus: Effects of H.E.V Suit
+				Aeolus: Effects of Aeolus Boots
 			}
 
 			CalamitySoul: {
@@ -1001,14 +1015,6 @@ Mods: {
 					[i:ssm/StellarPriestEnchant] Minions have a chance to summon starstream worms
 					[i:ssm/NebulousApprenticeEnchant] Attacking enemies release buff wisps which can be picked up for different stacking buffs
 					'The true power of the Soraniti'
-					'''
-			}
-
-			SyrianForce: {
-				DisplayName: Syran Force
-				Tooltip: 
-					'''
-					
 					'''
 			}
 
@@ -2274,7 +2280,7 @@ Mods: {
 			}
 
 			MutagenHealing: {
-				DisplayName: Mutagen Healing
+				DisplayName: Healer Mutagen
 				Tooltip:
 					'''
 					20% increased radiant damage
@@ -2285,7 +2291,7 @@ Mods: {
 			}
 
 			MutagenSymphonic: {
-				DisplayName: Mutagen Symphonic
+				DisplayName: Bard Mutagen
 				Tooltip:
 					'''
 					20% increased symphonic damage
@@ -2296,7 +2302,7 @@ Mods: {
 			}
 
 			MutagenThrowing: {
-				DisplayName: Mutagen Throwing
+				DisplayName: Thrower Mutagen
 				Tooltip:
 					'''
 					20% increased throwing damage
@@ -2312,7 +2318,7 @@ Mods: {
 					10% increased throwing crit chance and attack speed
 					10% increased throwing velocity
 					'''
-				DisplayName: Mutagen Throwing
+				DisplayName: Thrower Mutagen
 			}
 
 			MutagenThrowingCal: {
@@ -2322,7 +2328,7 @@ Mods: {
 					10% increased throwing crit chance and attack speed
 					10% increased throwing velocity
 					'''
-				DisplayName: Mutagen Throwing
+				DisplayName: Thrower Mutagen
 			}
 
 			StalkerEssence: {
@@ -2344,6 +2350,7 @@ Mods: {
 					Spectral Fishron periodically manifests to support your critical hits
 					Spectral Fishron also inflicts Mutant Nibble, disabling enemy healing
 					Upgrades Cute Fishron to Cute Fishron EX
+					Eternity
 					'''
 				DisplayName: Cyclonic Fin
 			}
@@ -2697,11 +2704,6 @@ Mods: {
 			MacroverseSoul: {
 				Tooltip: ""
 				DisplayName: Macroverse Soul
-			}
-
-			LivingWoodEnchant2: {
-				DisplayName: Living Wood Enchant2
-				Tooltip: ""
 			}
 
 			Politician: {
@@ -3303,6 +3305,55 @@ Mods: {
 				DisplayName: t Mod Loadium Bar
 				Tooltip: ""
 			}
+
+			SyranForce: {
+				DisplayName: Syran Force
+				Tooltip:
+					'''
+					[i:ssm/VoidWardenEnchant] [i:ssm/AsthraltiteEnchant] Grants ring of void lanterns that decrease agression and shoot enemies
+					[i:ssm/VoidWardenEnchant] Hitting enemy inflict Fear that makes them attack other enemies
+					[i:ssm/FlariumEnchant] Lanterns sometimes spur abyssal flame geysers
+					[i:ssm/VulcanReaperEnchant] If lanterns kill enemy while any boss active your boss damage increases
+					[i:ssm/ExitumLuxEnchant] Attacking with relic weapon grants 20% damage buff
+					'Dragon Rage empowers you, and encourages you to go on'
+					'''
+			}
+
+			BardSigil: {
+				DisplayName: Bard Sigil
+				Tooltip:
+					'''
+					25% increased bard Damage
+					10% increased bard crit chance
+					'''
+			}
+
+			HealerSigil: {
+				DisplayName: Healer Sigil
+				Tooltip:
+					'''
+					25% increased radiant Damage
+					10% increased radiant crit chance
+					'''
+			}
+
+			HealerBadge: {
+				Tooltip:
+					'''
+					20% increased radiant Damage
+					5% increased radiant crit chance
+					'''
+				DisplayName: Healer Badge
+			}
+
+			BardBadge: {
+				Tooltip:
+					'''
+					20% increased bard Damage
+					5% increased bard crit chance
+					'''
+				DisplayName: Bard Badge
+			}
 		}
 
 		Buffs: {
@@ -3561,6 +3612,7 @@ Mods: {
 			PlagueLordEffect: Plague Lord's Flask
 			LodestoneEffect2: Lodestone Shields
 			TheOmegaCoreEffect: The Omega Core
+			ThrowerSoulEffect: Removal of exhaustion
 			//soa
 			FoundationsForceHeader: Foundations Force
 			SyranForceHeader: Syran Force
@@ -3618,6 +3670,7 @@ Mods: {
 			AquaticHeartEffect: Aquatic Heart
 			Enrage: Demonshade Enrage
 			DraculasCharmEffect: Dracula's Charm
+			EidolonAmuletEffect: Eidolon Amulet
 			//other
 			GaiaEffect: Attacking mode
 			NekomiEffect: Nekomi armor set
@@ -3702,10 +3755,10 @@ Mods: {
 			PhilosophersStoneEffect: Philosopher's Stone
 			EruditeBookmarkEffect: Erudite Bookmark
 			DivineNecklaceEffect: Divine Necklace
-			TheBatterEffect: TheBatter
+			TheBatterEffect: The Batter
 			RejuvenatedCrossEffect: Rejuvenated Cross
 			OneGiantLeapEffect: Moonwalk
-			ArrowCaseEffect: Arrow Case
+			HourHandEffect: Hour Hand
 			EdgewalkerEffect: Edgewalker
 		}
 
@@ -3854,8 +3907,8 @@ Mods: {
 					General: General
 					CrossMods: Cross-Mods
 					EnchantsLoad: Enchantments Loading
-					EmodeAccesLoad: Emode Acces Load Header
-					EmodeWeaponsLoad: Emode Weapons Load Header
+					EmodeAccesLoad: Eternity Mode Accessories Loading
+					EmodeWeaponsLoad: Eternity Mode Weapons Loading
 				}
 
 				DisplayName: Mod Config
@@ -3883,11 +3936,6 @@ Mods: {
 				ExperimentalContent: {
 					Label: Experimental Content
 					Tooltip: This will allow unfinished content to load. WARNING. This can and will break your game. Don't turn on.
-				}
-
-				ThrowerMerge: {
-					Tooltip: Merge Thrower(Thorium), Rogue(Calamity) and Revenant(SoA) into one hybrid class.
-					Label: Thrower Merge
 				}
 
 				Thorium: {
@@ -3961,7 +4009,7 @@ Mods: {
 				}
 
 				BossRushPostMutant: {
-					Label: Boss Rush Post Mutant
+					Label: Boss Rush Post-Mutant
 					Tooltip: ""
 				}
 
@@ -3976,32 +4024,32 @@ Mods: {
 				}
 
 				EmodeThorium: {
-					Label: Emode Thorium
+					Label: Thorium
 					Tooltip: ""
 				}
 
 				EmodeRedemption: {
-					Label: Emode Redemption
+					Label: Redemption
 					Tooltip: ""
 				}
 
 				EmodeSoA: {
-					Label: Emode So A
+					Label: Shadows of Abaddon
 					Tooltip: ""
 				}
 
 				EmodeThoriumW: {
-					Label: Emode Thorium W
+					Label: Thorium
 					Tooltip: ""
 				}
 
 				EmodeRedemptionW: {
-					Label: Emode Redemption W
+					Label: Redemption
 					Tooltip: ""
 				}
 
 				EmodeSoAW: {
-					Label: Emode So A W
+					Label: Shadows of Abaddon
 					Tooltip: ""
 				}
 			}
@@ -4010,8 +4058,8 @@ Mods: {
 		DamageClasses.UnitedModdedThrower.DisplayName: thrower damage
 
 		Message: {
-			IHateRogue: If you playing with mods that merge thrower classes make sure that you turn off their thrower merge
-			NoBalance: If you playing Calamity with Thorium, install WHummus' Calamity/Thorium Balancing
+			NoThrower: " WARNING: In latest update thrower merge was moved to Thrower Unification mod"
+			NoBalancing: If you playing Calamity with Thorium, install WHummus' Calamity/Thorium Balancing
 			NoRework: It is recomended to play Thorium with Thorium Bosses Rework to enhance experience
 			NoSoABardHealer1: We detected that you playing Shadows of Abaddon with Thorium Mod
 			NoSoABardHealer2: Please install SoA Bard & Healer for better compatibility

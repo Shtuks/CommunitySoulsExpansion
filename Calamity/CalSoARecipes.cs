@@ -58,6 +58,12 @@ namespace ssm.Calamity
                     recipe.AddIngredient<FragmentQuasar>(1);
                 }
 
+                if (recipe.HasResult<AscendantSpiritEssence>() && !recipe.HasIngredient<FragmentBlight>())
+                {
+                    recipe.AddIngredient<FragmentBlight>(1);
+                    recipe.AddIngredient<FragmentHatred>(1);
+                }
+
                 //Waiting for erazor rework
                 //if (recipe.HasResult<ShadowspecBar>() && !recipe.HasIngredient<IDontExist>())
                 //{

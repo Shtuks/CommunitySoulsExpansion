@@ -44,7 +44,7 @@ namespace ssm.CrossMod.SoulsRecipes
                 }
                 if (ModCompatibility.Homeward.Loaded)
                 {
-                    player.AddEffect<ArrowCaseEffect>(Item);
+                    player.AddEffect<HourHandEffect>(Item);
                     player.AddEffect<EdgewalkerEffect>(Item);
                 }
                 if (ModCompatibility.SacredTools.Loaded)
@@ -128,14 +128,14 @@ namespace ssm.CrossMod.SoulsRecipes
             }
         }
         [ExtendsFromMod(ModCompatibility.Homeward.Name)]
-        public class ArrowCaseEffect : AccessoryEffect
+        public class HourHandEffect : AccessoryEffect
         {
             public override Header ToggleHeader => Header.GetHeader<SupersonicHeader>();
-            public override int ToggleItemType => ModContent.ItemType<ArrowCase>();
+            public override int ToggleItemType => ModContent.ItemType<HourHand>();
 
             public override void PostUpdateEquips(Player player)
             {
-                ModCompatibility.Homeward.Mod.Find<ModItem>("ArrowCase").UpdateAccessory(player, true);
+                ModCompatibility.Homeward.Mod.Find<ModItem>("HourHand").UpdateAccessory(player, true);
             }
         }
         [ExtendsFromMod(ModCompatibility.Homeward.Name)]

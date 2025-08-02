@@ -54,7 +54,7 @@ namespace ssm.Calamity
         {
             //not related to recipes but who cares
             //Why i added it? Just because i can
-            ModCompatibility.Calamity.Mod.Call("CreateCodebreakerDialogOption", Language.GetTextValue("Mods.FargowiltasSoul.NPCs.Mutant.DisplayName"), Language.GetTextValue("Mods.ssm.CodebreakerOptions.Mutant"), (Func<bool>)(() => WorldSavingSystem.DownedMutant));
+            ModCompatibility.Calamity.Mod.Call("CreateCodebreakerDialogOption", Language.GetTextValue("Mods.ssm.CodebreakerOptions.Mutant"), Language.GetTextValue("Mods.ssm.CodebreakerOptions.Mutant"), (Func<bool>)(() => WorldSavingSystem.DownedMutant));
         }
         public override void PostAddRecipes()
         {
@@ -107,8 +107,8 @@ namespace ssm.Calamity
 
                 if (recipe.HasResult(ItemID.DrillContainmentUnit) && !recipe.HasIngredient<AerialiteBar>())
                 {
-                    recipe.AddIngredient<LifeAlloy>(40);
-                    recipe.AddIngredient<AerialiteBar>(40);
+                    recipe.AddIngredient<LifeAlloy>(20);
+                    recipe.AddIngredient<AerialiteBar>(20);
                 }
             }
         }

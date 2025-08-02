@@ -9,7 +9,7 @@ namespace ssm.Content.SoulToggles
 {
     public class HelheimForceHeader : SoulHeader
     {
-        public override float Priority => 7f;
+        public override float Priority => 70f;
         public override int Item => ModContent.ItemType<HelheimForce>();
     }
 }

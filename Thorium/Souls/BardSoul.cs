@@ -61,7 +61,10 @@ namespace ssm.Thorium.Souls
                 ModContent.Find<ModItem>(ModCompatibility.CalBardHealer.Name, "OmniSpeaker").UpdateAccessory(player, false);
                 ModContent.Find<ModItem>(ModCompatibility.CalBardHealer.Name, "TreeWhispererAmulet").UpdateAccessory(player, false);
             }
-
+            if (ModCompatibility.ThoriumRework.Loaded)
+            {
+                ModContent.Find<ModItem>(ModCompatibility.ThoriumRework.Name, "FanDonations").UpdateAccessory(player, false);
+            }
         }
         public override void AddRecipes()
         {

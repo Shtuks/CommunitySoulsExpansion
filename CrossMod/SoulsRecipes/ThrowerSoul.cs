@@ -1,6 +1,4 @@
-﻿using ContinentOfJourney.Items.Accessories;
-using FargowiltasSouls.Content.Items.Accessories.Essences;
-using FargowiltasSouls.Content.Items.Accessories.Souls;
+﻿using FargowiltasSouls.Content.Items.Accessories.Souls;
 using FargowiltasSouls.Core.AccessoryEffectSystem;
 using FargowiltasSouls.Core.Toggler.Content;
 using System.Collections.Generic;
@@ -52,7 +50,7 @@ namespace ssm.CrossMod.SoulsRecipes
                 if (ModCompatibility.Thorium.Loaded)
                 {
                     player.AddEffect<PiratesPurseEffect>(Item);
-                    player.GetModPlayer<ThoriumPlayer>().throwerExhaustion = 0;
+                    player.AddEffect<ThrowerSoulEffect>(Item);
                 }
                 if (ModCompatibility.SacredTools.Loaded)
                 {
@@ -117,6 +115,17 @@ namespace ssm.CrossMod.SoulsRecipes
             public override void PostUpdateEquips(Player player)
             {
                 ModCompatibility.Thorium.Mod.Find<ModItem>("PiratesPurse").UpdateAccessory(player, true);
+            }
+        }
+        [ExtendsFromMod(ModCompatibility.Thorium.Name)]
+        public class ThrowerSoulEffect : AccessoryEffect
+        {
+            public override Header ToggleHeader => Header.GetHeader<UniverseHeader>();
+            public override int ToggleItemType => ModContent.ItemType<UniverseSoul>();
+
+            public override void PostUpdateEquips(Player player)
+            {
+                player.GetModPlayer<ThoriumPlayer>().throwerExhaustion = 0;
             }
         }
     }

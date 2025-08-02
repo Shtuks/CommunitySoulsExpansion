@@ -11,6 +11,7 @@ using CalamityMod.Items.Potions;
 using FargowiltasSouls.Content.Items.Accessories.Souls;
 using FargowiltasCrossmod.Content.Calamity.Items.Accessories.Souls;
 using CalamityMod.Items.SummonItems;
+using Terraria.Localization;
 
 namespace ssm.Calamity
 {
@@ -67,29 +68,29 @@ namespace ssm.Calamity
         {
             if (item.type == ModContent.ItemType<IridescentExcalibur>())
             {
-                tooltips.Add(new TooltipLine(Mod, "rebalance", $"[c/FFFF00:CSE Balance:] Canceled DLC debuff."));
-                tooltips.Add(new TooltipLine(Mod, "rebalance", $"[c/00A36C:CSE Balance:] Increased projectile velocity."));
+                tooltips.Add(new TooltipLine(Mod, "rebalance", $"{Language.GetTextValue("Mods.ssm.Balance.Buff")} {Language.GetTextValue("Mods.ssm.Balance.CancelDebuff")}"));
+                tooltips.Add(new TooltipLine(Mod, "rebalance", $"{Language.GetTextValue("Mods.ssm.Balance.Buff")} {Language.GetTextValue("Mods.ssm.Balance.VelUp")} 50%"));
             }
             if (item.type == ModContent.ItemType<Voidragon>())
             {
-                tooltips.Add(new TooltipLine(Mod, "rebalance", $"[c/FFFF00:CSE Balance:] Canceled DLC buff."));
+                tooltips.Add(new TooltipLine(Mod, "rebalance", $"{Language.GetTextValue("Mods.ssm.Balance.Nerf")} {Language.GetTextValue("Mods.ssm.Balance.CancelBuff")}"));
             }
             if (item.type == ModContent.ItemType<HalibutCannon>())
             {
-                tooltips.Add(new TooltipLine(Mod, "rebalance", $"[c/FF0000:CSE Balance:] Damage decreased by 30%."));
+                tooltips.Add(new TooltipLine(Mod, "rebalance", $"{Language.GetTextValue("Mods.ssm.Balance.Nerf")} {Language.GetTextValue("Mods.ssm.Balance.DamageDown")} 30%."));
             }
             if (item.type == ModContent.ItemType<Supernova>())
             {
-                tooltips.Add(new TooltipLine(Mod, "rebalance", $"[c/FF0000:CSE Balance:] Damage decreased by 30%."));
+                tooltips.Add(new TooltipLine(Mod, "rebalance", $"{Language.GetTextValue("Mods.ssm.Balance.Nerf")} {Language.GetTextValue("Mods.ssm.Balance.DamageDown")} 30%."));
             }
             //if (item.type == ItemID.Zenith)
             //{
-            //    tooltips.Add(new TooltipLine(Mod, "rebalance", $"[c/00A36C:CSE Balance:] Damage increased by 30%."));
+            //    tooltips.Add(new TooltipLine(Mod, "rebalance", $"[c/00A36C:CSE Balance:] {Language.GetTextValue("Mods.ssm.Balance.DamageUP")} 30%."));
             //}
             if (item.type == ModContent.ItemType<Sylvestaff>())
             {
-                tooltips.Add(new TooltipLine(Mod, "rebalance", $"[c/FFFF00:CSE Balance:] Canceled DLC buff."));
-                tooltips.Add(new TooltipLine(Mod, "rebalance", $"[c/FF0000:CSE Balance:] Damage decreased by 20%."));
+                tooltips.Add(new TooltipLine(Mod, "rebalance", $"{Language.GetTextValue("Mods.ssm.Balance.Debuff")} {Language.GetTextValue("Mods.ssm.Balance.CancelBuff")}"));
+                tooltips.Add(new TooltipLine(Mod, "rebalance", $"{Language.GetTextValue("Mods.ssm.Balance.Nerf")} {Language.GetTextValue("Mods.ssm.Balance.DamageDown")} 20%."));
             }
 
             for (int i = tooltips.Count - 1; i >= 0; i--)

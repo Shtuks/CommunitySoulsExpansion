@@ -24,6 +24,15 @@ namespace ssm
 
             return distance;
         }
+
+        public static string GetItemInternalName(Item item)
+        {
+            if(item.ModItem != null)
+            {
+                return $"{item.ModItem.Mod.Name}/{item.ModItem.Name}";
+            }
+            return ItemID.Search.GetName(item.type);
+        }
         public static float ProjGetDistanceToNPC(Projectile player, NPC targetNPC)
         {
             if (targetNPC == null || !targetNPC.active)

@@ -7,6 +7,7 @@ using ContinentOfJourney.Items.Accessories;
 using Terraria.ID;
 using FargowiltasSouls.Content.Items.Accessories.Masomode;
 using FargowiltasSouls.Content.Items.Accessories.Forces;
+using Fargowiltas.Items.Tiles;
 
 namespace ssm.Homeward
 {
@@ -14,6 +15,15 @@ namespace ssm.Homeward
     [JITWhenModsEnabled(ModCompatibility.Homeward.Name)]
     public class HwjRecipes : ModSystem
     {
+        public override void AddRecipes()
+        {
+            Recipe.Create(ModContent.ItemType<Horizon>())
+                .AddIngredient<AeolusBoots>()
+                .AddIngredient<FinalBar>()
+                .AddIngredient<TankOfThePastJungle>(4)
+                .AddTile<CrucibleCosmosSheet>()
+                .Register();
+        }
         public override void PostAddRecipes()
         {
             for (int i = 0; i < Recipe.numRecipes; i++)
@@ -32,6 +42,12 @@ namespace ssm.Homeward
                 {
                     if (!recipe.HasIngredient<SolarFlareScoria>())
                         recipe.AddIngredient<SolarFlareScoria>(4);
+                }
+
+                //nuke 3897430 recipes of that item
+                if (recipe.HasResult<Horizon>() && !recipe.HasTile<CrucibleCosmosSheet>())
+                {
+                    recipe.DisableRecipe();
                 }
 
                 if (recipe.HasResult<FlightMasterySoul>() && !recipe.HasIngredient<Altitude>())
@@ -56,12 +72,8 @@ namespace ssm.Homeward
                 {
                     recipe.RemoveIngredient(ModContent.ItemType<EssenceofBright>());
                 }
-                if (!ModCompatibility.Calamity.Loaded && !ModCompatibility.SacredTools.Loaded && !ModCompatibility.Thorium.Loaded) {
-                    if (recipe.HasResult(ModContent.ItemType<Horizon>()) && !recipe.HasIngredient<AeolusBoots>())
-                    {
-                        recipe.RemoveIngredient(5000);
-                        recipe.AddIngredient<AeolusBoots>(1);
-                    }
+                if (!ModCompatibility.Calamity.Loaded && !ModCompatibility.SacredTools.Loaded && !ModCompatibility.Thorium.Loaded)
+                {
                     //horizon to supersonic
                     if (recipe.HasResult(ModContent.ItemType<SupersonicSoul>()) && recipe.HasIngredient(ModContent.ItemType<Horizon>()))
                     {

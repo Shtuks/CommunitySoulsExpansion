@@ -1,5 +1,6 @@
 ﻿using FargowiltasSouls;
 using SacredTools.Common.Types;
+using SacredTools.Content.Items.Accessories;
 using SacredTools.Content.Items.Armor.Lunar.Nebula;
 using SacredTools.Content.Items.Armor.Lunar.Vortex;
 using SacredTools.Content.Items.Potions.Recovery;
@@ -9,7 +10,9 @@ using SacredTools.Items.Weapons.Lunatic;
 using ssm.Core;
 using System.Collections.Generic;
 using Terraria;
+using Terraria.Localization;
 using Terraria.ModLoader;
+using ThoriumMod.Items.Terrarium;
 
 namespace ssm.SoA
 {
@@ -76,6 +79,10 @@ namespace ssm.SoA
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
         {
             int n = 0;
+            if (item.type == ModContent.ItemType<VoidSpurs>())
+            {
+                tooltips.Insert(13, new TooltipLine(Mod, "compat", $"{Language.GetTextValue("Mods.ssm.AddedEffects.Aeolus")}"));
+            }
             if (item.type == ModContent.ItemType<FlamesOfCondemnation>())
             {
                 n = ModCompatibility.Calamity.Loaded ? 150 : 120;
@@ -87,23 +94,23 @@ namespace ssm.SoA
             if (item.type == ModContent.ItemType<Tenebris>())
             {
                 n = ModCompatibility.Calamity.Loaded ? 50 : 10;
-                tooltips.Add(new TooltipLine(Mod, "homing", $"[c/00A36C:Cross-Mod Balance:] Weapon's pojectiles are homing in on enemies"));
+                tooltips.Add(new TooltipLine(Mod, "homing", $"{Language.GetTextValue("Mods.ssm.Balance.Buff")} {Language.GetTextValue("Mods.ssm.Balance.Homing")}"));
             }
             if (item.type == ModContent.ItemType<Desperatio>())
             {
                 n = ModCompatibility.Calamity.Loaded ? 90 : 20;
-                tooltips.Add(new TooltipLine(Mod, "nerf", $"[c/00A36C:Cross-Mod Balance:] Fire column deal 70% less damage."));
-                tooltips.Add(new TooltipLine(Mod, "homing", $"[c/00A36C:Cross-Mod Balance:] Weapon's pojectiles are homing in on enemies"));
+                tooltips.Add(new TooltipLine(Mod, "nerf", $"{Language.GetTextValue("Mods.ssm.Balance.Debuff")} {Language.GetTextValue("Mods.ssm.AddedEffects.Aeolus")}"));
+                tooltips.Add(new TooltipLine(Mod, "homing", $"{Language.GetTextValue("Mods.ssm.Balance.Buff")} {Language.GetTextValue("Mods.ssm.Balance.Homing")}"));
             }
             if (item.type == ModContent.ItemType<Eschaton>())
             {
                 n = ModCompatibility.Calamity.Loaded ? 90 : 70;
-                tooltips.Add(new TooltipLine(Mod, "velocity", $"[c/00A36C:Cross-Mod Balance:] Projectile velocity increased by 10%"));
-                tooltips.Add(new TooltipLine(Mod, "homing", $"[c/00A36C:Cross-Mod Balance:] Weapon's pojectiles are homing in on enemies"));
+                tooltips.Add(new TooltipLine(Mod, "velocity", $"{Language.GetTextValue("Mods.ssm.Balance.Buff")} {Language.GetTextValue("Mods.ssm.Balance.VelUP")} 10%"));
+                tooltips.Add(new TooltipLine(Mod, "homing", $"{Language.GetTextValue("Mods.ssm.Balance.Buff")} {Language.GetTextValue("Mods.ssm.Balance.Homing")}"));
             }
             if (item.type == ModContent.ItemType<Eschaton>() || item.type == ModContent.ItemType<Desperatio>() || item.type == ModContent.ItemType<Tenebris>() || item.type == ModContent.ItemType<Malice>() || item.type == ModContent.ItemType<FlamesOfCondemnation>())
             {
-                tooltips.Add(new TooltipLine(Mod, "rebalance", $"[c/00A36C:Cross-Mod Balance:] Damage increased by {n}%"));
+                tooltips.Add(new TooltipLine(Mod, "rebalance", $"{Language.GetTextValue("Mods.ssm.Balance.Buff")} {Language.GetTextValue("Mods.ssm.Balance.DamageUP")} {n}%"));
             }
         }
     }

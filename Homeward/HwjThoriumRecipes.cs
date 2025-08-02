@@ -4,6 +4,8 @@ using Terraria;
 using ssm.Core;
 using ContinentOfJourney.Items.Material;
 using ThoriumMod.Items.Terrarium;
+using ContinentOfJourney.Items.Accessories;
+using FargowiltasSouls.Content.Items.Accessories.Masomode;
 
 namespace ssm.Homeward
 {
@@ -27,6 +29,15 @@ namespace ssm.Homeward
                     ) && !recipe.HasIngredient<FinalBar>())
                 {
                     recipe.AddIngredient<FinalBar>(5);
+                }
+
+                if (recipe.HasResult<Horizon>() && !recipe.HasIngredient<TerrariumParticleSprinters>() && !ModCompatibility.Calamity.Loaded)
+                {
+                    if (recipe.HasIngredient<AeolusBoots>())
+                    {
+                        recipe.RemoveIngredient(ModContent.ItemType<AeolusBoots>());
+                    }
+                    recipe.AddIngredient<TerrariumParticleSprinters>();
                 }
             }
         }

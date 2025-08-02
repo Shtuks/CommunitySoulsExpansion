@@ -28,6 +28,9 @@
 	  <Reference Include="CalamityInheritance">
 	    <HintPath>..\..\ModReader\CalamityInheritance\CalamityInheritance.dll</HintPath>
 	  </Reference>
+	  <Reference Include="CalamityLegacy">
+	    <HintPath>..\..\ModReader\CalamityLegacy\CalamityLegacy.dll</HintPath>
+	  </Reference>
 	  <Reference Include="CalamityMod">
 	    <HintPath>..\..\ModReader\CalamityMod\CalamityMod.dll</HintPath>
 	  </Reference>

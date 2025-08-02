@@ -11,6 +11,7 @@ using SacredTools.Content.Items.Accessories;
 using ContinentOfJourney.Items.Accessories.Bookmarks;
 using System.Collections.Generic;
 using Terraria.Localization;
+using SacredTools.Content.Items.Accessories.Sigils;
 
 namespace ssm.CrossMod.SoulsRecipes
 {
@@ -24,7 +25,7 @@ namespace ssm.CrossMod.SoulsRecipes
 
                 if (recipe.HasResult(ModContent.ItemType<ArchWizardsSoul>()))
                 {
-                    if (ModCompatibility.SacredTools.Loaded) { recipe.AddIngredient(ModCompatibility.SacredTools.Mod.Find<ModItem>("NubasBlessing"), 1); recipe.AddIngredient(ModCompatibility.SacredTools.Mod.Find<ModItem>("Armageddon"), 1); recipe.AddIngredient(ModCompatibility.SacredTools.Mod.Find<ModItem>("StoneOfResonance"), 1); recipe.RemoveIngredient(ItemID.CelestialCuffs); }
+                    if (ModCompatibility.SacredTools.Loaded) { recipe.AddIngredient(ModCompatibility.SacredTools.Mod.Find<ModItem>("NebulaSigil"), 1); recipe.AddIngredient(ModCompatibility.SacredTools.Mod.Find<ModItem>("NubasBlessing"), 1); recipe.AddIngredient(ModCompatibility.SacredTools.Mod.Find<ModItem>("Armageddon"), 1); recipe.AddIngredient(ModCompatibility.SacredTools.Mod.Find<ModItem>("StoneOfResonance"), 1); recipe.RemoveIngredient(ItemID.CelestialCuffs); }
                     if (ModCompatibility.Homeward.Loaded) { recipe.AddIngredient(ModCompatibility.Homeward.Mod.Find<ModItem>("Starflower"), 1); recipe.AddIngredient(ModCompatibility.Homeward.Mod.Find<ModItem>("DoublePlot"), 1);}
                     if (ModCompatibility.Redemption.Loaded) { recipe.AddIngredient(ModCompatibility.Redemption.Mod.Find<ModItem>("Petridish"), 1); recipe.AddIngredient(ModCompatibility.Redemption.Mod.Find<ModItem>("MutagenMagic"), 1); recipe.RemoveIngredient(ModContent.ItemType<ApprenticesEssence>()); }
                     if (ModCompatibility.Thorium.Loaded) { recipe.AddIngredient(ModCompatibility.Thorium.Mod.Find<ModItem>("NorthernLight"), 1); recipe.AddIngredient(ModCompatibility.Thorium.Mod.Find<ModItem>("TerrariumSageStaff"), 1); }
@@ -33,12 +34,15 @@ namespace ssm.CrossMod.SoulsRecipes
                 {
                     if (recipe.HasResult(ModCompatibility.Calamity.Mod.Find<ModItem>("EtherealTalisman")))
                     {
-                        if (!recipe.HasIngredient(ModCompatibility.Thorium.Mod.Find<ModItem>("TerrariumCore")) && ModCompatibility.Thorium.Loaded)
+                        if (ModCompatibility.Thorium.Loaded)
                         {
-                            recipe.AddIngredient(ModCompatibility.Thorium.Mod.Find<ModItem>("TerrariumCore"), 3);
+                            if (!recipe.HasIngredient(ModCompatibility.Thorium.Mod.Find<ModItem>("TerrariumCore")))
+                            {
+                                recipe.AddIngredient(ModCompatibility.Thorium.Mod.Find<ModItem>("TerrariumCore"), 3); 
+                            }
                         }
                         if (ModCompatibility.Homeward.Loaded) { recipe.AddIngredient(ModCompatibility.Homeward.Mod.Find<ModItem>("EruditeBookmark"), 1); recipe.AddIngredient(ModCompatibility.Homeward.Mod.Find<ModItem>("RejuvenatedCross"), 1); }
-                        if (ModCompatibility.SacredTools.Loaded) { recipe.AddIngredient(ModCompatibility.SacredTools.Mod.Find<ModItem>("LuminousEnergy"), 5); }
+                        //if (ModCompatibility.SacredTools.Loaded) { recipe.AddIngredient(ModCompatibility.SacredTools.Mod.Find<ModItem>("LuminousEnergy"), 5); }
                     }
                 }
                 if (ModCompatibility.SacredTools.Loaded)

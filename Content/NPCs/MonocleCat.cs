@@ -11,29 +11,25 @@ using Terraria;
 
 namespace ssm.Content.NPCs
 {
+    [AutoloadHead]
     public class MonocleCat : ModNPC
     {
-        public override bool IsLoadingEnabled(Mod mod)
-        {
-            return CSEConfig.Instance.AlternativeSiblings;
-        }
-        public override string Texture => "ssm/Content/NPCs/Monstrosity";
         private static int shopNum;
         private static bool showCycleShop;
+        internal bool shoulBeGone = false;
 
         public static List<string> Names = new() {
-            "Mayo"
+            "Mayo",
+            "Starlight",
+            "Car",
+            "Larry",
+            "Ech"
         };
         public override void SetStaticDefaults()
         {
-            Main.npcFrameCount[NPC.type] = 4;
-            NPCID.Sets.ExtraFramesCount[NPC.type] = 9;
-            NPCID.Sets.AttackFrameCount[NPC.type] = 4;
+            Main.npcFrameCount[NPC.type] = Main.npcFrameCount[NPCID.TownCat];
             NPCID.Sets.DangerDetectRange[NPC.type] = 700;
-            NPCID.Sets.AttackType[NPC.type] = 0;
-            NPCID.Sets.AttackTime[NPC.type] = 10;
-            NPCID.Sets.AttackAverageChance[NPC.type] = 10;
-            NPCID.Sets.HatOffsetY[NPC.type] = 4;
+            NPCID.Sets.AttackType[NPC.type] = -1;
         }
         public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
         {
@@ -89,19 +85,9 @@ namespace ssm.Content.NPCs
                     break;
             }
         }
-        private static bool IsCSEItem(Item item)
-        {
-            if (item.ModItem is not null)
-            {
-                string modName = item.ModItem.Mod.Name;
-                return modName.Equals("ssm");
-            }
-
-            return false;
-        }
         public static CatShopGroup CatSells(Item item, out CatSellType sellType)
         {
-            if (IsCSEItem(item))
+            if (CSEUtils.IsModItem(item, "ssm"))
             {
                 if (item.ModItem.Name.EndsWith("Enchant"))
                 {
@@ -187,14 +173,14 @@ namespace ssm.Content.NPCs
             NPC.width = 40;
             NPC.height = 54;
             NPC.aiStyle = 7;
-            NPC.damage = 500;
-            NPC.defense = int.MaxValue;
-            NPC.lifeMax = int.MaxValue;
+            NPC.damage = 0;
+            NPC.defense = 500;
+            NPC.lifeMax = 500;
             NPC.HitSound = SoundID.Meowmere;
             NPC.DeathSound = SoundID.Meowmere;
             NPC.knockBackResist = 0;
             NPC.dontTakeDamage = true;
-            AnimationType = 22;
+            AnimationType = NPCID.TownCat;
             NPC.Happiness
                     .SetNPCAffection<Mutant>(AffectionLevel.Love)
                     .SetNPCAffection<Deviantt>(AffectionLevel.Love)
@@ -209,6 +195,14 @@ namespace ssm.Content.NPCs
         public override List<string> SetNPCNameList()
         {
             return Names;
+        }
+        public override bool CheckActive() => shoulBeGone;
+        public override void AI()
+        {
+            NPC.breath = 200;
+            NPC.breathCounter = 0;
+            NPC.immortal = true;
+            NPC.timeLeft = 7200;
         }
         public override string GetChat()
         {
