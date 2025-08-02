@@ -54,7 +54,7 @@ namespace ssm.Calamity
         {
             //not related to recipes but who cares
             //Why i added it? Just because i can
-            ModCompatibility.Calamity.Mod.Call("CreateCodebreakerDialogOption", Language.GetTextValue("Mods.FargowiltasSoul.NPCs.Mutant.DisplayName"), Language.GetTextValue("Mods.ssm.CodebreakerOptions.Mutant"), (Func<bool>)(() => WorldSavingSystem.DownedMutant));
+            ModCompatibility.Calamity.Mod.Call("CreateCodebreakerDialogOption", Language.GetTextValue("Mods.ssm.CodebreakerOptions.Mutant"), Language.GetTextValue("Mods.ssm.CodebreakerOptions.Mutant"), (Func<bool>)(() => WorldSavingSystem.DownedMutant));
         }
         public override void PostAddRecipes()
         {

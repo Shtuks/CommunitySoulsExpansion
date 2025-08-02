@@ -3,6 +3,7 @@ using Terraria;
 using ssm.Core;
 using SacredTools.Content.Items.Accessories;
 using ContinentOfJourney.Items.Accessories;
+using FargowiltasSouls.Content.Items.Accessories.Masomode;
 
 namespace ssm.Homeward
 {
@@ -18,7 +19,14 @@ namespace ssm.Homeward
 
                 if (recipe.HasResult<VoidSpurs>() && !recipe.HasIngredient<Horizon>())
                 {
-                    recipe.RemoveIngredient(ModContent.ItemType<RoyalRunners>());
+                    if (recipe.HasIngredient<RoyalRunners>())
+                    {
+                        recipe.RemoveIngredient(ModContent.ItemType<RoyalRunners>());
+                    }
+                    if (recipe.HasIngredient<AeolusBoots>())
+                    {
+                        recipe.RemoveIngredient(ModContent.ItemType<AeolusBoots>());
+                    }
                     recipe.AddIngredient<Horizon>();
                 }
             }

@@ -1,6 +1,4 @@
-﻿using ContinentOfJourney.Items.Accessories;
-using FargowiltasSouls.Content.Items.Accessories.Essences;
-using FargowiltasSouls.Content.Items.Accessories.Souls;
+﻿using FargowiltasSouls.Content.Items.Accessories.Souls;
 using FargowiltasSouls.Core.AccessoryEffectSystem;
 using FargowiltasSouls.Core.Toggler.Content;
 using System.Collections.Generic;

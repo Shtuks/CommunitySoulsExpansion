@@ -235,6 +235,10 @@ namespace ssm
             // debug only //
 
 
+            if (!ModLoader.TryGetMod("ThrowerUnification", out Mod _))
+            {
+                Main.NewText(Language.GetTextValue($"Mods.ssm.Message.NoThrower"), Color.LimeGreen);
+            }
             if (!ModLoader.TryGetMod("ThoriumRework", out Mod _) && ModLoader.TryGetMod("ThoriumMod", out Mod _))
             {
                 Main.NewText(Language.GetTextValue($"Mods.ssm.Message.NoRework"), Color.LimeGreen);

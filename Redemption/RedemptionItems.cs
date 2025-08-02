@@ -11,6 +11,7 @@ using ssm.Content.Items.Accessories;
 using ssm.Core;
 using System.Collections.Generic;
 using Terraria;
+using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace ssm.Redemption
@@ -95,19 +96,19 @@ namespace ssm.Redemption
             {
                 if (item.type == ModContent.ItemType<Twinklestar>())
                 {
-                    tooltips.Add(new TooltipLine(Mod, "rebalance", $"[c/00A36C:Cross-Mod Balance:] Damage increased by 60%"));
+                    tooltips.Add(new TooltipLine(Mod, "rebalance", $"{Language.GetTextValue("Mods.ssm.Balance.Buff")} {Language.GetTextValue("Mods.ssm.Balance.DamageUP")} 60%"));
                 }
                 if (item.type == ModContent.ItemType<Constellations>())
                 {
-                    tooltips.Add(new TooltipLine(Mod, "rebalance", $"[c/00A36C:Cross-Mod Balance:] Damage increased by 30%"));
+                    tooltips.Add(new TooltipLine(Mod, "rebalance", $"{Language.GetTextValue("Mods.ssm.Balance.Buff")} {Language.GetTextValue("Mods.ssm.Balance.DamageUP")} 30%"));
                 }
                 if (item.type == ModContent.ItemType<CosmosChains>())
                 {
-                    tooltips.Add(new TooltipLine(Mod, "rebalance", $"[c/00A36C:Cross-Mod Balance:] Damage increased by 20%"));
+                    tooltips.Add(new TooltipLine(Mod, "rebalance", $"{Language.GetTextValue("Mods.ssm.Balance.Buff")} {Language.GetTextValue("Mods.ssm.Balance.DamageUP")} 20%"));
                 }
                 if (item.type == ModContent.ItemType<PiercingNebulaWeapon>())
                 {
-                    tooltips.Add(new TooltipLine(Mod, "rebalance", $"[c/00A36C:Cross-Mod Balance:] Damage increased by 50%"));
+                    tooltips.Add(new TooltipLine(Mod, "rebalance", $"{Language.GetTextValue("Mods.ssm.Balance.Buff")} {Language.GetTextValue("Mods.ssm.Balance.DamageUP")} 50%"));
                 }
             }
         }

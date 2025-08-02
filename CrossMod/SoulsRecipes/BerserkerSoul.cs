@@ -54,7 +54,7 @@ namespace ssm.CrossMod.SoulsRecipes
                         }
                         if (ModCompatibility.Homeward.Loaded) { recipe.AddIngredient(ModCompatibility.Homeward.Mod.Find<ModItem>("DivineTouch"), 1); recipe.RemoveIngredient(ItemID.FireGauntlet); }
                         if (!ModCompatibility.Homeward.Loaded && ModCompatibility.SacredTools.Loaded) { recipe.AddIngredient(ModCompatibility.SacredTools.Mod.Find<ModItem>("FloraFist"), 1); recipe.RemoveIngredient(ItemID.FireGauntlet); }
-                        if (ModCompatibility.SacredTools.Loaded) { recipe.AddIngredient(ModCompatibility.SacredTools.Mod.Find<ModItem>("LuminousEnergy"), 5); }
+                        //if (ModCompatibility.SacredTools.Loaded) { recipe.AddIngredient(ModCompatibility.SacredTools.Mod.Find<ModItem>("LuminousEnergy"), 5); }
                     }
                 }
                 if (ModCompatibility.Homeward.Loaded)

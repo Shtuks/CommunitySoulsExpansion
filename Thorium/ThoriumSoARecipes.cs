@@ -3,6 +3,8 @@ using Terraria.ModLoader;
 using Terraria;
 using ssm.Core;
 using SacredTools.Content.Items.Materials;
+using SacredTools.Content.Items.Accessories.Sigils;
+using ssm.SoA.Sigils;
 
 namespace ssm.Thorium
 {
@@ -19,6 +21,21 @@ namespace ssm.Thorium
                 if (recipe.HasResult<ThoriumSoul>() && !recipe.HasIngredient<EmberOfOmen>())
                 {
                     recipe.AddIngredient<EmberOfOmen>(5);
+                }
+
+                if (recipe.HasResult<MementoMori>() && !recipe.HasIngredient<BardSigil>())
+                {
+                    recipe.AddIngredient<BardSigil>();
+                    recipe.AddIngredient<HealerSigil>();
+                }
+
+                if (recipe.HasResult<BardSoul>() && !recipe.HasIngredient<BardSigil>())
+                {
+                    recipe.AddIngredient<BardSigil>();
+                }
+                if (recipe.HasResult<GuardianAngelsSoul>() && !recipe.HasIngredient<HealerSigil>())
+                {
+                    recipe.AddIngredient<HealerSigil>();
                 }
             }
         }

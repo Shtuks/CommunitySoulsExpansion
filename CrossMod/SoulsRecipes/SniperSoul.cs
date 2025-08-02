@@ -38,7 +38,7 @@ namespace ssm.CrossMod.SoulsRecipes
                         }
                         if (ModCompatibility.Vitality.Loaded) { recipe.AddIngredient(ModCompatibility.Vitality.Mod.Find<ModItem>("CompoundQuiver"), 1); }
                         if (ModCompatibility.Homeward.Loaded) { recipe.AddIngredient(ModCompatibility.Homeward.Mod.Find<ModItem>("StarQuiver"), 1); }
-                        if (ModCompatibility.SacredTools.Loaded) { recipe.AddIngredient(ModCompatibility.SacredTools.Mod.Find<ModItem>("LuminousEnergy"), 5); }
+                        //if (ModCompatibility.SacredTools.Loaded) { recipe.AddIngredient(ModCompatibility.SacredTools.Mod.Find<ModItem>("LuminousEnergy"), 5); }
                     }
                 }
                 if (ModCompatibility.Homeward.Loaded)

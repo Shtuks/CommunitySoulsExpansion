@@ -25,7 +25,7 @@ namespace ssm.Content.Items.Armor
             Item.height = 18;
             Item.rare = 11;
             Item.expert = true;
-            Item.value = Item.sellPrice(10, 0, 0, 0);
+            Item.value = Item.sellPrice(100, 0, 0, 0);
             Item.defense = 200;
         }
 

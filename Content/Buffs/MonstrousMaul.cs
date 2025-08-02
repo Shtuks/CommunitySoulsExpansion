@@ -7,6 +7,10 @@ namespace ssm.Content.Buffs
 {
     public class MonstrousMaul : ModBuff
     {
+        public override bool IsLoadingEnabled(Mod mod)
+        {
+            return CSEConfig.Instance.AlternativeSiblings;
+        }
         public override void SetStaticDefaults()
         {
             Main.debuff[Type] = true;

@@ -28,13 +28,13 @@ namespace ssm.CrossMod.SoulsRecipes
                     if (ModCompatibility.Redemption.Loaded) { recipe.AddIngredient(ModCompatibility.Redemption.Mod.Find<ModItem>("PortableHoloProjector"), 1); recipe.AddIngredient(ModCompatibility.Redemption.Mod.Find<ModItem>("CruxCardMossyGoliath"), 1); recipe.AddIngredient(ModCompatibility.Redemption.Mod.Find<ModItem>("MutagenSummon"), 1); recipe.RemoveIngredient(ModContent.ItemType<OccultistsEssence>()); }
                     if (ModCompatibility.Catalyst.Loaded) { recipe.AddIngredient(ModCompatibility.Catalyst.Mod.Find<ModItem>("UnrelentingTorment"), 1);}
                 }
-                if (ModCompatibility.Calamity.Loaded)
-                {
-                    if (recipe.HasResult(ModCompatibility.Calamity.Mod.Find<ModItem>("Nucleogenesis")))
-                    {
-                        if (ModCompatibility.SacredTools.Loaded) { recipe.AddIngredient(ModCompatibility.SacredTools.Mod.Find<ModItem>("LuminousEnergy"), 5); }
-                    }
-                }
+                //if (ModCompatibility.Calamity.Loaded)
+                //{
+                //    if (recipe.HasResult(ModCompatibility.Calamity.Mod.Find<ModItem>("Nucleogenesis")))
+                //    {
+                //        if (ModCompatibility.SacredTools.Loaded) { recipe.AddIngredient(ModCompatibility.SacredTools.Mod.Find<ModItem>("LuminousEnergy"), 5); }
+                //    }
+                //}
                 if (ModCompatibility.SacredTools.Loaded)
                 {
                     if (recipe.HasResult(ModCompatibility.SacredTools.Mod.Find<ModItem>("StardustSigil")))

@@ -6,6 +6,7 @@ using CalamityMod.Items.Materials;
 using FargowiltasCrossmod.Content.Calamity.Items.Accessories.Souls;
 using ContinentOfJourney.Items.Accessories;
 using CalamityMod.Items.Accessories.Wings;
+using FargowiltasSouls.Content.Items.Accessories.Masomode;
 
 namespace ssm.Homeward
 {
@@ -31,6 +32,14 @@ namespace ssm.Homeward
                 {
                     recipe.RemoveIngredient(ModContent.ItemType<TracersCelestial>());
                     recipe.AddIngredient<Horizon>();
+                }
+                if (recipe.HasResult<Horizon>() && !recipe.HasIngredient<TracersCelestial>())
+                {
+                    if (recipe.HasIngredient<AeolusBoots>())
+                    {
+                        recipe.RemoveIngredient(ModContent.ItemType<AeolusBoots>());
+                    }
+                    recipe.AddIngredient<TracersCelestial>();
                 }
             }
         }
