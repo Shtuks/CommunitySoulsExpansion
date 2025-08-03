@@ -47,14 +47,15 @@ namespace ssm
         public bool dukeEX;
         public override void Load()
         {
-            if (ModCompatibility.Thorium.Loaded) { multiplierML += 0.5f; multiplierMD += 1f; multiplierAL += 1f; multiplierAD += 2f; }
-            if (ModCompatibility.Calamity.Loaded) { multiplierML += 2.5f; multiplierMD += 2.5f; multiplierAL += 6f; multiplierAD += 5f; }
-            if (ModCompatibility.SacredTools.Loaded) { multiplierML += 2f; multiplierMD += 1.5f; multiplierAL += 0.5f; multiplierAD += 3f; }
-            if (ModCompatibility.Homeward.Loaded) { multiplierML += 0.5f; multiplierMD += 2f; multiplierAL += 0.5f; multiplierAD += 2f; }
+            if (ModCompatibility.Thorium.Loaded) { multiplierML += 0.5f; multiplierMD += 1f; multiplierAL += 0.7f; multiplierAD += 2f; }
+            if (ModCompatibility.Calamity.Loaded) { multiplierML += 2.5f; multiplierMD += 2.5f; multiplierAL += 5f; multiplierAD += 5f; }
+            if (ModCompatibility.SacredTools.Loaded) { multiplierML += 2f; multiplierMD += 1.5f; multiplierAL += 0.5f; multiplierAD += 2f; }
+            if (ModCompatibility.Homeward.Loaded) { multiplierML += 0.5f; multiplierMD += 1f; multiplierAL += 0.5f; multiplierAD += 1f; }
 
             if (CSEConfig.Instance.SecretBosses) { multiplierML += 0.5f;}
 
             if (ModCompatibility.Inheritance.Loaded) { multiplierAL = 16f; multiplierAD = 20f; }
+            if (ModCompatibility.IEoR.Loaded) { multiplierML = 20f;}
         }
         public override bool CheckDead(NPC npc)
         {
@@ -113,11 +114,6 @@ namespace ssm
                 npc.damage = Main.getGoodWorld ? 5000 : (int)(500 + (100 * multiplierMD));
                 npc.lifeMax = (int)(10000000 + (10000000 * multiplierML));
 
-                if (ModCompatibility.IEoR.Loaded)
-                {
-                    npc.damage = 1000;
-                    npc.lifeMax = 300000000;
-                }
                 if (ModCompatibility.Inheritance.Loaded && !Main.zenithWorld && !Main.getGoodWorld)
                 {
                     npc.damage = 3000;

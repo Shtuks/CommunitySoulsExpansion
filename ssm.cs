@@ -38,8 +38,6 @@ using ssm.Content.NPCs.Guntera;
 using ssm.Content.NPCs.Ceiling;
 using FargowiltasSouls.Content.Items.Materials;
 using ssm.Content.NPCs.MutantEX.HitPlayer;
-using ssm.Content.NPCs;
-using FargowiltasSouls.Content.Bosses.MutantBoss;
 
 namespace ssm
 {

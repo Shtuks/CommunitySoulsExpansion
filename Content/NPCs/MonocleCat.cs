@@ -203,6 +203,9 @@ namespace ssm.Content.NPCs
             NPC.breathCounter = 0;
             NPC.immortal = true;
             NPC.timeLeft = 7200;
+            NPC.alpha = 0;
+            NPC.life = NPC.lifeMax;
+            NPC.dontTakeDamage = true;
         }
         public override string GetChat()
         {

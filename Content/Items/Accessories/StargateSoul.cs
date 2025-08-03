@@ -37,7 +37,7 @@ namespace ssm.Content.Items.Accessories
             Item.value = int.MaxValue;
             Item.rare = 11;
             Item.accessory = true;
-            Item.defense = 200;
+            Item.defense = 1000;
         }
         public override void VerticalWingSpeeds(Player player, ref float ascentWhenFalling, ref float ascentWhenRising,
             ref float maxCanAscendMultiplier, ref float maxAscentMultiplier, ref float constantAscend)

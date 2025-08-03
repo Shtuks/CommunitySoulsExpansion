@@ -23,7 +23,7 @@ namespace ssm.CrossMod.SoulsRecipes
 
                 if (recipe.HasResult(ModContent.ItemType<ConjuristsSoul>()))
                 {
-                    if (ModCompatibility.SacredTools.Loaded) { recipe.AddIngredient(ModCompatibility.SacredTools.Mod.Find<ModItem>("StarstreamVeil"), 1); recipe.RemoveIngredient(ItemID.MonkBelt); recipe.RemoveIngredient(ItemID.SquireShield); recipe.RemoveIngredient(ItemID.HuntressBuckler); recipe.RemoveIngredient(ItemID.ApprenticeScarf); }
+                    if (ModCompatibility.SacredTools.Loaded) { recipe.AddIngredient(ModCompatibility.SacredTools.Mod.Find<ModItem>("StardustSigil"), 1); recipe.AddIngredient(ModCompatibility.SacredTools.Mod.Find<ModItem>("StarstreamVeil"), 1); recipe.RemoveIngredient(ItemID.MonkBelt); recipe.RemoveIngredient(ItemID.SquireShield); recipe.RemoveIngredient(ItemID.HuntressBuckler); recipe.RemoveIngredient(ItemID.ApprenticeScarf); }
                     if (ModCompatibility.Homeward.Loaded) { recipe.AddIngredient(ModCompatibility.Homeward.Mod.Find<ModItem>("IncitingIncident"), 1); recipe.AddIngredient(ModCompatibility.Homeward.Mod.Find<ModItem>("DivineNecklace"), 1);}
                     if (ModCompatibility.Redemption.Loaded) { recipe.AddIngredient(ModCompatibility.Redemption.Mod.Find<ModItem>("PortableHoloProjector"), 1); recipe.AddIngredient(ModCompatibility.Redemption.Mod.Find<ModItem>("CruxCardMossyGoliath"), 1); recipe.AddIngredient(ModCompatibility.Redemption.Mod.Find<ModItem>("MutagenSummon"), 1); recipe.RemoveIngredient(ModContent.ItemType<OccultistsEssence>()); }
                     if (ModCompatibility.Catalyst.Loaded) { recipe.AddIngredient(ModCompatibility.Catalyst.Mod.Find<ModItem>("UnrelentingTorment"), 1);}

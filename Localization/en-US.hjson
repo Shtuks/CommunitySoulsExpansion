@@ -637,10 +637,13 @@ Mods: {
 				DisplayName: Nekomi Enchantment
 				Tooltip:
 					'''
+					[i:FargowiltasSouls/SparklingAdoration]Grants immunity to Lovestruck and Fake Hearts
 					[i:FargowiltasSouls/SparklingAdoration] Graze attacks to gain up to x1.25 increased damage
 					[i:FargowiltasSouls/SparklingAdoration] Damage bonus decreases over time and is fully lost on hit
 					[i:FargowiltasSouls/SparklingAdoration] Your attacks periodically summon life draining heart
-
+					Spectral Deviantt fights for you
+					If Deviantt kill 10 enemies she will attack with her axe once then disappear
+					Axe attack have 20 seconds cooldown
 					'It's never getting fixed'
 					'''
 			}
@@ -3319,7 +3322,7 @@ Mods: {
 			}
 
 			BardSigil: {
-				DisplayName: Bard Sigil
+				DisplayName: Shooting Star Sigil
 				Tooltip:
 					'''
 					25% increased bard Damage
@@ -3328,7 +3331,7 @@ Mods: {
 			}
 
 			HealerSigil: {
-				DisplayName: Healer Sigil
+				DisplayName: Celestial Sigil
 				Tooltip:
 					'''
 					25% increased radiant Damage
@@ -3672,7 +3675,7 @@ Mods: {
 			EidolonAmuletEffect: Eidolon Amulet
 			//other
 			GaiaEffect: Attacking mode
-			NekomiEffect: Nekomi armor set
+			NekomiEffect: Devi
 			PhantaplazmalEffect: Mutant armor set
 			StyxEffect: Charging energy
 			MutantSoulEffect: Spectral Mutant
@@ -4054,17 +4057,13 @@ Mods: {
 			}
 		}
 
-		DamageClasses.UnitedModdedThrower.DisplayName: thrower damage
-
 		Message: {
-			NoThrower: " WARNING: In latest update thrower merge was moved to Thrower Unification mod"
+			NoThrower: WARNING! In latest update thrower merge was moved to Thrower Unification mod
 			NoBalancing: If you playing Calamity with Thorium, install WHummus' Calamity/Thorium Balancing
 			NoRework: It is recomended to play Thorium with Thorium Bosses Rework to enhance experience
 			NoSoABardHealer1: We detected that you playing Shadows of Abaddon with Thorium Mod
 			NoSoABardHealer2: Please install SoA Bard & Healer for better compatibility
 		}
-
-		"Keybinds.Dot Mount.DisplayName": Dot  Mount
 	}
 
 	Redemption: {

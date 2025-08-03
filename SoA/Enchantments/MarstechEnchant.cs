@@ -47,7 +47,7 @@ namespace ssm.SoA.Enchantments
 
         public class MarstechEffect : AccessoryEffect
         {
-            public override Header ToggleHeader => Header.GetHeader<GenerationsForceHeader>();
+            public override Header ToggleHeader => null;
             public override int ToggleItemType => ModContent.ItemType<MarstechEnchant>();
             public override bool ActiveSkill => true;
 

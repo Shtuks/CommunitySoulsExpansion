@@ -26,6 +26,8 @@ using ThoriumMod.Items.Depths;
 using ThoriumMod.Items.Lodestone;
 using ThoriumMod.Items.Illumite;
 using ThoriumMod.Items.Valadium;
+using ThoriumMod.Items.Dragon;
+using ThoriumMod.Items.Flesh;
 
 namespace ssm.Thorium
 {
@@ -111,7 +113,12 @@ namespace ssm.Thorium
                     recipe.AddIngredient<InfernoEssence>(2);
                     recipe.AddIngredient<DeathEssence>(2);
                 }
-
+                if (recipe.HasResult<FlightMasterySoul>() && !recipe.HasIngredient<TerrariumWings>())
+                {
+                    recipe.AddIngredient<TerrariumWings>();
+                    recipe.AddIngredient<DragonWings>();
+                    recipe.AddIngredient<FleshWings>();
+                }
                 //if (recipe.HasResult<WorldShaperSoul>() && !recipe.HasIngredient<GeodeEnchant>())
                 //{
                 //    recipe.AddIngredient<GeodeEnchant>();
