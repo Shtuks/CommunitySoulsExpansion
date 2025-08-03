@@ -102,7 +102,6 @@ namespace ssm.SoA
                 }
             }
         }
-
         private void AttackOtherNPC(NPC attacker, NPC target)
         {
             int direction = attacker.position.X < target.position.X ? 1 : -1;

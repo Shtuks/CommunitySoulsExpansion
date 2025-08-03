@@ -48,9 +48,12 @@ namespace ssm.CrossMod.SoulsRecipes
                     }
                     if (recipe.HasResult(ModCompatibility.Calamity.Mod.Find<ModItem>("ElementalGauntlet")))
                     {
-                        if (!recipe.HasIngredient(ModCompatibility.Thorium.Mod.Find<ModItem>("TerrariumCore")) && ModCompatibility.Thorium.Loaded)
+                        if (ModCompatibility.Thorium.Loaded)
                         {
-                            recipe.AddIngredient(ModCompatibility.Thorium.Mod.Find<ModItem>("TerrariumCore"), 3);
+                            if (!recipe.HasIngredient(ModCompatibility.Thorium.Mod.Find<ModItem>("TerrariumCore")))
+                            {
+                                recipe.AddIngredient(ModCompatibility.Thorium.Mod.Find<ModItem>("TerrariumCore"), 3);
+                            }
                         }
                         if (ModCompatibility.Homeward.Loaded) { recipe.AddIngredient(ModCompatibility.Homeward.Mod.Find<ModItem>("DivineTouch"), 1); recipe.RemoveIngredient(ItemID.FireGauntlet); }
                         if (!ModCompatibility.Homeward.Loaded && ModCompatibility.SacredTools.Loaded) { recipe.AddIngredient(ModCompatibility.SacredTools.Mod.Find<ModItem>("FloraFist"), 1); recipe.RemoveIngredient(ItemID.FireGauntlet); }

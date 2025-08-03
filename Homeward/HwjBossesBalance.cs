@@ -1,14 +1,11 @@
 ﻿using Terraria.ModLoader;
 using ssm.Core;
 using Terraria;
-using Redemption.NPCs.Bosses.Neb;
 using ContinentOfJourney.NPCs.Boss_TheSon;
 using ContinentOfJourney.NPCs.Boss_WorldsEndEverlastingFallingWhale;
 using ContinentOfJourney.NPCs.Boss_SlimeGod;
 using ContinentOfJourney.NPCs.Boss_TheMaterealizer;
-using FargowiltasSouls.Content.Items.Armor;
 using ContinentOfJourney.NPCs.Boss_TheOverwatcher;
-using ContinentOfJourney.NPCs.Boss_TheLifebringer;
 using ContinentOfJourney.NPCs.Boss_Diver;
 
 namespace ssm.Homeward
@@ -22,13 +19,15 @@ namespace ssm.Homeward
         {
             if (npc.type == ModContent.NPCType<TheSon>())
             {
-                float multiplier = 0;
+                float multiplierD = 0;
+                float multiplierL = 0;
 
-                if (ModCompatibility.Thorium.Loaded) { multiplier += 0.7f; }
-                if (ModCompatibility.SacredTools.Loaded) { multiplier += 0.3f; }
-                if (ModCompatibility.Calamity.Loaded) { multiplier += 0.6f; }
+                if (ModCompatibility.Thorium.Loaded) { multiplierL += 0.5f; multiplierD += 2f; }
+                if (ModCompatibility.SacredTools.Loaded) { multiplierL += 0.5f; multiplierD += 3f; }
+                if (ModCompatibility.Calamity.Loaded) { multiplierL += 3.1f; multiplierD += 8f; }
 
-                npc.lifeMax = (int)(2900000 + (1000000 * multiplier));
+                npc.lifeMax = (int)(2900000 + (1000000 * multiplierL));
+                npc.damage = (int)(290 + (10 * multiplierD));
             }
 
             if (npc.type == ModContent.NPCType<WorldsEndEverlastingFallingWhale>())

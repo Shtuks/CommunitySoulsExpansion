@@ -39,7 +39,7 @@ namespace ssm.SoA.Sigils
 
         public override void AddRecipes()
         {
-            CreateRecipe().AddIngredient<BardEmblem>().AddIngredient<TiridiumBar>(10).AddIngredient(3457, 20)
+            CreateRecipe().AddIngredient<BardEmblem>().AddIngredient<TiridiumBar>(10).AddIngredient<ShootingStarFragment>(20)
                 .AddIngredient<EldritchSpark>()
                 .AddIngredient<LuminousEnergy>(15)
                 .AddTile<TiridiumInfuserTile>()

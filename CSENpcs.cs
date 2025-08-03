@@ -17,14 +17,10 @@ using FargowiltasSouls.Core.ItemDropRules.Conditions;
 using FargowiltasSouls;
 using Terraria.GameContent.ItemDropRules;
 using ssm.Content.Items.Accessories;
-using ssm.Content.Buffs;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria.GameContent;
 using ssm.Content.Items.Materials;
 using FargowiltasSouls.Content.Items.Materials;
-using ssm.Content.NPCs;
-using FargowiltasSouls.Content.Projectiles.BossWeapons;
-using Spooky.Core;
 
 namespace ssm
 {
@@ -39,8 +35,10 @@ namespace ssm
         public static int boss = -1;
         public static int mutantEX = -1;
 
-        public static float multiplierM = 0;
-        public static float multiplierA = 0;
+        public static float multiplierMD = 0;
+        public static float multiplierML = 0;
+        public static float multiplierAD = 0;
+        public static float multiplierAL = 0;
 
         public bool SwarmActive;
         public bool SwarmHealth;
@@ -49,14 +47,15 @@ namespace ssm
         public bool dukeEX;
         public override void Load()
         {
-            if (ModCompatibility.Homeward.Loaded && !ModCompatibility.Calamity.Loaded && !ModCompatibility.SacredTools.Loaded) { multiplierM += 0.8f; }
+            if (ModCompatibility.Thorium.Loaded) { multiplierML += 0.5f; multiplierMD += 1f; multiplierAL += 0.7f; multiplierAD += 2f; }
+            if (ModCompatibility.Calamity.Loaded) { multiplierML += 2.5f; multiplierMD += 2.5f; multiplierAL += 5f; multiplierAD += 5f; }
+            if (ModCompatibility.SacredTools.Loaded) { multiplierML += 2f; multiplierMD += 1.5f; multiplierAL += 0.5f; multiplierAD += 2f; }
+            if (ModCompatibility.Homeward.Loaded) { multiplierML += 0.5f; multiplierMD += 1f; multiplierAL += 0.5f; multiplierAD += 1f; }
 
-            if (ModCompatibility.SacredTools.Loaded && !ModCompatibility.Calamity.Loaded) { multiplierM += 0.8f; }
+            if (CSEConfig.Instance.SecretBosses) { multiplierML += 0.5f;}
 
-            if (ModCompatibility.Thorium.Loaded) { multiplierM += 0.6f; multiplierA += 0.7f; }
-            if (ModCompatibility.Calamity.Loaded) { multiplierM += CSEConfig.Instance.DebugMode ? 8.8f : 2.8f; multiplierA += 6f; }
-            if (ModCompatibility.SacredTools.Loaded) { multiplierM += 1.6f; multiplierA += 1f; }
-            if (ModCompatibility.Inheritance.Loaded) { multiplierA = 16f; }
+            if (ModCompatibility.Inheritance.Loaded) { multiplierAL = 16f; multiplierAD = 20f; }
+            if (ModCompatibility.IEoR.Loaded) { multiplierML = 20f;}
         }
         public override bool CheckDead(NPC npc)
         {
@@ -85,10 +84,10 @@ namespace ssm
         }
         public override void OnHitNPC(NPC npc, NPC target, NPC.HitInfo hit)
         {
-            if (npc.type == NPCID.DukeFishron && (EModeGlobalNPC.spawnFishronEX || dukeEX))
-            {
-                target.AddBuff(ModContent.BuffType<MonstrousMaul>(), 180);
-            }
+            //if (npc.type == NPCID.DukeFishron && dukeEX && CSEConfig.Instance.AlternativeSiblings)
+            //{
+            //    target.AddBuff(ModContent.BuffType<MonstrousMaul>(), 180);
+            //}
         }
         public override void OnSpawn(NPC npc, IEntitySource source)
         {
@@ -112,63 +111,9 @@ namespace ssm
             {
                 npc.defense = 300;
 
-                //cal omly
-                if (ModCompatibility.Calamity.Loaded && !ModCompatibility.SacredTools.Loaded && !ModCompatibility.Thorium.Loaded && !ModCompatibility.Inheritance.Loaded)
-                {
-                    npc.damage = 750;
-                    npc.lifeMax = CSEConfig.Instance.SecretBosses ? 40000000 : 35000000;
-                }
+                npc.damage = Main.getGoodWorld ? 5000 : (int)(500 + (100 * multiplierMD));
+                npc.lifeMax = (int)(10000000 + (10000000 * multiplierML));
 
-                //soa only
-                if (ModCompatibility.SacredTools.Loaded && !ModCompatibility.Calamity.Loaded && !ModCompatibility.Thorium.Loaded && !ModCompatibility.Inheritance.Loaded)
-                {
-                    npc.damage = 700;
-                    npc.lifeMax = CSEConfig.Instance.SecretBosses ? 35000000 : 30000000;
-                }
-
-                //thorium only
-                if (ModCompatibility.Thorium.Loaded && !ModCompatibility.SacredTools.Loaded && !ModCompatibility.Calamity.Loaded && !ModCompatibility.Inheritance.Loaded)
-                {
-                    npc.damage = 600;
-                    npc.lifeMax = CSEConfig.Instance.SecretBosses ? 20000000 : 15000000;
-                }
-
-                //thorium and soa
-                if (ModCompatibility.Thorium.Loaded && ModCompatibility.SacredTools.Loaded && !ModCompatibility.Calamity.Loaded && !ModCompatibility.Inheritance.Loaded)
-                {
-                    npc.damage = 750;
-                    npc.lifeMax = CSEConfig.Instance.SecretBosses ? 40000000 : 35000000;
-                }
-
-                //thorium and cal
-                if (ModCompatibility.Thorium.Loaded && ModCompatibility.Calamity.Loaded && !ModCompatibility.SacredTools.Loaded && !ModCompatibility.Inheritance.Loaded)
-                {
-                    npc.damage = 800;
-                    npc.lifeMax = CSEConfig.Instance.SecretBosses ? 4500000 : 40000000;
-                }
-
-                //soa and cal
-                if (ModCompatibility.SacredTools.Loaded && ModCompatibility.Calamity.Loaded && !ModCompatibility.Thorium.Loaded && !ModCompatibility.Inheritance.Loaded)
-                {
-                    npc.damage = 900;
-                    npc.lifeMax = 50000000;
-                }
-
-                //all mods
-                if (ModCompatibility.Thorium.Loaded && ModCompatibility.Calamity.Loaded && ModCompatibility.SacredTools.Loaded && !ModCompatibility.Inheritance.Loaded)
-                {
-                    npc.damage = 1000;
-                    npc.lifeMax = 60000000;
-                }
-
-                //no mods (idk why are you even playing this)
-                if (!ModCompatibility.Calamity.Loaded && !ModCompatibility.SacredTools.Loaded && !ModCompatibility.Thorium.Loaded)
-                {
-                    npc.damage = 500;
-                    npc.lifeMax = CSEConfig.Instance.SecretBosses ? 15000000 : 10000000;
-                }
-
-                //funnies
                 if (ModCompatibility.Inheritance.Loaded && !Main.zenithWorld && !Main.getGoodWorld)
                 {
                     npc.damage = 3000;
@@ -228,8 +173,8 @@ namespace ssm
 
             if (npc.type == ModContent.NPCType<AbomBoss>())
             {
-                npc.damage = Main.getGoodWorld ? 1000 : (int)(250 + (20 * multiplierA));
-                npc.lifeMax = (int)(2800000 + (1000000 * multiplierA)) / (Main.expertMode ? 2 : 4);
+                npc.damage = Main.getGoodWorld ? 1000 : (int)(250 + (10 * multiplierAD));
+                npc.lifeMax = (int)(2800000 + (1000000 * multiplierAL)) / (Main.expertMode ? 2 : 4);
             }
         }
         public override void SetStaticDefaults()
@@ -356,14 +301,15 @@ namespace ssm
                         npc.lifeMax = 5000000;
                     }
                 }
+
                 if (npc.type == ModContent.NPCType<Mutant>())
                 {
-                    npc.lifeMax = (int)(10000000 + (10000000 * Math.Round(multiplierM, 1))) / (Main.expertMode ? 1 : 2) / 10;
+                    npc.lifeMax = (int)(10000000 + (10000000 * Math.Round(multiplierML, 1))) / (Main.expertMode ? 1 : 2) / 10;
                     npc.life = npc.lifeMax;
                 }
                 if (npc.type == ModContent.NPCType<Abominationn>())
                 {
-                    npc.lifeMax = (int)(1800000 + (1000000 * multiplierA)) / 10;
+                    npc.lifeMax = (int)(1800000 + (1000000 * multiplierAL)) / 10;
                     npc.life = npc.lifeMax;
                 }
                 if (npc.type == NPCID.DukeFishron && (EModeGlobalNPC.spawnFishronEX || dukeEX))

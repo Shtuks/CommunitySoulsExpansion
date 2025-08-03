@@ -1,5 +1,4 @@
-﻿using FargowiltasCrossmod.Content.Calamity.Bosses.SkeletronPrime;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using System.Linq;
 using Terraria.ModLoader;
 using Terraria;
@@ -97,7 +96,7 @@ namespace ssm.Content.Projectiles.Enchantments
                 Projectile.GetSource_FromThis(),
                 Projectile.Center,
                 velocity,
-                ModContent.ProjectileType<HomingRocket>(),
+                ModContent.ProjectileType<XeniumRocket>(),
                 90,
                 5f,
                 player.whoAmI

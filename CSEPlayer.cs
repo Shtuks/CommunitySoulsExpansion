@@ -292,7 +292,7 @@ namespace ssm
             if (blindTime > 0) blindTime--;
 
             //No "free dps"
-            if (FargoSoulsUtil.BossIsAlive(ref EModeGlobalNPC.mutantBoss, ModContent.NPCType<MutantBoss>()) && Player.HeldItem != null && !Player.HeldItem.IsAir && Player.HeldItem.DamageType != DamageClass.Summon && Player.HeldItem.DamageType != DamageClass.SummonMeleeSpeed)
+            if (FargoSoulsUtil.BossIsAlive(ref EModeGlobalNPC.mutantBoss, ModContent.NPCType<MutantBoss>()) && Player.HeldItem != null && !Player.HeldItem.IsAir && Player.HeldItem.DamageType != DamageClass.Summon && Player.HeldItem.DamageType != DamageClass.SummonMeleeSpeed && !(Player.HeldItem.pick > 0) && !(Player.HeldItem.hammer > 0) && !(Player.HeldItem.axe > 0))
             {
                 Player.maxMinions = 0;
             }

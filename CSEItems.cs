@@ -71,6 +71,19 @@ namespace ssm
             {
                 entity.damage = 6800;
             }
+
+            if (entity.type == ModContent.ItemType<ColossusSoul>())
+            {
+                entity.defense = 15;
+            }
+            if (entity.type == ModContent.ItemType<UniverseSoul>())
+            {
+                entity.defense = 5;
+            }
+            if (entity.type == ModContent.ItemType<DimensionSoul>())
+            {
+                entity.defense = 20;
+            }
         }
         public override void ModifyItemLoot(Item item, ItemLoot itemLoot)
         {
@@ -81,10 +94,10 @@ namespace ssm
         }
         public override void UpdateAccessory(Item Item, Player player, bool hideVisual)
         {
-            if (Item.type == ModContent.ItemType<UniverseSoul>() && ModCompatibility.SacredTools.Loaded && ModCompatibility.Thorium.Loaded && ModCompatibility.Calamity.Loaded)
-            {
-                player.maxMinions += 2;
-            }
+            //if (Item.type == ModContent.ItemType<UniverseSoul>() && ModCompatibility.SacredTools.Loaded && ModCompatibility.Thorium.Loaded && ModCompatibility.Calamity.Loaded)
+            //{
+            //    player.maxMinions += 2;
+            //}
 
             if (Item.type == ModContent.ItemType<BerserkerSoul>())
             {

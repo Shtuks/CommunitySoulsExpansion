@@ -26,7 +26,7 @@ namespace ssm.Thorium
             }
             if (item.type == ModContent.ItemType<OmniCannon>())
             {
-                item.damage = (int)(item.damage * 0.85f);
+                item.damage = (int)(item.damage * 0.7f);
             }
         }
 
@@ -47,7 +47,7 @@ namespace ssm.Thorium
             if (item.type == ModContent.ItemType<OmniCannon>())
             {
                 tooltips.Add(new TooltipLine(Mod, "rebalance", $"{Language.GetTextValue("Mods.ssm.Balance.Buff")} {Language.GetTextValue("Mods.ssm.Balance.VelUP")} 50%"));
-                tooltips.Add(new TooltipLine(Mod, "rebalance2", $"{Language.GetTextValue("Mods.ssm.Balance.Nerf")} {Language.GetTextValue("Mods.ssm.Balance.DamageDown")} 15%"));
+                tooltips.Add(new TooltipLine(Mod, "rebalance2", $"{Language.GetTextValue("Mods.ssm.Balance.Nerf")} {Language.GetTextValue("Mods.ssm.Balance.DamageDown")} 30%"));
             }
             if (item.type == ModContent.ItemType<TerrariumParticleSprinters>())
             {

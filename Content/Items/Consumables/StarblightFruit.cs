@@ -85,7 +85,7 @@ namespace ssm.Content.Items.Consumables
             if (!Player.active)
                 return false;
 
-            return Player.CSE().starlightFruit && ((ModCompatibility.Calamity.Loaded && ModCompatibility.SacredTools.Loaded) || (ModCompatibility.Thorium.Loaded && ModCompatibility.SacredTools.Loaded) || (ModCompatibility.Thorium.Loaded && ModCompatibility.Calamity.Loaded));
+            return Player.CSE().starlightFruit;
         }
         public override bool IsHidden() => IsEmpty && !IsEnabled();
     }

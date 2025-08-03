@@ -27,6 +27,13 @@ namespace ssm.CrossMod.SoulsRecipes
                     if (ModCompatibility.Ragnarok.Loaded) { recipe.AddIngredient(ModCompatibility.Ragnarok.Mod.Find<ModItem>("GoldenBatDroppings"), 1); }
                     if (ModCompatibility.Thorium.Loaded) { recipe.AddIngredient(this.Mod.Find<ModItem>("GeodeEnchant"), 1); }
                 }
+                if (ModCompatibility.SacredTools.Loaded)
+                {
+                    if (recipe.HasResult(ModCompatibility.SacredTools.Mod.Find<ModItem>("LunarRing")))
+                    {
+                        if (ModCompatibility.Thorium.Loaded) { recipe.AddIngredient(ModCompatibility.Thorium.Mod.Find<ModItem>("GreedyGoblet"), 1); recipe.RemoveIngredient(3035); }
+                    }
+                }
             }
         }
     }

@@ -128,24 +128,41 @@ namespace ssm.SoA
                     }
                     if (npc.type == ModContent.NPCType<NihilusLanternRisen>() || npc.type == ModContent.NPCType<NihilusLantern>() || npc.type == ModContent.NPCType<NihilusLanternBig>())
                     {
-                        npc.lifeMax = ModCompatibility.Calamity.Loaded ? 500000 : 400000;
+                        npc.lifeMax = ModCompatibility.Calamity.Loaded ? 600000 : 400000;
+                    }
+
+                    if (npc.type == ModContent.NPCType<Nihilus>())
+                    {
+                        float multiplierL = 0;
+
+                        if (ModCompatibility.Thorium.Loaded) { multiplierL += 0.5f; }
+                        if (ModCompatibility.Homeward.Loaded) { multiplierL += 0.5f; }
+                        if (ModCompatibility.Calamity.Loaded) { multiplierL += 2f; }
+
+                        npc.lifeMax = (int)(4100000 + (1000000 * multiplierL));
+                    }
+                    if (npc.type == ModContent.NPCType<Nihilus2>())
+                    {
+                        float multiplierL = 0;
+
+                        if (ModCompatibility.Thorium.Loaded) { multiplierL += 0.5f; }
+                        if (ModCompatibility.Homeward.Loaded) { multiplierL += 0.5f; }
+                        if (ModCompatibility.Calamity.Loaded) { multiplierL += 2f; }
+
+                        npc.lifeMax = (int)(5900000 + (1000000 * multiplierL));
+                    }
+
+                    if (Main.masterMode)
+                    {
+                        npc.lifeMax = (int)(npc.lifeMax * 1.5f);
+                        npc.damage = (int)(npc.damage * 1.3f);
                     }
 
                     if (Main.getGoodWorld)
                     {
-                        npc.lifeMax *= 5;
-                        npc.damage *= 3;
+                        npc.lifeMax *= 3;
+                        npc.damage *= 2;
                     }
-                }
-                if (npc.type == ModContent.NPCType<Nihilus>())
-                {
-                    npc.lifeMax = Main.masterMode ? ModCompatibility.Calamity.Loaded ? 11000000 : 7300000 : ModCompatibility.Calamity.Loaded ? 9600000 : 6800000;
-                    npc.damage = ModCompatibility.Calamity.Loaded ? 500 : 450;
-                }
-                if (npc.type == ModContent.NPCType<Nihilus2>())
-                {
-                    npc.lifeMax = Main.masterMode ? ModCompatibility.Calamity.Loaded ? 16000000 : 11000000 : ModCompatibility.Calamity.Loaded ? 15000000 : 9700000;
-                    npc.damage = ModCompatibility.Calamity.Loaded ? 500 : 450;
                 }
 
                 npc.life = npc.lifeMax;

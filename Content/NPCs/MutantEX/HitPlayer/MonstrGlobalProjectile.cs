@@ -52,22 +52,22 @@ namespace ssm.Content.NPCs.MutantEX.HitPlayer
 
         public override void AI(Projectile projectile)
         {
-            if (FargoSoulsUtil.BossIsAlive(ref CSENpcs.mutantEX, ModContent.NPCType<MutantEX>()))
-            {
-                foreach (Player player in Main.player)
-                {
-                    if (!player.active || player.dead) continue;
+            //if (FargoSoulsUtil.BossIsAlive(ref CSENpcs.mutantEX, ModContent.NPCType<MutantEX>()))
+            //{
+            //    foreach (Player player in Main.player)
+            //    {
+            //        if (!player.active || player.dead) continue;
 
-                    if (projectile.Hitbox.Intersects(player.Hitbox) && projectile.hostile && !(player.GetModPlayer<MonstrHealthPlayer>().iFrames > 0))
-                    {
-                        ApplyHealthReduction(player, WorldSavingSystem.MasochistModeReal ? 0.15f : 0.1f);
-                        Main.NewText("Hit!");
-                        player.GetModPlayer<MonstrHealthPlayer>().iFrames += 20;
-                        projectile.Kill();
-                        return;
-                    }
-                }
-            }
+            //        if (projectile.Hitbox.Intersects(player.Hitbox) && projectile.hostile && !(player.GetModPlayer<MonstrHealthPlayer>().iFrames > 0))
+            //        {
+            //            ApplyHealthReduction(player, WorldSavingSystem.MasochistModeReal ? 0.15f : 0.1f);
+            //            Main.NewText("Hit!");
+            //            player.GetModPlayer<MonstrHealthPlayer>().iFrames += 20;
+            //            projectile.Kill();
+            //            return;
+            //        }
+            //    }
+            //}
 
             //if (FargoSoulsUtil.BossIsAlive(ref EModeGlobalNPC.mutantBoss, ModContent.NPCType<MutantBoss>()))
             //{

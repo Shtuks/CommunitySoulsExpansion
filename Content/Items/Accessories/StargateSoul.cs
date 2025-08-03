@@ -37,7 +37,7 @@ namespace ssm.Content.Items.Accessories
             Item.value = int.MaxValue;
             Item.rare = 11;
             Item.accessory = true;
-            Item.defense = 200;
+            Item.defense = 1000;
         }
         public override void VerticalWingSpeeds(Player player, ref float ascentWhenFalling, ref float ascentWhenRising,
             ref float maxCanAscendMultiplier, ref float maxAscentMultiplier, ref float constantAscend)
@@ -127,7 +127,10 @@ namespace ssm.Content.Items.Accessories
                 ModContent.Find<ModItem>(Mod.Name, "EternityForce").UpdateAccessory(player, false);
             }
             // ModContent.Find<ModItem>(Mod.Name, "MacroverseSoul").UpdateAccessory(player, false);
-            ModContent.Find<ModItem>(Mod.Name, "CyclonicFin").UpdateAccessory(player, false);
+            if (CSEConfig.Instance.SecretBosses)
+            {
+                ModContent.Find<ModItem>(Mod.Name, "CyclonicFin").UpdateAccessory(player, false);
+            }
             ModContent.Find<ModItem>(ModCompatibility.SoulsMod.Name, "EternitySoul").UpdateAccessory(player, false);
 
             if (ModCompatibility.Calamity.Loaded)
@@ -187,8 +190,10 @@ namespace ssm.Content.Items.Accessories
             }
             recipe.AddIngredient<EternitySoul>(1);
             //if (CSEConfig.Instance.ExperimentalContent) { recipe.AddIngredient<MacroverseSoul>(1); }
-            recipe.AddIngredient<CyclonicFin>(1);
-
+            if (CSEConfig.Instance.SecretBosses)
+            {
+                recipe.AddIngredient<CyclonicFin>(1);
+            }
             recipe.AddIngredient<Sadism>(30);
             //recipe.AddIngredient<tModLoadiumBar>(30);
 

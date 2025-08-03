@@ -2,9 +2,7 @@
 using FargowiltasSouls.Core.AccessoryEffectSystem;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Redemption.NPCs.Friendly.TownNPCs;
 using ReLogic.Content;
-using SacredTools.Content.Items.Armor.Lunar.Quasar;
 using SacredTools.Content.Projectiles.Weapons.Dreamscape.Nihilus;
 using SacredTools.Projectiles.Dreamscape;
 using SacredTools.Projectiles.Lunar;
@@ -14,10 +12,8 @@ using ssm.Core;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using static ssm.SoA.Enchantments.FallenPrinceEnchant;
 using static ssm.SoA.Enchantments.FlariumEnchant;
 using static ssm.SoA.Enchantments.QuasarEnchant;
-using static ssm.SoA.Forces.SyranForce;
 
 namespace ssm.SoA
 {
@@ -47,6 +43,7 @@ namespace ssm.SoA
                 projectile.damage = (int)(projectile.damage * 1.1);
                 eerieBoost--;
             }
+
             if (projectile.type == ModContent.ProjectileType<TenebrisLink2>())
             {
                 if ((projectile.ai[1] += 1f) >= 20f)

@@ -38,8 +38,6 @@ using ssm.Content.NPCs.Guntera;
 using ssm.Content.NPCs.Ceiling;
 using FargowiltasSouls.Content.Items.Materials;
 using ssm.Content.NPCs.MutantEX.HitPlayer;
-using ssm.Content.NPCs;
-using FargowiltasSouls.Content.Bosses.MutantBoss;
 
 namespace ssm
 {
@@ -437,10 +435,10 @@ namespace ssm
         }
         public override void PostSetupContent()
         {
-            if (!ModCompatibility.Inheritance.Loaded)
-            {
-                DPSLimitGlobalNPC.BossDPSLimits.Add(ModContent.NPCType<MutantBoss>(), 600000);
-            }
+            //if (!ModCompatibility.Inheritance.Loaded)
+            //{
+            //    DPSLimitGlobalNPC.BossDPSLimits.Add(ModContent.NPCType<MutantBoss>(), 600000);
+            //}
             if (ModLoader.TryGetMod("Wikithis", out Mod wikithis) && !Main.dedServ)
             {
                 wikithis.Call("AddModURL", this, "https://terrariamods.wiki.gg/wiki/Community_Souls_Expansion/{}");

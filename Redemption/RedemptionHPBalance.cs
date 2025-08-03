@@ -1,13 +1,11 @@
 using Terraria.ModLoader;
 using ssm.Core;
 using Terraria;
-using FargowiltasSouls.Core.Systems;
 using Redemption.NPCs.Bosses.Neb;
 using Redemption.NPCs.Bosses.Neb.Phase2;
 using Redemption.NPCs.Bosses.ADD;
 using CalamityMod.Events;
 using Redemption.NPCs.Bosses.PatientZero;
-using SpiritMod.Items.Ammo.Rocket.Warhead;
 using Redemption.NPCs.Minibosses.Calavia;
 using Redemption.NPCs.Bosses.Thorn;
 using Redemption.NPCs.Bosses.Erhan;
@@ -17,6 +15,7 @@ using Redemption.NPCs.Bosses.KSIII;
 using Redemption.NPCs.Bosses.Cleaver;
 using Redemption.NPCs.Bosses.Gigapora;
 using Redemption.NPCs.Bosses.Obliterator;
+using Redemption.NPCs.Bosses.Neb.Clone;
 
 namespace ssm.Redemption
 {
@@ -40,28 +39,32 @@ namespace ssm.Redemption
 
             if (!ssm.SwarmActive)
             {
-                if (npc.type == ModContent.NPCType<Nebuleus>())
+                if (npc.type == ModContent.NPCType<Nebuleus>() || npc.type == ModContent.NPCType<Nebuleus_Clone>())
                 {
-                    float multiplier = 0;
+                    float multiplierD = 0;
+                    float multiplierL = 0;
 
-                    if (ModCompatibility.Thorium.Loaded) { multiplier += 0.7f; }
-                    if (ModCompatibility.SacredTools.Loaded) { multiplier += 0.3f; }
-                    if (ModCompatibility.Calamity.Loaded) { multiplier += 0.5f; }
+                    if (ModCompatibility.Thorium.Loaded) { multiplierL += 0.7f; multiplierD += 2f; }
+                    if (ModCompatibility.SacredTools.Loaded) { multiplierL += 0.5f; multiplierD += 3f; }
+                    if (ModCompatibility.Calamity.Loaded) { multiplierL += 2f; multiplierD += 5f; }
+                    if (ModCompatibility.Homeward.Loaded) { multiplierL += 0.5f; multiplierD += 1f; }
 
-                    npc.lifeMax = (int)(3400000 + (1000000 * multiplier));
-                    npc.damage = 500;
+                    npc.lifeMax = (int)(1900000 + (1000000 * multiplierL));
+                    npc.damage = (int)(300 + (10 * multiplierD));
                 }
 
-                if (npc.type == ModContent.NPCType<Nebuleus2>())
+                if (npc.type == ModContent.NPCType<Nebuleus2>() || npc.type == ModContent.NPCType<Nebuleus2_Clone>())
                 {
-                    float multiplier = 0;
+                    float multiplierD = 0;
+                    float multiplierL = 0;
 
-                    if (ModCompatibility.Thorium.Loaded) { multiplier += 0.7f; }
-                    if (ModCompatibility.SacredTools.Loaded) { multiplier += 0.3f; }
-                    if (ModCompatibility.Calamity.Loaded) { multiplier += 0.5f; }
+                    if (ModCompatibility.Thorium.Loaded) { multiplierL += 0.7f; multiplierD += 2f; }
+                    if (ModCompatibility.SacredTools.Loaded) { multiplierL += 0.5f; multiplierD += 3f; }
+                    if (ModCompatibility.Calamity.Loaded) { multiplierL += 2f; multiplierD += 5f; }
+                    if (ModCompatibility.Homeward.Loaded) { multiplierL += 0.5f; multiplierD += 1f; }
 
-                    npc.lifeMax = (int)(3700000 + (1000000 * multiplier));
-                    npc.damage = 600;
+                    npc.lifeMax = (int)(2600000 + (1000000 * multiplierL));
+                    npc.damage = (int)(350 + (10 * multiplierD));
                 }
 
                 if (npc.type == ModContent.NPCType<Akka>())
