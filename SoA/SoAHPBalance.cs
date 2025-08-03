@@ -140,12 +140,10 @@ namespace ssm.SoA
                 if (npc.type == ModContent.NPCType<Nihilus>())
                 {
                     npc.lifeMax = Main.masterMode ? ModCompatibility.Calamity.Loaded ? 11000000 : 7300000 : ModCompatibility.Calamity.Loaded ? 9600000 : 6800000;
-                    npc.damage = ModCompatibility.Calamity.Loaded ? 500 : 450;
                 }
                 if (npc.type == ModContent.NPCType<Nihilus2>())
                 {
                     npc.lifeMax = Main.masterMode ? ModCompatibility.Calamity.Loaded ? 16000000 : 11000000 : ModCompatibility.Calamity.Loaded ? 15000000 : 9700000;
-                    npc.damage = ModCompatibility.Calamity.Loaded ? 500 : 450;
                 }
 
                 npc.life = npc.lifeMax;

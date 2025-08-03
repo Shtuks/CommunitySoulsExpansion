@@ -437,10 +437,10 @@ namespace ssm
         }
         public override void PostSetupContent()
         {
-            if (!ModCompatibility.Inheritance.Loaded)
-            {
-                DPSLimitGlobalNPC.BossDPSLimits.Add(ModContent.NPCType<MutantBoss>(), 600000);
-            }
+            //if (!ModCompatibility.Inheritance.Loaded)
+            //{
+            //    DPSLimitGlobalNPC.BossDPSLimits.Add(ModContent.NPCType<MutantBoss>(), 600000);
+            //}
             if (ModLoader.TryGetMod("Wikithis", out Mod wikithis) && !Main.dedServ)
             {
                 wikithis.Call("AddModURL", this, "https://terrariamods.wiki.gg/wiki/Community_Souls_Expansion/{}");

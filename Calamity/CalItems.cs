@@ -55,14 +55,6 @@ namespace ssm.Calamity
             {
                 entity.healLife = 400;
             }
-            if (entity.type == ModContent.ItemType<ColossusSoul>())
-            {
-                entity.defense = 15;
-            }
-            if (entity.type == ModContent.ItemType<DimensionSoul>())
-            {
-                entity.defense = 20;
-            }
         }
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
         {

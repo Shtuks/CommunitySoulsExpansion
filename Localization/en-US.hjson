@@ -13,8 +13,7 @@ Mods: {
 			Homing: Weapon's pojectiles are homing in on enemies
 			CancelBuff: Canceled DLC buff
 			CancelDebuff: Canceled DLC debuff
-			PostND: "[c/FF0000:Cross-mod Balance:] Can be only used after defeating the Nameless Deity"
-			PostND: "Fire column deal 50% less damage"
+			PostND: Fire column deal 50% less damage
 		}
 
 		CodebreakerOptions.Mutant: Mutant

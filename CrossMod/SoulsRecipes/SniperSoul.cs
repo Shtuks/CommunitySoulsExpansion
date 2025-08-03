@@ -32,9 +32,12 @@ namespace ssm.CrossMod.SoulsRecipes
                 {
                     if (recipe.HasResult(ModCompatibility.Calamity.Mod.Find<ModItem>("ElementalQuiver")))
                     {
-                        if (!recipe.HasIngredient(ModCompatibility.Thorium.Mod.Find<ModItem>("TerrariumCore")) && ModCompatibility.Thorium.Loaded)
+                        if (ModCompatibility.Thorium.Loaded)
                         {
-                            recipe.AddIngredient(ModCompatibility.Thorium.Mod.Find<ModItem>("TerrariumCore"), 3);
+                            if (!recipe.HasIngredient(ModCompatibility.Thorium.Mod.Find<ModItem>("TerrariumCore")))
+                            {
+                                recipe.AddIngredient(ModCompatibility.Thorium.Mod.Find<ModItem>("TerrariumCore"), 3);
+                            }
                         }
                         if (ModCompatibility.Vitality.Loaded) { recipe.AddIngredient(ModCompatibility.Vitality.Mod.Find<ModItem>("CompoundQuiver"), 1); }
                         if (ModCompatibility.Homeward.Loaded) { recipe.AddIngredient(ModCompatibility.Homeward.Mod.Find<ModItem>("StarQuiver"), 1); }

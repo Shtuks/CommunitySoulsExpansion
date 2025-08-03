@@ -33,6 +33,19 @@ namespace ssm.CrossMod.SoulsRecipes
                     if (ModCompatibility.Clamity.Loaded) { recipe.AddIngredient(ModCompatibility.Clamity.Mod.Find<ModItem>("DraculasCharm"), 1); }
                     if (ModCompatibility.Thorium.Loaded) { recipe.AddIngredient(ModCompatibility.Thorium.Mod.Find<ModItem>("PiratesPurse"), 1); recipe.AddIngredient(ModCompatibility.Thorium.Mod.Find<ModItem>("TerrariumRippleKnife"), 1); }
                 }
+                if (ModCompatibility.Calamity.Loaded)
+                {
+                    if (recipe.HasResult(ModCompatibility.Calamity.Mod.Find<ModItem>("Nanotech")))
+                    {
+                        if (ModCompatibility.Thorium.Loaded)
+                        {
+                            if (!recipe.HasIngredient(ModCompatibility.Thorium.Mod.Find<ModItem>("TerrariumCore")))
+                            {
+                                recipe.AddIngredient(ModCompatibility.Thorium.Mod.Find<ModItem>("TerrariumCore"), 3);
+                            }
+                        }
+                    }
+                }
             }
         }
     }
