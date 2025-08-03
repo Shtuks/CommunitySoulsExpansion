@@ -14,7 +14,7 @@ namespace ssm.SoA
     {
         public int rivalStreak;
         public int EerieEnchantCooldown;
-        
+        public int SpaceJunkCooldown;
         public override void PreUpdateMovement()
         {
             if (Player.HasBuff(ModContent.BuffType<SniperBuff>()))

@@ -1,19 +1,17 @@
 ﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria.Localization;
-using SacredTools;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using FargowiltasSouls.Content.Items.Accessories.Enchantments;
 using FargowiltasSouls.Core.AccessoryEffectSystem;
-using ssm.Content.SoulToggles;
 using ssm.Core;
 using SacredTools.Content.Items.Armor.Lunar.Vortex;
 using SacredTools.Items.Weapons.Lunatic;
 using SacredTools.Content.Items.Weapons.Oblivion;
-using Terraria.WorldBuilding;
 using ssm.Content.Buffs;
+using Microsoft.Xna.Framework.Graphics;
+using FargowiltasSouls.Content.UI.Elements;
 
 namespace ssm.SoA.Enchantments
 {
@@ -49,56 +47,73 @@ namespace ssm.SoA.Enchantments
             public override Header ToggleHeader => null;
             public override int ToggleItemType => ModContent.ItemType<CosmicCommanderEnchant>();
             public override bool ActiveSkill => true;
+            public bool SniperStateActive;
+            public bool SniperStateRecharging;
+            public int SniperStateCooldown;
+            public int SniperStateCharge;
 
-            public bool sniperStateActive;
-            public int sniperStateTimer;
-            public int cooldownTimer;
             public override void ActiveSkillJustPressed(Player player, bool stunned)
             {
                 if (!player.HasBuff(ModContent.BuffType<SniperCooldownBuff>()))
                 {
-                    sniperStateActive = true;
-                    sniperStateTimer = 15 * 60;
-                    player.AddBuff(ModContent.BuffType<SniperBuff>(), sniperStateTimer);
+                    SniperStateActive = true;
+                    SniperStateCharge = 15 * 60;
+                    player.AddBuff(ModContent.BuffType<SniperBuff>(), 15 * 60);
                 }
             }
 
             private void DeactivateSniperState(Player player)
             {
-                sniperStateActive = false;
-                cooldownTimer = 15 * 60; // 15 seconds cooldown
-                player.AddBuff(ModContent.BuffType<SniperCooldownBuff>(), cooldownTimer);
+                SniperStateActive = false;
+                SniperStateCharge = 0;
+                player.AddBuff(ModContent.BuffType<SniperCooldownBuff>(), 15 * 60);
+                SniperStateRecharging = true;
             }
             public override void PostUpdate(Player player)
             {
-                if (sniperStateActive)
+                if (SniperStateActive)
                 {
-                    if (sniperStateTimer-- <= 0)
+                    SniperStateCharge--;
+                    
+                    if (SniperStateCharge <= 0)
                     {
                         DeactivateSniperState(player);
+                        SniperStateRecharging = true;
                     }
                 }
-                else if (cooldownTimer > 0)
+                if (SniperStateRecharging)
                 {
-                    cooldownTimer--;
+                    if (SniperStateCooldown++ < 15 * 60)
+                    {
+                        SniperStateCharge++;
+                    }
+                    else
+                    {
+                        SniperStateRecharging = false;
+                    }
                 }
             }
             public override void PostUpdateEquips(Player player)
             {
-                if (sniperStateActive)
+                if (SniperStateActive)
                 {
                     player.aggro -= (int)(player.aggro * 0.5f);
                     player.statDefense = player.statDefense *= 0.75f; // -25% defense
                 }
-                else if (cooldownTimer > 0)
+                else if (SniperStateRecharging)
                 {
                     player.statDefense = player.statDefense *= 1.30f; // +30% defense
                 }
+
+                CooldownBarManager.Activate("SniperStateCharge", ModContent.Request<Texture2D>("ssm/SoA/Enchantments/CosmicCommanderEnchant").Value, new(21, 142, 100),
+                    () => SniperStateCharge / (60f * 15), true, activeFunction: player.HasEffect<CosmicCommanderEffect>);
+                    
+                    Main.NewText(SniperStateCharge, Color.Orange);
             }
 
             public override void OnHitByEither(Player player, NPC npc, Projectile proj)
             {
-                if (sniperStateActive)
+                if (SniperStateActive)
                 {
                     DeactivateSniperState(player);
                 }

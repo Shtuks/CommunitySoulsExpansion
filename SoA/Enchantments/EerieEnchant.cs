@@ -11,8 +11,6 @@ using SacredTools.Items.Weapons;
 using ssm.Content.Projectiles.Enchantments;
 using Microsoft.Xna.Framework.Graphics;
 using FargowiltasSouls.Content.UI.Elements;
-using ssm.Thorium;
-
 
 namespace ssm.SoA.Enchantments
 {
@@ -53,9 +51,9 @@ namespace ssm.SoA.Enchantments
                 if (modPlayer.EerieEnchantCooldown <= 0)
                 {
                     Projectile.NewProjectile(player.GetSource_FromThis(), player.Center, Vector2.Zero, ModContent.ProjectileType<EeriePulse>(), 0, 0);
-                    modPlayer.EerieEnchantCooldown = 60 * 20;
+                    modPlayer.EerieEnchantCooldown = 60 * 15;
                 }
-            }
+            }   
             public override void OnHitByNPC(Player player, NPC npc, Player.HurtInfo hurtInfo)
             {
                 if (!player.HasEffectEnchant<EerieEffect>())
