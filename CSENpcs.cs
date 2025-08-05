@@ -49,13 +49,13 @@ namespace ssm
         {
             if (ModCompatibility.Thorium.Loaded) { multiplierML += 0.5f; multiplierMD += 1f; multiplierAL += 0.7f; multiplierAD += 2f; }
             if (ModCompatibility.Calamity.Loaded) { multiplierML += 2.5f; multiplierMD += 2.5f; multiplierAL += 5f; multiplierAD += 5f; }
-            if (ModCompatibility.SacredTools.Loaded) { multiplierML += 2f; multiplierMD += 1.5f; multiplierAL += 0.5f; multiplierAD += 2f; }
+            if (ModCompatibility.SacredTools.Loaded) { multiplierML += 1f; multiplierMD += 1.5f; multiplierAL += 0.5f; multiplierAD += 2f; }
             if (ModCompatibility.Homeward.Loaded) { multiplierML += 0.5f; multiplierMD += 1f; multiplierAL += 0.5f; multiplierAD += 1f; }
 
             if (CSEConfig.Instance.SecretBosses) { multiplierML += 0.5f;}
 
             if (ModCompatibility.Inheritance.Loaded) { multiplierAL = 16f; multiplierAD = 20f; }
-            if (ModCompatibility.IEoR.Loaded) { multiplierML = 20f;}
+            //if (ModCompatibility.IEoR.Loaded) { multiplierML = 20f;}
         }
         public override bool CheckDead(NPC npc)
         {
@@ -99,31 +99,6 @@ namespace ssm
         }
         public override void SetDefaults(NPC npc)
         {
-            //devi max hp - 40 k
-            //divergentt max hp - 500 k
-            //abom max hp - 10.8 mil 14.4 in total
-            //amalgamationn max hp - 40 mil 53 in total
-            ////duke ex - 30 mil 60 in total
-            //mutant max hp - 60 mil 80 in total
-            //monstrosity max hp - 800 mil
-
-            if (npc.type == ModContent.NPCType<MutantBoss>())
-            {
-                npc.defense = 300;
-
-                npc.damage = Main.getGoodWorld ? 5000 : (int)(500 + (100 * multiplierMD));
-                npc.lifeMax = (int)(10000000 + (10000000 * multiplierML));
-
-                if (ModCompatibility.Inheritance.Loaded && !Main.zenithWorld && !Main.getGoodWorld)
-                {
-                    npc.damage = 3000;
-                    npc.lifeMax = 440000000;
-                }
-
-                //npc.damage = Main.getGoodWorld ? 2000 : (int)(500 + ((ModCompatibility.Calamity.Loaded && CSEConfig.Instance.DebugMode ? 90 : 100) * (Math.Round(multiplierM, 1))));
-                //npc.lifeMax = (int)(10000000 + (10000000 * Math.Round(multiplierM, 1))) / (Main.expertMode ? 1 : 2);
-            }
-
             if (npc.type == NPCID.DukeFishron && (EModeGlobalNPC.spawnFishronEX || dukeEX))
             {
                 npc.defense = 0;
@@ -179,15 +154,15 @@ namespace ssm
         }
         public override void SetStaticDefaults()
         {
-            NPCID.Sets.ImmuneToRegularBuffs[ModContent.NPCType<MutantBoss>()] = true;
-            NPCID.Sets.ImmuneToRegularBuffs[ModContent.NPCType<MutantEX>()] = true;
-            NPCID.Sets.ImmuneToRegularBuffs[ModContent.NPCType<DeviBoss>()] = true;
-            NPCID.Sets.ImmuneToRegularBuffs[ModContent.NPCType<AbomBoss>()] = true;
+            //NPCID.Sets.ImmuneToRegularBuffs[ModContent.NPCType<MutantBoss>()] = true;
+            //NPCID.Sets.ImmuneToRegularBuffs[ModContent.NPCType<MutantEX>()] = true;
+            //NPCID.Sets.ImmuneToRegularBuffs[ModContent.NPCType<DeviBoss>()] = true;
+            //NPCID.Sets.ImmuneToRegularBuffs[ModContent.NPCType<AbomBoss>()] = true;
 
-            if (EModeGlobalNPC.spawnFishronEX || dukeEX)
-            {
-                NPCID.Sets.ImmuneToRegularBuffs[NPCID.DukeFishron] = true;
-            }
+            //if (EModeGlobalNPC.spawnFishronEX || dukeEX)
+            //{
+            //    NPCID.Sets.ImmuneToRegularBuffs[NPCID.DukeFishron] = true;
+            //}
         }
         public override void UpdateLifeRegen(NPC npc, ref int damage)
         {
@@ -302,20 +277,31 @@ namespace ssm
                     }
                 }
 
+                //here because maso breaks scaling for some reason
+                if (npc.type == ModContent.NPCType<MutantBoss>())
+                {
+                    npc.defense = 300;
+
+                    npc.damage = Main.getGoodWorld ? 2000 : (int)((500 + (100 * Math.Round(multiplierMD, 1))) * (WorldSavingSystem.MasochistModeReal ? 1.5f : 1));
+                    npc.lifeMax = (int)((10000000 + ((10000000 * Math.Round(multiplierML, 1))) / (Main.expertMode ? 1 : 2)) * (WorldSavingSystem.MasochistModeReal ? 1.5f : 1));
+
+                    if (ModCompatibility.Inheritance.Loaded && !Main.zenithWorld && !Main.getGoodWorld)
+                    {
+                        npc.damage = 3000;
+                        npc.lifeMax = 440000000;
+                    }
+                }
+
                 if (npc.type == ModContent.NPCType<Mutant>())
                 {
                     npc.lifeMax = (int)(10000000 + (10000000 * Math.Round(multiplierML, 1))) / (Main.expertMode ? 1 : 2) / 10;
-                    npc.life = npc.lifeMax;
                 }
                 if (npc.type == ModContent.NPCType<Abominationn>())
                 {
                     npc.lifeMax = (int)(1800000 + (1000000 * multiplierAL)) / 10;
-                    npc.life = npc.lifeMax;
                 }
-                if (npc.type == NPCID.DukeFishron && (EModeGlobalNPC.spawnFishronEX || dukeEX))
-                {
-                    npc.life = npc.lifeMax;
-                }
+
+                npc.life = npc.lifeMax;
             }
             mayo++;
 

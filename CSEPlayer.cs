@@ -5,8 +5,6 @@ using Terraria.Localization;
 using FargowiltasSouls.Content.Projectiles.BossWeapons;
 using FargowiltasSouls.Content.Buffs.Masomode;
 using ssm.Content.Projectiles;
-using ssm.Content.NPCs.MutantEX;
-using ssm.Systems;
 using FargowiltasSouls;
 using System.Collections.Generic;
 using Terraria.ModLoader.IO;
