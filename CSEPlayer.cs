@@ -21,6 +21,10 @@ using Terraria.DataStructures;
 using FargowiltasSouls.Core.Systems;
 using Terraria.Chat;
 using ssm.Content.Items.Summons;
+using ssm.SoA.Enchantments;
+using static ssm.SoA.Enchantments.CosmicCommanderEnchant;
+using FargowiltasSouls.Core.AccessoryEffectSystem;
+
 
 namespace ssm
 {
@@ -209,6 +213,7 @@ namespace ssm
         }
         public override void OnEnterWorld()
         {
+
             // debug only //
             //if (BossRushEvent.Bosses == null || BossRushEvent.Bosses.Count == 0)
             //{

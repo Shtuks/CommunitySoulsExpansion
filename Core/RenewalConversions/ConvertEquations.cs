@@ -39,7 +39,7 @@ namespace ssm.Core.RenewalConversions
     {
         private Queue<Point> tilesToConvert = new();
         private string currentConversion = null;
-        private int tilesPerTick = 2500; // Adjust to balance performance
+        private int tilesPerTick = 140;
 
         public void StartConversion(string convertInto)
         {
@@ -58,7 +58,7 @@ namespace ssm.Core.RenewalConversions
                 }
             }
 
-            Main.NewText("Started Supreme Conversion: " + convertInto, Color.Orange);
+            Main.NewText("Start " + convertInto, Color.Orange);
         }
 
         public override void PreUpdateWorld()
@@ -83,7 +83,7 @@ namespace ssm.Core.RenewalConversions
 
                 if (tilesToConvert.Count == 0)
                 {
-                    Main.NewText("Supreme Conversion Complete!", Color.LimeGreen);
+                    Main.NewText("Complete", Color.LimeGreen);
                     currentConversion = null;
                 }
             }
