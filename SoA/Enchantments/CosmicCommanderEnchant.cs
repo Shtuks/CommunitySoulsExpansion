@@ -39,7 +39,9 @@ namespace ssm.SoA.Enchantments
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
+            var CosmicCommanderPlayer = player.GetModPlayer<CosmicCommanderPlayer>();
             player.AddEffect<CosmicCommanderEffect>(Item);
+            CosmicCommanderPlayer.HasCosmicCommanderEnchantThisFrame = true;
         }
 
         public class CosmicCommanderEffect : AccessoryEffect
@@ -47,73 +49,68 @@ namespace ssm.SoA.Enchantments
             public override Header ToggleHeader => null;
             public override int ToggleItemType => ModContent.ItemType<CosmicCommanderEnchant>();
             public override bool ActiveSkill => true;
-            public bool SniperStateActive;
-            public bool SniperStateRecharging;
-            public int SniperStateCooldown;
-            public int SniperStateCharge;
 
             public override void ActiveSkillJustPressed(Player player, bool stunned)
             {
-                if (!player.HasBuff(ModContent.BuffType<SniperCooldownBuff>()))
+                var CosmicCommanderPlayer = player.GetModPlayer<CosmicCommanderPlayer>();
+
+                if (!player.HasBuff(ModContent.BuffType<SniperCooldownBuff>()) && !player.HasBuff(ModContent.BuffType<SniperBuff>()) && CosmicCommanderPlayer.SniperStateCharge == 15 * 60)
                 {
-                    SniperStateActive = true;
-                    SniperStateCharge = 15 * 60;
+                    CosmicCommanderPlayer.SniperStateActive = true;
+                    CosmicCommanderPlayer.SniperStateRecharging = false;
                     player.AddBuff(ModContent.BuffType<SniperBuff>(), 15 * 60);
                 }
             }
 
             private void DeactivateSniperState(Player player)
             {
-                SniperStateActive = false;
-                SniperStateCharge = 0;
+                var CosmicCommanderPlayer = player.GetModPlayer<CosmicCommanderPlayer>();
+                CosmicCommanderPlayer.SniperStateActive = false;
+                CosmicCommanderPlayer.SniperStateRecharging = true;
+                CosmicCommanderPlayer.SniperStateCharge = 1;
                 player.AddBuff(ModContent.BuffType<SniperCooldownBuff>(), 15 * 60);
-                SniperStateRecharging = true;
             }
             public override void PostUpdate(Player player)
             {
-                if (SniperStateActive)
+                var CosmicCommanderPlayer = player.GetModPlayer<CosmicCommanderPlayer>();
+                if (CosmicCommanderPlayer.SniperStateActive)
                 {
-                    SniperStateCharge--;
-                    
-                    if (SniperStateCharge <= 0)
+                    if (CosmicCommanderPlayer.SniperStateCharge-- <= 0)
                     {
                         DeactivateSniperState(player);
-                        SniperStateRecharging = true;
                     }
                 }
-                if (SniperStateRecharging)
+
+                if (CosmicCommanderPlayer.SniperStateRecharging)
                 {
-                    if (SniperStateCooldown++ < 15 * 60)
+                    if (CosmicCommanderPlayer.SniperStateCharge++ >= ((15 * 60) - 1))
                     {
-                        SniperStateCharge++;
-                    }
-                    else
-                    {
-                        SniperStateRecharging = false;
+                        CosmicCommanderPlayer.SniperStateRecharging = false;
                     }
                 }
             }
+
             public override void PostUpdateEquips(Player player)
             {
-                if (SniperStateActive)
+                var CosmicCommanderPlayer = player.GetModPlayer<CosmicCommanderPlayer>();
+                if (CosmicCommanderPlayer.SniperStateActive)
                 {
                     player.aggro -= (int)(player.aggro * 0.5f);
-                    player.statDefense = player.statDefense *= 0.75f; // -25% defense
+                    player.statDefense = player.statDefense *= 0.75f;
                 }
-                else if (SniperStateRecharging)
+                else if (CosmicCommanderPlayer.SniperStateRecharging)
                 {
-                    player.statDefense = player.statDefense *= 1.30f; // +30% defense
+                    player.statDefense = player.statDefense *= 1.30f;
                 }
 
-                CooldownBarManager.Activate("SniperStateCharge", ModContent.Request<Texture2D>("ssm/SoA/Enchantments/CosmicCommanderEnchant").Value, new(21, 142, 100),
-                    () => SniperStateCharge / (60f * 15), true, activeFunction: player.HasEffect<CosmicCommanderEffect>);
-                    
-                    Main.NewText(SniperStateCharge, Color.Orange);
+                CooldownBarManager.Activate("CosmicCommanderCooldown", ModContent.Request<Texture2D>("ssm/SoA/Enchantments/CosmicCommanderEnchant").Value, new(21, 142, 100),
+                    () => CosmicCommanderPlayer.SniperStateCharge / (60f * 15), true, activeFunction: player.HasEffect<CosmicCommanderEffect>);
             }
 
             public override void OnHitByEither(Player player, NPC npc, Projectile proj)
             {
-                if (SniperStateActive)
+                var CosmicCommanderPlayer = player.GetModPlayer<CosmicCommanderPlayer>();
+                if (CosmicCommanderPlayer.SniperStateActive)
                 {
                     DeactivateSniperState(player);
                 }
@@ -131,6 +128,48 @@ namespace ssm.SoA.Enchantments
             recipe.AddIngredient<PGMUltimaRatioHecateII>();
             recipe.AddTile(412);
             recipe.Register();
+        }
+    }
+
+    public class CosmicCommanderPlayer : ModPlayer
+    {
+        private bool HadCosmicCommanderEnchantLastFrame;
+        public bool HasCosmicCommanderEnchantThisFrame;
+        public bool SniperStateActive = false;
+        public int SniperStateCharge = 0;
+        public bool SniperStateRecharging = true;
+
+        public override void ResetEffects()
+        {
+            HasCosmicCommanderEnchantThisFrame = false;
+        }
+
+        public override void UpdateEquips()
+        {
+            if (!HadCosmicCommanderEnchantLastFrame && HasCosmicCommanderEnchantThisFrame)
+            {
+                SniperStateActive = false;
+                SniperStateRecharging = true;
+                SniperStateCharge = 0;
+            }
+
+            if (HadCosmicCommanderEnchantLastFrame && !HasCosmicCommanderEnchantThisFrame)
+            {
+                SniperStateActive = false;
+                SniperStateRecharging = false;
+                SniperStateCharge = 0;
+                Player.ClearBuff(ModContent.BuffType<SniperCooldownBuff>());
+                Player.ClearBuff(ModContent.BuffType<SniperBuff>());
+            }
+
+            HadCosmicCommanderEnchantLastFrame = HasCosmicCommanderEnchantThisFrame;
+        }
+
+        public void OnEnterWorld()
+        {
+            SniperStateActive = false;
+            SniperStateRecharging = true;
+            SniperStateCharge = 0;
         }
     }
 }

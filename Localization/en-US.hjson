@@ -200,7 +200,7 @@ Mods: {
 			}
 
 			HeroForce: {
-				DisplayName: Force of Hero
+				DisplayName: Force of The Hero
 				Tooltip:
 					'''
 					[i:ssm/OstaraEnchant] Allows wearer to perform up to 5 bunny hops
@@ -449,7 +449,7 @@ Mods: {
 			}
 
 			AdventurerForce: {
-				DisplayName: Adventurer Force
+				DisplayName: Force of The Adventurer
 				Tooltip:
 					'''
 					[i:ssm/ElderbarkEnchant] Increases all item damage by 10
@@ -470,7 +470,7 @@ Mods: {
 			}
 
 			HurricaneForce: {
-				DisplayName: Force of Hurricane
+				DisplayName: Force of The Hurricane
 				Tooltip:
 					'''
 					[i:ssm/RogueEnchant] Getting hit grants four seconds of invisibility and 100% increased damage
@@ -486,7 +486,7 @@ Mods: {
 			}
 
 			AtlantisForce: {
-				DisplayName: Atlantis Force
+				DisplayName: Force of Atlantis
 				Tooltip:
 					'''
 					[i:ssm/BismiteEnchant] Not getting hit builds up Virulence, striking while Virulence is charged releases a toxic explosion
@@ -500,7 +500,7 @@ Mods: {
 			}
 
 			FrostburnForce: {
-				DisplayName: Frostburn Force
+				DisplayName: Force of Frostburn
 				Tooltip:
 					'''
 					[i:ssm/BloodcourtEnchant] Double tap 'Down' to sacrifice 8% of your maximum health and launch a bolt of Dark Anima dealing high damage in a radius
@@ -740,7 +740,7 @@ Mods: {
 			}
 
 			EternityForce: {
-				DisplayName: Eternity Force
+				DisplayName: Force of Eternity
 				Tooltip:
 					'''
 					[i:ssm/NekomiEnchant] [i:ssm/StyxEnchant] Increases life regeneration and damage resistance when damaged at the cost of some energy
@@ -765,14 +765,14 @@ Mods: {
 				DisplayName: Gaia Enchantment
 				Tooltip:
 					'''
-					[i:FargowiltasSouls/GaiaHelmet] 10% decrease mana usage and increase chance not to consume ammo
-					[i:FargowiltasSouls/GaiaHelmet] 10% melee attack speed increasement
+					[i:FargowiltasSouls/GaiaHelmet] 10% decreased mana usage and 20% chance to not consume ammo
+					[i:FargowiltasSouls/GaiaHelmet] 10% increased melee attack speed
 					[i:FargowiltasSouls/GaiaHelmet] 4 additional minion slots
-					[i:FargowiltasSouls/GaiaHelmet] Press DOWN double times activate Attacking mode which have following effects:
-					30% damage and 15% crit chance increase for current class
-					increase armor penetration by 20
-					Decrease defense by 20, endurance by 15% and max life by 10%
-					“The world revolving…..around you”
+					[i:FargowiltasSouls/GaiaHelmet] Press DOWN to activate attack mode, which gives the following effects:
+					30% increased damage and 15% increased crit chance increase for current class
+					Armor penetration increased by 20
+					Defense decreased by 20, endurance decreased by 15% and max life decreased by 10%
+					“The world is revolving around you”
 					'''
 			}
 
@@ -981,7 +981,7 @@ Mods: {
 			}
 
 			FoundationsForce: {
-				DisplayName: Foundations Force
+				DisplayName: Force of Foundations
 				Tooltip:
 					'''
 					[i:ssm/BlightboneEnchant] Chance for a frosted bone to support your attack
@@ -994,7 +994,7 @@ Mods: {
 			}
 
 			GenerationsForce: {
-				DisplayName: Generations Force
+				DisplayName: Force of Generations
 				Tooltip:
 					'''
 					[i:ssm/DreadfireEnchant] You have aura that inflict dreadfire on nearby enemies and allies
@@ -1006,7 +1006,7 @@ Mods: {
 			}
 
 			SoranForce: {
-				DisplayName: Soran Force
+				DisplayName: Force of Soran
 				Tooltip:
 					'''
 					[i:ssm/CosmicCommanderEnchant] In sniper state you deal 300% more damage but defense is reduced by 15%
@@ -1785,7 +1785,7 @@ Mods: {
 			}
 
 			AlfheimForce: {
-				DisplayName: Alfheim Force
+				DisplayName: Force of Alfheim
 				Tooltip:
 					'''
 					'Elven mysteries unfold before you...'
@@ -1796,7 +1796,7 @@ Mods: {
 			}
 
 			AsgardForce: {
-				DisplayName: Asgard Force
+				DisplayName: Force of Asgard
 				Tooltip:
 					'''
 					'What's this about Ragnarok?'
@@ -1807,7 +1807,7 @@ Mods: {
 			}
 
 			HelheimForce: {
-				DisplayName: Helheim Force
+				DisplayName: Force of Helheim
 				Tooltip:
 					'''
 					'From the halls of Hel, a vision of the end...'
@@ -1819,7 +1819,7 @@ Mods: {
 			}
 
 			JotunheimForce: {
-				DisplayName: Jotunheim Force
+				DisplayName: Force of Jotunheim
 				Tooltip:
 					'''
 					'A bitter cold, the power of the Jotuns...'
@@ -1831,7 +1831,7 @@ Mods: {
 			}
 
 			MidgardForce: {
-				DisplayName: Midgard Force
+				DisplayName: Force of Midgard
 				Tooltip:
 					'''
 					'Behold the power of Mankind...'
@@ -1845,7 +1845,7 @@ Mods: {
 			}
 
 			MuspelheimForce: {
-				DisplayName: Muspelheim Force
+				DisplayName: Force of Muspelheim
 				Tooltip:
 					'''
 					'A blazing heat, the mark of Surtr...'
@@ -1856,7 +1856,7 @@ Mods: {
 			}
 
 			NiflheimForce: {
-				DisplayName: Niflheim Force
+				DisplayName: Force of Niflheim
 				Tooltip:
 					'''
 					'A world of mist, a sign of the dead...'
@@ -1867,7 +1867,7 @@ Mods: {
 			}
 
 			SvartalfheimForce: {
-				DisplayName: Svartalfheim Force
+				DisplayName: Force of Svartalfheim
 				Tooltip:
 					'''
 					'Behold the craftsmanship of the Dark Elves...'
@@ -1879,7 +1879,7 @@ Mods: {
 			}
 
 			VanaheimForce: {
-				DisplayName: Vanaheim Force
+				DisplayName: Force of Vanaheim
 				Tooltip:
 					'''
 					'Holds a glimpse of the future...'
@@ -1985,7 +1985,7 @@ Mods: {
 			}
 
 			AddonsForce: {
-				DisplayName: Addons Force
+				DisplayName: Force of Addons
 				Tooltip:
 					'''
 					Set Bonuses of Intergelactic, Clamitas, Shogun and Frozen armor sets
@@ -2364,7 +2364,7 @@ Mods: {
 					Effects of [i:Polarities/CosmicCable] Cosmic Cable, [i:Polarities/StarbindCuffs] Starbind Cuffs, [i:Polarities/StormScales] Stormscales and [i:Polarities/RhyoliteShield] Rhyolite Shield
 					Effects of [i:Polarities/CorrosivePolish] Corrosive Polish, [i:Polarities/BuildingEruption] Building Eruption and [i:Polarities/SaltatoryLeg] Saltatory Leg
 					'''
-				DisplayName: Wilderness Force
+				DisplayName: Force of The Wilderness
 			}
 
 			SpacetimeForce: {
@@ -2373,7 +2373,7 @@ Mods: {
 					Set bonuses from [i:Polarities/SelfsimilarHelmetMelee] Selfsimilar, [i:Polarities/FractalHelmetMelee] Fractal and [i:Polarities/FlawlessMechMask] Flawless Mechanical Armor
 					Effects of [i:Polarities/SentinelsHeart] Sentinels Heart, [i:Polarities/CloakofPockets] Cloak of Pockets
 					'''
-				DisplayName: Spacetime Force
+				DisplayName: Force of Spacetime
 			}
 
 			SunplateEnchant: {
@@ -2477,7 +2477,7 @@ Mods: {
 					Effects of [i:Spooky/CreepyCandle] Creepy Candle, [i:Spooky/MonsterBloodVial] Monster Blood Vial and [i:Spooky/TotalOrganPackage] Total Organ Package
 					Effects of [i:Spooky/GhostBook] Tome of Spirits, [i:Spooky/CandyBag] Bag 'O Treats and [i:Spooky/RustyRing] Rusty Ring
 					'''
-				DisplayName: Horror Force
+				DisplayName: Force of Horror
 			}
 
 			TerrorForce: {
@@ -2487,7 +2487,7 @@ Mods: {
 					Effects of [i:Spooky/SkullAmulet] Skull Amulet, [i:Spooky/SpiritAmulet] Spirit Amulet and [i:Spooky/BustlingGlowshroom] Bustling Glowshroom
 					Effects of [i:Spooky/HunterScarf] Old Hunter Scarf, [i:Spooky/SewingThread] Sewing Thread and [i:Spooky/DaffodilHairpin] Flower Hairpin 
 					'''
-				DisplayName: Terror Force
+				DisplayName: Force of Terror
 			}
 
 			SpiritHorsemenEnchant: {
@@ -3309,7 +3309,7 @@ Mods: {
 			}
 
 			SyranForce: {
-				DisplayName: Syran Force
+				DisplayName: Force of Syran
 				Tooltip:
 					'''
 					[i:ssm/VoidWardenEnchant] [i:ssm/AsthraltiteEnchant] Grants ring of void lanterns that decrease agression and shoot enemies
@@ -3589,15 +3589,15 @@ Mods: {
 			SerpentShieldEffect: Serpent Shield
 			MotDEEffect: Mark of the Dream Eater
 			GuardianEffect: Medical Bag
-			AsgardForceHeader: Asgard Force
-			AlfheimForceHeader: Alfheim Force
-			HelheimForceHeader: Helheim Force
-			MidgardForceHeader: Midgard Force
-			MuspelheimForceHeader: Muspelheim Force
-			NiflheimForceHeader: Niflheim Force
-			JotunheimForceHeader: Jotunheim Force
-			SvartalfheimForceHeader: Svartalfheim Force
-			VanaheimForceHeader: Vanaheim Force
+			AsgardForceHeader: Force of Asgard
+			AlfheimForceHeader: Force Alfheim
+			HelheimForceHeader: Force of Helheim
+			MidgardForceHeader: Force of Midgard
+			MuspelheimForceHeader: Force of Muspelheim
+			NiflheimForceHeader: Force of Niflheim
+			JotunheimForceHeader: Force of Jotunheim
+			SvartalfheimForceHeader: Force of Svartalfheim
+			VanaheimForceHeader: Force of Vanaheim
 			SacredEffect: Karma Holder
 			IcyEffect: Icy Aura
 			NoviceClericEffect: Holy Crosses
@@ -3616,8 +3616,8 @@ Mods: {
 			TheOmegaCoreEffect: The Omega Core
 			ThrowerSoulEffect: Removal of exhaustion
 			//soa
-			FoundationsForceHeader: Foundations Force
-			SyranForceHeader: Syran Force
+			FoundationsForceHeader: Force of Foundations
+			SyranForceHeader: Force of Syran
 			AsthraltiteEffect: Hypercrits
 			ExitumLuxEffect: Relic Boost
 			SpaceJunkEffect: Space Junk on hit
@@ -3630,8 +3630,8 @@ Mods: {
 			EerieEffect: Eerie Pulses
 			PrairieEffect: Wind Speed
 			FrosthunterEffect: Frost Explosions
-			GenerationsForceHeader: Generations Force
-			SoranForceHeader: Soran Force
+			GenerationsForceHeader: Force of Generations
+			SoranForceHeader: Force of Soran
 			BlazingBruteEffect: Rival Streak
 			FallenPrinceEffect: Energy Blades
 			NebulousApprenticeEffect: Nebulous Flames
@@ -3659,7 +3659,7 @@ Mods: {
 			SoulCrystal: Soul Crystal
 			PyrogenEffect: Pyrogen Core
 			IntergelacticEffect: Asteroids Ring
-			AddonsForceHeader: Addons Force
+			AddonsForceHeader: Force of Addons
 			ShogunEffect: Slippery Shogun Wings
 			VoidFaquirEffect: Void Bar
 			SplendorEffect: Splendor Jam
@@ -3680,13 +3680,13 @@ Mods: {
 			StyxEffect: Charging energy
 			MutantSoulEffect: Spectral Mutant
 			DeviEffect: Spectral Deviantt
-			EternityForceHeader: Eternity Force
+			EternityForceHeader: Force of Eternity
 			SpeedCapEffect: Movement Speed Cap
 			SpectralFishEffect: Spectral Fishron Support
 			CuteFishEXEffect: Fishron Ritual
 			EridanusEffect: Eridanus blessing
 			//redemption
-			AdvancementHeader: Advancement Force
+			AdvancementHeader: Force of Advancement
 			CommonGuardBauble: Soul Bauble
 			PureIronCross: Holy Shield
 			XenomiteNecklace: Necklace of Perception
@@ -3696,14 +3696,14 @@ Mods: {
 			InfectionShieldEffect: Infected Thornshield Dash
 			HEVEffect: H.E.V Suit
 			//spirit
-			AdventurerHeader: Adventurer Force
+			AdventurerHeader: Force of The Adventurer
 			BotanistHerbEffect: Glowing Herb
 			FloranWellFed: Raw Meat Drops
 			FloranGrassEffect: Standing On Grass Bonus
 			WayfarerTreads: Explorer's Treads
 			WayfarerBand: Metal Band
 			WayfarerArmorBuff: Wayfarer Stacking Buff
-			HurricaneHeader: Hurricane Force
+			HurricaneHeader: Force of The Hurricane
 			RogueCrestEffect: Rusted Sword Summon
 			RogueRuneEffect: Movement Increases
 			RogueArmorEffect: Rogue Invisibility On Hit
@@ -3715,7 +3715,7 @@ Mods: {
 			SeraphAngelicSigil: Angelic Spark
 			RunicSpawn: Explosive Runes
 			RunicScroll: Rune Wizard's Scroll
-			AtlantisHeader: Atlantis Force
+			AtlantisHeader: Force of Atlantis
 			BismiteExplosion: Toxic Explosion
 			BismiteShieldEffect: Festering Wounds On Hit
 			CascadeBubble: Bubble Shield
@@ -3726,7 +3726,7 @@ Mods: {
 			StreamSurferSpout: Water Spout Summon
 			SpiritFangEffect: Shadow-Singed Fang
 			PrimalStoneArmorEffect: Inflict Unstable Affliction
-			FrostburnHeader: Frostburn Force
+			FrostburnHeader: Force of Frostburn
 			BloodCourtBolt: Blood Bolt
 			BloodCourtTongue: Grisly Tongue
 			BloodCourtWard: Sanguine Ward
@@ -3742,7 +3742,7 @@ Mods: {
 			SlagTyrantBurst: Sentries Fireballs Burst
 			SlagTyrantSummon: Magic Scepter Summon
 			//consolaria
-			HeroHeader: Hero Force
+			HeroHeader: Force of the Hero
 			OstaraJump: Bunny Hops
 			OstaraGift: Ostara's Gift
 			DragonBurst: Dragon Burst
@@ -4006,7 +4006,7 @@ Mods: {
 				}
 
 				EternityForce: {
-					Label: Eternity Force
+					Label: Force of Eternity
 					Tooltip: ""
 				}
 

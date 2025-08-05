@@ -12,6 +12,10 @@ using static ssm.SoA.Enchantments.StellarPriestEnchant;
 using ssm.SoA.Enchantments;
 using static ssm.SoA.Enchantments.QuasarEnchant;
 using System.Collections.Generic;
+using Microsoft.Xna.Framework.Graphics;
+using FargowiltasSouls.Content.UI.Elements;
+using ssm.Content.Buffs;
+
 
 namespace ssm.SoA.Forces
 {
@@ -62,6 +66,24 @@ namespace ssm.SoA.Forces
         public class SoranEffect : AccessoryEffect
         {
             public override Header ToggleHeader => null;
+
+            public override void PostUpdateEquips(Player player)
+            {
+                var CosmicCommanderPlayer = player.GetModPlayer<CosmicCommanderPlayer>();
+                if (CosmicCommanderPlayer.SniperStateActive)
+                {
+                    player.aggro -= (int)(player.aggro * 0.5f);
+                    player.statDefense = player.statDefense *= 0.75f;
+                }
+                else if (CosmicCommanderPlayer.SniperStateRecharging)
+                {
+                    player.statDefense = player.statDefense *= 1.30f;
+                }
+
+                CooldownBarManager.Activate("CosmicCommanderCooldown", ModContent.Request<Texture2D>("ssm/SoA/Enchantments/CosmicCommanderEnchant").Value, new(21, 142, 100),
+                    () => CosmicCommanderPlayer.SniperStateCharge / (60f * 15), true, activeFunction: player.HasEffect<CosmicCommanderEffect>);
+            }
+
         }
         public override void AddRecipes()
         {
@@ -74,6 +96,48 @@ namespace ssm.SoA.Forces
 
             recipe.AddTile(ModContent.Find<ModTile>("Fargowiltas", "CrucibleCosmosSheet"));
             recipe.Register();
+        }
+    }
+
+    public class SoranForcePlayer : ModPlayer
+    {
+        private bool HadCSoranForceLastFrame;
+        public bool HasCSoranForceThisFrame;
+        public bool SniperStateActive = false;
+        public int SniperStateCharge = 0;
+        public bool SniperStateRecharging = true;
+
+        public override void ResetEffects()
+        {
+            HasCSoranForceThisFrame = false;
+        }
+
+        public override void UpdateEquips()
+        {
+            if (!HadCSoranForceLastFrame && HasCSoranForceThisFrame)
+            {
+                SniperStateActive = false;
+                SniperStateRecharging = true;
+                SniperStateCharge = 0;
+            }
+
+            if (HadCSoranForceLastFrame && !HasCSoranForceThisFrame)
+            {
+                SniperStateActive = false;
+                SniperStateRecharging = false;
+                SniperStateCharge = 0;
+                Player.ClearBuff(ModContent.BuffType<SniperCooldownBuff>());
+                Player.ClearBuff(ModContent.BuffType<SniperBuff>());
+            }
+
+            HadCSoranForceLastFrame = HasCSoranForceThisFrame;
+        }
+
+        public void OnEnterWorld()
+        {
+            SniperStateActive = false;
+            SniperStateRecharging = true;
+            SniperStateCharge = 0;
         }
     }
 }
