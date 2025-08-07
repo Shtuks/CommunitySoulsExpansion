@@ -200,7 +200,7 @@ Mods: {
 			}
 
 			HeroForce: {
-				DisplayName: Force of The Hero
+				DisplayName: Force of the Hero
 				Tooltip:
 					'''
 					[i:ssm/OstaraEnchant] Allows wearer to perform up to 5 bunny hops
@@ -449,7 +449,7 @@ Mods: {
 			}
 
 			AdventurerForce: {
-				DisplayName: Force of The Adventurer
+				DisplayName: Force of the Adventurer
 				Tooltip:
 					'''
 					[i:ssm/ElderbarkEnchant] Increases all item damage by 10
@@ -470,7 +470,7 @@ Mods: {
 			}
 
 			HurricaneForce: {
-				DisplayName: Force of The Hurricane
+				DisplayName: Force of the Hurricane
 				Tooltip:
 					'''
 					[i:ssm/RogueEnchant] Getting hit grants four seconds of invisibility and 100% increased damage
@@ -2364,7 +2364,7 @@ Mods: {
 					Effects of [i:Polarities/CosmicCable] Cosmic Cable, [i:Polarities/StarbindCuffs] Starbind Cuffs, [i:Polarities/StormScales] Stormscales and [i:Polarities/RhyoliteShield] Rhyolite Shield
 					Effects of [i:Polarities/CorrosivePolish] Corrosive Polish, [i:Polarities/BuildingEruption] Building Eruption and [i:Polarities/SaltatoryLeg] Saltatory Leg
 					'''
-				DisplayName: Force of The Wilderness
+				DisplayName: Force of the Wilderness
 			}
 
 			SpacetimeForce: {
@@ -2725,7 +2725,12 @@ Mods: {
 
 			AstatineEnchant: {
 				DisplayName: Astatine Enchant
-				Tooltip: ""
+				Tooltip:
+					'''
+					Significantly increases attack speed
+					Getting hit removes these buffs but also causes a large, violent nuclear explosion
+					After the explosion, the attack speed boosts comes back after 15 seconds
+					'''
 			}
 
 			FaradayEnchant: {
@@ -3358,6 +3363,8 @@ Mods: {
 			}
 		}
 
+		WizardEffect.Astatine: Explosion cooldown lowered to 7 seconds
+
 		Buffs: {
 			ChtuxlagorInferno: {
 				DisplayName: Chtuxlagor Inferno
@@ -3441,11 +3448,11 @@ Mods: {
 
 			SoulStrength: {
 				DisplayName: Soul Strength
-				Description: Your soul is empowered!
+				Description: Your soul is empowered
 			}
 
 			EnrageCal: {
-				Description: Enrage
+				Description: Enraged
 				DisplayName: Enrage
 			}
 
@@ -3602,11 +3609,11 @@ Mods: {
 			IcyEffect: Icy Aura
 			NoviceClericEffect: Holy Crosses
 			TideTurnerEffect: Tide Defense
-			DreadEffect: increased Inertia
+			DreadEffect: Increased Inertia
 			WhisperingEffect: Eldrich Tentacles
 			LodestoneEffect: Sandweaver's Tiara
 			BulbEffect: Kick Petal
-			LifeBloomEffect: Heart of the Jungles
+			LifeBloomEffect: Heart of the Jungle
 			CyberPunkEffect: Fixed notes
 			CapeoftheSurvivorEffect: Cape of the Survivor
 			CrystalScorpionEffect: Crystal Scorpion
@@ -3614,7 +3621,7 @@ Mods: {
 			PlagueLordEffect: Plague Lord's Flask
 			LodestoneEffect2: Lodestone Shields
 			TheOmegaCoreEffect: The Omega Core
-			ThrowerSoulEffect: Removal of exhaustion
+			ThrowerSoulEffect: Exaustion removal
 			//soa
 			FoundationsForceHeader: Force of Foundations
 			SyranForceHeader: Force of Syran
@@ -3638,7 +3645,7 @@ Mods: {
 			GravityEffect: Gravity Area
 			SupernovaEffect: Supernova On Death
 			StellarPriestEffect: Stellar Guardian
-			QuasarEffect: ech
+			QuasarEffect: Ech
 			BismuthEffect: Bismuth Crystal
 			DreadfireEffect: Dreadfire Aura
 			FloraFistEffect: Flora Fist
@@ -3675,7 +3682,7 @@ Mods: {
 			EidolonAmuletEffect: Eidolon Amulet
 			//other
 			GaiaEffect: Attacking mode
-			NekomiEffect: Devi
+			NekomiEffect: Deviantt
 			PhantaplazmalEffect: Mutant armor set
 			StyxEffect: Charging energy
 			MutantSoulEffect: Spectral Mutant
@@ -3696,14 +3703,14 @@ Mods: {
 			InfectionShieldEffect: Infected Thornshield Dash
 			HEVEffect: H.E.V Suit
 			//spirit
-			AdventurerHeader: Force of The Adventurer
+			AdventurerHeader: Force of the Adventurer
 			BotanistHerbEffect: Glowing Herb
 			FloranWellFed: Raw Meat Drops
 			FloranGrassEffect: Standing On Grass Bonus
 			WayfarerTreads: Explorer's Treads
 			WayfarerBand: Metal Band
 			WayfarerArmorBuff: Wayfarer Stacking Buff
-			HurricaneHeader: Force of The Hurricane
+			HurricaneHeader: Force of the Hurricane
 			RogueCrestEffect: Rusted Sword Summon
 			RogueRuneEffect: Movement Increases
 			RogueArmorEffect: Rogue Invisibility On Hit
@@ -3739,7 +3746,7 @@ Mods: {
 			MarksmanCrit: Concentrated Critical Attack
 			PainMongerGuard: Infernal Guardians
 			PainMongerMaw: Magic Fiery Spit
-			SlagTyrantBurst: Sentries Fireballs Burst
+			SlagTyrantBurst: Sentries' Fireball Burst
 			SlagTyrantSummon: Magic Scepter Summon
 			//consolaria
 			HeroHeader: Force of the Hero
@@ -3762,6 +3769,9 @@ Mods: {
 			OneGiantLeapEffect: Moonwalk
 			HourHandEffect: Hour Hand
 			EdgewalkerEffect: Edgewalker
+			//
+			AstatineEffect: Astatine Explosions
+			RadioactiveForceHeader: Force of Radioactivity
 		}
 
 		Tiles: {
@@ -3775,8 +3785,8 @@ Mods: {
 		Projectiles: {
 			TrueAcornProjectile.DisplayName: True Acorn Projectile
 			BossRush.DisplayName: Boss Rush
-			AbomSword.DisplayName: Abom Sword
-			AbomSwordHandle.DisplayName: Abom Sword Handle
+			AbomSword.DisplayName: Abominationn Sword
+			AbomSwordHandle.DisplayName: Abominationn Sword Handle
 			MonstrosityRitual5.DisplayName: Mutant Ritual5
 			MonstrosityRitual.DisplayName: Mutant Ritual
 			MutantSansBeam.DisplayName: Mutant Sans Beam
@@ -3833,7 +3843,7 @@ Mods: {
 			MutantTrueEyeSphere.DisplayName: Mutant True Eye Sphere
 			MutantTyphoon.DisplayName: Mutant Typhoon
 			CuteFishronRitual.DisplayName: Cute Fishron Ritual
-			DreadfireAuraProj.DisplayName: Dreadfire Aura Proj
+			DreadfireAuraProj.DisplayName: Dreadfire Aura Projectile
 			Blightbone.DisplayName: Blightbone
 			FrosthunterExplosion.DisplayName: Frosthunter Explosion
 			SatelliteShard.DisplayName: Satellite Shard
@@ -3844,39 +3854,39 @@ Mods: {
 			SquirrelRing.DisplayName: Squirrel Ring
 			FlariumGeyser.DisplayName: Flarium Geyser
 			EeriePulse.DisplayName: Eerie Pulse
-			WastelandNukeProj.DisplayName: Wasteland Nuke Proj
-			WastelandNukeSupremeProj.DisplayName: Wasteland Nuke Supreme Proj
+			WastelandNukeProj.DisplayName: Wasteland Nuke Projectile
+			WastelandNukeSupremeProj.DisplayName: Wasteland Nuke Supreme Projectile
 			StriderLegShockwave.DisplayName: Strider Leg Shockwave
 			SpookyRenewalProj.DisplayName: Spooky Renewal Proj
-			SpookyRenewalSupremeProj.DisplayName: Spooky Renewal Supreme Proj
+			SpookyRenewalSupremeProj.DisplayName: Spooky Renewal Supreme Projectile
 			EyeValleyRenewalProj.DisplayName: Eye Valley Renewal Proj
-			EyeValleyRenewalSupremeProj.DisplayName: Eye Valley Renewal Supreme Proj
+			EyeValleyRenewalSupremeProj.DisplayName: Eye Valley Renewal Supreme Projectile
 			SwampyRenewalProj.DisplayName: Swampy Renewal Proj
-			SwampyRenewalSupremeProj.DisplayName: Swampy Renewal Supreme Proj
-			FlariumNukeProj.DisplayName: Flarium Nuke Proj
-			FlariumNukeSupremeProj.DisplayName: Flarium Nuke Supreme Proj
-			CorruptNukeProj.DisplayName: Corrupt Nuke Proj
-			CorruptNukeSupremeProj.DisplayName: Corrupt Nuke Supreme Proj
-			CrimsonNukeProj.DisplayName: Crimson Nuke Proj
-			CrimsonNukeSupremeProj.DisplayName: Crimson Nuke Supreme Proj
-			DirtNukeProj.DisplayName: Dirt Nuke Proj
-			DirtNukeSupremeProj.DisplayName: Dirt Nuke Supreme Proj
-			HallowNukeProj.DisplayName: Hallow Nuke Proj
-			HallowNukeSupremeProj.DisplayName: Hallow Nuke Supreme Proj
-			MushroomNukeProj.DisplayName: Mushroom Nuke Proj
-			MushroomNukeSupremeProj.DisplayName: Mushroom Nuke Supreme Proj
-			PurityNukeProj.DisplayName: Purity Nuke Proj
-			PurityNukeSupremeProj.DisplayName: Purity Nuke Supreme Proj
-			SandNukeProj.DisplayName: Sand Nuke Proj
-			SandNukeSupremeProj.DisplayName: Sand Nuke Supreme Proj
-			SnowNukeProj.DisplayName: Snow Nuke Proj
-			SnowNukeSupremeProj.DisplayName: Snow Nuke Supreme Proj
+			SwampyRenewalSupremeProj.DisplayName: Swampy Renewal Supreme Projectile
+			FlariumNukeProj.DisplayName: Flarium Nuke Projectile
+			FlariumNukeSupremeProj.DisplayName: Flarium Nuke Supreme Projectile
+			CorruptNukeProj.DisplayName: Corrupt Nuke Projectile
+			CorruptNukeSupremeProj.DisplayName: Corrupt Nuke Supreme Projectile
+			CrimsonNukeProj.DisplayName: Crimson Nuke Projectile
+			CrimsonNukeSupremeProj.DisplayName: Crimson Nuke Supreme Projectile
+			DirtNukeProj.DisplayName: Dirt Nuke Projectile
+			DirtNukeSupremeProj.DisplayName: Dirt Nuke Supreme Projectile
+			HallowNukeProj.DisplayName: Hallow Nuke Projectile
+			HallowNukeSupremeProj.DisplayName: Hallow Nuke Supreme Projectile
+			MushroomNukeProj.DisplayName: Mushroom Nuke Projectile
+			MushroomNukeSupremeProj.DisplayName: Mushroom Nuke Supreme Projectile
+			PurityNukeProj.DisplayName: Purity Nuke Projectile
+			PurityNukeSupremeProj.DisplayName: Purity Nuke Supreme Projectile
+			SandNukeProj.DisplayName: Sand Nuke Projectile
+			SandNukeSupremeProj.DisplayName: Sand Nuke Supreme Projectile
+			SnowNukeProj.DisplayName: Snow Nuke Projectile
+			SnowNukeSupremeProj.DisplayName: Snow Nuke Supreme Projectile
 			NDLaserbeam.DisplayName: ND Laserbeam
 			MutantSCal.DisplayName: Mutant SCal
 			MonstrosityBoss.DisplayName: Monstrosity Boss
-			MonstrOldDuke.DisplayName: Monstr Old Duke
-			MonstrYharon.DisplayName: Monstr Yharon
-			MonstrosityDEH.DisplayName: Monstrosity D E H
+			MonstrOldDuke.DisplayName: Monster Old Duke
+			MonstrYharon.DisplayName: Monster Yharon
+			MonstrosityDEH.DisplayName: Monstrosity's Deviant Energy Heart
 			MonstrositySparklingLove.DisplayName: Monstrosity Sparkling Love
 			MonstrosityAxe.DisplayName: Monstrosity Axe
 			SteelSwordProjectile.DisplayName: Steel Sword Projectile
@@ -3896,11 +3906,12 @@ Mods: {
 			Shrapnel.DisplayName: Shrapnel
 			XeniumRocket.DisplayName: Xenium Rocket
 			XeniumTurret.DisplayName: Xenium Turret
+			AstatineExplosion.DisplayName: Astatine Explosion
 		}
 
 		Bestiary: {
-			Monstrosity: The Siblings' more annoying, strange cousin, he thinks he is stronger than his cousin the mutant which makes the both of them fight a lot, he likes tacos though.
-			Echdeath: ech
+			Monstrosity: The Siblings' annoying, strange cousin. He thinks he is stronger than his cousin, the mutant, which makes the both of them fight a lot. He likes tacos though.
+			Echdeath: Ech
 		}
 
 		Configs: {
@@ -3922,12 +3933,12 @@ Mods: {
 
 				Boots: {
 					Label: Boots
-					Tooltip: Rework of boots Progression
+					Tooltip: Reworks the progression for boots
 				}
 
 				Shields: {
 					Label: Shields
-					Tooltip: Rework of Shields Progression
+					Tooltip: Reworks the progression for shields
 				}
 
 				DebugMode: {
@@ -3937,7 +3948,7 @@ Mods: {
 
 				ExperimentalContent: {
 					Label: Experimental Content
-					Tooltip: This will allow unfinished content to load. WARNING. This can and will break your game. Don't turn on.
+					Tooltip: This will allow unfinished content to load. WARNING. This can and will break your game. Don't turn this on.
 				}
 
 				Thorium: {
@@ -4058,12 +4069,12 @@ Mods: {
 		}
 
 		Message: {
-			NoThrower: WARNING! In latest update thrower merge was moved to Thrower Unification mod
-			NoBalancing: If you playing Calamity with Thorium, install WHummus' Calamity/Thorium Balancing
-			NoRework: It is recomended to play Thorium with Thorium Bosses Rework to enhance experience
-			NoSoABardHealer1: We detected that you playing Shadows of Abaddon with Thorium Mod
-			NoSoABardHealer2: Please install SoA Bard & Healer for better compatibility
+			NoThrower: WARNING! In the latest update, the thrower merge was moved to Thrower Unification mod
+			NoBalancing: If you playing Calamity with Thorium, you should install WHummus' Calamity/Thorium Balancing mod
+			NoRework: It is recomended to play Thorium with Thorium Bosses Rework to enhance your experience
 		}
+
+		DamageClasses.CSEFullDamage.DisplayName: C S E Full Damage
 	}
 
 	Redemption: {

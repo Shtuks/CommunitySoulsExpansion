@@ -12,6 +12,7 @@ using SacredTools.Content.Items.Weapons.Oblivion;
 using ssm.Content.Buffs;
 using Microsoft.Xna.Framework.Graphics;
 using FargowiltasSouls.Content.UI.Elements;
+using System.Security.Cryptography.X509Certificates;
 
 namespace ssm.SoA.Enchantments
 {
@@ -93,6 +94,10 @@ namespace ssm.SoA.Enchantments
             public override void PostUpdateEquips(Player player)
             {
                 var CosmicCommanderPlayer = player.GetModPlayer<CosmicCommanderPlayer>();
+
+                Main.NewText(CosmicCommanderPlayer, Color.LimeGreen);
+
+
                 if (CosmicCommanderPlayer.SniperStateActive)
                 {
                     player.aggro -= (int)(player.aggro * 0.5f);
@@ -105,15 +110,6 @@ namespace ssm.SoA.Enchantments
 
                 CooldownBarManager.Activate("CosmicCommanderCooldown", ModContent.Request<Texture2D>("ssm/SoA/Enchantments/CosmicCommanderEnchant").Value, new(21, 142, 100),
                     () => CosmicCommanderPlayer.SniperStateCharge / (60f * 15), true, activeFunction: player.HasEffect<CosmicCommanderEffect>);
-            }
-
-            public override void OnHitByEither(Player player, NPC npc, Projectile proj)
-            {
-                var CosmicCommanderPlayer = player.GetModPlayer<CosmicCommanderPlayer>();
-                if (CosmicCommanderPlayer.SniperStateActive)
-                {
-                    DeactivateSniperState(player);
-                }
             }
         }
 

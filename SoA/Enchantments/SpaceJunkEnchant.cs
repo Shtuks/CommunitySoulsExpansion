@@ -12,6 +12,8 @@ using ssm.Core;
 using ssm.Content.Projectiles.Enchantments;
 using System;
 using static ssm.SoA.Forces.GenerationsForce;
+using Microsoft.Xna.Framework.Graphics;
+using FargowiltasSouls.Content.UI.Elements;
 
 namespace ssm.SoA.Enchantments
 {
@@ -73,32 +75,44 @@ namespace ssm.SoA.Enchantments
         {
             public override Header ToggleHeader => null;
             public override bool ActiveSkill => true;
-
+            public int SpaceJunkAbilityCooldown;
             public override int ToggleItemType => ModContent.ItemType<SpaceJunkEnchant>();
             public override void ActiveSkillJustPressed(Player player, bool stunned)
             {
-                NPC nearestEnemy = null;
-                float closestDistance = float.MaxValue;
-
-                for (int i = 0; i < Main.maxNPCs; i++)
+                if (SpaceJunkAbilityCooldown <= 0)
                 {
-                    NPC npc = Main.npc[i];
-                    if (npc.active && npc.CanBeChasedBy() && npc.immune[player.whoAmI] == 0)
+                    NPC nearestEnemy = null;
+                    float closestDistance = float.MaxValue;
+
+                    for (int i = 0; i < Main.maxNPCs; i++)
                     {
-                        float distance = Vector2.Distance(player.Center, npc.Center);
-                        if (distance < closestDistance)
+                        NPC npc = Main.npc[i];
+                        if (npc.active && npc.CanBeChasedBy() && npc.immune[player.whoAmI] == 0)
                         {
-                            closestDistance = distance;
-                            nearestEnemy = npc;
+                            float distance = Vector2.Distance(player.Center, npc.Center);
+                            if (distance < closestDistance)
+                            {
+                                closestDistance = distance;
+                                nearestEnemy = npc;
+                            }
                         }
                     }
-                }
 
-                if (nearestEnemy != null)
-                {
-                    CSEUtils.ProjectileRain(Main.LocalPlayer.GetSource_FromThis(), nearestEnemy.Center, 400, 100, 500, 800, 15, ModContent.ProjectileType<SpaceJunkProj>(), (int)Main.LocalPlayer.GetDamage<GenericDamageClass>().ApplyTo(player.HasEffect<GenerationsEffect>() ? 500 : 50), 1, Main.LocalPlayer.whoAmI);
+                    if (nearestEnemy != null)
+                    {
+                        CSEUtils.ProjectileRain(Main.LocalPlayer.GetSource_FromThis(), nearestEnemy.Center, 400, 100, 500, 800, 15, ModContent.ProjectileType<SpaceJunkProj>(), (int)Main.LocalPlayer.GetDamage<GenericDamageClass>().ApplyTo(player.HasEffect<GenerationsEffect>() ? 500 : 50), 1, Main.LocalPlayer.whoAmI);
+                    }
                 }
             }
+
+            public override void PostUpdateEquips(Player player)
+            {
+                CooldownBarManager.Activate("SpaceJunkEnchantCooldown", ModContent.Request<Texture2D>("ssm/SoA/Enchantments/SpaceJunkEnchant").Value, new(237, 73, 78),
+                    () => SpaceJunkAbilityCooldown / (60f * 15), true, activeFunction: player.HasEffect<SpaceJunkEffect>);
+
+            }
+
+            
         }
 
         public override void AddRecipes()

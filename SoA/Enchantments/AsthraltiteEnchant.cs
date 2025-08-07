@@ -17,7 +17,7 @@ namespace ssm.SoA.Enchantments
     [ExtendsFromMod(ModCompatibility.SacredTools.Name)]
     [JITWhenModsEnabled(ModCompatibility.SacredTools.Name)]
     public class AsthraltiteEnchant : BaseEnchant
-    {
+    {  
         public override bool IsLoadingEnabled(Mod mod)
         {
             return CSEConfig.Instance.SacredTools;
