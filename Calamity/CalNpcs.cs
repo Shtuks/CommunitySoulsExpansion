@@ -41,9 +41,9 @@ namespace ssm.Calamity
         }
         public override void SetDefaults(NPC npc)
         {
-            if (npc.type == ModContent.NPCType<MutantBoss>() && ModCompatibility.SacredTools.Loaded && CSEConfig.Instance.SecretBosses)
+            if (npc.type == ModContent.NPCType<MutantBoss>() && ModCompatibility.SacredTools.Loaded)
             {
-                npc.DR_NERD(0.1f, 0.2f, 0.3f);
+                npc.DR_NERD(0.05f, 0.1f, 0.15f);
             }
 
             if (npc.type == ModContent.NPCType<AbomBoss>())

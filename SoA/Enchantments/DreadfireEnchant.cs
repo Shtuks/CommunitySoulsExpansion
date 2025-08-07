@@ -58,7 +58,7 @@ namespace ssm.SoA.Enchantments
                     player.AddBuff(ModContent.BuffType<DreadflameAuraCD>(), player.ForceEffect<DreadfireEffect>() ? 2600 : 2000);
                 }
             }
-            public static int Range(Player player, bool forceEffect) => (int)((forceEffect ? 450f : 250f) * (1f + player.FargoSouls().AuraSizeBonus));
+            public static int Range(Player player, bool forceEffect) => (int)((forceEffect ? 450f : 250f));
             public override void PostUpdateEquips(Player player)
             {
                 FargoSoulsPlayer modPlayer = player.FargoSouls();
