@@ -524,7 +524,7 @@ Mods: {
 
 			DragonLeadEnchant: {
 				DisplayName: Dragon Lead Enchantment
-				Tooltip: Taking damage makes weapons deal Dragonblaze debuff for 10 seconds
+				Tooltip: Taking damage makes your weapons deal the Dragonblaze debuff for 10 seconds
 			}
 
 			PureIronEnchant: {
@@ -834,7 +834,7 @@ Mods: {
 				Tooltip:
 					'''
 					'Ralnek's spirit guides you'
-					Surrounds player with Dreadfire Aura that inflicting Dreadfire buff
+					Surrounds player with Dreadfire Aura that inflicts Dreadfire buff
 					Dreadfire buff increases damage by 20%
 					'''
 			}
@@ -3907,6 +3907,7 @@ Mods: {
 			XeniumRocket.DisplayName: Xenium Rocket
 			XeniumTurret.DisplayName: Xenium Turret
 			AstatineExplosion.DisplayName: Astatine Explosion
+			UraniumAura.DisplayName: Uranium Aura
 		}
 
 		Bestiary: {
