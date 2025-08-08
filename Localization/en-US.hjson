@@ -3907,6 +3907,8 @@ Mods: {
 			XeniumRocket.DisplayName: Xenium Rocket
 			XeniumTurret.DisplayName: Xenium Turret
 			AstatineExplosion.DisplayName: Astatine Explosion
+			FaradaySun.DisplayName: Faraday Sun
+			FaradayMoon.DisplayName: Faraday Moon
 		}
 
 		Bestiary: {

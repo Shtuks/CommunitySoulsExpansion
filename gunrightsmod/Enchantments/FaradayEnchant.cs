@@ -10,6 +10,9 @@ using Microsoft.Xna.Framework.Graphics;
 using gunrightsmod.Content.Items;
 using ssm.Core;
 using ssm.Content.SoulToggles;
+using System;
+using FargowiltasSouls.Content.Projectiles.Souls;
+using ssm.Content.Projectiles.Enchantments;
 
 namespace ssm.gunrightsmod.Enchantments
 {
@@ -22,24 +25,21 @@ namespace ssm.gunrightsmod.Enchantments
         {
             return CSEConfig.Instance.TerMerica;
         }
+        public override void SetStaticDefaults()
+        {
+            base.SetStaticDefaults();
+        }
+        public override Color nameColor => new(44, 6, 149);
         public override void SetDefaults()
         {
-            Item.width = 20;
-            Item.height = 20;
-            Item.accessory = true;
-            ItemID.Sets.ItemNoGravity[Item.type] = true;
-            Item.rare = 5;
+            base.SetDefaults();
+            Item.rare = ItemRarityID.Pink;
             Item.value = 609331;
         }
-
-        public override Color nameColor => new(94, 48, 117);
-
-        public class FaradayEffect : AccessoryEffect
+        public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            public override Header ToggleHeader => Header.GetHeader<RadioactiveForceHeader>();
-            public override int ToggleItemType => ModContent.ItemType<FaradayEnchant>();
+            player.AddEffect<FaradayEffect>(Item);
         }
-
         public override void AddRecipes()
         {
             Recipe recipe = this.CreateRecipe();
@@ -51,6 +51,34 @@ namespace ssm.gunrightsmod.Enchantments
             recipe.AddIngredient<TheMoon>();
             recipe.AddTile(TileID.DemonAltar);
             recipe.Register();
+        }
+    }
+
+    [ExtendsFromMod(ModCompatibility.Gunrightsmod.Name)]
+    [JITWhenModsEnabled(ModCompatibility.Gunrightsmod.Name)]
+    public class FaradayEffect : AccessoryEffect
+    {
+        public override Header ToggleHeader => Header.GetHeader<RadioactiveForceHeader>();
+        public override int ToggleItemType => ModContent.ItemType<FaradayEnchant>();
+        public override void PostUpdate(Player player)
+        {
+            var CSEgunrightsmodPlayer = player.GetModPlayer<CSEgunrightsmodPlayer>();
+            CSEgunrightsmodPlayer.FaradayEnchantEquipped = true;
+
+            if (Main.myPlayer != player.whoAmI)
+                return;
+            if (player.ownedProjectileCounts[ModContent.ProjectileType<FaradaySun>()] < 1)
+            {
+                var source = player.GetSource_Misc("FaradayEffect");
+                Projectile.NewProjectile(source, player.Center, Vector2.Zero,
+                    ModContent.ProjectileType<FaradaySun>(), 20, 1f, player.whoAmI, 0f);
+            }
+            if (player.ownedProjectileCounts[ModContent.ProjectileType<FaradayMoon>()] < 1)
+            {
+                var source = player.GetSource_Misc("FaradayEffect");
+                Projectile.NewProjectile(source, player.Center, Vector2.Zero,
+                    ModContent.ProjectileType<FaradayMoon>(), 20, 1f, player.whoAmI, MathHelper.Pi);
+            }
         }
     }
 }

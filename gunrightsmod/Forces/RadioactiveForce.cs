@@ -8,6 +8,10 @@ using FargowiltasSouls.Core.AccessoryEffectSystem;
 using ssm.Content.SoulToggles;
 using FargowiltasSouls;
 using FargowiltasSouls.Core.ModPlayers;
+using FargowiltasSouls.Common.Utilities;
+using FargowiltasSouls.Content.Items.Accessories.Enchantments;
+using FargowiltasSouls.Core.Toggler.Content;
+
 
 namespace ssm.gunrightsmod.Forces
 {
@@ -25,19 +29,16 @@ namespace ssm.gunrightsmod.Forces
             [
                 ModContent.ItemType<AstatineEnchant>(),
                 ModContent.ItemType<FaradayEnchant>(),
-                ModContent.ItemType<PlutoniumEnchant>(),
-                ModContent.ItemType<UraniumEnchant>(),
+
             ];
         }
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            // This is the only line you need to add to your original code.
             SetActive(player);
-
             player.AddEffect<RadioactiveForceEffect>(Item);
             player.AddEffect<AstatineEffect>(Item);
-            //  player.AddEffect<FaradayEffect>(Item);
+            player.AddEffect<FaradayEffect>(Item);
             //  player.AddEffect<PlutoniumEffect>(Item);
             //  player.AddEffect<UraniumEffect>(Item);
         }
@@ -47,7 +48,5 @@ namespace ssm.gunrightsmod.Forces
     {
         public override Header ToggleHeader => Header.GetHeader<RadioactiveForceHeader>();
         public override int ToggleItemType => ModContent.ItemType<RadioactiveForce>();
-
-
     }
 }

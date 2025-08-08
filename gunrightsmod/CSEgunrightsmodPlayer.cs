@@ -38,6 +38,12 @@ using Terraria.Localization;
 using Terraria.ModLoader.Default;
 using Terraria.ModLoader.IO;
 using static FargowiltasSouls.Core.Systems.DashManager;
+using Fargowiltas.Items.Explosives;
+using Fargowiltas.NPCs;
+using FargowiltasSouls.Content.Items.Armor;
+using FargowiltasSouls.Content.Items.Consumables;
+using FargowiltasSouls.Content.Items.Weapons.Challengers;
+using Terraria.UI;
 
 
 namespace ssm.gunrightsmod
@@ -49,10 +55,11 @@ namespace ssm.gunrightsmod
         // ENCHANTMENTS
         public bool AstatineEnchantEquipped;
         public Item AstatineEnchantItem;
-        public int AstatineExplosionCharge = 0;
+        public int AstatineExplosionCharge;
         public int AstatineExplosionCooldown;
         public bool FaradayEnchantEquipped;
         public Item FaradayEnchantItem;
+        public List<int> ForbiddenTornados = [];
         public bool KevlarEnchantEquipped;
         public Item KevlarEnchantItem;
         public bool PlasticEnchantEquipped;
@@ -75,6 +82,10 @@ namespace ssm.gunrightsmod
         public override void ResetEffects()
         {
             // ENCHANTMENTS
+            if (!AstatineEnchantEquipped)
+            {
+                AstatineExplosionCharge = 0;
+            }
             AstatineEnchantEquipped = false;
             AstatineEnchantItem = null;
             FaradayEnchantEquipped = false;
