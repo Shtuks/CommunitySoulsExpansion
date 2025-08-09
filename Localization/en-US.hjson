@@ -3966,15 +3966,12 @@ Mods: {
 			XeniumRocket.DisplayName: Xenium Rocket
 			XeniumTurret.DisplayName: Xenium Turret
 			AstatineExplosion.DisplayName: Astatine Explosion
-<<<<<<< HEAD
 			FaradaySun.DisplayName: Faraday Sun
 			FaradayMoon.DisplayName: Faraday Moon
 			UraniumAura.DisplayName: Uranium Aura
 			UraniumAuraProjectile.DisplayName: Uranium Aura Projectile
 			PlutoniumParticle.DisplayName: Plutonium Particle
-=======
 			UraniumAura.DisplayName: Uranium Aura
->>>>>>> 45063bdad3e36aa8521f3bf933eb20311b693b79
 		}
 
 		Bestiary: {

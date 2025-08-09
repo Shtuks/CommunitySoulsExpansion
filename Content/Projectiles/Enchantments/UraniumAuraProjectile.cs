@@ -15,6 +15,7 @@ using ssm.gunrightsmod.Enchantments;
 using static FargowiltasSouls.Content.Items.Accessories.Forces.TimberForce;
 using ssm.SoA.Enchantments;
 using ssm.SoA.Forces;
+using static ssm.gunrightsmod.Enchantments.UraniumEnchant;
 
 namespace ssm.Content.Projectiles.Enchantments
 {

@@ -5,12 +5,9 @@ using FargowiltasSouls.Content.Items.Accessories.Forces;
 using ssm.gunrightsmod.Enchantments;
 using ssm.Core;
 using FargowiltasSouls.Core.AccessoryEffectSystem;
-using ssm.Content.SoulToggles;
-using FargowiltasSouls;
-using FargowiltasSouls.Core.ModPlayers;
-using FargowiltasSouls.Common.Utilities;
-using FargowiltasSouls.Content.Items.Accessories.Enchantments;
-using FargowiltasSouls.Core.Toggler.Content;
+using static ssm.gunrightsmod.Enchantments.AstatineEnchant;
+using static ssm.gunrightsmod.Enchantments.UraniumEnchant;
+using static ssm.gunrightsmod.Enchantments.PlutoniumEnchant;
 
 
 namespace ssm.gunrightsmod.Forces
@@ -50,11 +47,11 @@ namespace ssm.gunrightsmod.Forces
             recipe.AddTile(ModContent.Find<ModTile>("Fargowiltas", "CrucibleCosmosSheet"));
             recipe.Register();
         }
-    }
 
-    public class RadioactiveEffect : AccessoryEffect
-    {
-        public override Header ToggleHeader => null;
-        public override int ToggleItemType => ModContent.ItemType<RadioactiveForce>();
+        public class RadioactiveEffect : AccessoryEffect
+        {
+            public override Header ToggleHeader => null;
+            public override int ToggleItemType => ModContent.ItemType<RadioactiveForce>();
+        }
     }
 }

@@ -52,29 +52,27 @@ namespace ssm.gunrightsmod.Enchantments
             recipe.AddTile(TileID.DemonAltar);
             recipe.Register();
         }
-    }
 
-    [ExtendsFromMod(ModCompatibility.Gunrightsmod.Name)]
-    [JITWhenModsEnabled(ModCompatibility.Gunrightsmod.Name)]
-    public class FaradayEffect : AccessoryEffect
-    {
-        public override Header ToggleHeader => Header.GetHeader<RadioactiveForceHeader>();
-        public override int ToggleItemType => ModContent.ItemType<FaradayEnchant>();
-        public override void PostUpdate(Player player)
+        public class FaradayEffect : AccessoryEffect
         {
-            if (Main.myPlayer != player.whoAmI)
-                return;
-            if (player.ownedProjectileCounts[ModContent.ProjectileType<FaradaySun>()] < 1)
+            public override Header ToggleHeader => Header.GetHeader<RadioactiveForceHeader>();
+            public override int ToggleItemType => ModContent.ItemType<FaradayEnchant>();
+            public override void PostUpdate(Player player)
             {
-                var source = player.GetSource_Misc("FaradayEffect");
-                Projectile.NewProjectile(source, player.Center, Vector2.Zero,
-                    ModContent.ProjectileType<FaradaySun>(), 20, 1f, player.whoAmI, 0f);
-            }
-            if (player.ownedProjectileCounts[ModContent.ProjectileType<FaradayMoon>()] < 1)
-            {
-                var source = player.GetSource_Misc("FaradayEffect");
-                Projectile.NewProjectile(source, player.Center, Vector2.Zero,
-                    ModContent.ProjectileType<FaradayMoon>(), 20, 1f, player.whoAmI, MathHelper.Pi);
+                if (Main.myPlayer != player.whoAmI)
+                    return;
+                if (player.ownedProjectileCounts[ModContent.ProjectileType<FaradaySun>()] < 1)
+                {
+                    var source = player.GetSource_Misc("FaradayEffect");
+                    Projectile.NewProjectile(source, player.Center, Vector2.Zero,
+                        ModContent.ProjectileType<FaradaySun>(), 20, 1f, player.whoAmI, 0f);
+                }
+                if (player.ownedProjectileCounts[ModContent.ProjectileType<FaradayMoon>()] < 1)
+                {
+                    var source = player.GetSource_Misc("FaradayEffect");
+                    Projectile.NewProjectile(source, player.Center, Vector2.Zero,
+                        ModContent.ProjectileType<FaradayMoon>(), 20, 1f, player.whoAmI, MathHelper.Pi);
+                }
             }
         }
     }

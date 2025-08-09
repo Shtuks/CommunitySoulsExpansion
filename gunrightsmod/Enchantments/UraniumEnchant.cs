@@ -48,50 +48,50 @@ namespace ssm.gunrightsmod.Enchantments
             recipe.AddTile(TileID.DemonAltar);
             recipe.Register();
         }
-    }
 
-    public class UraniumEffect : AccessoryEffect
-    {
-        public override Header ToggleHeader => Header.GetHeader<RadioactiveForceHeader>();
-        public override int ToggleItemType => ModContent.ItemType<UraniumEnchant>();
-        public static int Range(Player player, bool forceEffect) => (int)(forceEffect ? 450f : 250f);
-        public override void PostUpdateEquips(Player player)
+        public class UraniumEffect : AccessoryEffect
         {
-            FargoSoulsPlayer modPlayer = player.FargoSouls();
-
-            if (player.whoAmI != Main.myPlayer)
-                return;
-
-            int visualProj = ModContent.ProjectileType<UraniumAuraProjectile>();
-            if (player.ownedProjectileCounts[visualProj] <= 0)
+            public override Header ToggleHeader => Header.GetHeader<RadioactiveForceHeader>();
+            public override int ToggleItemType => ModContent.ItemType<UraniumEnchant>();
+            public static int Range(Player player, bool forceEffect) => (int)(forceEffect ? 450f : 250f);
+            public override void PostUpdateEquips(Player player)
             {
-                Projectile.NewProjectile(GetSource_EffectItem(player), player.Center, Vector2.Zero, visualProj, 0, 0, Main.myPlayer);
-            }
+                FargoSoulsPlayer modPlayer = player.FargoSouls();
 
-            bool forceEffect = modPlayer.ForceEffect<UraniumEnchant>();
-            int dist = Range(player, forceEffect);
+                if (player.whoAmI != Main.myPlayer)
+                    return;
 
-            for (int i = 0; i < Main.maxNPCs; i++)
-            {
-                NPC npc = Main.npc[i];
-                if (npc.active && !npc.friendly && npc.lifeMax > 5 && !npc.dontTakeDamage)
+                int visualProj = ModContent.ProjectileType<UraniumAuraProjectile>();
+                if (player.ownedProjectileCounts[visualProj] <= 0)
                 {
-                    Vector2 npcComparePoint = FargoSoulsUtil.ClosestPointInHitbox(npc, player.Center);
-                    if (player.Distance(npcComparePoint) < dist && (forceEffect || Collision.CanHitLine(player.Center, 0, 0, npcComparePoint, 0, 0)))
+                    Projectile.NewProjectile(GetSource_EffectItem(player), player.Center, Vector2.Zero, visualProj, 0, 0, Main.myPlayer);
+                }
+
+                bool forceEffect = modPlayer.ForceEffect<UraniumEnchant>();
+                int dist = Range(player, forceEffect);
+
+                for (int i = 0; i < Main.maxNPCs; i++)
+                {
+                    NPC npc = Main.npc[i];
+                    if (npc.active && !npc.friendly && npc.lifeMax > 5 && !npc.dontTakeDamage)
                     {
-                        npc.AddBuff(ModContent.BuffType<RadioactiveDecay>(), 120);
+                        Vector2 npcComparePoint = FargoSoulsUtil.ClosestPointInHitbox(npc, player.Center);
+                        if (player.Distance(npcComparePoint) < dist && (forceEffect || Collision.CanHitLine(player.Center, 0, 0, npcComparePoint, 0, 0)))
+                        {
+                            npc.AddBuff(ModContent.BuffType<RadioactiveDecay>(), 120);
+                        }
                     }
                 }
-            }
-            for (int i = 0; i < Main.maxPlayers; i++)
-            {
-                Player targetPlayer = Main.player[i];
-                if (targetPlayer.active && !targetPlayer.dead && targetPlayer.whoAmI != player.whoAmI && targetPlayer.team != player.team)
+                for (int i = 0; i < Main.maxPlayers; i++)
                 {
-                    Vector2 targetComparePoint = targetPlayer.Center;
-                    if (player.Distance(targetComparePoint) < dist && (forceEffect || Collision.CanHitLine(player.Center, 0, 0, targetComparePoint, 0, 0)))
+                    Player targetPlayer = Main.player[i];
+                    if (targetPlayer.active && !targetPlayer.dead && targetPlayer.whoAmI != player.whoAmI && targetPlayer.team != player.team)
                     {
-                        targetPlayer.AddBuff(ModContent.BuffType<RadioactiveDecay>(), 120);
+                        Vector2 targetComparePoint = targetPlayer.Center;
+                        if (player.Distance(targetComparePoint) < dist && (forceEffect || Collision.CanHitLine(player.Center, 0, 0, targetComparePoint, 0, 0)))
+                        {
+                            targetPlayer.AddBuff(ModContent.BuffType<RadioactiveDecay>(), 120);
+                        }
                     }
                 }
             }

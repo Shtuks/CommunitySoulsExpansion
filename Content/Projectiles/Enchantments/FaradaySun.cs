@@ -7,6 +7,7 @@ using FargowiltasSouls.Core.AccessoryEffectSystem;
 using ssm.gunrightsmod.Enchantments;
 using ssm.gunrightsmod;
 using System.Collections.Generic;
+using static ssm.gunrightsmod.Enchantments.FaradayEnchant;
 
 
 namespace ssm.Content.Projectiles.Enchantments

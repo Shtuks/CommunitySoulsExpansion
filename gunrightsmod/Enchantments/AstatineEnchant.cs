@@ -51,37 +51,37 @@ namespace ssm.gunrightsmod.Enchantments
             recipe.AddTile(TileID.CrystalBall);
             recipe.Register();
         }
-    }
 
-    public class AstatineEffect : AccessoryEffect
-    {
-        public override Header ToggleHeader => Header.GetHeader<RadioactiveForceHeader>();
-        public override int ToggleItemType => ModContent.ItemType<AstatineEnchant>();
-        public override void PostUpdate(Player player)
+        public class AstatineEffect : AccessoryEffect
         {
-            var CSEgunrightsmodPlayer = player.GetModPlayer<CSEgunrightsmodPlayer>();
-            CSEgunrightsmodPlayer.AstatineEnchantEquipped = true;
-            if (!player.ForceEffect<AstatineEffect>() && player.whoAmI == Main.myPlayer)
+            public override Header ToggleHeader => Header.GetHeader<RadioactiveForceHeader>();
+            public override int ToggleItemType => ModContent.ItemType<AstatineEnchant>();
+            public override void PostUpdate(Player player)
             {
-                if (CSEgunrightsmodPlayer.AstatineExplosionCharge < 15 * 60)
-                    CSEgunrightsmodPlayer.AstatineExplosionCharge++;
-                CooldownBarManager.Activate("AstatineExplosionCooldown", ModContent.Request<Texture2D>("ssm/gunrightsmod/Enchantments/AstatineEnchant").Value, new(183, 62, 97),
-                    () => CSEgunrightsmodPlayer.AstatineExplosionCharge / (15f * 60), true, activeFunction: player.HasEffect<AstatineEffect>);
+                var CSEgunrightsmodPlayer = player.GetModPlayer<CSEgunrightsmodPlayer>();
+                CSEgunrightsmodPlayer.AstatineEnchantEquipped = true;
+                if (!player.ForceEffect<AstatineEffect>() && player.whoAmI == Main.myPlayer)
+                {
+                    if (CSEgunrightsmodPlayer.AstatineExplosionCharge < 15 * 60)
+                        CSEgunrightsmodPlayer.AstatineExplosionCharge++;
+                    CooldownBarManager.Activate("AstatineExplosionCooldown", ModContent.Request<Texture2D>("ssm/gunrightsmod/Enchantments/AstatineEnchant").Value, new(183, 62, 97),
+                        () => CSEgunrightsmodPlayer.AstatineExplosionCharge / (15f * 60), true, activeFunction: player.HasEffect<AstatineEffect>);
+                }
+                else
+                    CSEgunrightsmodPlayer.AstatineExplosionCharge = 0;
             }
-            else
+            public override void OnHitByEither(Player player, NPC npc, Projectile proj)
+            {
+                var CSEgunrightsmodPlayer = player.GetModPlayer<CSEgunrightsmodPlayer>();
+                if (CSEgunrightsmodPlayer.AstatineExplosionCharge >= 15f * 60 || player.FargoSouls().ForceEffect<AstatineEnchant>())
+                    AstatineExplosion(player);
+            }
+            public void AstatineExplosion(Player player)
+            {
+                var CSEgunrightsmodPlayer = player.GetModPlayer<CSEgunrightsmodPlayer>();
                 CSEgunrightsmodPlayer.AstatineExplosionCharge = 0;
-        }
-        public override void OnHitByEither(Player player, NPC npc, Projectile proj)
-        {
-            var CSEgunrightsmodPlayer = player.GetModPlayer<CSEgunrightsmodPlayer>();
-            if (CSEgunrightsmodPlayer.AstatineExplosionCharge >= 15f * 60 || player.FargoSouls().ForceEffect<AstatineEnchant>())
-                AstatineExplosion(player);
-        }
-        public void AstatineExplosion(Player player)
-        {
-            var CSEgunrightsmodPlayer = player.GetModPlayer<CSEgunrightsmodPlayer>();
-            CSEgunrightsmodPlayer.AstatineExplosionCharge = 0;
-            Projectile.NewProjectile(player.GetSource_Misc("AstatineEnchantExplosion"), player.Center, Vector2.Zero, ModContent.ProjectileType<AstaBoomBig>(), 6000, 5f, player.whoAmI);
+                Projectile.NewProjectile(player.GetSource_Misc("AstatineEnchantExplosion"), player.Center, Vector2.Zero, ModContent.ProjectileType<AstaBoomBig>(), 6000, 5f, player.whoAmI);
+            }
         }
     }
 }

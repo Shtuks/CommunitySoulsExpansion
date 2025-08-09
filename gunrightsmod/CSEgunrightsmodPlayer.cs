@@ -4,6 +4,8 @@ using ssm.Core;
 using ssm.gunrightsmod.Enchantments;
 using FargowiltasSouls;
 using FargowiltasSouls.Core.AccessoryEffectSystem;
+using static ssm.gunrightsmod.Enchantments.PlutoniumEnchant;
+using static ssm.gunrightsmod.Enchantments.UraniumEnchant;
 
 
 namespace ssm.gunrightsmod

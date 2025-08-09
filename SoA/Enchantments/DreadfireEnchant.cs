@@ -114,7 +114,7 @@ namespace ssm.SoA.Enchantments
             recipe.AddIngredient<DreadfireMask>();
             recipe.AddIngredient<DreadfirePlate>();
             recipe.AddIngredient<DreadfireBoots>();
-            recipe.AddIngredient<DreadflameEmblem>();
+           // recipe.AddIngredient<DreadflameEmblem>();
             recipe.AddIngredient<PumpkinFlare>();
             recipe.AddIngredient<PumpkinCarver>();
             recipe.AddTile(26);

@@ -50,27 +50,27 @@ namespace ssm.gunrightsmod.Enchantments
             recipe.AddTile(TileID.DemonAltar);
             recipe.Register();
         }
-    }
-    public class PlutoniumEffect : AccessoryEffect
-    {
-        public override Header ToggleHeader => Header.GetHeader<RadioactiveForceHeader>();
-        public override int ToggleItemType => ModContent.ItemType<PlutoniumEnchant>();
-
-
-        public override void PostUpdate(Player player)
+        public class PlutoniumEffect : AccessoryEffect
         {
-            CSEgunrightsmodPlayer CSEgunrightsmodPlayer = player.GetModPlayer<CSEgunrightsmodPlayer>();
-            Main.NewText("Plutonium Charge: " + CSEgunrightsmodPlayer.PlutoniumCharge);
-            if (CSEgunrightsmodPlayer.PlutoniumCharge == 4)
+            public override Header ToggleHeader => Header.GetHeader<RadioactiveForceHeader>();
+            public override int ToggleItemType => ModContent.ItemType<PlutoniumEnchant>();
+
+
+            public override void PostUpdate(Player player)
             {
-                LaunchPlutoniumParticle(player);
-                CSEgunrightsmodPlayer.PlutoniumCharge = 0;
+                CSEgunrightsmodPlayer CSEgunrightsmodPlayer = player.GetModPlayer<CSEgunrightsmodPlayer>();
+                Main.NewText("Plutonium Charge: " + CSEgunrightsmodPlayer.PlutoniumCharge);
+                if (CSEgunrightsmodPlayer.PlutoniumCharge == 4)
+                {
+                    LaunchPlutoniumParticle(player);
+                    CSEgunrightsmodPlayer.PlutoniumCharge = 0;
+                }
             }
-        }
-        public void LaunchPlutoniumParticle(Player player)
-        {
-            CSEgunrightsmodPlayer CSEgunrightsmodPlayer = player.GetModPlayer<CSEgunrightsmodPlayer>();
-            Projectile.NewProjectile(player.GetSource_Misc("LaunchPlutoniumParticle"), new Vector2(100f, 100f), new Vector2(10f, 0f), ModContent.ProjectileType<PlutoniumParticle>(), CSEgunrightsmodPlayer.PlutoniumMissileDamage, 0f, player.whoAmI);
+            public void LaunchPlutoniumParticle(Player player)
+            {
+                CSEgunrightsmodPlayer CSEgunrightsmodPlayer = player.GetModPlayer<CSEgunrightsmodPlayer>();
+                Projectile.NewProjectile(player.GetSource_Misc("LaunchPlutoniumParticle"), new Vector2(100f, 100f), new Vector2(10f, 0f), ModContent.ProjectileType<PlutoniumParticle>(), CSEgunrightsmodPlayer.PlutoniumMissileDamage, 0f, player.whoAmI);
+            }
         }
     }
 }
