@@ -9,6 +9,8 @@ using SacredTools.Content.Items.Weapons.Relic;
 using SacredTools.Content.Items.Armor.Asthraltite;
 using SacredTools.Content.Items.Placeable.Obelisks;
 using CalamityMod.Items;
+using FargowiltasSouls.Content.Items.Materials;
+using ssm.Content.Items.Materials;
 
 namespace ssm.Calamity
 {
@@ -26,7 +28,8 @@ namespace ssm.Calamity
                 {
                     recipe.AddIngredient<EmberOfOmen>(5);
                 }
-                if (recipe.HasIngredient<Rock>() && !recipe.HasIngredient<EmberOfOmen>())
+                //ieor ahh compat
+                if (recipe.HasIngredient<Rock>() && !recipe.HasIngredient<EmberOfOmen>() && !recipe.HasIngredient<EternalEnergy>() && !recipe.HasIngredient<tModLoadiumBar>())
                 {
                     recipe.AddIngredient<EmberOfOmen>(3);
                 }

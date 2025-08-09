@@ -42,6 +42,11 @@ namespace ssm.Calamity
                     recipe.AddIngredient<DreamEssence>(1);
                 }
 
+                if (recipe.HasResult<MiracleMatter>())
+                {
+                    recipe.AddIngredient<DreamEssence>(1);
+                }
+
                 if (recipe.HasResult<VagabondsSoul>() && !recipe.HasIngredient<OceanEssence>())
                 {
                     recipe.AddIngredient<DreamEssence>(5);
@@ -57,6 +62,15 @@ namespace ssm.Calamity
                     recipe.AddIngredient<CelestialFragment>(1);
                     recipe.AddIngredient<ShootingStarFragment>(1);
                     recipe.AddIngredient<WhiteDwarfFragment>(1);
+                }
+
+                if (recipe.HasResult<AuricBar>() && recipe.HasIngredient<DreamEssence>())
+                {
+                    recipe.RemoveIngredient(ModContent.ItemType<DreamEssence>());
+                }
+                if (recipe.HasResult<DreamEssence>() && recipe.HasIngredient<AscendantSpiritEssence>())
+                {
+                    recipe.RemoveIngredient(ModContent.ItemType<AscendantSpiritEssence>());
                 }
 
                 if (ModContent.TryFind("EmpoweredGranite", out ModItem var) && ModContent.TryFind("EnchantedMarble", out ModItem var1))

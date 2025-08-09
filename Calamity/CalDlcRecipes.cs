@@ -37,10 +37,10 @@ namespace ssm.Calamity
                     if (recipe.RemoveIngredient(ModContent.ItemType<BrandoftheBrimstoneWitch>()))
                         recipe.AddIngredient<CalamitySoul>();
                 }
-                if (recipe.HasIngredient<Rock>() && recipe.HasIngredient<EternalEnergy>() && !recipe.HasIngredient<ShadowspecBar>())
-                {
-                    recipe.RemoveIngredient(ModContent.ItemType<Rock>());
-                }
+                //if (recipe.HasIngredient<Rock>() && recipe.HasIngredient<EternalEnergy>() && !recipe.HasIngredient<ShadowspecBar>())
+                //{
+                //    recipe.RemoveIngredient(ModContent.ItemType<Rock>());
+                //}
             }
         }
     }

@@ -26,7 +26,7 @@ namespace ssm
         {
             if (entity.type == ModContent.ItemType<Penetrator>() || entity.type == ModContent.ItemType<SparklingLove>() || entity.type == ModContent.ItemType<StyxGazer>())
             {
-                entity.damage *= 2;
+                entity.damage *= 5;
             }
             if (ModCompatibility.Calamity.Loaded)
             {

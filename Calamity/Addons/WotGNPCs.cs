@@ -6,6 +6,7 @@ using FargowiltasSouls.Core.ItemDropRules.Conditions;
 using NoxusBoss.Content.Items;
 using NoxusBoss.Content.Items.MiscOPTools;
 using NoxusBoss.Content.NPCs.Bosses.Avatar.SecondPhaseForm;
+using NoxusBoss.Content.NPCs.Bosses.NamelessDeity;
 using ssm.Content.NPCs;
 using ssm.Content.NPCs.MutantEX;
 using ssm.Core;
@@ -49,7 +50,12 @@ namespace ssm.Calamity.Addons
             if(npc.type == ModContent.NPCType<AvatarOfEmptiness>())
             {
                 LeadingConditionRule leadingConditionRule = new LeadingConditionRule(new EModeDropCondition());
-                leadingConditionRule.OnSuccess(ItemDropRule.Common(ModContent.ItemType<MetallicChunk>(), 1, 5, 10));
+                leadingConditionRule.OnSuccess(ItemDropRule.Common(ModContent.ItemType<MetallicChunk>(), 1, 10, 20));
+            }
+            if (npc.type == ModContent.NPCType<NamelessDeityBoss>())
+            {
+                LeadingConditionRule leadingConditionRule = new LeadingConditionRule(new EModeDropCondition());
+                leadingConditionRule.OnSuccess(ItemDropRule.Common(ModContent.ItemType<NDMaterialPlaceholder>(), 1, 10, 20));
             }
         }
     }

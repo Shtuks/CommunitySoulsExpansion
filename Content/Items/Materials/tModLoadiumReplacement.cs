@@ -14,25 +14,38 @@ namespace ssm.Content.Items.Materials
             {
                 Recipe recipe = Main.recipe[i];
 
-                if (recipe.createItem.type == ModContent.ItemType<MutantsForgeItem>() || recipe.createItem.type == ModContent.ItemType<tModLoadiumBar>() || recipe.createItem.type == ModContent.ItemType<UltimateHealingPotion>())
+                if (recipe.createItem.type == ModContent.ItemType<MutantsForgeItem>() ||
+                    recipe.createItem.type == ModContent.ItemType<tModLoadiumBar>() ||
+                    recipe.createItem.type == ModContent.ItemType<UltimateHealingPotion>())
                     continue;
+
+                bool hasEternal = false;
 
                 for (int j = 0; j < recipe.requiredItem.Count; j++)
                 {
-                    Item ingredient = recipe.requiredItem[j];
-
-                    if (ingredient.type == ModContent.ItemType<EternalEnergy>())
+                    if (recipe.requiredItem[j].type == ModContent.ItemType<EternalEnergy>())
                     {
-                        int originalStack = ingredient.stack;
+                        hasEternal = true;
+                        break;
+                    }
+                }
 
-                        if (recipe.HasIngredient<DeviatingEnergy>()) {
-                            recipe.RemoveIngredient(ModContent.ItemType<DeviatingEnergy>());}
-                        if (recipe.HasIngredient<AbomEnergy>()){
-                            recipe.RemoveIngredient(ModContent.ItemType<AbomEnergy>());}
+                if (!hasEternal)
+                    continue;
 
+                recipe.requiredItem.RemoveAll(ingredient =>
+                    ingredient.type == ModContent.ItemType<DeviatingEnergy>() ||
+                    ingredient.type == ModContent.ItemType<AbomEnergy>()
+                );
+
+                for (int j = 0; j < recipe.requiredItem.Count; j++)
+                {
+                    if (recipe.requiredItem[j].type == ModContent.ItemType<EternalEnergy>())
+                    {
+                        int stack = recipe.requiredItem[j].stack;
                         recipe.requiredItem[j] = new Item();
                         recipe.requiredItem[j].SetDefaults(ModContent.ItemType<tModLoadiumBar>());
-                        recipe.requiredItem[j].stack = originalStack;
+                        recipe.requiredItem[j].stack = stack;
                     }
                 }
             }

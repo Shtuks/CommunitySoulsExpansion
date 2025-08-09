@@ -95,8 +95,7 @@ namespace ssm.SoA.Enchantments
             {
                 var CosmicCommanderPlayer = player.GetModPlayer<CosmicCommanderPlayer>();
 
-                Main.NewText(CosmicCommanderPlayer, Color.LimeGreen);
-
+                //Main.NewText(CosmicCommanderPlayer, Color.LimeGreen);
 
                 if (CosmicCommanderPlayer.SniperStateActive)
                 {

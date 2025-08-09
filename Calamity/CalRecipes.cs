@@ -18,6 +18,7 @@ using System;
 using FargowiltasSouls.Core.Systems;
 using SacredTools.Content.Items.Materials;
 using ssm.Content.Items.Materials;
+using ssm.Calamity.Addons;
 
 namespace ssm.Calamity
 {
@@ -105,11 +106,6 @@ namespace ssm.Calamity
                 //{
                 //    recipe.AddIngredient<Rock>(1);
                 //}
-
-                if (!recipe.HasIngredient<Rock>() && recipe.HasResult<AbominationnVoodooDoll>())
-                {
-                    recipe.AddIngredient<Rock>(1);
-                }
 
                 if (recipe.HasResult<GalacticaSingularity>() && !recipe.DecraftDisabled)
                 {

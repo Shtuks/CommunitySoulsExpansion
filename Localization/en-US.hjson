@@ -16,6 +16,7 @@ Mods: {
 			CancelBuff: Canceled DLC buff
 			CancelDebuff: Canceled DLC debuff
 			PostND: "[c/FF0000:Cross-mod Balance:] Can be only used after defeating the Nameless Deity"
+			PostMonstrosity: "[c/FF0000:Cross-mod Balance:] Can be only used after defeating Monstrosity"
 			ColumnNerf: Fire column deal 50% less damage
 			Thorium1: Increased inspiration regeneration and chance for notes to drop
 			Thorium2: Increased thrower velocity and exhaustion regeneration by
@@ -3416,6 +3417,16 @@ Mods: {
 					'''
 				DisplayName: Bard Badge
 			}
+
+			DreamEssence: {
+				DisplayName: Dream Essence
+				Tooltip: ""
+			}
+
+			NDMaterialPlaceholder: {
+				DisplayName: ND Placeholder Material
+				Tooltip: ""
+			}
 		}
 
 		WizardEffect: {
@@ -3971,7 +3982,6 @@ Mods: {
 			UraniumAura.DisplayName: Uranium Aura
 			UraniumAuraProjectile.DisplayName: Uranium Aura Projectile
 			PlutoniumParticle.DisplayName: Plutonium Particle
-			UraniumAura.DisplayName: Uranium Aura
 		}
 
 		Bestiary: {

@@ -1,5 +1,9 @@
 ﻿using Fargowiltas.Items.Tiles;
+using FargowiltasSouls.Content.Items.Materials;
+using ssm.Content.Items.Consumables;
+using ssm.Content.Items.Materials;
 using ssm.Core;
+using ssm.CrossMod.CraftingStations;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -45,19 +49,33 @@ namespace ssm.Thorium.Items
                 if (recipe.createItem.type == ModContent.ItemType<DreamEssence>())
                     continue;
 
+                bool hasEssence = false;
+
                 for (int j = 0; j < recipe.requiredItem.Count; j++)
                 {
-                    Item ingredient = recipe.requiredItem[j];
-
-                    if (ingredient.type == ModContent.ItemType<OceanEssence>() && recipe.HasIngredient<DeathEssence>() && recipe.HasIngredient<InfernoEssence>())
+                    if (recipe.requiredItem[j].type == ModContent.ItemType<OceanEssence>() && recipe.HasIngredient<DeathEssence>() && recipe.HasIngredient<InfernoEssence>())
                     {
-                        int originalStack = ingredient.stack;
+                        hasEssence = true;
+                        break;
+                    }
+                }
 
-                        recipe.RemoveIngredient(ModContent.ItemType<InfernoEssence>());
-                        recipe.RemoveIngredient(ModContent.ItemType<DeathEssence>());
+                if (!hasEssence)
+                    continue;
+
+                recipe.requiredItem.RemoveAll(ingredient =>
+                    ingredient.type == ModContent.ItemType<InfernoEssence>() ||
+                    ingredient.type == ModContent.ItemType<DeathEssence>()
+                );
+
+                for (int j = 0; j < recipe.requiredItem.Count; j++)
+                {
+                    if (recipe.requiredItem[j].type == ModContent.ItemType<OceanEssence>())
+                    {
+                        int stack = recipe.requiredItem[j].stack;
                         recipe.requiredItem[j] = new Item();
                         recipe.requiredItem[j].SetDefaults(ModContent.ItemType<DreamEssence>());
-                        recipe.requiredItem[j].stack = originalStack;
+                        recipe.requiredItem[j].stack = stack;
                     }
                 }
             }

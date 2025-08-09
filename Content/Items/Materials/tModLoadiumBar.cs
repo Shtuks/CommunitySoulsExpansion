@@ -7,6 +7,7 @@ using FargowiltasSouls.Content.Items.Materials;
 using ssm.CrossMod.CraftingStations;
 using ssm.Core;
 using ssm.Thorium.Items;
+using ssm.Calamity.Addons;
 
 namespace ssm.Content.Items.Materials
 {
@@ -45,7 +46,7 @@ namespace ssm.Content.Items.Materials
 
         public override void AddRecipes()
         {
-            Recipe recipe = CreateRecipe(5);
+            Recipe recipe = CreateRecipe(1);
             recipe.AddIngredient<EternalEnergy>(1);
             recipe.AddIngredient<DeviatingEnergy>(1);
 
@@ -67,6 +68,7 @@ namespace ssm.Content.Items.Materials
             if (ModCompatibility.WrathoftheGods.Loaded)
             {
                 recipe.AddIngredient(ModCompatibility.WrathoftheGods.Mod.Find<ModItem>("MetallicChunk"), 1);
+                recipe.AddIngredient<NDMaterialPlaceholder>(1);
             }
             if (ModCompatibility.Calamity.Loaded)
             {
@@ -77,12 +79,12 @@ namespace ssm.Content.Items.Materials
             {
                 recipe.AddIngredient(ModCompatibility.SacredTools.Mod.Find<ModItem>("EmberOfOmen"), 1);
             }
-            if (ModCompatibility.Homeward.Loaded)
+
+
+            if (ModCompatibility.Homeward.Loaded && !ModCompatibility.Calamity.Loaded)
             {
                 recipe.AddIngredient(ModCompatibility.Homeward.Mod.Find<ModItem>("FinalBar"), 1);
             }
-
-
             if (ModCompatibility.Thorium.Loaded && !ModCompatibility.Calamity.Loaded)
             {
                 recipe.AddIngredient<DreamEssence>(1);
