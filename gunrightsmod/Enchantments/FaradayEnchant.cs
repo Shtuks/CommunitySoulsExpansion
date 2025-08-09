@@ -62,9 +62,6 @@ namespace ssm.gunrightsmod.Enchantments
         public override int ToggleItemType => ModContent.ItemType<FaradayEnchant>();
         public override void PostUpdate(Player player)
         {
-            var CSEgunrightsmodPlayer = player.GetModPlayer<CSEgunrightsmodPlayer>();
-            CSEgunrightsmodPlayer.FaradayEnchantEquipped = true;
-
             if (Main.myPlayer != player.whoAmI)
                 return;
             if (player.ownedProjectileCounts[ModContent.ProjectileType<FaradaySun>()] < 1)

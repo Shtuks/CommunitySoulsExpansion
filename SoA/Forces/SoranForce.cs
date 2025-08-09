@@ -132,12 +132,5 @@ namespace ssm.SoA.Forces
 
             HadCSoranForceLastFrame = HasCSoranForceThisFrame;
         }
-
-        public void OnEnterWorld()
-        {
-            SniperStateActive = false;
-            SniperStateRecharging = true;
-            SniperStateCharge = 0;
-        }
     }
 }

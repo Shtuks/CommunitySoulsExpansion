@@ -5,26 +5,26 @@ using FargowiltasSouls.Content.Items.Accessories.Forces;
 using FargowiltasSouls;
 using Luminance.Core.Graphics;
 using Microsoft.Xna.Framework.Graphics;
-using static FargowiltasSouls.Content.Items.Accessories.Forces.TimberForce;
 using Terraria.GameContent;
 using Terraria.ModLoader;
 using Terraria;
 using Microsoft.Xna.Framework;
-using static ssm.SoA.Enchantments.DreadfireEnchant;
 using FargowiltasSouls.Core.AccessoryEffectSystem;
 using ssm.Core;
-using ssm.gunrightsmod.Forces;
 using ssm.gunrightsmod.Enchantments;
+using static FargowiltasSouls.Content.Items.Accessories.Forces.TimberForce;
+using ssm.SoA.Enchantments;
+using ssm.SoA.Forces;
 
-namespace ssm.Content.Projectiles
+namespace ssm.Content.Projectiles.Enchantments
 {
-    [ExtendsFromMod(ModCompatibility.SacredTools.Name)]
-    [JITWhenModsEnabled(ModCompatibility.SacredTools.Name)]
-    public class DreadfireAuraProj : ModProjectile
+    [ExtendsFromMod(ModCompatibility.Gunrightsmod.Name)]
+    [JITWhenModsEnabled(ModCompatibility.Gunrightsmod.Name)]
+    public class UraniumAuraProjectile : ModProjectile
     {
         public override string Texture => FargoSoulsUtil.EmptyTexture;
 
-        public override Color? GetAlpha(Color lightColor) => lightColor * Projectile.Opacity; 
+        public override Color? GetAlpha(Color lightColor) => lightColor * Projectile.Opacity;
 
         public override void SetDefaults()
         {
@@ -45,14 +45,16 @@ namespace ssm.Content.Projectiles
                 return;
             }
             Player player = Main.player[Projectile.owner];
-            if (!player.Alive() || !player.HasEffect<DreadfireEffect>())
+            if (!player.Alive() || !player.HasEffect<UraniumEffect>())
             {
                 Projectile.Kill();
                 return;
             }
             Projectile.Center = player.Center;
             Projectile.timeLeft = 60;
-            Projectile.ai[0] = DreadfireEffect.Range(player, player.ForceEffect<DreadfireEffect>());
+            Projectile.ai[0] = UraniumEffect.Range(player, player.ForceEffect<UraniumEffect>());
+            Projectile.damage = player.FargoSouls().ForceEffect<AstatineEnchant>() ? 15 * 60 : 6 * 60;
+
         }
         public static bool CombinedAura(Player player) => player.HasEffect<NatureEffect>() && player.HasEffect<MoltenEffect>() && (player.HasEffect<EbonwoodEffect>() || player.HasEffect<EbonwoodEffect>()) && player.HasEffect<TimberEffect>();
         public override bool PreDraw(ref Color lightColor)
@@ -63,7 +65,7 @@ namespace ssm.Content.Projectiles
                 return false;
             }
             Player player = Main.player[Projectile.owner];
-            if (!player.Alive() || !player.HasEffect<DreadfireEffect>())
+            if (!player.Alive() || !player.HasEffect<UraniumEffect>())
             {
                 Projectile.Kill();
                 return false;
@@ -74,9 +76,9 @@ namespace ssm.Content.Projectiles
                 return false;
             }
 
-            Color darkColor = Color.DarkRed;
-            Color mediumColor = Color.Orange;
-            Color lightColor2 = Color.Lerp(Color.OrangeRed, Color.White, 0.35f);
+            Color darkColor = Color.DarkGreen;
+            Color mediumColor = Color.Green;
+            Color lightColor2 = Color.Lerp(Color.GreenYellow, Color.SeaGreen, 0.35f);
 
             Vector2 auraPos = player.Center;
             float radius = Projectile.ai[0];

@@ -2,7 +2,6 @@
 using Terraria;
 using ssm.Core;
 using Terraria.ID;
-using ssm.Thorium.Buffs;
 
 namespace ssm.Thorium
 {
@@ -24,13 +23,6 @@ namespace ssm.Thorium
             if (player.GetModPlayer<CSEThoriumPlayer>().ThunderTalonEternity)
             {
                 target.AddBuff(BuffID.BoneJavelin, 300);
-            }
-            if (player.GetModPlayer<CSEThoriumPlayer>().DarkenedCloak)
-            {
-                if (Main.rand.NextBool(4))
-                {
-                    player.AddBuff(ModContent.BuffType<SoulStrength>(), 120);
-                }
             }
         }
     }

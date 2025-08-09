@@ -10,13 +10,6 @@ using ssm.Content.SoulToggles;
 using Microsoft.Xna.Framework.Graphics;
 using FargowiltasSouls.Content.UI.Elements;
 using gunrightsmod.Content.Projectiles;
-using FargowiltasSouls.Common.Utilities;
-using ssm.gunrightsmod.Forces;
-using FargowiltasSouls.Core.Toggler.Content;
-using System;
-using System.Collections.Generic;
-using Terraria.GameContent.Bestiary;
-using Terraria.UI;
 using FargowiltasSouls;
 
 
@@ -60,7 +53,6 @@ namespace ssm.gunrightsmod.Enchantments
         }
     }
 
-
     public class AstatineEffect : AccessoryEffect
     {
         public override Header ToggleHeader => Header.GetHeader<RadioactiveForceHeader>();
@@ -69,33 +61,27 @@ namespace ssm.gunrightsmod.Enchantments
         {
             var CSEgunrightsmodPlayer = player.GetModPlayer<CSEgunrightsmodPlayer>();
             CSEgunrightsmodPlayer.AstatineEnchantEquipped = true;
-            CSEgunrightsmodPlayer.AstatineExplosionCooldown = player.FargoSouls().ForceEffect<AstatineEnchant>() ? 7 * 60 : 15 * 60;
-            if (CSEgunrightsmodPlayer.AstatineExplosionCharge < CSEgunrightsmodPlayer.AstatineExplosionCooldown)
-                CSEgunrightsmodPlayer.AstatineExplosionCharge++;
-            if (CSEgunrightsmodPlayer.AstatineExplosionCharge > CSEgunrightsmodPlayer.AstatineExplosionCooldown)
-                CSEgunrightsmodPlayer.AstatineExplosionCharge = CSEgunrightsmodPlayer.AstatineExplosionCooldown;
-        }
-        public override void PostUpdateEquips(Player player)
-        {
-            var CSEgunrightsmodPlayer = player.GetModPlayer<CSEgunrightsmodPlayer>();
-            if (player.whoAmI == Main.myPlayer)
+            if (!player.ForceEffect<AstatineEffect>() && player.whoAmI == Main.myPlayer)
             {
-                CooldownBarManager.Activate("AstatineExplosionCharge", ModContent.Request<Texture2D>("ssm/gunrightsmod/Enchantments/AstatineEnchant").Value, new(183, 62, 97),
-                    () => (float)CSEgunrightsmodPlayer.AstatineExplosionCharge / CSEgunrightsmodPlayer.AstatineExplosionCooldown, true);
+                if (CSEgunrightsmodPlayer.AstatineExplosionCharge < 15 * 60)
+                    CSEgunrightsmodPlayer.AstatineExplosionCharge++;
+                CooldownBarManager.Activate("AstatineExplosionCooldown", ModContent.Request<Texture2D>("ssm/gunrightsmod/Enchantments/AstatineEnchant").Value, new(183, 62, 97),
+                    () => CSEgunrightsmodPlayer.AstatineExplosionCharge / (15f * 60), true, activeFunction: player.HasEffect<AstatineEffect>);
             }
+            else
+                CSEgunrightsmodPlayer.AstatineExplosionCharge = 0;
         }
         public override void OnHitByEither(Player player, NPC npc, Projectile proj)
         {
             var CSEgunrightsmodPlayer = player.GetModPlayer<CSEgunrightsmodPlayer>();
-            if (CSEgunrightsmodPlayer.AstatineExplosionCharge >= CSEgunrightsmodPlayer.AstatineExplosionCooldown)
+            if (CSEgunrightsmodPlayer.AstatineExplosionCharge >= 15f * 60 || player.FargoSouls().ForceEffect<AstatineEnchant>())
                 AstatineExplosion(player);
         }
         public void AstatineExplosion(Player player)
         {
             var CSEgunrightsmodPlayer = player.GetModPlayer<CSEgunrightsmodPlayer>();
             CSEgunrightsmodPlayer.AstatineExplosionCharge = 0;
-            Vector2 position = player.Center;
-            Projectile.NewProjectile(player.GetSource_Misc("SpawnProjectileOnPlayer"), player.Center, Vector2.Zero, ModContent.ProjectileType<AstaBoomBig>(), 6000, 5f, player.whoAmI);
+            Projectile.NewProjectile(player.GetSource_Misc("AstatineEnchantExplosion"), player.Center, Vector2.Zero, ModContent.ProjectileType<AstaBoomBig>(), 6000, 5f, player.whoAmI);
         }
     }
 }

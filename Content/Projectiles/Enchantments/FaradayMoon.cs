@@ -3,6 +3,8 @@ using Terraria;
 using Terraria.ModLoader;
 using System;
 using ssm.Core;
+using FargowiltasSouls.Core.AccessoryEffectSystem;
+using ssm.gunrightsmod.Enchantments;
 
 namespace ssm.Content.Projectiles.Enchantments
 {
@@ -29,7 +31,7 @@ namespace ssm.Content.Projectiles.Enchantments
             Player player = Main.player[Projectile.owner];
 
             // If the player dies or stops holding the item, kill the projectile
-            if (!player.active || player.dead)
+            if (!player.HasEffect<FaradayEffect>() || player.dead)
             {
                 Projectile.Kill();
                 return;

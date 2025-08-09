@@ -524,7 +524,7 @@ Mods: {
 
 			DragonLeadEnchant: {
 				DisplayName: Dragon Lead Enchantment
-				Tooltip: Taking damage makes weapons deal Dragonblaze debuff for 10 seconds
+				Tooltip: Taking damage makes your weapons deal the Dragonblaze debuff for 10 seconds
 			}
 
 			PureIronEnchant: {
@@ -834,7 +834,7 @@ Mods: {
 				Tooltip:
 					'''
 					'Ralnek's spirit guides you'
-					Surrounds player with Dreadfire Aura that inflicting Dreadfire buff
+					Surrounds player with Dreadfire Aura that inflicts Dreadfire buff
 					Dreadfire buff increases damage by 20%
 					'''
 			}
@@ -2770,7 +2770,11 @@ Mods: {
 
 			UraniumEnchant: {
 				DisplayName: Uranium Enchant
-				Tooltip: ""
+				Tooltip:
+					'''
+					You now emit a radioactive aura 
+					Enemies within the aura get the Radioactive Decay debuff
+					'''
 			}
 
 			IdeocracyForce: {
@@ -2780,7 +2784,13 @@ Mods: {
 
 			RadioactiveForce: {
 				DisplayName: Force of Radioactivity
-				Tooltip: ""
+				Tooltip:
+					'''
+					[i:ssm/FaradayEnchant] ""
+					[i:ssm/PlutoniumEnchant] ""
+					[i:ssm/UraniumEnchant] You emit a larger  radioactive aura and deal 15% more damage
+					[i:ssm/AstatineEnchant] You attack faster and cause explosions every time you get hit
+					'''
 			}
 
 			Catlight: {
@@ -3363,7 +3373,10 @@ Mods: {
 			}
 		}
 
-		WizardEffect.Astatine: Explosion cooldown lowered to 7 seconds
+		WizardEffect: {
+			Astatine: Explosion cooldown lowered to 7 seconds
+			Uranium: You hve a larger radioactive aura and deal 15% more damage
+		}
 
 		Buffs: {
 			ChtuxlagorInferno: {
@@ -3446,11 +3459,6 @@ Mods: {
 				DisplayName: Rival Buff
 			}
 
-			SoulStrength: {
-				DisplayName: Soul Strength
-				Description: Your soul is empowered
-			}
-
 			EnrageCal: {
 				Description: Enraged
 				DisplayName: Enrage
@@ -3474,6 +3482,11 @@ Mods: {
 			FearBuff: {
 				DisplayName: Fear Buff
 				Description: Mods.ssm.Buffs.FearBuff.Description
+			}
+
+			RadioactiveDecay: {
+				DisplayName: Radioactive Decay
+				Description: Mods.ssm.Buffs.RadioactiveDecay.Description
 			}
 		}
 
@@ -3769,8 +3782,9 @@ Mods: {
 			OneGiantLeapEffect: Moonwalk
 			HourHandEffect: Hour Hand
 			EdgewalkerEffect: Edgewalker
-			//
+			//gunrightsmod:
 			AstatineEffect: Astatine Explosions
+			UraniumEffect: Radioactive Aura
 			RadioactiveForceHeader: Force of Radioactivity
 		}
 
@@ -3909,6 +3923,9 @@ Mods: {
 			AstatineExplosion.DisplayName: Astatine Explosion
 			FaradaySun.DisplayName: Faraday Sun
 			FaradayMoon.DisplayName: Faraday Moon
+			UraniumAura.DisplayName: Uranium Aura
+			UraniumAuraProjectile.DisplayName: Uranium Aura Projectile
+			PlutoniumParticle.DisplayName: Plutonium Particle
 		}
 
 		Bestiary: {

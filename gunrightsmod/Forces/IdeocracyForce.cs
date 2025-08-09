@@ -28,36 +28,8 @@ namespace ssm.gunrightsmod.Forces
             Item.value = 1183376;
         }
 
-        public new static int[] Enchants => new int[]
-        {
-            ModContent.ItemType<SuperCeramicEnchant>(),
-            ModContent.ItemType<RockSaltEnchant>(),
-            ModContent.ItemType<PurifiedSaltEnchant>(),
-            ModContent.ItemType<PlasticEnchant>(),
-            ModContent.ItemType<KevlarEnchant>(),
-        };
-
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            var CSEgunrightsmodPlayer = player.GetModPlayer<CSEgunrightsmodPlayer>();
-
-            CSEgunrightsmodPlayer.IdeocracyForceEquipped = true;
-            CSEgunrightsmodPlayer.SuperCeramicEnchantEquipped = true;
-            CSEgunrightsmodPlayer.RockSaltEnchantEquipped = true;
-            CSEgunrightsmodPlayer.PurifiedSaltEnchantEquipped = true;
-            CSEgunrightsmodPlayer.PlasticEnchantEquipped = true;
-            CSEgunrightsmodPlayer.KevlarEnchantEquipped = true;
-
-        }
-
-        public override void AddRecipes()
-        {
-            Recipe recipe = CreateRecipe();
-            foreach (int ench in Enchants)
-                recipe.AddIngredient(ench);
-
-            recipe.AddTile(ModContent.Find<ModTile>("Fargowiltas", "CrucibleCosmosSheet"));
-            recipe.Register();
         }
     }
 }

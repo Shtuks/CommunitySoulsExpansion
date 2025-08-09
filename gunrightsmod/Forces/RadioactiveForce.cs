@@ -28,25 +28,33 @@ namespace ssm.gunrightsmod.Forces
             Enchants[Type] =
             [
                 ModContent.ItemType<AstatineEnchant>(),
-                ModContent.ItemType<FaradayEnchant>(),
-
+                ModContent.ItemType<PlutoniumEnchant>(),
+                ModContent.ItemType<UraniumEnchant>(),
             ];
         }
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             SetActive(player);
-            player.AddEffect<RadioactiveForceEffect>(Item);
+            player.AddEffect<RadioactiveEffect>(Item);
             player.AddEffect<AstatineEffect>(Item);
-            player.AddEffect<FaradayEffect>(Item);
-            //  player.AddEffect<PlutoniumEffect>(Item);
-            //  player.AddEffect<UraniumEffect>(Item);
+            player.AddEffect<UraniumEffect>(Item);
+            player.AddEffect<PlutoniumEffect>(Item);
+        }
+
+        public override void AddRecipes()
+        {
+            Recipe recipe = CreateRecipe();
+            foreach (int ench in Enchants[Type])
+            recipe.AddIngredient(ench);
+            recipe.AddTile(ModContent.Find<ModTile>("Fargowiltas", "CrucibleCosmosSheet"));
+            recipe.Register();
         }
     }
 
-    public class RadioactiveForceEffect : AccessoryEffect
+    public class RadioactiveEffect : AccessoryEffect
     {
-        public override Header ToggleHeader => Header.GetHeader<RadioactiveForceHeader>();
+        public override Header ToggleHeader => null;
         public override int ToggleItemType => ModContent.ItemType<RadioactiveForce>();
     }
 }
