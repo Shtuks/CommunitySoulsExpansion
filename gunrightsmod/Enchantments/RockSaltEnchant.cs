@@ -13,8 +13,8 @@ using ssm.Content.SoulToggles;
 
 namespace ssm.gunrightsmod.Enchantments
 {
-    [ExtendsFromMod(ModCompatibility.gunrightsmod.Name)]
-    [JITWhenModsEnabled(ModCompatibility.gunrightsmod.Name)]
+    [ExtendsFromMod(ModCompatibility.Gunrightsmod.Name)]
+    [JITWhenModsEnabled(ModCompatibility.Gunrightsmod.Name)]
     public class RockSaltEnchant : BaseEnchant
     {
         public override bool IsLoadingEnabled(Mod mod)

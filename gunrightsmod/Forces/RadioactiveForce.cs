@@ -1,51 +1,60 @@
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria.Localization;
-using gunrightsmod;
 using FargowiltasSouls.Content.Items.Accessories.Forces;
-using Fargowiltas.Items.Tiles;
 using ssm.gunrightsmod.Enchantments;
 using ssm.Core;
+using FargowiltasSouls.Core.AccessoryEffectSystem;
 using ssm.Content.SoulToggles;
+using FargowiltasSouls;
+using FargowiltasSouls.Core.ModPlayers;
+using FargowiltasSouls.Common.Utilities;
+using FargowiltasSouls.Content.Items.Accessories.Enchantments;
+using FargowiltasSouls.Core.Toggler.Content;
+
 
 namespace ssm.gunrightsmod.Forces
 {
-    [ExtendsFromMod(ModCompatibility.gunrightsmod.Name)]
-    [JITWhenModsEnabled(ModCompatibility.gunrightsmod.Name)]
+    [ExtendsFromMod(ModCompatibility.Gunrightsmod.Name)]
+    [JITWhenModsEnabled(ModCompatibility.Gunrightsmod.Name)]
     public class RadioactiveForce : BaseForce
     {
         public override bool IsLoadingEnabled(Mod mod)
         {
             return CSEConfig.Instance.TerMerica;
         }
-        public override void SetDefaults()
+        public override void SetStaticDefaults()
         {
-            Item.width = 20;
-            Item.height = 20;
-            Item.accessory = true;
-            ItemID.Sets.ItemNoGravity[Item.type] = true;
-            Item.rare = 11;
-            Item.value = 4896201;
+            Enchants[Type] =
+            [
+                ModContent.ItemType<AstatineEnchant>(),
+                ModContent.ItemType<PlutoniumEnchant>(),
+                ModContent.ItemType<UraniumEnchant>(),
+            ];
         }
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            ModContent.Find<ModItem>(((ModType)this).Mod.Name, "FaradayEnchant").UpdateAccessory(player, hideVisual);
-            ModContent.Find<ModItem>(((ModType)this).Mod.Name, "PlutoniumEnchant").UpdateAccessory(player, hideVisual);
-            ModContent.Find<ModItem>(((ModType)this).Mod.Name, "UraniumEnchant").UpdateAccessory(player, hideVisual);
-            ModContent.Find<ModItem>(((ModType)this).Mod.Name, "AstatineEnchant").UpdateAccessory(player, hideVisual);
+            SetActive(player);
+            player.AddEffect<RadioactiveEffect>(Item);
+            player.AddEffect<AstatineEffect>(Item);
+            player.AddEffect<UraniumEffect>(Item);
+            player.AddEffect<PlutoniumEffect>(Item);
         }
 
         public override void AddRecipes()
         {
-            Recipe recipe = this.CreateRecipe();
-            recipe.AddIngredient<FaradayEnchant>();
-            recipe.AddIngredient<PlutoniumEnchant>();
-            recipe.AddIngredient<UraniumEnchant>();
-            recipe.AddIngredient<AstatineEnchant>();
-            recipe.AddTile<CrucibleCosmosSheet>();
+            Recipe recipe = CreateRecipe();
+            foreach (int ench in Enchants[Type])
+            recipe.AddIngredient(ench);
+            recipe.AddTile(ModContent.Find<ModTile>("Fargowiltas", "CrucibleCosmosSheet"));
             recipe.Register();
         }
+    }
+
+    public class RadioactiveEffect : AccessoryEffect
+    {
+        public override Header ToggleHeader => null;
+        public override int ToggleItemType => ModContent.ItemType<RadioactiveForce>();
     }
 }

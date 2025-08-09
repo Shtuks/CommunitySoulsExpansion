@@ -1,45 +1,44 @@
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria.Localization;
-using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using FargowiltasSouls.Content.Items.Accessories.Enchantments;
 using FargowiltasSouls.Core.AccessoryEffectSystem;
 using ssm.Core;
-using Microsoft.Xna.Framework.Graphics;
-using gunrightsmod;
 using gunrightsmod.Content.Items;
 using ssm.Content.SoulToggles;
+using Microsoft.Xna.Framework.Graphics;
+using FargowiltasSouls.Content.UI.Elements;
+using gunrightsmod.Content.Projectiles;
+using FargowiltasSouls;
+
 
 namespace ssm.gunrightsmod.Enchantments
 {
-    [ExtendsFromMod(ModCompatibility.gunrightsmod.Name)]
-    [JITWhenModsEnabled(ModCompatibility.gunrightsmod.Name)]
+    [ExtendsFromMod(ModCompatibility.Gunrightsmod.Name)]
+    [JITWhenModsEnabled(ModCompatibility.Gunrightsmod.Name)]
+
     public class AstatineEnchant : BaseEnchant
     {
         public override bool IsLoadingEnabled(Mod mod)
         {
             return CSEConfig.Instance.TerMerica;
         }
+        public override void SetStaticDefaults()
+        {
+            base.SetStaticDefaults();
+        }
+        public override Color nameColor => new(183, 62, 97);
         public override void SetDefaults()
         {
-            Item.width = 20;
-            Item.height = 20;
-            Item.accessory = true;
-            ItemID.Sets.ItemNoGravity[Item.type] = true;
+            base.SetDefaults();
             Item.rare = 11;
             Item.value = 3135864;
         }
-
-        public override Color nameColor => new(94, 48, 117);
-
-        public class AstatineEffect : AccessoryEffect
+        public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            public override Header ToggleHeader => Header.GetHeader<RadioactiveForceHeader>();
-            public override int ToggleItemType => ModContent.ItemType<AstatineEnchant>();
+            player.AddEffect<AstatineEffect>(Item);
         }
-
         public override void AddRecipes()
         {
             Recipe recipe = this.CreateRecipe();
@@ -53,6 +52,36 @@ namespace ssm.gunrightsmod.Enchantments
             recipe.Register();
         }
     }
+
+    public class AstatineEffect : AccessoryEffect
+    {
+        public override Header ToggleHeader => Header.GetHeader<RadioactiveForceHeader>();
+        public override int ToggleItemType => ModContent.ItemType<AstatineEnchant>();
+        public override void PostUpdate(Player player)
+        {
+            var CSEgunrightsmodPlayer = player.GetModPlayer<CSEgunrightsmodPlayer>();
+            CSEgunrightsmodPlayer.AstatineEnchantEquipped = true;
+            if (!player.ForceEffect<AstatineEffect>() && player.whoAmI == Main.myPlayer)
+            {
+                if (CSEgunrightsmodPlayer.AstatineExplosionCharge < 15 * 60)
+                    CSEgunrightsmodPlayer.AstatineExplosionCharge++;
+                CooldownBarManager.Activate("AstatineExplosionCooldown", ModContent.Request<Texture2D>("ssm/gunrightsmod/Enchantments/AstatineEnchant").Value, new(183, 62, 97),
+                    () => CSEgunrightsmodPlayer.AstatineExplosionCharge / (15f * 60), true, activeFunction: player.HasEffect<AstatineEffect>);
+            }
+            else
+                CSEgunrightsmodPlayer.AstatineExplosionCharge = 0;
+        }
+        public override void OnHitByEither(Player player, NPC npc, Projectile proj)
+        {
+            var CSEgunrightsmodPlayer = player.GetModPlayer<CSEgunrightsmodPlayer>();
+            if (CSEgunrightsmodPlayer.AstatineExplosionCharge >= 15f * 60 || player.FargoSouls().ForceEffect<AstatineEnchant>())
+                AstatineExplosion(player);
+        }
+        public void AstatineExplosion(Player player)
+        {
+            var CSEgunrightsmodPlayer = player.GetModPlayer<CSEgunrightsmodPlayer>();
+            CSEgunrightsmodPlayer.AstatineExplosionCharge = 0;
+            Projectile.NewProjectile(player.GetSource_Misc("AstatineEnchantExplosion"), player.Center, Vector2.Zero, ModContent.ProjectileType<AstaBoomBig>(), 6000, 5f, player.whoAmI);
+        }
+    }
 }
-
-

@@ -1,19 +1,17 @@
 ﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria.Localization;
-using SacredTools;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using FargowiltasSouls.Content.Items.Accessories.Enchantments;
 using FargowiltasSouls.Core.AccessoryEffectSystem;
-using ssm.Content.SoulToggles;
 using SacredTools.Items.Weapons.Marstech;
 using SacredTools.Content.Items.Armor.Marstech;
-using SacredTools.Items.Claymarine;
 using ssm.Core;
 using static ssm.SoA.Enchantments.SpaceJunkEnchant;
 using ssm.Content.Projectiles.Enchantments;
+using Microsoft.Xna.Framework.Graphics;
+using FargowiltasSouls.Content.UI.Elements;
 
 namespace ssm.SoA.Enchantments
 {
@@ -58,6 +56,10 @@ namespace ssm.SoA.Enchantments
                 {
                     cd--;
                 }
+
+                CooldownBarManager.Activate("MarstechEnchantCooldown", ModContent.Request<Texture2D>("ssm/SoA/Enchantments/MarstechEnchant").Value, new(61, 155, 189),
+                    () => cd / (60f * 15), true, activeFunction: player.HasEffect<MarstechEffect>);
+
             }
             public override void ActiveSkillJustPressed(Player player, bool stunned)
             {

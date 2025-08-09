@@ -4,8 +4,9 @@ using gunrightsmod.Content.NPCs;
 
 namespace ssm.gunrightsmod
 {
-    [ExtendsFromMod(ModCompatibility.gunrightsmod.Name)]
-    [JITWhenModsEnabled(ModCompatibility.gunrightsmod.Name)]
+    [ExtendsFromMod(ModCompatibility.Gunrightsmod.Name)]
+    [JITWhenModsEnabled(ModCompatibility.Gunrightsmod.Name)]
+    
     internal class gunrightsmodCaughtNpcs : ModSystem
     {
         public static void gunrightsmodRegisterItems()

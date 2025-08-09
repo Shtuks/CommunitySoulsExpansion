@@ -6,7 +6,6 @@ using Terraria.ModLoader;
 using ThoriumMod.Items.BossThePrimordials.Omni;
 using ThoriumMod.Items.Terrarium;
 using Terraria.ID;
-using ssm.Thorium.Buffs;
 using ThoriumMod.Items.Donate;
 using Terraria.Localization;
 
@@ -63,13 +62,6 @@ namespace ssm.Thorium
             if (player.GetModPlayer<CSEThoriumPlayer>().ThunderTalonEternity)
             {
                 target.AddBuff(BuffID.BoneJavelin, 300);
-            }
-            if (player.GetModPlayer<CSEThoriumPlayer>().DarkenedCloak)
-            {
-                if (Main.rand.NextBool(4))
-                {
-                    player.AddBuff(ModContent.BuffType<SoulStrength>(), 120);
-                }
             }
         }
     }

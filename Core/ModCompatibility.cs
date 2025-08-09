@@ -223,8 +223,8 @@ public static class ModCompatibility
         public const string Name = "Clamity";
         public static bool Loaded => ModLoader.HasMod(Name);
         public static Mod Mod => ModLoader.GetMod(Name);
-    }
-    public static class gunrightsmod
+    }   
+    public static class Gunrightsmod
     {
         public const string Name = "gunrightsmod";
         public static bool Loaded => ModLoader.HasMod(Name);
