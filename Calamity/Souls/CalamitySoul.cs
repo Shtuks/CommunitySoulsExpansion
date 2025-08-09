@@ -41,7 +41,7 @@ namespace ssm.Calamity.Souls
             ModContent.GetInstance<TheCommunity>().UpdateAccessory(player, hideVisual);
             ModContent.GetInstance<ElementalArtifact>().UpdateAccessory(player, hideVisual);
             ModContent.GetInstance<PotJT>().UpdateAccessory(player, hideVisual);
-            if (ModCompatibility.WrathoftheGods.Loaded) { ModContent.GetInstance<SolynsSigil>().UpdateAccessory(player, hideVisual); }
+            //if (ModCompatibility.WrathoftheGods.Loaded) { ModContent.GetInstance<SolynsSigil>().UpdateAccessory(player, hideVisual); }
 
             player.buffImmune[ModContent.Find<ModBuff>(this.FargoCross.Name, "CalamitousPresenceBuff").Type] = true;
         }
@@ -63,10 +63,10 @@ namespace ssm.Calamity.Souls
                 recipe.AddIngredient<AddonsForce>();
             }
 
-            if (ModCompatibility.WrathoftheGods.Loaded)
-            {
-                recipe.AddIngredient<SolynsSigil>();
-            }
+            //if (ModCompatibility.WrathoftheGods.Loaded)
+            //{
+            //    recipe.AddIngredient<SolynsSigil>();
+            //}
 
             recipe.AddIngredient<ShadowspecBar>(5);
             recipe.AddIngredient<MiracleMatter>();

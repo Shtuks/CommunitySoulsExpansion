@@ -8,6 +8,8 @@ using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria;
+using ssm.Core;
+using ssm.Content.Items.Materials;
 
 namespace ssm.Content.NPCs
 {
@@ -22,7 +24,6 @@ namespace ssm.Content.NPCs
             "Mayo",
             "Starlight",
             "Car",
-            "Larry",
             "Ech"
         };
         public override void SetStaticDefaults()
@@ -89,6 +90,13 @@ namespace ssm.Content.NPCs
         {
             if (CSEUtils.IsModItem(item, "ssm"))
             {
+                if (CSEConfig.Instance.AlternativeSiblings) {
+                    if (item.type == ModContent.ItemType<tModLoadiumBar>())
+                    {
+                        sellType = CatSellType.SoldByCat;
+                        return CatShopGroup.Potion;
+                    }
+                }
                 if (item.ModItem.Name.EndsWith("Enchant"))
                 {
                     sellType = CatSellType.SoldByCat;

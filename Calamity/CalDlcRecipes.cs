@@ -6,9 +6,9 @@ using FargowiltasCrossmod.Content.Calamity.Items.Accessories;
 using CalamityMod.Items.Materials;
 using ssm.Core;
 using ssm.Calamity.Souls;
-using Fargowiltas.Items.Tiles;
 using ssm.CrossMod.CraftingStations;
 using CalamityMod.Tiles.Furniture.CraftingStations;
+using CalamityMod.Items;
 
 namespace ssm.Calamity
 {
@@ -36,6 +36,10 @@ namespace ssm.Calamity
                 {
                     if (recipe.RemoveIngredient(ModContent.ItemType<BrandoftheBrimstoneWitch>()))
                         recipe.AddIngredient<CalamitySoul>();
+                }
+                if (recipe.HasIngredient<Rock>() && recipe.HasIngredient<EternalEnergy>() && !recipe.HasIngredient<ShadowspecBar>())
+                {
+                    recipe.RemoveIngredient(ModContent.ItemType<Rock>());
                 }
             }
         }

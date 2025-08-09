@@ -41,6 +41,13 @@ namespace ssm.Homeward
                     }
                     recipe.AddIngredient<TracersCelestial>();
                 }
+                if (recipe.HasResult<MiracleMatter>() && !recipe.HasIngredient<FinalBar>())
+                {
+                    recipe.AddIngredient<FinalBar>(5);
+                    //recipe.AddIngredient<OceanEssence>(1);
+                    //recipe.AddIngredient<InfernoEssence>(1);
+                    //recipe.AddIngredient<DeathEssence>(1);
+                }
             }
         }
     }

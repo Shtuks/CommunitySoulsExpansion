@@ -22,6 +22,7 @@ using SacredTools.Items.Weapons.Pigman;
 using SacredTools.Items.Weapons.Primordia;
 using SacredTools.Items.Weapons.Special;
 using SacredTools.Items.Weapons.Venomite;
+using Terraria.Localization;
 
 namespace ssm.SoA
 {
@@ -33,8 +34,8 @@ namespace ssm.SoA
         {
             int bossdmgItem = ItemType<RageSuppressor>();
             int accuracyItem = ItemType<CasterArcanum>();
-            Func<string> bardDamage = () => $"Boss Damage: {Main.LocalPlayer.GetModPlayer<MiscEffectsPlayer>().bossDamage.Multiplicative}%";
-            Func<string> bardCrit = () => $"Accuracy: {Main.LocalPlayer.GetModPlayer<ModdedPlayer>().accuracy}";
+            Func<string> bardDamage = () => $"{Language.GetTextValue("Mods.ssm.StatSheet.BossDamage")}: {Main.LocalPlayer.GetModPlayer<MiscEffectsPlayer>().bossDamage.Multiplicative}%";
+            Func<string> bardCrit = () => $"{Language.GetTextValue("Mods.ssm.StatSheet.Accuracy")}: {Main.LocalPlayer.GetModPlayer<ModdedPlayer>().accuracy}";
             ModCompatibility.MutantMod.Mod.Call("AddStat", bossdmgItem, bardDamage);
             ModCompatibility.MutantMod.Mod.Call("AddStat", accuracyItem, bardCrit);
 

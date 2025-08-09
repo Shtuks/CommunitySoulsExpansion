@@ -14,9 +14,36 @@ namespace ssm.Content.Items.DevItems
             return CSEConfig.Instance.DevItems;
         }
         public abstract string devName { get;}
+        public abstract bool isUpgradeable { get; }
+
+        public int CurrentStage = 0;
         public override void ModifyTooltips(List<TooltipLine> tooltips)
         {
             tooltips.Add(new TooltipLine(Mod, "DevItem", $"[c/00A36C:Dedicated Item: {devName}]"));
+
+            if (isUpgradeable) {
+                if (GetNextProgressionText() is { } progressionText)
+                {
+                    tooltips.Add(new TooltipLine(Mod, "Progression", progressionText)
+                    {
+                        OverrideColor = Color.LightSkyBlue
+                    });
+                }
+            }
+        }
+
+        //private int GetPlayerProgression(Player player)
+        //{
+        //    if (modPlayer.DefeatedMonstrosity) return 22;
+        //    if (modPlayer.DefeatedMutant) return 21;
+        //    if (modPlayer.DefeatedAnyBoss) return 1;
+
+        //    return 0;
+        //}
+        public string GetNextProgressionText()
+        {
+            int nextStage = CurrentStage + 1;
+            return WeaponProgression.ProgressionPoints.TryGetValue(nextStage, out var text) ? text : null;
         }
         public override bool PreDrawTooltipLine(DrawableTooltipLine line, ref int yOffset)
         {

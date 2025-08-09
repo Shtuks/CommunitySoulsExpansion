@@ -99,7 +99,7 @@ namespace ssm.SoA
             if (item.type == ModContent.ItemType<Desperatio>())
             {
                 n = ModCompatibility.Calamity.Loaded ? 90 : 20;
-                tooltips.Add(new TooltipLine(Mod, "nerf", $"{Language.GetTextValue("Mods.ssm.Balance.Debuff")} {Language.GetTextValue("Mods.ssm.AddedEffects.Aeolus")}"));
+                tooltips.Add(new TooltipLine(Mod, "nerf", $"{Language.GetTextValue("Mods.ssm.Balance.Debuff")} {Language.GetTextValue("Mods.ssm.Balance.ColumnNerf")}"));
                 tooltips.Add(new TooltipLine(Mod, "homing", $"{Language.GetTextValue("Mods.ssm.Balance.Buff")} {Language.GetTextValue("Mods.ssm.Balance.Homing")}"));
             }
             if (item.type == ModContent.ItemType<Eschaton>())

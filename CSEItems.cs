@@ -228,50 +228,50 @@ namespace ssm
             {
                 if (item.type == ModContent.ItemType<NekomiHood>() || item.type == ModContent.ItemType<NekomiHoodie>() || item.type == ModContent.ItemType<NekomiLeggings>())
                 {
-                    tooltips.Add(new TooltipLine(Mod, "thoriumeffect1", $"[c/00A36C:CSE Set Bonus:] Increased inspiration regeneration and chance for notes to drop"));
-                    tooltips.Add(new TooltipLine(Mod, "thoriumeffect2", $"[c/00A36C:CSE Set Bonus:] Increased thrower velocity and exhaustion regeneration by 5%"));
-                    tooltips.Add(new TooltipLine(Mod, "thoriumeffect2", $"[c/00A36C:CSE Set Bonus:] Increased healing bonus by 5 and max inspiration by 10"));
-                    tooltips.Add(new TooltipLine(Mod, "thoriumeffect2", $"[c/00A36C:CSE Set Bonus:] Increased technique points by 1 and max bard buffs duration"));
+                    tooltips.Add(new TooltipLine(Mod, "thoriumeffect1", $"{Language.GetTextValue("Mods.ssm.Balance.SetBonus")} {Language.GetTextValue("Mods.ssm.Balance.Thorium1")}"));
+                    tooltips.Add(new TooltipLine(Mod, "thoriumeffect2", $"{Language.GetTextValue("Mods.ssm.Balance.SetBonus")} {Language.GetTextValue("Mods.ssm.Balance.Thorium2")} 5%"));
+                    tooltips.Add(new TooltipLine(Mod, "thoriumeffect2", $"{Language.GetTextValue("Mods.ssm.Balance.SetBonus")} {Language.GetTextValue("Mods.ssm.Balance.Thorium4")} 5"));
+                    tooltips.Add(new TooltipLine(Mod, "thoriumeffect2", $"{Language.GetTextValue("Mods.ssm.Balance.SetBonus")} {Language.GetTextValue("Mods.ssm.Balance.Thorium3")} 2"));
                 }
                 if (item.type == ModContent.ItemType<StyxCrown>() || item.type == ModContent.ItemType<StyxChestplate>() || item.type == ModContent.ItemType<StyxLeggings>())
                 {
-                    tooltips.Add(new TooltipLine(Mod, "thoriumeffect1", $"[c/00A36C:CSE Set Bonus:] Increased inspiration regeneration and chance for notes to drop"));
-                    tooltips.Add(new TooltipLine(Mod, "thoriumeffect2", $"[c/00A36C:CSE Set Bonus:] Increased thrower velocity and exhaustion regeneration by 20%"));
-                    tooltips.Add(new TooltipLine(Mod, "thoriumeffect2", $"[c/00A36C:CSE Set Bonus:] Increased healing bonus by 10 and max inspiration by 30"));
-                    tooltips.Add(new TooltipLine(Mod, "thoriumeffect2", $"[c/00A36C:CSE Set Bonus:] Increased technique points by 2 and max bard buffs duration"));
+                    tooltips.Add(new TooltipLine(Mod, "thoriumeffect1", $"{Language.GetTextValue("Mods.ssm.Balance.SetBonus")} {Language.GetTextValue("Mods.ssm.Balance.Thorium1")}"));
+                    tooltips.Add(new TooltipLine(Mod, "thoriumeffect2", $"{Language.GetTextValue("Mods.ssm.Balance.SetBonus")} {Language.GetTextValue("Mods.ssm.Balance.Thorium2")} 20%"));
+                    tooltips.Add(new TooltipLine(Mod, "thoriumeffect2", $"{Language.GetTextValue("Mods.ssm.Balance.SetBonus")} {Language.GetTextValue("Mods.ssm.Balance.Thorium4")} 20"));
+                    tooltips.Add(new TooltipLine(Mod, "thoriumeffect2", $"{Language.GetTextValue("Mods.ssm.Balance.SetBonus")} {Language.GetTextValue("Mods.ssm.Balance.Thorium3")} 2"));
                 }
                 if (item.type == ModContent.ItemType<MutantBody>() || item.type == ModContent.ItemType<MutantMask>() || item.type == ModContent.ItemType<MutantPants>())
                 {
-                    tooltips.Add(new TooltipLine(Mod, "thoriumeffect1", $"[c/00A36C:CSE Set Bonus:] Increased inspiration regeneration and chance for notes to drop"));
-                    tooltips.Add(new TooltipLine(Mod, "thoriumeffect2", $"[c/00A36C:CSE Set Bonus:] Increased thrower velocity and exhaustion regeneration by 100%"));
-                    tooltips.Add(new TooltipLine(Mod, "thoriumeffect2", $"[c/00A36C:CSE Set Bonus:] Increased healing bonus by 50 and max inspiration by 100"));
-                    tooltips.Add(new TooltipLine(Mod, "thoriumeffect2", $"[c/00A36C:CSE Set Bonus:] Increased technique points by 2 and max bard buffs duration"));
+                    tooltips.Add(new TooltipLine(Mod, "thoriumeffect1", $"{Language.GetTextValue("Mods.ssm.Balance.SetBonus")} {Language.GetTextValue("Mods.ssm.Balance.Thorium1")}"));
+                    tooltips.Add(new TooltipLine(Mod, "thoriumeffect2", $"{Language.GetTextValue("Mods.ssm.Balance.SetBonus")} {Language.GetTextValue("Mods.ssm.Balance.Thorium2")} 100%"));
+                    tooltips.Add(new TooltipLine(Mod, "thoriumeffect2", $"{Language.GetTextValue("Mods.ssm.Balance.SetBonus")} {Language.GetTextValue("Mods.ssm.Balance.Thorium4")} 100"));
+                    tooltips.Add(new TooltipLine(Mod, "thoriumeffect2", $"{Language.GetTextValue("Mods.ssm.Balance.SetBonus")} {Language.GetTextValue("Mods.ssm.Balance.Thorium3")} 2"));
                 }
                 if (item.type == ModContent.ItemType<GaiaGreaves>() || item.type == ModContent.ItemType<GaiaHelmet>() || item.type == ModContent.ItemType<GaiaPlate>())
                 {
-                    tooltips.Add(new TooltipLine(Mod, "thoriumeffect1", $"[c/00A36C:CSE Set Bonus:] Increased inspiration regeneration and chance for notes to drop"));
-                    tooltips.Add(new TooltipLine(Mod, "thoriumeffect2", $"[c/00A36C:CSE Set Bonus:] Increased thrower velocity and exhaustion regeneration by 20%"));
-                    tooltips.Add(new TooltipLine(Mod, "thoriumeffect2", $"[c/00A36C:CSE Set Bonus:] Increased healing bonus by 10 and max inspiration by 30"));
-                    tooltips.Add(new TooltipLine(Mod, "thoriumeffect2", $"[c/00A36C:CSE Set Bonus:] Increased technique points by 2 and max bard buffs duration"));
+                    tooltips.Add(new TooltipLine(Mod, "thoriumeffect1", $"{Language.GetTextValue("Mods.ssm.Balance.SetBonus")} {Language.GetTextValue("Mods.ssm.Balance.Thorium1")}"));
+                    tooltips.Add(new TooltipLine(Mod, "thoriumeffect2", $"{Language.GetTextValue("Mods.ssm.Balance.SetBonus")} {Language.GetTextValue("Mods.ssm.Balance.Thorium2")} 10%"));
+                    tooltips.Add(new TooltipLine(Mod, "thoriumeffect2", $"{Language.GetTextValue("Mods.ssm.Balance.SetBonus")} {Language.GetTextValue("Mods.ssm.Balance.Thorium4")} 10"));
+                    tooltips.Add(new TooltipLine(Mod, "thoriumeffect2", $"{Language.GetTextValue("Mods.ssm.Balance.SetBonus")} {Language.GetTextValue("Mods.ssm.Balance.Thorium3")} 2"));
                 }
             }
             if (ModCompatibility.Calamity.Loaded)
             {
                 if (item.type == ModContent.ItemType<NekomiHood>() || item.type == ModContent.ItemType<NekomiHoodie>() || item.type == ModContent.ItemType<NekomiLeggings>())
                 {
-                    tooltips.Add(new TooltipLine(Mod, "caleffect", $"[c/00A36C:CSE Set Bonus:] Increased stealth by 70"));
+                    tooltips.Add(new TooltipLine(Mod, "caleffect", $"{Language.GetTextValue("Mods.ssm.Balance.SetBonus")} {Language.GetTextValue("Mods.ssm.Balance.Cal1")} 70"));
                 }
                 if (item.type == ModContent.ItemType<StyxChestplate>() || item.type == ModContent.ItemType<StyxCrown>() || item.type == ModContent.ItemType<StyxLeggings>())
                 {
-                    tooltips.Add(new TooltipLine(Mod, "caleffect", $"[c/00A36C:CSE Set Bonus:] Increased stealth by 200"));
+                    tooltips.Add(new TooltipLine(Mod, "caleffect", $"{Language.GetTextValue("Mods.ssm.Balance.SetBonus")} {Language.GetTextValue("Mods.ssm.Balance.Cal1")} 200"));
                 }
                 if (item.type == ModContent.ItemType<MutantBody>() || item.type == ModContent.ItemType<MutantMask>() || item.type == ModContent.ItemType<MutantPants>())
                 {
-                    tooltips.Add(new TooltipLine(Mod, "caleffect", $"[c/00A36C:CSE Set Bonus:] Increased stealth by 500"));
+                    tooltips.Add(new TooltipLine(Mod, "caleffect", $"{Language.GetTextValue("Mods.ssm.Balance.SetBonus")} {Language.GetTextValue("Mods.ssm.Balance.Cal1")} 500"));
                 }
                 if (item.type == ModContent.ItemType<GaiaPlate>() || item.type == ModContent.ItemType<GaiaHelmet>() || item.type == ModContent.ItemType<GaiaGreaves>())
                 {
-                    tooltips.Add(new TooltipLine(Mod, "caleffect", $"[c/00A36C:CSE Set Bonus:] Increased stealth by 110"));
+                    tooltips.Add(new TooltipLine(Mod, "caleffect", $"{Language.GetTextValue("Mods.ssm.Balance.SetBonus")} {Language.GetTextValue("Mods.ssm.Balance.Cal1")} 110"));
                 }
             }
         }

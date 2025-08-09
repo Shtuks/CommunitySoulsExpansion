@@ -8,6 +8,7 @@ using CalamityMod.Items.Materials;
 using SacredTools.Content.Items.Weapons.Relic;
 using SacredTools.Content.Items.Armor.Asthraltite;
 using SacredTools.Content.Items.Placeable.Obelisks;
+using CalamityMod.Items;
 
 namespace ssm.Calamity
 {
@@ -24,6 +25,10 @@ namespace ssm.Calamity
                 if (recipe.HasResult<CalamitySoul>() && !recipe.HasIngredient<EmberOfOmen>())
                 {
                     recipe.AddIngredient<EmberOfOmen>(5);
+                }
+                if (recipe.HasIngredient<Rock>() && !recipe.HasIngredient<EmberOfOmen>())
+                {
+                    recipe.AddIngredient<EmberOfOmen>(3);
                 }
                 if (recipe.HasResult<SoASoul>() && !recipe.HasIngredient<ShadowspecBar>())
                 {
@@ -60,8 +65,8 @@ namespace ssm.Calamity
 
                 if (recipe.HasResult<AscendantSpiritEssence>() && !recipe.HasIngredient<FragmentBlight>())
                 {
-                    recipe.AddIngredient<FragmentBlight>(1);
-                    recipe.AddIngredient<FragmentHatred>(1);
+                    recipe.AddIngredient<FragmentBlight>(3);
+                    recipe.AddIngredient<FragmentHatred>(3);
                 }
 
                 //Waiting for erazor rework

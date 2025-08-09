@@ -2,11 +2,15 @@
 using FargowiltasSouls.Content.Bosses.AbomBoss;
 using FargowiltasSouls.Content.Bosses.DeviBoss;
 using FargowiltasSouls.Content.Bosses.MutantBoss;
+using FargowiltasSouls.Core.ItemDropRules.Conditions;
+using NoxusBoss.Content.Items;
 using NoxusBoss.Content.Items.MiscOPTools;
+using NoxusBoss.Content.NPCs.Bosses.Avatar.SecondPhaseForm;
 using ssm.Content.NPCs;
 using ssm.Content.NPCs.MutantEX;
 using ssm.Core;
 using Terraria;
+using Terraria.GameContent.ItemDropRules;
 using Terraria.ModLoader;
 
 namespace ssm.Calamity.Addons
@@ -27,7 +31,7 @@ namespace ssm.Calamity.Addons
             EmptinessSprayer.NPCsThatReflectSpray[ModContent.NPCType<Abominationn>()] = true;
             EmptinessSprayer.NPCsThatReflectSpray[ModContent.NPCType<Deviantt>()] = true;
 
-            if (CSEConfig.Instance.AlternativeSiblings) 
+            if (CSEConfig.Instance.AlternativeSiblings)
             {
                 //EmptinessSprayer.NPCsThatReflectSpray[ModContent.NPCType<Industrialist>()] = true;
                 EmptinessSprayer.NPCsThatReflectSpray[ModContent.NPCType<MonocleCat>()] = true;
@@ -38,6 +42,14 @@ namespace ssm.Calamity.Addons
                 //EmptinessSprayer.NPCsThatReflectSpray[ModContent.NPCType<Amalgamtionn>()] = true;
                 //EmptinessSprayer.NPCsThatReflectSpray[ModContent.NPCType<DivergenttBoss>()] = true;
                 //EmptinessSprayer.NPCsThatReflectSpray[ModContent.NPCType<Divergentt>()] = true;
+            }
+        }
+        public override void ModifyNPCLoot(NPC npc, NPCLoot npcLoot)
+        {
+            if(npc.type == ModContent.NPCType<AvatarOfEmptiness>())
+            {
+                LeadingConditionRule leadingConditionRule = new LeadingConditionRule(new EModeDropCondition());
+                leadingConditionRule.OnSuccess(ItemDropRule.Common(ModContent.ItemType<MetallicChunk>(), 1, 5, 10));
             }
         }
     }

@@ -13,6 +13,7 @@ namespace ssm.Content.Items.DevItems
         {
             return CSEConfig.Instance.DevItems && FargoSoulsUtil.AprilFools;
         }
+        public override bool isUpgradeable => false;
         public override string devName => "Soltan";
         public override void SetDefaults()
         {

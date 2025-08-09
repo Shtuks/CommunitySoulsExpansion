@@ -1,12 +1,10 @@
-﻿using FargowiltasSouls.Core.Globals;
-using FargowiltasSouls;
-using ssm.Core;
+﻿using ssm.Core;
 using Terraria;
 using Terraria.ModLoader;
-using FargowiltasSouls.Content.Bosses.MutantBoss;
 
 namespace ssm.Calamity.Addons
 {
+    //bruh
     [ExtendsFromMod(ModCompatibility.IEoR.Name)]
     [JITWhenModsEnabled(ModCompatibility.IEoR.Name)]
     public class IEoRRecipes : ModSystem

@@ -14,6 +14,7 @@ using FargowiltasSouls.Content.Items.Accessories.Souls;
 using ThoriumMod.Items.BossThePrimordials.Slag;
 using ThoriumMod.Items.BossThePrimordials.Omni;
 using FargowiltasSouls.Content.Items.Materials;
+using ssm.Thorium.Items;
 
 namespace ssm.Thorium.Souls
 {
@@ -72,9 +73,7 @@ namespace ssm.Thorium.Souls
             recipe.AddIngredient<TerraKnife>();
             recipe.AddIngredient<HellRoller>();
 
-            recipe.AddIngredient<OceanEssence>(5);
-            recipe.AddIngredient<InfernoEssence>(5);
-            recipe.AddIngredient<DeathEssence>(5);
+            recipe.AddIngredient<DreamEssence>(5);
 
             recipe.AddTile<CrucibleCosmosSheet>();
             recipe.Register();

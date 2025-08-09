@@ -10,12 +10,13 @@ using FargowiltasCrossmod.Content.Calamity.Items.Accessories.Souls;
 using ThoriumMod.Items.Terrarium;
 using CalamityMod.Items.SummonItems;
 using ThoriumMod.Items.BossLich;
-using FargowiltasSouls.Content.Items.Materials;
-using ContinentOfJourney.Items.ThrowerWeapons;
 using Terraria.ID;
 using ThoriumMod.Items.HealerItems;
 using ThoriumMod.Items.BardItems;
 using ThoriumMod.Items.ThrownItems;
+using CalamityMod.Items.Placeables.Furniture.CraftingStations;
+using ThoriumMod.Items.Placeable;
+using ssm.Thorium.Items;
 
 namespace ssm.Calamity
 {
@@ -35,16 +36,20 @@ namespace ssm.Calamity
                     recipe.AddIngredient<MiracleMatter>();
                 }
 
-                if (recipe.HasResult<MiracleMatter>() && !recipe.HasIngredient<TerrariumCore>())
+                if (recipe.HasResult<MiracleMatter>() && !recipe.HasIngredient<TerrariumCore>() && !ModCompatibility.Homeward.Loaded)
                 {
                     recipe.AddIngredient<TerrariumCore>(5);
+                    recipe.AddIngredient<DreamEssence>(1);
                 }
 
-                if ((recipe.HasResult<VagabondsSoul>()) && !recipe.HasIngredient<OceanEssence>())
+                if (recipe.HasResult<VagabondsSoul>() && !recipe.HasIngredient<OceanEssence>())
                 {
-                    recipe.AddIngredient<OceanEssence>(5);
-                    recipe.AddIngredient<InfernoEssence>(5);
-                    recipe.AddIngredient<DeathEssence>(5);
+                    recipe.AddIngredient<DreamEssence>(5);
+                }
+
+                if (recipe.HasResult<DraedonsForge>() && recipe.HasIngredient<SoulForge>())
+                {
+                    recipe.RemoveIngredient(ModContent.ItemType<SoulForge>());
                 }
 
                 if (recipe.HasResult<GalacticaSingularity>() && !recipe.HasIngredient<CelestialFragment>())

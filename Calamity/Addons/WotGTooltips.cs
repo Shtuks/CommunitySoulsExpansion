@@ -1,7 +1,11 @@
-﻿using NoxusBoss.Content.Items;
+﻿using FargowiltasSouls.Core.ItemDropRules.Conditions;
+using NoxusBoss.Content.Items;
+using NoxusBoss.Content.NPCs.Bosses.Avatar.SecondPhaseForm;
+using NoxusBoss.Content.NPCs.Bosses.Avatar.SpecificEffectManagers;
 using ssm.Core;
 using System.Collections.Generic;
 using Terraria;
+using Terraria.GameContent.ItemDropRules;
 using Terraria.ModLoader;
 
 namespace ssm.Calamity.Addons

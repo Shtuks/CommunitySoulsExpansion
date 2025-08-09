@@ -16,6 +16,8 @@ using ssm.Content.Items.DevItems;
 using FargowiltasSouls.Content.Items.Materials;
 using System;
 using FargowiltasSouls.Core.Systems;
+using SacredTools.Content.Items.Materials;
+using ssm.Content.Items.Materials;
 
 namespace ssm.Calamity
 {
@@ -73,15 +75,24 @@ namespace ssm.Calamity
                         }
                     }
                 }
-                if (CSEConfig.Instance.DevItems)
-                {
-                    if (recipe.HasResult<Catlight>() && !recipe.HasIngredient<ShadowspecBar>())
-                    {
-                        recipe.RemoveIngredient(ModContent.ItemType<AbomEnergy>());
-                        recipe.AddIngredient<Rock>(1);
-                        recipe.AddIngredient<ShadowspecBar>(5);
-                    }
-                }
+                //if (CSEConfig.Instance.DevItems)
+                //{
+                //    if (recipe.HasResult<Catlight>() && !recipe.HasIngredient<ShadowspecBar>())
+                //    {
+                //        recipe.RemoveIngredient(ModContent.ItemType<AbomEnergy>());
+                //        recipe.AddIngredient<Rock>(1);
+                //        recipe.AddIngredient<ShadowspecBar>(5);
+                //    }
+                //}
+
+                //if (CSEConfig.Instance.AlternativeSiblings)
+                //{
+                //    if (recipe.HasResult<tModLoadiumBar>() && !recipe.HasIngredient<EmberOfOmen>())
+                //    {
+                //        recipe.AddIngredient<Rock>(1);
+                //        recipe.AddIngredient<ShadowspecBar>(1);
+                //    }
+                //}
 
                 //if (recipe.HasResult<ShadowspecBar>() && !recipe.HasResult<MiracleMatter>())
                 //{
@@ -109,6 +120,7 @@ namespace ssm.Calamity
                 {
                     recipe.AddIngredient<LifeAlloy>(20);
                     recipe.AddIngredient<AerialiteBar>(20);
+                    recipe.AddIngredient<AstralBar>(20);
                 }
             }
         }

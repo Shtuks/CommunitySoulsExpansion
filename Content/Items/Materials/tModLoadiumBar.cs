@@ -4,20 +4,17 @@ using Terraria.ModLoader;
 using Terraria;
 using Microsoft.Xna.Framework;
 using FargowiltasSouls.Content.Items.Materials;
-using CalamityMod.Items.Materials;
 using ssm.CrossMod.CraftingStations;
-using SacredTools.Content.Items.Materials;
 using ssm.Core;
+using ssm.Thorium.Items;
 
 namespace ssm.Content.Items.Materials
 {
-    [ExtendsFromMod(ModCompatibility.SacredTools.Name, ModCompatibility.Calamity.Name)]
-    [JITWhenModsEnabled(ModCompatibility.SacredTools.Name, ModCompatibility.Calamity.Name)]
     public class tModLoadiumBar : ModItem
     {
         public override bool IsLoadingEnabled(Mod mod)
         {
-            return CSEConfig.Instance.DebugMode && CSEConfig.Instance.ExperimentalContent && CSEConfig.Instance.AlternativeSiblings;
+            return CSEConfig.Instance.AlternativeSiblings;
         }
         public override bool PreDrawTooltipLine(DrawableTooltipLine line, ref int yOffset)
         {
@@ -48,11 +45,57 @@ namespace ssm.Content.Items.Materials
 
         public override void AddRecipes()
         {
-            Recipe recipe = CreateRecipe(1);
-            recipe.AddIngredient<ShadowspecBar>(1);
+            Recipe recipe = CreateRecipe(5);
             recipe.AddIngredient<EternalEnergy>(1);
-            recipe.AddIngredient<EmberOfOmen>(1);
-            recipe.AddIngredient<EternalScale>(1);
+            recipe.AddIngredient<DeviatingEnergy>(1);
+
+            if (CSEConfig.Instance.AlternativeSiblings)
+            {
+                //recipe.AddIngredient<AmalgamEnergy>(1);
+                //recipe.AddIngredient<DivergenttEnergy>(1);
+            }
+            if (CSEConfig.Instance.SecretBosses) 
+            {
+                recipe.AddIngredient<EternalScale>(1);
+            }
+
+
+            if (ModCompatibility.CatTech.Loaded)
+            {
+                recipe.AddIngredient(ModCompatibility.CatTech.Mod.Find<ModItem>("NeutroniumBar"), 1);
+            }
+            if (ModCompatibility.WrathoftheGods.Loaded)
+            {
+                recipe.AddIngredient(ModCompatibility.WrathoftheGods.Mod.Find<ModItem>("MetallicChunk"), 1);
+            }
+            if (ModCompatibility.Calamity.Loaded)
+            {
+                recipe.AddIngredient(ModCompatibility.Calamity.Mod.Find<ModItem>("ShadowspecBar"), 1);
+                recipe.AddIngredient(ModCompatibility.Calamity.Mod.Find<ModItem>("MiracleMatter"), 1);
+            }
+            if (ModCompatibility.SacredTools.Loaded)
+            {
+                recipe.AddIngredient(ModCompatibility.SacredTools.Mod.Find<ModItem>("EmberOfOmen"), 1);
+            }
+            if (ModCompatibility.Homeward.Loaded)
+            {
+                recipe.AddIngredient(ModCompatibility.Homeward.Mod.Find<ModItem>("FinalBar"), 1);
+            }
+
+
+            if (ModCompatibility.Thorium.Loaded && !ModCompatibility.Calamity.Loaded)
+            {
+                recipe.AddIngredient<DreamEssence>(1);
+            }
+            if (ModCompatibility.Redemption.Loaded && !ModCompatibility.Calamity.Loaded)
+            {
+                recipe.AddIngredient(ModCompatibility.Redemption.Mod.Find<ModItem>("LifeFragment"), 1);
+            }
+            if (!ModCompatibility.Calamity.Loaded)
+            {
+                recipe.AddIngredient<AbomEnergy>(1);
+            }
+
             recipe.AddTile(ModContent.TileType<MutantsForgeTile>());
             recipe.Register();
         }

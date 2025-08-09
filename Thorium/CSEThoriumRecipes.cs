@@ -28,6 +28,7 @@ using ThoriumMod.Items.Illumite;
 using ThoriumMod.Items.Valadium;
 using ThoriumMod.Items.Dragon;
 using ThoriumMod.Items.Flesh;
+using ssm.Thorium.Items;
 
 namespace ssm.Thorium
 {
@@ -93,10 +94,6 @@ namespace ssm.Thorium
                 {
                     recipe.AddIngredient<OlympiansSoul>();
                 }
-                if (recipe.HasResult<ColossusSoul>() && !recipe.HasIngredient<GuardianAngelsSoul>())
-                {
-                    recipe.AddIngredient<BlastShield>();
-                }
                 if (recipe.HasResult<TerrariumDefender>() && !recipe.HasIngredient<CorruptedWarShield>())
                 {
                     recipe.AddIngredient<CorruptedWarShield>();
@@ -109,9 +106,7 @@ namespace ssm.Thorium
 
                 if (recipe.HasResult<CosmoForce>() && !recipe.HasIngredient<OceanEssence>())
                 {
-                    recipe.AddIngredient<OceanEssence>(2);
-                    recipe.AddIngredient<InfernoEssence>(2);
-                    recipe.AddIngredient<DeathEssence>(2);
+                    recipe.AddIngredient<DreamEssence>(2);
                 }
                 if (recipe.HasResult<FlightMasterySoul>() && !recipe.HasIngredient<TerrariumWings>())
                 {
@@ -166,9 +161,7 @@ namespace ssm.Thorium
                     recipe.HasResult<SnipersSoul>() ||
                     recipe.HasResult<ConjuristsSoul>()) && !recipe.HasIngredient<OceanEssence>())
                 {
-                    recipe.AddIngredient<OceanEssence>(5);
-                    recipe.AddIngredient<InfernoEssence>(5);
-                    recipe.AddIngredient<DeathEssence>(5);
+                    recipe.AddIngredient<DreamEssence>(5);
                 }
 
                 if (recipe.HasResult(ItemID.DrillContainmentUnit) && !recipe.HasIngredient<TerrariumCore>())
@@ -178,14 +171,14 @@ namespace ssm.Thorium
                     recipe.RemoveIngredient(ItemID.ShroomiteBar);
                     recipe.RemoveIngredient(ItemID.SpectreBar);
                     recipe.RemoveIngredient(ItemID.ChlorophyteBar);
-                    recipe.AddIngredient<TerrariumCore>(20);
-                    recipe.AddIngredient<TitanicBar>(20);
-                    recipe.AddIngredient<SandstoneIngot>(20);
-                    recipe.AddIngredient<aDarksteelAlloy>(20);
-                    recipe.AddIngredient<AquaiteBar>(20);
-                    recipe.AddIngredient<LodeStoneIngot>(20);
-                    recipe.AddIngredient<IllumiteIngot>(20);
-                    recipe.AddIngredient<ValadiumIngot>(20);
+                    recipe.AddIngredient<TerrariumCore>(40);
+                    recipe.AddIngredient<TitanicBar>(40);
+                    recipe.AddIngredient<SandstoneIngot>(40);
+                    recipe.AddIngredient<aDarksteelAlloy>(40);
+                    recipe.AddIngredient<AquaiteBar>(40);
+                    recipe.AddIngredient<LodeStoneIngot>(40);
+                    recipe.AddIngredient<IllumiteIngot>(40);
+                    recipe.AddIngredient<ValadiumIngot>(40);
                 }
             }
 		}

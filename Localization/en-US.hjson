@@ -7,13 +7,58 @@ Mods: {
 			//yellow
 			Nerf: "[c/FF0000:Cross-Mod Balance:]"
 			//red
+			SetBonus: "[c/00A36C:CSE Set Bonus:]"
+			//green
 			DamageUP: Increased damage by
 			DamageDown: Decreased damage by
 			VelUP: Projectile velocity increased by
 			Homing: Weapon's pojectiles are homing in on enemies
 			CancelBuff: Canceled DLC buff
 			CancelDebuff: Canceled DLC debuff
-			PostND: Fire column deal 50% less damage
+			PostND: "[c/FF0000:Cross-mod Balance:] Can be only used after defeating the Nameless Deity"
+			ColumnNerf: Fire column deal 50% less damage
+			Thorium1: Increased inspiration regeneration and chance for notes to drop
+			Thorium2: Increased thrower velocity and exhaustion regeneration by
+			Thorium3: Increased max bard buffs duration and technique points by
+			Thorium4: Increased healing bonus and max inspiration by
+			Cal1: Increased stealth by
+		}
+
+		StatSheet: {
+			Accuracy: Accuracy
+			BossDamage: Boss Damage
+			HealerDamage: Radiant Damage
+			HealerCrit: Radiant Crit Chance
+			HealerAddHeal: Bonus Healing
+			BardDamage: Bard Damage
+			BardCrit: Bard Crit Chance
+			BardResource: Max Inspriration
+		}
+
+		WeaponProgressionPoints: {
+			1PreBoss: Defeat any boss to use that weapon
+			2PreBrain: Defeat Boc/EoW to make this weapon stronger
+			3PreSkele: Defeat Skeletron to make this weapon stronger
+			4PreWall: Defeat your final encounter in pre-hardmode to evolve this weapon
+			5PreMechs: Defeat 3 mech bosses to make this weapon stronger
+			6PrePlant: Defeat Plantera to make this weapon stronger
+			7PreGolem: Defeat Golem to make this weapon stronger
+			8PreML: Defeat your final encounter in hardmode to evolve this weapon
+			9Abaddon: Defeat Abaddon to make this weapon stronger
+			10Provi: Defeat Providence to make this weapon stronger
+			11Araghur: Defeat Araghur to make this weapon stronger
+			12Polter: Defeat Polterghast to make this weapon stronger
+			13DoG: Defeat DoG to make this weapon stronger
+			14Siblings: Defeat Lost Siblings to make this weapon stronger
+			15PreEridanus: Defeat Eridanus to make this weapon stronger
+			16Primordials: Defeat Ragnarok to evolve this weapon
+			17Yharon: Defeat Yharon to make this weapon stronger
+			18PreAbom: Defeat Abominationn to make this weapon stronger
+			19NOCALErazor: Defeat Erazor to make this weapon stronger
+			19Shadowspec: Defeat every boss before Mutant(Nihilus if SoA enabled) to evolve this weapon
+			20Nihilus: Defeat every boss before Mutant to make this weapon stronger
+			21PreMutant: Defeat Mutant to make this weapon stronger
+			22PreMonstr: Defeat Monstrosity to awake full power of weapon
 		}
 
 		CodebreakerOptions.Mutant: Mutant
@@ -3304,7 +3349,7 @@ Mods: {
 			}
 
 			tModLoadiumBar: {
-				DisplayName: t Mod Loadium Bar
+				DisplayName: tModBar
 				Tooltip: ""
 			}
 
