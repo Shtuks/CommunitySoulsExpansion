@@ -11,6 +11,9 @@ using ThoriumMod.Items.ThrownItems;
 using ThoriumMod.Items.Consumable;
 using FargowiltasSouls.Content.Items.Accessories.Enchantments;
 using ThoriumMod.Items.NPCItems;
+using FargowiltasSouls.Core.AccessoryEffectSystem;
+using ssm.Content.SoulToggles;
+using static ssm.Thorium.Enchantments.GraniteEnchant;
 
 namespace ssm.Thorium.Enchantments
 {
@@ -21,7 +24,7 @@ namespace ssm.Thorium.Enchantments
         private readonly Mod thorium = ModLoader.GetMod("ThoriumMod");
         public override bool IsLoadingEnabled(Mod mod)
         {
-            return ShtunConfig.Instance.Thorium;
+            return CSEConfig.Instance.Thorium;
         }
 
         public override void SetDefaults()
@@ -39,14 +42,21 @@ namespace ssm.Thorium.Enchantments
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             //toggle
-            ShtunThoriumPlayer modPlayer = player.GetModPlayer<ShtunThoriumPlayer>();
-
-            modPlayer.DemonBloodEnchant = true;
-
+            ThoriumPlayer modPlayer = player.GetModPlayer<ThoriumPlayer>();
+            if (player.AddEffect<DemonBloodEffect>(Item))
+            {
+                modPlayer.setDemonBlood = true;
+            }
             ModContent.Find<ModItem>("ssm", "FleshEnchant").UpdateAccessory(player, true);
             ModContent.Find<ModItem>(this.thorium.Name, "VileFlailCore").UpdateAccessory(player, true);
         }
 
+        public class DemonBloodEffect : AccessoryEffect
+        {
+            public override Header ToggleHeader => Header.GetHeader<MuspelheimForceHeader>();
+            public override int ToggleItemType => ModContent.ItemType<DemonBloodEnchant>();
+
+        }
         public override void AddRecipes()
         {
             Recipe recipe = this.CreateRecipe();

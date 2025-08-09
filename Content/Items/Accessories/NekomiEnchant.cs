@@ -1,39 +1,39 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria;
 using Terraria.ModLoader;
 using Terraria.DataStructures;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Terraria.GameContent;
 using Terraria.Graphics.Shaders;
-using FargowiltasSouls.Content.Items.Materials;
 using Terraria.ID;
-using FargowiltasSouls.Content.Items;
 using FargowiltasSouls.Content.Items.Armor;
 using FargowiltasSouls.Core.AccessoryEffectSystem;
 using ssm.Content.SoulToggles;
-using ssm.Content.Items.Accessories;
-using ssm.Core;
 using FargowiltasSouls.Content.Items.Accessories.Enchantments;
 using FargowiltasSouls;
+using FargowiltasSouls.Content.Patreon.Tiger;
+using FargowiltasSouls.Content.Items.Weapons.Challengers;
+using FargowiltasSouls.Content.Items.Accessories.Masomode;
+using ssm.Content.Projectiles.Minions;
+using FargowiltasSouls.Content.Items.Weapons.FinalUpgrades;
 
 namespace ssm.Content.Items.Accessories
 {
     public class NekomiEnchant : BaseEnchant
     {
-        private readonly Mod FargoSoul = Terraria.ModLoader.ModLoader.GetMod("FargowiltasSouls");
+        public override bool IsLoadingEnabled(Mod mod)
+        {
+            return CSEConfig.Instance.EternityForce;
+        }
 
-        public override void SetStaticDefaults() => ItemID.Sets.ItemNoGravity[this.Type] = true;
+        private readonly Mod FargoSoul = ModLoader.GetMod("FargowiltasSouls");
+
+        public override void SetStaticDefaults() => ItemID.Sets.ItemNoGravity[Type] = true;
 
         public override void SetDefaults()
         {
-            this.Item.value = Item.buyPrice(1, 0, 0, 0);
-            this.Item.rare = 10;
-            this.Item.accessory = true;
+            Item.value = Item.buyPrice(1, 0, 0, 0);
+            Item.rare = 10;
+            Item.accessory = true;
         }
 
         public override Color nameColor => new(200, 20, 250);
@@ -44,7 +44,7 @@ namespace ssm.Content.Items.Accessories
                 return true;
             Main.spriteBatch.End();
             Main.spriteBatch.Begin((SpriteSortMode)1, (BlendState)null, (SamplerState)null, (DepthStencilState)null, (RasterizerState)null, (Effect)null, Main.UIScaleMatrix);
-            GameShaders.Armor.GetShaderFromItemId(3562).Apply((Entity)this.Item, new DrawData?());
+            GameShaders.Armor.GetShaderFromItemId(3562).Apply((Entity)Item, new DrawData?());
             Utils.DrawBorderString(Main.spriteBatch, line.Text, new Vector2((float)line.X, (float)line.Y), Color.White, 1f, 0.0f, 0.0f, -1);
             Main.spriteBatch.End();
             Main.spriteBatch.Begin((SpriteSortMode)0, (BlendState)null, (SamplerState)null, (DepthStencilState)null, (RasterizerState)null, (Effect)null, Main.UIScaleMatrix);
@@ -53,31 +53,20 @@ namespace ssm.Content.Items.Accessories
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            player.GetModPlayer<ShtunPlayer>().equippedNekomiEnchantment = true;
-            ModContent.Find<ModItem>(this.FargoSoul.Name, "SparklingAdoration").UpdateAccessory(player, false);
-            
-            if (player.AddEffect<NekomiEffect>(Item))
-            {
-                player.FargoSouls().NekomiSet = true;
-            }
+            ModContent.Find<ModItem>(FargoSoul.Name, "SparklingAdoration").UpdateAccessory(player, false);
 
-            player.slotsMinions += 1f;
-            player.GetCritChance<GenericDamageClass>() += 7f;
-            player.GetDamage<GenericDamageClass>() += 0.07f;
-
-            //no longer exist
-            //player.buffImmune[ModContent.Find<ModBuff>(this.FargoSoul.Name, "DeviPresenceBuff").Type] = true;
+            player.AddEffect<NekomiEffect>(Item);
         }
 
         public override void AddRecipes()
         {
-            Recipe recipe = this.CreateRecipe(1);
-            recipe.AddIngredient(this.FargoSoul, "DeviatingEnergy", 50);
-            recipe.AddIngredient(this.FargoSoul, "SparklingAdoration", 1);
-            recipe.AddIngredient(this.FargoSoul, "BrokenBlade", 1);
-            recipe.AddIngredient(this.FargoSoul, "NekomiHood", 1);
-            recipe.AddIngredient(this.FargoSoul, "NekomiHoodie", 1);
-            recipe.AddIngredient(this.FargoSoul, "NekomiLeggings", 1);
+            Recipe recipe = CreateRecipe(1);
+            recipe.AddIngredient<NekomiHood>();
+            recipe.AddIngredient<NekomiHoodie>();
+            recipe.AddIngredient<NekomiLeggings>();
+            recipe.AddIngredient<SparklingAdoration>();
+            recipe.AddIngredient<TheLightningRod>();
+            recipe.AddIngredient<TouhouStaff>(1);
             recipe.AddTile(TileID.DemonAltar);
             recipe.Register();
         }
@@ -86,6 +75,14 @@ namespace ssm.Content.Items.Accessories
         {
             public override Header ToggleHeader => Header.GetHeader<EternityForceHeader>();
             public override int ToggleItemType => ModContent.ItemType<NekomiHood>();
+            public override void PostUpdateEquips(Player player)
+            {
+                if (player.whoAmI == Main.myPlayer)
+                {
+                    if (player.ownedProjectileCounts[ModContent.ProjectileType<DevianttSoul>()] < 1)
+                        FargoSoulsUtil.NewSummonProjectile(player.GetSource_FromThis(), player.Center, Vector2.Zero, ModContent.ProjectileType<DevianttSoul>(), 40, 19f, player.whoAmI);
+                }
+            }
         }
     }
 }

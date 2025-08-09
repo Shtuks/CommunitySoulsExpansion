@@ -97,14 +97,14 @@ namespace ssm.Content.NPCs.MutantEX.Projectiles.Fargo
                     this.ritualID = -2;
                     for (int i = 0; i < Main.maxProjectiles; i++)
                     {
-                        if (Main.projectile[i].active && Main.projectile[i].type == ModContent.ProjectileType<MutantRitual>())
+                        if (Main.projectile[i].active && Main.projectile[i].type == ModContent.ProjectileType<MonstrosityRitual>())
                         {
                             this.ritualID = i;
                             break;
                         }
                     }
                 }
-                Projectile ritual = FargoSoulsUtil.ProjectileExists(this.ritualID, ModContent.ProjectileType<MutantRitual>());
+                Projectile ritual = FargoSoulsUtil.ProjectileExists(this.ritualID, ModContent.ProjectileType<MonstrosityRitual>());
                 if (ritual != null && base.Projectile.Distance(ritual.Center) > 1200f)
                 {
                     base.Projectile.timeLeft = 0;
@@ -115,7 +115,7 @@ namespace ssm.Content.NPCs.MutantEX.Projectiles.Fargo
 
         private void TryTimeStop()
         {
-            if (Main.getGoodWorld && base.Projectile.hostile && !base.Projectile.friendly && Main.LocalPlayer.active && !Main.LocalPlayer.dead && !Main.LocalPlayer.ghost && FargoSoulsUtil.BossIsAlive(ref ShtunNpcs.mutantEX, ModContent.NPCType<MutantEX>()) && Main.npc[ShtunNpcs.mutantEX].ai[0] == -5f && base.Projectile.Colliding(base.Projectile.Hitbox, Main.LocalPlayer.FargoSouls().GetPrecisionHurtbox()))
+            if (Main.getGoodWorld && base.Projectile.hostile && !base.Projectile.friendly && Main.LocalPlayer.active && !Main.LocalPlayer.dead && !Main.LocalPlayer.ghost && FargoSoulsUtil.BossIsAlive(ref CSENpcs.mutantEX, ModContent.NPCType<MutantEX>()) && Main.npc[CSENpcs.mutantEX].ai[0] == -5f && base.Projectile.Colliding(base.Projectile.Hitbox, Main.LocalPlayer.FargoSouls().GetPrecisionHurtbox()))
             {
                 if (!Main.LocalPlayer.HasBuff(ModContent.BuffType<TimeFrozenBuff>()))
                 {
@@ -128,7 +128,7 @@ namespace ssm.Content.NPCs.MutantEX.Projectiles.Fargo
 
         public override void OnHitPlayer(Player target, Player.HurtInfo info)
         {
-            if (FargoSoulsUtil.BossIsAlive(ref ShtunNpcs.mutantEX, ModContent.NPCType<MutantEX>()))
+            if (FargoSoulsUtil.BossIsAlive(ref CSENpcs.mutantEX, ModContent.NPCType<MutantEX>()))
             {
                 target.FargoSouls().MaxLifeReduction += 100;
                 target.AddBuff(ModContent.BuffType<OceanicMaulBuff>(), 5400);

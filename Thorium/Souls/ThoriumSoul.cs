@@ -6,6 +6,7 @@ using FargowiltasSouls.Content.Items.Accessories.Souls;
 using Fargowiltas.Items.Tiles;
 using FargowiltasSouls.Content.Items.Materials;
 using ThoriumMod.Buffs.Bard;
+using ssm.CrossMod.CraftingStations;
 
 namespace ssm.Thorium.Souls
 {
@@ -15,11 +16,8 @@ namespace ssm.Thorium.Souls
     {
         public override bool IsLoadingEnabled(Mod mod)
         {
-            return ShtunConfig.Instance.Thorium;
+            return CSEConfig.Instance.Thorium;
         }
-
-        private readonly Mod thorium = ModLoader.GetMod("ThoriumMod");
-
         public override void SetDefaults()
         {
             Item.width = 20;
@@ -27,16 +25,12 @@ namespace ssm.Thorium.Souls
             Item.accessory = true;
             ItemID.Sets.ItemNoGravity[Item.type] = true;
             Item.value = 5000000;
-            Item.defense = 15;
+            Item.defense = 30;
             Item.rare = -12;
         }
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            ShtunThoriumPlayer thoriumPlayer = player.GetModPlayer<ShtunThoriumPlayer>();
-
-            thoriumPlayer.ThoriumSoul = true;
-
             player.ClearBuff(ModContent.BuffType<MetronomeDebuff>());
 
             //MUSPELHEIM
@@ -65,7 +59,7 @@ namespace ssm.Thorium.Souls
         {
             Recipe recipe = this.CreateRecipe();
 
-            recipe.AddIngredient<AbomEnergy>(10);
+            if (!ModCompatibility.Calamity.Loaded) { recipe.AddIngredient<AbomEnergy>(10); }
             recipe.AddIngredient(null, "MuspelheimForce");
             recipe.AddIngredient(null, "JotunheimForce");
             recipe.AddIngredient(null, "AlfheimForce");
@@ -77,7 +71,7 @@ namespace ssm.Thorium.Souls
             recipe.AddIngredient(null, "AsgardForce");
             recipe.AddIngredient(null, "MotDE");
 
-            recipe.AddTile<CrucibleCosmosSheet>();
+            recipe.AddTile<DreamersForgeTile>();
 
             recipe.Register();
         }

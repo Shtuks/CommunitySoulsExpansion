@@ -1,50 +1,30 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria;
 using Terraria.ModLoader;
-using Terraria.GameContent;
-using FargowiltasSouls.Content.Items.Materials;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using Terraria.ID;
-using FargowiltasSouls.Content.Items;
-using FargowiltasSouls.Content.Items.Accessories.Souls;
-using Fargowiltas.Items.Tiles;
-using Terraria.Localization;
-using Terraria.DataStructures;
-using FargowiltasSouls.Core.Toggler;
-using FargowiltasSouls.Content.Items.Armor;
 using FargowiltasSouls.Core.AccessoryEffectSystem;
 using ssm.Content.SoulToggles;
-using ssm.Content.Items.Accessories;
-using ssm.Core;
-using FargowiltasSouls.Content.Items.Accessories.Enchantments;
 using ssm.Content.Buffs.Minions;
-using FargowiltasSouls.Content.Items.Accessories.Forces;
+using ssm.CrossMod.CraftingStations;
 
 namespace ssm.Content.Items.Accessories
 {
     public class EternityForce : ModItem
     {
-        private readonly Mod FargoSoul = Terraria.ModLoader.ModLoader.GetMod("FargowiltasSouls");
-
+        public override bool IsLoadingEnabled(Mod mod)
+        {
+            return CSEConfig.Instance.EternityForce;
+        }
         public override void SetStaticDefaults()
         {
-            ItemID.Sets.ItemNoGravity[this.Type] = true;
+            ItemID.Sets.ItemNoGravity[Type] = true;
         }
 
         public override void SetDefaults()
         {
-            this.Item.value = Item.buyPrice(10, 0, 0, 0);
-            this.Item.rare = 10;
-            this.Item.accessory = true;
+            Item.value = Item.buyPrice(10, 0, 0, 0);
+            Item.rare = 10;
+            Item.accessory = true;
         }
-
-        //public override Color nameColor => new(255, 255, 255);
-
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             if (player.AddEffect<MutantSoulEffect>(Item))
@@ -60,17 +40,14 @@ namespace ssm.Content.Items.Accessories
 
         public override void AddRecipes()
         {
-            Recipe recipe = this.CreateRecipe(1);
+            Recipe recipe = CreateRecipe(1);
             recipe.AddIngredient<GaiaEnchant>(1);
             recipe.AddIngredient<EridanusEnchant>(1);
             recipe.AddIngredient<StyxEnchant>(1);
             recipe.AddIngredient<PhantaplazmalEnchant>(1);
             recipe.AddIngredient<NekomiEnchant>(1);
-            recipe.AddIngredient<EternalEnergy>(15);
-            recipe.AddIngredient<AbomEnergy>(15);
-            recipe.AddIngredient<DeviatingEnergy>(15);
-            recipe.AddIngredient<Eridanium>(15);
-            recipe.AddTile(ModContent.Find<ModTile>("Fargowiltas", "CrucibleCosmosSheet"));
+
+            recipe.AddTile<MutantsForgeTile>();
             recipe.Register();
         }
 

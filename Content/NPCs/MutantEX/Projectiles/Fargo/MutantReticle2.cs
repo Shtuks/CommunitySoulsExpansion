@@ -32,7 +32,7 @@ public class MutantReticle2 : ModProjectile
 
 	public override void AI()
 	{
-		if (FargoSoulsUtil.BossIsAlive(ref ShtunNpcs.mutantEX, ModContent.NPCType<MutantEX>()) && !Main.npc[ShtunNpcs.mutantEX].dontTakeDamage)
+		if (FargoSoulsUtil.BossIsAlive(ref CSENpcs.mutantEX, ModContent.NPCType<MutantEX>()) && !Main.npc[CSENpcs.mutantEX].dontTakeDamage)
 		{
 			int modifier = 60 - base.Projectile.timeLeft;
 			base.Projectile.scale = 4f - 0.05f * (float)modifier;

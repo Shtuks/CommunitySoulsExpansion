@@ -1,20 +1,17 @@
 ﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria.Localization;
-using SacredTools;
-using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using FargowiltasSouls.Content.Items.Accessories.Enchantments;
 using FargowiltasSouls.Core.AccessoryEffectSystem;
 using ssm.Content.SoulToggles;
-using static ssm.SoA.Enchantments.FrosthunterEnchant;
-using SacredTools.Content.Items.Armor.Bismuth;
-using SacredTools.Items.Weapons.Herbs;
-using SacredTools.Items.Weapons;
 using SacredTools.Content.Items.Armor.Lunar.Solar;
 using SacredTools.Items.Weapons.Lunatic;
 using ssm.Core;
+using FargowiltasSouls;
+using ssm.Content.Buffs;
+using FargowiltasSouls.Core.Globals;
+using SacredTools.Buffs;
 
 namespace ssm.SoA.Enchantments
 {
@@ -24,11 +21,8 @@ namespace ssm.SoA.Enchantments
     {
         public override bool IsLoadingEnabled(Mod mod)
         {
-            return ShtunConfig.Instance.SacredTools;
+            return CSEConfig.Instance.SacredTools;
         }
-
-        private readonly Mod soa = ModLoader.GetMod("SacredTools");
-
         public override void SetDefaults()
         {
             Item.width = 20;
@@ -43,19 +37,64 @@ namespace ssm.SoA.Enchantments
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            ModdedPlayer modPlayer = player.GetModPlayer<ModdedPlayer>();
-
-            if (player.AddEffect<BlazingBruteEffect>(Item))
-            {
-                //set bonus
-                modPlayer.SolariusArmor = true;
-            }
+            player.AddEffect<BlazingBruteEffect>(Item);
         }
-
         public class BlazingBruteEffect : AccessoryEffect
         {
+            public int rivalKillCount = 0;
+            public int rivalTimer = 0;
+
+            public int rivalKillCountSniper = 0;
+            public int rivalTimerSniper = 0;
             public override Header ToggleHeader => Header.GetHeader<SoranForceHeader>();
             public override int ToggleItemType => ModContent.ItemType<BlazingBruteEnchant>();
+
+            public override void PostUpdateEquips(Player player)
+            {
+                player.GetModPlayer<SoAPlayer>().rivalStreak = rivalKillCount;
+
+                if (rivalKillCount > 0)
+                {
+                    player.AddBuff(ModContent.BuffType<RivalBuff>(), 60);
+                    rivalTimer++;
+                    player.GetDamage<GenericDamageClass>() += 0.2f * rivalKillCount;
+                }
+                if (rivalKillCountSniper > 0)
+                {
+                    player.AddBuff(ModContent.BuffType<RivalBuff>(), 60);
+                    rivalTimerSniper++;
+                    player.GetDamage<GenericDamageClass>() += 0.5f * rivalKillCount;
+                }
+
+                if (rivalTimer >= 300)
+                {
+                    rivalKillCount--;
+                    rivalTimer = 0;
+                }
+                if (rivalTimerSniper >= 300)
+                {
+                    rivalKillCount--;
+                    rivalTimerSniper = 0;
+                }
+            }
+
+            public override void OnHitNPCEither(Player player, NPC target, NPC.HitInfo hitInfo, DamageClass damageClass, int baseDamage, Projectile projectile, Item item)
+            {
+                if (target.life <= 0 && !target.friendly && target.type != NPCID.TargetDummy && !player.HasBuff<SniperState>())
+                {
+                    if (rivalKillCount < 5)
+                    {
+                        rivalKillCount++;
+                    }
+                }
+                if (target.life <= 0 && !target.friendly && target.type != NPCID.TargetDummy && player.HasBuff<SniperState>())
+                {
+                    if (rivalKillCountSniper < 5)
+                    {
+                        rivalKillCountSniper++;
+                    }
+                }
+            }
         }
 
         public override void AddRecipes()

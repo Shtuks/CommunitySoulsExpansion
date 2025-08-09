@@ -7,6 +7,11 @@ using FargowiltasSouls.Content.Items.Materials;
 using ThoriumMod.Items.BardItems;
 using ThoriumMod.Items.Donate;
 using FargowiltasSouls.Content.Items.Accessories.Souls;
+using ThoriumMod.Items.BossThePrimordials.Rhapsodist;
+using ThoriumMod.Items.BossThePrimordials.Aqua;
+using ThoriumMod.Items.BossThePrimordials.Omni;
+using ThoriumMod.Items.BossThePrimordials.Slag;
+using MonoMod.ModInterop;
 
 namespace ssm.Thorium.Souls
 {
@@ -16,7 +21,7 @@ namespace ssm.Thorium.Souls
     {
         public override bool IsLoadingEnabled(Mod mod)
         {
-            return ShtunConfig.Instance.Thorium;
+            return CSEConfig.Instance.Thorium;
         }
 
         private readonly Mod thorium = ModLoader.GetMod("ThoriumMod");
@@ -36,10 +41,7 @@ namespace ssm.Thorium.Souls
 
         private void Thorium(Player player)
         {
-            //general
-            ThoriumPlayer thoriumPlayer = player.GetModPlayer<ThoriumPlayer>();
-
-            player.GetDamage<BardDamage>() += 0.22f;
+            player.GetDamage<BardDamage>() += 0.25f;
             player.GetCritChance<BardDamage>() += 0.10f;
             player.GetAttackSpeed<BardDamage>() += 0.15f;
             player.GetModPlayer<ThoriumPlayer>().bardBuffDuration += 3000;
@@ -48,39 +50,69 @@ namespace ssm.Thorium.Souls
             player.GetModPlayer<ThoriumPlayer>().bardResource += 20;
             player.GetModPlayer<ThoriumPlayer>().bardHomingSpeedBonus += 10;
             player.GetModPlayer<ThoriumPlayer>().bardHomingRangeBonus += 10;
+            player.GetModPlayer<ThoriumPlayer>().bardBounceBonus = 10;
 
-            //epic mouthpiece
-            thoriumPlayer.accWindHoming = true;
-            //thoriumPlayer.bardHomingBonus = 5f;
+            player.GetModPlayer<ThoriumPlayer>().accWindHoming = true;
+            player.GetModPlayer<ThoriumPlayer>().accBrassMute2 = true;
+            player.GetModPlayer<ThoriumPlayer>().accPercussionTuner2 = true;
 
-            //straight mute
-            thoriumPlayer.accBrassMute2 = true;
-            //digital tuner
-            thoriumPlayer.accPercussionTuner2 = true;
-            //guitar pick claw
-            thoriumPlayer.bardBounceBonus = 10;
+            if (ModCompatibility.CalBardHealer.Loaded)
+            {
+                ModContent.Find<ModItem>(ModCompatibility.CalBardHealer.Name, "OmniSpeaker").UpdateAccessory(player, false);
+                ModContent.Find<ModItem>(ModCompatibility.CalBardHealer.Name, "TreeWhispererAmulet").UpdateAccessory(player, false);
+            }
+            if (ModCompatibility.ThoriumRework.Loaded)
+            {
+                ModContent.Find<ModItem>(ModCompatibility.ThoriumRework.Name, "FanDonations").UpdateAccessory(player, false);
+            }
         }
         public override void AddRecipes()
         {
             Recipe recipe = this.CreateRecipe();
 
             recipe.AddIngredient(null, "BardEssence");
-            recipe.AddIngredient<AbomEnergy>(10);
 
-            recipe.AddIngredient<HauntingBassDrum>();
-            recipe.AddIngredient<HellBell>();
-            recipe.AddIngredient<JingleBells>();
-            recipe.AddIngredient<CallofCthulhu>();
-            recipe.AddIngredient<TerrariumSurroundSound>();
-            recipe.AddIngredient<TerrariumAutoharp>();
-            recipe.AddIngredient<DigitalTuner>();
-            recipe.AddIngredient<EpicMouthpiece>();
-            recipe.AddIngredient<GuitarPickClaw>();
-            recipe.AddIngredient<StraightMute>();
-            recipe.AddIngredient<BandKit>();
-            recipe.AddIngredient<Fishbone>();
-            recipe.AddIngredient<SonicAmplifier>();
+            if (ModCompatibility.Calamity.Loaded || ModCompatibility.SacredTools.Loaded) { recipe.AddIngredient<AbomEnergy>(10); }
 
+            if (!ModCompatibility.CalBardHealer.Loaded)
+            {
+                recipe.AddIngredient<HauntingBassDrum>();
+                recipe.AddIngredient<HellBell>();
+                recipe.AddIngredient<JingleBells>();
+                recipe.AddIngredient<CallofCthulhu>();
+                recipe.AddIngredient<TerrariumSurroundSound>();
+                recipe.AddIngredient<TerrariumAutoharp>();
+                recipe.AddIngredient<DigitalTuner>();
+                recipe.AddIngredient<EpicMouthpiece>();
+                recipe.AddIngredient<GuitarPickClaw>();
+                recipe.AddIngredient<StraightMute>();
+                recipe.AddIngredient<BandKit>();
+                recipe.AddIngredient<Fishbone>();
+                recipe.AddIngredient<SonicAmplifier>();
+            }
+            else
+            {
+                recipe.AddIngredient<GuitarPickClaw>();
+                recipe.AddIngredient<EpicMouthpiece>();
+                recipe.AddIngredient<StraightMute>();
+                recipe.AddIngredient<DigitalTuner>();
+                recipe.AddIngredient(ModContent.Find<ModItem>(ModCompatibility.CalBardHealer.Name, "OmniSpeaker"));
+                recipe.AddIngredient<TheSet>();
+                recipe.AddIngredient(ModContent.Find<ModItem>(ModCompatibility.CalBardHealer.Name, "TreeWhisperersHarp"));
+                recipe.AddIngredient(ModContent.Find<ModItem>(ModCompatibility.CalBardHealer.Name, "FeralKeytar"));
+                recipe.AddIngredient(ModContent.Find<ModItem>(ModCompatibility.CalBardHealer.Name, "FaceMelter"));
+                recipe.AddIngredient(ModContent.Find<ModItem>(ModCompatibility.CalBardHealer.Name, "SongoftheCosmos"));
+                recipe.AddIngredient(ModContent.Find<ModItem>(ModCompatibility.CalBardHealer.Name, "YharimsJam"));
+            }
+
+            if (ModCompatibility.ThoriumRework.Loaded)
+            {
+                recipe.AddIngredient(ModCompatibility.ThoriumRework.Mod.Find<ModItem>("FanDonations"));
+            }
+
+            recipe.AddIngredient<OceanEssence>(5);
+            recipe.AddIngredient<InfernoEssence>(5);
+            recipe.AddIngredient<DeathEssence>(5);
             recipe.AddTile<CrucibleCosmosSheet>();
 
             recipe.Register();

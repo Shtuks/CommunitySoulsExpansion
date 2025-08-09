@@ -1,19 +1,19 @@
 ﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria.Localization;
-using SacredTools;
-using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using FargowiltasSouls.Content.Items.Accessories.Enchantments;
 using FargowiltasSouls.Core.AccessoryEffectSystem;
 using ssm.Content.SoulToggles;
-using Microsoft.Xna.Framework.Graphics;
 using ssm.Core;
 using SacredTools.Content.Items.Armor.Decree;
 using SacredTools.Content.Items.Accessories;
 using SacredTools.Items.Weapons.Decree;
 using SacredTools.Items.Weapons;
+using FargowiltasSouls;
+using ssm.Content.Projectiles.Enchantments;
+using ssm.SoA.Forces;
+using static ssm.SoA.Forces.FoundationsForce;
 
 namespace ssm.SoA.Enchantments
 {
@@ -23,7 +23,7 @@ namespace ssm.SoA.Enchantments
     {
         public override bool IsLoadingEnabled(Mod mod)
         {
-            return ShtunConfig.Instance.SacredTools;
+            return CSEConfig.Instance.SacredTools;
         }
 
         private readonly Mod soa = ModLoader.GetMod("SacredTools");
@@ -42,22 +42,79 @@ namespace ssm.SoA.Enchantments
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            ModdedPlayer modPlayer = player.GetModPlayer<ModdedPlayer>();
-            //set bonus
-            modPlayer.frostburnRanged = true;
-            if (player.ZoneSnow)
-            {
-                player.GetDamage(DamageClass.Ranged) += 0.15f;
-            }
-
-            //frigid pendant
-            //ModContent.Find<ModItem>(this.soa.Name, "DecreePendant").UpdateAccessory(player, false);
+            player.AddEffect<FrosthunterEffect>(Item);
         }
-
         public class FrosthunterEffect : AccessoryEffect
         {
+            public int frosthunterCooldown = 0;
+            public void CreateFrostExplosion(Vector2 pos, bool isCluster, Projectile proj, Player player)
+            {
+                float radius = isCluster ? 100f : 150f;
+                int damage = (int)(player.GetDamage(DamageClass.Generic).ApplyTo(player.HasEffect<FoundationsEffect>() ? 150 : 15));
+                float knockback = 3f;
+
+                for (int i = 0; i < Main.maxNPCs; i++)
+                {
+                    NPC npc = Main.npc[i];
+                    if (npc.active && !npc.friendly && npc.Distance(pos) <= radius)
+                    {
+                        player.ApplyDamageToNPC(npc, damage, knockback, player.direction);
+                        npc.AddBuff(player.ForceEffect<FrosthunterEffect>() ? BuffID.Frostburn2 : BuffID.Frostburn, 180);
+                    }
+                }
+
+                Projectile.NewProjectile(proj.GetSource_FromThis(), pos, Vector2.Zero, ModContent.ProjectileType<FrosthunterExplosion>(), 0, 0);
+
+                if (isCluster)
+                {
+                    for (int i = 0; i < 4; i++)
+                    {
+                        Vector2 clusterPos = pos + Main.rand.NextVector2Circular(radius * 0.5f, radius * 0.5f);
+                        CreateSmallFrostExplosion(pos, proj, player);
+                    }
+                }
+            }
+            public void CreateSmallFrostExplosion(Vector2 pos, Projectile proj, Player player)
+            {
+                float radius = 60f;
+                int damage = (int)(player.GetDamage(DamageClass.Generic).ApplyTo(player.HasEffect<FoundationsEffect>() ? 100 : 10));
+                float knockback = 1.5f;
+
+                for (int i = 0; i < Main.maxNPCs; i++)
+                {
+                    NPC npc = Main.npc[i];
+                    if (npc.active && !npc.friendly && npc.Distance(pos) <= radius)
+                    {
+                        player.ApplyDamageToNPC(npc, damage, knockback, player.direction);
+                        npc.AddBuff(player.ForceEffect<FrosthunterEffect>() ? BuffID.Frostburn2 : BuffID.Frostburn, 180);
+                    }
+                }
+
+                Projectile.NewProjectile(proj.GetSource_FromThis(), pos, Vector2.Zero, ModContent.ProjectileType<FrosthunterExplosion>(), 0, 0);
+            }
+
+            public override void OnHitNPCWithProj(Player player, Projectile proj, NPC target, NPC.HitInfo hit, int damageDone)
+            {
+                bool isCluster = frosthunterCooldown <= 0;
+
+                CreateFrostExplosion(target.Center, isCluster, proj, player);
+
+                if (isCluster)
+                {
+                    frosthunterCooldown = 120;
+                }
+            }
+
+            public override void PostUpdateEquips(Player player)
+            {
+                if (frosthunterCooldown > 0)
+                {
+                    frosthunterCooldown--;
+                }
+            }
             public override Header ToggleHeader => Header.GetHeader<FoundationsForceHeader>();
             public override int ToggleItemType => ModContent.ItemType<FrosthunterEnchant>();
+            public override bool ExtraAttackEffect => true;
         }
 
         public override void AddRecipes()

@@ -1,11 +1,10 @@
 ﻿using Terraria.ModLoader;
-using ssm.Content.Tiles;
 using static Terraria.ModLoader.ModContent;
 using Terraria;
 using ssm.Core;
 using SacredTools.Content.Items.Materials;
 using SacredTools.Content.Items.Placeable.CraftingStations;
-using SacredTools.Items.Placeable.Asthral;
+using Fargowiltas.Items.Tiles;
 
 namespace ssm.CrossMod.CraftingStations
 {
@@ -13,14 +12,11 @@ namespace ssm.CrossMod.CraftingStations
     [JITWhenModsEnabled(ModCompatibility.SacredTools.Name)]
     public class SyranCraftingStationItem : ModItem
     {
-        public override bool IsLoadingEnabled(Mod mod)
-        {
-            return ShtunConfig.Instance.ExperimentalContent;
-        }
         public override void SetDefaults()
         {
-            Item.CloneDefaults(ItemType<OblivionBar>());
-            Item.createTile = TileType<SyranCraftingStationTile>();
+            Item.CloneDefaults(ModContent.ItemType<CrucibleCosmos>());
+            Item.value = Item.buyPrice(2, 0, 0, 0);
+            Item.createTile = ModContent.TileType<SyranCraftingStationTile>();
         }
 
         public override void AddRecipes()

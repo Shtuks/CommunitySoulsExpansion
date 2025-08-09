@@ -5,8 +5,8 @@ using FargowiltasSouls;
 
 namespace ssm.Content.Buffs
 {
-    [JITWhenModsEnabled(ModCompatibility.SacredTools.Name)]
-    [ExtendsFromMod(ModCompatibility.SacredTools.Name)]
+    //[JITWhenModsEnabled(ModCompatibility.SacredTools.Name)]
+    //[ExtendsFromMod(ModCompatibility.SacredTools.Name)]
     public class NihilityPresenceBuff : ModBuff
     {
         public override void SetStaticDefaults()
@@ -20,10 +20,6 @@ namespace ssm.Content.Buffs
         public override void Update(Player player, ref int buffIndex)
         {
             player.FargoSouls().MutantPresence = true;
-            player.FargoSouls().noDodge = true;
-            player.FargoSouls().noSupersonic = true;
-            player.FargoSouls().GrazeRadius *= 0.5f;
-            player.moonLeech = true;
         }
     }
 }

@@ -20,6 +20,7 @@ namespace ssm.CrossMod.CraftingStations
     {
         public override void SetDefaults()
         {
+            Item.value = Item.buyPrice(2, 0, 0, 0);
             Item.CloneDefaults(ItemType<CrucibleCosmos>());
             Item.createTile = TileType<DreamersForgeTile>();
         }
@@ -32,7 +33,7 @@ namespace ssm.CrossMod.CraftingStations
             recipe.AddIngredient(ItemType<ThoriumAnvil>());
             recipe.AddIngredient(ItemType<GuidesFinalGift>());
             recipe.AddIngredient(ItemType<GrimPedestal>());
-            recipe.AddIngredient(ItemType<ThoriumAnvil>());
+            //recipe.AddIngredient(ItemType<ThoriumAnvil>());
             recipe.AddIngredient(ItemType<DeathEssence>(), 5);
             recipe.AddIngredient(ItemType<OceanEssence>(), 5);
             recipe.AddIngredient(ItemType<InfernoEssence>(), 5);

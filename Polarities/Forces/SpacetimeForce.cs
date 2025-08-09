@@ -13,7 +13,7 @@ namespace ssm.Polarities.Forces
     {
         public override bool IsLoadingEnabled(Mod mod)
         {
-            return ShtunConfig.Instance.Polarities;
+            return CSEConfig.Instance.Polarities;
         }
         public override void SetDefaults()
         {

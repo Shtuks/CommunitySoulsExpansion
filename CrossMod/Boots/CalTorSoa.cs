@@ -13,6 +13,7 @@ namespace ssm.CrossMod.Boots
 {
     /*
         * Progression look like this:
+        * 
         * terraspark
         * zephyr boots
         * angel treads
@@ -24,9 +25,6 @@ namespace ssm.CrossMod.Boots
         * elysean tracers
         * seraph tracers.
         * 
-        * chtuxlagor boots?
-        * no
-        * 
         * redemption?
         * no
     */
@@ -36,7 +34,7 @@ namespace ssm.CrossMod.Boots
     {
         public override bool IsLoadingEnabled(Mod mod)
         {
-            return ShtunConfig.Instance.Boots;
+            return CSEConfig.Instance.Boots;
         }
         public override void PostAddRecipes()
         {
@@ -68,17 +66,22 @@ namespace ssm.CrossMod.Boots
                 if (recipe.HasResult(ModContent.ItemType<TerrariumParticleSprinters>()) && recipe.HasIngredient(5000))
                 {
                     recipe.RemoveIngredient(5000);
+                }
+                if (recipe.HasResult(ModContent.ItemType<TerrariumParticleSprinters>()) && !recipe.HasIngredient<AeolusBoots>())
+                {
                     recipe.AddIngredient<AeolusBoots>(1);
                 }
                 //sprinters to celestial
-                if (recipe.HasResult(ModContent.ItemType<TracersCelestial>()) && (recipe.HasIngredient<AngelTreads>() || recipe.HasIngredient<AeolusBoots>()))
+                if (recipe.HasResult(ModContent.ItemType<TracersCelestial>()) && !recipe.HasIngredient<TerrariumParticleSprinters>())
                 {
-                    recipe.RemoveIngredient(ModContent.ItemType<AngelTreads>());
-                    recipe.RemoveIngredient(ModContent.ItemType<AeolusBoots>());
                     recipe.AddIngredient<TerrariumParticleSprinters>(1);
                 }
+                if (recipe.HasResult(ModContent.ItemType<TracersCelestial>()) && recipe.HasIngredient<AeolusBoots>())
+                {
+                    recipe.RemoveIngredient(ModContent.ItemType<AeolusBoots>());
+                }
                 //celestial to spurs
-                if (recipe.HasResult(ModContent.ItemType<VoidSpurs>()) && recipe.HasIngredient<RoyalRunners>())
+                if (recipe.HasResult(ModContent.ItemType<VoidSpurs>()) && recipe.HasIngredient<RoyalRunners>() && !ModCompatibility.Homeward.Loaded)
                 {
                     recipe.RemoveIngredient(ModContent.ItemType<RoyalRunners>());
                     recipe.AddIngredient<TracersCelestial>(1);
@@ -89,19 +92,6 @@ namespace ssm.CrossMod.Boots
                     recipe.RemoveIngredient(ModContent.ItemType<TracersCelestial>());
                     recipe.AddIngredient<VoidSpurs>(1);
                 }
-                //elysian to seraph
-                //cal code
-                //seraph to supersonic (if no cal dlc)
-                if (recipe.HasResult(ModContent.ItemType<SupersonicSoul>()) && !recipe.HasIngredient<TracersSeraph>())
-                {
-                    recipe.RemoveIngredient(ModContent.ItemType<AeolusBoots>());
-                    recipe.AddIngredient<TracersSeraph>(1);
-                }
-                //drew to flight
-                if (recipe.HasResult(ModContent.ItemType<FlightMasterySoul>()) && !recipe.HasIngredient<DrewsWings>())
-                {
-                    recipe.AddIngredient<DrewsWings>(1);
-                }
             }
         }
     }
@@ -111,7 +101,7 @@ namespace ssm.CrossMod.Boots
     {
         public override bool IsLoadingEnabled(Mod mod)
         {
-            return ShtunConfig.Instance.Boots;
+            return CSEConfig.Instance.Boots;
         }
         public override bool InstancePerEntity => true;
 

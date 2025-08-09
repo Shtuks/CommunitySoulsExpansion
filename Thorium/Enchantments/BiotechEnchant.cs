@@ -9,6 +9,7 @@ using FargowiltasSouls.Content.Items.Accessories.Enchantments;
 using FargowiltasSouls.Core.AccessoryEffectSystem;
 using ssm.Content.SoulToggles;
 using ThoriumMod.Projectiles.Healer;
+using FargowiltasSouls;
 
 namespace ssm.Thorium.Enchantments
 {
@@ -18,7 +19,7 @@ namespace ssm.Thorium.Enchantments
     {
         public override bool IsLoadingEnabled(Mod mod)
         {
-            return ShtunConfig.Instance.Thorium;
+            return CSEConfig.Instance.Thorium;
         }
 
         public override void SetDefaults()
@@ -44,7 +45,7 @@ namespace ssm.Thorium.Enchantments
                 {
                     const int damage = 100;
                     if (player.ownedProjectileCounts[ModContent.ProjectileType<BiotechProbe>()] < 1)
-                        ShtunUtils.NewSummonProjectile(player.GetSource_FromThis(), player.Center, Vector2.Zero, ModContent.ProjectileType<BiotechProbe>(), damage, 8f, player.whoAmI);
+                        FargoSoulsUtil.NewSummonProjectile(player.GetSource_FromThis(), player.Center, Vector2.Zero, ModContent.ProjectileType<BiotechProbe>(), damage, 8f, player.whoAmI);
                 }
             }
 

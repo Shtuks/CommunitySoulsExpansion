@@ -29,7 +29,7 @@ namespace ssm.CrossMod.Boots
     {
         public override bool IsLoadingEnabled(Mod mod)
         {
-            return ShtunConfig.Instance.Boots && !ModLoader.HasMod(ModCompatibility.Thorium.Name);
+            return CSEConfig.Instance.Boots && !ModLoader.HasMod(ModCompatibility.Thorium.Name);
         }
         public override void PostAddRecipes()
         {
@@ -87,10 +87,10 @@ namespace ssm.CrossMod.Boots
                     recipe.AddIngredient<TracersSeraph>(1);
                 }
                 //drew to flight
-                if (recipe.HasResult(ModContent.ItemType<FlightMasterySoul>()) && !recipe.HasIngredient<DrewsWings>())
-                {
-                    recipe.AddIngredient<DrewsWings>(1);
-                }
+                //if (recipe.HasResult(ModContent.ItemType<FlightMasterySoul>()) && !recipe.HasIngredient<WingsofRebirth>())
+                //{
+                //    recipe.AddIngredient<WingsofRebirth>(1);
+                //}
             }
         }
     }
@@ -101,7 +101,7 @@ namespace ssm.CrossMod.Boots
     {
         public override bool IsLoadingEnabled(Mod mod)
         {
-            return ShtunConfig.Instance.Boots && !ModLoader.HasMod(ModCompatibility.Thorium.Name);
+            return CSEConfig.Instance.Boots && !ModLoader.HasMod(ModCompatibility.Thorium.Name);
         }
         public override bool InstancePerEntity => true;
 

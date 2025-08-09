@@ -11,6 +11,7 @@ using ThoriumMod.Items.SummonItems;
 using ThoriumMod.Items.RangedItems;
 using FargowiltasSouls.Content.Items.Accessories.Enchantments;
 using ThoriumMod.Items.Thorium;
+using ThoriumMod.Items.BasicAccessories;
 
 namespace ssm.Thorium.Enchantments
 {
@@ -22,7 +23,7 @@ namespace ssm.Thorium.Enchantments
         public int timer;
         public override bool IsLoadingEnabled(Mod mod)
         {
-            return ShtunConfig.Instance.Thorium;
+            return CSEConfig.Instance.Thorium;
         }
 
         public override void SetDefaults()
@@ -50,11 +51,10 @@ namespace ssm.Thorium.Enchantments
                 player.endurance += 0.1f;
             }
 
-            ModContent.Find<ModItem>(this.thorium.Name, "SpikedBracer").UpdateAccessory(player, hideVisual);
+            //ModContent.Find<ModItem>(this.thorium.Name, "SpikedBracer").UpdateAccessory(player, hideVisual);
             ModContent.Find<ModItem>(this.thorium.Name, "BallnChain").UpdateAccessory(player, hideVisual);
-            ModContent.GetModItem(ModContent.ItemType<ThoriumShield>()).UpdateAccessory(player, hideVisual);
+            //ModContent.GetModItem(ModContent.ItemType<ThoriumShield>()).UpdateAccessory(player, hideVisual);
         }
-
         public override void AddRecipes()
         {
             Recipe recipe = this.CreateRecipe();
@@ -62,10 +62,8 @@ namespace ssm.Thorium.Enchantments
             recipe.AddIngredient(ModContent.ItemType<DarksteelFaceGuard>());
             recipe.AddIngredient(ModContent.ItemType<DarksteelBreastPlate>());
             recipe.AddIngredient(ModContent.ItemType<DarksteelGreaves>());
-            recipe.AddIngredient(ModContent.ItemType<SteelEnchant>());
             recipe.AddIngredient(ModContent.ItemType<BallnChain>());
             recipe.AddIngredient(ModContent.ItemType<StrongestLink>());
-
 
             recipe.AddTile(TileID.DemonAltar);
             recipe.Register();

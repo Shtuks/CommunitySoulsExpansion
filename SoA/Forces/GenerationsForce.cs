@@ -1,12 +1,17 @@
 ﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria.Localization;
-using SacredTools;
 using FargowiltasSouls.Content.Items.Accessories.Forces;
-using Fargowiltas.Items.Tiles;
 using ssm.SoA.Enchantments;
 using ssm.Core;
+using FargowiltasSouls.Core.AccessoryEffectSystem;
+using static ssm.SoA.Enchantments.CairoCrusaderEnchant;
+using static ssm.SoA.Enchantments.EerieEnchant;
+using static ssm.SoA.Enchantments.BismuthEnchant;
+using static ssm.SoA.Enchantments.DreadfireEnchant;
+using static ssm.SoA.Enchantments.MarstechEnchant;
+using static ssm.SoA.Enchantments.SpaceJunkEnchant;
+using System.Collections.Generic;
 
 namespace ssm.SoA.Forces
 {
@@ -14,13 +19,12 @@ namespace ssm.SoA.Forces
     [JITWhenModsEnabled(ModCompatibility.SacredTools.Name)]
     public class GenerationsForce : BaseForce
     {
+        public override List<AccessoryEffect> ActiveSkillTooltips =>
+            [AccessoryEffectLoader.GetEffect<MarstechEffect>(), AccessoryEffectLoader.GetEffect<DreadfireEffect>()];
         public override bool IsLoadingEnabled(Mod mod)
         {
-            return ShtunConfig.Instance.SacredTools;
+            return CSEConfig.Instance.SacredTools;
         }
-
-        private readonly Mod soa = ModLoader.GetMod("SacredTools");
-
         public override void SetDefaults()
         {
             Item.width = 20;
@@ -31,24 +35,42 @@ namespace ssm.SoA.Forces
             Item.value = 600000;
         }
 
+        public override void SetStaticDefaults()
+        {
+            Enchants[Type] =
+            [
+                ModContent.ItemType<EerieEnchant>(),
+                ModContent.ItemType<BismuthEnchant>(),
+                ModContent.ItemType<DreadfireEnchant>(),
+                ModContent.ItemType<MarstechEnchant>()
+            ];
+        }
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            ModContent.Find<ModItem>(((ModType)this).Mod.Name, "CairoCrusaderEnchant").UpdateAccessory(player, hideVisual);
-            ModContent.Find<ModItem>(((ModType)this).Mod.Name, "EerieEnchant").UpdateAccessory(player, hideVisual);
-            ModContent.Find<ModItem>(((ModType)this).Mod.Name, "BismuthEnchant").UpdateAccessory(player, hideVisual);
-            ModContent.Find<ModItem>(((ModType)this).Mod.Name, "DreadfireEnchant").UpdateAccessory(player, hideVisual);
-            ModContent.Find<ModItem>(((ModType)this).Mod.Name, "MarstechEnchant").UpdateAccessory(player, hideVisual);
+            player.AddEffect<EerieEffect>(Item);
+            player.AddEffect<BismuthEffect>(Item);
+            player.AddEffect<DreadfireEffect>(Item);
+            player.AddEffect<MarstechEffect>(Item);
+            player.AddEffect<SpaceJunkEffect>(Item);
+            player.AddEffect<SpaceJunkAbilityEffect>(Item);
+
+            player.AddEffect<GenerationsEffect>(Item);
         }
 
+        public class GenerationsEffect : AccessoryEffect
+        {
+            public override Header ToggleHeader => null;
+        }
         public override void AddRecipes()
         {
-            Recipe recipe = this.CreateRecipe();
-            recipe.AddIngredient<CairoCrusaderEnchant>();
-            recipe.AddIngredient<EerieEnchant>();
-            recipe.AddIngredient<BismuthEnchant>();
-            recipe.AddIngredient<DreadfireEnchant>();
-            recipe.AddIngredient<MarstechEnchant>();
-            recipe.AddTile<CrucibleCosmosSheet>();
+            Recipe recipe = CreateRecipe();
+            int[] array = Enchants[Type];
+            foreach (int itemID in array)
+            {
+                recipe.AddIngredient(itemID);
+            }
+
+            recipe.AddTile(ModContent.Find<ModTile>("Fargowiltas", "CrucibleCosmosSheet"));
             recipe.Register();
         }
     }

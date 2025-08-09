@@ -4,8 +4,6 @@ using CalamityMod.Items.Placeables.Furniture.CraftingStations;
 using static Terraria.ModLoader.ModContent;
 using Terraria;
 using ssm.Core;
-using CalamityMod.Items.Placeables.FurnitureEutrophic;
-using CalamityMod.Items.Placeables.FurnitureSilva;
 
 namespace ssm.CrossMod.CraftingStations
 {
@@ -15,6 +13,7 @@ namespace ssm.CrossMod.CraftingStations
     {
         public override void SetDefaults()
         {
+            Item.value = Item.buyPrice(2, 0, 0, 0);
             Item.CloneDefaults(ItemType<ShadowspecBar>());
             Item.createTile = TileType<DemonshadeWorkbenchTile>();
         }
@@ -31,6 +30,8 @@ namespace ssm.CrossMod.CraftingStations
             recipe.AddIngredient(ItemType<AncientAltar>());
             recipe.AddIngredient(ItemType<AshenAltar>());
             recipe.AddIngredient(ItemType<BotanicPlanter>());
+            recipe.AddIngredient(ItemType<VoidCondenser>());
+            recipe.AddIngredient(ItemType<WulfrumLabstationItem>());
             recipe.AddIngredient(ItemType<ShadowspecBar>(), 15);
             recipe.Register();
         }

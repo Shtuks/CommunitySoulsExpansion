@@ -1,7 +1,6 @@
 ﻿using Terraria.ModLoader;
 using Terraria;
 using ThoriumMod;
-using ssm.Content.DamageClasses;
 using ssm.Core;
 using Fargowiltas.Items.Tiles;
 using ssm.Thorium.Essences;
@@ -12,6 +11,9 @@ using ThoriumMod.Items.BossFallenBeholder;
 using FargowiltasSouls.Core.AccessoryEffectSystem;
 using FargowiltasSouls.Core.Toggler.Content;
 using FargowiltasSouls.Content.Items.Accessories.Souls;
+using ThoriumMod.Items.BossThePrimordials.Slag;
+using ThoriumMod.Items.BossThePrimordials.Omni;
+using FargowiltasSouls.Content.Items.Materials;
 
 namespace ssm.Thorium.Souls
 {
@@ -21,7 +23,7 @@ namespace ssm.Thorium.Souls
     {
         public override bool IsLoadingEnabled(Mod mod)
         {
-            return !ModLoader.HasMod(ModCompatibility.Calamity.Name) && ShtunConfig.Instance.Thorium;
+            return !ModLoader.HasMod(ModCompatibility.Calamity.Name) && CSEConfig.Instance.Thorium;
         }
 
         public override void SetDefaults()
@@ -35,22 +37,20 @@ namespace ssm.Thorium.Souls
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            Thorium(player);
-        }
-
-        private void Thorium(Player player)
-        {
             ThoriumPlayer thoriumPlayer = player.GetModPlayer<ThoriumPlayer>();
 
-            player.GetDamage<UnitedModdedThrower>() += 0.22f;
-            player.GetCritChance<UnitedModdedThrower>() += 10f;
-            player.GetAttackSpeed<UnitedModdedThrower>() += 0.15f;
-            player.Shtun().throwerVelocity += 0.20f;
+            player.GetDamage<ThrowingDamageClass>() += 0.25f;
+            player.GetCritChance<ThrowingDamageClass>() += 10f;
+            player.GetAttackSpeed<ThrowingDamageClass>() += 0.10f;
+            player.CSE().throwerVelocity += 0.15f;
             player.GetModPlayer<ThoriumPlayer>().throwerExhaustionRegenBonus += 10;
+            player.GetModPlayer<ThoriumPlayer>().throwerExhaustionMax += 1000;
             player.GetModPlayer<ThoriumPlayer>().throwGuide3 = true;
+            player.GetModPlayer<ThoriumPlayer>().canteenCadet = true;
+
             if (player.AddEffect<ThiefsWalletEffect>(Item))
             {
-                player.GetModPlayer<ThoriumPlayer>().accThiefsWallet = true;
+                player.GetModPlayer<ThoriumPlayer>().accPiratesPurse = true;
             }
             player.GetModPlayer<ThoriumPlayer>().throwConsume = 0.5f;
         }
@@ -60,17 +60,21 @@ namespace ssm.Thorium.Souls
             Recipe recipe = this.CreateRecipe();
 
             recipe.AddIngredient<SlingerEssence>();
+            if (ModCompatibility.SacredTools.Loaded) { recipe.AddIngredient<AbomEnergy>(10); }
 
-            recipe.AddIngredient<ThiefsWallet>();
-            recipe.AddIngredient<Wreath>();
+            recipe.AddIngredient<MermaidCanteen>();
+            recipe.AddIngredient<MagnetoGrip>();
+            recipe.AddIngredient<PiratesPurse>();
             recipe.AddIngredient<ThrowingGuideVolume3>();
             recipe.AddIngredient<TidalWave>();
-            recipe.AddIngredient<AngelsEnd>();
             recipe.AddIngredient<TerrariumRippleKnife>();
             recipe.AddIngredient<DragonFang>();
             recipe.AddIngredient<TerraKnife>();
-            recipe.AddIngredient<TrueCarnwennan>();
             recipe.AddIngredient<HellRoller>();
+
+            recipe.AddIngredient<OceanEssence>(5);
+            recipe.AddIngredient<InfernoEssence>(5);
+            recipe.AddIngredient<DeathEssence>(5);
 
             recipe.AddTile<CrucibleCosmosSheet>();
             recipe.Register();
@@ -79,7 +83,7 @@ namespace ssm.Thorium.Souls
         public class ThiefsWalletEffect : AccessoryEffect
         {
             public override Header ToggleHeader => Header.GetHeader<UniverseHeader>();
-            public override int ToggleItemType => ModContent.ItemType<ThiefsWallet>();
+            public override int ToggleItemType => ModContent.ItemType<PiratesPurse>();
         }
     }
 }

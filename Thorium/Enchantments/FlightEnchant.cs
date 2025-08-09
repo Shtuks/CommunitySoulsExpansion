@@ -18,7 +18,7 @@ namespace ssm.Thorium.Enchantments
     {
         public override bool IsLoadingEnabled(Mod mod)
         {
-            return ShtunConfig.Instance.Thorium;
+            return CSEConfig.Instance.Thorium;
         }
 
         private readonly Mod thorium = ModLoader.GetMod("ThoriumMod");
@@ -38,7 +38,7 @@ namespace ssm.Thorium.Enchantments
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             FargoSoulsPlayer fargoPlayer = player.GetModPlayer<FargoSoulsPlayer>();
-            ShtunPlayer modPlayer = player.GetModPlayer<ShtunPlayer>();
+            CSEPlayer modPlayer = player.GetModPlayer<CSEPlayer>();
             fargoPlayer.WingTimeModifier += 1f;
 
             ModContent.Find<ModItem>(this.thorium.Name, "FabergeEgg").UpdateAccessory(player, hideVisual);

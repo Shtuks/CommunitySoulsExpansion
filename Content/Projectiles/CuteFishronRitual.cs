@@ -23,7 +23,7 @@ namespace ssm.Content.Projectiles
         {
             if (Main.player[Projectile.owner].active && !Main.player[Projectile.owner].dead
                 && Main.player[Projectile.owner].mount.Active && Main.player[Projectile.owner].mount.Type == MountID.CuteFishron
-                && Main.player[Projectile.owner].GetModPlayer<ShtunPlayer>().CyclonicFin)
+                && Main.player[Projectile.owner].GetModPlayer<CSEPlayer>().CyclonicFin)
             {
                 Projectile.alpha -= 7;
                 Projectile.timeLeft = 300;

@@ -5,12 +5,13 @@ using Terraria;
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
 using ssm.Core;
+using FargowiltasSouls.Content.Projectiles.BossWeapons;
 
 namespace ssm.Items;
 [ExtendsFromMod(ModCompatibility.Calamity.Name)]
 [JITWhenModsEnabled(ModCompatibility.Calamity.Name)]
 [LegacyName(new string[] { "BossRush" })]
-public class ShtunTerminus : ModItem, ILocalizedModType, IModType
+public class CSETerminus : ModItem, ILocalizedModType, IModType
 {
     public override string Texture => "CalamityMod/Items/SummonItems/Terminus";
     public override void SetDefaults()
@@ -22,21 +23,32 @@ public class ShtunTerminus : ModItem, ILocalizedModType, IModType
         Item.useTime = 45;
         Item.channel = true;
         Item.noUseGraphic = true;
-
-        if (!ModCompatibility.WrathoftheGods.Loaded)
-        {
-            Item.shoot = ModContent.ProjectileType<TerminusHoldout>();
-        }
-        else
-        {
-            ModCompatibility.WrathoftheGods.Mod.TryFind<ModProjectile>("TerminusProj", out ModProjectile terminusProj);
-            Item.shoot = terminusProj.Type;
-        }
-
+        Item.shoot = ModContent.ProjectileType<TerminusHoldout>();
         Item.useStyle = 4;
         Item.consumable = false;
     }
 
+    public override bool AltFunctionUse(Player player)
+    {
+        return ModCompatibility.WrathoftheGods.Loaded;
+    }
+
+    public override bool CanUseItem(Player player)
+    {
+        if (player.altFunctionUse == 2)
+        {
+            if (ModCompatibility.WrathoftheGods.Loaded)
+            {
+                ModCompatibility.WrathoftheGods.Mod.TryFind<ModProjectile>("TerminusProj", out ModProjectile terminusProj);
+                Item.shoot = terminusProj.Type;
+            }
+        }
+        else
+        {
+            Item.shoot = ModContent.ProjectileType<TerminusHoldout>();
+        }
+        return true;
+    }
     public override void UpdateInventory(Player player)
     {
         if (Main.zenithWorld)
@@ -44,7 +56,6 @@ public class ShtunTerminus : ModItem, ILocalizedModType, IModType
             Item.SetNameOverride(this.GetLocalizedValue("GFBName"));
         }
     }
-
     public override bool PreDrawInInventory(SpriteBatch spriteBatch, Vector2 position, Rectangle frameI, Color drawColor, Color itemColor, Vector2 origin, float scale)
     {
         if (Main.zenithWorld)

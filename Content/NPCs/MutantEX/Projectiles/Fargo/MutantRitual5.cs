@@ -10,7 +10,7 @@ using Terraria.ModLoader;
 
 namespace ssm.Content.NPCs.MutantEX.Projectiles.Fargo
 {
-    public class MutantRitual5 : ModProjectile
+    public class MonstrosityRitual5 : ModProjectile
     {
         public override string Texture => "Terraria/Images/Projectile_454";
 

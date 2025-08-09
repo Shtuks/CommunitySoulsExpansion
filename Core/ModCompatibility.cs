@@ -5,16 +5,88 @@ namespace ssm.Core;
 
 public static class ModCompatibility
 {
-    public static class Entropy
+    public static class Ragnarok
     {
-        public const string Name = "CalamityEntropy";
+        public const string Name = "RagnarokMod";
+        public static bool Loaded => ModLoader.HasMod(Name);
+        public static Mod Mod => ModLoader.GetMod(Name);
+    }
+    public static class DBZ
+    {
+        public const string Name = "DBZMODPORT";
+        public static bool Loaded => ModLoader.HasMod(Name);
+        public static Mod Mod => ModLoader.GetMod(Name);
+    }
+    public static class CalLegacy
+    {
+        public const string Name = "CalamityLegacy";
+        public static bool Loaded => ModLoader.HasMod(Name);
+        public static Mod Mod => ModLoader.GetMod(Name);
+    }
+    public static class ThoriumRework
+    {
+        public const string Name = "ThoriumRework";
+        public static bool Loaded => ModLoader.HasMod(Name);
+        public static Mod Mod => ModLoader.GetMod(Name);
+    }
+    public static class Inheritance
+    {
+        public const string Name = "CalamityInheritance";
+        public static bool Loaded => ModLoader.HasMod(Name);
+        public static Mod Mod => ModLoader.GetMod(Name);
+    }
+    public static class Vitality
+    {
+        public const string Name = "VitalityMod";
+        public static bool Loaded => ModLoader.HasMod(Name);
+        public static Mod Mod => ModLoader.GetMod(Name);
+    }
+    public static class CatTech
+    {
+        public const string Name = "CatTech";
+        public static bool Loaded => ModLoader.HasMod(Name);
+        public static Mod Mod => ModLoader.GetMod(Name);
+    }
+    public static class SBH
+    {
+        public const string Name = "SoABardHealer";
+        public static bool Loaded => ModLoader.HasMod(Name);
+        public static Mod Mod => ModLoader.GetMod(Name);
+    }
+    public static class CalBardHealer
+    {
+        public const string Name = "CalamityBardHealer";
+        public static bool Loaded => ModLoader.HasMod(Name);
+        public static Mod Mod => ModLoader.GetMod(Name);
+    }
+    public static class BossChecklist
+    {
+        public const string Name = "BossChecklist";
+        public static bool Loaded => ModLoader.HasMod(Name);
+        public static Mod Mod => ModLoader.GetMod(Name);
+    }
+    public static class AlchNPCs
+    {
+        public const string Name = "AlchemistNPCLite";
+        public static bool Loaded => ModLoader.HasMod(Name);
+        public static Mod Mod => ModLoader.GetMod(Name);
+    }
+    public static class IEoR
+    {
+        public const string Name = "InfernalEclipseAPI";
+        public static bool Loaded => ModLoader.HasMod(Name);
+        public static Mod Mod => ModLoader.GetMod(Name);
+    }
+    public static class Spooky
+    {
+        public const string Name = "Spooky";
         public static bool Loaded => ModLoader.HasMod(Name);
         public static Mod Mod => ModLoader.GetMod(Name);
     }
 
-    public static class Spooky
+    public static class Orchid
     {
-        public const string Name = "Spooky";
+        public const string Name = "Orchid";
         public static bool Loaded => ModLoader.HasMod(Name);
         public static Mod Mod => ModLoader.GetMod(Name);
     }
@@ -48,7 +120,7 @@ public static class ModCompatibility
         public static bool Loaded => ModLoader.HasMod(Name);
         public static Mod Mod => ModLoader.GetMod(Name);
     }
-    public static class QualityOfCheatingChinese
+    public static class QualityOfCheating2
     {
         public const string Name = "ImproveGame";
         public static bool Loaded => ModLoader.HasMod(Name);
@@ -119,6 +191,8 @@ public static class ModCompatibility
         public const string Name = "CalamityHunt";
         public static bool Loaded => ModLoader.HasMod(Name);
         public static Mod Mod => ModLoader.GetMod(Name);
+        
+        public static ModNPC GooBoss = Mod.Find<ModNPC>("Goozma");
     }
     public static class Redemption
     {
@@ -149,6 +223,12 @@ public static class ModCompatibility
         public const string Name = "Clamity";
         public static bool Loaded => ModLoader.HasMod(Name);
         public static Mod Mod => ModLoader.GetMod(Name);
+    }   
+    public static class Gunrightsmod
+    {
+        public const string Name = "gunrightsmod";
+        public static bool Loaded => ModLoader.HasMod(Name);
+        public static Mod Mod => ModLoader.GetMod(Name);
     }
     public static class Infernum
     {
@@ -161,6 +241,18 @@ public static class ModCompatibility
     public static class TerMerica
     {
         public const string Name = "gunrightsmod";
+        public static bool Loaded => ModLoader.HasMod(Name);
+        public static Mod Mod => ModLoader.GetMod(Name);
+    }
+    public static class SpiritMod
+    {
+        public const string Name = "SpiritMod";
+        public static bool Loaded => ModLoader.HasMod(Name);
+        public static Mod Mod => ModLoader.GetMod(Name);
+    }
+    public static class Consolaria
+    {
+        public const string Name = "Consolaria";
         public static bool Loaded => ModLoader.HasMod(Name);
         public static Mod Mod => ModLoader.GetMod(Name);
     }

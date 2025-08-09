@@ -21,7 +21,7 @@ namespace ssm.Thorium.Enchantments
     {
         public override bool IsLoadingEnabled(Mod mod)
         {
-            return ShtunConfig.Instance.Thorium;
+            return CSEConfig.Instance.Thorium;
         }
 
         private readonly Mod thorium = ModLoader.GetMod("ThoriumMod");
@@ -46,7 +46,7 @@ namespace ssm.Thorium.Enchantments
             //crystal eye mask
             player.GetCritChance(DamageClass.Generic) += 0.1f;
             //abyssal shell
-            thoriumPlayer.AbyssalShell = true;
+            //thoriumPlayer.AbyssalShell = true;
             //music player
             ModContent.Find<ModItem>(this.thorium.Name, "TunePlayerDamageReduction").UpdateAccessory(player, true);
         }
@@ -61,7 +61,7 @@ namespace ssm.Thorium.Enchantments
             recipe.AddIngredient(ModContent.ItemType<TitanBreastplate>());
             recipe.AddIngredient(ModContent.ItemType<TitanGreaves>());
             recipe.AddIngredient(ModContent.ItemType<MaskoftheCrystalEye>());
-            recipe.AddIngredient(ModContent.ItemType<AbyssalShell>());
+            //recipe.AddIngredient(ModContent.ItemType<AbyssalShell>());
             recipe.AddIngredient(ModContent.ItemType<TunePlayerDamageReduction>());
 
             recipe.AddTile(TileID.CrystalBall);

@@ -73,7 +73,7 @@ public class MutantGiantDeathray2 : MutantSpecialDeathray
 		base.AI();
 		if (!Main.dedServ && Main.LocalPlayer.active)
 		{
-			Main.LocalPlayer.GetModPlayer<ShtunPlayer>().Screenshake = 2;
+			Main.LocalPlayer.GetModPlayer<CSEPlayer>().Screenshake = 2;
 		}
 		base.Projectile.timeLeft = 2;
 		Vector2? vector78 = null;

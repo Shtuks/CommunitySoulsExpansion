@@ -22,7 +22,7 @@ namespace ssm.Thorium.Enchantments
         private readonly Mod thorium = ModLoader.GetMod("ThoriumMod");
         public override bool IsLoadingEnabled(Mod mod)
         {
-            return ShtunConfig.Instance.Thorium;
+            return CSEConfig.Instance.Thorium;
         }
 
         public override void SetDefaults()
@@ -47,7 +47,7 @@ namespace ssm.Thorium.Enchantments
                 player.setBonus = oldSetBonus;
             }
 
-            ModContent.Find<ModItem>(this.thorium.Name, "DragonTalonNecklace").UpdateAccessory(player, hideVisual);
+            //ModContent.Find<ModItem>(this.thorium.Name, "DragonTalonNecklace").UpdateAccessory(player, hideVisual);
             ModContent.Find<ModItem>(this.thorium.Name, "TunePlayerMovementSpeed").UpdateAccessory(player, hideVisual);
         }
 
@@ -68,7 +68,7 @@ namespace ssm.Thorium.Enchantments
             recipe.AddIngredient(ModContent.ItemType<DragonMask>());
             recipe.AddIngredient(ModContent.ItemType<DragonBreastplate>());
             recipe.AddIngredient(ModContent.ItemType<DragonGreaves>());
-            recipe.AddIngredient(ModContent.ItemType<DragonTalonNecklace>());
+            //recipe.AddIngredient(ModContent.ItemType<DragonTalonNecklace>());
             recipe.AddIngredient(ModContent.ItemType<TunePlayerMovementSpeed>());
             recipe.AddIngredient(ModContent.ItemType<EbonyTail>());
 

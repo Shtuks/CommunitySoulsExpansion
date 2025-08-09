@@ -2,16 +2,20 @@ using Terraria;
 using FargowiltasSouls.Content.Items.Accessories.Souls;
 using Terraria.ModLoader;
 using Terraria.Localization;
-using CalamityMod.Items.Armor.Vanity;
 using CalamityMod.Items.Materials;
-using CalamityMod.Items.Armor.Brimflame;
-using CalamityMod.Tiles.Furniture.CraftingStations;
 using ssm.Core;
 using CalamityMod.Items.Armor.Auric;
 using CalamityMod.Items.Armor.GodSlayer;
 using CalamityMod.Items.Armor.Silva;
 using CalamityMod.Items.Armor.Tarragon;
 using CalamityMod.Items.Armor.Bloodflare;
+using CalamityMod.Items;
+using FargowiltasSouls.Content.Items.Summons;
+using Terraria.ID;
+using ssm.Content.Items.DevItems;
+using FargowiltasSouls.Content.Items.Materials;
+using System;
+using FargowiltasSouls.Core.Systems;
 
 namespace ssm.Calamity
 {
@@ -21,9 +25,15 @@ namespace ssm.Calamity
     {
         public override void AddRecipes()
         {
-            Recipe.Create(ModContent.ItemType<SCalMask>(), 1).AddIngredient<AshesofAnnihilation>(10).AddIngredient<CoreofHavoc>(8).AddIngredient<GalacticaSingularity>(5).AddIngredient<BrimflameScowl>(1).AddTile<CosmicAnvil>().Register();
-            Recipe.Create(ModContent.ItemType<SCalRobes>(), 1).AddIngredient<AshesofAnnihilation>(15).AddIngredient<CoreofHavoc>(10).AddIngredient<GalacticaSingularity>(7).AddIngredient<BrimflameRobes>(1).AddTile<CosmicAnvil>().Register();
-            Recipe.Create(ModContent.ItemType<SCalBoots>(), 1).AddIngredient<AshesofAnnihilation>(12).AddIngredient<CoreofHavoc>(7).AddIngredient<GalacticaSingularity>(6).AddIngredient<BrimflameBoots>(1).AddTile<CosmicAnvil>().Register();
+            //prevent double recipes
+            Recipe recipe = ModContent.GetInstance<GalacticaSingularity>().CreateRecipe(1);
+            recipe.AddIngredient(ItemID.FragmentNebula);
+            recipe.AddIngredient(ItemID.FragmentSolar);
+            recipe.AddIngredient(ItemID.FragmentStardust);
+            recipe.AddIngredient(ItemID.FragmentVortex);
+            recipe.AddTile(TileID.LunarCraftingStation);
+            recipe.DisableDecraft();
+            recipe.Register();
         }
 
         public override void AddRecipeGroups()
@@ -40,74 +50,67 @@ namespace ssm.Calamity
             RecipeGroup.RegisterGroup("ssm:Bloodflare", rec5);
         }
 
-
+        public override void PostSetupContent()
+        {
+            //not related to recipes but who cares
+            //Why i added it? Just because i can
+            ModCompatibility.Calamity.Mod.Call("CreateCodebreakerDialogOption", Language.GetTextValue("Mods.ssm.CodebreakerOptions.Mutant"), Language.GetTextValue("Mods.ssm.CodebreakerOptions.Mutant"), (Func<bool>)(() => WorldSavingSystem.DownedMutant));
+        }
         public override void PostAddRecipes()
         {
             for (int i = 0; i < Recipe.numRecipes; i++)
             {
                 Recipe recipe = Main.recipe[i];
 
-                #region other
-                //if (ShtunConfig.Instance.OldCalDlcBalance)
-                //{
-                    if (!recipe.HasIngredient<ShadowspecBar>() && recipe.HasIngredient<AshesofAnnihilation>())
+                if (!recipe.HasIngredient<ShadowspecBar>() && recipe.HasIngredient<AshesofAnnihilation>())
+                {
+                    if (recipe.HasResult<UniverseSoul>() || recipe.HasResult<TerrariaSoul>() || recipe.HasResult<MasochistSoul>() || recipe.HasResult<DimensionSoul>())
                     {
-                        if (recipe.HasResult<UniverseSoul>() || recipe.HasResult<TerrariaSoul>() || recipe.HasResult<MasochistSoul>() || recipe.HasResult<DimensionSoul>())
+                        if (recipe.RemoveIngredient(ModContent.ItemType<AshesofAnnihilation>()) && recipe.RemoveIngredient(ModContent.ItemType<ExoPrism>())) 
                         {
-                            if (recipe.RemoveIngredient(ModContent.ItemType<AshesofAnnihilation>()) && recipe.RemoveIngredient(ModContent.ItemType<ExoPrism>()))
-                                recipe.AddIngredient<ShadowspecBar>(5);
+                            recipe.AddIngredient<ShadowspecBar>(5);
+                            recipe.AddIngredient<MiracleMatter>();
                         }
                     }
-                //}
-                #endregion
+                }
+                if (CSEConfig.Instance.DevItems)
+                {
+                    if (recipe.HasResult<Catlight>() && !recipe.HasIngredient<ShadowspecBar>())
+                    {
+                        recipe.RemoveIngredient(ModContent.ItemType<AbomEnergy>());
+                        recipe.AddIngredient<Rock>(1);
+                        recipe.AddIngredient<ShadowspecBar>(5);
+                    }
+                }
 
-                //#region souls
-                //if (!ShtunConfig.Instance.OldCalDlcBalance)
+                //if (recipe.HasResult<ShadowspecBar>() && !recipe.HasResult<MiracleMatter>())
                 //{
-                    //if (recipe.HasResult(ModContent.ItemType<SoASoul>()) && !recipe.HasIngredient<ExoPrism>())
-                    //{
-                    //    recipe.AddIngredient<ExoPrism>(5);
-                    //    recipe.AddIngredient<AshesofAnnihilation>(5);
-                    //}
-                    ////if (recipe.HasResult(ModContent.ItemType<RedemptionSoul>()) && !recipe.HasIngredient<ExoPrism>())
-                    ////{
-                    ////    recipe.AddIngredient<ExoPrism>(5);
-                    ////    recipe.AddIngredient<AshesofAnnihilation>(5);
-                    ////}
-                    //if (recipe.HasResult(ModContent.ItemType<ThoriumSoul>()) && !recipe.HasIngredient<ExoPrism>())
-                    //{
-                    //    recipe.AddIngredient<ExoPrism>(5);
-                    //    recipe.AddIngredient<AshesofAnnihilation>(5);
-                    //}
-                    //if (recipe.HasResult(ModContent.ItemType<CalamitySoul>()) && !recipe.HasIngredient<ExoPrism>())
-                    //{
-                    //    recipe.AddIngredient<ExoPrism>(5);
-                    //    recipe.AddIngredient<AshesofAnnihilation>(5);
-                    //}
+                //    recipe.RemoveIngredient(ModContent.ItemType<ExoPrism>());
+                //    recipe.RemoveIngredient(ModContent.ItemType<AuricBar>());
+                //    recipe.AddIngredient<MiracleMatter>();
                 //}
-                //else
+
+                //if (CSEConfig.Instance.ExperimentalContent && !recipe.HasIngredient<Rock>() && recipe.HasResult<MacroverseSoul>())
                 //{
-                //    if (recipe.HasResult(ModContent.ItemType<SoASoul>()) && !recipe.HasIngredient<ShadowspecBar>())
-                //    {
-                //        recipe.AddIngredient<ShadowspecBar>(5);
-                //    }
-                //    //if (recipe.HasResult(ModContent.ItemType<RedemptionSoul>()) && !recipe.HasIngredient<ExoPrism>())
-                //    //{
-                //    //    recipe.AddIngredient<ShadowspecBar>(5);
-                //    //}
-                //    if (recipe.HasResult(ModContent.ItemType<ThoriumSoul>()) && !recipe.HasIngredient<ShadowspecBar>())
-                //    {
-                //        recipe.AddIngredient<ShadowspecBar>(5);
-                //    }
-                //    if (recipe.HasResult(ModContent.ItemType<CalamitySoul>()) && !recipe.HasIngredient<ShadowspecBar>())
-                //    {
-                //        recipe.AddIngredient<ShadowspecBar>(5);
-                //    }
+                //    recipe.AddIngredient<Rock>(1);
                 //}
-                //#endregion
+
+                if (!recipe.HasIngredient<Rock>() && recipe.HasResult<AbominationnVoodooDoll>())
+                {
+                    recipe.AddIngredient<Rock>(1);
+                }
+
+                if (recipe.HasResult<GalacticaSingularity>() && !recipe.DecraftDisabled)
+                {
+                    recipe.DisableRecipe();
+                }
+
+                if (recipe.HasResult(ItemID.DrillContainmentUnit) && !recipe.HasIngredient<AerialiteBar>())
+                {
+                    recipe.AddIngredient<LifeAlloy>(20);
+                    recipe.AddIngredient<AerialiteBar>(20);
+                }
             }
         }
     }
 }
-
-

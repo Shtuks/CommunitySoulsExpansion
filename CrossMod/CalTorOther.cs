@@ -25,14 +25,14 @@ namespace ssm.CrossMod
                     recipe.AddIngredient<CoreofCalamity>(3);
                     recipe.RemoveIngredient(ModContent.ItemType<CoreofSunlight>());
                     recipe.RemoveTile(TileID.MythrilAnvil);
-                    recipe.AddTile(TileID.LunarCraftingStation);
+                    //recipe.AddTile(TileID.LunarCraftingStation);
                 }
 
                 if (recipe.HasResult(ModContent.ItemType<StatisCurse>()) && !recipe.HasIngredient(ModContent.ItemType<GalacticaSingularity>()))
                 {
                     recipe.RemoveIngredient(ItemID.FragmentStardust);
                     recipe.AddIngredient<GalacticaSingularity>(5);
-                    recipe.AddIngredient<Necroplasm>(3);
+                    //recipe.AddIngredient<Necroplasm>(3);
                 }
 
                 if (recipe.HasResult(ModContent.ItemType<EtherealTalisman>()) && !recipe.HasIngredient(ModContent.ItemType<HungeringBlossom>()))
@@ -50,13 +50,13 @@ namespace ssm.CrossMod
 
         public override void UpdateAccessory(Item Item, Player player, bool hideVisual)
         {
-            //if (Item.type == ModContent.ItemType<StatisCurse>()
-            //    || Item.type == ModContent.ItemType<Nucleogenesis>())
-            //{
-            //    player.maxMinions--;
+            if (Item.type == ModContent.ItemType<StatisCurse>()
+                || Item.type == ModContent.ItemType<Nucleogenesis>())
+            {
+                player.maxMinions--;
 
-            //    ModContent.Find<ModItem>(ModCompatibility.Thorium.Name, "NecroticSkull").UpdateAccessory(player, false);
-            //}
+                ModContent.Find<ModItem>(ModCompatibility.Thorium.Name, "NecroticSkull").UpdateAccessory(player, false);
+            }
 
             if (Item.type == ModContent.ItemType<EtherealTalisman>())
             {

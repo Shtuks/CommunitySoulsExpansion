@@ -50,7 +50,7 @@ public class MutantSlimeBall : ModProjectile
 				base.Projectile.frame = 0;
 			}
 		}
-		if ((base.Projectile.localAI[1] += 1f) > 10f && FargoSoulsUtil.BossIsAlive(ref ShtunNpcs.mutantEX, ModContent.NPCType<MutantEX>()) && Math.Sign(base.Projectile.Center.Y - Main.npc[ShtunNpcs.mutantEX].Center.Y) == Math.Sign(base.Projectile.velocity.Y) && base.Projectile.Distance(Main.npc[ShtunNpcs.mutantEX].Center) > 1200f + base.Projectile.ai[0])
+		if ((base.Projectile.localAI[1] += 1f) > 10f && FargoSoulsUtil.BossIsAlive(ref CSENpcs.mutantEX, ModContent.NPCType<MutantEX>()) && Math.Sign(base.Projectile.Center.Y - Main.npc[CSENpcs.mutantEX].Center.Y) == Math.Sign(base.Projectile.velocity.Y) && base.Projectile.Distance(Main.npc[CSENpcs.mutantEX].Center) > 1200f + base.Projectile.ai[0])
 		{
 			base.Projectile.timeLeft = 0;
 		}

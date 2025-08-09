@@ -24,12 +24,11 @@ namespace ssm.Content.Buffs.Minions
 
         public override void Update(Player player, ref int buffIndex)
         {
-            player.GetModPlayer<ShtunPlayer>().MutantSoul = true;
             if (player.whoAmI == Main.myPlayer)
             {
                 const int damage = 10000;
                 if (player.ownedProjectileCounts[ModContent.ProjectileType<MutantSoul>()] < 1)
-                    ShtunUtils.NewSummonProjectile(player.GetSource_Buff(buffIndex), player.Center, Vector2.Zero, ModContent.ProjectileType<MutantSoul>(), damage, 19f, player.whoAmI);
+                    FargoSoulsUtil.NewSummonProjectile(player.GetSource_Buff(buffIndex), player.Center, Vector2.Zero, ModContent.ProjectileType<MutantSoul>(), damage, 19f, player.whoAmI);
             }
         }
     }

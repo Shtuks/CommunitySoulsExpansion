@@ -3,15 +3,13 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using ThoriumMod;
 using Microsoft.Xna.Framework;
-using ThoriumMod.Items.ThrownItems;
-using ThoriumMod.Items.Painting;
 using ssm.Core;
-using ThoriumMod.Items.HealerItems;
-using ThoriumMod.Items.SummonItems;
 using FargowiltasSouls.Content.Items.Accessories.Enchantments;
 using ThoriumMod.Items.BossLich;
 using FargowiltasSouls.Core.AccessoryEffectSystem;
 using ssm.Content.SoulToggles;
+using FargowiltasSouls.Content.UI.Elements;
+using Microsoft.Xna.Framework.Graphics;
 using static ssm.Thorium.Enchantments.PlagueDoctorEnchant;
 
 namespace ssm.Thorium.Enchantments
@@ -22,7 +20,7 @@ namespace ssm.Thorium.Enchantments
     {
         public override bool IsLoadingEnabled(Mod mod)
         {
-            return ShtunConfig.Instance.Thorium;
+            return CSEConfig.Instance.Thorium;
         }
 
         private readonly Mod thorium = ModLoader.GetMod("ThoriumMod");
@@ -76,6 +74,19 @@ namespace ssm.Thorium.Enchantments
         {
             public override Header ToggleHeader => Header.GetHeader<VanaheimForceHeader>();
             public override int ToggleItemType => ModContent.ItemType<LichEnchant>();
+
+          /*  public override void PostUpdateEquips(Player player)
+            {
+                CSEPlayer modPlayer = player.CSE();
+                if (modPlayer.LichEnchantmentProcCD > 0)
+                    modPlayer.LichEnchantmentProcCD--;
+                CooldownBarManager.Activate("LichEnchantCooldown", ModContent.Request<Texture2D>("ssm/Thorium/Enchantments/LichEnchant").Value, new(213, 102, 23),
+                    () => Main.LocalPlayer.CSE().LichEnchantmentProcCD / (60f * 4), true, activeFunction: player.HasEffect<LichEffect>);
+            }
+            
+            // Not needed until Lich enchant works
+
+            */
         }
     }
 }

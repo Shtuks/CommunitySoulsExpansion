@@ -1,21 +1,18 @@
 ﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria.Localization;
-using SacredTools;
-using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using FargowiltasSouls.Content.Items.Accessories.Enchantments;
 using FargowiltasSouls.Core.AccessoryEffectSystem;
 using ssm.Content.SoulToggles;
-using Microsoft.Xna.Framework.Graphics;
-using SacredTools.Content.Items.Armor.Oblivion;
-using SacredTools.Items.Weapons.Special;
 using SacredTools.Content.Items.Armor.Vulcan;
 using SacredTools.Items.Potions;
 using SacredTools.Items.Weapons.Flarium;
 using SacredTools.Items.Placeable.Paintings;
 using ssm.Core;
+using SacredTools.Common.Players;
+using FargowiltasSouls;
+using FargowiltasSouls.Core.Globals;
 
 namespace ssm.SoA.Enchantments
 {
@@ -25,11 +22,8 @@ namespace ssm.SoA.Enchantments
     {
         public override bool IsLoadingEnabled(Mod mod)
         {
-            return ShtunConfig.Instance.SacredTools;
+            return CSEConfig.Instance.SacredTools;
         }
-
-        private readonly Mod soa = ModLoader.GetMod("SacredTools");
-
         public override void SetDefaults()
         {
             Item.width = 20;
@@ -44,15 +38,34 @@ namespace ssm.SoA.Enchantments
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            ModdedPlayer modPlayer = player.GetModPlayer<ModdedPlayer>();
-            player.buffImmune[ModContent.Find<ModBuff>(this.soa.Name, "SerpentWrath").Type] = true;
-            player.buffImmune[ModContent.Find<ModBuff>(this.soa.Name, "ObsidianCurse").Type] = true;
+            player.AddEffect<VulcanReaperEffect>(Item);
+            player.buffImmune[ModContent.Find<ModBuff>(ModCompatibility.SacredTools.Name, "ObsidianCurse").Type] = true;
         }
 
         public class VulcanReaperEffect : AccessoryEffect
         {
+            public int vulcanStacks;
+            public int vulcanTime;
             public override Header ToggleHeader => Header.GetHeader<SyranForceHeader>();
             public override int ToggleItemType => ModContent.ItemType<VulcanReaperEnchant>();
+            public override void PostUpdateEquips(Player player)
+            {
+                if (vulcanTime >= 300)
+                {
+                    vulcanStacks--;
+                    vulcanTime = 0;
+                }
+
+                player.GetModPlayer<MiscEffectsPlayer>().bossDamage += vulcanStacks * 0.05f;
+            }
+
+            public override void OnHitNPCEither(Player player, NPC target, NPC.HitInfo hitInfo, DamageClass damageClass, int baseDamage, Projectile projectile, Item item)
+            {
+                if (target.life <= 0 && !target.friendly && target.type != NPCID.TargetDummy && vulcanStacks < 5)
+                {
+                    vulcanStacks++;
+                }
+            }
         }
 
         public override void AddRecipes()

@@ -66,9 +66,9 @@ namespace ssm.Content.Buffs
 
         public override void Update(NPC npc, ref int buffIndex)
         {
-            if (npc.Shtun().chtuxlagorInferno < npc.buffTime[buffIndex])
+            if (npc.CSE().chtuxlagorInferno < npc.buffTime[buffIndex])
             {
-                npc.Shtun().chtuxlagorInferno = npc.buffTime[buffIndex];
+                npc.CSE().chtuxlagorInferno = npc.buffTime[buffIndex];
             }
 
             npc.defense = 0;

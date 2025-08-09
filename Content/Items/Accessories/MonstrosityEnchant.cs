@@ -8,12 +8,8 @@ using Terraria.ModLoader;
 using Terraria.DataStructures;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Terraria.GameContent;
 using Terraria.Graphics.Shaders;
-using FargowiltasSouls.Content.Items.Materials;
 using Terraria.ID;
-using FargowiltasSouls.Content.Items;
-using FargowiltasSouls.Content.Items.Armor;
 using FargowiltasSouls.Core.AccessoryEffectSystem;
 using ssm.Content.SoulToggles;
 using FargowiltasSouls.Content.Items.Accessories.Enchantments;
@@ -25,10 +21,8 @@ namespace ssm.Content.Items.Accessories
     {
         public override bool IsLoadingEnabled(Mod mod)
         {
-            return ssm.debug;
+            return CSEConfig.Instance.AlternativeSiblings;
         }
-
-        private readonly Mod FargoSoul = Terraria.ModLoader.ModLoader.GetMod("FargowiltasSouls");
 
         public override void SetStaticDefaults() => ItemID.Sets.ItemNoGravity[this.Type] = true;
 
@@ -56,7 +50,7 @@ namespace ssm.Content.Items.Accessories
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            player.GetModPlayer<ShtunPlayer>().equippedMonstrosityEnchantment = true;
+            player.GetModPlayer<CSEPlayer>().equippedMonstrosityEnchantment = true;
             if (player.AddEffect<MonstrosityEffect>(Item))
             {
                 ModContent.GetInstance<MonstrosityMask>().UpdateArmorSet(player);

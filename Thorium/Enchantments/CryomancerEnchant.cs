@@ -8,6 +8,9 @@ using ssm.Core;
 using ThoriumMod.Items.MagicItems;
 using FargowiltasSouls.Content.Items.Accessories.Enchantments;
 using ThoriumMod.Items.BossBoreanStrider;
+using FargowiltasSouls.Core.AccessoryEffectSystem;
+using static ssm.Thorium.Enchantments.DemonBloodEnchant;
+using ssm.Content.SoulToggles;
 
 namespace ssm.Thorium.Enchantments
 {
@@ -15,10 +18,9 @@ namespace ssm.Thorium.Enchantments
     [JITWhenModsEnabled(ModCompatibility.Thorium.Name)]
     public class CryomancerEnchant : BaseEnchant
     {
-        private readonly Mod thorium = ModLoader.GetMod("ThoriumMod");
         public override bool IsLoadingEnabled(Mod mod)
         {
-            return ShtunConfig.Instance.Thorium;
+            return CSEConfig.Instance.Thorium;
         }
 
         public override void SetDefaults()
@@ -35,17 +37,24 @@ namespace ssm.Thorium.Enchantments
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            ShtunThoriumPlayer modPlayer = player.GetModPlayer<ShtunThoriumPlayer>();
+            CSEThoriumPlayer modPlayer = player.GetModPlayer<CSEThoriumPlayer>();
             ThoriumPlayer thoriumPlayer = player.GetModPlayer<ThoriumPlayer>();
-
-            //cryo set bonus, dmg duplicate
-            modPlayer.CryoEnchant = true;
+            if (player.AddEffect<CryomancerEffect>(Item))
+            {
+                thoriumPlayer.setCryomancer = true;
+            }
             //strider hide
             thoriumPlayer.frostBonusDamage = true;
 
             ModContent.Find<ModItem>("ssm", "IcyEnchant").UpdateAccessory(player, hideVisual);
         }
 
+        public class CryomancerEffect : AccessoryEffect
+        {
+            public override Header ToggleHeader => Header.GetHeader<JotunheimForceHeader>();
+            public override int ToggleItemType => ModContent.ItemType<CryomancerEnchant>();
+
+        }
         public override void AddRecipes()
         {
             Recipe recipe = this.CreateRecipe();

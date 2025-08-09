@@ -18,6 +18,9 @@ using SacredTools.Items.Weapons;
 using SacredTools.Content.Items.Armor.Lunar.Stardust;
 using SacredTools.Items.Weapons.Lunatic;
 using SacredTools.Items.Weapons.Oblivion;
+using SacredTools.Projectiles.Minions.EternalOasis;
+using static System.Net.Mime.MediaTypeNames;
+using FargowiltasSouls;
 
 
 namespace ssm.SoA.Enchantments
@@ -28,7 +31,7 @@ namespace ssm.SoA.Enchantments
     {
         public override bool IsLoadingEnabled(Mod mod)
         {
-            return ShtunConfig.Instance.SacredTools;
+            return CSEConfig.Instance.SacredTools;
         }
 
         private readonly Mod soa = ModLoader.GetMod("SacredTools");
@@ -53,7 +56,8 @@ namespace ssm.SoA.Enchantments
             modPlayer.DustiteArmor = true;
             if (player.AddEffect<StellarPriestEffect>(Item))
             {
-                player.AddBuff(ModContent.BuffType<StellarGuardianBuff>(), 2);
+                if (player.ownedProjectileCounts[ModContent.ProjectileType<StellarGuardian>()] < 1)
+                    FargoSoulsUtil.NewSummonProjectile(player.GetSource_FromThis(), player.Center, Vector2.Zero, ModContent.ProjectileType<StellarGuardian>(), 900, 8f, player.whoAmI);
             }
         }
 

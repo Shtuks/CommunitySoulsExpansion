@@ -1,20 +1,17 @@
 ﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria.Localization;
-using SacredTools;
-using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using FargowiltasSouls.Content.Items.Accessories.Enchantments;
 using FargowiltasSouls.Core.AccessoryEffectSystem;
 using ssm.Content.SoulToggles;
 using ssm.Core;
-using SacredTools.Content.Items.Armor.Bismuth;
-using SacredTools.Items.Weapons.Herbs;
-using SacredTools.Items.Weapons;
 using SacredTools.Content.Items.Armor.Blightbone;
 using SacredTools.Content.Items.Accessories;
 using SacredTools.Content.Items.Weapons.Dreadfire;
+using FargowiltasSouls;
+using System;
+using ssm.Content.Projectiles.Enchantments;
 
 namespace ssm.SoA.Enchantments
 {
@@ -24,11 +21,8 @@ namespace ssm.SoA.Enchantments
     {
         public override bool IsLoadingEnabled(Mod mod)
         {
-            return ShtunConfig.Instance.SacredTools;
+            return CSEConfig.Instance.SacredTools;
         }
-
-        private readonly Mod soa = ModLoader.GetMod("SacredTools");
-
 
         public override void SetDefaults()
         {
@@ -44,23 +38,39 @@ namespace ssm.SoA.Enchantments
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            ModContent.Find<ModItem>(this.soa.Name, "FeatherHairpin").UpdateAccessory(player, false);
+            ModContent.Find<ModItem>(ModCompatibility.SacredTools.Name, "FeatherHairpin").UpdateAccessory(player, false);
 
-            ModdedPlayer modPlayer = player.GetModPlayer<ModdedPlayer>();
-            //set bonus
-            modPlayer.blightEmpowerment = true;
-
-            //pumpkin amulet
-            modPlayer.pumpkinAmulet = true;
-
-            //dreadflame emblem
-            modPlayer.dreadEmblem = true;
+            player.AddEffect<BlightboneEffect>(Item);
         }
-
         public class BlightboneEffect : AccessoryEffect
         {
+            public int boneCD;
             public override Header ToggleHeader => Header.GetHeader<FoundationsForceHeader>();
             public override int ToggleItemType => ModContent.ItemType<BlightboneEnchant>();
+            public override bool ExtraAttackEffect => true;
+            public override void TryAdditionalAttacks(Player player, int damage, DamageClass damageType)
+            {
+                if (boneCD > 0)
+                {
+                    return;
+                }
+
+                boneCD = 30;
+                float num = 50f;
+                Vector2 center = player.Center;
+                Vector2 vector = Vector2.Normalize(Main.MouseWorld - center);
+                for (int i = 0; i < (player.ForceEffect<BlightboneEffect>() ? 3 : 1); i++)
+                {
+                    Projectile.NewProjectile(GetSource_EffectItem(player), center, vector.RotatedByRandom(Math.PI / 6.0) * Main.rand.NextFloat(6f, 10f) * 2, ModContent.ProjectileType<Blightbone>(), (int)(num * player.ActualClassDamage(DamageClass.Throwing)), 9f, player.whoAmI);
+                }
+            }
+            public override void PostUpdateEquips(Player player)
+            {
+                if (boneCD > 0)
+                {
+                    boneCD--;
+                }
+            }
         }
 
         public override void AddRecipes()

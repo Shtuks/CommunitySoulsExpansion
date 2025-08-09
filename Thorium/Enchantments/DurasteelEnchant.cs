@@ -14,6 +14,9 @@ using ThoriumMod.Items.Thorium;
 using FargowiltasSouls.Core.AccessoryEffectSystem;
 using ssm.Content.SoulToggles;
 using static ssm.Thorium.Enchantments.LodestoneEnchant;
+using static ssm.Thorium.Enchantments.BronzeEnchant;
+using static ssm.Thorium.Enchantments.SteelEnchant;
+using ssm.Content.Projectiles.Enchantments;
 
 namespace ssm.Thorium.Enchantments
 {
@@ -23,7 +26,7 @@ namespace ssm.Thorium.Enchantments
     {
         public override bool IsLoadingEnabled(Mod mod)
         {
-            return ShtunConfig.Instance.Thorium;
+            return CSEConfig.Instance.Thorium;
         }
 
         public override void SetDefaults()
@@ -37,49 +40,58 @@ namespace ssm.Thorium.Enchantments
         }
 
         public override Color nameColor => new(255, 128, 0);
-
-        public override void UpdateAccessory(Player player, bool hideVisual)
+        public override void UpdateInventory(Player player)
         {
-            //durasteel effect
-            if (player.statLife == player.statLifeMax2)
-            {
-                player.endurance += 0.12f;
-            }
-
-            //darksteel bonuses
-            player.noKnockback = true;
-            player.iceSkate = true;
-            player.dash = 1;
-
-            ModContent.GetModItem(ModContent.ItemType<BallnChain>()).UpdateAccessory(player, hideVisual);
-            ModContent.GetModItem(ModContent.ItemType<SpikedBracer>()).UpdateAccessory(player, hideVisual);
-            ModContent.GetModItem(ModContent.ItemType<ThoriumShield>()).UpdateAccessory(player, hideVisual);
-
-            if (player.AddEffect<IncandescentSparkEffect>(Item))
-            {
-                //toggle
-                ModContent.GetModItem(ModContent.ItemType<IncandescentSpark>()).UpdateAccessory(player, hideVisual);
-            }
+            player.AddEffect<DurasteelEffectOres>(Item);
         }
 
-        public class IncandescentSparkEffect : AccessoryEffect
+        public override void UpdateVanity(Player player)
+        {
+            player.AddEffect<DurasteelEffectOres>(Item);
+        }
+        public override void UpdateAccessory(Player player, bool hideVisual)
+        {
+            player.AddEffect<SteelEffect>(Item);
+            player.AddEffect<DurasteelEffect>(Item);
+        }
+
+        public class DurasteelEffect : AccessoryEffect
+        {
+            public override Header ToggleHeader => Header.GetHeader<MidgardForceHeader>();
+            public override int ToggleItemType => ModContent.ItemType<DurasteelEnchant>();
+           
+        }
+
+        public class DurasteelEffectOres : AccessoryEffect
         {
             public override Header ToggleHeader => Header.GetHeader<MidgardForceHeader>();
             public override int ToggleItemType => ModContent.ItemType<DurasteelEnchant>();
             public override bool MutantsPresenceAffects => true;
-        }
 
+            public override void OnHitNPCEither(Player player, NPC target, NPC.HitInfo hitInfo, DamageClass damageClass, int baseDamage, Projectile projectile, Item item)
+            {
+                TryDoubleOreDrops(target);
+            }
+
+            private void TryDoubleOreDrops(NPC target)
+            {
+                if (Main.rand.NextBool(2) && target.life <= 0)
+                {
+                    for (int i = 0; i < target.npcSlots; i++)
+                    {
+                        
+                    }
+                }
+            }
+        }
         public override void AddRecipes()
         {
-
-
             Recipe recipe = this.CreateRecipe();
 
             recipe.AddIngredient(ModContent.ItemType<DurasteelHelmet>());
             recipe.AddIngredient(ModContent.ItemType<DurasteelChestplate>());
             recipe.AddIngredient(ModContent.ItemType<DurasteelGreaves>());
-            recipe.AddIngredient(ModContent.ItemType<DarksteelEnchant>());
-            recipe.AddIngredient(ModContent.ItemType<IncandescentSpark>());
+            recipe.AddIngredient(ModContent.ItemType<SteelEnchant>());
             recipe.AddIngredient(ModContent.ItemType<DurasteelBlade>());
 
             recipe.AddTile(TileID.CrystalBall);

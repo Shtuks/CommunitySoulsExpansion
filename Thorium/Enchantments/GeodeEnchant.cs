@@ -10,6 +10,9 @@ using ssm.Core;
 using ThoriumMod.Items.Tracker;
 using ThoriumMod.Items.BasicAccessories;
 using FargowiltasSouls.Content.Items.Accessories.Enchantments;
+using FargowiltasSouls.Core.AccessoryEffectSystem;
+using ssm.Content.Projectiles.Enchantments;
+using ssm.Content.SoulToggles;
 
 namespace ssm.Thorium.Enchantments
 {
@@ -19,7 +22,7 @@ namespace ssm.Thorium.Enchantments
     {
         public override bool IsLoadingEnabled(Mod mod)
         {
-            return ShtunConfig.Instance.Thorium;
+            return CSEConfig.Instance.Thorium;
         }
 
         private readonly Mod thorium = ModLoader.GetMod("ThoriumMod");
@@ -38,16 +41,17 @@ namespace ssm.Thorium.Enchantments
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            ModContent.Find<ModItem>(this.thorium.Name, "GeodeHelmet").UpdateArmorSet(player);
-
-            //ModContent.Find<ModItem>(this.thorium.Name, "CrystalineCharm").UpdateAccessory(player, hideVisual);
-            ModContent.Find<ModItem>(this.thorium.Name, "CrystalSpearTip").UpdateAccessory(player, hideVisual);
+            //player.pick += 9;
+            player.AddEffect<GeodeEffect>(Item);
         }
 
+        public class GeodeEffect : AccessoryEffect
+        {
+            public override Header ToggleHeader => Header.GetHeader<MidgardForceHeader>();
+            public override int ToggleItemType => ModContent.ItemType<GeodeEnchant>();
+        }
         public override void AddRecipes()
         {
-
-
             Recipe recipe = this.CreateRecipe();
 
             recipe.AddIngredient(ModContent.ItemType<GeodeHelmet>());

@@ -18,7 +18,7 @@ namespace ssm.Thorium.Enchantments
     {
         public override bool IsLoadingEnabled(Mod mod)
         {
-            return ShtunConfig.Instance.Thorium;
+            return CSEConfig.Instance.Thorium;
         }
 
         private readonly Mod thorium = ModLoader.GetMod("ThoriumMod");
@@ -37,8 +37,8 @@ namespace ssm.Thorium.Enchantments
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            ShtunThoriumPlayer modPlayer = player.GetModPlayer<ShtunThoriumPlayer>();
-            modPlayer.LifeBloomEnchant = true;
+            ThoriumPlayer modPlayer = player.GetModPlayer<ThoriumPlayer>();
+            modPlayer.setLifeBloom = true;
 
             ModContent.Find<ModItem>("ssm", "LivingWoodEnchant").UpdateAccessory(player, hideVisual);
 
@@ -63,6 +63,7 @@ namespace ssm.Thorium.Enchantments
             recipe.AddIngredient(ModContent.ItemType<LifeBloomMail>());
             recipe.AddIngredient(ModContent.ItemType<LifeBloomLeggings>());
             recipe.AddIngredient(ModContent.ItemType<HeartOfTheJungle>());
+            recipe.AddIngredient(ModContent.ItemType<LivingWoodEnchant>());
 
             recipe.AddTile(TileID.CrystalBall);
             recipe.Register();

@@ -11,7 +11,6 @@ namespace ssm.Thorium.Souls
     [JITWhenModsEnabled(ModCompatibility.Thorium.Name)]
     public class CorruptedWarShield : ModItem
     {
-        private readonly Mod thorium = ModLoader.GetMod("ThoriumMod");
         public override void SetDefaults()
         {
             Item.width = 20;

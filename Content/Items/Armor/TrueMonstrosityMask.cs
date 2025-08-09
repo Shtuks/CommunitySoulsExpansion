@@ -2,6 +2,11 @@ using Terraria;
 using Terraria.ModLoader;
 using Terraria.Localization;
 using ssm.CrossMod.CraftingStations;
+using Luminance.Core.Graphics;
+using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework;
+using FargowiltasSouls.Content.Items.Materials;
+using ssm.Content.Items.Consumables;
 
 namespace ssm.Content.Items.Armor
 {
@@ -10,27 +15,49 @@ namespace ssm.Content.Items.Armor
     [AutoloadEquip(EquipType.Head)]
     public class TrueMonstrosityMask : ModItem
     {
+        public override bool IsLoadingEnabled(Mod mod)
+        {
+            return CSEConfig.Instance.AlternativeSiblings;
+        }
         public override void SetDefaults()
         {
             Item.width = 18;
             Item.height = 18;
             Item.rare = 11;
             Item.expert = true;
-            Item.value = Item.sellPrice(10, 0, 0, 0);
-            Item.defense = 100;
+            Item.value = Item.sellPrice(100, 0, 0, 0);
+            Item.defense = 200;
         }
 
         public override void UpdateEquip(Player player)
         {
-            player.GetDamage(DamageClass.Generic) += 0.5f;
-            player.GetArmorPenetration(DamageClass.Generic) += 70f;
-            player.GetCritChance(DamageClass.Generic) += 2f;
+            player.GetDamage(DamageClass.Generic) += 2f;
+            player.GetArmorPenetration(DamageClass.Generic) += 1000f;
+            player.GetCritChance(DamageClass.Generic) += 100f;
             player.maxMinions += 20;
             player.maxTurrets += 20;
-            player.manaCost -= 0.4f;
+            player.manaCost -= 1;
             player.ammoCost75 = true;
+            player.statLifeMax2 += 500;
         }
 
+        public override bool PreDrawTooltipLine(DrawableTooltipLine line, ref int yOffset)
+        {
+            if ((line.Mod == "Terraria" && line.Name == "ItemName") || line.Name == "FlavorText")
+            {
+                Main.spriteBatch.End();
+                Main.spriteBatch.Begin(SpriteSortMode.Immediate, null, null, null, null, null, Main.UIScaleMatrix);
+                ManagedShader shader = ShaderManager.GetShader("FargowiltasSouls.Text");
+                shader.TrySetParameter("mainColor", new Color(42, 66, 99));
+                shader.TrySetParameter("secondaryColor", Main.DiscoColor);
+                shader.Apply("PulseUpwards");
+                Utils.DrawBorderString(Main.spriteBatch, line.Text, new Vector2(line.X, line.Y), Color.White, 1);
+                Main.spriteBatch.End();
+                Main.spriteBatch.Begin(SpriteSortMode.Deferred, null, null, null, null, null, Main.UIScaleMatrix);
+                return false;
+            }
+            return true;
+        }
         public static string GetSetBonusString()
         {
             return Language.GetTextValue($"Mods.ssm.SetBonus.Monstrosity");
@@ -66,9 +93,12 @@ namespace ssm.Content.Items.Armor
         {
             Recipe recipe = CreateRecipe();
 
+            recipe.AddIngredient<EternalEnergy>(15);
+            recipe.AddIngredient<Sadism>(15);
             recipe.AddIngredient<MonstrosityMask>();
 
             recipe.AddTile<MutantsForgeTile>();
+            recipe.Register();
         }
     }
 }

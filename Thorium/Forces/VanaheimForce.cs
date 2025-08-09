@@ -7,6 +7,8 @@ using ssm.Core;
 using ssm.Thorium.Enchantments;
 using Fargowiltas.Items.Tiles;
 using FargowiltasSouls.Content.Items.Accessories.Forces;
+using FargowiltasSouls.Content.UI.Elements;
+
 
 namespace ssm.Thorium.Forces
 {
@@ -16,7 +18,7 @@ namespace ssm.Thorium.Forces
     {
         public override bool IsLoadingEnabled(Mod mod)
         {
-            return ShtunConfig.Instance.Thorium;
+            return CSEConfig.Instance.Thorium;
         }
 
         public override void SetDefaults()

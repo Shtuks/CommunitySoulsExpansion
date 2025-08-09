@@ -1,20 +1,15 @@
 ﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria.Localization;
-using SacredTools;
-using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using FargowiltasSouls.Content.Items.Accessories.Enchantments;
 using FargowiltasSouls.Core.AccessoryEffectSystem;
 using ssm.Content.SoulToggles;
-using SacredTools.Content.Items.Accessories;
-using SacredTools.Content.Items.Armor.Dreadfire;
-using SacredTools.Content.Items.Weapons.Dreadfire;
 using SacredTools.Content.Items.Armor.Lunar.Quasar;
 using SacredTools.Content.Items.Accessories.ChallengeItems;
 using SacredTools.Items.Weapons.Lunatic;
 using ssm.Core;
+using static ssm.SoA.Enchantments.QuasarEnchant;
 
 namespace ssm.SoA.Enchantments
 {
@@ -24,7 +19,7 @@ namespace ssm.SoA.Enchantments
     {
         public override bool IsLoadingEnabled(Mod mod)
         {
-            return ShtunConfig.Instance.SacredTools;
+            return CSEConfig.Instance.SacredTools;
         }
 
         private readonly Mod soa = ModLoader.GetMod("SacredTools");
@@ -44,18 +39,11 @@ namespace ssm.SoA.Enchantments
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            ModdedPlayer modPlayer = player.GetModPlayer<ModdedPlayer>();
-            if (player.AddEffect<FallenPrinceEffect>(Item))
-            {
-                //set bonus
-                modPlayer.NovanielArmor = true;
-
-                //novaniels resolve
-                ModContent.Find<ModItem>(this.soa.Name, "NovanielResolve").UpdateAccessory(player, false);
-            }
+            player.AddEffect<SupernovaEffect>(Item);
+            player.AddEffect<QuasarEffect>(Item);
         }
 
-        public class FallenPrinceEffect : AccessoryEffect
+        public class SupernovaEffect : AccessoryEffect
         {
             public override Header ToggleHeader => Header.GetHeader<SoranForceHeader>();
             public override int ToggleItemType => ModContent.ItemType<FallenPrinceEnchant>();
@@ -67,7 +55,7 @@ namespace ssm.SoA.Enchantments
             recipe.AddIngredient<FallenPrinceHelm>();
             recipe.AddIngredient<FallenPrinceChest>();
             recipe.AddIngredient<FallenPrinceBoots>();
-            recipe.AddIngredient<NovanielResolve>();
+            recipe.AddIngredient<QuasarEnchant>();
             recipe.AddIngredient<CosmicDesolation>();
             recipe.AddIngredient<LunaticsGamble>();
             recipe.AddTile(412);

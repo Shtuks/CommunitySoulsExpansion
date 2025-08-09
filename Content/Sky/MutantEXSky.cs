@@ -25,11 +25,11 @@ namespace ssm.Content.Sky
 
             bool useSpecialColor = false;
 
-            if (FargoSoulsUtil.BossIsAlive(ref ShtunNpcs.mutantEX, ModContent.NPCType<MutantEX>())
-                && (Main.npc[ShtunNpcs.mutantEX].ai[0] < 0 || Main.npc[ShtunNpcs.mutantEX].ai[0] >= 10))
+            if (FargoSoulsUtil.BossIsAlive(ref CSENpcs.mutantEX, ModContent.NPCType<MutantEX>())
+                && (Main.npc[CSENpcs.mutantEX].ai[0] < 0 || Main.npc[CSENpcs.mutantEX].ai[0] >= 10))
             {
                 intensity += increment;
-                lifeIntensity = Main.npc[ShtunNpcs.mutantEX].ai[0] < 0 ? 1f : 1f - (float)Main.npc[ShtunNpcs.mutantEX].life / Main.npc[ShtunNpcs.mutantEX].lifeMax;
+                lifeIntensity = Main.npc[CSENpcs.mutantEX].ai[0] < 0 ? 1f : 1f - (float)Main.npc[CSENpcs.mutantEX].life / Main.npc[CSENpcs.mutantEX].lifeMax;
 
                 void ChangeColorIfDefault(Color color)
                 {
@@ -39,10 +39,10 @@ namespace ssm.Content.Sky
                         useSpecialColor = true;
                 }
 
-                switch ((int)Main.npc[ShtunNpcs.mutantEX].ai[0])
+                switch ((int)Main.npc[CSENpcs.mutantEX].ai[0])
                 {
                     case -5:
-                        if (Main.npc[ShtunNpcs.mutantEX].ai[2] >= 420)
+                        if (Main.npc[CSENpcs.mutantEX].ai[2] >= 420)
                             ChangeColorIfDefault(Color.MediumPurple);
                         break;
 
@@ -57,7 +57,7 @@ namespace ssm.Content.Sky
                         break;
 
                     case 36:
-                        if (Main.npc[ShtunNpcs.mutantEX].ai[2] > 180 * 3 - 60)
+                        if (Main.npc[CSENpcs.mutantEX].ai[2] > 180 * 3 - 60)
                             ChangeColorIfDefault(Color.Blue);
                         break;
 

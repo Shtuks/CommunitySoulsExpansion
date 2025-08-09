@@ -47,7 +47,7 @@ public class MutantNuke : ModProjectile
 			base.Projectile.localAI[0] = 1f;
 			SoundEngine.PlaySound(SoundID.Item20, (Vector2?)base.Projectile.position);
 		}
-		if (!FargoSoulsUtil.BossIsAlive(ref ShtunNpcs.mutantEX, ModContent.NPCType<MutantEX>()) || Main.npc[ShtunNpcs.mutantEX].dontTakeDamage)
+		if (!FargoSoulsUtil.BossIsAlive(ref CSENpcs.mutantEX, ModContent.NPCType<MutantEX>()) || Main.npc[CSENpcs.mutantEX].dontTakeDamage)
 		{
 			base.Projectile.Kill();
 			return;

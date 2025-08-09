@@ -21,13 +21,17 @@ namespace ssm.CrossMod.CraftingStations
 			Main.tileFrameImportant[Type] = true;
 			Main.tileNoAttach[Type] = true;
 			Main.tileLavaDeath[Type] = false;
-			TileObjectData.newTile.CopyFrom(TileObjectData.Style4x2);
+			TileObjectData.newTile.CopyFrom(TileObjectData.Style5x4);
 			TileObjectData.newTile.DrawFlipHorizontal = false;
 			TileObjectData.newTile.DrawFlipVertical = false;
-			TileObjectData.newTile.CoordinateHeights = new int[]
+            TileObjectData.newTile.CoordinatePadding = 2;
+            AnimationFrameHeight = 72;
+            TileObjectData.newTile.CoordinateHeights = new int[]
 			{
 				16,
-				18
+				16,
+				16,
+				16
 			};
 			TileObjectData.addTile(Type);
             this.AddMapEntry(new Color(41, 157, 230), ((ModBlockType)this).CreateMapEntryName());
@@ -54,10 +58,20 @@ namespace ssm.CrossMod.CraftingStations
 				TileType<AncientAltar>(),
 				TileType<MonolithAmalgam>(),
 				TileType<StaticRefiner>(),
-			};
+                TileType<WulfrumLabstation>(),
+                TileType<VoidCondenser>()
+            };
 		}
 
-		public override void ModifyLight(int i, int j, ref float r, ref float g, ref float b)
+        public override void AnimateTile(ref int frame, ref int frameCounter)
+        {
+            if (++frameCounter >= 16)
+            {
+                frameCounter = 0;
+                frame = (frame + 1) % 5;
+            }
+        }
+        public override void ModifyLight(int i, int j, ref float r, ref float g, ref float b)
 		{
 			r = Main.DiscoR / 255f;
 			g = Main.DiscoG / 255f;

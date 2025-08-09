@@ -15,33 +15,35 @@ namespace ssm.CrossMod.CraftingStations
     [JITWhenModsEnabled(ModCompatibility.SacredTools.Name)]
     public class SyranCraftingStationTile : ModTile
 	{
-        public override bool IsLoadingEnabled(Mod mod)
-        {
-            return ShtunConfig.Instance.ExperimentalContent;
-        }
         public override void SetStaticDefaults()
 		{
-			Main.tileLighted[Type] = true;
-			Main.tileFrameImportant[Type] = true;
-			Main.tileNoAttach[Type] = true;
-			Main.tileLavaDeath[Type] = false;
-			TileObjectData.newTile.DrawFlipHorizontal = false;
-			TileObjectData.newTile.DrawFlipVertical = false;
-            TileObjectData.newTile.Origin = new Point16(0, 2);
-            TileObjectData.newTile.CopyFrom(TileObjectData.Style5x4);
-            TileObjectData.newTile.Height = 5;
-            TileObjectData.newTile.Height = 5;
+            Main.tileLighted[(int)((ModBlockType)this).Type] = true;
+            Main.tileFrameImportant[(int)((ModBlockType)this).Type] = true;
+            Main.tileNoAttach[(int)((ModBlockType)this).Type] = true;
+            Main.tileLavaDeath[(int)((ModBlockType)this).Type] = false;
+            TileObjectData.newTile.CopyFrom(TileObjectData.Style6x3);
+            TileObjectData.newTile.LavaDeath = false;
+            TileID.Sets.CountsAsHoneySource[Type] = true;
+            TileID.Sets.CountsAsLavaSource[Type] = true;
+            TileID.Sets.CountsAsWaterSource[Type] = true;
+            TileObjectData.newTile.Height = 3;
+            TileObjectData.newTile.Width = 5;
+            TileObjectData.newTile.CoordinatePadding = 2;
+            AnimationFrameHeight = 54;
             TileObjectData.newTile.CoordinateHeights = new int[]
-			{
-				16,
-				16,
-				16,
-				16,
-				16
-			};
-            TileObjectData.addTile(Type);
-            this.AddMapEntry(new Color(41, 157, 230), ((ModBlockType)this).CreateMapEntryName());
+            {
+                16,
+                16,
+                16,
+                16,
+                16
+            };
+            TileObjectData.newTile.Origin = new Point16(2, 1);
+            TileObjectData.addTile((int)((ModBlockType)this).Type);
+            AddMapEntry(new Color(230, 10, 210), ((ModBlockType)this).CreateMapEntryName());
             TileID.Sets.DisableSmartCursor[(int)((ModBlockType)this).Type] = true;
+            ((ModBlockType)this).DustType = 84;
+
             AdjTiles = new int[]
 			{
 				TileID.WorkBenches,
@@ -65,7 +67,7 @@ namespace ssm.CrossMod.CraftingStations
 
         public override void AnimateTile(ref int frame, ref int frameCounter)
         {
-            if (++frameCounter >= 10)
+            if (++frameCounter >= 16)
             {
                 frameCounter = 0;
                 frame = (frame + 1) % 6;

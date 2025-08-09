@@ -11,6 +11,10 @@ namespace ssm.Calamity.Addons
     [JITWhenModsEnabled(ModCompatibility.Calamity.Name)]
     public class AddonsForce : BaseForce
     {
+        public override bool IsLoadingEnabled(Mod mod)
+        {
+            return ModCompatibility.Goozma.Loaded || ModCompatibility.Clamity.Loaded || ModCompatibility.Catalyst.Loaded;
+        }
         public override void SetDefaults()
         {
             Item.width = 20;
@@ -39,12 +43,6 @@ namespace ssm.Calamity.Addons
             {
                 ModContent.Find<ModItem>(((ModType)this).Mod.Name, "ShogunEnchant").UpdateAccessory(player, false);
             }
-
-            if (ModCompatibility.Entropy.Loaded)
-            {
-                ModContent.Find<ModItem>(((ModType)this).Mod.Name, "MariviumEnchant").UpdateAccessory(player, hideVisual);
-                ModContent.Find<ModItem>(((ModType)this).Mod.Name, "VoidFaquirEnchant").UpdateAccessory(player, hideVisual);
-            }
         }
 
         public override void AddRecipes()
@@ -66,12 +64,6 @@ namespace ssm.Calamity.Addons
             if (ModCompatibility.Goozma.Loaded)
             {
                 recipe.AddIngredient(null, "ShogunEnchant");
-            }
-
-            if (ModCompatibility.Entropy.Loaded)
-            {
-                recipe.AddIngredient(null, "VoidFaquirEnchant");
-                recipe.AddIngredient(null, "MariviumEnchant");
             }
 
             recipe.AddTile<CrucibleCosmosSheet>();

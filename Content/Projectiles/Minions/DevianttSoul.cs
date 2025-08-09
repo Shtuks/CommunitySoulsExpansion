@@ -3,32 +3,19 @@ using Microsoft.Xna.Framework.Graphics;
 using System;
 using Terraria;
 using FargowiltasSouls;
-using ReLogic.Content;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using Terraria.Chat;
-using Terraria.DataStructures;
-using Terraria.GameContent.Creative;
-using ssm.Content.Buffs.Minions;
-using Terraria.GameContent.ItemDropRules;
-using Terraria.Graphics.Shaders;
-using Terraria.Localization;
 using Terraria.ID;
 using Terraria.ModLoader;
-using ssm.Content.Items;
-using ssm.Content.Projectiles;
-using ssm.Content.Projectiles.Minions;
+using FargowiltasSouls.Core.AccessoryEffectSystem;
+using static ssm.Content.Items.Accessories.NekomiEnchant;
+using FargowiltasSouls.Content.Projectiles.BossWeapons;
 
 namespace ssm.Content.Projectiles.Minions
 {
     public class DevianttSoul : ModProjectile
     {
-
         private readonly Mod fargosouls = ModLoader.GetMod("FargowiltasSouls");
         public override void SetStaticDefaults()
         {
-
             Main.projFrames[Projectile.type] = 4;
             ProjectileID.Sets.TrailCacheLength[Projectile.type] = 6;
             ProjectileID.Sets.TrailingMode[Projectile.type] = 2;
@@ -52,22 +39,22 @@ namespace ssm.Content.Projectiles.Minions
             Projectile.usesLocalNPCImmunity = true;
             Projectile.localNPCHitCooldown = 0;
         }
-
         public override void AI()
         {
+
             Projectile.scale = 1;
 
             Player player = Main.player[Projectile.owner];
-            if (player.active && !player.dead && player.GetModPlayer<ShtunPlayer>().DevianttSoul)
+            if (player.active && !player.dead && player.HasEffect<NekomiEffect>())
                 Projectile.timeLeft = 2;
 
-            if (Projectile.ai[0] >= 0 && Projectile.ai[0] < Main.maxNPCs) //has target
+            if (Projectile.localAI[2] >= 0 && Projectile.localAI[2] < Main.maxNPCs)
             {
                 NPC minionAttackTargetNpc = Projectile.OwnerMinionAttackTargetNPC;
-                if (minionAttackTargetNpc != null && Projectile.ai[0] != minionAttackTargetNpc.whoAmI && minionAttackTargetNpc.CanBeChasedBy())
-                    Projectile.ai[0] = minionAttackTargetNpc.whoAmI;
+                if (minionAttackTargetNpc != null && Projectile.localAI[2] != minionAttackTargetNpc.whoAmI && minionAttackTargetNpc.CanBeChasedBy())
+                    Projectile.localAI[2] = minionAttackTargetNpc.whoAmI;
 
-                NPC npc = Main.npc[(int)Projectile.ai[0]];
+                NPC npc = Main.npc[(int)Projectile.localAI[2]];
                 if (npc.CanBeChasedBy(Projectile))
                 {
                     Projectile.direction = Projectile.spriteDirection = Projectile.Center.X > npc.Center.X ? 1 : -1;
@@ -81,13 +68,13 @@ namespace ssm.Content.Projectiles.Minions
                             Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Projectile.velocity + Projectile.DirectionTo(npc.Center) * 30, ModContent.Find<ModProjectile>(fargosouls.Name, "SparklingLoveHeart").Type, 15, Projectile.knockBack / 2, Projectile.owner, npc.whoAmI);
                     }
                 }
-                else //forget target
+                else
                 {
-                    Projectile.ai[0] = ShtunUtils.FindClosestHostileNPCPrioritizingMinionFocus(Projectile, 1500);
+                    Projectile.localAI[2] = FargoSoulsUtil.FindClosestHostileNPCPrioritizingMinionFocus(Projectile, 1500);
                     Projectile.netUpdate = true;
                 }
             }
-            else //no target
+            else
             {
                 Projectile.direction = Projectile.spriteDirection = Projectile.Center.X > player.Center.X ? 1 : -1;
 
@@ -108,8 +95,8 @@ namespace ssm.Content.Projectiles.Minions
                 if (++Projectile.localAI[1] > 6)
                 {
                     Projectile.localAI[1] = 0;
-                    Projectile.ai[0] = ShtunUtils.FindClosestHostileNPCPrioritizingMinionFocus(Projectile, 1500);
-                    if (Projectile.ai[0] != -1)
+                    Projectile.localAI[2] = FargoSoulsUtil.FindClosestHostileNPCPrioritizingMinionFocus(Projectile, 1500);
+                    if (Projectile.localAI[2] != -1)
                         Projectile.netUpdate = true;
                 }
             }
@@ -157,8 +144,8 @@ namespace ssm.Content.Projectiles.Minions
         public override bool PreDraw(ref Color lightColor)
         {
             Texture2D texture2D13 = Terraria.GameContent.TextureAssets.Projectile[Projectile.type].Value;
-            int num156 = Terraria.GameContent.TextureAssets.Projectile[Projectile.type].Value.Height / Main.projFrames[Projectile.type]; //ypos of lower right corner of sprite to draw
-            int y3 = num156 * Projectile.frame; //ypos of upper left corner of sprite to draw
+            int num156 = Terraria.GameContent.TextureAssets.Projectile[Projectile.type].Value.Height / Main.projFrames[Projectile.type];
+            int y3 = num156 * Projectile.frame;
             Rectangle rectangle = new Rectangle(0, y3, texture2D13.Width, num156);
             Vector2 origin2 = rectangle.Size() / 2f;
 

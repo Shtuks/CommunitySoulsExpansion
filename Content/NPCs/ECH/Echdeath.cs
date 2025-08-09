@@ -2,13 +2,9 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.DataStructures;
-using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ID;
-using FargowiltasSouls;
-using FargowiltasSouls.Content.NPCs;
 using ssm.Content.Items.Consumables;
-using System.Drawing.Drawing2D;
 using ssm.Systems;
 
 namespace ssm.Content.NPCs.ECH
@@ -16,6 +12,10 @@ namespace ssm.Content.NPCs.ECH
     [AutoloadBossHead]
     public class Echdeath : ModNPC
     {
+        public override bool IsLoadingEnabled(Mod mod)
+        {
+            return CSEConfig.Instance.SecretBosses;
+        }
         public override void SetStaticDefaults()
         {
             Main.npcFrameCount[NPC.type] = 11;
@@ -30,7 +30,7 @@ namespace ssm.Content.NPCs.ECH
             NPC.width = 60;
             NPC.height = 60;
             NPC.damage = int.MaxValue / 10;
-            NPC.defense = int.MaxValue / 10;
+            //NPC.defense = int.MaxValue / 10;
             NPC.lifeMax = int.MaxValue / 10;
             NPC.HitSound = SoundID.NPCHit57;
             NPC.noGravity = true;
@@ -128,7 +128,7 @@ namespace ssm.Content.NPCs.ECH
                 {
                     if (Main.npc[i].active && Main.npc[i].type != NPC.type && NPC.Distance(Main.npc[i].Center) < fullSize / 2)
                     {
-                        ShtunUtils.DisplayLocalizedText(":echdeath:", Color.Green);
+                        CSEUtils.DisplayLocalizedText(":echdeath:", Color.Green);
                         for (int j = 0; j < 100; j++)
                             CombatText.NewText(Main.npc[i].Hitbox, Color.Red, Main.rand.Next(NPC.damage), true);
                     }
@@ -157,7 +157,7 @@ namespace ssm.Content.NPCs.ECH
                 }
                 while (NPC.buffType[0] != 0)
                     NPC.DelBuff(0);
-                if (NPC.ai[2] == 0) //force life back to max until it works
+                if (NPC.ai[2] == 0)
                 {
                     if (NPC.life == NPC.lifeMax)
                         NPC.ai[2] = 1;
@@ -239,6 +239,11 @@ namespace ssm.Content.NPCs.ECH
 
             Main.spriteBatch.Draw(texture2D13, NPC.Center - Main.screenPosition + new Vector2(0f, NPC.gfxOffY), new Microsoft.Xna.Framework.Rectangle?(rectangle), NPC.GetAlpha(lightColor), NPC.rotation, origin2, NPC.scale, effects, 0f);
             return false;
+        }
+
+        public override void OnKill()
+        {
+            NPC.NewNPC(NPC.GetSource_FromThis(), (int)NPC.Center.X, (int)NPC.Center.Y, ModContent.NPCType<Echdeath>());
         }
     }
 }

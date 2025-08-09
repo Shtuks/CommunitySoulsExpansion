@@ -22,7 +22,7 @@ namespace ssm.Thorium.Enchantments
     {
         public override bool IsLoadingEnabled(Mod mod)
         {
-            return ShtunConfig.Instance.Thorium;
+            return CSEConfig.Instance.Thorium;
         }
 
         private readonly Mod thorium = ModLoader.GetMod("ThoriumMod");
@@ -41,9 +41,10 @@ namespace ssm.Thorium.Enchantments
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            ModContent.Find<ModItem>(this.thorium.Name, "LodeStoneFaceGuard").UpdateArmorSet(player);
-
-            //ModContent.Find<ModItem>(this.thorium.Name, "AstroBeetleHusk").UpdateAccessory(player, true);
+            if (player.AddEffect<LodestoneEffect2>(Item))
+            {
+                ModContent.Find<ModItem>(this.thorium.Name, "LodeStoneFaceGuard").UpdateArmorSet(player);
+            }
             ModContent.Find<ModItem>(this.thorium.Name, "ObsidianScale").UpdateAccessory(player, true);
 
             if (player.AddEffect<LodestoneEffect>(Item))
@@ -54,6 +55,13 @@ namespace ssm.Thorium.Enchantments
         }
 
         public class LodestoneEffect : AccessoryEffect
+        {
+            public override Header ToggleHeader => Header.GetHeader<MuspelheimForceHeader>();
+            public override int ToggleItemType => ModContent.ItemType<LodestoneEnchant>();
+            public override bool MutantsPresenceAffects => true;
+        }
+
+        public class LodestoneEffect2 : AccessoryEffect
         {
             public override Header ToggleHeader => Header.GetHeader<MuspelheimForceHeader>();
             public override int ToggleItemType => ModContent.ItemType<LodestoneEnchant>();

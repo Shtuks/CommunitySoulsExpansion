@@ -1,17 +1,17 @@
 ﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria.Localization;
-using SacredTools;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using FargowiltasSouls.Content.Items.Accessories.Enchantments;
 using FargowiltasSouls.Core.AccessoryEffectSystem;
-using ssm.Content.SoulToggles;
 using SacredTools.Items.Weapons.Marstech;
 using SacredTools.Content.Items.Armor.Marstech;
-using SacredTools.Items.Claymarine;
 using ssm.Core;
+using static ssm.SoA.Enchantments.SpaceJunkEnchant;
+using ssm.Content.Projectiles.Enchantments;
+using Microsoft.Xna.Framework.Graphics;
+using FargowiltasSouls.Content.UI.Elements;
 
 namespace ssm.SoA.Enchantments
 {
@@ -19,13 +19,12 @@ namespace ssm.SoA.Enchantments
     [JITWhenModsEnabled(ModCompatibility.SacredTools.Name)]
     public class MarstechEnchant : BaseEnchant
     {
+        public override List<AccessoryEffect> ActiveSkillTooltips =>
+            [AccessoryEffectLoader.GetEffect<MarstechEffect>()];
         public override bool IsLoadingEnabled(Mod mod)
         {
-            return ShtunConfig.Instance.SacredTools;
+            return CSEConfig.Instance.SacredTools;
         }
-
-        private readonly Mod soa = ModLoader.GetMod("SacredTools");
-
         public override void SetDefaults()
         {
             Item.width = 20;
@@ -40,20 +39,44 @@ namespace ssm.SoA.Enchantments
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            ModdedPlayer modPlayer = player.GetModPlayer<ModdedPlayer>();
-            if (player.AddEffect<MarstechEffect>(Item))
-            {
-                //set bonus
-                modPlayer.marsArmor = true;
-                //space junk
-                modPlayer.spaceJunk = true;
-            }
+            player.AddEffect<MarstechEffect>(Item);
+            player.AddEffect<SpaceJunkEffect>(Item);
         }
 
         public class MarstechEffect : AccessoryEffect
         {
-            public override Header ToggleHeader => Header.GetHeader<GenerationsForceHeader>();
+            public override Header ToggleHeader => null;
             public override int ToggleItemType => ModContent.ItemType<MarstechEnchant>();
+            public override bool ActiveSkill => true;
+
+            private int cd;
+            public override void PostUpdateEquips(Player player)
+            {
+                if (cd > 0)
+                {
+                    cd--;
+                }
+
+                CooldownBarManager.Activate("MarstechEnchantCooldown", ModContent.Request<Texture2D>("ssm/SoA/Enchantments/MarstechEnchant").Value, new(61, 155, 189),
+                    () => cd / (60f * 15), true, activeFunction: player.HasEffect<MarstechEffect>);
+
+            }
+            public override void ActiveSkillJustPressed(Player player, bool stunned)
+            {
+                if(!(cd > 0))
+                {
+                    Projectile.NewProjectile(
+                        player.GetSource_GiftOrReward(),
+                        player.Center,
+                        new Vector2(0, -5f),
+                        ModContent.ProjectileType<MartianProbe>(),
+                        50,
+                        5f,
+                        player.whoAmI
+                    );
+                    cd += 15 * 60;
+                }
+            }
         }
 
         public override void AddRecipes()

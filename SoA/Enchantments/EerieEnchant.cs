@@ -1,19 +1,16 @@
 ﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria.Localization;
-using SacredTools;
-using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using FargowiltasSouls.Content.Items.Accessories.Enchantments;
 using FargowiltasSouls.Core.AccessoryEffectSystem;
 using ssm.Content.SoulToggles;
 using ssm.Core;
-using SacredTools.Content.Items.Accessories;
-using SacredTools.Content.Items.Armor.Dreadfire;
-using SacredTools.Content.Items.Weapons.Dreadfire;
 using SacredTools.Content.Items.Armor.Eerie;
 using SacredTools.Items.Weapons;
+using ssm.Content.Projectiles.Enchantments;
+using Microsoft.Xna.Framework.Graphics;
+using FargowiltasSouls.Content.UI.Elements;
 
 namespace ssm.SoA.Enchantments
 {
@@ -23,11 +20,8 @@ namespace ssm.SoA.Enchantments
     {
         public override bool IsLoadingEnabled(Mod mod)
         {
-            return ShtunConfig.Instance.SacredTools;
+            return CSEConfig.Instance.SacredTools;
         }
-
-        private readonly Mod soa = ModLoader.GetMod("SacredTools");
-
         public override void SetDefaults()
         {
             Item.width = 20;
@@ -42,16 +36,46 @@ namespace ssm.SoA.Enchantments
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            ModdedPlayer modPlayer = player.GetModPlayer<ModdedPlayer>();
-            //set bonus
-            modPlayer.EerieEffect = true;
+            player.AddEffect<EerieEffect>(Item);
         }
 
         public class EerieEffect : AccessoryEffect
         {
             public override Header ToggleHeader => Header.GetHeader<GenerationsForceHeader>();
             public override int ToggleItemType => ModContent.ItemType<EerieEnchant>();
+            public override void OnHitByProjectile(Player player, Projectile proj, Player.HurtInfo hurtInfo)
+            {
+                if (!player.HasEffectEnchant<EerieEffect>())
+                    return;
+                SoAPlayer modPlayer = player.GetModPlayer<SoAPlayer>();
+                if (modPlayer.EerieEnchantCooldown <= 0)
+                {
+                    Projectile.NewProjectile(player.GetSource_FromThis(), player.Center, Vector2.Zero, ModContent.ProjectileType<EeriePulse>(), 0, 0);
+                    modPlayer.EerieEnchantCooldown = 60 * 15;
+                }
+            }   
+            public override void OnHitByNPC(Player player, NPC npc, Player.HurtInfo hurtInfo)
+            {
+                if (!player.HasEffectEnchant<EerieEffect>())
+                    return;
+                SoAPlayer modPlayer = player.GetModPlayer<SoAPlayer>();
+                if (modPlayer.EerieEnchantCooldown <= 0)
+                {
+                    Projectile.NewProjectile(player.GetSource_FromThis(), player.Center, Vector2.Zero, ModContent.ProjectileType<EeriePulse>(), 0, 0);
+                    modPlayer.EerieEnchantCooldown = 60 * 20;
+                }
+            }
+
+            public override void PostUpdateEquips(Player player)
+            {
+                SoAPlayer modPlayer = player.GetModPlayer<SoAPlayer>();
+                if (modPlayer.EerieEnchantCooldown > 0)
+                    modPlayer.EerieEnchantCooldown--;
+                CooldownBarManager.Activate("EerieEnchantCooldown", ModContent.Request<Texture2D>("ssm/SoA/Enchantments/EerieEnchant").Value, new(237, 73, 78),
+                    () => Main.LocalPlayer.GetModPlayer<SoAPlayer>().EerieEnchantCooldown / (60f * 20), true, activeFunction: player.HasEffect<EerieEffect>);
+            }
         }
+
 
         public override void AddRecipes()
         {

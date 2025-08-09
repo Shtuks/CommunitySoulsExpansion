@@ -1,13 +1,15 @@
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using ThoriumMod;
 using Microsoft.Xna.Framework;
 using ThoriumMod.Items.BardItems;
 using ThoriumMod.Items.Misc;
-using ThoriumMod.Items.BossStarScouter;
 using ssm.Core;
 using FargowiltasSouls.Content.Items.Accessories.Enchantments;
+using FargowiltasSouls.Core.AccessoryEffectSystem;
+using ssm.Content.SoulToggles;
+using ssm.SoA.Enchantments;
+using ssm.Content.Buffs;
 
 namespace ssm.Thorium.Enchantments
 {
@@ -17,11 +19,8 @@ namespace ssm.Thorium.Enchantments
     {
         public override bool IsLoadingEnabled(Mod mod)
         {
-            return ShtunConfig.Instance.Thorium;
+            return CSEConfig.Instance.Thorium;
         }
-
-        private readonly Mod thorium = ModLoader.GetMod("ThoriumMod");
-
         public override void SetDefaults()
         {
             Item.width = 20;
@@ -36,20 +35,35 @@ namespace ssm.Thorium.Enchantments
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            ShtunThoriumPlayer modPlayer = player.GetModPlayer<ShtunThoriumPlayer>();
-            ThoriumPlayer thoriumPlayer = player.GetModPlayer<ThoriumPlayer>();
-
-            ModContent.Find<ModItem>(this.thorium.Name, "RingofUnity").UpdateAccessory(player, hideVisual);
-            ModContent.Find<ModItem>(this.thorium.Name, "BrassCap").UpdateAccessory(player, hideVisual);
-            ModContent.Find<ModItem>(this.thorium.Name, "WaxyRosin").UpdateAccessory(player, hideVisual);
-
-            //noble set bonus
-            thoriumPlayer.setNoble = true;
+            player.AddEffect<NobleEffect>(Item);
         }
 
+        public class NobleEffect : AccessoryEffect
+        {
+            public override Header ToggleHeader => Header.GetHeader<MuspelheimForceHeader>();
+            public override int ToggleItemType => ModContent.ItemType<SteelEnchant>();
+
+            private bool[] oldCoinCount = new bool[4];
+            public override void PostUpdate(Player player)
+            {
+                CheckCoin(0, ItemID.CopperCoin, player);
+                CheckCoin(1, ItemID.SilverCoin, player);
+                CheckCoin(2, ItemID.GoldCoin, player);
+                CheckCoin(3, ItemID.PlatinumCoin, player);
+            }
+            private void CheckCoin(int index, int coinType, Player player)
+            {
+                bool hasCoin = player.CountItem(coinType) > 0;
+                if (hasCoin && !oldCoinCount[index])
+                {
+                    player.AddBuff(ModContent.BuffType<TheRichBuff>(), 300);
+                }
+                oldCoinCount[index] = hasCoin;
+            }
+        }
         public override void AddRecipes()
         {
-            Recipe recipe = this.CreateRecipe();
+            Recipe recipe = CreateRecipe();
 
             recipe.AddIngredient(ModContent.ItemType<NoblesHat>());
             recipe.AddIngredient(ModContent.ItemType<NoblesJerkin>());

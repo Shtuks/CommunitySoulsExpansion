@@ -1,13 +1,14 @@
 ﻿using Fargowiltas.Items.Tiles;
-using FargowiltasSouls.Content.Items.Materials;
 using Terraria.ModLoader;
-using ThoriumMod;
 using ssm.Core;
 using Terraria;
 using CalamityMod.Items.Accessories;
-using CalamityMod.Tiles.Furniture.CraftingStations;
 using ThoriumMod.Items.ThrownItems;
 using CalamityMod.Items.Materials;
+using ThoriumMod.Items.NPCItems;
+using CalamityMod.CalPlayer;
+using CalamityMod;
+using ThoriumMod.Utilities;
 
 namespace ssm.CrossMod.Accessories
 {
@@ -15,7 +16,10 @@ namespace ssm.CrossMod.Accessories
     [JITWhenModsEnabled(ModCompatibility.Thorium.Name, ModCompatibility.Calamity.Name)]
     public class GtTETFinal : ModItem
     {
-        private readonly Mod thorium = ModLoader.GetMod("ThoriumMod");
+        //public override bool IsLoadingEnabled(Mod mod)
+        //{
+        //    return false;
+        //}
         public override void SetDefaults()
         {
             Item.width = 20;
@@ -25,23 +29,31 @@ namespace ssm.CrossMod.Accessories
             Item.rare = 11;
         }
 
-        public override void UpdateAccessory(Player player, bool hideVisual)
-        {
-            ModContent.GetInstance<Nanotech>().UpdateAccessory(player, hideVisual);
-            ModContent.GetInstance<ThrowingGuideVolume3>().UpdateAccessory(player, hideVisual);
-        }
+        //public override void UpdateAccessory(Player player, bool hideVisual)
+        //{
+        //    CalamityPlayer calamityPlayer = player.Calamity();
+        //    calamityPlayer.nanotech = true;
+        //    calamityPlayer.raiderTalisman = true;
+        //    calamityPlayer.electricianGlove = true;
+        //    calamityPlayer.filthyGlove = true;
+        //    calamityPlayer.bloodyGlove = true;
+        //    player.GetDamage<ThrowingDamageClass>() += 0.2f;
+        //    player.CSE().throwerVelocity += 0.25f;
+        //    player.GetThoriumPlayer().throwGuide3 = true;
+        //}
 
-        public override void AddRecipes()
-        {
-            Recipe recipe = this.CreateRecipe();
-            recipe.AddIngredient<Nanotech>();
-            recipe.AddIngredient<ThrowingGuideVolume3>();
-            recipe.AddIngredient<SuspiciousScrap>();
-            //recipe.AddIngredient<SuspiciousScrap>();
+        //public override void AddRecipes()
+        //{
+        //    Recipe recipe = this.CreateRecipe();
+        //    recipe.AddIngredient<Nanotech>();
+        //    recipe.AddIngredient<ThrowingGuideVolume3>();
+        //    recipe.AddIngredient<SuspiciousScrap>(5);
+        //    recipe.AddIngredient<StrangeAlienTech>(5);
+        //    recipe.AddIngredient<AuricBar>(5);
 
-            recipe.AddTile<DraedonsForge>();
+        //    recipe.AddTile<CrucibleCosmosSheet>();
 
-            recipe.Register();
-        }
+        //    recipe.Register();
+        //}
     }
 }

@@ -21,7 +21,7 @@ namespace ssm.CrossMod.Boots
     {
         public override bool IsLoadingEnabled(Mod mod)
         {
-            return ShtunConfig.Instance.Boots && !ModLoader.HasMod(ModCompatibility.Calamity.Name) && !ModLoader.HasMod(ModCompatibility.SacredTools.Name);
+            return CSEConfig.Instance.Boots && !ModLoader.HasMod(ModCompatibility.Calamity.Name) && !ModLoader.HasMod(ModCompatibility.SacredTools.Name);
         }
         public override void PostAddRecipes()
         {
@@ -30,10 +30,14 @@ namespace ssm.CrossMod.Boots
                 Recipe recipe = Main.recipe[i];
 
                 //aeolus to sprinters
+                //separately because calXthorium mods fuck up recipies
+                if (recipe.HasResult(ModContent.ItemType<TerrariumParticleSprinters>()) && !recipe.HasIngredient<AeolusBoots>())
+                {
+                    recipe.AddIngredient<AeolusBoots>(1);
+                }
                 if (recipe.HasResult(ModContent.ItemType<TerrariumParticleSprinters>()) && recipe.HasIngredient(5000))
                 {
                     recipe.RemoveIngredient(5000);
-                    recipe.AddIngredient<AeolusBoots>(1);
                 }
                 //sprinters to supersonic
                 if (recipe.HasResult(ModContent.ItemType<SupersonicSoul>()) && recipe.HasIngredient(ModContent.ItemType<AeolusBoots>()))
@@ -51,7 +55,7 @@ namespace ssm.CrossMod.Boots
     {
         public override bool IsLoadingEnabled(Mod mod)
         {
-            return ShtunConfig.Instance.Boots && !ModLoader.HasMod(ModCompatibility.SacredTools.Name) && !ModLoader.HasMod(ModCompatibility.Calamity.Name);
+            return CSEConfig.Instance.Boots && !ModLoader.HasMod(ModCompatibility.SacredTools.Name) && !ModLoader.HasMod(ModCompatibility.Calamity.Name);
         }
         public override bool InstancePerEntity => true;
 

@@ -2,6 +2,7 @@
 using SacredTools.Content.Items.Accessories;
 using ssm.Core;
 using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 using ThoriumMod.Items.Terrarium;
 
@@ -12,7 +13,7 @@ namespace ssm.CrossMod.Shields
     {
         public override bool IsLoadingEnabled(Mod mod)
         {
-            return ShtunConfig.Instance.Shields && !ModCompatibility.Calamity.Loaded;
+            return CSEConfig.Instance.Shields && !ModCompatibility.Calamity.Loaded;
         }
 
         public override void PostAddRecipes()
@@ -33,9 +34,11 @@ namespace ssm.CrossMod.Shields
                 //reflection to colossus
                 if (recipe.HasResult(ModContent.ItemType<ColossusSoul>()) && recipe.HasIngredient(1613))
                 {
+                    recipe.RemoveIngredient(ItemID.FrozenShield);
                     recipe.RemoveIngredient(1613);
                     recipe.AddIngredient<ReflectionShield>(1);
                 }
+
             }
         }
     }
@@ -45,7 +48,7 @@ namespace ssm.CrossMod.Shields
     {
         public override bool IsLoadingEnabled(Mod mod)
         {
-            return ShtunConfig.Instance.Shields && !ModCompatibility.Calamity.Loaded;
+            return CSEConfig.Instance.Shields && !ModCompatibility.Calamity.Loaded;
         }
         public override bool InstancePerEntity => true;
         public override void UpdateAccessory(Item Item, Player player, bool hideVisual)

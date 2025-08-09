@@ -1,27 +1,44 @@
-using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using ssm.Content.Buffs;
+using Luminance.Core.Graphics;
+using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework;
 
-namespace ssm.Content.Items.Consumables
+namespace ssm.Content.Items.Materials
 {
-    public class Sadism : ModItem
+    public class ShadowEnergy : ModItem
     {
+        public override bool IsLoadingEnabled(Mod mod)
+        {
+            return CSEConfig.Instance.AlternativeSiblings;
+        }
         public override void SetDefaults()
         {
-            ((Entity)this.Item).width = 20;
-            ((Entity)this.Item).height = 20;
-            this.Item.maxStack = 30;
-            this.Item.rare = 11;
-            this.Item.useStyle = 2;
-            this.Item.useAnimation = 17;
-            this.Item.useTime = 17;
-            this.Item.consumable = true;
-            this.Item.buffType = ModContent.BuffType<SadismEX>();
-            this.Item.buffTime = 25200;
-            this.Item.UseSound = SoundID.Item3;
-            this.Item.value = Item.sellPrice(10, 0, 0, 0);
+            Item.width = 20;
+            Item.height = 20;
+            Item.maxStack = 30;
+            Item.rare = 11;
+            Item.value = Item.sellPrice(100, 0, 0, 0);
+        }
+
+        public override bool PreDrawTooltipLine(DrawableTooltipLine line, ref int yOffset)
+        {
+            if ((line.Mod == "Terraria" && line.Name == "ItemName") || line.Name == "FlavorText")
+            {
+                Main.spriteBatch.End();
+                Main.spriteBatch.Begin(SpriteSortMode.Immediate, null, null, null, null, null, Main.UIScaleMatrix);
+                ManagedShader shader = ShaderManager.GetShader("FargowiltasSouls.Text");
+                shader.TrySetParameter("mainColor", new Color(42, 66, 99));
+                shader.TrySetParameter("secondaryColor", Main.DiscoColor);
+                shader.Apply("PulseUpwards");
+                Utils.DrawBorderString(Main.spriteBatch, line.Text, new Vector2(line.X, line.Y), Color.White, 1);
+                Main.spriteBatch.End();
+                Main.spriteBatch.Begin(SpriteSortMode.Deferred, null, null, null, null, null, Main.UIScaleMatrix);
+                return false;
+            }
+            return true;
         }
     }
 }

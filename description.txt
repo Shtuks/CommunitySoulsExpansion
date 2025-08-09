@@ -1,34 +1,40 @@
 The addon for Fargos's Souls. The main goal of the mod is to balance many global mods with Fargos and among themselves.
 
-
 Source code: https://github.com/Shtuks/StarlightsSouls
 
-Discord Server: https://discord.gg/xB9s8SyQJr
+Discord Server: https://discord.gg/frUcz2dQAy
 
 Official Wiki: https://terrariamods.wiki.gg/wiki/Community_Souls_Expansion
 
+Thrower Merge was moved to separate mod: Thrower Unification
+
+Most of SoA and Redemption enchantments was reworked and no longer give armor set bonuses.
 
 All things mod doing for now:
+- Balancing part of Post-ML content
 
-- Souls for Clicker and Beekeeper Class
-
-- Force for Calamity Addons
-
-- Overloaded bosses summons and energizers for SoA, Calamity, Thorium
-
-- Merge kinetic(SoA) thrower(Thorium) and rogue(Calamity) in one class
+- Compatibility with most of Calamity addons
 
 - Reworked boots and shields progression
 
-- Adds SoA and Thorium items fot 1st tier souls recepies and effects
+- Adds items from supported mods to T1 Souls recipes
 
-- Redemption, Thorium, SoA caught NPCs
+- Redemption, Thorium, SoA, Spirit caught NPCs
 
-- Thorium/SoA/Polarities/Spooky enchantments, forces, souls
+- SoA / Thorium / Redemption / Polarities / Spooky / Consolaria / Spirit enchantments, forces, souls
 
-Full list of supported mods: Calamity, Shadows of Abaddon, Thorium, Redemption, Spooky, Polarities, Bombus Apis, Clicker Class
-Coming soon compatibility: Homeward Journey, Spirit, Consolaria
+- Various cross-mod recipes changes
 
-Everyone who contributed: StarlightCat, ma3allim, cheesenuggets, Soltan, MithMoonwalker, magegor11.
-Special thanks to Fargowilta, Javyz, Terry N Muse, Blushiemagic, DanYami, DevaVade, Yum, Jopojelly, ChickenBones, Jofairden, DivermanSam.
-Thanks to active members of Discord Server: Mith Moonwalker, AwesomeSavage777, GodzilaJedi, vergeneun, Валерьян, Mr.Puzzles, DanHameln
+- Return of Echdeath, Duke Fishron EX, Guntera and Ceiling of Moonlord
+
+Mods with hightest level of compatibility: Shadows of Abaddon, Thorium, Redemption
+Full list of supported mods: Calamity, Spooky, Polarities, Bombus Apis, Consolaria, Spirit, TerMerica, Homeward Journey
+Coming soon compatibility: Orchid, Vitality
+
+Coding: StarlightCat, Ropro0923
+Sprites: ma3allim, DanHameln, Dandel
+Wiki: Soltan, magegor11
+Testing: cheesenuggets, Mr.Puzzles
+Crafting trees: cheesenuggets, Mr.Puzzles
+
+Special thanks to Fargowilta, Javyz, Terry N Muse, Blushiemagic, DanYami, Jopojelly, ChickenBones, Jofairden, DivermanSam.

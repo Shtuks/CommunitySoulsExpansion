@@ -17,7 +17,7 @@ namespace ssm.Thorium.Enchantments
     {
         public override bool IsLoadingEnabled(Mod mod)
         {
-            return ShtunConfig.Instance.Thorium;
+            return CSEConfig.Instance.Thorium;
         }
 
         private readonly Mod thorium = ModLoader.GetMod("ThoriumMod");
@@ -36,8 +36,8 @@ namespace ssm.Thorium.Enchantments
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            ShtunThoriumPlayer modPlayer = player.GetModPlayer<ShtunThoriumPlayer>();
-            modPlayer.JesterEnchant = true;
+            ThoriumPlayer modPlayer = player.GetModPlayer<ThoriumPlayer>();
+            modPlayer.setJester = true;
 
             ModContent.Find<ModItem>(this.thorium.Name, "FanLetter").UpdateAccessory(player, hideVisual);
         }

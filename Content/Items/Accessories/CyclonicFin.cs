@@ -13,6 +13,10 @@ namespace ssm.Content.Items.Accessories
 {
     public class CyclonicFin : ModItem
     {
+        public override bool IsLoadingEnabled(Mod mod)
+        {
+            return CSEConfig.Instance.SecretBosses;
+        }
         public override void SetDefaults()
         {
             Item.width = 20;
@@ -37,6 +41,7 @@ namespace ssm.Content.Items.Accessories
         {
             public override Header ToggleHeader => Header.GetHeader<DeviEnergyHeader>();
             public override int ToggleItemType => ModContent.ItemType<CyclonicFin>();
+            public override bool MutantsPresenceAffects => true;
         }
 
         public class SpectralFishEffect : AccessoryEffect
@@ -52,10 +57,10 @@ namespace ssm.Content.Items.Accessories
 
             if (player.AddEffect<SpectralFishEffect>(Item))
             {
-                player.GetModPlayer<ShtunPlayer>().CyclonicFin = true;
+                player.GetModPlayer<CSEPlayer>().CyclonicFin = true;
 
-                if (player.GetModPlayer<ShtunPlayer>().CyclonicFinCD > 0)
-                    player.GetModPlayer<ShtunPlayer>().CyclonicFinCD--;
+                if (player.GetModPlayer<CSEPlayer>().CyclonicFinCD > 0)
+                    player.GetModPlayer<CSEPlayer>().CyclonicFinCD--;
             }
 
             if (player.AddEffect<CuteFishEXEffect>(Item))
@@ -83,18 +88,18 @@ namespace ssm.Content.Items.Accessories
 
                     else if (player.controlLeft)
                     {
-                        player.velocity.X -= player.mount.Acceleration * 4f;
-                        if (player.velocity.X < -16f)
-                            player.velocity.X = -16f;
+                        player.velocity.X -= player.mount.Acceleration * 5f;
+                        if (player.velocity.X < -14f)
+                            player.velocity.X = -14f;
                         if (!player.controlUseItem)
                             player.direction = -1;
                     }
 
                     else if (player.controlRight)
                     {
-                        player.velocity.X += player.mount.Acceleration * 4f;
-                        if (player.velocity.X > 16f)
-                            player.velocity.X = 16f;
+                        player.velocity.X += player.mount.Acceleration * 5f;
+                        if (player.velocity.X > 14f)
+                            player.velocity.X = 14f;
                         if (!player.controlUseItem)
                             player.direction = 1;
                     }
@@ -109,16 +114,16 @@ namespace ssm.Content.Items.Accessories
 
                     else if (player.controlUp)
                     {
-                        player.velocity.Y -= player.mount.Acceleration * 4f;
-                        if (player.velocity.Y < -16f)
-                            player.velocity.Y = -16f;
+                        player.velocity.Y -= player.mount.Acceleration * 5f;
+                        if (player.velocity.Y < -14f)
+                            player.velocity.Y = -14f;
                     }
 
                     else if (player.controlDown)
                     {
-                        player.velocity.Y += player.mount.Acceleration * 4f;
-                        if (player.velocity.Y > 16f)
-                            player.velocity.Y = 16f;
+                        player.velocity.Y += player.mount.Acceleration * 5f;
+                        if (player.velocity.Y > 14f)
+                            player.velocity.Y = 14f;
                     }
                 }
             }

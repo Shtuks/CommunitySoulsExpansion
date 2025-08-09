@@ -27,7 +27,7 @@ namespace ssm.CrossMod.Boots
     {
         public override bool IsLoadingEnabled(Mod mod)
         {
-            return ShtunConfig.Instance.Boots && !ModLoader.HasMod(ModCompatibility.SacredTools.Name);
+            return CSEConfig.Instance.Boots && !ModLoader.HasMod(ModCompatibility.SacredTools.Name);
         }
         public override void PostAddRecipes()
         {
@@ -48,28 +48,22 @@ namespace ssm.CrossMod.Boots
                     recipe.AddIngredient<AngelTreads>(1);
                 }
                 //aeolus to sprinters
+                if (recipe.HasResult(ModContent.ItemType<TerrariumParticleSprinters>()) && !recipe.HasIngredient<AeolusBoots>())
+                {
+                    recipe.AddIngredient<AeolusBoots>(1);
+                }
                 if (recipe.HasResult(ModContent.ItemType<TerrariumParticleSprinters>()) && recipe.HasIngredient(5000))
                 {
                     recipe.RemoveIngredient(5000);
-                    recipe.AddIngredient<AeolusBoots>(1);
                 }
                 //sprinters to celestial
-                if (recipe.HasResult(ModContent.ItemType<TracersCelestial>()) && (recipe.HasIngredient<AngelTreads>() || recipe.HasIngredient<AeolusBoots>()))
+                if (recipe.HasResult(ModContent.ItemType<TracersCelestial>()) && !recipe.HasIngredient<TerrariumParticleSprinters>())
                 {
-                    recipe.RemoveIngredient(ModContent.ItemType<AngelTreads>());
-                    recipe.RemoveIngredient(ModContent.ItemType<AeolusBoots>());
                     recipe.AddIngredient<TerrariumParticleSprinters>(1);
                 }
-                //seraph to supersonic (if no cal dlc)
-                if (recipe.HasResult(ModContent.ItemType<SupersonicSoul>()) && !recipe.HasIngredient<TracersSeraph>())
+                if (recipe.HasResult(ModContent.ItemType<TracersCelestial>()) && recipe.HasIngredient<AeolusBoots>())
                 {
                     recipe.RemoveIngredient(ModContent.ItemType<AeolusBoots>());
-                    recipe.AddIngredient<TracersSeraph>(1);
-                }
-                //drew to flight
-                if (recipe.HasResult(ModContent.ItemType<FlightMasterySoul>()) && !recipe.HasIngredient<DrewsWings>())
-                {
-                    recipe.AddIngredient<DrewsWings>(1);
                 }
             }
         }
@@ -81,7 +75,7 @@ namespace ssm.CrossMod.Boots
     {
         public override bool IsLoadingEnabled(Mod mod)
         {
-            return ShtunConfig.Instance.Boots && !ModLoader.HasMod(ModCompatibility.SacredTools.Name);
+            return CSEConfig.Instance.Boots && !ModLoader.HasMod(ModCompatibility.SacredTools.Name);
         }
         public override bool InstancePerEntity => true;
 

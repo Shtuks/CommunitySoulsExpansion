@@ -10,6 +10,7 @@ using FargowiltasSouls.Content.Items.Accessories.Enchantments;
 using ThoriumMod.Projectiles.Minions;
 using FargowiltasSouls.Core.AccessoryEffectSystem;
 using ssm.Content.SoulToggles;
+using FargowiltasSouls;
 
 namespace ssm.Thorium.Enchantments
 {
@@ -19,7 +20,7 @@ namespace ssm.Thorium.Enchantments
     {
         public override bool IsLoadingEnabled(Mod mod)
         {
-            return ShtunConfig.Instance.Thorium;
+            return CSEConfig.Instance.Thorium;
         }
 
         private readonly Mod thorium = ModLoader.GetMod("ThoriumMod");
@@ -38,7 +39,7 @@ namespace ssm.Thorium.Enchantments
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            ShtunThoriumPlayer modPlayer = player.GetModPlayer<ShtunThoriumPlayer>();
+            CSEThoriumPlayer modPlayer = player.GetModPlayer<CSEThoriumPlayer>();
 
             ModContent.Find<ModItem>(this.thorium.Name, "LivingWoodMask").UpdateArmorSet(player);
 
@@ -50,7 +51,7 @@ namespace ssm.Thorium.Enchantments
                 {
                     const int damage = 10;
                     if (player.ownedProjectileCounts[ModContent.ProjectileType<LivingWoodAcornPro>()] < 1)
-                        ShtunUtils.NewSummonProjectile(player.GetSource_FromThis(), player.Center, Vector2.Zero, ModContent.ProjectileType<LivingWoodAcornPro>(), damage, 8f, player.whoAmI);
+                        FargoSoulsUtil.NewSummonProjectile(player.GetSource_FromThis(), player.Center, Vector2.Zero, ModContent.ProjectileType<LivingWoodAcornPro>(), damage, 8f, player.whoAmI);
                 }
             }
         }

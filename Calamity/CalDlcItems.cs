@@ -1,33 +1,32 @@
-﻿using CalamityMod.Items.SummonItems;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Terraria.ModLoader;
 using Terraria;
 using ssm.Core;
+using FargowiltasSouls.Content.Items.Summons;
+using NoxusBoss.Core.World.WorldSaving;
+using NoxusBoss.Content.NPCs.Bosses.NamelessDeity;
+using Terraria.Localization;
 
 namespace ssm.Calamity
 {
-    [ExtendsFromMod(ModCompatibility.Calamity.Name, ModCompatibility.Crossmod.Name)]
-    [JITWhenModsEnabled(ModCompatibility.Calamity.Name, ModCompatibility.Crossmod.Name)]
-    public class CalDlcItems : GlobalItem
+    [ExtendsFromMod(ModCompatibility.Calamity.Name, ModCompatibility.Crossmod.Name, ModCompatibility.WrathoftheGods.Name)]
+    [JITWhenModsEnabled(ModCompatibility.Calamity.Name, ModCompatibility.Crossmod.Name, ModCompatibility.WrathoftheGods.Name)]
+    internal class CalDlcItems : GlobalItem
     {
         public override bool InstancePerEntity => true;
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
         {
-            if (item.type == ModContent.ItemType<Terminus>())
+            if (item.type == ModContent.ItemType<MutantsCurse>() && !BossDownedSaveSystem.HasDefeated<NamelessDeityBoss>())
             {
-                tooltips.Clear();
-                tooltips.Add(new TooltipLine(Mod, "Name", $"Terminus"));
-                tooltips.Add(new TooltipLine(Mod, "PreMutant", $"[c/FF0000:StarlightCat's Tweaks:] Can be used before defeating the Mutant"));
+                tooltips.Add(new TooltipLine(Mod, "PostND", $"{Language.GetTextValue("Mods.ssm.Balance.PostND")}"));
             }
         }
 
         public override bool CanUseItem(Item item, Player player)
         {
-            if (item.type == ModContent.ItemType<Terminus>())
-                return true;
-
-            return true;
+            if (item.type == ModContent.ItemType<MutantsCurse>())
+                return BossDownedSaveSystem.HasDefeated<NamelessDeityBoss>();
+            return base.CanUseItem(item, player);
         }
-
     }
 }

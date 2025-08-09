@@ -8,52 +8,31 @@
 		
 	</PropertyGroup>
 	<ItemGroup>
-	  <AdditionalFiles Remove="Thorium\Swarm\**" />
-	  <Compile Remove="Thorium\Swarm\**" />
-	  <EmbeddedResource Remove="Thorium\Swarm\**" />
-	  <None Remove="Thorium\Swarm\**" />
+    	<AssemblyAttribute Include="System.Runtime.CompilerServices.IgnoresAccessChecksToAttribute">
+    	    <_Parameter1>SacredTools</_Parameter1>
+    	</AssemblyAttribute>
 	</ItemGroup>
 	<ItemGroup>
-	  <Compile Remove="Content\Items\Weapons\Shtuxium\ShtuxiumShortsword.cs" />
-	  <Compile Remove="Reworks\StyxArmor.cs" />
-	</ItemGroup>
-	<ItemGroup>
-	  <None Remove="Content\NPCs\StarlightCat\StarlightCatDeathray.cs.sex" />
-	  <None Remove="Thorium\Enchantments\BerserkerEnchant.cs.sex" />
-	  <None Remove="Thorium\Enchantments\DangerEnchant.cs.sex" />
-	  <None Remove="Thorium\Enchantments\HarbingerEnchant.cs.sex" />
-	</ItemGroup>
-	<ItemGroup>
-	  <Compile Include="Content\NPCs\StarlightCat\StarlightCatDeathray.cs.sex" />
-	  <Compile Include="Core\ModIconSystem.bak" />
-	  <Compile Include="Thorium\Enchantments\BerserkerEnchant.cs.sex" />
-	  <Compile Include="Thorium\Enchantments\MagmaEnchant.cs.sex" />
-	</ItemGroup>
-	<ItemGroup>
-	  <None Include="Calamity\Addons\DivineEnchant.cs" />
-	  <None Include="Calamity\Addons\EmptinessEnchant.cs" />
-	  <None Include="Content\Items\Weapons\Shtuxium\ShtuxiumShortsword.cs" />
-	  <None Include="MagicStorage\StorageUnits.cs" />
-	  <None Include="Reworks\StyxArmor.cs" />
-	</ItemGroup>
-	<ItemGroup>
+	  <Reference Include="AlchemistNPCLite">
+	    <HintPath>..\..\ModReader\AlchemistNPCLite\AlchemistNPCLite.dll</HintPath>
+	  </Reference>
 	  <Reference Include="BombusApisBee">
 	    <HintPath>lib\BombusApisBee.dll</HintPath>
-	  </Reference>
-	  <Reference Include="BossChecklist">
-	    <HintPath>lib\BossChecklist.dll</HintPath>
 	  </Reference>
 	  <Reference Include="CalamityBardHealer">
 	    <HintPath>lib\CalamityBardHealer.dll</HintPath>
 	  </Reference>
-	  <Reference Include="CalamityEntropy">
-	    <HintPath>lib\CalamityEntropy.dll</HintPath>
-	  </Reference>
 	  <Reference Include="CalamityHunt">
 	    <HintPath>lib\CalamityHunt.dll</HintPath>
 	  </Reference>
+	  <Reference Include="CalamityInheritance">
+	    <HintPath>..\..\ModReader\CalamityInheritance\CalamityInheritance.dll</HintPath>
+	  </Reference>
+	  <Reference Include="CalamityLegacy">
+	    <HintPath>..\..\ModReader\CalamityLegacy\CalamityLegacy.dll</HintPath>
+	  </Reference>
 	  <Reference Include="CalamityMod">
-	    <HintPath>lib\CalamityMod.dll</HintPath>
+	    <HintPath>..\..\ModReader\CalamityMod\CalamityMod.dll</HintPath>
 	  </Reference>
 	  <Reference Include="CatalystMod">
 	    <HintPath>lib\CatalystMod.dll</HintPath>
@@ -67,20 +46,14 @@
 	  <Reference Include="ClickerClass">
 	    <HintPath>lib\ClickerClass.dll</HintPath>
 	  </Reference>
+	  	  <Reference Include="Consolaria">
+	    <HintPath>lib\Consolaria.dll</HintPath>
+	  </Reference>
+	  <Reference Include="ContinentOfJourney">
+	    <HintPath>..\..\ModReader\ContinentOfJourney\ContinentOfJourney.dll</HintPath>
+	  </Reference>
 	  <Reference Include="DragonLens">
 	    <HintPath>lib\DragonLens.dll</HintPath>
-	  </Reference>
-	  <Reference Include="EbonianMod">
-	    <HintPath>lib\EbonianMod.dll</HintPath>
-	  </Reference>
-	  <Reference Include="FargoMoreSoulsCompat">
-	    <HintPath>Libraries\FargoMoreSoulsCompat_v0.4.2.dll</HintPath>
-	  </Reference>
-	  <Reference Include="FargoMoreSoulsCompat">
-	    <HintPath>Libraries\FargoMoreSoulsCompat_v0.4.2.dll</HintPath>
-	  </Reference>
-	  <Reference Include="FargoMoreSoulsCompat">
-	    <HintPath>Libraries\FargoMoreSoulsCompat_v0.4.2.dll</HintPath>
 	  </Reference>
 	  <Reference Include="FargoMoreSoulsCompat">
 	    <HintPath>Libraries\FargoMoreSoulsCompat_v0.4.2.dll</HintPath>
@@ -97,8 +70,8 @@
 	  <Reference Include="FargowiltasSouls">
 	    <HintPath>lib\FargowiltasSouls.dll</HintPath>
 	  </Reference>
-	  <Reference Include="HEROsMod">
-	    <HintPath>lib\HEROsMod.dll</HintPath>
+	  <Reference Include="gunrightsmod">
+	    <HintPath>lib\gunrightsmod.dll</HintPath>
 	  </Reference>
 	  <Reference Include="Luminance">
 	    <HintPath>lib\Luminance.dll</HintPath>
@@ -106,17 +79,11 @@
 	  <Reference Include="MagicStorage">
 	    <HintPath>lib\MagicStorage.dll</HintPath>
 	  </Reference>
-	  <Reference Include="MMHOOK_MagicStorage">
-	    <HintPath>lib\MMHOOK_MagicStorage.dll</HintPath>
-	  </Reference>
 	  <Reference Include="NoxusBoss">
 	    <HintPath>lib\NoxusBoss.dll</HintPath>
 	  </Reference>
 	  <Reference Include="Polarities">
 	    <HintPath>lib\Polarities.dll</HintPath>
-	  </Reference>
-	  <Reference Include="RagnarokMod">
-	    <HintPath>lib\RagnarokMod.dll</HintPath>
 	  </Reference>
 	  <Reference Include="Redemption">
 	    <HintPath>Libraries\Redemption.dll</HintPath>
@@ -124,8 +91,8 @@
 	  <Reference Include="SacredTools">
 	    <HintPath>Libraries\SacredTools.dll</HintPath>
 	  </Reference>
-	  <Reference Include="sl">
-	    <HintPath>..\..\ModReader\sl\sl.dll</HintPath>
+	  <Reference Include="SpiritMod">
+	    <HintPath>..\..\ModReader\SpiritMod\SpiritMod.dll</HintPath>
 	  </Reference>
 	  <Reference Include="Spooky">
 	    <HintPath>lib\Spooky.dll</HintPath>
