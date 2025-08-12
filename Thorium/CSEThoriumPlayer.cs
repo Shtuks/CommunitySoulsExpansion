@@ -1,6 +1,7 @@
 ﻿using Terraria.ModLoader;
 using ssm.Core;
-using ssm.Thorium.Enchantments;
+using Terraria;
+using ThoriumMod.Empowerments;
 
 namespace ssm.Thorium
 {
@@ -12,53 +13,20 @@ namespace ssm.Thorium
         public bool ThunderTalonEternity;
         public bool DarkenedCloak;
 
-        //too complicated behaviour for enchantment methods
-        public bool cyberEnchant;
-        public int orbCount = 2;
-        private CyberneticOrb[] orbs;
-        public override void Initialize()
-        {
-            orbs = new CyberneticOrb[orbCount];
-        }
+        public bool tripleDamageNextHit;
         public override void ResetEffects()
         {
-            if (!cyberEnchant)
-            {
-                for (int i = 0; i < orbs.Length; i++)
-                {
-                    orbs[i] = null;
-                }
-            }
-            cyberEnchant = false;
             ThunderTalonEternity = false;
             DarkenedCloak = false;
-        }
-        public override void PostUpdate()
-        {
-            if (orbCount > 0 && cyberEnchant)
-            {
-                for (int i = 0; i < orbCount; i++)
-                {
-                    if (orbs[i] == null || !orbs[i].active)
-                    {
-                        orbs[i] = new CyberneticOrb(Player, i, orbCount);
-                    }
-                    orbs[i].Update();
-                }
-            }
-        }
 
-        public override void PostUpdateEquips()
+            tripleDamageNextHit = false;
+        }
+        public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
         {
-            if (orbCount > 0 && cyberEnchant)
+            if (tripleDamageNextHit)
             {
-                for (int i = 0; i < orbCount; i++)
-                {
-                    if (orbs[i] != null && orbs[i].active)
-                    {
-                        orbs[i].Draw();
-                    }
-                }
+                modifiers.FinalDamage *= 3;
+                tripleDamageNextHit = false;
             }
         }
     }

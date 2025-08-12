@@ -10,6 +10,10 @@ namespace ssm.Thorium
     [JITWhenModsEnabled(ModCompatibility.Thorium.Name, ModCompatibility.Calamity.Name)]
     public class ThoriumBossRush : ModSystem
     {
+        public override bool IsLoadingEnabled(Mod mod)
+        {
+            return CSEConfig.Instance.ThoriumBR;
+        }
         public override void PostSetupContent()
         {
             if (!ModLoader.HasMod("RagnarokMod") && !ModLoader.HasMod("ThoriumRework"))

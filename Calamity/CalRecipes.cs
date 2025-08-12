@@ -69,11 +69,10 @@ namespace ssm.Calamity
                 {
                     if (recipe.HasResult<UniverseSoul>() || recipe.HasResult<TerrariaSoul>() || recipe.HasResult<MasochistSoul>() || recipe.HasResult<DimensionSoul>())
                     {
-                        if (recipe.RemoveIngredient(ModContent.ItemType<AshesofAnnihilation>()) && recipe.RemoveIngredient(ModContent.ItemType<ExoPrism>())) 
-                        {
-                            recipe.AddIngredient<ShadowspecBar>(5);
-                            recipe.AddIngredient<MiracleMatter>();
-                        }
+                        recipe.RemoveIngredient(ModContent.ItemType<ExoPrism>());
+                        recipe.RemoveIngredient(ModContent.ItemType<AshesofAnnihilation>());
+                        recipe.AddIngredient<ShadowspecBar>(5);
+                        recipe.AddIngredient<MiracleMatter>();
                     }
                 }
                 //if (CSEConfig.Instance.DevItems)

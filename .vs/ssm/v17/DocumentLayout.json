@@ -1,12 +1,7 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\kolot\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\My Games\\Terraria\\tModLoader\\ModSources\\ssm\\",
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{ABE56296-D0F7-4D01-8EA1-D435803E6DC1}|ssm.csproj|c:\\users\\kolot\\onedrive\\\u0434\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\my games\\terraria\\tmodloader\\modsources\\ssm\\calamity\\addons\\wotgrecipes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{ABE56296-D0F7-4D01-8EA1-D435803E6DC1}|ssm.csproj|solutionrelative:calamity\\addons\\wotgrecipes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    }
-  ],
+  "Documents": [],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -14,7 +9,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 6,
+          "SelectedChildIndex": -1,
           "Children": [
             {
               "$type": "Bookmark",
@@ -39,19 +34,6 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{c9c0ae26-aa77-11d2-b3f0-0000f87570ee}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "WotGRecipes.cs",
-              "DocumentMoniker": "C:\\Users\\kolot\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\My Games\\Terraria\\tModLoader\\ModSources\\ssm\\Calamity\\Addons\\WotGRecipes.cs",
-              "RelativeDocumentMoniker": "Calamity\\Addons\\WotGRecipes.cs",
-              "ToolTip": "C:\\Users\\kolot\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\My Games\\Terraria\\tModLoader\\ModSources\\ssm\\Calamity\\Addons\\WotGRecipes.cs",
-              "RelativeToolTip": "Calamity\\Addons\\WotGRecipes.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACAAAABUAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-09T14:06:15.434Z",
-              "EditorCaption": ""
             }
           ]
         }

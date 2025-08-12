@@ -38,6 +38,8 @@ using ssm.Content.NPCs.Guntera;
 using ssm.Content.NPCs.Ceiling;
 using FargowiltasSouls.Content.Items.Materials;
 using ssm.Content.NPCs.MutantEX.HitPlayer;
+using FargowiltasSouls.Content.NPCs.EternityModeNPCs;
+using ssm.Thorium.Enchantments;
 
 namespace ssm
 {
@@ -85,7 +87,8 @@ namespace ssm
         public enum PacketID : byte
         {
             SpawnFishronEX,
-            HealthDataSync
+            HealthDataSync,
+            RequestCyberOrbs
         }
         public override void HandlePacket(BinaryReader reader, int whoAmI)
         {
@@ -100,6 +103,19 @@ namespace ssm
 
                     case PacketID.HealthDataSync:
                         HandleHealthDataSync(reader, whoAmI);
+                        break;
+                    case PacketID.RequestCyberOrbs:
+                        if (Main.netMode == NetmodeID.Server)
+                        {
+                            byte p = reader.ReadByte();
+                            int multiplier = reader.ReadByte();
+                            int n = NPC.NewNPC(NPC.GetBossSpawnSource(p), (int)Main.player[p].Center.X, (int)Main.player[p].Center.Y, ModContent.NPCType<CyberneticOrb>(), 0,
+                                p, 0f, multiplier, 0);
+                            if (n != Main.maxNPCs)
+                            {
+                                NetMessage.SendData(MessageID.SyncNPC, -1, -1, null, n);
+                            }
+                        }
                         break;
                 }
             }
@@ -318,7 +334,7 @@ namespace ssm
 
                 AddBCL("Boss",
                     "CeilingOfMoonlord",
-                    20,
+                    19.5f,
                     new List<int> { ModContent.NPCType<CeilingOfMoonLord>() },
                     () => WorldSavingSystem.DownedFishronEX,
                     () => true,
@@ -330,7 +346,7 @@ namespace ssm
                 );
                 AddBCL("Boss",
                     "Guntera",
-                    40,
+                    22.91f,
                     new List<int> { ModContent.NPCType<Guntera>() },
                     () => WorldSavingSystem.DownedFishronEX,
                     () => true,
@@ -343,7 +359,7 @@ namespace ssm
 
                 AddBCL("Boss",
                     "DukeFishronEX",
-                    80,
+                    27.5f,
                     new List<int> { NPCID.DukeFishron },
                     () => WorldSavingSystem.DownedFishronEX,
                     () => true,
@@ -463,7 +479,7 @@ namespace ssm
                     ("3rd Omega Prototype", 18.99f),
                     ("Ordeals", 20.4f),
                     ("The Overwatcher", 19.58f),
-                    ("The Materializer", 19.59f),
+                    ("The Materealizer", 19.59f),
                     ("Scarab Belief", 20.9f),
                     ("World's End Everlasting Falling Whale", 21.9f),
                     ("Nebuleus", 26f),
@@ -478,6 +494,7 @@ namespace ssm
                 ChangeBossProgressions(changes.ToArray());
                 RemoveFromChecklist(22.16f);
             }
+
             //ChangeBossProgressions(bclChanges.ToArray());
 
             //if (CSEConfig.Instance.DevItems)

@@ -20,6 +20,10 @@ namespace ssm.Redemption
     [JITWhenModsEnabled(ModCompatibility.Redemption.Name, ModCompatibility.Calamity.Name)]
     public class RedemptionBossRush : ModSystem
     {
+        public override bool IsLoadingEnabled(Mod mod)
+        {
+            return CSEConfig.Instance.RedemptionBR;
+        }
         internal static void SpawnTP()
         {
             ActiveEntityIterator<Player>.Enumerator enumerator = Main.ActivePlayers.GetEnumerator();

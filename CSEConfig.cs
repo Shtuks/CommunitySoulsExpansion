@@ -52,16 +52,6 @@ namespace ssm
         [DefaultValue(true)]
         public bool Shields { get; set; }
 
-        //[ReloadRequired]
-        //[BackgroundColor(60, 200, 60, 192)]
-        //[DefaultValue(true)]
-        //public bool ThrowerMerge { get; set; }
-
-        [ReloadRequired]
-        [BackgroundColor(60, 200, 60, 192)]
-        [DefaultValue(false)]
-        public bool BossRushPostMutant { get; set; }
-
         [Header("EnchantsLoad")]
 
         [ReloadRequired]
@@ -136,6 +126,11 @@ namespace ssm
         [DefaultValue(true)]
         public bool EmodeSoA { get; set; }
 
+        [ReloadRequired]
+        [BackgroundColor(60, 200, 60, 192)]
+        [DefaultValue(true)]
+        public bool EmodeHWJ { get; set; }
+
         [Header("EmodeWeaponsLoad")]
 
         [ReloadRequired]
@@ -152,5 +147,37 @@ namespace ssm
         [BackgroundColor(60, 200, 60, 192)]
         [DefaultValue(true)]
         public bool EmodeSoAW { get; set; }
+
+        [ReloadRequired]
+        [BackgroundColor(60, 200, 60, 192)]
+        [DefaultValue(true)]
+        public bool EmodeHWJW { get; set; }
+
+        [Header("BossRush")]
+
+        [ReloadRequired]
+        [BackgroundColor(60, 200, 60, 192)]
+        [DefaultValue(true)]
+        public bool ThoriumBR { get; set; }
+
+        [ReloadRequired]
+        [BackgroundColor(60, 200, 60, 192)]
+        [DefaultValue(true)]
+        public bool RedemptionBR { get; set; }
+
+        [ReloadRequired]
+        [BackgroundColor(60, 200, 60, 192)]
+        [DefaultValue(true)]
+        public bool SoABR { get; set; }
+
+        [ReloadRequired]
+        [BackgroundColor(60, 200, 60, 192)]
+        [DefaultValue(true)]
+        public bool HWJBR { get; set; }
+
+        [ReloadRequired]
+        [BackgroundColor(60, 200, 60, 192)]
+        [DefaultValue(false)]
+        public bool BossRushPostMutant { get; set; }
     }
 }

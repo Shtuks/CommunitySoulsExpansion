@@ -10,6 +10,9 @@ using ThoriumMod.Utilities;
 using FargowiltasSouls.Core.AccessoryEffectSystem;
 using ssm.Content.SoulToggles;
 using static ssm.Thorium.Enchantments.TideTurnerEnchant;
+using ClickerClass.Prefixes.ClickerPrefixes;
+using ssm.Content.Projectiles.Enchantments;
+using FargowiltasSouls;
 
 namespace ssm.Thorium.Enchantments
 {
@@ -38,11 +41,7 @@ namespace ssm.Thorium.Enchantments
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            if (player.AddEffect<YewWoodEffect>(Item))
-            {
-                player.GetThoriumPlayer().yewCharging = true;
-            }
-            ModContent.Find<ModItem>(this.thorium.Name, "ThumbRing").UpdateAccessory(player, hideVisual);
+            player.AddEffect<YewWoodEffect>(Item);
         }
 
         public class YewWoodEffect : AccessoryEffect
@@ -50,6 +49,25 @@ namespace ssm.Thorium.Enchantments
             public override Header ToggleHeader => Header.GetHeader<SvartalfheimForceHeader>();
             public override int ToggleItemType => ModContent.ItemType<TideHunterEnchant>();
             public override bool ExtraAttackEffect => true;
+            public override void TryAdditionalAttacks(Player player, int damage, DamageClass damageType)
+            {
+                Vector2 center = player.Center;
+                Vector2 vector = Vector2.Normalize(Main.MouseWorld - center);
+
+                if (Main.rand.Next(player.ForceEffect<YewWoodEffect>() ? 75 : 100) != 0)
+                {
+                    Projectile.NewProjectile(
+                        player.GetSource_FromThis(),
+                        player.Center,
+                        vector,
+                        ModContent.ProjectileType<VileArrow>(),
+                        1,
+                        0f,
+                        player.whoAmI
+                    );
+                }
+
+            }
         }
         public override void AddRecipes()
         {

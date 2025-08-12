@@ -1,20 +1,14 @@
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using ThoriumMod;
 using Microsoft.Xna.Framework;
 using ssm.Core;
 using ThoriumMod.Items.Depths;
-using ThoriumMod.Items.BossQueenJellyfish;
-using ThoriumMod.Items.NPCItems;
-using ThoriumMod.Items.Painting;
 using ThoriumMod.Items.Donate;
 using FargowiltasSouls.Content.Items.Accessories.Enchantments;
-using ssm.Content.Buffs.Minions;
-using ThoriumMod.Buffs;
 using FargowiltasSouls.Core.AccessoryEffectSystem;
-using static ssm.Thorium.Enchantments.CyberPunkEnchant;
 using ssm.Content.SoulToggles;
+using static ssm.Thorium.Enchantments.CoralEnchant;
 
 namespace ssm.Thorium.Enchantments
 {
@@ -22,7 +16,6 @@ namespace ssm.Thorium.Enchantments
     [JITWhenModsEnabled(ModCompatibility.Thorium.Name)]
     public class DepthDiverEnchant : BaseEnchant
     {
-        private readonly Mod thorium = ModLoader.GetMod("ThoriumMod");
         public override bool IsLoadingEnabled(Mod mod)
         {
             return CSEConfig.Instance.Thorium;
@@ -42,26 +35,8 @@ namespace ssm.Thorium.Enchantments
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            if (player.AddEffect<DepthAuraEffect>(Item))
-            {
-                //toggle
-                for (int i = 0; i < 255; i++)
-                {
-                    Player player2 = Main.player[i];
-                    if (player2.active && Vector2.Distance(player2.Center, player.Center) < 250f)
-                    {
-                        player.AddBuff(ModContent.BuffType<DepthDiverAura>(), 30, false);
-                    }
-                }
-            }
-
-            ModContent.Find<ModItem>("ssm", "CoralEnchant").UpdateAccessory(player, hideVisual);
-
-            if (player.AddEffect<DepthDiverEffect>(Item))
-            {
-                //toggle
-                ModContent.Find<ModItem>(this.thorium.Name, "DrownedDoubloon").UpdateAccessory(player, hideVisual);
-            }
+            player.AddEffect<DepthDiverEffect>(Item);
+            player.AddEffect<CoralEffect>(Item);
         }
 
         public class DepthDiverEffect : AccessoryEffect
@@ -69,18 +44,33 @@ namespace ssm.Thorium.Enchantments
             public override Header ToggleHeader => Header.GetHeader<JotunheimForceHeader>();
             public override int ToggleItemType => ModContent.ItemType<DepthDiverEnchant>();
 
-            public override bool MutantsPresenceAffects => true;
-        }
-        public class DepthAuraEffect : AccessoryEffect
-        {
-            public override Header ToggleHeader => Header.GetHeader<JotunheimForceHeader>();
-            public override int ToggleItemType => ModContent.ItemType<DepthDiverEnchant>();
-        }
+            public override void PostUpdateMiscEffects(Player player)
+            {
+                if (player.wet)
+                {
+                    float depthFactor = CalculateDepthFactor(player);
 
+                    player.lifeRegen += (int)(1 + 1.5f * depthFactor);
+                    player.GetDamage(DamageClass.Generic) += 0.02f + 0.08f * depthFactor; 
+                    player.statDefense += (int)(2 + 8 * depthFactor); 
+                }
+            }
+
+            private float CalculateDepthFactor(Player player)
+            {
+                float spaceHeight = (float)(Main.worldSurface * 0.35f * 16);
+
+                float underworldHeight = (Main.maxTilesY - 200) * 16;
+
+                float playerY = player.Center.Y;
+
+                float depthFactor = (playerY - spaceHeight) / (underworldHeight - spaceHeight);
+
+                return MathHelper.Clamp(depthFactor, 0f, 1f);
+            }
+        }
         public override void AddRecipes()
         {
-
-
             Recipe recipe = this.CreateRecipe();
 
             recipe.AddIngredient(ModContent.ItemType<DepthDiverHelmet>());

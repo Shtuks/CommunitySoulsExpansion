@@ -15,6 +15,10 @@ namespace ssm.Homeward
     [JITWhenModsEnabled(ModCompatibility.Homeward.Name, ModCompatibility.Calamity.Name)]
     public class HwjBossRush : ModSystem
     {
+        public override bool IsLoadingEnabled(Mod mod)
+        {
+            return CSEConfig.Instance.HWJBR;
+        }
         public override void PostSetupContent()
         {
             for (int i = Bosses.Count - 1; i >= 0; i--)

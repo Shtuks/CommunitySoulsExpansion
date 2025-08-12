@@ -1190,9 +1190,8 @@ Mods: {
 				Tooltip:
 					'''
 					'Blacken the skies and cull the weak'
-					Attacks have a 10% chance to duplicate and become increased by 15%
-					Attacks have a 5% chance to instantly kill the enemy
-					Effects of Dart Pouch
+					Pressing the special ability key while hovering your mouse over an enemy will teleport you behind it
+					On next strike you will deal 300% damage and give enemies the confused debuff
 					'''
 			}
 
@@ -1211,8 +1210,8 @@ Mods: {
 				Tooltip:
 					'''
 					'You have the favor of Zeus'
-					Attacks have a 20% chance to unleash a piercing lightning strike
-					Effects of Olympic Torch, Champion's Rebuttal, and Spartan Sandals
+					While flying with wings you can rain down swords underneath you
+					Swords inflict Petrify debuff for 2 seconds     
 					'''
 			}
 
@@ -1252,8 +1251,7 @@ Mods: {
 				Tooltip:
 					'''
 					'Nothing to cry about'
-					Your symphonic empowerments will last an additional 3 seconds
-					Effects of Lucky Rabbit's Foot
+					Attacking with a bard instrument has a 10% chance to inflict Crying debuff, decreasing their damage dealt by 10% for 3 seconds
 					'''
 			}
 
@@ -1307,10 +1305,10 @@ Mods: {
 				Tooltip:
 					'''
 					'Become a selfless protector'
-					Allows you and nearby allies to breathe underwater
-					Grants the ability to swim
-					You and nearby allies gain 10% increased damage and movement speed
-					Effects of Sea Breeze Pendant, Bubble Magnet, and Drowned Doubloon
+					Gain buffs in water the lower you are:
+						From +1 hp/s, +2% damage increase, +2 defense in space
+						Up to +2.5 hp/s, +8% damage increase, +9 defense in underworld
+					Disables all eternity mode water debuffs
 					'''
 			}
 
@@ -1825,8 +1823,7 @@ Mods: {
 				Tooltip:
 					'''
 					'This strange wood comes from a far away land'
-					After four consecutive non-critical strikes, your next attack will mini-crit for 150% damage
-					Effects of Thumb Ring
+					Rarely weapom projectiles will be accompanied with a vile arrow that pierces and ignores immunity frames
 					'''
 			}
 
@@ -2103,8 +2100,7 @@ Mods: {
 				Tooltip:
 					'''
 					'For swimming with the fishes'
-					Radiant damage builds up to 20 life shield and life shielding no longer decays on you. Healing an ally transfers the life shield to them
-					Effects of Sea Breeze Pendant and Bubble Magnet
+					Ability makes you count as submerged in water for 10 seconds. 15 second cooldown after using.   
 					'''
 			}
 
@@ -3507,42 +3503,42 @@ Mods: {
 
 			VulkanReaperBuff: {
 				DisplayName: Vulkan Reaper Buff
-				Description: ech
+				Description: you not supposed to see that
 			}
 
 			RivalBuff: {
-				Description: ech
+				Description: you not supposed to see that
 				DisplayName: Rival Buff
 			}
 
 			EnrageCal: {
-				Description: Enraged
+				Description: you not supposed to see that
 				DisplayName: Enrage
 			}
 
 			TheRichBuff: {
 				DisplayName: The Rich Buff
-				Description: Mods.ssm.Buffs.TheRichBuff.Description
+				Description: Movement speed increased by 5%, damage increased by 15%
 			}
 
 			Moonified: {
 				DisplayName: Moonified
-				Description: Mods.ssm.Buffs.Moonified.Description
+				Description: Moon is falling from sky!
 			}
 
 			Gun: {
 				DisplayName: Gun
-				Description: Mods.ssm.Buffs.Gun.Description
+				Description: Gun
 			}
 
 			FearBuff: {
 				DisplayName: Fear Buff
-				Description: Mods.ssm.Buffs.FearBuff.Description
+				Description: you not supposed to see that
 			}
 
 			RadioactiveDecay: {
 				DisplayName: Radioactive Decay
-				Description: Mods.ssm.Buffs.RadioactiveDecay.Description
+				Description: ROPRO ADD DECRIPTIONS TO BUFFS ARAGAARGJARHJABF
 			}
 		}
 

@@ -65,6 +65,10 @@ namespace ssm.Thorium
             // rhapsodist
             group = new RecipeGroup(() => Lang.misc[37] + " Rhapsodist Helmet", ModContent.ItemType<SoloistHat>(), ModContent.ItemType<InspiratorsHelmet>());
             RecipeGroup.RegisterGroup("ssm:AnyRhapsodistHelmet", group);
+            // assassin
+            group = new RecipeGroup(() => Lang.misc[37] + " Assassin Helmet", ModContent.ItemType<MasterMarksmansScouter>(), ModContent.ItemType<MasterArbalestHood>());
+            RecipeGroup.RegisterGroup("ssm:AnyAssassinHelmet", group);
+
         }
 
         public override void AddRecipes()

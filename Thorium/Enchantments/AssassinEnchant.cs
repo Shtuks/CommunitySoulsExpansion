@@ -7,10 +7,7 @@ using ThoriumMod.Items.BossThePrimordials.Omni;
 using ThoriumMod.Items.RangedItems;
 using ThoriumMod.Items.Tracker;
 using FargowiltasSouls.Content.Items.Accessories.Enchantments;
-using ThoriumMod;
 using FargowiltasSouls.Core.AccessoryEffectSystem;
-using static ssm.Thorium.Enchantments.BronzeEnchant;
-using ssm.Content.Projectiles.Enchantments;
 using ssm.Content.SoulToggles;
 
 namespace ssm.Thorium.Enchantments
@@ -23,8 +20,6 @@ namespace ssm.Thorium.Enchantments
         {
             return CSEConfig.Instance.Thorium;
         }
-
-        private readonly Mod thorium = ModLoader.GetMod("ThoriumMod");
 
         public override void SetDefaults()
         {
@@ -49,16 +44,47 @@ namespace ssm.Thorium.Enchantments
             public override bool ActiveSkill => true;
             public override void ActiveSkillJustPressed(Player player, bool stunned)
             {
-                //player.Teleport(Main.mouse)
+                Vector2 mousePosition = Main.MouseWorld;
+                NPC targetNpc = null;
+                float searchRadius = 80f; 
+                float minDistance = float.MaxValue;
+
+                for (int i = 0; i < Main.maxNPCs; i++)
+                {
+                    NPC npc = Main.npc[i];
+                    if (npc.active && npc.chaseable && !npc.friendly && npc.life > 0 && !npc.dontTakeDamage)
+                    {
+                        float distance = Vector2.Distance(npc.Center, mousePosition);
+                        if (distance <= searchRadius && distance < minDistance)
+                        {
+                            minDistance = distance;
+                            targetNpc = npc;
+                        }
+                    }
+                }
+
+                if (targetNpc != null)
+                {
+                    Vector2 directionFromPlayer = targetNpc.Center - player.Center;
+                    directionFromPlayer.Normalize();
+                    Vector2 teleportPosition = targetNpc.Center + directionFromPlayer * 40f; 
+
+                    player.Teleport(teleportPosition, TeleportationStyleID.TeleportationPotion);
+
+                    if (Main.netMode == NetmodeID.MultiplayerClient)
+                        NetMessage.SendData(MessageID.TeleportEntity, -1, -1, null, 0, player.whoAmI, teleportPosition.X, teleportPosition.Y, TeleportationStyleID.TeleportationPotion);
+
+                    player.GetModPlayer<CSEThoriumPlayer>().tripleDamageNextHit = true;
+                }
             }
         }
         public override void AddRecipes()
         {
             Recipe recipe = this.CreateRecipe();
 
+            recipe.AddRecipeGroup("ssm:AnyAssassinHelmet");
             recipe.AddIngredient(ModContent.ItemType<AssassinsWalkers>());
             recipe.AddIngredient(ModContent.ItemType<AssassinsGuard>());
-            recipe.AddIngredient(ModContent.ItemType<MasterArbalestHood>());
             recipe.AddIngredient(ModContent.ItemType<DartPouch>());
             recipe.AddIngredient(ModContent.ItemType<TheBlackBow>());
             recipe.AddIngredient(ModContent.ItemType<WyrmDecimator>());

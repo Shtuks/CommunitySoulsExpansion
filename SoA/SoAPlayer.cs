@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using SacredTools;
 using SacredTools.Buffs;
 using ssm.Content.Buffs;
 using ssm.Core;
@@ -30,6 +31,13 @@ namespace ssm.SoA
             }
         }
 
+        public override void UpdateEquips()
+        {
+            if (Player.GetModPlayer<ModdedPlayer>().DragonSetEffect)
+            {
+                Player.GetDamage(DamageClass.Generic) += 0.05f;
+            }
+        }
         public override void ModifyWeaponDamage(Item item, ref StatModifier damage)
         {
             if (Player.HasBuff(ModContent.BuffType<SniperBuff>()))

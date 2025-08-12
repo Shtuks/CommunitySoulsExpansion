@@ -3,10 +3,10 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using ssm.Core;
 using FargowiltasSouls.Content.Items.Accessories.Souls;
-using Fargowiltas.Items.Tiles;
 using FargowiltasSouls.Content.Items.Materials;
 using ThoriumMod.Buffs.Bard;
 using ssm.CrossMod.CraftingStations;
+using FargowiltasSouls.Core.AccessoryEffectSystem;
 
 namespace ssm.Thorium.Souls
 {
@@ -53,8 +53,14 @@ namespace ssm.Thorium.Souls
             ModContent.Find<ModItem>(((ModType)this).Mod.Name, "AsgardForce").UpdateAccessory(player, hideVisual);
 
             ModContent.Find<ModItem>(((ModType)this).Mod.Name, "MotDE").UpdateAccessory(player, hideVisual);
+
+            player.AddEffect<ThoriumEffect>(Item);
         }
 
+        public class ThoriumEffect : AccessoryEffect
+        {
+            public override Header ToggleHeader => null;
+        }
         public override void AddRecipes()
         {
             Recipe recipe = this.CreateRecipe();

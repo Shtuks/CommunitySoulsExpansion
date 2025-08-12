@@ -18,14 +18,15 @@ using ThoriumMod.NPCs.BossViscount;
 using ThoriumMod.NPCs.BossStarScouter;
 using ThoriumMod;
 
-
 namespace ssm.Thorium
 {
     [ExtendsFromMod(ModCompatibility.Thorium.Name)]
     [JITWhenModsEnabled(ModCompatibility.Thorium.Name)]
     public partial class CSEThoriumNpcs : GlobalNPC
     {
-        private readonly Mod fargosouls = ModLoader.GetMod("FargowiltasSouls");
+        public bool isCutOpen;
+        public bool crying;
+        private Vector2 previousPosition;
         public override bool InstancePerEntity => true;
         public override bool PreKill(NPC npc)
         {
@@ -50,6 +51,35 @@ namespace ssm.Thorium
                 Main.NewText("A new item has been unlocked in Deviantt's shop!", Color.HotPink);
             }
             return true;
+        }
+
+        public override void ResetEffects(NPC npc)
+        {
+            isCutOpen = false;
+        }
+
+        public override void OnHitPlayer(NPC npc, Player target, Player.HurtInfo hurtInfo)
+        {
+            if (crying)
+            {
+                //how tf you can play so bad that your enemies cry hearing it
+                hurtInfo.Damage = (int)(hurtInfo.Damage * 0.9f);
+            }
+        }
+        public override void PostAI(NPC npc)
+        {
+            if (isCutOpen)
+            {
+                if (npc.position != previousPosition && npc.velocity != Vector2.Zero)
+                {
+                    int damage = (int)(npc.lifeMax * 0.001f); // 1/1000 of max life
+                    if (damage < 1) damage = 1;
+                    npc.SimpleStrikeNPC(damage, 0);
+
+                    Dust.NewDust(npc.position, npc.width, npc.height, DustID.Blood);
+                }
+                previousPosition = npc.position;
+            }
         }
         public override void SetDefaults(NPC npc)
         {

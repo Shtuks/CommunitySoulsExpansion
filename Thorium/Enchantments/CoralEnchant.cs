@@ -10,6 +10,9 @@ using ssm.Core;
 using FargowiltasSouls.Content.Items.Accessories.Enchantments;
 using ThoriumMod.Items.BossThePrimordials.Aqua;
 using ThoriumMod.Items.Coral;
+using FargowiltasSouls.Core.AccessoryEffectSystem;
+using ssm.Content.SoulToggles;
+using static ssm.Thorium.Enchantments.CyberPunkEnchant;
 
 namespace ssm.Thorium.Enchantments
 {
@@ -37,12 +40,43 @@ namespace ssm.Thorium.Enchantments
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            ModContent.Find<ModItem>(this.thorium.Name, "CoralHelmet").UpdateArmorSet(player);
-
-            ModContent.Find<ModItem>(this.thorium.Name, "SeaBreezePendant").UpdateAccessory(player, hideVisual);
-            ModContent.Find<ModItem>(this.thorium.Name, "BubbleMagnet").UpdateAccessory(player, hideVisual);
+            player.AddEffect<CoralEffect>(Item);
         }
 
+        public class CoralEffect : AccessoryEffect
+        {
+            public override Header ToggleHeader => Header.GetHeader<JotunheimForceHeader>();
+            public override int ToggleItemType => ModContent.ItemType<CoralEnchant>();
+            public override bool ActiveSkill => true;
+
+            public bool active;
+            public int wetBuffTimer;
+            public int cooldownTimer;
+            public override void PostUpdate(Player player)
+            {
+                if (active)
+                {
+                    if (cooldownTimer > 0) cooldownTimer--;
+
+                    if (wetBuffTimer > 0)
+                    {
+                        wetBuffTimer--;
+                        player.wet = true; 
+                        player.wetCount = 10; 
+                    }
+                }
+            }
+            public override void ActiveSkillJustPressed(Player player, bool stunned)
+            {
+                if (cooldownTimer <= 0 && wetBuffTimer <= 0)
+                {
+                    wetBuffTimer = 30 * 60; 
+                    cooldownTimer = (30 + 15) * 60; 
+
+                    Terraria.Audio.SoundEngine.PlaySound(SoundID.Item86, player.position);
+                }
+            }
+        }
         public override void AddRecipes()
         {
             Recipe recipe = this.CreateRecipe();

@@ -8,8 +8,8 @@ using ssm.Core;
 using FargowiltasSouls.Content.Items.Accessories.Enchantments;
 using FargowiltasSouls.Core.AccessoryEffectSystem;
 using ssm.Content.SoulToggles;
-using ThoriumMod.Projectiles.Healer;
 using FargowiltasSouls;
+using ssm.Content.Buffs;
 
 namespace ssm.Thorium.Enchantments
 {
@@ -36,19 +36,7 @@ namespace ssm.Thorium.Enchantments
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            ThoriumPlayer thoriumPlayer = player.GetModPlayer<ThoriumPlayer>();
-
-            if (player.AddEffect<BiotechEffect>(Item))
-            {
-                thoriumPlayer.bioTechSet = true;
-                if (player.whoAmI == Main.myPlayer)
-                {
-                    const int damage = 100;
-                    if (player.ownedProjectileCounts[ModContent.ProjectileType<BiotechProbe>()] < 1)
-                        FargoSoulsUtil.NewSummonProjectile(player.GetSource_FromThis(), player.Center, Vector2.Zero, ModContent.ProjectileType<BiotechProbe>(), damage, 8f, player.whoAmI);
-                }
-            }
-
+            player.AddEffect<BiotechEffect>(Item);
         }
 
         public override void AddRecipes()
@@ -71,9 +59,20 @@ namespace ssm.Thorium.Enchantments
         {
             public override Header ToggleHeader => Header.GetHeader<AlfheimForceHeader>();
             public override int ToggleItemType => ModContent.ItemType<BiotechEnchant>();
-
-            public override bool MinionEffect => true;
             public override bool MutantsPresenceAffects => true;
+
+            public override void OnHitNPCEither(Player player, NPC target, NPC.HitInfo hitInfo, DamageClass damageClass, int baseDamage, Projectile proj, Item item)
+            {
+                if (proj.DamageType == HealerDamage.Instance &&
+                Main.rand.NextFloat() < 0.20f)
+                {
+                    target.AddBuff(ModContent.BuffType<CutOpen>(), 300); 
+                }
+                else if (player.ForceEffect<BiotechEffect>())
+                {
+                    target.AddBuff(ModContent.BuffType<CutOpen>(), 300);
+                }
+            }
         }
     }
 }

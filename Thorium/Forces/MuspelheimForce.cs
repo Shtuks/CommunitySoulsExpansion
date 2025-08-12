@@ -8,6 +8,8 @@ using ssm.Core;
 using FargowiltasSouls;
 using FargowiltasSouls.Content.Items.Accessories.Forces;
 using Fargowiltas.Items.Tiles;
+using FargowiltasSouls.Core.AccessoryEffectSystem;
+using static ssm.Thorium.Souls.ThoriumSoul;
 
 namespace ssm.Thorium.Forces
 {
@@ -37,8 +39,14 @@ namespace ssm.Thorium.Forces
             ModContent.Find<ModItem>(((ModType)this).Mod.Name, "SandstoneEnchant").UpdateAccessory(player, hideVisual);
             ModContent.Find<ModItem>(((ModType)this).Mod.Name, "NobleEnchant").UpdateAccessory(player, hideVisual);
             ModContent.Find<ModItem>(((ModType)this).Mod.Name, "PyromancerEnchant").UpdateAccessory(player, hideVisual);
+
+            player.AddEffect<MuspelheimEffect>(Item);
         }
 
+        public class MuspelheimEffect : AccessoryEffect
+        {
+            public override Header ToggleHeader => null;
+        }
         public override void AddRecipes()
         {
             Recipe recipe = CreateRecipe();

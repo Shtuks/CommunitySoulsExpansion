@@ -17,6 +17,10 @@ namespace ssm.SoA
     [JITWhenModsEnabled(ModCompatibility.SacredTools.Name, ModCompatibility.Calamity.Name)]
     public class SoABossRush : ModSystem
     {
+        public override bool IsLoadingEnabled(Mod mod)
+        {
+            return CSEConfig.Instance.SoABR;
+        }
         public override void PostSetupContent()
         {
             for (int i = Bosses.Count - 1; i >= 0; i--)
