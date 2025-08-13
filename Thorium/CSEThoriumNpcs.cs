@@ -17,6 +17,9 @@ using ThoriumMod.NPCs.BossThePrimordials;
 using ThoriumMod.NPCs.BossViscount;
 using ThoriumMod.NPCs.BossStarScouter;
 using ThoriumMod;
+using FargowiltasSouls.Core.AccessoryEffectSystem;
+using static ssm.Thorium.Enchantments.FungusEnchant;
+using ssm.Content.Projectiles.Enchantments;
 
 namespace ssm.Thorium
 {
@@ -53,6 +56,25 @@ namespace ssm.Thorium
             return true;
         }
 
+        public override void OnKill(NPC npc)
+        {
+            if (npc.lastInteraction >= 0) 
+            {
+                Player player = Main.player[npc.lastInteraction];
+
+                if (player.HasEffect<FungusEffect>() && Main.rand.NextFloat() < 0.10f)
+                {
+                    Projectile.NewProjectile(
+                        npc.GetSource_FromAI(),
+                        npc.Center,
+                        Vector2.Zero,
+                        ModContent.ProjectileType<MushroomProj>(),
+                        0,
+                        0
+                    );
+                }
+            }
+        }
         public override void ResetEffects(NPC npc)
         {
             isCutOpen = false;
@@ -72,9 +94,7 @@ namespace ssm.Thorium
             {
                 if (npc.position != previousPosition && npc.velocity != Vector2.Zero)
                 {
-                    int damage = (int)(npc.lifeMax * 0.001f); // 1/1000 of max life
-                    if (damage < 1) damage = 1;
-                    npc.SimpleStrikeNPC(damage, 0);
+                    npc.SimpleStrikeNPC(5, 0);
 
                     Dust.NewDust(npc.position, npc.width, npc.height, DustID.Blood);
                 }

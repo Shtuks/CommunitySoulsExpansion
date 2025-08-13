@@ -3,14 +3,10 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
 using ThoriumMod.Items.ArcaneArmor;
-using ThoriumMod.Items.ThrownItems;
 using FargowiltasSouls.Content.Items.Accessories.Enchantments;
 using ssm.Core;
-using ThoriumMod.Utilities;
 using FargowiltasSouls.Core.AccessoryEffectSystem;
 using ssm.Content.SoulToggles;
-using static ssm.Thorium.Enchantments.TideTurnerEnchant;
-using ClickerClass.Prefixes.ClickerPrefixes;
 using ssm.Content.Projectiles.Enchantments;
 using FargowiltasSouls;
 

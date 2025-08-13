@@ -41,7 +41,6 @@ namespace ssm.Content.Items.Materials
             Item.height = 24;
             Item.value = int.MaxValue/10;
             Item.rare = 11;
-            Item.accessory = true;
         }
 
         public override void AddRecipes()

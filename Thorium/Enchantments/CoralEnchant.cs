@@ -1,18 +1,14 @@
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using ThoriumMod;
 using Microsoft.Xna.Framework;
 using ThoriumMod.Items.BossQueenJellyfish;
 using ThoriumMod.Items.Depths;
-using ThoriumMod.Items.Painting;
 using ssm.Core;
 using FargowiltasSouls.Content.Items.Accessories.Enchantments;
-using ThoriumMod.Items.BossThePrimordials.Aqua;
 using ThoriumMod.Items.Coral;
 using FargowiltasSouls.Core.AccessoryEffectSystem;
-using ssm.Content.SoulToggles;
-using static ssm.Thorium.Enchantments.CyberPunkEnchant;
+using System.Collections.Generic;
 
 namespace ssm.Thorium.Enchantments
 {
@@ -20,7 +16,8 @@ namespace ssm.Thorium.Enchantments
     [JITWhenModsEnabled(ModCompatibility.Thorium.Name)]
     public class CoralEnchant : BaseEnchant
     {
-        private readonly Mod thorium = ModLoader.GetMod("ThoriumMod");
+        public override List<AccessoryEffect> ActiveSkillTooltips =>
+            [AccessoryEffectLoader.GetEffect<CoralEffect>()];
         public override bool IsLoadingEnabled(Mod mod)
         {
             return CSEConfig.Instance.Thorium;
@@ -45,7 +42,7 @@ namespace ssm.Thorium.Enchantments
 
         public class CoralEffect : AccessoryEffect
         {
-            public override Header ToggleHeader => Header.GetHeader<JotunheimForceHeader>();
+            public override Header ToggleHeader => null;
             public override int ToggleItemType => ModContent.ItemType<CoralEnchant>();
             public override bool ActiveSkill => true;
 

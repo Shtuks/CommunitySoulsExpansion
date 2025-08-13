@@ -10,6 +10,7 @@ using ThoriumMod.Items.SummonItems;
 using FargowiltasSouls.Core.AccessoryEffectSystem;
 using static ssm.Thorium.Enchantments.ThoriumEnchant;
 using ssm.Content.SoulToggles;
+using SpiritMod;
 
 namespace ssm.Thorium.Enchantments
 {
@@ -38,22 +39,53 @@ namespace ssm.Thorium.Enchantments
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            ModContent.Find<ModItem>(this.thorium.Name, "SilkHat").UpdateArmorSet(player);
-
-            ModContent.Find<ModItem>(this.thorium.Name, "ArtificersFocus").UpdateAccessory(player, hideVisual);
-            ModContent.Find<ModItem>(this.thorium.Name, "ArtificersShield").UpdateAccessory(player, hideVisual);
-
-            if (player.AddEffect<ArtificersEffect>(Item))
-            {
-                ModContent.Find<ModItem>(this.thorium.Name, "ArtificersRocketeers").UpdateAccessory(player, hideVisual);
-            }
+            player.AddEffect<SilkEffect>(Item);
         }
 
-        public class ArtificersEffect : AccessoryEffect
+        public class SilkEffect : AccessoryEffect
         {
             public override Header ToggleHeader => Header.GetHeader<HelheimForceHeader>();
             public override int ToggleItemType => ModContent.ItemType<SilkEnchant>();
-            public override bool MutantsPresenceAffects => true;
+
+            public int manaStacks;
+            public int manaAccumulator;
+            public int effectTimer;
+            private int previousMana;
+
+            public void ResetEffect()
+            {
+                manaStacks = 0;
+                manaAccumulator = 0;
+                effectTimer = 0;
+            }
+            public override void PostUpdateMiscEffects(Player player)
+            {
+                if (player.statMana < previousMana)
+                {
+                    int manaSpent = previousMana - player.statMana;
+                    manaAccumulator += manaSpent;
+                    effectTimer = 600;
+
+                    while (manaAccumulator >= 50 && manaStacks < 10)
+                    {
+                        manaStacks++;
+                        manaAccumulator -= 50;
+                    }
+                }
+
+                previousMana = player.statMana;
+
+                if (effectTimer > 0)
+                {
+                    effectTimer--;
+                    if (effectTimer == 0)
+                    {
+                        ResetEffect();
+                    }
+                }
+
+                player.GetDamage<GenericDamageClass>() += 0.02f * manaStacks;
+            }
         }
 
         public override void AddRecipes()

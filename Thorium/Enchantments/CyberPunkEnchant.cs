@@ -13,6 +13,8 @@ using static ssm.Thorium.Forces.MuspelheimForce;
 using FargowiltasSouls;
 using Luminance.Common.Utilities;
 using static ssm.Thorium.Enchantments.CyberPunkEnchant;
+using FargowiltasSouls.Content.Items.Accessories.Masomode;
+using System.Collections.Generic;
 
 namespace ssm.Thorium.Enchantments
 {
@@ -56,13 +58,14 @@ namespace ssm.Thorium.Enchantments
                     if (Main.npc[i].active && Main.npc[i].type == ModContent.NPCType<CyberneticOrb>() && Main.npc[i].ai[0] == player.whoAmI)
                         count++;
                 }
-                if (count < 5)
+                int multiplier = 2;
+                if (player.HasEffect<MuspelheimEffect>())
+                    multiplier = 3;
+                if (player.HasEffect<ThoriumEffect>())
+                    multiplier = 4;
+
+                if (count < multiplier)
                 {
-                    int multiplier = 1;
-                    if (player.HasEffect<MuspelheimEffect>())
-                        multiplier = 2;
-                    if (player.HasEffect<ThoriumEffect>())
-                        multiplier = 5;
                     if (Main.netMode == NetmodeID.SinglePlayer)
                     {
                         int n = NPC.NewNPC(NPC.GetBossSpawnSource(player.whoAmI), (int)player.Center.X, (int)player.Center.Y, ModContent.NPCType<CyberneticOrb>(), 0, player.whoAmI, 0f, multiplier);
@@ -131,8 +134,8 @@ namespace ssm.Thorium.Enchantments
 
         public override void AI()
         {
-            const float Radius = 64f;
-            const float BaseAngularSpeed = 0.05f;
+            const float Radius = 64f; 
+            const float BaseAngularSpeed = 0.05f; 
 
             if (NPC.localAI[0] == 0f)
             {
@@ -141,17 +144,13 @@ namespace ssm.Thorium.Enchantments
                 NPC.defDamage *= (int)NPC.ai[2];
                 NPC.defDefense *= (int)NPC.ai[2];
                 NPC.life = NPC.lifeMax;
-
-                Vector2 randomDir = Vector2.UnitX.RotatedByRandom(2 * Math.PI);
-                NPC.ai[3] = (float)Math.Atan2(randomDir.Y, randomDir.X);
-                NPC.localAI[1] = BaseAngularSpeed + Main.rand.NextFloat(-0.01f, 0.01f);
             }
 
             NPC.damage = NPC.defDamage;
             NPC.defense = NPC.defDefense;
 
             Player player = Main.player[(int)NPC.ai[0]];
-            if ((player.whoAmI != Main.myPlayer || !player.HasEffect<CyberPunkEffect>()) && (!player.active || player.dead))
+            if (player.whoAmI != Main.myPlayer || !player.HasEffect<CyberPunkEffect>() || !player.active || player.dead)
             {
                 int n = NPC.whoAmI;
                 NPC.SimpleStrikeNPC(NPC.lifeMax * 2, 0);
@@ -160,65 +159,90 @@ namespace ssm.Thorium.Enchantments
                 return;
             }
 
+            List<NPC> minions = new List<NPC>();
+            for (int i = 0; i < Main.maxNPCs; i++)
+            {
+                NPC n = Main.npc[i];
+                if (n.active && n.type == NPC.type && n.ai[0] == NPC.ai[0])
+                {
+                    minions.Add(n);
+                }
+            }
+
+            minions.Sort((a, b) => a.whoAmI.CompareTo(b.whoAmI));
+
+            int minionIndex = minions.IndexOf(NPC);
+            int minionCount = minions.Count;
+
             Vector2 toPlayer = NPC.Center - player.Center;
             float distance = toPlayer.Length();
             if (distance > 1000f)
             {
-                Vector2 randomDir = Vector2.UnitX.RotatedByRandom(2 * Math.PI);
-                NPC.Center = player.Center + randomDir * Radius;
+                minionIndex = minions.IndexOf(NPC);
+                minionCount = minions.Count;
+                PlaceMinionAtOrbitPosition(player, minionIndex, minionCount);
                 NPC.velocity = Vector2.Zero;
-                NPC.ai[3] = (float)Math.Atan2(randomDir.Y, randomDir.X);
+                return;
+            }
+
+            float angleOffset = (MathHelper.TwoPi / minionCount) * minionIndex;
+            float globalRotation = (float)Main.time * BaseAngularSpeed;
+            float targetAngle = globalRotation + angleOffset;
+
+            Vector2 targetPosition = player.Center + new Vector2(
+                (float)Math.Cos(targetAngle) * Radius,
+                (float)Math.Sin(targetAngle) * Radius
+            );
+
+            Vector2 direction = targetPosition - NPC.Center;
+            if (direction.Length() > 10f)
+            {
+                direction.Normalize();
+                NPC.velocity = (NPC.velocity * 15f + direction * 16f) / 16f;
             }
             else
             {
-                NPC.ai[3] += NPC.localAI[1];
-
-                Vector2 targetPos = player.Center + new Vector2(
-                    (float)Math.Cos(NPC.ai[3]) * Radius,
-                    (float)Math.Sin(NPC.ai[3]) * Radius
-                );
-
-                Vector2 moveDirection = targetPos - NPC.Center;
-                NPC.velocity = (NPC.velocity * 15f + moveDirection) / 16f;
+                NPC.velocity *= 0.95f;
             }
 
-            if (NPC.ai[1]++ > 52f)
+            const float RepelStrength = 0.1f;
+            foreach (NPC other in minions)
             {
-                NPC.ai[1] = 0f;
-                NPC.ai[3] += MathHelper.ToRadians(Main.rand.NextFloat(-15, 15));
+                if (other.whoAmI == NPC.whoAmI) continue;
 
-                if (player.whoAmI == Main.myPlayer && !player.HasEffect<CyberPunkEffect>())
-                {
-                    int n = NPC.whoAmI;
-                    NPC.SimpleStrikeNPC(NPC.lifeMax * 2, 0);
-                    if (FargoSoulsUtil.HostCheck)
-                        NetMessage.SendData(MessageID.SyncNPC, -1, -1, null, n, 9999f);
-                    return;
-                }
-            }
+                Vector2 repel = NPC.DirectionFrom(other.Center);
+                float distanceToOther = Vector2.Distance(NPC.Center, other.Center);
 
-            const float IdleAccel = 0.05f;
-            foreach (NPC n in Main.npc)
-            {
-                if (n.active && n.ai[0] == NPC.ai[0] && n.type == NPC.type && n.whoAmI != NPC.whoAmI &&
-                    NPC.Distance(n.Center) < NPC.width)
+                if (distanceToOther < NPC.width)
                 {
-                    Vector2 repel = NPC.DirectionFrom(n.Center) * IdleAccel;
-                    NPC.velocity += repel;
-                    n.velocity -= repel;
+                    float repelFactor = MathHelper.Clamp(1f - distanceToOther / NPC.width, 0f, 1f);
+                    NPC.velocity += repel * RepelStrength * repelFactor;
                 }
             }
         }
 
-        public override void FindFrame(int frameHeight)
+        private void PlaceMinionAtOrbitPosition(Player player, int index, int count)
         {
-            if (NPC.ai[2] <= 1)
-                NPC.frame.Y = 0;
-            else if (NPC.ai[2] <= 2)
-                NPC.frame.Y = frameHeight;
-            else
-                NPC.frame.Y = frameHeight * 2;
+            if (count == 0) return;
+
+            float angle = (MathHelper.TwoPi / count) * index;
+            Vector2 targetPosition = player.Center + new Vector2(
+                (float)Math.Cos(angle) * 64f,
+                (float)Math.Sin(angle) * 64f
+            );
+
+            NPC.Center = targetPosition;
         }
+
+        //public override void FindFrame(int frameHeight)
+        //{
+        //    if (NPC.ai[2] <= 1)
+        //        NPC.frame.Y = 0;
+        //    else if (NPC.ai[2] <= 2)
+        //        NPC.frame.Y = frameHeight;
+        //    else
+        //        NPC.frame.Y = frameHeight * 2;
+        //}
         public override void ModifyHitByProjectile(Projectile projectile, ref NPC.HitModifiers modifiers)
         {
             modifiers.FinalDamage *= 2;
@@ -268,7 +292,7 @@ namespace ssm.Thorium.Enchantments
             {
                 for (int i = 0; i < 20; i++)
                 {
-                    int d = Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Blood);
+                    int d = Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Electric);
                     Main.dust[d].velocity *= 2.5f;
                     Main.dust[d].scale += 0.5f;
                 }

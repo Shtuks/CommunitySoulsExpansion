@@ -9,7 +9,6 @@ using ssm.Core;
 using FargowiltasSouls.Content.Items.Accessories.Enchantments;
 using FargowiltasSouls.Core.AccessoryEffectSystem;
 using ssm.Content.SoulToggles;
-using ClickerClass.Prefixes.ClickerPrefixes;
 using ssm.Content.Buffs;
 using FargowiltasSouls;
 

@@ -7,6 +7,10 @@ using ThoriumMod.Items.HealerItems;
 using ThoriumMod.Items.Donate;
 using FargowiltasSouls.Content.Items.Accessories.Enchantments;
 using ssm.Core;
+using FargowiltasSouls.Core.AccessoryEffectSystem;
+using ssm.Content.SoulToggles;
+using ThoriumMod.Items.Thorium;
+using ThoriumMod.Items.NPCItems;
 
 namespace ssm.Thorium.Enchantments
 {
@@ -18,8 +22,6 @@ namespace ssm.Thorium.Enchantments
         {
             return CSEConfig.Instance.Thorium;
         }
-
-        private readonly Mod thorium = ModLoader.GetMod("ThoriumMod");
 
         public override void SetDefaults()
         {
@@ -35,16 +37,16 @@ namespace ssm.Thorium.Enchantments
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            ModContent.Find<ModItem>(this.thorium.Name, "IridescentHelmet").UpdateArmorSet(player);
-
-            ModContent.Find<ModItem>(this.thorium.Name, "Equalizer").UpdateAccessory(player, hideVisual);
-            ModContent.Find<ModItem>(this.thorium.Name, "LifeQuartzShield").UpdateAccessory(player, hideVisual);
+            player.AddEffect<IridescentEffect>(Item);
         }
 
+        public class IridescentEffect : AccessoryEffect
+        {
+            public override Header ToggleHeader => Header.GetHeader<AlfheimForceHeader>();
+            public override int ToggleItemType => ModContent.ItemType<IridescentEnchant>();
+        }
         public override void AddRecipes()
         {
-
-
             Recipe recipe = this.CreateRecipe();
 
             recipe.AddIngredient(ModContent.ItemType<IridescentHelmet>());

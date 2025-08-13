@@ -13,6 +13,7 @@ using FargowiltasSouls.Content.Items.Accessories.Enchantments;
 using FargowiltasSouls.Core.AccessoryEffectSystem;
 using ssm.Content.Projectiles.Enchantments;
 using ssm.Content.SoulToggles;
+using FargowiltasSouls.Core.Toggler.Content;
 
 namespace ssm.Thorium.Enchantments
 {
@@ -41,13 +42,12 @@ namespace ssm.Thorium.Enchantments
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            //player.pick += 9;
             player.AddEffect<GeodeEffect>(Item);
         }
 
         public class GeodeEffect : AccessoryEffect
         {
-            public override Header ToggleHeader => Header.GetHeader<MidgardForceHeader>();
+            public override Header ToggleHeader => Header.GetHeader<WorldShaperHeader>();
             public override int ToggleItemType => ModContent.ItemType<GeodeEnchant>();
         }
         public override void AddRecipes()

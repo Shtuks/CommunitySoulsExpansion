@@ -10,8 +10,10 @@ using ThoriumMod.Items.Cultist;
 using ThoriumMod.Items.Donate;
 using FargowiltasSouls.Content.Items.Accessories.Enchantments;
 using FargowiltasSouls.Core.AccessoryEffectSystem;
-using ssm.Content.SoulToggles;
-using static ssm.Thorium.Enchantments.LivingWoodEnchant;
+using ssm.Content.Buffs;
+using FargowiltasSouls;
+using ssm.Content.Projectiles.Enchantments;
+using System;
 
 namespace ssm.Thorium.Enchantments
 {
@@ -24,8 +26,8 @@ namespace ssm.Thorium.Enchantments
             return CSEConfig.Instance.Thorium;
         }
 
-        private readonly Mod thorium = ModLoader.GetMod("ThoriumMod");
-
+        public override List<AccessoryEffect> ActiveSkillTooltips =>
+            [AccessoryEffectLoader.GetEffect<PyroEffect>()];
         public override void SetDefaults()
         {
             Item.width = 20;
@@ -40,17 +42,7 @@ namespace ssm.Thorium.Enchantments
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            if (player.AddEffect<PyroEffect>(Item))
-            {
-                ThoriumPlayer modPlayer = player.GetModPlayer<ThoriumPlayer>();
-                modPlayer.setPyromancer = true;
-                modPlayer.napalm = true;
-            }
-
-            if (player.AddEffect<PlasmaEffect>(Item))
-            {
-                ModContent.Find<ModItem>(this.thorium.Name, "PlasmaGenerator").UpdateAccessory(player, hideVisual);
-            }
+            player.AddEffect<PyroEffect>(Item);
         }
 
         public override void AddRecipes()
@@ -67,18 +59,46 @@ namespace ssm.Thorium.Enchantments
             recipe.AddTile(TileID.LunarCraftingStation);
             recipe.Register();
         }
-
-        public class PlasmaEffect : AccessoryEffect
-        {
-            public override Header ToggleHeader => Header.GetHeader<MuspelheimForceHeader>();
-            public override int ToggleItemType => ModContent.ItemType<PyromancerEnchant>();
-            public override bool MutantsPresenceAffects => true;
-        }
         public class PyroEffect : AccessoryEffect
         {
-            public override Header ToggleHeader => Header.GetHeader<MuspelheimForceHeader>();
+            public override Header ToggleHeader => null;
             public override int ToggleItemType => ModContent.ItemType<PyromancerEnchant>();
-            public override bool MutantsPresenceAffects => true;
+            public override bool ActiveSkill => true;
+
+            public int cd;
+            public override void PostUpdateEquips(Player player)
+            {
+                if(cd > 0)
+                {
+                    cd--;
+                }
+            }
+            public override void ActiveSkillJustPressed(Player player, bool stunned)
+            {
+                if (cd < 1)
+                {
+                    player.AddBuff(ModContent.BuffType<PureFlameBuff>(), 3600);
+                    cd += 3600;
+                }
+            }
+            public override void TryAdditionalAttacks(Player player, int damage, DamageClass damageType)
+            {
+                Vector2 center = player.Center;
+                Vector2 vector = Vector2.Normalize(Main.MouseWorld - center);
+
+                if (Main.rand.Next(player.ForceEffect<PyroEffect>() ? 75 : 100) != 0)
+                {
+                    Projectile.NewProjectile(
+                        player.GetSource_FromThis(),
+                        player.Center,
+                        vector.RotatedByRandom(Math.PI) * Main.rand.NextFloat(6f, 10f) * 2,
+                        ModContent.ProjectileType<PureFireballProj>(),
+                        player.ForceEffect<PyroEffect>() ? 1000 : 500,
+                        0f,
+                        player.whoAmI
+                    );
+                }
+            }
         }
     }
 }

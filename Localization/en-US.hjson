@@ -1350,9 +1350,11 @@ Mods: {
 				DisplayName: Ebon Enchantment
 				Tooltip:
 					'''
+					[c/65F527:Cleansing Mode:]
+					10% bonus healing, purification of blocks below you
+					[c/B027F5:Corrupting Mode:]
+					10% increase to radiant damage, infection of the blocks below you with the evil spawned in world
 					'Great for brooding'
-					Corrupts your radiant powers, causing them to take on dark forms and deal additional effects
-					Effects of Dark Heart
 					'''
 			}
 
@@ -1360,10 +1362,10 @@ Mods: {
 				DisplayName: Fallen Paladin Enchantment
 				Tooltip:
 					'''
-					'Silently, they walk the dungeon halls'
 					Taking damage heals nearby allies equal to 15% of the damage taken
 					If an ally is below half health, you will gain increased healing abilities
 					Effects of Prydwen and Nirvana Statuette
+					'Silently, they walk the dungeon halls'
 					'''
 			}
 
@@ -1376,9 +1378,9 @@ Mods: {
 				DisplayName: Flesh Enchantment
 				Tooltip:
 					'''
-					'Symbiotically attached to your body'
 					Consecutive attacks against enemies might drop flesh, which grants bonus life and damage
 					Effects of Vampire Gland
+					'Symbiotically attached to your body'
 					'''
 			}
 
@@ -1386,9 +1388,10 @@ Mods: {
 				DisplayName: Flight Enchantment
 				Tooltip:
 					'''
+					You passively gain up to 10 feathers 
+					Getting hit releases all feathers towards the closest enemy
+					Increases wings flight time and speed by 10%
 					'The sky is your playing field'
-					Increases flight time by 100%
-					Effects of the Faberge Egg
 					'''
 			}
 
@@ -1396,9 +1399,9 @@ Mods: {
 				DisplayName: Fungus Enchantment
 				Tooltip:
 					'''
+					Everytime you kill an enemy there is a 10% chance for a mushroom to appear
+					Picking up mushroom heals you for 10% of your max health, increases damage by 10% and reduces defense by 10 for 10 seconds
 					'There's a fungus among us'
-					Damage done against mycelium infected enemies is increased by 10%
-					Dealing damage to enemies infected with mycelium briefly increases throwing speed by 10%
 					'''
 			}
 
@@ -1406,10 +1409,8 @@ Mods: {
 				DisplayName: Geode Enchantment
 				Tooltip:
 					'''
+					Mining ores and other rare items will yield 2x more ore per ore block mined
 					'Made from the most luxurious of materials'
-					50% increased mining speed
-					Shows the location of enemies, traps, and treasures
-					Light is emitted from the player
 					'''
 			}
 
@@ -1447,10 +1448,8 @@ Mods: {
 				DisplayName: Iridescent Enchantment
 				Tooltip:
 					'''
+					Healing and healing other players will also grant them life shield depending on how strong the potion or healing item is
 					'All the colors of the rainbow'
-					Your radiant damage has a 15% chance to release a blinding flash of light
-					The flash heals nearby allies equal to your bonus healing and confuses enemies
-					Effects of Equalizer and Life Quartz Shield
 					'''
 			}
 
@@ -1458,9 +1457,9 @@ Mods: {
 				DisplayName: Jester Enchantment
 				Tooltip:
 					'''
+					Every ten seconds, a bell will be rung over your head confusing all enemies nearby for 5 seconds 
+					Confusion will stun enemies that aren’t bosses
 					'Clowning around'
-					Critical strikes ring a bell over your head, slowing all nearby enemies briefly
-					Effects of Fan Letter
 					'''
 			}
 
@@ -1480,11 +1479,8 @@ Mods: {
 				DisplayName: Life Binder Enchantment
 				Tooltip:
 					'''
+					Using healing potion will grant you 50% of healed life as life shield
 					'Vegetation grows from your fingertips'
-					Healing spells will shortly increase the healed player's maximum life by 50
-					Your radiant damage has a 15% chance to release a blinding flash of light
-					The flash heals nearby allies equal to your bonus healing and confuses enemies
-					Effects of Dew Collector, Heart of the Jungle and Equalizer
 					'''
 			}
 
@@ -1615,13 +1611,7 @@ Mods: {
 
 			PyromancerEnchant: {
 				DisplayName: Pyromancer Enchantment
-				Tooltip:
-					'''
-					'Your magma fortified army's molten gaze shall be feared'
-					Attacks will heavily burn and damage all adjacent enemies
-					Pressing the 'Special Ability' key will unleash an echo of Slag Fury's power
-					Effects of Plasma Generator
-					'''
+				Tooltip: "'Your magma fortified army's molten gaze shall be feared'"
 			}
 
 			RhapsodistEnchant: {
@@ -1684,9 +1674,9 @@ Mods: {
 				DisplayName: Silk Enchantment
 				Tooltip:
 					'''
+					For every 50 mana used, you increase your damage by 2% up to a max of 20% damage for 10 seconds
+					Drinking mana potion resets this effect
 					'You feel silky-smooth'
-					+12% magic damage while above 90% maximum mana
-					Effects of Artificer's Focus, Artificer's Shield, and Artificer's Rocketeers
 					'''
 			}
 
@@ -1800,11 +1790,7 @@ Mods: {
 
 			AstroEnchant: {
 				DisplayName: Astro Enchantment
-				Tooltip:
-					'''
-					Summon damage has a chance to unleash a burst of damaging plasma on hit
-					increases your max number of minions and sentries by 1
-					'''
+				Tooltip: Gives Spaceship minion that shoots bullets from your inventory
 			}
 
 			WhiteKnightEnchant: {
@@ -3436,6 +3422,11 @@ Mods: {
 				Description: OOOHHHH NOOOO YOU dAed
 			}
 
+			PureFlameBuff: {
+				DisplayName: Pure Flame
+				Description: Losing life, shooting fireballs, attacks inflict fire debuffs
+			}
+
 			SniperBuff: {
 				DisplayName: Sniper Focus
 				Description: +125% damage, -25% defense, reduced enemy attention
@@ -3540,6 +3531,21 @@ Mods: {
 				DisplayName: Radioactive Decay
 				Description: ROPRO ADD DECRIPTIONS TO BUFFS ARAGAARGJARHJABF
 			}
+
+			CryDebuff: {
+				DisplayName: Cry Debuff
+				Description: Mods.ssm.Buffs.CryDebuff.Description
+			}
+
+			CutOpen: {
+				DisplayName: Cut Open
+				Description: Mods.ssm.Buffs.CutOpen.Description
+			}
+
+			MushroomBuff: {
+				DisplayName: Mushroom Buff
+				Description: Mods.ssm.Buffs.MushroomBuff.Description
+			}
 		}
 
 		NPCs: {
@@ -3622,10 +3628,17 @@ Mods: {
 			GunteraHook.DisplayName: Guntera Hook
 			GunteraTentacle.DisplayName: Guntera Tentacle
 			GunUzi.DisplayName: Gun Uzi
+			CyberneticOrb.DisplayName: Cybernetic Orb
 		}
 
 		Toggler: {
 			//thorium
+			EbonEffect: Ebon Tiles Conversion
+			GeodeEffect: Double Ore
+			NobbleEffect: Rich Buff When Picking Coins
+			YewWoodEffect: Vile Arrow support
+			BronzeEffect: Bronze Blades
+			CrierEffect: Crying on hit
 			PiratesPurseEffect: Pirate's Purse
 			GraniteEffect: Shock Absorber
 			BlastShieldEffect: Blast Shield
@@ -3648,11 +3661,10 @@ Mods: {
 			NuclearOptionEffect: Nuclear Option
 			IllumiteEffect: Illumite Missiles
 			TideHunterEffect: Foam Splashes
-			DepthDiverEffect: Drowned Doublon
-			DepthAuraEffect: Depth Aura Buff
+			DepthDiverEffect: Depth Stats
 			ArtificersEffect: Artificer's Rocketeers
 			LivingWoodEffect: Living Wood Sapling
-			BiotechEffect: Biotech Probe
+			BiotechEffect: Cut Open on hit
 			EntropicEffect: Illusions
 			TendrilsEffect: Tendrils Attachment
 			InfernoLordsFocusEffect: Inferno Lord Focus
@@ -3679,7 +3691,7 @@ Mods: {
 			LodestoneEffect: Sandweaver's Tiara
 			BulbEffect: Kick Petal
 			LifeBloomEffect: Heart of the Jungle
-			CyberPunkEffect: Fixed notes
+			CyberPunkEffect: Cyber Orbs minion
 			CapeoftheSurvivorEffect: Cape of the Survivor
 			CrystalScorpionEffect: Crystal Scorpion
 			PyroEffect: Pyromancer Ignition
@@ -3978,6 +3990,14 @@ Mods: {
 			UraniumAura.DisplayName: Uranium Aura
 			UraniumAuraProjectile.DisplayName: Uranium Aura Projectile
 			PlutoniumParticle.DisplayName: Plutonium Particle
+			VileArrow.DisplayName: Vile Arrow
+			CyberHitbox.DisplayName: Cyber Hitbox
+			MushroomProj.DisplayName: Mushroom Proj
+			PureFireballProj.DisplayName: Pure Fireball Proj
+			SpaceshipMinion.DisplayName: Spaceship Minion
+			MinionBellProj.DisplayName: Minion Bell Proj
+			IllumiteAuraProj.DisplayName: Illumite Aura Proj
+			BellMinionPulse.DisplayName: Bell Minion Pulse
 		}
 
 		Bestiary: {
@@ -3993,6 +4013,7 @@ Mods: {
 					EnchantsLoad: Enchantments Loading
 					EmodeAccesLoad: Eternity Mode Accessories Loading
 					EmodeWeaponsLoad: Eternity Mode Weapons Loading
+					BossRush: Boss Rush Header
 				}
 
 				DisplayName: Mod Config
@@ -4134,6 +4155,36 @@ Mods: {
 
 				EmodeSoAW: {
 					Label: Shadows of Abaddon
+					Tooltip: ""
+				}
+
+				EmodeHWJ: {
+					Label: Emode H W J
+					Tooltip: ""
+				}
+
+				EmodeHWJW: {
+					Label: Emode H W J W
+					Tooltip: ""
+				}
+
+				ThoriumBR: {
+					Label: Thorium B R
+					Tooltip: ""
+				}
+
+				RedemptionBR: {
+					Label: Redemption B R
+					Tooltip: ""
+				}
+
+				SoABR: {
+					Label: So A B R
+					Tooltip: ""
+				}
+
+				HWJBR: {
+					Label: H W J B R
 					Tooltip: ""
 				}
 			}

@@ -7,7 +7,6 @@ using FargowiltasSouls.Core.AccessoryEffectSystem;
 using ssm.Content.SoulToggles;
 using ssm.Core;
 using SacredTools.Content.Items.Armor.Dreadfire;
-using SacredTools.Content.Items.Accessories;
 using SacredTools.Content.Items.Weapons.Dreadfire;
 using ssm.Content.Buffs;
 using FargowiltasSouls;

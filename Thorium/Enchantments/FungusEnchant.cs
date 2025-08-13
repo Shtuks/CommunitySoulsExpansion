@@ -10,6 +10,10 @@ using ThoriumMod.Items.BossMini;
 using ThoriumMod.Items.MagicItems;
 using ThoriumMod.Items.Consumable;
 using FargowiltasSouls.Content.Items.Accessories.Enchantments;
+using FargowiltasSouls.Core.AccessoryEffectSystem;
+using FargowiltasSouls.Core.Toggler.Content;
+using static ssm.Thorium.Enchantments.PyromancerEnchant;
+using ssm.Content.SoulToggles;
 
 namespace ssm.Thorium.Enchantments
 {
@@ -38,10 +42,14 @@ namespace ssm.Thorium.Enchantments
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            ThoriumPlayer thoriumPlayer = player.GetModPlayer<ThoriumPlayer>();
-            thoriumPlayer.setFungus = true;
+            player.AddEffect<FungusEffect>(Item);
         }
 
+        public class FungusEffect : AccessoryEffect
+        {
+            public override Header ToggleHeader => Header.GetHeader<VanaheimForceHeader>();
+            public override int ToggleItemType => ModContent.ItemType<FungusEnchant>();
+        }
         public override void AddRecipes()
         {
             Recipe recipe = this.CreateRecipe();

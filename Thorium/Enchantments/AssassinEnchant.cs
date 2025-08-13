@@ -8,7 +8,7 @@ using ThoriumMod.Items.RangedItems;
 using ThoriumMod.Items.Tracker;
 using FargowiltasSouls.Content.Items.Accessories.Enchantments;
 using FargowiltasSouls.Core.AccessoryEffectSystem;
-using ssm.Content.SoulToggles;
+using System.Collections.Generic;
 
 namespace ssm.Thorium.Enchantments
 {
@@ -16,6 +16,8 @@ namespace ssm.Thorium.Enchantments
     [JITWhenModsEnabled(ModCompatibility.Thorium.Name)]
     public class AssassinEnchant : BaseEnchant
     {
+        public override List<AccessoryEffect> ActiveSkillTooltips =>
+           [AccessoryEffectLoader.GetEffect<AssassinEffect>()];
         public override bool IsLoadingEnabled(Mod mod)
         {
             return CSEConfig.Instance.Thorium;
@@ -35,12 +37,13 @@ namespace ssm.Thorium.Enchantments
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            player.AddEffect<AssasinEffect>(Item);
+            player.AddEffect<AssassinEffect>(Item);
         }
 
-        public class AssasinEffect : AccessoryEffect
+        public class AssassinEffect : AccessoryEffect
         {
-            public override Header ToggleHeader => Header.GetHeader<AlfheimForceHeader>();
+            public override Header ToggleHeader => null;
+            public override int ToggleItemType => ModContent.ItemType<AssassinEnchant>();
             public override bool ActiveSkill => true;
             public override void ActiveSkillJustPressed(Player player, bool stunned)
             {
@@ -67,9 +70,10 @@ namespace ssm.Thorium.Enchantments
                 {
                     Vector2 directionFromPlayer = targetNpc.Center - player.Center;
                     directionFromPlayer.Normalize();
-                    Vector2 teleportPosition = targetNpc.Center + directionFromPlayer * 40f; 
+                    Vector2 teleportPosition = targetNpc.Center; 
 
                     player.Teleport(teleportPosition, TeleportationStyleID.TeleportationPotion);
+                    player.immuneTime += 20;
 
                     if (Main.netMode == NetmodeID.MultiplayerClient)
                         NetMessage.SendData(MessageID.TeleportEntity, -1, -1, null, 0, player.whoAmI, teleportPosition.X, teleportPosition.Y, TeleportationStyleID.TeleportationPotion);

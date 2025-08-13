@@ -60,7 +60,6 @@ namespace ssm.Thorium.Enchantments
             public override Header ToggleHeader => Header.GetHeader<AlfheimForceHeader>();
             public override int ToggleItemType => ModContent.ItemType<BiotechEnchant>();
             public override bool MutantsPresenceAffects => true;
-
             public override void OnHitNPCEither(Player player, NPC target, NPC.HitInfo hitInfo, DamageClass damageClass, int baseDamage, Projectile proj, Item item)
             {
                 if (proj.DamageType == HealerDamage.Instance &&

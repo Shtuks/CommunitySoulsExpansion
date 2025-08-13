@@ -9,6 +9,9 @@ using ThoriumMod.Items.ThrownItems;
 using FargowiltasSouls;
 using FargowiltasSouls.Content.Items.Accessories.Enchantments;
 using ThoriumMod.Items.BossBuriedChampion;
+using FargowiltasSouls.Core.AccessoryEffectSystem;
+using FargowiltasSouls.Core.Toggler.Content;
+using FargowiltasSouls.Content.Items.Accessories.Souls;
 
 namespace ssm.Thorium.Enchantments
 {
@@ -38,16 +41,20 @@ namespace ssm.Thorium.Enchantments
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             FargoSoulsPlayer fargoPlayer = player.GetModPlayer<FargoSoulsPlayer>();
-            CSEPlayer modPlayer = player.GetModPlayer<CSEPlayer>();
-            fargoPlayer.WingTimeModifier += 1f;
-
-            ModContent.Find<ModItem>(this.thorium.Name, "FabergeEgg").UpdateAccessory(player, hideVisual);
+            fargoPlayer.WingTimeModifier += 0.1f;
+            player.AddEffect<FlightEffect>(Item);
         }
 
+        public class FlightEffect : AccessoryEffect
+        {
+            public override Header ToggleHeader => Header.GetHeader<FlightMasteryHeader>();
+            public override int ToggleItemType => ModContent.ItemType<FlightEnchant>();
+
+            public int featherTimer;
+            public int featherCount;
+        }
         public override void AddRecipes()
         {
-
-
             Recipe recipe = this.CreateRecipe();
 
             recipe.AddIngredient(ModContent.ItemType<FlightMask>());

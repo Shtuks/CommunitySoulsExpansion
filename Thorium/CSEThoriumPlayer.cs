@@ -1,7 +1,8 @@
 ﻿using Terraria.ModLoader;
 using ssm.Core;
 using Terraria;
-using ThoriumMod.Empowerments;
+using FargowiltasSouls.Core.AccessoryEffectSystem;
+using static ssm.Thorium.Enchantments.IllumiteEnchant;
 
 namespace ssm.Thorium
 {
@@ -14,12 +15,22 @@ namespace ssm.Thorium
         public bool DarkenedCloak;
 
         public bool tripleDamageNextHit;
+        public bool illumiteNightVision;
         public override void ResetEffects()
         {
             ThunderTalonEternity = false;
             DarkenedCloak = false;
 
             tripleDamageNextHit = false;
+            if (!Player.HasEffect<IllumiteEffect>())
+            {
+                illumiteNightVision = false;
+            }
+        }
+
+        public override void UpdateDead()
+        {
+            illumiteNightVision = false;
         }
         public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
         {

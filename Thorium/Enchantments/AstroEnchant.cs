@@ -7,6 +7,13 @@ using FargowiltasSouls.Content.Items.Accessories.Enchantments;
 using ThoriumMod;
 using ThoriumMod.Items.SummonItems;
 using ThoriumMod.Items.ThrownItems;
+using FargowiltasSouls.Core.AccessoryEffectSystem;
+using FargowiltasSouls;
+using ssm.Content.Buffs;
+using ssm.Content.SoulToggles;
+using ssm.Content.Projectiles;
+using ssm.Content.Projectiles.Enchantments;
+using static ssm.Thorium.Enchantments.JesterEnchant;
 
 namespace ssm.Thorium.Enchantments
 {
@@ -33,12 +40,30 @@ namespace ssm.Thorium.Enchantments
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            ThoriumPlayer modPlayer = player.GetModPlayer<ThoriumPlayer>();
-            modPlayer.setAstro = true;
-            player.maxMinions++;
-            player.maxTurrets++;
+            player.AddEffect<AstroEffect>(Item);
         }
 
+        public class AstroEffect : AccessoryEffect
+        {
+            public override Header ToggleHeader => Header.GetHeader<MidgardForceHeader>();
+            public override int ToggleItemType => ModContent.ItemType<AstroEnchant>();
+            public override bool MinionEffect => true;
+            public override void PostUpdateMiscEffects(Player player)
+            {
+                if (player.ownedProjectileCounts[ModContent.ProjectileType<SpaceshipMinion>()] < 1)
+                {
+                    Projectile.NewProjectile(
+                        player.GetSource_FromThis(),
+                        player.Center,
+                        Vector2.Zero,
+                        ModContent.ProjectileType<SpaceshipMinion>(),
+                        10,
+                        0,
+                        player.whoAmI
+                    );
+                }
+            }
+        }
         public override void AddRecipes()
         {
             Recipe recipe = this.CreateRecipe();

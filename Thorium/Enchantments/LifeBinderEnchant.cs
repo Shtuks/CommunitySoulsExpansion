@@ -7,6 +7,9 @@ using Microsoft.Xna.Framework;
 using ThoriumMod.Items.HealerItems;
 using ThoriumMod.Items.ThrownItems;
 using FargowiltasSouls.Content.Items.Accessories.Enchantments;
+using FargowiltasSouls.Core.AccessoryEffectSystem;
+using static ssm.Thorium.Enchantments.PyromancerEnchant;
+using ssm.Content.SoulToggles;
 
 namespace ssm.Thorium.Enchantments
 {
@@ -18,9 +21,6 @@ namespace ssm.Thorium.Enchantments
         {
             return CSEConfig.Instance.Thorium;
         }
-
-        private readonly Mod thorium = ModLoader.GetMod("ThoriumMod");
-
         public override void SetDefaults()
         {
             Item.width = 20;
@@ -35,17 +35,17 @@ namespace ssm.Thorium.Enchantments
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            ModContent.Find<ModItem>(this.thorium.Name, "LifeBinderMask").UpdateArmorSet(player);
+            player.AddEffect<LifeBinderEffect>(Item);
+        }
 
-            ModContent.Find<ModItem>("ssm", "IridescentEnchant").UpdateAccessory(player, hideVisual);
-
-            ModContent.Find<ModItem>(this.thorium.Name, "DewCollector").UpdateAccessory(player, hideVisual);
+        public class LifeBinderEffect : AccessoryEffect
+        {
+            public override Header ToggleHeader => Header.GetHeader<AlfheimForceHeader>();
+            public override int ToggleItemType => ModContent.ItemType<LifeBinderEnchant>();
         }
 
         public override void AddRecipes()
         {
-
-
             Recipe recipe = this.CreateRecipe();
 
             recipe.AddIngredient(ModContent.ItemType<LifeBinderMask>());

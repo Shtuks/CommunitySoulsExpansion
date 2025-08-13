@@ -12,6 +12,7 @@ using CalamityMod;
 using FargowiltasSouls.Content.Bosses.AbomBoss;
 using CalamityMod.Items.Weapons.Ranged;
 using CalamityHunt.Content.NPCs.Bosses.GoozmaBoss;
+using CalamityMod.Events;
 
 namespace ssm.Calamity
 {
@@ -19,6 +20,9 @@ namespace ssm.Calamity
     [JITWhenModsEnabled(ModCompatibility.Calamity.Name, ModCompatibility.Crossmod.Name)]
     public class CalNPCs : GlobalNPC
     {
+        public override bool InstancePerEntity => true;
+
+        public bool appliedBRScale = false;
         public override bool PreAI(NPC npc)
         {
             if (ModCompatibility.Goozma.Loaded)
@@ -30,6 +34,27 @@ namespace ssm.Calamity
 
                 }
             }
+            if (!appliedBRScale && BossRushEvent.BossRushActive && CSEConfig.Instance.BossRushPostMutant)
+            {
+                if(npc.lifeMax < 10000000)
+                {
+                    npc.lifeMax = npc.lifeMax * 7;
+                }
+                else if (npc.lifeMax > 10000000 && npc.lifeMax < 10000000)
+                {
+                    npc.lifeMax = npc.lifeMax * 5;
+                }
+                else if (npc.lifeMax > 20000000 && npc.lifeMax < 30000000)
+                {
+                    npc.lifeMax = npc.lifeMax * 3;
+                }
+                else if (npc.lifeMax > 30000000 && npc.type != ModContent.NPCType<MutantBoss>())
+                {
+                    npc.lifeMax = npc.lifeMax * 2;
+                }
+                npc.life = npc.lifeMax;
+                appliedBRScale = true;
+            }
             return base.PreAI(npc);
         }
         public override void ModifyIncomingHit(NPC npc, ref NPC.HitModifiers modifiers)
@@ -39,11 +64,11 @@ namespace ssm.Calamity
                 modifiers.FinalDamage *= 0.8f;
             }
         }
+
         public override void SetDefaults(NPC npc)
         {
-            if (npc.type == ModContent.NPCType<MutantBoss>())
-            {
-                npc.DR_NERD(0.05f, 0.1f, 0.15f, 0.5f);
+            if (npc.type == ModContent.NPCType<MutantBoss>()){
+                npc.DR_NERD(0.05f, 0.1f, 0.15f, 0.8f);
             }
 
             if (npc.type == ModContent.NPCType<AbomBoss>())

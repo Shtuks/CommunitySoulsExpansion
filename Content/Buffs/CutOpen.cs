@@ -4,8 +4,9 @@ using Terraria.ModLoader;
 
 namespace ssm.Content.Buffs
 {
-    internal class CutOpen : ModBuff
+    public class CutOpen : ModBuff
     {
+        public override string Texture => "ssm/Content/Buffs/ChtuxlagorInferno";
         public override void SetStaticDefaults()
         {
             Main.debuff[Type] = true;

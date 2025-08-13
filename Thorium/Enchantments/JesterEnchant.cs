@@ -7,6 +7,11 @@ using ThoriumMod.Items.BardItems;
 using ThoriumMod.Items.BossQueenJellyfish;
 using FargowiltasSouls.Content.Items.Accessories.Enchantments;
 using ssm.Core;
+using FargowiltasSouls.Core.AccessoryEffectSystem;
+using static ssm.Thorium.Enchantments.GraniteEnchant;
+using FargowiltasSouls.Core.Toggler.Content;
+using ssm.Content.SoulToggles;
+using ssm.Content.Projectiles;
 
 
 namespace ssm.Thorium.Enchantments
@@ -19,9 +24,6 @@ namespace ssm.Thorium.Enchantments
         {
             return CSEConfig.Instance.Thorium;
         }
-
-        private readonly Mod thorium = ModLoader.GetMod("ThoriumMod");
-
         public override void SetDefaults()
         {
             Item.width = 20;
@@ -36,16 +38,31 @@ namespace ssm.Thorium.Enchantments
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            ThoriumPlayer modPlayer = player.GetModPlayer<ThoriumPlayer>();
-            modPlayer.setJester = true;
-
-            ModContent.Find<ModItem>(this.thorium.Name, "FanLetter").UpdateAccessory(player, hideVisual);
+            player.AddEffect<JesterEffect>(Item);
         }
-
+        public class JesterEffect : AccessoryEffect
+        {
+            public override Header ToggleHeader => Header.GetHeader<SvartalfheimForceHeader>();
+            public override int ToggleItemType => ModContent.ItemType<JesterEnchant>();
+            public override bool MinionEffect => true;
+            public override void PostUpdateMiscEffects(Player player)
+            {
+                if (player.ownedProjectileCounts[ModContent.ProjectileType<MinionBellProj>()] < 1)
+                {
+                    Projectile.NewProjectile(
+                        player.GetSource_FromThis(),
+                        player.Center,
+                        Vector2.Zero,
+                        ModContent.ProjectileType<MinionBellProj>(),
+                        0,
+                        0,
+                        player.whoAmI
+                    );
+                }
+            }
+        }
         public override void AddRecipes()
         {
-
-
             Recipe recipe = this.CreateRecipe();
 
             recipe.AddRecipeGroup("ssm:AnyJesterMask");
