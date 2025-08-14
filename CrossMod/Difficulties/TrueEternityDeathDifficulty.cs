@@ -52,16 +52,16 @@ namespace ssm.CrossMod.Difficulties
             }
         }
 
-        public override LocalizedText ExpandedDescription => Language.GetText("Mods.ssm.TrueEternityDeath.ExpandedDescription");
+        public override LocalizedText ExpandedDescription => Language.GetText("Mods.ssm.TrueEternityDeathDifficulty.ExpandedDescription");
 
         public TrueEternityDeathDifficulty()
         {
             DifficultyScale = 2f;
             Name = Language.GetText("Mods.ssm.TrueEternityDeath.Name");
-            ShortDescription = Language.GetText("Mods.ssm.EternityDeath.ShortDescription");
+            ShortDescription = Language.GetText("Mods.ssm.TrueEternityDeathDifficulty.ShortDescription");
 
-            ActivationTextKey = "Mods.ssm.TrueEternityDeath.Activation";
-            DeactivationTextKey = "Mods.ssm.TrueEternityDeath.Deactivation";
+            ActivationTextKey = "Mods.ssm.TrueEternityDeathDifficulty.Activation";
+            DeactivationTextKey = "Mods.ssm.TrueEternityDeathDifficulty.Deactivation";
 
             ActivationSound = SoundID.Roar with { Pitch = -0.1f };
             ChatTextColor = Color.DeepPink;

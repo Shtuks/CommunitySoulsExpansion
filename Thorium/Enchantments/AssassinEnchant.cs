@@ -45,40 +45,53 @@ namespace ssm.Thorium.Enchantments
             public override Header ToggleHeader => null;
             public override int ToggleItemType => ModContent.ItemType<AssassinEnchant>();
             public override bool ActiveSkill => true;
+
+            public int cd;
+
+            public override void PostUpdateEquips(Player player)
+            {
+                if(cd > 0)
+                {
+                    cd--;
+                }
+            }
             public override void ActiveSkillJustPressed(Player player, bool stunned)
             {
-                Vector2 mousePosition = Main.MouseWorld;
-                NPC targetNpc = null;
-                float searchRadius = 80f; 
-                float minDistance = float.MaxValue;
-
-                for (int i = 0; i < Main.maxNPCs; i++)
+                if (cd < 1)
                 {
-                    NPC npc = Main.npc[i];
-                    if (npc.active && npc.chaseable && !npc.friendly && npc.life > 0 && !npc.dontTakeDamage)
+                    Vector2 mousePosition = Main.MouseWorld;
+                    NPC targetNpc = null;
+                    float searchRadius = 80f;
+                    float minDistance = float.MaxValue;
+
+                    for (int i = 0; i < Main.maxNPCs; i++)
                     {
-                        float distance = Vector2.Distance(npc.Center, mousePosition);
-                        if (distance <= searchRadius && distance < minDistance)
+                        NPC npc = Main.npc[i];
+                        if (npc.active && npc.chaseable && !npc.friendly && npc.life > 0 && !npc.dontTakeDamage)
                         {
-                            minDistance = distance;
-                            targetNpc = npc;
+                            float distance = Vector2.Distance(npc.Center, mousePosition);
+                            if (distance <= searchRadius && distance < minDistance)
+                            {
+                                minDistance = distance;
+                                targetNpc = npc;
+                            }
                         }
                     }
-                }
 
-                if (targetNpc != null)
-                {
-                    Vector2 directionFromPlayer = targetNpc.Center - player.Center;
-                    directionFromPlayer.Normalize();
-                    Vector2 teleportPosition = targetNpc.Center; 
+                    if (targetNpc != null)
+                    {
+                        Vector2 directionFromPlayer = targetNpc.Center - player.Center;
+                        directionFromPlayer.Normalize();
+                        Vector2 teleportPosition = targetNpc.Center;
 
-                    player.Teleport(teleportPosition, TeleportationStyleID.TeleportationPotion);
-                    player.immuneTime += 20;
+                        player.Teleport(teleportPosition, TeleportationStyleID.TeleportationPotion);
+                        player.immuneTime += 20;
 
-                    if (Main.netMode == NetmodeID.MultiplayerClient)
-                        NetMessage.SendData(MessageID.TeleportEntity, -1, -1, null, 0, player.whoAmI, teleportPosition.X, teleportPosition.Y, TeleportationStyleID.TeleportationPotion);
+                        if (Main.netMode == NetmodeID.MultiplayerClient)
+                            NetMessage.SendData(MessageID.TeleportEntity, -1, -1, null, 0, player.whoAmI, teleportPosition.X, teleportPosition.Y, TeleportationStyleID.TeleportationPotion);
 
-                    player.GetModPlayer<CSEThoriumPlayer>().tripleDamageNextHit = true;
+                        player.GetModPlayer<CSEThoriumPlayer>().tripleDamageNextHit = true;
+                    }
                 }
             }
         }

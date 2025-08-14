@@ -77,26 +77,28 @@ namespace ssm.Thorium.Enchantments
             {
                 if (cd < 1)
                 {
-                    player.AddBuff(ModContent.BuffType<PureFlameBuff>(), 3600);
+                    player.AddBuff(ModContent.BuffType<PureFlameBuff>(), 1200);
                     cd += 3600;
                 }
             }
             public override void TryAdditionalAttacks(Player player, int damage, DamageClass damageType)
             {
-                Vector2 center = player.Center;
-                Vector2 vector = Vector2.Normalize(Main.MouseWorld - center);
+                if (player.HasBuff<PureFlameBuff>()) {
+                    Vector2 center = player.Center;
+                    Vector2 vector = Vector2.Normalize(Main.MouseWorld - center);
 
-                if (Main.rand.Next(player.ForceEffect<PyroEffect>() ? 75 : 100) != 0)
-                {
-                    Projectile.NewProjectile(
-                        player.GetSource_FromThis(),
-                        player.Center,
-                        vector.RotatedByRandom(Math.PI) * Main.rand.NextFloat(6f, 10f) * 2,
-                        ModContent.ProjectileType<PureFireballProj>(),
-                        player.ForceEffect<PyroEffect>() ? 1000 : 500,
-                        0f,
-                        player.whoAmI
-                    );
+                    if (Main.rand.Next(20) != 0)
+                    {
+                        Projectile.NewProjectile(
+                            player.GetSource_FromThis(),
+                            player.Center,
+                            vector.RotatedByRandom(Math.PI) * Main.rand.NextFloat(6f, 10f) * 2,
+                            ModContent.ProjectileType<PureFireballProj>(),
+                            player.ForceEffect<PyroEffect>() ? 500 : 250,
+                            0f,
+                            player.whoAmI
+                        );
+                    }
                 }
             }
         }

@@ -25,6 +25,36 @@ Mods: {
 			Cal1: Increased stealth by
 		}
 
+		TrueEternityRevDifficulty: {
+			Name: True-Eternity-Revengeance
+			ShortDescription: "[c/00FFFF:A challenging mode from Fargo's Mods that includes] [c/880808:Revengeance Mode] and [c/FF00B7:True Mode] [c/00FFFF:changes.]"
+			ExpandedDescription:
+				'''
+				Enables [c/00FFFF:Eternity Mode], [c/880808:Revengeance Mode], [c/FF00B7:True Mode] and enables Master Mode drops.
+
+				By default, [c/00FFFF:Eternity Mode] behaviour takes priority. This can be changed in the configs.
+				{$Mods.FargowiltasSouls.UI.ExpandedFeatures}
+				[i:1612][c/00ff00:Recommended to use Fargo's Mutant Mod Debuff Display (in config)]
+				'''
+			Activation: True-Eternity-Revengeance Mode has activated!
+			Deactivation: True-Eternity-Revengeance Mode has deactivated.
+		}
+
+		TrueEternityDeathDifficulty: {
+			Name: True-Eternity-Death
+			ShortDescription: "[c/00FFFF:A challenging mode from Fargo's Mods that includes] [c/880808:Death Mode] and [c/FF00B7:True Mode] [c/00FFFF:changes.]"
+			ExpandedDescription:
+				'''
+				Enables [c/00FFFF:Eternity Mode], [c/880808:Death Mode], [c/FF00B7:True Mode] and enables Master Mode drops.
+
+				Eternity-Death only: Expands behavior for vanilla [c/00FFFF:Eternity Mode] bosses, including parts of Calamity behavior or new Calamity-inspired behavior.
+				{$Mods.FargowiltasSouls.UI.ExpandedFeatures}
+				[i:1612][c/00ff00:Recommended to use Fargo's Mutant Mod Debuff Display (in config)]
+				'''
+			Activation: True-Eternity-Death Mode has activated!
+			Deactivation: True-Eternity-Death Mode has deactivated.
+		}
+
 		StatSheet: {
 			Accuracy: Accuracy
 			BossDamage: Boss Damage
@@ -1809,7 +1839,7 @@ Mods: {
 				Tooltip:
 					'''
 					'This strange wood comes from a far away land'
-					Rarely weapom projectiles will be accompanied with a vile arrow that pierces and ignores immunity frames
+					Rarely weapon projectiles will be accompanied with a vile arrow that pierces and ignores immunity frames
 					'''
 			}
 
@@ -3998,6 +4028,7 @@ Mods: {
 			MinionBellProj.DisplayName: Minion Bell Proj
 			IllumiteAuraProj.DisplayName: Illumite Aura Proj
 			BellMinionPulse.DisplayName: Bell Minion Pulse
+			MutantYap.DisplayName: Mutant Yap
 		}
 
 		Bestiary: {
@@ -4185,6 +4216,11 @@ Mods: {
 
 				HWJBR: {
 					Label: H W J B R
+					Tooltip: ""
+				}
+
+				MutantWontShutUp: {
+					Label: Mutant Wont Shut Up
 					Tooltip: ""
 				}
 			}

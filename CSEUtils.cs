@@ -5,6 +5,7 @@ using Microsoft.Xna.Framework;
 using Terraria.Localization;
 using Terraria.DataStructures;
 using Terraria.ID;
+using System.Collections.Generic;
 
 namespace ssm
 {
@@ -25,6 +26,36 @@ namespace ssm
             return distance;
         }
 
+        public static Point FindTileOrigin(int x, int y)
+        {
+            int originX = x;
+            int originY = y;
+            int maxSteps = 20; 
+
+            for (int i = 0; i < maxSteps; i++)
+            {
+                Tile tile = Main.tile[originX, originY];
+                if (tile == null || !tile.HasTile) break;
+
+                bool moved = false;
+
+                if (tile.TileFrameX != 0)
+                {
+                    originX--;
+                    moved = true;
+                }
+
+                if (tile.TileFrameY != 0)
+                {
+                    originY--;
+                    moved = true;
+                }
+
+                if (!moved) break;
+            }
+
+            return new Point(originX, originY);
+        }
         public static string GetItemInternalName(Item item)
         {
             if(item.ModItem != null)
@@ -46,7 +77,48 @@ namespace ssm
 
             return distance;
         }
+        public static Point? FindNearestMultitile(Vector2 searchPosition, int tileType, int maxDistance = 100)
+        {
+            Point startTile = searchPosition.ToTileCoordinates();
+            Point? nearestStart = null;
+            float minDistanceSq = float.MaxValue;
 
+            int left = Math.Max(0, startTile.X - maxDistance);
+            int right = Math.Min(Main.maxTilesX - 1, startTile.X + maxDistance);
+            int top = Math.Max(0, startTile.Y - maxDistance);
+            int bottom = Math.Min(Main.maxTilesY - 1, startTile.Y + maxDistance);
+
+            HashSet<Point> processedStarts = new HashSet<Point>();
+
+            for (int x = left; x <= right; x++)
+            {
+                for (int y = top; y <= bottom; y++)
+                {
+                    Tile tile = Main.tile[x, y];
+                    if (tile == null || !tile.HasTile || tile.TileType != tileType)
+                        continue;
+
+                    Point start = FindTileOrigin(x, y);
+
+                    if (!processedStarts.Add(start))
+                        continue;
+
+                    Tile originTile = Main.tile[start.X, start.Y];
+                    if (originTile == null || !originTile.HasTile || originTile.TileType != tileType)
+                        continue;
+
+                    Vector2 startWorldPos = new Vector2(start.X * 16f + 8f, start.Y * 16f + 8f);
+                    float distanceSq = Vector2.DistanceSquared(searchPosition, startWorldPos);
+
+                    if (distanceSq < minDistanceSq)
+                    {
+                        minDistanceSq = distanceSq;
+                        nearestStart = start;
+                    }
+                }
+            }
+            return nearestStart;
+        }
         public static void AddToNextEmptySlot(ref int startIndex, Item[] items, int itemType, int price)
         {
             for (int i = startIndex; i < items.Length; i++)

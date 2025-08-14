@@ -21,6 +21,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Terraria.GameContent;
 using ssm.Content.Items.Materials;
 using FargowiltasSouls.Content.Items.Materials;
+using ssm.Content.Projectiles;
 
 namespace ssm
 {
@@ -95,6 +96,10 @@ namespace ssm
             {
                 dukeEX = true;
                 EModeGlobalNPC.spawnFishronEX = false;
+            }
+            if (npc.type == ModContent.NPCType<MutantBoss>() && !Main.zenithWorld && CSEConfig.Instance.MutantWontShutUp)
+            {
+                Projectile.NewProjectile(npc.GetSource_FromThis(), npc.Center, Vector2.Zero, ModContent.ProjectileType<MutantYap>(), 0, 0, -1, npc.whoAmI);
             }
         }
         public override void SetDefaults(NPC npc)

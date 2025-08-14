@@ -9,7 +9,16 @@ using CalamityMod.NPCs.Providence;
 using SacredTools.NPCs.Boss.Erazor;
 using CalamityMod.NPCs.Polterghast;
 using CalamityMod.NPCs.ExoMechs;
-using FargowiltasSouls.Content.Items.Armor;
+using CalamityMod.NPCs.SupremeCalamitas;
+using SacredTools.NPCs.Boss.Obelisk.Nihilus;
+using Terraria;
+using Microsoft.Xna.Framework;
+using SacredTools.Common.Systems;
+using SacredTools.Content.Tiles.Obelisks;
+using Terraria.Audio;
+using NoxusBoss.Content.NPCs.Bosses.Avatar.FirstPhaseForm;
+using SacredTools.NPCs.Cinematic.Nihilus;
+using Redemption.NPCs.Bosses.PatientZero;
 
 namespace ssm.SoA
 {
@@ -17,6 +26,17 @@ namespace ssm.SoA
     [JITWhenModsEnabled(ModCompatibility.SacredTools.Name, ModCompatibility.Calamity.Name)]
     public class SoABossRush : ModSystem
     {
+        internal static void SpawnTP()
+        {
+            ActiveEntityIterator<Player>.Enumerator enumerator = Main.ActivePlayers.GetEnumerator();
+            while (enumerator.MoveNext())
+            {
+                Player player = enumerator.Current;
+                player.Spawn(PlayerSpawnContext.RecallFromItem);
+                SoundStyle style = TeleportSound with { Volume = 1.6f };
+                SoundEngine.PlaySound(in style, player.Center);
+            }
+        }
         public override bool IsLoadingEnabled(Mod mod)
         {
             return CSEConfig.Instance.SoABR;
@@ -44,7 +64,32 @@ namespace ssm.SoA
                 {
                     Bosses.Insert(i, new Boss(ModContent.NPCType<ErazorBoss>()));
                 }
+                //mweh
+                if (Bosses[i].EntityID == ModContent.NPCType<SupremeCalamitas>())
+                {
+                    Bosses.Insert(i+1, new Boss(ModContent.NPCType<Nihilus>(), TimeChangeContext.Night, type =>
+                    {
+                        int num8 = Player.FindClosest(new Vector2(Main.maxTilesX, Main.maxTilesY) * 16f * 0.5f, 1, 1);
+                        int tileType = ModContent.TileType<NihilusObeliskTile>();
+                        Point? obeliskOrigin = CSEUtils.FindNearestMultitile(Main.LocalPlayer.Center, tileType, 2000);
+
+                        num8.ToPlayer().Teleport(obeliskOrigin.Value.ToVector2());
+
+                        Point origin = new Point(obeliskOrigin.Value.X + 1, obeliskOrigin.Value.Y + 6);
+
+                        ArenaSystem.ActivateArena(Main.LocalPlayer.whoAmI, ArenaBoss.Nihilus, origin, new Point(-200, 0));
+                    }, -1, false, 0, [ModContent.NPCType<NihilusAbyssRock>(), ModContent.NPCType<Nihilus2Hand>(), ModContent.NPCType<NihilusAwaken>(), ModContent.NPCType<NihilusAwakenSpirit>(), 
+                        ModContent.NPCType<NihilusBarricade>(), ModContent.NPCType<NihilusChainBomb>(), ModContent.NPCType<NihilusChainBombVolatile>(), ModContent.NPCType<NihilusCrystal>(), 
+                        ModContent.NPCType<NihilusCrystalArrive>(), ModContent.NPCType<NihilusHandBeam>(), ModContent.NPCType<NihilusLantern>(), ModContent.NPCType<NihilusLantern>(), 
+                        ModContent.NPCType<NihilusLanternBig>(), ModContent.NPCType<NihilusLanternRisen>(), ModContent.NPCType<NihilusAgateGrab>()]));
+                }
             }
+
+            BossIDsAfterDeath.Add(ModContent.NPCType<Nihilus>(), [ModContent.NPCType<Nihilus2>()]);
+            BossDeathEffects.Add(ModContent.NPCType<Nihilus2>(), delegate
+            {
+                SpawnTP();
+            });
         }
     }
 }

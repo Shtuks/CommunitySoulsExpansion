@@ -15,6 +15,10 @@ namespace ssm
         [DefaultValue(true)]
         public bool WorldEnterMessage { get; set; }
 
+        [BackgroundColor(60, 200, 60, 192)]
+        [DefaultValue(true)]
+        public bool MutantWontShutUp { get; set; }
+
         [ReloadRequired]
         [BackgroundColor(60, 200, 60, 192)]
         [DefaultValue(false)]

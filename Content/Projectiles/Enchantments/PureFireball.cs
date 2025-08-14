@@ -26,8 +26,12 @@ namespace ssm.Content.Projectiles.Enchantments
         public override void AI()
         {
             Projectile.rotation = Projectile.velocity.ToRotation() + MathHelper.PiOver2;
+            Projectile.ai[2]++;
 
-            CSEUtils.HomeInOnNPC(Projectile, true, 500, 10, 0);
+            if (Projectile.ai[2] > 60)
+            {
+                CSEUtils.HomeInOnNPC(Projectile, true, 500, 10, 0);
+            }
 
             if (Main.rand.NextBool(3))
             {
