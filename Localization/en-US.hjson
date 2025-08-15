@@ -649,7 +649,8 @@ Mods: {
 			AddedEffects: {
 				ThoriumWorldshaper: Effects of Geode Enchantment
 				ThoriumBerserker: Effects of Blizzard Pouch
-				ThoriumColossus: Effects of Blast Shield and Terrarium Defender
+				ThoriumColossus2: Effects of Life Quartz Shield and Terrarium Defender
+				ThoriumColossus3: Effects of Life Quartz Shield, Blast Shield and Terrarium Defender
 				ThoriumSupersonic: Effects of The Omega Core
 				CalDefender: Effects of Asgard's Valor
 				ThoriumThrower: Effects of Pirate's Purse
@@ -661,7 +662,7 @@ Mods: {
 					Increase inspiration by 20
 					20% increased throwing velocity
 					'''
-				SoARampart: Effects of Celestial Shield and Shield of Reflections
+				SoARampart: Effects of Shield of Reflections
 				SoAColossus: Effects of Nightmare Blindfold, Shield of Reflections and Royal Guard
 				SoAArchWizard: Effects of Nuba's Blessing, Stone Of Resonance
 				SoABerserker: Effects of Flora Fist
@@ -680,7 +681,9 @@ Mods: {
 				ClamColossus: Effects of Skull of the Blood God
 				RedSupersonic: Effects of Infected Thornshield
 				HWJSupersonic: Effects of Edgewalker and Hour Hand
-				HWJColossus: Effects of Moonwalk and Master Shield
+				HWJBlessing: Effects of Ancient Blessing
+				HWJColossus: Effects of Moonwalk, Vanguard Breastpiece and Master Shield
+				HWJRampart: Effects of Vanguard Breastpiece
 				RedColossus: Effects of H.E.V Suit
 				Aeolus: Effects of Aeolus Boots
 			}
@@ -3662,6 +3665,9 @@ Mods: {
 
 		Toggler: {
 			//thorium
+			FlightEffect: Feathers
+			DefenderEffect: Terrarium Defender
+			LifeQuartzEffect: Life Quartz Shield
 			EbonEffect: Ebon Tiles Conversion
 			GeodeEffect: Double Ore
 			NobbleEffect: Rich Buff When Picking Coins
@@ -3764,6 +3770,7 @@ Mods: {
 			StarstreamVeilEffect: Starstream Veil
 			DreadflameEmblemEffect: Dreadflame Emblem
 			LunarRingEffect: Celestial Ring
+			ReflectionsEffect: Reflections Shield
 			//cal
 			CalamitySoulHeader: Godseeker Soul
 			ShatteredCommunityEffect: Shattered Community
@@ -3787,6 +3794,7 @@ Mods: {
 			DraculasCharmEffect: Dracula's Charm
 			EidolonAmuletEffect: Eidolon Amulet
 			//other
+			EternalMonolithEffect: Mutant Sky
 			GaiaEffect: Attacking mode
 			NekomiEffect: Deviantt
 			PhantaplazmalEffect: Mutant armor set
@@ -3875,7 +3883,8 @@ Mods: {
 			OneGiantLeapEffect: Moonwalk
 			HourHandEffect: Hour Hand
 			EdgewalkerEffect: Edgewalker
-			//gunrightsmod:
+			MasterShieldEffect: Master Shield
+			//gunrightsmod
 			AstatineEffect: Astatine Explosions
 			UraniumEffect: Radioactive Aura
 			RadioactiveForceHeader: Force of Radioactivity

@@ -82,6 +82,13 @@ namespace ssm.CrossMod.SoulsRecipes
                     tooltips.Insert(5, new TooltipLine(Mod, "mayo2", Language.GetTextValue(key + "ThoriumSupersonic")));
                 }
             }
+            if (ModCompatibility.Homeward.Loaded)
+            {
+                if (item.type == ModCompatibility.Homeward.Mod.Find<ModItem>("Horizon").Type && !item.social)
+                {
+                    tooltips.Insert(5, new TooltipLine(Mod, "mayo3", Language.GetTextValue(key + "Aeolus")));
+                }
+            }
         }
         [ExtendsFromMod(ModCompatibility.Thorium.Name)]
         public class TheOmegaCoreEffect : AccessoryEffect

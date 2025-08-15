@@ -85,7 +85,7 @@ namespace ssm
                 entity.defense = 20;
             }
 
-            if(ModCompatibility.Calamity.Loaded || ModCompatibility.SacredTools.Loaded)
+            if (ModCompatibility.Calamity.Loaded || ModCompatibility.SacredTools.Loaded)
             {
                 if (entity.type == ModContent.ItemType<NukeFishron>())
                 {
@@ -124,6 +124,12 @@ namespace ssm
             if (Item.type == ModContent.ItemType<ArchWizardsSoul>())
             {
                 player.GetDamage<RangedDamageClass>() += 0.03f;
+            }
+
+            if (ModCompatibility.Calamity.Loaded && Item.type == ModContent.ItemType<UniverseSoul>())
+            {
+                player.GetDamage<GenericDamageClass>() += 0.1f;
+                player.GetCritChance<GenericDamageClass>() += 5f;
             }
 
             //SoU
@@ -208,6 +214,18 @@ namespace ssm
                 for (int i = 0; i < tooltips.Count; i++)
                 {
                     tooltips[i].Text = Regex.Replace(tooltips[i].Text, "22%", "25%", RegexOptions.IgnoreCase);
+                }
+            }
+
+            if (item.type == ModContent.ItemType<UniverseSoul>())
+            {
+                for (int i = 0; i < tooltips.Count; i++)
+                {
+                    if (ModCompatibility.Calamity.Loaded)
+                    {
+                        tooltips[i].Text = Regex.Replace(tooltips[i].Text, "50%", "60%", RegexOptions.IgnoreCase);
+                        tooltips[i].Text = Regex.Replace(tooltips[i].Text, "25%", "30%", RegexOptions.IgnoreCase);
+                    }
                 }
             }
             //if (item.type == ModContent.ItemType<UniverseSoul>() && ModCompatibility.SacredTools.Loaded && ModCompatibility.Thorium.Loaded && ModCompatibility.Calamity.Loaded)

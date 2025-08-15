@@ -108,7 +108,7 @@ namespace ssm.CrossMod.SoulsRecipes
             }
             if (ModCompatibility.Calamity.Loaded)
             {
-                if (item.type == ModCompatibility.Calamity.Mod.Find<ModItem>("ElementalQuiver").Type)
+                if (item.type == ModCompatibility.Calamity.Mod.Find<ModItem>("ElementalQuiver").Type && !item.social)
                 {
                     if (ModCompatibility.Homeward.Loaded)
                     {

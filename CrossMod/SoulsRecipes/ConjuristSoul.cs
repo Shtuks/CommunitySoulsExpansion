@@ -126,7 +126,7 @@ namespace ssm.CrossMod.SoulsRecipes
             {
                 for (int i = 0; i < tooltips.Count; i++)
                 {
-                    if (item.type == ModCompatibility.Calamity.Mod.Find<ModItem>("CommandersGaunlet").Type && !item.social)
+                    if (item.type == ModCompatibility.Homeward.Mod.Find<ModItem>("CommandersGaunlet").Type && !item.social)
                     {
                         tooltips[i].Text = Regex.Replace(tooltips[i].Text, "melee", "whip");
                     }

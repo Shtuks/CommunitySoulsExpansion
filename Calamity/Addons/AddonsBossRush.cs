@@ -8,24 +8,24 @@ using CalamityMod.NPCs.ExoMechs;
 
 namespace ssm.Calamity.Addons
 {
-    [ExtendsFromMod(ModCompatibility.Catalyst.Name, ModCompatibility.Calamity.Name)]
-    [JITWhenModsEnabled(ModCompatibility.Catalyst.Name, ModCompatibility.Calamity.Name)]
-    public class CatalystBossRush : ModSystem
-    {
-        public override void PostSetupContent()
-        {
-            if (!ModCompatibility.IEoR.Loaded)
-            {
-                for (int i = Bosses.Count - 1; i >= 0; i--)
-                {
-                    if (Bosses[i].EntityID == ModContent.NPCType<Providence>() && !ModCompatibility.IEoR.Loaded)
-                    {
-                        Bosses.Insert(i, new Boss(ModContent.NPCType<Astrageldon>(), TimeChangeContext.Night));
-                    }
-                }
-            }
-        }
-    }
+    //[ExtendsFromMod(ModCompatibility.Catalyst.Name, ModCompatibility.Calamity.Name)]
+    //[JITWhenModsEnabled(ModCompatibility.Catalyst.Name, ModCompatibility.Calamity.Name)]
+    //public class CatalystBossRush : ModSystem
+    //{
+    //    public override void PostSetupContent()
+    //    {
+    //        if (!ModCompatibility.IEoR.Loaded)
+    //        {
+    //            for (int i = Bosses.Count - 1; i >= 0; i--)
+    //            {
+    //                if (Bosses[i].EntityID == ModContent.NPCType<Providence>() && !ModCompatibility.IEoR.Loaded)
+    //                {
+    //                    Bosses.Insert(i, new Boss(ModContent.NPCType<Astrageldon>(), TimeChangeContext.Night));
+    //                }
+    //            }
+    //        }
+    //    }
+    //}
     [ExtendsFromMod(ModCompatibility.WrathoftheGods.Name, ModCompatibility.Calamity.Name)]
     [JITWhenModsEnabled(ModCompatibility.WrathoftheGods.Name, ModCompatibility.Calamity.Name)]
     public class WotGBossRush : ModSystem
