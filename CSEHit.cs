@@ -1,4 +1,4 @@
-using Terraria.ModLoader;
+ using Terraria.ModLoader;
 using Terraria;
 using FargowiltasSouls.Content.Buffs.Boss;
 using FargowiltasSouls.Content.Buffs.Souls;
@@ -42,6 +42,14 @@ namespace ssm
                 Player.statLife -= Player.statLife / 5;
             }
         }
+
+        public override void OnHitByProjectile(Projectile proj, Player.HurtInfo hurtInfo)
+        {
+            if (Player.HasBuff<MutantDesperationBuff>() && (proj.type == ModContent.ProjectileType<MutantGiantDeathray2>() || proj.type == ModContent.ProjectileType<MutantBomb>()))
+            {
+                Player.AddBuff(ModContent.BuffType<TimeFrozenBuff>(), 180);
+            }
+        }
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
             if (Player.CSE().equippedPhantasmalEnchantment)
@@ -78,13 +86,13 @@ namespace ssm
                 //modifiers.SetMaxDamage(50000);
             }
 
-            if(NPC.AnyNPCs(ModContent.NPCType<MutantEX>()) || NPC.AnyNPCs(ModContent.NPCType<MutantBoss>()))
-            {
-                if(npc.type != ModContent.NPCType<MutantEX>() && npc.type != ModContent.NPCType<MutantBoss>() && npc.type != NPCID.DukeFishron)
-                {
-                    modifiers.FinalDamage *= 10;
-                }
-            }
+            //if(NPC.AnyNPCs(ModContent.NPCType<MutantEX>()) || NPC.AnyNPCs(ModContent.NPCType<MutantBoss>()))
+            //{
+            //    if(npc.type != ModContent.NPCType<MutantEX>() && npc.type != ModContent.NPCType<MutantBoss>() && npc.type != NPCID.DukeFishron)
+            //    {
+            //        modifiers.FinalDamage *= 10;
+            //    }
+            //}
         }
         public override void ModifyHitByItem(NPC npc, Player player, Item item, ref NPC.HitModifiers modifiers)
         {

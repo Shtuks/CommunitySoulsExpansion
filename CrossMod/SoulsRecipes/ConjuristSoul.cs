@@ -10,6 +10,9 @@ using FargowiltasSouls.Content.Items.Accessories.Essences;
 using SacredTools.Content.Items.Accessories;
 using System.Collections.Generic;
 using Terraria.Localization;
+using static ssm.CrossMod.SoulsRecipes.BerserkerSoulEffects;
+using ContinentOfJourney.Items.Accessories.SummonerRings;
+using System.Text.RegularExpressions;
 
 namespace ssm.CrossMod.SoulsRecipes
 {
@@ -24,7 +27,7 @@ namespace ssm.CrossMod.SoulsRecipes
                 if (recipe.HasResult(ModContent.ItemType<ConjuristsSoul>()))
                 {
                     if (ModCompatibility.SacredTools.Loaded) { recipe.AddIngredient(ModCompatibility.SacredTools.Mod.Find<ModItem>("StardustSigil"), 1); recipe.AddIngredient(ModCompatibility.SacredTools.Mod.Find<ModItem>("StarstreamVeil"), 1); recipe.RemoveIngredient(ItemID.MonkBelt); recipe.RemoveIngredient(ItemID.SquireShield); recipe.RemoveIngredient(ItemID.HuntressBuckler); recipe.RemoveIngredient(ItemID.ApprenticeScarf); }
-                    if (ModCompatibility.Homeward.Loaded) { recipe.AddIngredient(ModCompatibility.Homeward.Mod.Find<ModItem>("IncitingIncident"), 1); recipe.AddIngredient(ModCompatibility.Homeward.Mod.Find<ModItem>("DivineNecklace"), 1);}
+                    if (ModCompatibility.Homeward.Loaded) { recipe.AddIngredient(ModCompatibility.Homeward.Mod.Find<ModItem>("CommandersGaunlet"), 1); recipe.AddIngredient(ModCompatibility.Homeward.Mod.Find<ModItem>("IncitingIncident"), 1); recipe.AddIngredient(ModCompatibility.Homeward.Mod.Find<ModItem>("ConstructionPDA"), 1); }
                     if (ModCompatibility.Redemption.Loaded) { recipe.AddIngredient(ModCompatibility.Redemption.Mod.Find<ModItem>("PortableHoloProjector"), 1); recipe.AddIngredient(ModCompatibility.Redemption.Mod.Find<ModItem>("CruxCardMossyGoliath"), 1); recipe.AddIngredient(ModCompatibility.Redemption.Mod.Find<ModItem>("MutagenSummon"), 1); recipe.RemoveIngredient(ModContent.ItemType<OccultistsEssence>()); }
                     if (ModCompatibility.Catalyst.Loaded) { recipe.AddIngredient(ModCompatibility.Catalyst.Mod.Find<ModItem>("UnrelentingTorment"), 1);}
                 }
@@ -39,7 +42,20 @@ namespace ssm.CrossMod.SoulsRecipes
                                 recipe.AddIngredient(ModCompatibility.Thorium.Mod.Find<ModItem>("TerrariumCore"), 3);
                             }
                         }
+                        if (ModCompatibility.Homeward.Loaded)
+                        {
+                            recipe.AddIngredient(ModCompatibility.Homeward.Mod.Find<ModItem>("DivineNecklace"), 1);
+                        }
                         //if (ModCompatibility.SacredTools.Loaded) { recipe.AddIngredient(ModCompatibility.SacredTools.Mod.Find<ModItem>("LuminousEnergy"), 5); }
+                    }
+                }
+                if (ModCompatibility.Homeward.Loaded)
+                {
+                    if (recipe.HasResult(ModCompatibility.Homeward.Mod.Find<ModItem>("CommandersGaunlet")))
+                    {
+                        recipe.AddIngredient(ItemID.BerserkerGlove, 1);
+                        recipe.RemoveIngredient(ItemID.PowerGlove);
+                        if (ModCompatibility.Calamity.Loaded) { recipe.AddIngredient(ModCompatibility.Calamity.Mod.Find<ModItem>("LifeAlloy"), 3); }
                     }
                 }
                 if (ModCompatibility.SacredTools.Loaded)
@@ -63,11 +79,22 @@ namespace ssm.CrossMod.SoulsRecipes
             {
                 if (ModCompatibility.Homeward.Loaded)
                 {
+                    player.AddEffect<CommandersGauntletEffect>(Item);
                     player.AddEffect<DivineNecklaceEffect>(Item);
                 }
                 if (ModCompatibility.SacredTools.Loaded)
                 {
                     player.AddEffect<StarstreamVeilEffect>(Item);
+                }
+            }
+            if (ModCompatibility.Calamity.Loaded)
+            {
+                if (Item.type == ModCompatibility.Calamity.Mod.Find<ModItem>("Nucleogenesis").Type)
+                {
+                    if (ModCompatibility.Homeward.Loaded)
+                    {
+                        player.AddEffect<DivineNecklaceEffect>(Item);
+                    }
                 }
             }
         }
@@ -78,6 +105,14 @@ namespace ssm.CrossMod.SoulsRecipes
 
             if (item.type == ModContent.ItemType<ConjuristsSoul>() && !item.social)
             {
+                for (int i = 0; i < tooltips.Count; i++)
+                {
+                    tooltips[i].Text = Regex.Replace(tooltips[i].Text, "3", "4");
+                }
+                for (int i = 0; i < tooltips.Count; i++)
+                {
+                    tooltips[i].Text = Regex.Replace(tooltips[i].Text, "1", "3");
+                }
                 if (ModCompatibility.Homeward.Loaded)
                 {
                     tooltips.Insert(5, new TooltipLine(Mod, "mayo1", Language.GetTextValue(key + "HWJConjurist")));
@@ -85,6 +120,16 @@ namespace ssm.CrossMod.SoulsRecipes
                 if (ModCompatibility.SacredTools.Loaded)
                 {
                     tooltips.Insert(5, new TooltipLine(Mod, "mayo2", Language.GetTextValue(key + "SoAConjurist")));
+                }
+            }
+            if (ModCompatibility.Homeward.Loaded)
+            {
+                for (int i = 0; i < tooltips.Count; i++)
+                {
+                    if (item.type == ModCompatibility.Calamity.Mod.Find<ModItem>("CommandersGaunlet").Type && !item.social)
+                    {
+                        tooltips[i].Text = Regex.Replace(tooltips[i].Text, "melee", "whip");
+                    }
                 }
             }
         }
@@ -108,6 +153,17 @@ namespace ssm.CrossMod.SoulsRecipes
             public override void PostUpdateEquips(Player player)
             {
                 ModCompatibility.SacredTools.Mod.Find<ModItem>("StarstreamVeil").UpdateAccessory(player, true);
+            }
+        }
+        [ExtendsFromMod(ModCompatibility.Homeward.Name)]
+        public class CommandersGauntletEffect : AccessoryEffect
+        {
+            public override Header ToggleHeader => Header.GetHeader<UniverseHeader>();
+            public override int ToggleItemType => ModContent.ItemType<CommandersGaunlet>();
+
+            public override void PostUpdateEquips(Player player)
+            {
+                ModCompatibility.Homeward.Mod.Find<ModItem>("CommandersGaunlet").UpdateAccessory(player, true);
             }
         }
     }

@@ -1,6 +1,7 @@
 ﻿using FargowiltasSouls;
 using SacredTools.Common.Types;
 using SacredTools.Content.Items.Accessories;
+using SacredTools.Content.Items.Armor.Asthraltite;
 using SacredTools.Content.Items.Armor.Lunar.Nebula;
 using SacredTools.Content.Items.Armor.Lunar.Vortex;
 using SacredTools.Content.Items.Potions.Recovery;
@@ -12,7 +13,6 @@ using System.Collections.Generic;
 using Terraria;
 using Terraria.Localization;
 using Terraria.ModLoader;
-using ThoriumMod.Items.Terrarium;
 
 namespace ssm.SoA
 {
@@ -21,7 +21,7 @@ namespace ssm.SoA
     public class SoAItem : GlobalItem
     {
         public override bool InstancePerEntity => true;
-        
+
         public override void SetDefaults(Item entity)
         {
             if (entity.type == ModContent.ItemType<FlamesOfCondemnation>())
@@ -59,6 +59,17 @@ namespace ssm.SoA
             if (entity.type == ModContent.ItemType<VortexCommanderHat>())
             {
                 entity.defense = ModCompatibility.Calamity.Loaded ? 33 : 22;
+            }
+            if (entity.type == ModContent.ItemType<AsthralLegs>())
+            {
+                entity.defense = 40;
+            }
+            if (!ModCompatibility.Calamity.Loaded)
+            {
+                if (CSESets.GetValue(CSESets.Items.AbomTierFargoWeapon, entity.type))
+                {
+                    entity.damage = entity.damage * 2;
+                }
             }
         }
 
@@ -111,6 +122,10 @@ namespace ssm.SoA
             if (item.type == ModContent.ItemType<Eschaton>() || item.type == ModContent.ItemType<Desperatio>() || item.type == ModContent.ItemType<Tenebris>() || item.type == ModContent.ItemType<Malice>() || item.type == ModContent.ItemType<FlamesOfCondemnation>())
             {
                 tooltips.Add(new TooltipLine(Mod, "rebalance", $"{Language.GetTextValue("Mods.ssm.Balance.Buff")} {Language.GetTextValue("Mods.ssm.Balance.DamageUP")} {n}%"));
+            }
+            if (CSESets.GetValue(CSESets.Items.AbomTierFargoWeapon, item.type))
+            {
+                tooltips.Add(new TooltipLine(Mod, "buff", $"{Language.GetTextValue("Mods.ssm.Balance.Buff")} {Language.GetTextValue("Mods.ssm.Balance.DamageUP")} 100%"));
             }
         }
     }

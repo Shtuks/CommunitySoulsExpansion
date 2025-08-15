@@ -24,7 +24,7 @@ namespace ssm.CrossMod.SoulsRecipes
                 if (recipe.HasResult(ModContent.ItemType<SupersonicSoul>()))
                 {
                     if (ModCompatibility.SacredTools.Loaded) { recipe.AddIngredient(ModCompatibility.SacredTools.Mod.Find<ModItem>("MilinticaDash"), 1); recipe.AddIngredient(ModCompatibility.SacredTools.Mod.Find<ModItem>("HeartOfThePlough"), 1); }
-                    if (ModCompatibility.Homeward.Loaded) { recipe.AddIngredient(ModCompatibility.Homeward.Mod.Find<ModItem>("ArrowCase"), 1); recipe.AddIngredient(ModCompatibility.Homeward.Mod.Find<ModItem>("Edgewalker"), 1); }
+                    if (ModCompatibility.Homeward.Loaded) { recipe.AddIngredient(ModCompatibility.Homeward.Mod.Find<ModItem>("HourHand"), 1); recipe.AddIngredient(ModCompatibility.Homeward.Mod.Find<ModItem>("Edgewalker"), 1); }
                     if (ModCompatibility.Redemption.Loaded) { recipe.AddIngredient(ModCompatibility.Redemption.Mod.Find<ModItem>("InfectionShield"), 1); }
                 }
             }

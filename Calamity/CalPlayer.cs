@@ -6,8 +6,6 @@ using FargowiltasSouls;
 using FargowiltasSouls.Content.Bosses.MutantBoss;
 using FargowiltasSouls.Content.Buffs.Boss;
 using FargowiltasSouls.Core.Globals;
-using ssm.Content.Buffs;
-
 using ssm.Core;
 using ssm.Items;
 using Terraria;
@@ -54,11 +52,6 @@ namespace ssm.Calamity
             if (DownedBossSystem.downedExoMechs && !FargoSoulsUtil.BossIsAlive(ref EModeGlobalNPC.mutantBoss, ModContent.NPCType<MutantBoss>()))
             {
                 Main.LocalPlayer.buffImmune[ModContent.BuffType<MutantFangBuff>()] = true;
-            }
-            if (Player.HasBuff<NihilityPresenceBuff>())
-            {
-                ModLoader.GetMod("CalamityMod").TryFind("Enraged", out ModBuff enrage);
-                Main.LocalPlayer.buffImmune[enrage.Type] = true;
             }
         }
     }

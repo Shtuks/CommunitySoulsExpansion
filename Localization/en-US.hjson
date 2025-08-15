@@ -670,10 +670,10 @@ Mods: {
 				SoAWorldshaper: Effects of Rage Suppressor, Celestial ring
 				SoAConjurist: Effects of Starstream Veil
 				SoAThrower: Effects of Dreadflame Emblem
-				HWJBerserker: Effects of Philosopher's Stone, Godly Touch and Gauntlet of Commander
+				HWJBerserker: Effects of Philosopher's Stone and Godly Touch
 				HWJSniper: Effects of Crossbow Scope, Walnut On Fire and The Batter
 				HWJStarSniper: Effects of Star Quiver
-				HWJConjurist: Effects of Divine Hairpin
+				HWJConjurist: Effects of Divine Hairpin and Gauntlet of Commander
 				HWJArchWizard: Effects of Rejuvenated Cross and Erudite Bookmark
 				ClamThrower: Effects of Dracula's Charm
 				ClamWorldshaper: Effects of Red Dice
@@ -725,7 +725,7 @@ Mods: {
 			}
 
 			PhantaplazmalEnchant: {
-				DisplayName: Phantasmal Enchantment
+				DisplayName: True Mutant Enchantment
 				Tooltip:
 					'''
 					[i:FargowiltasSouls/MutantEye] 25% increased graze bonus damage cap
@@ -894,7 +894,7 @@ Mods: {
 			}
 
 			CosmicCommanderEnchant: {
-				DisplayName: Cosmic Commander Enchantment
+				DisplayName: Soran Forces Enchantment
 				Tooltip:
 					'''
 					'Make Soran great again'
@@ -1028,7 +1028,7 @@ Mods: {
 			}
 
 			StellarPriestEnchant: {
-				DisplayName: Stellar Priest Enchantment
+				DisplayName: Spirit Medium Enchantment
 				Tooltip:
 					'''
 					'Stand proud'
@@ -1219,9 +1219,9 @@ Mods: {
 				DisplayName: Assassin Enchantment
 				Tooltip:
 					'''
-					'Blacken the skies and cull the weak'
 					Pressing the special ability key while hovering your mouse over an enemy will teleport you behind it
 					On next strike you will deal 300% damage and give enemies the confused debuff
+					'Blacken the skies and cull the weak'
 					'''
 			}
 
@@ -1229,9 +1229,8 @@ Mods: {
 				DisplayName: Biotech Enchantment
 				Tooltip:
 					'''
+					Radiant damage has a 20% chance to inflict the Cut Open debuff, causing enemies to take damage when they move
 					'Anyways, that's how I lost my medical license'
-					A biotech probe will assist you in healing your allies
-					Heals ally life equal to your bonus healing
 					'''
 			}
 
@@ -1239,9 +1238,9 @@ Mods: {
 				DisplayName: Bronze Enchantment
 				Tooltip:
 					'''
-					'You have the favor of Zeus'
 					While flying with wings you can rain down swords underneath you
 					Swords inflict Petrify debuff for 2 seconds     
+					'You have the favor of Zeus'
 					'''
 			}
 

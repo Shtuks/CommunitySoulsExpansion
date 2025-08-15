@@ -65,24 +65,24 @@ namespace ssm.SoA
                     Bosses.Insert(i, new Boss(ModContent.NPCType<ErazorBoss>()));
                 }
                 //mweh
-                if (Bosses[i].EntityID == ModContent.NPCType<SupremeCalamitas>())
-                {
-                    Bosses.Insert(i+1, new Boss(ModContent.NPCType<Nihilus>(), TimeChangeContext.Night, type =>
-                    {
-                        int num8 = Player.FindClosest(new Vector2(Main.maxTilesX, Main.maxTilesY) * 16f * 0.5f, 1, 1);
-                        int tileType = ModContent.TileType<NihilusObeliskTile>();
-                        Point? obeliskOrigin = CSEUtils.FindNearestMultitile(Main.LocalPlayer.Center, tileType, 2000);
+                //if (Bosses[i].EntityID == ModContent.NPCType<SupremeCalamitas>())
+                //{
+                //    Bosses.Insert(i+1, new Boss(ModContent.NPCType<Nihilus>(), TimeChangeContext.Night, type =>
+                //    {
+                //        int num8 = Player.FindClosest(new Vector2(Main.maxTilesX, Main.maxTilesY) * 16f * 0.5f, 1, 1);
+                //        int tileType = ModContent.TileType<NihilusObeliskTile>();
+                //        Point? obeliskOrigin = CSEUtils.FindNearestMultitile(Main.LocalPlayer.Center, tileType, 2000);
 
-                        num8.ToPlayer().Teleport(obeliskOrigin.Value.ToVector2());
+                //        num8.ToPlayer().Teleport(obeliskOrigin.Value.ToVector2());
 
-                        Point origin = new Point(obeliskOrigin.Value.X + 1, obeliskOrigin.Value.Y + 6);
+                //        Point origin = new Point(obeliskOrigin.Value.X + 1, obeliskOrigin.Value.Y + 6);
 
-                        ArenaSystem.ActivateArena(Main.LocalPlayer.whoAmI, ArenaBoss.Nihilus, origin, new Point(-200, 0));
-                    }, -1, false, 0, [ModContent.NPCType<NihilusAbyssRock>(), ModContent.NPCType<Nihilus2Hand>(), ModContent.NPCType<NihilusAwaken>(), ModContent.NPCType<NihilusAwakenSpirit>(), 
-                        ModContent.NPCType<NihilusBarricade>(), ModContent.NPCType<NihilusChainBomb>(), ModContent.NPCType<NihilusChainBombVolatile>(), ModContent.NPCType<NihilusCrystal>(), 
-                        ModContent.NPCType<NihilusCrystalArrive>(), ModContent.NPCType<NihilusHandBeam>(), ModContent.NPCType<NihilusLantern>(), ModContent.NPCType<NihilusLantern>(), 
-                        ModContent.NPCType<NihilusLanternBig>(), ModContent.NPCType<NihilusLanternRisen>(), ModContent.NPCType<NihilusAgateGrab>()]));
-                }
+                //        ArenaSystem.ActivateArena(Main.LocalPlayer.whoAmI, ArenaBoss.Nihilus, origin, new Point(-200, 0));
+                //    }, -1, false, 0, [ModContent.NPCType<NihilusAbyssRock>(), ModContent.NPCType<Nihilus2Hand>(), ModContent.NPCType<NihilusAwaken>(), ModContent.NPCType<NihilusAwakenSpirit>(), 
+                //        ModContent.NPCType<NihilusBarricade>(), ModContent.NPCType<NihilusChainBomb>(), ModContent.NPCType<NihilusChainBombVolatile>(), ModContent.NPCType<NihilusCrystal>(), 
+                //        ModContent.NPCType<NihilusCrystalArrive>(), ModContent.NPCType<NihilusHandBeam>(), ModContent.NPCType<NihilusLantern>(), ModContent.NPCType<NihilusLantern>(), 
+                //        ModContent.NPCType<NihilusLanternBig>(), ModContent.NPCType<NihilusLanternRisen>(), ModContent.NPCType<NihilusAgateGrab>()]));
+                //}
             }
 
             BossIDsAfterDeath.Add(ModContent.NPCType<Nihilus>(), [ModContent.NPCType<Nihilus2>()]);

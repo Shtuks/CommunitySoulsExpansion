@@ -84,6 +84,16 @@ namespace ssm
             {
                 entity.defense = 20;
             }
+
+            if(ModCompatibility.Calamity.Loaded || ModCompatibility.SacredTools.Loaded)
+            {
+                if (entity.type == ModContent.ItemType<NukeFishron>())
+                {
+                    entity.shootSpeed = 30;
+                    entity.useTime = 30;
+                    entity.damage = (int)(entity.damage * 1.2f);
+                }
+            }
         }
         public override void ModifyItemLoot(Item item, ItemLoot itemLoot)
         {
@@ -208,7 +218,7 @@ namespace ssm
             {
                 if (item.type == ModContent.ItemType<SlimeRain>() || item.type == ModContent.ItemType<GuardianTome>() || item.type == ModContent.ItemType<TheBiggestSting>() || item.type == ModContent.ItemType<PhantasmalLeashOfCthulhu>() || item.type == ModContent.ItemType<TheBiggestSting>())
                 {
-                    tooltips.Add(new TooltipLine(Mod, "balance", $"{Language.GetTextValue("Mods.ssm.Balance.Buff")} No."));
+                    tooltips.Add(new TooltipLine(Mod, "balance", $"{Language.GetTextValue("Mods.ssm.Balance.CancelDebuff")}"));
                 }
             }
             if (item.type == ModContent.ItemType<MutantsCurse>() || item.type == ModContent.ItemType<AbominationnVoodooDoll>())

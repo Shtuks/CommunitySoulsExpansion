@@ -23,7 +23,7 @@ namespace ssm.CrossMod.SoulsRecipes
                 if (recipe.HasResult(ModContent.ItemType<ColossusSoul>()))
                 {
                     if (ModCompatibility.SacredTools.Loaded) { recipe.AddIngredient(ModCompatibility.SacredTools.Mod.Find<ModItem>("RoyalGuard"), 1); recipe.AddIngredient(ModCompatibility.SacredTools.Mod.Find<ModItem>("NightmareBlindfold"), 1); }
-                    if (ModCompatibility.Homeward.Loaded) { recipe.AddIngredient(ModCompatibility.Homeward.Mod.Find<ModItem>("OneGiantLeap"), 1); recipe.AddIngredient(ModCompatibility.Homeward.Mod.Find<ModItem>("MasterShield"), 1); }
+                    if (ModCompatibility.Homeward.Loaded) { recipe.AddIngredient(ModCompatibility.Homeward.Mod.Find<ModItem>("OneGiantLeap"), 1); recipe.AddIngredient(ModCompatibility.Homeward.Mod.Find<ModItem>("MasterShield"), 1); recipe.AddIngredient(ModCompatibility.Homeward.Mod.Find<ModItem>("AncientBlessing"), 1); }
                     if (ModCompatibility.Redemption.Loaded) { recipe.AddIngredient(ModCompatibility.Redemption.Mod.Find<ModItem>("HEVSuit"), 1); }
                     if (ModCompatibility.Thorium.Loaded) { recipe.AddIngredient(ModCompatibility.Thorium.Mod.Find<ModItem>("BlastShield"), 1); }
                     if (ModCompatibility.Clamity.Loaded) { recipe.AddIngredient(ModCompatibility.Clamity.Mod.Find<ModItem>("SkullOfTheBloodGod"), 1); }

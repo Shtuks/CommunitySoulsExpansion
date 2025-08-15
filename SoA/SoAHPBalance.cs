@@ -22,6 +22,7 @@ namespace ssm.SoA
     {
         public override bool InstancePerEntity => true;
         public bool mayo;
+        public bool mayo2;
 
         [JITWhenModsEnabled(ModCompatibility.Calamity.Name)]
         bool CheckBossRush()
@@ -37,7 +38,7 @@ namespace ssm.SoA
                 num = CheckBossRush();
             }
 
-            if (!mayo)
+            if (!mayo2)
             {
                 if (!num && !ssm.SwarmActive)
                 {
@@ -164,7 +165,7 @@ namespace ssm.SoA
                         npc.damage *= 2;
                     }
                 }
-                mayo = true;
+                mayo2 = true;
             }
         }
         public override bool PreAI(NPC npc)

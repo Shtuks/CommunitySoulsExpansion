@@ -49,7 +49,7 @@ namespace ssm.CrossMod.SoulsRecipes
                     if (recipe.HasResult(ModCompatibility.Homeward.Mod.Find<ModItem>("CrossbowScope")))
                     {
                         if (ModCompatibility.Redemption.Loaded) { recipe.AddIngredient(ModCompatibility.Redemption.Mod.Find<ModItem>("XeniumAlloy"), 3); }
-                        if (ModCompatibility.Thorium.Loaded) { recipe.AddIngredient(ModCompatibility.Thorium.Mod.Find<ModItem>("DeathEssence"), 3); }
+                        if (ModCompatibility.Thorium.Loaded && !ModCompatibility.Calamity.Loaded) { recipe.AddIngredient(ModCompatibility.Thorium.Mod.Find<ModItem>("DeathEssence"), 3); }
                     }
                 }
                 if (ModCompatibility.SacredTools.Loaded)

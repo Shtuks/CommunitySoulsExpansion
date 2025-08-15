@@ -4,7 +4,6 @@ using Terraria;
 using Redemption.NPCs.Bosses.Neb;
 using Redemption.NPCs.Bosses.Neb.Phase2;
 using Redemption.NPCs.Bosses.ADD;
-using CalamityMod.Events;
 using Redemption.NPCs.Bosses.PatientZero;
 using Redemption.NPCs.Minibosses.Calavia;
 using Redemption.NPCs.Bosses.Thorn;
@@ -16,6 +15,7 @@ using Redemption.NPCs.Bosses.Cleaver;
 using Redemption.NPCs.Bosses.Gigapora;
 using Redemption.NPCs.Bosses.Obliterator;
 using Redemption.NPCs.Bosses.Neb.Clone;
+using CalamityMod.Events;
 
 namespace ssm.Redemption
 {
@@ -31,11 +31,6 @@ namespace ssm.Redemption
         public override bool InstancePerEntity => true;
         public override void SetDefaults(NPC npc)
         {
-            bool num = false;
-            if (ModCompatibility.Calamity.Loaded)
-            {
-                num = CheckBossRush();
-            }
 
             if (!ssm.SwarmActive)
             {
@@ -69,25 +64,25 @@ namespace ssm.Redemption
 
                 if (npc.type == ModContent.NPCType<Akka>())
                 {
-                    npc.lifeMax = num ? 5000000 : ModCompatibility.Calamity.Loaded ? 1200000 : 540000;
+                    npc.lifeMax =ModCompatibility.Calamity.Loaded ? 1200000 : 540000;
                     npc.damage = 420;
                 }
 
                 if (npc.type == ModContent.NPCType<Ukko>())
                 {
-                    npc.lifeMax = num ? 6000000 : ModCompatibility.Calamity.Loaded ? 1400000 : 640000;
+                    npc.lifeMax =  ModCompatibility.Calamity.Loaded ? 1400000 : 640000;
                     npc.damage = 470;
                 }
 
                 if (npc.type == ModContent.NPCType<PZ>())
                 {
-                    npc.lifeMax = num ? 5000000 : ModCompatibility.Calamity.Loaded ? 1600000 : 440000;
+                    npc.lifeMax = ModCompatibility.Calamity.Loaded ? 1600000 : 440000;
                     npc.damage = 420;
                 }
 
                 if (npc.type == ModContent.NPCType<PZ_Kari>())
                 {
-                    npc.lifeMax = num ? 4000000 : ModCompatibility.Calamity.Loaded ? 100000 : 500000;
+                    npc.lifeMax = ModCompatibility.Calamity.Loaded ? 100000 : 500000;
                     npc.damage = 470;
                 }
 

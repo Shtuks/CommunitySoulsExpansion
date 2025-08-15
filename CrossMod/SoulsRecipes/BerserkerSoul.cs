@@ -28,7 +28,7 @@ namespace ssm.CrossMod.SoulsRecipes
                 if (recipe.HasResult(ModContent.ItemType<BerserkerSoul>()))
                 {
                     if (ModCompatibility.SacredTools.Loaded) { recipe.AddIngredient(ModCompatibility.SacredTools.Mod.Find<ModItem>("TrueMoonEdgedPandolarra"), 1); recipe.AddIngredient(ModCompatibility.SacredTools.Mod.Find<ModItem>("SolarSigil"), 1); }
-                    if (ModCompatibility.Homeward.Loaded) { recipe.AddIngredient(ModCompatibility.Homeward.Mod.Find<ModItem>("CommandersGaunlet"), 1); recipe.AddIngredient(ModCompatibility.Homeward.Mod.Find<ModItem>("PhilosophersStone"), 1); recipe.AddIngredient(ModCompatibility.Homeward.Mod.Find<ModItem>("TrueDawnsBorder"), 1); }
+                    if (ModCompatibility.Homeward.Loaded) { recipe.AddIngredient(ModCompatibility.Homeward.Mod.Find<ModItem>("PhilosophersStone"), 1); recipe.AddIngredient(ModCompatibility.Homeward.Mod.Find<ModItem>("TrueDawnsBorder"), 1); }
                     if (ModCompatibility.Redemption.Loaded) { recipe.AddIngredient(ModCompatibility.Redemption.Mod.Find<ModItem>("PZGauntlet"), 1); recipe.AddIngredient(ModCompatibility.Redemption.Mod.Find<ModItem>("MutagenMelee"), 1); recipe.RemoveIngredient(ModContent.ItemType<BarbariansEssence>()); }
                     if (ModCompatibility.Calamity.Loaded) { recipe.AddIngredient(ModCompatibility.Calamity.Mod.Find<ModItem>("ArkoftheCosmos"), 1); }
                     if (ModCompatibility.Thorium.Loaded) { recipe.AddIngredient(ModCompatibility.Thorium.Mod.Find<ModItem>("BlizzardPouch"), 1); recipe.AddIngredient(ModCompatibility.Thorium.Mod.Find<ModItem>("TerrariansLastKnife"), 1); }
@@ -66,12 +66,6 @@ namespace ssm.CrossMod.SoulsRecipes
                     {
                         if (ModCompatibility.SacredTools.Loaded) { recipe.AddIngredient(ModCompatibility.SacredTools.Mod.Find<ModItem>("OblivionBar"), 8); }
                     }
-                    if (recipe.HasResult(ModCompatibility.Homeward.Mod.Find<ModItem>("CommandersGaunlet")))
-                    {
-                        recipe.AddIngredient(ItemID.BerserkerGlove, 1);
-                        recipe.RemoveIngredient(ItemID.PowerGlove);
-                        if (ModCompatibility.Calamity.Loaded) { recipe.AddIngredient(ModCompatibility.Calamity.Mod.Find<ModItem>("LifeAlloy"), 3); }
-                    }
                     if (recipe.HasResult(ModCompatibility.Homeward.Mod.Find<ModItem>("DivineTouch")))
                     {
                         recipe.RemoveIngredient(ItemID.FireGauntlet);
@@ -99,7 +93,6 @@ namespace ssm.CrossMod.SoulsRecipes
             {
                 if (ModCompatibility.Homeward.Loaded)
                 {
-                    player.AddEffect<CommandersGauntletEffect>(Item);
                     player.AddEffect<PhilosophersStoneEffect>(Item);
                     player.AddEffect<GodlyTouchEffect>(Item);
                     player.AddEffect<BerserkerGloveEffect>(Item);
@@ -157,17 +150,6 @@ namespace ssm.CrossMod.SoulsRecipes
             public override void PostUpdateEquips(Player player)
             {
                 ModCompatibility.Homeward.Mod.Find<ModItem>("PhilosophersStone").UpdateAccessory(player, true);
-            }
-        }
-        [ExtendsFromMod(ModCompatibility.Homeward.Name)]
-        public class CommandersGauntletEffect : AccessoryEffect
-        {
-            public override Header ToggleHeader => Header.GetHeader<UniverseHeader>();
-            public override int ToggleItemType => ModContent.ItemType<CommandersGaunlet>();
-
-            public override void PostUpdateEquips(Player player)
-            {
-                ModCompatibility.Homeward.Mod.Find<ModItem>("CommandersGaunlet").UpdateAccessory(player, true);
             }
         }
         [ExtendsFromMod(ModCompatibility.Homeward.Name)]

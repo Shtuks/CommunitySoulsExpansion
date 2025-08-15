@@ -15,14 +15,11 @@ namespace ssm.CrossMod
                 {
                     if (i == 0) continue;
 
-                    //if (CSEConfig.Instance.ThrowerMerge)
-                    //{
-                        tooltips[i].Text = Regex.Replace(tooltips[i].Text, "kinetic", "thrower");
-                        tooltips[i].Text = Regex.Replace(tooltips[i].Text, "rogue", "thrower");
+                    tooltips[i].Text = Regex.Replace(tooltips[i].Text, "kinetic", "thrower");
+                    tooltips[i].Text = Regex.Replace(tooltips[i].Text, "rogue", "thrower");
 
-                        tooltips[i].Text = Regex.Replace(tooltips[i].Text, "Kinetic", "Thrower");
-                        tooltips[i].Text = Regex.Replace(tooltips[i].Text, "Rogue", "Thrower");
-                    //}
+                    tooltips[i].Text = Regex.Replace(tooltips[i].Text, "Kinetic", "Thrower");
+                    tooltips[i].Text = Regex.Replace(tooltips[i].Text, "Rogue", "Thrower");
                 }
             }
         }
