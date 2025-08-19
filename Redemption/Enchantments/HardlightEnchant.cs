@@ -16,6 +16,8 @@ using Redemption.Items.Weapons.HM.Melee;
 using Redemption.Items.Weapons.HM.Ranged;
 using Redemption.Items.Weapons.HM.Summon;
 using Redemption.Items.Accessories.HM;
+using ssm.Content.Projectiles.Enchantments;
+using FargowiltasSouls;
 
 namespace ssm.Redemption.Enchantments
 {
@@ -48,8 +50,26 @@ namespace ssm.Redemption.Enchantments
         public class HardlightEffect : AccessoryEffect
         {
             public override Header ToggleHeader => Header.GetHeader<AdvancementForceHeader>();
-
+            public override bool MinionEffect => true;
             public override int ToggleItemType => ModContent.ItemType<HardlightEnchant>();
+
+            private int attackTimer;
+            public override void PostUpdateEquips(Player player)
+            { 
+                if (player.ownedProjectileCounts[ModContent.ProjectileType<TwigProj>()] < 1)
+                {
+                    Vector2 position = player.Center;
+                    Projectile.NewProjectile(
+                        player.GetSource_FromThis(),
+                        position,
+                        Vector2.Zero,
+                        ModContent.ProjectileType<HardlightDrone>(),
+                        20,
+                        0f,
+                        player.whoAmI
+                    );
+                }
+            }
         }
 
         public class ShieldGeneratorEffect : AccessoryEffect

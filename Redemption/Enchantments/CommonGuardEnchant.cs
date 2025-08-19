@@ -46,7 +46,7 @@ namespace ssm.Redemption.Enchantments
 
         public class CommonGuardEffect : AccessoryEffect
         {
-            public override Header ToggleHeader => Header.GetHeader<AdvancementForceHeader>();
+            public override Header ToggleHeader => null;
             public override int ToggleItemType => ModContent.ItemType<CommonGuardEnchant>();
             public override bool ActiveSkill => true;
 

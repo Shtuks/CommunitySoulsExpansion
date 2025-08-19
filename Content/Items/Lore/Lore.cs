@@ -92,6 +92,178 @@ namespace ssm.Content.Items.Lore
 
     [ExtendsFromMod(ModCompatibility.Calamity.Name)]
     [JITWhenModsEnabled(ModCompatibility.Calamity.Name)]
+    [LegacyName(new string[] { "KnowledgeDukeEX" })]
+    public class DukeEXLore : LoreItem
+    {
+        public override string Texture => "ssm/Content/Items/SwarmDeactivatorDebug";
+
+        public override bool IsLoadingEnabled(Mod mod)
+        {
+            return CSEConfig.Instance.SecretBosses;
+        }
+        public override void SetStaticDefaults() => base.SetStaticDefaults();
+
+        public override void SetDefaults()
+        {
+            Item.width = 34;
+            Item.height = 26;
+            Item.rare = 11;
+        }
+        public override bool PreDrawTooltipLine(DrawableTooltipLine line, ref int yOffset)
+        {
+            if ((line.Mod == "Terraria" && line.Name == "ItemName") || line.Name == "FlavorText")
+            {
+                Main.spriteBatch.End();
+                Main.spriteBatch.Begin(SpriteSortMode.Immediate, null, null, null, null, null, Main.UIScaleMatrix);
+                ManagedShader shader = ShaderManager.GetShader("FargowiltasSouls.Text");
+                shader.TrySetParameter("mainColor", new Color(42, 66, 99));
+                shader.TrySetParameter("secondaryColor", Color.CadetBlue);
+                shader.Apply("PulseUpwards");
+                Utils.DrawBorderString(Main.spriteBatch, line.Text, new Vector2(line.X, line.Y), Color.White, 1);
+                Main.spriteBatch.End();
+                Main.spriteBatch.Begin(SpriteSortMode.Deferred, null, null, null, null, null, Main.UIScaleMatrix);
+                return false;
+            }
+            return true;
+        }
+
+        //public override void AddRecipes()
+        //{
+        //    this.CreateRecipe(1).AddIngredient<DukeEXTrophy>(1).AddTile(101);
+        //}
+    }
+
+    [ExtendsFromMod(ModCompatibility.Calamity.Name)]
+    [JITWhenModsEnabled(ModCompatibility.Calamity.Name)]
+    [LegacyName(new string[] { "KnowledgeCeiling" })]
+    public class CeilingLore : LoreItem
+    {
+        public override string Texture => "ssm/Content/Items/SwarmDeactivatorDebug";
+
+        public override bool IsLoadingEnabled(Mod mod)
+        {
+            return CSEConfig.Instance.SecretBosses;
+        }
+        public override void SetStaticDefaults() => base.SetStaticDefaults();
+
+        public override void SetDefaults()
+        {
+            Item.width = 34;
+            Item.height = 26;
+            Item.rare = 11;
+        }
+        public override bool PreDrawTooltipLine(DrawableTooltipLine line, ref int yOffset)
+        {
+            if ((line.Mod == "Terraria" && line.Name == "ItemName") || line.Name == "FlavorText")
+            {
+                Main.spriteBatch.End();
+                Main.spriteBatch.Begin(SpriteSortMode.Immediate, null, null, null, null, null, Main.UIScaleMatrix);
+                ManagedShader shader = ShaderManager.GetShader("FargowiltasSouls.Text");
+                shader.TrySetParameter("mainColor", new Color(42, 66, 99));
+                shader.TrySetParameter("secondaryColor", Color.Teal);
+                shader.Apply("PulseUpwards");
+                Utils.DrawBorderString(Main.spriteBatch, line.Text, new Vector2(line.X, line.Y), Color.White, 1);
+                Main.spriteBatch.End();
+                Main.spriteBatch.Begin(SpriteSortMode.Deferred, null, null, null, null, null, Main.UIScaleMatrix);
+                return false;
+            }
+            return true;
+        }
+
+        //public override void AddRecipes()
+        //{
+        //    this.CreateRecipe(1).AddIngredient<DukeEXTrophy>(1).AddTile(101);
+        //}
+    }
+
+    [ExtendsFromMod(ModCompatibility.Calamity.Name)]
+    [JITWhenModsEnabled(ModCompatibility.Calamity.Name)]
+    [LegacyName(new string[] { "KnowledgeGuntera" })]
+    public class GunteraLore : LoreItem
+    {
+        public override string Texture => "ssm/Content/Items/SwarmDeactivatorDebug";
+
+        public override bool IsLoadingEnabled(Mod mod)
+        {
+            return CSEConfig.Instance.SecretBosses;
+        }
+        public override void SetStaticDefaults() => base.SetStaticDefaults();
+
+        public override void SetDefaults()
+        {
+            Item.width = 34;
+            Item.height = 26;
+            Item.rare = 11;
+        }
+        public override bool PreDrawTooltipLine(DrawableTooltipLine line, ref int yOffset)
+        {
+            if ((line.Mod == "Terraria" && line.Name == "ItemName") || line.Name == "FlavorText")
+            {
+                Main.spriteBatch.End();
+                Main.spriteBatch.Begin(SpriteSortMode.Immediate, null, null, null, null, null, Main.UIScaleMatrix);
+                ManagedShader shader = ShaderManager.GetShader("FargowiltasSouls.Text");
+                shader.TrySetParameter("mainColor", new Color(42, 66, 99));
+                shader.TrySetParameter("secondaryColor", Color.Lime);
+                shader.Apply("PulseUpwards");
+                Utils.DrawBorderString(Main.spriteBatch, line.Text, new Vector2(line.X, line.Y), Color.White, 1);
+                Main.spriteBatch.End();
+                Main.spriteBatch.Begin(SpriteSortMode.Deferred, null, null, null, null, null, Main.UIScaleMatrix);
+                return false;
+            }
+            return true;
+        }
+
+        //public override void AddRecipes()
+        //{
+        //    this.CreateRecipe(1).AddIngredient<DukeEXTrophy>(1).AddTile(101);
+        //}
+    }
+
+    [ExtendsFromMod(ModCompatibility.Calamity.Name)]
+    [JITWhenModsEnabled(ModCompatibility.Calamity.Name)]
+    [LegacyName(new string[] { "KnowledgeEch" })]
+    public class EchLore : LoreItem
+    {
+        public override string Texture => "ssm/Content/Items/SwarmDeactivatorDebug";
+
+        public override bool IsLoadingEnabled(Mod mod)
+        {
+            return CSEConfig.Instance.SecretBosses;
+        }
+        public override void SetStaticDefaults() => base.SetStaticDefaults();
+
+        public override void SetDefaults()
+        {
+            Item.width = 34;
+            Item.height = 26;
+            Item.rare = 11;
+        }
+        public override bool PreDrawTooltipLine(DrawableTooltipLine line, ref int yOffset)
+        {
+            if ((line.Mod == "Terraria" && line.Name == "ItemName") || line.Name == "FlavorText")
+            {
+                Main.spriteBatch.End();
+                Main.spriteBatch.Begin(SpriteSortMode.Immediate, null, null, null, null, null, Main.UIScaleMatrix);
+                ManagedShader shader = ShaderManager.GetShader("FargowiltasSouls.Text");
+                shader.TrySetParameter("mainColor", new Color(42, 66, 99));
+                shader.TrySetParameter("secondaryColor", Main.DiscoColor);
+                shader.Apply("PulseUpwards");
+                Utils.DrawBorderString(Main.spriteBatch, line.Text, new Vector2(line.X, line.Y), Color.White, 1);
+                Main.spriteBatch.End();
+                Main.spriteBatch.Begin(SpriteSortMode.Deferred, null, null, null, null, null, Main.UIScaleMatrix);
+                return false;
+            }
+            return true;
+        }
+
+        //public override void AddRecipes()
+        //{
+        //    this.CreateRecipe(1).AddIngredient<EchTrophy>(1).AddTile(101);
+        //}
+    }
+
+    [ExtendsFromMod(ModCompatibility.Calamity.Name)]
+    [JITWhenModsEnabled(ModCompatibility.Calamity.Name)]
     [LegacyName(new string[] { "KnowledgeDevi" })]
     public class DeviLore : LoreItem
     {

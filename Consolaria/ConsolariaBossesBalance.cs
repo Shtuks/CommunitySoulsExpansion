@@ -15,20 +15,14 @@ namespace ssm.Consolaria
         {
             if (npc.type == ModContent.NPCType<Ocram>())
             {
-                npc.lifeMax = ModCompatibility.Calamity.Loaded ? 150000 : 100000;
-                npc.damage = 230;
+                npc.lifeMax = npc.lifeMax = (int)(npc.lifeMax * (ModCompatibility.Calamity.Loaded ? 2 : 1.5f));
+                npc.damage = (int)(npc.damage * 1.5f);
             }
 
             if (npc.type == ModContent.NPCType<TurkortheUngrateful>())
             {
-                npc.lifeMax = ModCompatibility.Calamity.Loaded ? 18000 : 13000;
-                npc.damage = 420;
-            }
-
-            if (npc.type == ModContent.NPCType<TurkortheUngratefulHead>())
-            {
-                npc.lifeMax = ModCompatibility.Calamity.Loaded ? 5000 : 2600;
-                npc.damage = 420;
+                npc.lifeMax = npc.lifeMax = (int)(npc.lifeMax * (ModCompatibility.Calamity.Loaded ? 2 : 1.5f));
+                npc.damage = (int)(npc.damage * 1.5f);
             }
         }
     }

@@ -48,6 +48,7 @@ namespace ssm.Calamity.Enchantments
                 ModContent.Find<ModItem>(this.calamity.Name, "ProfanedSoulCrystal").UpdateAccessory(player, hideVisual);
             }
 
+            ModContent.Find<ModItem>(this.calamity.Name, "AngelicAlliance").UpdateAccessory(player, hideVisual);
             player.AddEffect<Enrage>(Item);
         }
 
@@ -58,7 +59,7 @@ namespace ssm.Calamity.Enchantments
             recipe.AddIngredient(ModContent.ItemType<DemonshadeBreastplate>());
             recipe.AddIngredient(ModContent.ItemType<DemonshadeGreaves>());
             recipe.AddIngredient(ModContent.ItemType<ProfanedSoulCrystal>());
-            recipe.AddIngredient(ModContent.ItemType<Apotheosis>());
+            recipe.AddIngredient(ModContent.ItemType<AngelicAlliance>());
             recipe.AddIngredient(ModContent.ItemType<Eternity>());
 
             recipe.AddTile(calamity, "DraedonsForge");
@@ -73,7 +74,7 @@ namespace ssm.Calamity.Enchantments
 
         public class Enrage : AccessoryEffect
         {
-            public override Header ToggleHeader => Header.GetHeader<CalamitySoulHeader>();
+            public override Header ToggleHeader => null;
             public override int ToggleItemType => ModContent.ItemType<DemonShadeEnchant>();
             public override bool ActiveSkill => true;
             public override void ActiveSkillJustPressed(Player player, bool stunned)

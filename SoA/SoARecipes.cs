@@ -83,10 +83,10 @@ namespace ssm
                 //    }
                 //}
 
-                if (/*!CSEConfig.Instance.ExperimentalContent && */recipe.HasResult<EternitySoul>() && !recipe.HasIngredient<SoASoul>())
-                {
-                    recipe.AddIngredient<SoASoul>();
-                }
+                //if (/*!CSEConfig.Instance.ExperimentalContent && */recipe.HasResult<EternitySoul>() && !recipe.HasIngredient<SoASoul>())
+                //{
+                //    recipe.AddIngredient<SoASoul>();
+                //}
 
                 //if (recipe.HasResult<BerserkerSoul>() && recipe.HasIngredient(ItemID.CelestialShell))
                 //{

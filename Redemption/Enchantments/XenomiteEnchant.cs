@@ -48,7 +48,7 @@ namespace ssm.Redemption.Enchantments
 
         public class XenomiteEffect : AccessoryEffect
         {
-            public override Header ToggleHeader => Header.GetHeader<AdvancementForceHeader>();
+            public override Header ToggleHeader => null;
             public override int ToggleItemType => ModContent.ItemType<XenomiteEnchant>();
             public override bool ActiveSkill => true;
 

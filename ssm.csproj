@@ -119,6 +119,9 @@
 	    <HintPath>lib\ThoriumRework.dll</HintPath>
 	  </Reference>
 	</ItemGroup>
+	<ItemGroup>
+	  <Folder Include="Calamity\Новая папка\" />
+	</ItemGroup>
 
 	<!-- References -->
 

@@ -109,19 +109,19 @@ namespace ssm.Calamity
                 }
             }
 
-            if (ModCompatibility.WrathoftheGods.Loaded)
-            {
-                if (npc.type == ModCompatibility.WrathoftheGods.NamelessDeityBoss.Type)
-                {
-                    float multiplier = 0;
+            //if (ModCompatibility.WrathoftheGods.Loaded)
+            //{
+            //    if (npc.type == ModCompatibility.WrathoftheGods.NamelessDeityBoss.Type)
+            //    {
+            //        float multiplier = 0;
 
-                    if (ModCompatibility.Thorium.Loaded) { multiplier += 3f; }
-                    if (ModCompatibility.SacredTools.Loaded) { multiplier += 5f; }
-                    if (ModCompatibility.Homeward.Loaded) { multiplier += 2f; }
+            //        if (ModCompatibility.Thorium.Loaded) { multiplier += 3f; }
+            //        if (ModCompatibility.SacredTools.Loaded) { multiplier += 5f; }
+            //        if (ModCompatibility.Homeward.Loaded) { multiplier += 2f; }
 
-                    npc.lifeMax = (int)(25000000 + (1000000 * multiplier));
-                }
-            }
+            //        npc.lifeMax = (int)(25000000 + (1000000 * multiplier));
+            //    }
+            //}
 
             if (npc.type == ModContent.NPCType<AresBody>() || npc.type == ModContent.NPCType<AresGaussNuke>() || npc.type == ModContent.NPCType<AresLaserCannon>() || npc.type == ModContent.NPCType<AresPlasmaFlamethrower>() || npc.type == ModContent.NPCType<AresTeslaCannon>())
             {

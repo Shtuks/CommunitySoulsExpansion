@@ -68,7 +68,20 @@ namespace ssm
                     recipe.AddIngredient<EternityForce>(1);
                 }
 
-                //trawler soul post abom is so stupid
+                if (recipe.HasResult(ModContent.ItemType<EternitySoul>()))
+                {
+                    if (ModCompatibility.Calamity.Loaded || ModCompatibility.SacredTools.Loaded || ModCompatibility.Spirit.Loaded || ModCompatibility.Thorium.Loaded)
+                    {
+                        recipe.AddIngredient<MacroverseSoul>(1);
+                        recipe.RemoveIngredient(ModContent.ItemType<TerrariaSoul>());
+                    }
+                    else if (ModCompatibility.Redemption.Loaded || ModCompatibility.Polarities.Loaded || ModCompatibility.Spooky.Loaded || ModCompatibility.Homeward.Loaded)
+                    {
+                        recipe.AddIngredient<MicroverseSoul>(1);
+                    }
+                }
+
+                //fishing soul post abom is so stupid
                 if (recipe.HasResult(ModContent.ItemType<TrawlerSoul>()) && recipe.HasIngredient(ModContent.ItemType<AbomEnergy>()))
                 {
                     recipe.RemoveIngredient(ModContent.ItemType<AbomEnergy>());

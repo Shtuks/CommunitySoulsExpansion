@@ -170,7 +170,7 @@ namespace ssm.CrossMod.SoulsRecipes
                 if (ModCompatibility.Homeward.Loaded)
                 {
                     tooltips.Insert(5, new TooltipLine(Mod, "mayo4", Language.GetTextValue(key + "HWJColossus")));
-                    tooltips.Insert(5, new TooltipLine(Mod, "mayo4", Language.GetTextValue(key + "HWJColossus2")));
+                    tooltips.Insert(5, new TooltipLine(Mod, "mayo4", Language.GetTextValue(key + "HWJBlessing")));
                 }
                 if (ModCompatibility.Clamity.Loaded)
                 {

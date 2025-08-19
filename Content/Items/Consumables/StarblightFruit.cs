@@ -17,7 +17,7 @@ namespace ssm.Content.Items.Consumables
 
         public override bool IsLoadingEnabled(Mod mod)
         {
-            return CSEConfig.Instance.SecretBosses;
+            return false;
         }
         public override void SetDefaults()
         {
@@ -86,12 +86,12 @@ namespace ssm.Content.Items.Consumables
     {
         public override bool IsEnabled()
         {
-            if (!Player.active)
+            //if (!Player.active)
                 return false;
-            if (!CSEConfig.Instance.SecretBosses)
-                return false;
+            //if (!CSEConfig.Instance.SecretBosses)
+            //    return false;
 
-            return Player.CSE().starlightFruit;
+            //return Player.CSE().starlightFruit;
         }
         public override bool IsHidden() => IsEmpty && !IsEnabled();
     }

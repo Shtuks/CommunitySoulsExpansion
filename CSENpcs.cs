@@ -22,6 +22,8 @@ using Terraria.GameContent;
 using ssm.Content.Items.Materials;
 using FargowiltasSouls.Content.Items.Materials;
 using ssm.Content.Projectiles;
+using ssm.Content.Items.Consumables;
+using ssm.Content.Items.Lore;
 
 namespace ssm
 {
@@ -67,6 +69,17 @@ namespace ssm
                     if (WorldSavingSystem.EternityMode)
                     {
                         npc.DropItemInstanced(npc.position, npc.Size, ModContent.ItemType<CyclonicFin>());
+                    }
+                    if (ModCompatibility.Goozma.Loaded)
+                    {
+                        if (!Main.LocalPlayer.GetModPlayer<CSEAuricSoulPlayer>().eternalSoul)
+                        {
+                            npc.DropItemInstanced(npc.position, npc.Size, ModContent.ItemType<EternalAuricSoul>());
+                        }
+                    }
+                    if (ModCompatibility.Calamity.Loaded)
+                    {
+                        npc.DropItemInstanced(npc.position, npc.Size, ModContent.ItemType<DukeEXLore>());
                     }
                     int maxEX = Main.rand.Next(5) + 10;
                     for (int i = 0; i < maxEX; i++)
@@ -214,10 +227,10 @@ namespace ssm
             LeadingConditionRule emodeRule = new(new EModeDropCondition());
             npcLoot.Add(emodeRule);
 
-            if (npc.type == NPCID.DukeFishron && WorldSavingSystem.DownedAbom)
-            {
-                emodeRule.OnSuccess(FargoSoulsUtil.BossBagDropCustom(ModContent.ItemType<CyclonicFin>(), 1));
-            }
+            //if (npc.type == NPCID.DukeFishron && WorldSavingSystem.DownedAbom)
+            //{
+            //    emodeRule.OnSuccess(FargoSoulsUtil.BossBagDropCustom(ModContent.ItemType<CyclonicFin>(), 1));
+            //}
         }
         public override void PostAI(NPC npc)
         {
@@ -287,8 +300,8 @@ namespace ssm
                 {
                     npc.defense = 300;
 
-                    npc.damage = Main.getGoodWorld ? 2000 : (int)((500 + (100 * Math.Round(multiplierMD, 1))) * (WorldSavingSystem.MasochistModeReal ? 1.5f : 1));
-                    npc.lifeMax = (int)((10000000 + ((10000000 * Math.Round(multiplierML, 1))) / (Main.expertMode ? 1 : 2)) * (WorldSavingSystem.MasochistModeReal ? 1.5f : 1));
+                    npc.damage = Main.getGoodWorld ? 2000 : (int)((500 + (100 * Math.Round(multiplierMD, 1))) * (WorldSavingSystem.AngryMutant ? WorldSavingSystem.MasochistModeReal ? 15 : 10 : WorldSavingSystem.MasochistModeReal ? 1.5f : 1));
+                    npc.lifeMax = (int)((10000000 + ((10000000 * Math.Round(multiplierML, 1))) / (Main.expertMode ? 1 : 2)) * (WorldSavingSystem.AngryMutant ? WorldSavingSystem.MasochistModeReal ? 15 : 10 : WorldSavingSystem.MasochistModeReal ? 1.5f : 1));
 
                     if (ModCompatibility.Inheritance.Loaded && !Main.zenithWorld && !Main.getGoodWorld)
                     {

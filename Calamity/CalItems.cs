@@ -25,7 +25,7 @@ namespace ssm.Calamity
         {
             if (entity.type == ModContent.ItemType<Sylvestaff>())
             {
-                entity.damage = (int)(entity.damage * 0.6f);
+                entity.damage = (int)(entity.damage * 0.5f);
             }
             if (entity.type == ModContent.ItemType<Voidragon>())
             {
@@ -47,10 +47,10 @@ namespace ssm.Calamity
             {
                 entity.damage = (int)(entity.damage * 1.1f);
             }
-            //if (entity.type == ItemID.Zenith)
-            //{
-            //    entity.damage = (int)(entity.damage * 1.3f);
-            //}
+            if (entity.type == ItemID.Zenith)
+            {
+                entity.damage = (int)(entity.damage * 1.1f);
+            }
             if (entity.type == ModContent.ItemType<OmegaHealingPotion>() && ModCompatibility.SacredTools.Loaded)
             {
                 entity.healLife = 400;
@@ -69,20 +69,20 @@ namespace ssm.Calamity
             }
             if (item.type == ModContent.ItemType<HalibutCannon>())
             {
-                tooltips.Add(new TooltipLine(Mod, "rebalance", $"{Language.GetTextValue("Mods.ssm.Balance.Nerf")} {Language.GetTextValue("Mods.ssm.Balance.DamageDown")} 30%."));
+                tooltips.Add(new TooltipLine(Mod, "rebalance", $"{Language.GetTextValue("Mods.ssm.Balance.Nerf")} {Language.GetTextValue("Mods.ssm.Balance.DamageDown")} 30%"));
             }
             if (item.type == ModContent.ItemType<Supernova>())
             {
-                tooltips.Add(new TooltipLine(Mod, "rebalance", $"{Language.GetTextValue("Mods.ssm.Balance.Nerf")} {Language.GetTextValue("Mods.ssm.Balance.DamageDown")} 30%."));
+                tooltips.Add(new TooltipLine(Mod, "rebalance", $"{Language.GetTextValue("Mods.ssm.Balance.Nerf")} {Language.GetTextValue("Mods.ssm.Balance.DamageDown")} 30%"));
             }
-            //if (item.type == ItemID.Zenith)
-            //{
-            //    tooltips.Add(new TooltipLine(Mod, "rebalance", $"[c/00A36C:CSE Balance:] {Language.GetTextValue("Mods.ssm.Balance.DamageUP")} 30%."));
-            //}
+            if (item.type == ItemID.Zenith)
+            {
+                tooltips.Add(new TooltipLine(Mod, "rebalance", $"{Language.GetTextValue("Mods.ssm.Balance.Buff")} {Language.GetTextValue("Mods.ssm.Balance.DamageUP")} 10%."));
+            }
             if (item.type == ModContent.ItemType<Sylvestaff>())
             {
-                tooltips.Add(new TooltipLine(Mod, "rebalance", $"{Language.GetTextValue("Mods.ssm.Balance.Debuff")} {Language.GetTextValue("Mods.ssm.Balance.CancelBuff")}"));
-                tooltips.Add(new TooltipLine(Mod, "rebalance", $"{Language.GetTextValue("Mods.ssm.Balance.Nerf")} {Language.GetTextValue("Mods.ssm.Balance.DamageDown")} 20%."));
+                tooltips.Add(new TooltipLine(Mod, "rebalance", $"{Language.GetTextValue("Mods.ssm.Balance.Nerf")} {Language.GetTextValue("Mods.ssm.Balance.CancelBuff")}"));
+                tooltips.Add(new TooltipLine(Mod, "rebalance", $"{Language.GetTextValue("Mods.ssm.Balance.Nerf")} {Language.GetTextValue("Mods.ssm.Balance.DamageDown")} 30%"));
             }
 
             for (int i = tooltips.Count - 1; i >= 0; i--)

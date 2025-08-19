@@ -132,9 +132,24 @@ Mods: {
 					DisplayName: Lore - Monstrosity
 				}
 
-				EchdeathLore: {
+				EchLore: {
 					Lore: What a calamity
 					DisplayName: Lore - Echdeath
+				}
+
+				GunteraLore: {
+					Lore: What a calamity
+					DisplayName: Lore - Guntera
+				}
+
+				DukeEXLore: {
+					Lore: What a calamity
+					DisplayName: Lore - Duke Fishron EX
+				}
+
+				CeilingLore: {
+					Lore: What a calamity
+					DisplayName: Lore - Ceiling of Moonlord
 				}
 
 				DivergenttLore: {
@@ -594,55 +609,100 @@ Mods: {
 				Tooltip:
 					'''
 					Active skill halves Guard points of enemies
-					Has a cooldown of 20 seconds
+					Has a cooldown of 20 
+					'En garde'
 					'''
 			}
 
 			DragonLeadEnchant: {
 				DisplayName: Dragon Lead Enchantment
-				Tooltip: Taking damage makes your weapons deal the Dragonblaze debuff for 10 seconds
+				Tooltip:
+					'''
+					Taking damage makes your weapons deal the Dragonblaze debuff for 10 seconds
+					'Too hot to handle'
+					'''
 			}
 
 			PureIronEnchant: {
 				DisplayName: Pure Iron Enchantment
-				Tooltip: Your attacks inflict Pure Chill if you was not hit for 5 seconds
+				Tooltip:
+					'''
+					Your attacks inflict Pure Chill if you was not hit for 5 seconds
+					'Cold as the iron realm itself'
+					'''
 			}
 
 			HardlightEnchant: {
 				DisplayName: Hardlight Enchantment
 				Tooltip:
 					'''
-					WIP
+					Grants a drone that has a chance to use one of four attacks every 10 seconds:
+						12.5% Shoot a SoS missile
+						25% Fires a laser that deals 15% damage of the weapon held 
+						50% Аire a care package that will heal and restore your mana by 25%
+						12.5% Сreate a magnet field and dash into enemies 150dmg
 					Effects of Pocket Shield Generator
+					'Aidios dingus'
+					'''
+			}
+
+			ElderWoodEnchant: {
+				DisplayName: Elder Wood Enchantment
+				Tooltip:
+					'''
+					All non class damage will deal nature and poison damage
+					Grants 15% resistance to nature and poison damage
+					'May give rashes'
 					'''
 			}
 
 			LivingWoodEnchant2: {
-				DisplayName: Living Wood Enchant2
-				Tooltip: ""
+				DisplayName: Living Twig Enchantment
+				Tooltip:
+					'''
+					Depending on what biome your in you occasionally drop twigs that trip and deal damage to enemies 
+					Only five twigs can exist at a time 
+					'Become one with nature'
+					'''
 			}
 
 			XeniumEnchant: {
 				DisplayName: Xenium Enchantment
-				Tooltip: Gives the player a mounted shoulder rocket launcher that follows and shoot homing rockets at enemies
+				Tooltip:
+					'''
+					Gives the player a mounted shoulder rocket launcher that follows and shoot homing rockets at enemies
+					'May be illegal in some regions'
+					'''
 			}
 
 			XenomiteEnchant: {
 				DisplayName: Xenomite Enchantment
-				Tooltip: Ability unleash toxic gas in a radius around the player, inflicting Burning Acid
+				Tooltip:
+					'''
+					Ability unleash toxic gas in a radius around the player, inflicting Burning Acid
+					'This will definitely give you some form of cancer'
+					'''
 			}
 
 			AdvancementForce: {
 				DisplayName: Force of Advancement
 				Tooltip:
 					'''
-					[i:ssm/LivingWoodEnchant2] Depending on what biome your in you drop twigs that deal elememtal damage to enemies 
 					[i:ssm/CommonGuardEnchant] Active skill halves Guard points of enemies
+					[i:ssm/XenomiteEnchant] Ability unleash toxic gas in a radius around the player, inflicting Burning Acid
+					[i:ssm/HardlightEnchant] Grants a drone that has a chance to use one of four attacks every 10 seconds 
+					[i:ssm/XeniumEnchant] Gives the player a mounted shoulder rocket launcher that follows and shoot homing rockets at enemies
+					'''
+			}
+
+			AchivementForce: {
+				DisplayName: Force of Achivement
+				Tooltip:
+					'''
+					[i:ssm/LivingWoodEnchant2] Depending on what biome your in you drop twigs that deal elememtal damage to enemies 
 					[i:ssm/PureIronEnchant] Your attacks inflict Pure Chill if you was not hit for 5 seconds
 					[i:ssm/DragonLeadEnchant] Taking damage makes weapons deal Dragonblaze debuff for 10 seconds
-					[i:ssm/XenomiteEnchant] Ability unleash toxic gas in a radius around the player, inflicting Burning Acid
-					[i:ssm/HardlightEnchant] 
-					[i:ssm/XeniumEnchant] Gives the player a mounted shoulder rocket launcher that follows and shoot homing rockets at enemies
+					[i:ssm/ElderWoodEnchant] Classless damage deal every type of elemental damage, immunity to elemental damage
 					'''
 			}
 
@@ -2117,8 +2177,8 @@ Mods: {
 				DisplayName: Coral Enchantment
 				Tooltip:
 					'''
+					Makes you count as submerged in water  
 					'For swimming with the fishes'
-					Ability makes you count as submerged in water for 10 seconds. 15 second cooldown after using.   
 					'''
 			}
 
@@ -2761,11 +2821,23 @@ Mods: {
 			MicroverseSoul: {
 				Tooltip: ""
 				DisplayName: Microverse Soul
+				Redemption1: Grants following effects:
+				Redemption2: Grants following effects:
+				Homeward1: Grants following effects:
+				Homeward2: Grants following effects:
+				Spooky1: Effects of Terror Force
+				Spooky2: Effects of Horror Force
 			}
 
 			MacroverseSoul: {
 				Tooltip: ""
 				DisplayName: Macroverse Soul
+
+				Extra: {
+					Effects: Grants following effects:
+					StartsWithFilter: "'"
+					ContainsFilter: Following effects|Grants togglable
+				}
 			}
 
 			Politician: {
@@ -3441,6 +3513,35 @@ Mods: {
 				DisplayName: ND Placeholder Material
 				Tooltip: ""
 			}
+
+			TModTechHelmet: {
+				DisplayName: T Mod Tech Helmet
+				Tooltip: ""
+			}
+
+			TModTechLegs: {
+				DisplayName: T Mod Tech Legs
+				Tooltip: ""
+			}
+
+			TModTechSuit: {
+				DisplayName: T Mod Tech Suit
+				Tooltip: ""
+			}
+
+			EternalAuricSoul: {
+				DisplayName: Eternal Auric Soul
+				Tooltip: Absorb to get eternal power
+			}
+
+			MonstrosityAntibodies: {
+				DisplayName: Monstrosity Antibodies
+				Tooltip: 
+				'''
+				Immunity to every water related debuff from Calamity
+				Increases damage for your current weapon class by 35%, but decreases life regeneration
+				'''
+			}
 		}
 
 		WizardEffect: {
@@ -4037,6 +4138,8 @@ Mods: {
 			IllumiteAuraProj.DisplayName: Illumite Aura Proj
 			BellMinionPulse.DisplayName: Bell Minion Pulse
 			MutantYap.DisplayName: Mutant Yap
+			CarePackage.DisplayName: Care Package
+			HardlightDrone.DisplayName: Hardlight Drone
 		}
 
 		Bestiary: {

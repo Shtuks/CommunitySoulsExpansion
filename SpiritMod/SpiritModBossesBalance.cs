@@ -21,73 +21,62 @@ namespace ssm.SpiritMod
         {
             if (npc.type == ModContent.NPCType<Scarabeus>())
             {
-                npc.lifeMax = ModCompatibility.Calamity.Loaded ? 4800 : 3900;
+                npc.lifeMax = (int)(npc.lifeMax * (ModCompatibility.Calamity.Loaded ? 2 : 1.5f));
+                npc.damage = (int)(npc.damage * 1.5f);
             }
 
             if (npc.type == ModContent.NPCType<ReachBoss>())
             {
-                npc.lifeMax = ModCompatibility.Calamity.Loaded ? 13000 : 10000;
-                npc.damage = 60;
-            }
-
-            if (npc.type == ModContent.NPCType<ReachBoss>())
-            {
-                npc.lifeMax = ModCompatibility.Calamity.Loaded ? 8000 : 6000;
-                npc.damage = 65;
-            }
-
-            if (npc.type == ModContent.NPCType<ReachBoss>())
-            {
-                npc.lifeMax = ModCompatibility.Calamity.Loaded ? 8000 : 6000;
-                npc.damage = 65;
+                npc.lifeMax = (int)(npc.lifeMax * (ModCompatibility.Calamity.Loaded ? 2 : 1.5f));
+                npc.damage = (int)(npc.damage * 1.3f);
             }
 
             if (npc.type == ModContent.NPCType<MoonWizard>())
             {
-                npc.lifeMax = ModCompatibility.Calamity.Loaded ? 8200 : 6200;
-                npc.damage = 60;
+                npc.lifeMax = (int)(npc.lifeMax * (ModCompatibility.Calamity.Loaded ? 2 : 1.5f));
+                npc.damage = (int)(npc.damage * 1.3f);
             }
 
             if (npc.type == ModContent.NPCType<AncientFlyer>())
             {
-                npc.lifeMax = ModCompatibility.Calamity.Loaded ? 15000 : 12000;
-                npc.damage = 60;
+                npc.lifeMax = (int)(npc.lifeMax * (ModCompatibility.Calamity.Loaded ? 2 : 1.5f));
+                npc.damage = (int)(npc.damage * 1.5f);
             }
 
             if (npc.type == ModContent.NPCType<Infernon>())
             {
-                npc.lifeMax = ModCompatibility.Calamity.Loaded ? 53000 : 32000;
-                npc.damage = 110;
+                npc.lifeMax = (int)(npc.lifeMax * (ModCompatibility.Calamity.Loaded ? 2 : 1.5f));
+                npc.damage = (int)(npc.damage * 1.5f);
             }
 
             if (npc.type == ModContent.NPCType<SteamRaiderHead>())
             {
-                npc.lifeMax = ModCompatibility.Calamity.Loaded ? 22000 : 19000;
-                npc.damage = 100;
+                npc.lifeMax = (int)(npc.lifeMax * (ModCompatibility.Calamity.Loaded ? 2 : 1.5f));
+                npc.damage = (int)(npc.damage * 1.5f);
             }
 
-            if (npc.type == ModContent.NPCType<SteamRaiderHead>())
+            if (npc.type == ModContent.NPCType<SteamRaiderBody>())
             {
-                npc.lifeMax = ModCompatibility.Calamity.Loaded ? 22000 : 19000;
-                npc.damage = 100;
+                npc.lifeMax = (int)(npc.lifeMax * (ModCompatibility.Calamity.Loaded ? 2 : 1.5f));
+                npc.damage = (int)(npc.damage * 1.5f);
+            }
+
+            if (npc.type == ModContent.NPCType<SteamRaiderBody2>())
+            {
+                npc.lifeMax = (int)(npc.lifeMax * (ModCompatibility.Calamity.Loaded ? 2 : 1.5f));
+                npc.damage = (int)(npc.damage * 1.5f);
             }
 
             if (npc.type == ModContent.NPCType<Dusking>())
             {
-                npc.lifeMax = ModCompatibility.Calamity.Loaded ? 75000 : 64000;
-                npc.damage = 140;
-            }
-
-            if (npc.type == ModContent.NPCType<Dusking>())
-            {
-                npc.lifeMax = ModCompatibility.Calamity.Loaded ? 75000 : 64000;
-                npc.damage = 140;
+                npc.lifeMax = (int)(npc.lifeMax * (ModCompatibility.Calamity.Loaded ? 2 : 1.5f));
+                npc.damage = (int)(npc.damage * 1.5f);
             }
 
             if (npc.type == ModContent.NPCType<Atlas>())
             {
-                npc.lifeMax = ModCompatibility.Calamity.Loaded ? 175000 : 98000;
-                npc.damage = 170;
+                npc.lifeMax = (int)(npc.lifeMax * (ModCompatibility.Calamity.Loaded ? 2 : 1.5f));
+                npc.damage = (int)(npc.damage * 1.5f);
             }
         }
     }
