@@ -72,6 +72,7 @@ namespace ssm.gunrightsmod.Enchantments
             }
             public override void OnHitByEither(Player player, NPC npc, Projectile proj)
             {
+                base.OnHitByEither(player, npc, proj);
                 var CSEgunrightsmodPlayer = player.GetModPlayer<CSEgunrightsmodPlayer>();
                 if (CSEgunrightsmodPlayer.AstatineExplosionCharge >= 15f * 60 || player.FargoSouls().ForceEffect<AstatineEnchant>())
                     AstatineExplosion(player);

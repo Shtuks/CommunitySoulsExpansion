@@ -18,12 +18,17 @@ using System;
 using Terraria.GameContent.Bestiary;
 using Terraria.UI;
 using FargowiltasSouls;
+using static ssm.gunrightsmod.Enchantments.PlasticEnchant.PlasticEffect;
 
 
 namespace ssm.gunrightsmod
 {
     public class CSEgunrightsmodProjectiles : GlobalProjectile
     {
-        //
+        public override void OnHitPlayer(Projectile projectile, Player target, Player.HurtInfo hurtInfo)
+        {
+            Player attacker = Main.player[projectile.owner];
+            TryApplyMicroplastics(attacker, target);
+        }
     }
 }
