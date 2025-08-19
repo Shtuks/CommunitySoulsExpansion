@@ -92,7 +92,7 @@ namespace ssm.SoA
             int n = 0;
             if (item.type == ModContent.ItemType<VoidSpurs>())
             {
-                tooltips.Insert(13, new TooltipLine(Mod, "compat", $"{Language.GetTextValue("Mods.ssm.AddedEffects.Aeolus")}"));
+                tooltips.Insert(13, new TooltipLine(Mod, "compat", $"{Language.GetTextValue("Mods.ssm.Items.AddedEffects.Aeolus")}"));
             }
             if (item.type == ModContent.ItemType<FlamesOfCondemnation>())
             {
@@ -110,7 +110,7 @@ namespace ssm.SoA
             if (item.type == ModContent.ItemType<Desperatio>())
             {
                 n = ModCompatibility.Calamity.Loaded ? 90 : 20;
-                tooltips.Add(new TooltipLine(Mod, "nerf", $"{Language.GetTextValue("Mods.ssm.Balance.Debuff")} {Language.GetTextValue("Mods.ssm.Balance.ColumnNerf")}"));
+                tooltips.Add(new TooltipLine(Mod, "nerf", $"{Language.GetTextValue("Mods.ssm.Balance.Nerf")} {Language.GetTextValue("Mods.ssm.Balance.ColumnNerf")}"));
                 tooltips.Add(new TooltipLine(Mod, "homing", $"{Language.GetTextValue("Mods.ssm.Balance.Buff")} {Language.GetTextValue("Mods.ssm.Balance.Homing")}"));
             }
             if (item.type == ModContent.ItemType<Eschaton>())

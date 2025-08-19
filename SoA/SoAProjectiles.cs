@@ -48,7 +48,7 @@ namespace ssm.SoA
             {
                 if ((projectile.ai[1] += 1f) >= 20f)
                 {
-                    CSEUtils.HomeInOnNPC(projectile, true, 1600, 8, 2);
+                    CSEUtils.HomeInOnNPC(projectile, true, 1600, 10, 2);
                 }
             }
 
@@ -57,7 +57,7 @@ namespace ssm.SoA
                 projectile.velocity *= 1.05f;
                 if ((projectile.ai[1] += 1f) >= 20f)
                 {
-                    CSEUtils.HomeInOnNPC(projectile, true, 700, 8, 2);
+                    CSEUtils.HomeInOnNPC(projectile, true, 700, 10, 2);
                 }
             }
 
@@ -65,7 +65,7 @@ namespace ssm.SoA
             {
                 if ((projectile.ai[2] += 1f) >= 20f)
                 {
-                    CSEUtils.HomeInOnNPC(projectile, true, 300, 8, 2);
+                    CSEUtils.HomeInOnNPC(projectile, true, 300, 10, 2);
                 }
             }
 

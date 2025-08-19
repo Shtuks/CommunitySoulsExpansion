@@ -7,7 +7,7 @@ using Terraria.ModLoader;
 
 namespace ssm.Content.Items.DevItems
 {
-    internal abstract class DevItem : ModItem
+    public abstract class DevItem : ModItem
     {
         public override bool IsLoadingEnabled(Mod mod)
         {

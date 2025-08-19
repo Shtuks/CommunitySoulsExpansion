@@ -41,7 +41,7 @@ namespace ssm.Redemption.Enchantments
 
         public class DragonLeadEffect : AccessoryEffect
         {
-            public override Header ToggleHeader => Header.GetHeader<AdvancementForceHeader>();
+            public override Header ToggleHeader => Header.GetHeader<AchivementForceHeader>();
             public override int ToggleItemType => ModContent.ItemType<DragonLeadEnchant>();
 
             public int cd;

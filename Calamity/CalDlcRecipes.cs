@@ -32,10 +32,11 @@ namespace ssm.Calamity
                     recipe.AddIngredient<AbomEnergy>();
                     recipe.RemoveIngredient(ModContent.ItemType<EternalEnergy>());
                 }
-                if (/*!CSEConfig.Instance.ExperimentalContent && */recipe.HasResult<EternitySoul>() && !recipe.HasIngredient<CalamitySoul>() && recipe.HasIngredient<BrandoftheBrimstoneWitch>())
+                if (/*!CSEConfig.Instance.ExperimentalContent && */recipe.HasResult<EternitySoul>() && /*!recipe.HasIngredient<CalamitySoul>() &&*/ recipe.HasIngredient<BrandoftheBrimstoneWitch>())
                 {
-                    if (recipe.RemoveIngredient(ModContent.ItemType<BrandoftheBrimstoneWitch>()))
-                        recipe.AddIngredient<CalamitySoul>();
+                    /*if (*/
+                    recipe.RemoveIngredient(ModContent.ItemType<BrandoftheBrimstoneWitch>());//)
+                        //recipe.AddIngredient<CalamitySoul>();
                 }
                 //if (recipe.HasIngredient<Rock>() && recipe.HasIngredient<EternalEnergy>() && !recipe.HasIngredient<ShadowspecBar>())
                 //{

@@ -1,4 +1,5 @@
-﻿using Fargowiltas.NPCs;
+﻿using CalamityMod.Events;
+using Fargowiltas.NPCs;
 using FargowiltasSouls.Content.Bosses.AbomBoss;
 using FargowiltasSouls.Content.Bosses.DeviBoss;
 using FargowiltasSouls.Content.Bosses.MutantBoss;
@@ -6,6 +7,7 @@ using FargowiltasSouls.Core.ItemDropRules.Conditions;
 using NoxusBoss.Content.Items;
 using NoxusBoss.Content.Items.MiscOPTools;
 using NoxusBoss.Content.NPCs.Bosses.Avatar.SecondPhaseForm;
+using NoxusBoss.Content.NPCs.Bosses.Draedon;
 using NoxusBoss.Content.NPCs.Bosses.NamelessDeity;
 using ssm.Content.NPCs;
 using ssm.Content.NPCs.MutantEX;
@@ -43,6 +45,14 @@ namespace ssm.Calamity.Addons
                 //EmptinessSprayer.NPCsThatReflectSpray[ModContent.NPCType<Amalgamtionn>()] = true;
                 //EmptinessSprayer.NPCsThatReflectSpray[ModContent.NPCType<DivergenttBoss>()] = true;
                 //EmptinessSprayer.NPCsThatReflectSpray[ModContent.NPCType<Divergentt>()] = true;
+            }
+        }
+
+        public override void ModifyIncomingHit(NPC npc, ref NPC.HitModifiers modifiers)
+        {
+            if(npc.type == ModContent.NPCType<MarsBody>() && BossRushEvent.BossRushActive)
+            {
+                modifiers.FinalDamage *= 3;
             }
         }
         public override void ModifyNPCLoot(NPC npc, NPCLoot npcLoot)

@@ -54,6 +54,18 @@ namespace ssm
                 {
                     entity.defense = 70;
                 }
+                if (entity.type == ModContent.ItemType<NekomiHood>())
+                {
+                    entity.defense = 7;
+                }
+                if (entity.type == ModContent.ItemType<NekomiHoodie>())
+                {
+                    entity.defense = 11;
+                }
+                if (entity.type == ModContent.ItemType<NekomiLeggings>())
+                {
+                    entity.defense = 7;
+                }
             }
             if (entity.type == ModContent.ItemType<GuardianTome>())
             {
@@ -85,7 +97,7 @@ namespace ssm
                 entity.defense = 20;
             }
 
-            if(ModCompatibility.Calamity.Loaded || ModCompatibility.SacredTools.Loaded)
+            if (ModCompatibility.Calamity.Loaded || ModCompatibility.SacredTools.Loaded)
             {
                 if (entity.type == ModContent.ItemType<NukeFishron>())
                 {
@@ -126,6 +138,12 @@ namespace ssm
                 player.GetDamage<RangedDamageClass>() += 0.03f;
             }
 
+            if (ModCompatibility.Calamity.Loaded && Item.type == ModContent.ItemType<UniverseSoul>())
+            {
+                player.GetDamage<GenericDamageClass>() += 0.1f;
+                player.GetCritChance<GenericDamageClass>() += 5f;
+            }
+
             //SoU
             if (ModCompatibility.SacredTools.Loaded && (Item.type == ModContent.ItemType<UniverseSoul>() || Item.type == ModContent.ItemType<EternitySoul>() || Item.type == ModContent.ItemType<StargateSoul>()))
             {
@@ -156,6 +174,10 @@ namespace ssm
             if (ModCompatibility.Thorium.Loaded && (Item.type == ModContent.ItemType<EternitySoul>() || Item.type == ModContent.ItemType<StargateSoul>()))
             {
                 ModContent.Find<ModItem>(Mod.Name, "ThoriumSoul").UpdateAccessory(player, hideVisual);
+            }
+            if (ModCompatibility.SpiritMod.Loaded && (Item.type == ModContent.ItemType<EternitySoul>() || Item.type == ModContent.ItemType<StargateSoul>()))
+            {
+                ModContent.Find<ModItem>(Mod.Name, "SpiritSoul").UpdateAccessory(player, hideVisual);
             }
             if (ModCompatibility.Polarities.Loaded && (Item.type == ModContent.ItemType<EternitySoul>() || Item.type == ModContent.ItemType<StargateSoul>()))
             {
@@ -210,6 +232,18 @@ namespace ssm
                     tooltips[i].Text = Regex.Replace(tooltips[i].Text, "22%", "25%", RegexOptions.IgnoreCase);
                 }
             }
+
+            if (item.type == ModContent.ItemType<UniverseSoul>())
+            {
+                for (int i = 0; i < tooltips.Count; i++)
+                {
+                    if (ModCompatibility.Calamity.Loaded)
+                    {
+                        tooltips[i].Text = Regex.Replace(tooltips[i].Text, "50%", "60%", RegexOptions.IgnoreCase);
+                        tooltips[i].Text = Regex.Replace(tooltips[i].Text, "25%", "30%", RegexOptions.IgnoreCase);
+                    }
+                }
+            }
             //if (item.type == ModContent.ItemType<UniverseSoul>() && ModCompatibility.SacredTools.Loaded && ModCompatibility.Thorium.Loaded && ModCompatibility.Calamity.Loaded)
             //{
             //    tooltips.Add(new TooltipLine(Mod, "balance", $"[c/00A36C:CSE Balance:] Additional 2 minion slots."));
@@ -223,16 +257,22 @@ namespace ssm
             }
             if (item.type == ModContent.ItemType<MutantsCurse>() || item.type == ModContent.ItemType<AbominationnVoodooDoll>())
             {
-                //tooltips.Add(new TooltipLine(Mod, "1m", "Mutant max life and damage scales with ammount of supported mods."));
-                //tooltips.Add(new TooltipLine(Mod, "2m", $"Points: {Math.Round(CSENpcs.multiplierM, 1)}, Max Life: {10000000 + Math.Round(CSENpcs.multiplierM, 1) * 10000000}, Damage: {500 + Math.Round(CSENpcs.multiplierM, 1) * (ModCompatibility.Calamity.Loaded ? 125 : 100)}"));
-                //tooltips.Add(new TooltipLine(Mod, "3m", "Thorium adds 0.9 points. SoA adds 1.3. Calamity 1.8"));
-                //tooltips.Add(new TooltipLine(Mod, "4m", "If olnly one of supported mods active Thorium - 1 SoA - 2 Calamity 2.8"));
-                //tooltips.Add(new TooltipLine(Mod, "5m", "If Masochist mode enabled, points multiplied by 1.5"));
+                tooltips.Add(new TooltipLine(Mod, "1m", "Mutant max life and damage scales with ammount of supported mods."));
+                tooltips.Add(new TooltipLine(Mod, "2m", $"Current Max Life: {10000000 + Math.Round(CSENpcs.multiplierML, 1) * 10000000}, Current Damage: {500 + Math.Round(CSENpcs.multiplierMD, 1) * 100}"));
+                tooltips.Add(new TooltipLine(Mod, "5m", "If Masochist mode enabled, stats multiplied by 1.5"));
                 if (ModCompatibility.SacredTools.Loaded && CSEConfig.Instance.ExperimentalContent)
                 {
                     tooltips.Add(new TooltipLine(Mod, "7m", "In first phase Mutant has Aura of Supression. After destroying aura second phase will start."));
                     tooltips.Add(new TooltipLine(Mod, "8m", "Aura can be destroyed only with Relic Weapons or Styx Armor set bonus. Mutant immune to damage if aura active."));
                 }
+            }
+            if (item.damage < 100000 && item.damage > 10000 && !CSEUtils.IsModItem(item, "CalamityInheritance") && !CSEUtils.IsModItem(item, "SacredTools") && !CSEUtils.IsModItem(item, "FargowiltasSouls") && !CSEUtils.IsModItem(item, "ThoriumMod") && !CSEUtils.IsModItem(item, "CaamityMod"))
+            {
+                tooltips.Add(new TooltipLine(Mod, "rebalance", $"{Language.GetTextValue("Mods.ssm.Balance.Nerf")} {Language.GetTextValue("Mods.ssm.Balance.DamageDown")} 90%"));
+            }
+            if (item.damage > 100000 && !CSEUtils.IsModItem(item, "CalamityInheritance") && !CSEUtils.IsModItem(item, "SacredTools") && !CSEUtils.IsModItem(item, "FargowiltasSouls") && !CSEUtils.IsModItem(item, "ThoriumMod") && !CSEUtils.IsModItem(item, "CaamityMod"))
+            {
+                tooltips.Add(new TooltipLine(Mod, "rebalance", $"{Language.GetTextValue("Mods.ssm.Balance.Nerf")} {Language.GetTextValue("Mods.ssm.Balance.DamageDown")} 99%"));
             }
             if (ModCompatibility.Thorium.Loaded)
             {

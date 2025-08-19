@@ -10,6 +10,7 @@ using FargowiltasSouls.Core.AccessoryEffectSystem;
 using ssm.Content.SoulToggles;
 using ssm.Content.Projectiles.Enchantments;
 using static ssm.Redemption.Enchantments.DragonLeadEnchant;
+using SacredTools.Projectiles.Lunar;
 
 namespace ssm.Redemption.Enchantments
 {
@@ -40,7 +41,7 @@ namespace ssm.Redemption.Enchantments
 
         public class LivingWoodEffect2 : AccessoryEffect
         {
-            public override Header ToggleHeader => Header.GetHeader<AdvancementForceHeader>();
+            public override Header ToggleHeader => Header.GetHeader<AchivementForceHeader>();
             public override int ToggleItemType => ModContent.ItemType<LivingWoodEnchant2>();
             
             private int twigTimer;
@@ -58,16 +59,19 @@ namespace ssm.Redemption.Enchantments
             {
                 if (player.whoAmI != Main.myPlayer) return;
 
-                Vector2 position = player.Center + new Vector2(Main.rand.Next(-20, 20), 20);
-                Projectile.NewProjectile(
-                    player.GetSource_FromThis(),
-                    position,
-                    Vector2.Zero,
-                    ModContent.ProjectileType<TwigProj>(),
-                    20, 
-                    0f,
-                    player.whoAmI
-                );
+                if (player.ownedProjectileCounts[ModContent.ProjectileType<TwigProj>()] < 5)
+                {
+                    Vector2 position = player.Center + new Vector2(Main.rand.Next(-20, 20), 20);
+                    Projectile.NewProjectile(
+                        player.GetSource_FromThis(),
+                        position,
+                        Vector2.Zero,
+                        ModContent.ProjectileType<TwigProj>(),
+                        20,
+                        0f,
+                        player.whoAmI
+                    );
+                }
             }
         }
         public override void AddRecipes()

@@ -16,8 +16,6 @@ namespace ssm.Thorium.Enchantments
     [JITWhenModsEnabled(ModCompatibility.Thorium.Name)]
     public class CoralEnchant : BaseEnchant
     {
-        public override List<AccessoryEffect> ActiveSkillTooltips =>
-            [AccessoryEffectLoader.GetEffect<CoralEffect>()];
         public override bool IsLoadingEnabled(Mod mod)
         {
             return CSEConfig.Instance.Thorium;
@@ -45,33 +43,11 @@ namespace ssm.Thorium.Enchantments
             public override Header ToggleHeader => null;
             public override int ToggleItemType => ModContent.ItemType<CoralEnchant>();
             public override bool ActiveSkill => true;
-
-            public bool active;
-            public int wetBuffTimer;
-            public int cooldownTimer;
             public override void PostUpdate(Player player)
             {
-                if (active)
-                {
-                    if (cooldownTimer > 0) cooldownTimer--;
-
-                    if (wetBuffTimer > 0)
-                    {
-                        wetBuffTimer--;
-                        player.wet = true; 
-                        player.wetCount = 10; 
-                    }
-                }
-            }
-            public override void ActiveSkillJustPressed(Player player, bool stunned)
-            {
-                if (cooldownTimer <= 0 && wetBuffTimer <= 0)
-                {
-                    wetBuffTimer = 30 * 60; 
-                    cooldownTimer = (30 + 15) * 60; 
-
-                    Terraria.Audio.SoundEngine.PlaySound(SoundID.Item86, player.position);
-                }
+                player.wet = true; 
+                player.wetCount = 10;
+                player.dripping = true;
             }
         }
         public override void AddRecipes()

@@ -14,6 +14,11 @@ namespace ssm.Content.Items.Consumables
         {
             //Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
         }
+
+        public override bool IsLoadingEnabled(Mod mod)
+        {
+            return false;
+        }
         public override void SetDefaults()
         {
             Item.width = 20;
@@ -73,7 +78,6 @@ namespace ssm.Content.Items.Consumables
             }
 
             recipe.AddIngredient(ItemID.LifeFruit, 10);
-            recipe.AddIngredient(ItemID.DemonHeart);
             recipe.AddTile<CrucibleCosmosSheet>();
             recipe.Register();
         }
@@ -82,10 +86,12 @@ namespace ssm.Content.Items.Consumables
     {
         public override bool IsEnabled()
         {
-            if (!Player.active)
+            //if (!Player.active)
                 return false;
+            //if (!CSEConfig.Instance.SecretBosses)
+            //    return false;
 
-            return Player.CSE().starlightFruit;
+            //return Player.CSE().starlightFruit;
         }
         public override bool IsHidden() => IsEmpty && !IsEnabled();
     }

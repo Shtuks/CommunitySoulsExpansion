@@ -41,7 +41,7 @@ namespace ssm.Redemption.Enchantments
 
         public class PureIronEffect : AccessoryEffect
         {
-            public override Header ToggleHeader => Header.GetHeader<AdvancementForceHeader>();
+            public override Header ToggleHeader => Header.GetHeader<AchivementForceHeader>();
             public override int ToggleItemType => ModContent.ItemType<PureIronEnchant>();
             public override void OnHitNPCEither(Player player, NPC target, NPC.HitInfo hitInfo, DamageClass damageClass, int baseDamage, Projectile projectile, Item item)
             {

@@ -101,7 +101,7 @@ namespace ssm.Thorium
             }
             if (item.type == ModContent.ItemType<TerrariumParticleSprinters>())
             {
-                tooltips.Insert(8, new TooltipLine(Mod, "compat", $"{Language.GetTextValue("Mods.ssm.AddedEffects.Aeolus")}"));
+                tooltips.Insert(8, new TooltipLine(Mod, "compat", $"{Language.GetTextValue("Mods.ssm.Items.AddedEffects.Aeolus")}"));
             }
             if (item.type == ModContent.ItemType<QuasarsFlare>())
             {

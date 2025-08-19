@@ -23,6 +23,12 @@ public static class ModCompatibility
         public static bool Loaded => ModLoader.HasMod(Name);
         public static Mod Mod => ModLoader.GetMod(Name);
     }
+    public static class WHummus
+    {
+        public const string Name = "WHummusMultiModBalancing";
+        public static bool Loaded => ModLoader.HasMod(Name);
+        public static Mod Mod => ModLoader.GetMod(Name);
+    }
     public static class ThoriumRework
     {
         public const string Name = "ThoriumRework";

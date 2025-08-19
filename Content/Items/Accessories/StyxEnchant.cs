@@ -13,6 +13,7 @@ using FargowiltasSouls.Content.Items.Accessories.Enchantments;
 using FargowiltasSouls.Content.Patreon.Volknet;
 using FargowiltasSouls.Content.Items.Weapons.SwarmDrops;
 using FargowiltasSouls.Content.Patreon.DemonKing;
+using Luminance.Core.Graphics;
 
 namespace ssm.Content.Items.Accessories
 {
@@ -35,15 +36,20 @@ namespace ssm.Content.Items.Accessories
         public override Color nameColor => new(255, 255, 0);
         public override bool PreDrawTooltipLine(DrawableTooltipLine line, ref int yOffset)
         {
-            if (!(((TooltipLine)line).Mod == "Terraria") || !(((TooltipLine)line).Name == "ItemName"))
-                return true;
-            Main.spriteBatch.End();
-            Main.spriteBatch.Begin((SpriteSortMode)1, (BlendState)null, (SamplerState)null, (DepthStencilState)null, (RasterizerState)null, (Effect)null, Main.UIScaleMatrix);
-            GameShaders.Armor.GetShaderFromItemId(2869).Apply((Entity)Item, new DrawData?());
-            Utils.DrawBorderString(Main.spriteBatch, line.Text, new Vector2((float)line.X, (float)line.Y), Color.White, 1f, 0.0f, 0.0f, -1);
-            Main.spriteBatch.End();
-            Main.spriteBatch.Begin((SpriteSortMode)0, (BlendState)null, (SamplerState)null, (DepthStencilState)null, (RasterizerState)null, (Effect)null, Main.UIScaleMatrix);
-            return false;
+            if (line.Mod == "Terraria" && line.Name == "ItemName")
+            {
+                Main.spriteBatch.End(); //end and begin main.spritebatch to apply a shader
+                Main.spriteBatch.Begin(SpriteSortMode.Immediate, null, null, null, null, null, Main.UIScaleMatrix);
+                ManagedShader shader = ShaderManager.GetShader("FargowiltasSouls.Text");
+                shader.TrySetParameter("mainColor", new Color(255, 170, 12));
+                shader.TrySetParameter("secondaryColor", new Color(210, 69, 203));
+                shader.Apply("PulseDiagonal");
+                Utils.DrawBorderString(Main.spriteBatch, line.Text, new Vector2(line.X, line.Y), Color.White, 1); //draw the tooltip manually
+                Main.spriteBatch.End(); //then end and begin again to make remaining tooltip lines draw in the default way
+                Main.spriteBatch.Begin(SpriteSortMode.Deferred, null, null, null, null, null, Main.UIScaleMatrix);
+                return false;
+            }
+            return true;
         }
 
         public override void UpdateAccessory(Player player, bool hideVisual)

@@ -9,16 +9,9 @@ using CalamityMod.NPCs.Providence;
 using SacredTools.NPCs.Boss.Erazor;
 using CalamityMod.NPCs.Polterghast;
 using CalamityMod.NPCs.ExoMechs;
-using CalamityMod.NPCs.SupremeCalamitas;
 using SacredTools.NPCs.Boss.Obelisk.Nihilus;
 using Terraria;
-using Microsoft.Xna.Framework;
-using SacredTools.Common.Systems;
-using SacredTools.Content.Tiles.Obelisks;
 using Terraria.Audio;
-using NoxusBoss.Content.NPCs.Bosses.Avatar.FirstPhaseForm;
-using SacredTools.NPCs.Cinematic.Nihilus;
-using Redemption.NPCs.Bosses.PatientZero;
 
 namespace ssm.SoA
 {

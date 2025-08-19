@@ -64,86 +64,86 @@ namespace ssm.Redemption
 
                 if (npc.type == ModContent.NPCType<Akka>())
                 {
-                    npc.lifeMax =ModCompatibility.Calamity.Loaded ? 1200000 : 540000;
-                    npc.damage = 420;
+                    npc.lifeMax = (int)(npc.lifeMax * (ModCompatibility.Calamity.Loaded ? 2 : 1.5f));
+                    npc.damage = (int)(npc.damage * 1.5f);
                 }
 
                 if (npc.type == ModContent.NPCType<Ukko>())
                 {
-                    npc.lifeMax =  ModCompatibility.Calamity.Loaded ? 1400000 : 640000;
-                    npc.damage = 470;
+                    npc.lifeMax = (int)(npc.lifeMax * (ModCompatibility.Calamity.Loaded ? 2 : 1.5f));
+                    npc.damage = (int)(npc.damage * 1.5f);
                 }
 
                 if (npc.type == ModContent.NPCType<PZ>())
                 {
-                    npc.lifeMax = ModCompatibility.Calamity.Loaded ? 1600000 : 440000;
-                    npc.damage = 420;
+                    npc.lifeMax = (int)(npc.lifeMax * (ModCompatibility.Calamity.Loaded ? 2 : 1.5f));
+                    npc.damage = (int)(npc.damage * 1.5f);
                 }
 
                 if (npc.type == ModContent.NPCType<PZ_Kari>())
                 {
-                    npc.lifeMax = ModCompatibility.Calamity.Loaded ? 100000 : 500000;
-                    npc.damage = 470;
+                    npc.lifeMax = (int)(npc.lifeMax * (ModCompatibility.Calamity.Loaded ? 2 : 1.5f));
+                    npc.damage = (int)(npc.damage * 1.5f);
                 }
 
                 if (npc.type == ModContent.NPCType<Calavia>())
                 {
-                    npc.lifeMax = ModCompatibility.Calamity.Loaded ? 9000 : 6000;
-                    npc.damage = 100;
+                    npc.lifeMax = (int)(npc.lifeMax * (ModCompatibility.Calamity.Loaded ? 2 : 1.5f));
+                    npc.damage = (int)(npc.damage * 1.5f);
                 }
 
                 if (npc.type == ModContent.NPCType<Thorn>())
                 {
-                    npc.lifeMax = 3500;
-                    npc.damage = 60;
+                    npc.lifeMax = (int)(npc.lifeMax * (ModCompatibility.Calamity.Loaded ? 2 : 1.5f));
+                    npc.damage = (int)(npc.damage * 1.3f);
                 }
 
                 if (npc.type == ModContent.NPCType<Erhan>())
                 {
-                    npc.lifeMax = 4600;
-                    npc.damage = 65;
+                    npc.lifeMax = (int)(npc.lifeMax * (ModCompatibility.Calamity.Loaded ? 2 : 1.5f));
+                    npc.damage = (int)(npc.damage * 1.3f);
                 }
 
                 if (npc.type == ModContent.NPCType<EaglecrestGolem>())
                 {
-                    npc.lifeMax = 6000;
-                    npc.damage = 60;
+                    npc.lifeMax = (int)(npc.lifeMax * (ModCompatibility.Calamity.Loaded ? 2 : 1.5f));
+                    npc.damage = (int)(npc.damage * 1.5f);
                 }
 
                 if (npc.type == ModContent.NPCType<EaglecrestGolem2>())
                 {
-                    npc.lifeMax = 600000;
-                    npc.damage = 320;
+                    npc.lifeMax = (int)(npc.lifeMax * (ModCompatibility.Calamity.Loaded ? 2 : 1.5f));
+                    npc.damage = (int)(npc.damage * 2f);
                 }
 
                 if (npc.type == ModContent.NPCType<SoI>())
                 {
-                    npc.lifeMax = ModCompatibility.Calamity.Loaded ? 9000 : 6000;
-                    npc.damage = 90;
+                    npc.lifeMax = (int)(npc.lifeMax * (ModCompatibility.Calamity.Loaded ? 2 : 1.5f));
+                    npc.damage = (int)(npc.damage * 1.5f);
                 }
 
                 if (npc.type == ModContent.NPCType<KS3>())
                 {
-                    npc.lifeMax = ModCompatibility.Calamity.Loaded ? 77000 : 50000;
-                    npc.damage = 190;
+                    npc.lifeMax = (int)(npc.lifeMax * (ModCompatibility.Calamity.Loaded ? 2 : 1.5f));
+                    npc.damage = (int)(npc.damage * 2f);
                 }
 
                 if (npc.type == ModContent.NPCType<OmegaCleaver>())
                 {
-                    npc.lifeMax = ModCompatibility.Calamity.Loaded ? 100000 : 70000;
-                    npc.damage = 220;
+                    npc.lifeMax = (int)(npc.lifeMax * (ModCompatibility.Calamity.Loaded ? 2 : 1.5f));
+                    npc.damage = (int)(npc.damage * 2f);
                 }
 
                 if (npc.type == ModContent.NPCType<Gigapora_ShieldCore>())
                 {
-                    npc.lifeMax = ModCompatibility.Calamity.Loaded ? 23000 : 15000;
-                    npc.damage = 220;
+                    npc.lifeMax = (int)(npc.lifeMax * (ModCompatibility.Calamity.Loaded ? 2 : 1.5f));
+                    npc.damage = (int)(npc.damage * 2f);
                 }
 
                 if (npc.type == ModContent.NPCType<OO>())
                 {
-                    npc.lifeMax = (ModCompatibility.Calamity.Loaded ? 670000 : 340000);
-                    npc.damage = 320;
+                    npc.lifeMax = (int)(npc.lifeMax * (ModCompatibility.Calamity.Loaded ? 2 : 1.5f));
+                    npc.damage = (int)(npc.damage * 1.5f);
                 }
             }
         }

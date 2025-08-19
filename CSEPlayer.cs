@@ -195,7 +195,7 @@ namespace ssm
                 Player.CSE().throwerVelocity += 0.05f;
                 if (ModCompatibility.Thorium.Loaded) { BardAndHealer(Player, 0.5f, 100, 0.1f, 0.25f, 10, 5, 1, 180); }
                 if (ModCompatibility.BeekeeperClass.Loaded) { Beekeeper(Player, 10); }
-                if (ModCompatibility.Calamity.Loaded) { ThrowerCal(Player, 0.7f); }
+                if (ModCompatibility.Calamity.Loaded) { ThrowerCal(Player, 0.7f); Player.GetDamage<GenericDamageClass>() += 0.05f;}
             }
         }
         public override void SaveData(TagCompound tag)
