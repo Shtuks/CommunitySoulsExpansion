@@ -35,22 +35,15 @@ namespace ssm.Homeward
                 npc.lifeMax = (int)(npc.lifeMax * (ModCompatibility.Calamity.Loaded ? 2 : 1.5f));
             }
 
-
             if (npc.type == ModContent.NPCType<SlimeGod>())
             {
-                npc.lifeMax = (int)(npc.lifeMax * (ModCompatibility.Calamity.Loaded ? 2 : 1.5f));
+                npc.lifeMax = (int)(npc.lifeMax * (ModCompatibility.Calamity.Loaded ? 1.5f : 1.2f));
                 npc.damage = 420;
             }
 
             if (npc.type == ModContent.NPCType<TheMaterealizer>() || npc.type == ModContent.NPCType<TheOverwatcher>())
             {
-                npc.lifeMax = (int)(npc.lifeMax * (ModCompatibility.Calamity.Loaded ? 2 : 1.5f));
-            }
-
-            if (npc.type == ModContent.NPCType<Diver>())
-            {
-                npc.lifeMax = (int)(npc.lifeMax * (ModCompatibility.Calamity.Loaded ? 2 : 1.5f));
-                npc.damage = 200;
+                npc.lifeMax = (int)(npc.lifeMax * (ModCompatibility.Calamity.Loaded ? 1.5f : 1.2f));
             }
         }
     }

@@ -28,7 +28,7 @@ All things mod doing for now:
 - Return of Echdeath, Duke Fishron EX, Guntera and Ceiling of Moonlord
 
 Mods with hightest level of compatibility: Shadows of Abaddon, Thorium, Redemption
-Full list of supported mods: Calamity, Spooky, Polarities, Bombus Apis, Consolaria, Spirit, TerMerica, Homeward Journey
+Full list of supported mods: Calamity, Spooky, Polarities, Consolaria, Spirit, Homeward Journey
 Coming soon compatibility: Orchid, Vitality
 
 Coding: StarlightCat, Ropro0923

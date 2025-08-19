@@ -3536,11 +3536,20 @@ Mods: {
 
 			MonstrosityAntibodies: {
 				DisplayName: Monstrosity Antibodies
-				Tooltip: 
-				'''
-				Immunity to every water related debuff from Calamity
-				Increases damage for your current weapon class by 35%, but decreases life regeneration
-				'''
+				Tooltip:
+					'''
+					Immunity to every water related debuff from Calamity
+					Increases damage for your current weapon class by 35%, but decreases life regeneration
+					'''
+			}
+
+			ShadowflameSeed: {
+				DisplayName: Shadowflame Seed
+				Tooltip:
+					'''
+					Must be planted on grass
+					[c/D22444:Its powers may be combined with the Frostblessed Seedling when placed near it]
+					'''
 			}
 		}
 

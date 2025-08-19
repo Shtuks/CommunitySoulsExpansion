@@ -13,17 +13,17 @@ namespace ssm.Consolaria
         public override bool InstancePerEntity => true;
         public override void SetDefaults(NPC npc)
         {
-            if (npc.type == ModContent.NPCType<Ocram>())
-            {
-                npc.lifeMax = npc.lifeMax = (int)(npc.lifeMax * (ModCompatibility.Calamity.Loaded ? 2 : 1.5f));
-                npc.damage = (int)(npc.damage * 1.5f);
-            }
+            //if (npc.type == ModContent.NPCType<Ocram>())
+            //{
+            //    npc.lifeMax = npc.lifeMax = (int)(npc.lifeMax * (ModCompatibility.Calamity.Loaded ? 2 : 1.5f));
+            //    npc.damage = (int)(npc.damage * 1.5f);
+            //}
 
-            if (npc.type == ModContent.NPCType<TurkortheUngrateful>())
-            {
-                npc.lifeMax = npc.lifeMax = (int)(npc.lifeMax * (ModCompatibility.Calamity.Loaded ? 2 : 1.5f));
-                npc.damage = (int)(npc.damage * 1.5f);
-            }
+            //if (npc.type == ModContent.NPCType<TurkortheUngrateful>())
+            //{
+            //    npc.lifeMax = npc.lifeMax = (int)(npc.lifeMax * (ModCompatibility.Calamity.Loaded ? 2 : 1.5f));
+            //    npc.damage = (int)(npc.damage * 1.5f);
+            //}
         }
     }
 }

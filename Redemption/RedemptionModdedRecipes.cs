@@ -1,11 +1,7 @@
 ﻿using CalamityMod.Items.Materials;
-using ContinentOfJourney.Items.Material;
 using FargowiltasCrossmod.Content.Calamity.Items.Accessories.Essences;
 using FargowiltasCrossmod.Content.Calamity.Items.Accessories.Souls;
-using FargowiltasSouls.Content.Items.Accessories.Souls;
 using Redemption.Items.Materials.PostML;
-using ssm.ClassSouls.Beekeeper.Essences;
-using ssm.ClassSouls.Beekeeper.Souls;
 using ssm.Core;
 using ssm.Redemption.Mutagens;
 using ssm.SoA.Essences;
@@ -99,40 +95,4 @@ namespace ssm.Redemption
             }
         }
     }
-
-    [ExtendsFromMod(ModCompatibility.Redemption.Name, ModCompatibility.BeekeeperClass.Name)]
-    [JITWhenModsEnabled(ModCompatibility.Redemption.Name, ModCompatibility.BeekeeperClass.Name)]
-    public class RedemptionBeeRecipes : ModSystem
-    {
-        public override void PostAddRecipes()
-        {
-            for (int i = 0; i < Recipe.numRecipes; i++)
-            {
-                Recipe recipe = Main.recipe[i];
-                if (recipe.HasResult<BeekeeperSoul>() && !recipe.HasResult<MutagenBeekeeper>())
-                {
-                    recipe.AddIngredient<MutagenBeekeeper>();
-                    recipe.RemoveIngredient(ModContent.ItemType<BeekeeperEssence>());
-                }
-            }
-        }
-    }
-
-    //[ExtendsFromMod(ModCompatibility.Redemption.Name, ModCompatibility.ClikerClass.Name)]
-    //[JITWhenModsEnabled(ModCompatibility.Redemption.Name, ModCompatibility.ClikerClass.Name)]
-    //public class RedemptionClickerRecipes : ModSystem
-    //{
-    //    public override void PostAddRecipes()
-    //    {
-    //        for (int i = 0; i < Recipe.numRecipes; i++)
-    //        {
-    //            Recipe recipe = Main.recipe[i];
-    //            if (recipe.HasResult<ClickerSoul>() && !recipe.HasResult<MutagenClicker>())
-    //            {
-    //                recipe.AddIngredient<MutagenClicker>();
-    //                recipe.RemoveIngredient(ModContent.ItemType<ClickerEssence>());
-    //            }
-    //        }
-    //    }
-    //}
 }

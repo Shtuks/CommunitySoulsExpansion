@@ -10,9 +10,9 @@ using FargowiltasSouls.Content.Items.Accessories.Essences;
 using SacredTools.Content.Items.Accessories;
 using System.Collections.Generic;
 using Terraria.Localization;
-using static ssm.CrossMod.SoulsRecipes.BerserkerSoulEffects;
 using ContinentOfJourney.Items.Accessories.SummonerRings;
 using System.Text.RegularExpressions;
+using CalamityMod.Items.Accessories;
 
 namespace ssm.CrossMod.SoulsRecipes
 {
@@ -30,6 +30,7 @@ namespace ssm.CrossMod.SoulsRecipes
                     if (ModCompatibility.Homeward.Loaded) { recipe.AddIngredient(ModCompatibility.Homeward.Mod.Find<ModItem>("CommandersGaunlet"), 1); recipe.AddIngredient(ModCompatibility.Homeward.Mod.Find<ModItem>("IncitingIncident"), 1); recipe.AddIngredient(ModCompatibility.Homeward.Mod.Find<ModItem>("ConstructionPDA"), 1); }
                     if (ModCompatibility.Redemption.Loaded) { recipe.AddIngredient(ModCompatibility.Redemption.Mod.Find<ModItem>("PortableHoloProjector"), 1); recipe.AddIngredient(ModCompatibility.Redemption.Mod.Find<ModItem>("CruxCardMossyGoliath"), 1); recipe.AddIngredient(ModCompatibility.Redemption.Mod.Find<ModItem>("MutagenSummon"), 1); recipe.RemoveIngredient(ModContent.ItemType<OccultistsEssence>()); }
                     if (ModCompatibility.Catalyst.Loaded) { recipe.AddIngredient(ModCompatibility.Catalyst.Mod.Find<ModItem>("UnrelentingTorment"), 1);}
+                    if (ModCompatibility.Calamity.Loaded) { recipe.AddIngredient(ModCompatibility.Calamity.Mod.Find<ModItem>("PhantomicArtifact"), 1); }
                 }
                 if (ModCompatibility.Calamity.Loaded)
                 {
@@ -96,6 +97,7 @@ namespace ssm.CrossMod.SoulsRecipes
                         player.AddEffect<DivineNecklaceEffect>(Item);
                     }
                 }
+                player.AddEffect<PhantomicArtifactEffect>(Item);
             }
         }
 
@@ -131,6 +133,17 @@ namespace ssm.CrossMod.SoulsRecipes
                         tooltips[i].Text = Regex.Replace(tooltips[i].Text, "melee", "whip");
                     }
                 }
+            }
+        }
+        [ExtendsFromMod(ModCompatibility.Calamity.Name)]
+        public class PhantomicArtifactEffect : AccessoryEffect
+        {
+            public override Header ToggleHeader => Header.GetHeader<UniverseHeader>();
+            public override int ToggleItemType => ModContent.ItemType<PhantomicArtifact>();
+
+            public override void PostUpdateEquips(Player player)
+            {
+                ModCompatibility.Calamity.Mod.Find<ModItem>("PhantomicArtifact").UpdateAccessory(player, true);
             }
         }
         [ExtendsFromMod(ModCompatibility.Homeward.Name)]
