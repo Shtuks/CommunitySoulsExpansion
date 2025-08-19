@@ -29,7 +29,7 @@ namespace ssm.gunrightsmod.Enchantments
             Item.height = 20;
             Item.accessory = true;
             ItemID.Sets.ItemNoGravity[Item.type] = true;
-            Item.rare = 5;
+            Item.rare = ItemRarityID.Pink;
             Item.value = 193331;
         }
 
@@ -39,6 +39,8 @@ namespace ssm.gunrightsmod.Enchantments
         {
             public override Header ToggleHeader => Header.GetHeader<IdeocracyForceHeader>();
             public override int ToggleItemType => ModContent.ItemType<KevlarEnchant>();
+
+            
         }
 
         public override void AddRecipes()
