@@ -66,8 +66,7 @@ namespace ssm.Redemption.Enchantments
                 buffPlayer.ElementalResistance[13] += toAdd;
                 buffPlayer.ElementalResistance[14] += toAdd;
                 buffPlayer.ElementalResistance[0] += toAdd;
-                buffPlayer.ElementalResistance[15] += toAdd;
-
+               // buffPlayer.ElementalResistance[15] += toAdd;
             }
         }
         public override void AddRecipes()

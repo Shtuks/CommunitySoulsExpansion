@@ -1,7 +1,7 @@
 using FargowiltasSouls;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using ssm.Content.NPCs.MutantEX;
+//using ssm.Content.NPCs.MutantEX;
 using Terraria;
 using Terraria.Graphics.Effects;
 using Terraria.ModLoader;
@@ -25,79 +25,79 @@ namespace ssm.Content.Sky
 
             bool useSpecialColor = false;
 
-            if (FargoSoulsUtil.BossIsAlive(ref CSENpcs.mutantEX, ModContent.NPCType<MutantEX>())
-                && (Main.npc[CSENpcs.mutantEX].ai[0] < 0 || Main.npc[CSENpcs.mutantEX].ai[0] >= 10))
-            {
-                intensity += increment;
-                lifeIntensity = Main.npc[CSENpcs.mutantEX].ai[0] < 0 ? 1f : 1f - (float)Main.npc[CSENpcs.mutantEX].life / Main.npc[CSENpcs.mutantEX].lifeMax;
+            //if (FargoSoulsUtil.BossIsAlive(ref CSENpcs.mutantEX, ModContent.NPCType<MutantEX>())
+            //    && (Main.npc[CSENpcs.mutantEX].ai[0] < 0 || Main.npc[CSENpcs.mutantEX].ai[0] >= 10))
+            //{
+            //    intensity += increment;
+            //    lifeIntensity = Main.npc[CSENpcs.mutantEX].ai[0] < 0 ? 1f : 1f - (float)Main.npc[CSENpcs.mutantEX].life / Main.npc[CSENpcs.mutantEX].lifeMax;
 
-                void ChangeColorIfDefault(Color color)
-                {
-                    if (specialColor == null)
-                        specialColor = color;
-                    if (specialColor != null && specialColor == color)
-                        useSpecialColor = true;
-                }
+            //    void ChangeColorIfDefault(Color color)
+            //    {
+            //        if (specialColor == null)
+            //            specialColor = color;
+            //        if (specialColor != null && specialColor == color)
+            //            useSpecialColor = true;
+            //    }
 
-                switch ((int)Main.npc[CSENpcs.mutantEX].ai[0])
-                {
-                    case -5:
-                        if (Main.npc[CSENpcs.mutantEX].ai[2] >= 420)
-                            ChangeColorIfDefault(Color.MediumPurple);
-                        break;
+            //    switch ((int)Main.npc[CSENpcs.mutantEX].ai[0])
+            //    {
+            //        case -5:
+            //            if (Main.npc[CSENpcs.mutantEX].ai[2] >= 420)
+            //                ChangeColorIfDefault(Color.MediumPurple);
+            //            break;
 
-                    case 10:
-                        useSpecialColor = true;
-                        specialColor = Color.Black;
-                        specialColorLerp = 1f;
-                        break;
+            //        case 10:
+            //            useSpecialColor = true;
+            //            specialColor = Color.Black;
+            //            specialColorLerp = 1f;
+            //            break;
 
-                    case 27:
-                        ChangeColorIfDefault(Color.Red);
-                        break;
+            //        case 27:
+            //            ChangeColorIfDefault(Color.Red);
+            //            break;
 
-                    case 36:
-                        if (Main.npc[CSENpcs.mutantEX].ai[2] > 180 * 3 - 60)
-                            ChangeColorIfDefault(Color.Blue);
-                        break;
+            //        case 36:
+            //            if (Main.npc[CSENpcs.mutantEX].ai[2] > 180 * 3 - 60)
+            //                ChangeColorIfDefault(Color.Blue);
+            //            break;
 
-                    case 44:
-                        ChangeColorIfDefault(Color.DeepPink);
-                        break;
+            //        case 44:
+            //            ChangeColorIfDefault(Color.DeepPink);
+            //            break;
 
-                    case 48:
-                        ChangeColorIfDefault(Color.Purple);
-                        break;
+            //        case 48:
+            //            ChangeColorIfDefault(Color.Purple);
+            //            break;
 
-                    default:
-                        break;
-                }
+            //        default:
+            //            break;
+            //    }
 
-                if (intensity > 1f)
-                    intensity = 1f;
-            }
-            else
-            {
-                lifeIntensity -= increment;
-                if (lifeIntensity < 0f)
-                    lifeIntensity = 0f;
+            //    if (intensity > 1f)
+            //        intensity = 1f;
+            //}
+            //else
+            //{
+            //    lifeIntensity -= increment;
+            //    if (lifeIntensity < 0f)
+            //        lifeIntensity = 0f;
 
-                specialColorLerp -= increment * 2;
-                if (specialColorLerp < 0)
-                    specialColorLerp = 0;
+            //    specialColorLerp -= increment * 2;
+            //    if (specialColorLerp < 0)
+            //        specialColorLerp = 0;
 
-                intensity -= increment;
-                if (intensity < 0f)
-                {
-                    intensity = 0f;
-                    lifeIntensity = 0f;
-                    specialColorLerp = 0f;
-                    specialColor = null;
-                    delay = 0;
-                    Deactivate();
-                    return;
-                }
-            }
+            //    intensity -= increment;
+            //    if (intensity < 0f)
+            //    {
+            //        intensity = 0f;
+            //        lifeIntensity = 0f;
+            //        specialColorLerp = 0f;
+            //        specialColor = null;
+            //        delay = 0;
+            //        Deactivate();
+            //        return;
+            //    }
+            //}
 
             if (useSpecialColor)
             {

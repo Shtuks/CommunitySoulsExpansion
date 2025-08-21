@@ -47,6 +47,10 @@ namespace ssm.Calamity
             {
                 entity.damage = (int)(entity.damage * 1.1f);
             }
+            if (entity.type == ModContent.ItemType<Ataraxia>())
+            {
+                entity.damage = (int)(entity.damage * 1.3f);
+            }
             if (entity.type == ItemID.Zenith)
             {
                 entity.damage = (int)(entity.damage * 1.1f);
@@ -74,6 +78,10 @@ namespace ssm.Calamity
             if (item.type == ModContent.ItemType<Supernova>())
             {
                 tooltips.Add(new TooltipLine(Mod, "rebalance", $"{Language.GetTextValue("Mods.ssm.Balance.Nerf")} {Language.GetTextValue("Mods.ssm.Balance.DamageDown")} 30%"));
+            }
+            if (item.type == ModContent.ItemType<Ataraxia>())
+            {
+                tooltips.Add(new TooltipLine(Mod, "rebalance", $"{Language.GetTextValue("Mods.ssm.Balance.Buff")} {Language.GetTextValue("Mods.ssm.Balance.CancelDebuff")}"));
             }
             if (item.type == ItemID.Zenith)
             {

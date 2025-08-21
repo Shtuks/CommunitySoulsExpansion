@@ -13,6 +13,9 @@
     	</AssemblyAttribute>
 	</ItemGroup>
 	<ItemGroup>
+	  <Compile Include="Content\Buffs\TimeFrozen2.css" />
+	</ItemGroup>
+	<ItemGroup>
 	  <Reference Include="AlchemistNPCLite">
 	    <HintPath>..\..\ModReader\AlchemistNPCLite\AlchemistNPCLite.dll</HintPath>
 	  </Reference>

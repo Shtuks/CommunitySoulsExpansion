@@ -6,6 +6,7 @@ using FargowiltasSouls.Content.Items.Summons;
 using NoxusBoss.Core.World.WorldSaving;
 using NoxusBoss.Content.NPCs.Bosses.NamelessDeity;
 using Terraria.Localization;
+using FargowiltasCrossmod.Content.Calamity.Items.Accessories;
 
 namespace ssm.Calamity
 {
@@ -27,6 +28,19 @@ namespace ssm.Calamity
             if (item.type == ModContent.ItemType<MutantsCurse>())
                 return BossDownedSaveSystem.HasDefeated<NamelessDeityBoss>();
             return base.CanUseItem(item, player);
+        }
+    }
+    [ExtendsFromMod(ModCompatibility.Calamity.Name, ModCompatibility.Crossmod.Name)]
+    [JITWhenModsEnabled(ModCompatibility.Calamity.Name, ModCompatibility.Crossmod.Name)]
+    internal class RealCalDlcItems : GlobalItem
+    {
+        public override bool InstancePerEntity => true;
+        public override void SetDefaults(Item entity)
+        {
+            if (entity.type == ModContent.ItemType<BrandoftheBrimstoneWitch>())
+            {
+                entity.defense = 25;
+            }
         }
     }
 }

@@ -4,13 +4,15 @@ using FargowiltasSouls.Content.Bosses.AbomBoss;
 using FargowiltasSouls.Content.Bosses.DeviBoss;
 using FargowiltasSouls.Content.Bosses.MutantBoss;
 using FargowiltasSouls.Core.ItemDropRules.Conditions;
+using FargowiltasSouls.Core.Systems;
 using NoxusBoss.Content.Items;
 using NoxusBoss.Content.Items.MiscOPTools;
 using NoxusBoss.Content.NPCs.Bosses.Avatar.SecondPhaseForm;
 using NoxusBoss.Content.NPCs.Bosses.Draedon;
 using NoxusBoss.Content.NPCs.Bosses.NamelessDeity;
+using ssm.Content.Items.Accessories;
 using ssm.Content.NPCs;
-using ssm.Content.NPCs.MutantEX;
+//using ssm.Content.NPCs.MutantEX;
 using ssm.Core;
 using Terraria;
 using Terraria.GameContent.ItemDropRules;
@@ -39,7 +41,7 @@ namespace ssm.Calamity.Addons
                 //EmptinessSprayer.NPCsThatReflectSpray[ModContent.NPCType<Industrialist>()] = true;
                 EmptinessSprayer.NPCsThatReflectSpray[ModContent.NPCType<MonocleCat>()] = true;
 
-                EmptinessSprayer.NPCsThatReflectSpray[ModContent.NPCType<MutantEX>()] = true;
+                //EmptinessSprayer.NPCsThatReflectSpray[ModContent.NPCType<MutantEX>()] = true;
                 EmptinessSprayer.NPCsThatReflectSpray[ModContent.NPCType<Monstrosity>()] = true;
                 //EmptinessSprayer.NPCsThatReflectSpray[ModContent.NPCType<AmalgamBoss>()] = true;
                 //EmptinessSprayer.NPCsThatReflectSpray[ModContent.NPCType<Amalgamtionn>()] = true;
@@ -53,6 +55,21 @@ namespace ssm.Calamity.Addons
             if(npc.type == ModContent.NPCType<MarsBody>() && BossRushEvent.BossRushActive)
             {
                 modifiers.FinalDamage *= 3;
+            }
+        }
+
+        public override void OnKill(NPC npc)
+        {
+            if (WorldSavingSystem.EternityMode)
+            {
+                if (npc.type == ModContent.NPCType<AvatarOfEmptiness>())
+                {
+                    npc.DropItemInstanced(npc.position, npc.Size, ModContent.ItemType<MetallicChunk>(), 15);
+                }
+                if (npc.type == ModContent.NPCType<NamelessDeityBoss>())
+                {
+                    npc.DropItemInstanced(npc.position, npc.Size, ModContent.ItemType<NDMaterialPlaceholder>(), 15);
+                }
             }
         }
         public override void ModifyNPCLoot(NPC npc, NPCLoot npcLoot)

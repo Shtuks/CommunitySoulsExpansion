@@ -1,5 +1,56 @@
 Mods: {
 	ssm: {
+		Mutagens: {
+			MutagenMagic: {
+				DisplayName: Sorcerer's Mutagen
+				Tooltip:
+					'''
+					20% increased magic damage
+					10% increased magic critical strike chance
+					Increase your maximum mana by 100
+					'''
+			}
+
+			MutagenMelee: {
+				DisplayName: Warrior's Mutagen
+				Tooltip:
+					'''
+					20% increased melee damage
+					10% increased melee critical strike chance and attack speed
+					Increased melee knockback
+					'''
+			}
+
+			MutagenRanged: {
+				DisplayName: Ranger's Mutagen
+				Tooltip:
+					'''
+					20% increased ranged damage
+					10% increased ranged critical strike chance
+					15% increased ranged projectile velocity
+					'''
+			}
+
+			MutagenRitualist: {
+				DisplayName: Ritualist's Mutagen
+				Tooltip:
+					'''
+					20% increased ritual damage
+					10% increased ritual critical strike chance
+					'''
+			}
+
+			MutagenSummon: {
+				DisplayName: Summoner's Mutagen
+				Tooltip:
+					'''
+					20% increased summon damage
+					10% increased whip range 
+					Increase max numbers of minions by 2
+					'''
+			}
+		}
+
 		Balance: {
 			Buff: "[c/00A36C:Cross-Mod Balance:]"
 			//green
@@ -3543,8 +3594,13 @@ Mods: {
 					'''
 			}
 
+			MutantsCurseEX: {
+				DisplayName: Mutated Challenger
+				Tooltip: Eternity.
+			}
+
 			ShadowflameSeed: {
-				DisplayName: Shadowflame Seed
+				DisplayName: Shadowflare Seed
 				Tooltip:
 					'''
 					Must be planted on grass
@@ -3688,6 +3744,11 @@ Mods: {
 				DisplayName: Mushroom Buff
 				Description: Mods.ssm.Buffs.MushroomBuff.Description
 			}
+
+			TimeFrozenBuff2: {
+				DisplayName: Time Frozen Buff2
+				Description: Mods.ssm.Buffs.TimeFrozenBuff2.Description
+			}
 		}
 
 		NPCs: {
@@ -3739,6 +3800,7 @@ Mods: {
 				}
 			}
 
+			RealMutantEX.DisplayName: Mutant EX
 			MutantIllusion.DisplayName: Monstrosity
 			MutantAuraOfSupression.DisplayName: Mutant Aura Of Supression
 
@@ -4149,6 +4211,34 @@ Mods: {
 			MutantYap.DisplayName: Mutant Yap
 			CarePackage.DisplayName: Care Package
 			HardlightDrone.DisplayName: Hardlight Drone
+			MutantRitual5.DisplayName: Mutant Ritual5
+			MutantRitual.DisplayName: Mutant Ritual
+			AbomDeathray.DisplayName: Abom Deathray
+			AbomDeathrayMark.DisplayName: Abom Deathray Mark
+			AbomScytheSplit.DisplayName: Abom Scythe Split
+			AbomSickle.DisplayName: Abom Sickle
+			AbomSickle3.DisplayName: Abom Sickle3
+			CosmosBolt.DisplayName: Cosmos Bolt
+			CosmosDeathray.DisplayName: Cosmos Deathray
+			CosmosDeathray2.DisplayName: Cosmos Deathray2
+			CosmosInvader.DisplayName: Cosmos Invader
+			CosmosInvaderTime.DisplayName: Cosmos Invader Time
+			CosmosSphere.DisplayName: Cosmos Sphere
+			DeviAxe.DisplayName: Devi Axe
+			DeviEnergyHeart.DisplayName: Devi Energy Heart
+			DeviSparklingLove.DisplayName: Devi Sparkling Love
+			ShadowClone.DisplayName: Shadow Clone
+			ShadowDeathraySmall.DisplayName: Shadow Deathray Small
+			SpiritHand.DisplayName: Spirit Hand
+			SpiritSword.DisplayName: Spirit Sword
+			TimberLaser.DisplayName: Timber Laser
+			TimberLightningOrb.DisplayName: Timber Lightning Orb
+			TimberSquirrel.DisplayName: Timber Squirrel
+			WillDeathrayBig.DisplayName: Will Deathray Big
+			WillDeathraySmall.DisplayName: Will Deathray Small
+			WillFireball.DisplayName: Will Fireball
+			AbomRitual.DisplayName: Abom Ritual
+			MutantBigSting22.DisplayName: Mutant Big Sting22
 		}
 
 		Bestiary: {
@@ -4353,58 +4443,5 @@ Mods: {
 		}
 
 		DamageClasses.CSEFullDamage.DisplayName: C S E Full Damage
-	}
-
-	Redemption: {
-		Items: {
-			MutagenMagic: {
-				DisplayName: Sorcerer's Mutagen
-				Tooltip:
-					'''
-					20% increased magic damage
-					10% increased magic critical strike chance
-					Increase your maximum mana by 100
-					'''
-			}
-
-			MutagenMelee: {
-				DisplayName: Warrior's Mutagen
-				Tooltip:
-					'''
-					20% increased melee damage
-					10% increased melee critical strike chance and attack speed
-					Increased melee knockback
-					'''
-			}
-
-			MutagenRanged: {
-				DisplayName: Ranger's Mutagen
-				Tooltip:
-					'''
-					20% increased ranged damage
-					10% increased ranged critical strike chance
-					15% increased ranged projectile velocity
-					'''
-			}
-
-			MutagenRitualist: {
-				DisplayName: Ritualist's Mutagen
-				Tooltip:
-					'''
-					20% increased ritual damage
-					10% increased ritual critical strike chance
-					'''
-			}
-
-			MutagenSummon: {
-				DisplayName: Summoner's Mutagen
-				Tooltip:
-					'''
-					20% increased summon damage
-					10% increased whip range 
-					Increase max numbers of minions by 2
-					'''
-			}
-		}
 	}
 }

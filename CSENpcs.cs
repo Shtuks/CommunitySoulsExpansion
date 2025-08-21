@@ -10,8 +10,6 @@ using FargowiltasSouls.Core.Globals;
 using Luminance.Common.Utilities;
 using FargowiltasSouls.Core.Systems;
 using Fargowiltas.NPCs;
-using ssm.Content.NPCs.MutantEX;
-using FargowiltasSouls.Content.Bosses.DeviBoss;
 using Terraria.DataStructures;
 using FargowiltasSouls.Core.ItemDropRules.Conditions;
 using FargowiltasSouls;
@@ -24,6 +22,7 @@ using FargowiltasSouls.Content.Items.Materials;
 using ssm.Content.Projectiles;
 using ssm.Content.Items.Consumables;
 using ssm.Content.Items.Lore;
+using ssm.Content.NPCs.RealMutantEX;
 
 namespace ssm
 {
@@ -37,6 +36,7 @@ namespace ssm
         public static int ECH = -1;
         public static int boss = -1;
         public static int mutantEX = -1;
+        public static int RealMutantEX = -1;
 
         public static float multiplierMD = 0;
         public static float multiplierML = 0;
@@ -54,6 +54,7 @@ namespace ssm
             if (ModCompatibility.Calamity.Loaded) { multiplierML += 3.5f; multiplierMD += 2.5f; multiplierAL += 5f; multiplierAD += 5f; }
             if (ModCompatibility.SacredTools.Loaded) { multiplierML += 1f; multiplierMD += 1.5f; multiplierAL += 0.5f; multiplierAD += 2f; }
             if (ModCompatibility.Homeward.Loaded) { multiplierML += 0.5f; multiplierMD += 1f; multiplierAL += 0.5f; multiplierAD += 1f; }
+            if (ModCompatibility.CatTech.Loaded) { multiplierML += 9f; multiplierMD += 10f; multiplierAL += 7f; multiplierAD += 7f; }
 
             if (CSEConfig.Instance.SecretBosses) { multiplierML += 0.5f;}
             if (CSEConfig.Instance.DebugMode) { multiplierML += 1.5f; }
@@ -110,7 +111,7 @@ namespace ssm
                 dukeEX = true;
                 EModeGlobalNPC.spawnFishronEX = false;
             }
-            if (npc.type == ModContent.NPCType<MutantBoss>() && !Main.zenithWorld && CSEConfig.Instance.MutantWontShutUp)
+            if ((npc.type == ModContent.NPCType<MutantBoss>() || npc.type == ModContent.NPCType<RealMutantEX>()) && !Main.zenithWorld && CSEConfig.Instance.MutantWontShutUp)
             {
                 Projectile.NewProjectile(npc.GetSource_FromThis(), npc.Center, Vector2.Zero, ModContent.ProjectileType<MutantYap>(), 0, 0, -1, npc.whoAmI);
             }
@@ -296,7 +297,7 @@ namespace ssm
                 }
 
                 //here because maso breaks scaling for some reason
-                if (npc.type == ModContent.NPCType<MutantBoss>())
+                if (npc.type == ModContent.NPCType<MutantBoss>() || npc.type == ModContent.NPCType<RealMutantEX>())
                 {
                     npc.defense = 300;
 

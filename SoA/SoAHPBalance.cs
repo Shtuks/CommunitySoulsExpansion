@@ -135,22 +135,26 @@ namespace ssm.SoA
                     if (npc.type == ModContent.NPCType<Nihilus>())
                     {
                         float multiplierL = 0;
+                        float multiplierD = 0;
 
-                        if (ModCompatibility.Thorium.Loaded) { multiplierL += 0.5f; }
-                        if (ModCompatibility.Homeward.Loaded) { multiplierL += 0.5f; }
-                        if (ModCompatibility.Calamity.Loaded) { multiplierL += 2f; }
+                        if (ModCompatibility.Thorium.Loaded) { multiplierL += 0.5f; multiplierD += 0.5f; }
+                        if (ModCompatibility.Homeward.Loaded) { multiplierL += 0.5f; multiplierD += 0.5f; }
+                        if (ModCompatibility.Calamity.Loaded) { multiplierL += 2f; multiplierD += 1f; }
 
                         npc.lifeMax = (int)(4100000 + (1000000 * multiplierL));
+                        npc.lifeMax = (int)(580 + (100 * multiplierD));
                     }
                     if (npc.type == ModContent.NPCType<Nihilus2>())
                     {
                         float multiplierL = 0;
+                        float multiplierD = 0;
 
-                        if (ModCompatibility.Thorium.Loaded) { multiplierL += 0.5f; }
-                        if (ModCompatibility.Homeward.Loaded) { multiplierL += 0.5f; }
-                        if (ModCompatibility.Calamity.Loaded) { multiplierL += 2f; }
+                        if (ModCompatibility.Thorium.Loaded) { multiplierL += 0.5f; multiplierD += 0.5f; }
+                        if (ModCompatibility.Homeward.Loaded) { multiplierL += 0.5f; multiplierD += 0.5f; }
+                        if (ModCompatibility.Calamity.Loaded) { multiplierL += 2f; multiplierD += 1f; }
 
                         npc.lifeMax = (int)(5900000 + (1000000 * multiplierL));
+                        npc.lifeMax = (int)(680 + (100 * multiplierD));
                     }
 
                     if (Main.masterMode)

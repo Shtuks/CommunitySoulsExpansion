@@ -1,4 +1,5 @@
-﻿using ContinentOfJourney.Items.Armor;
+﻿using ContinentOfJourney.Items.Accessories;
+using ContinentOfJourney.Items.Armor;
 using Terraria;
 using Terraria.ModLoader;
 
@@ -9,6 +10,10 @@ namespace ssm.Homeward
         public override bool InstancePerEntity => true;
         public override void SetDefaults(Item entity)
         {
+            if (entity.type == ModContent.ItemType<SimpleShield>())
+            {
+                entity.defense = 5;
+            }
             //defense bloat removal
             if(
                 //equilibrium

@@ -6,7 +6,7 @@ using Terraria;
 using FargowiltasSouls;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework;
-using ssm.Content.NPCs.MutantEX;
+//using ssm.Content.NPCs.MutantEX;
 using Terraria.ID;
 using FargowiltasSouls.Core.Globals;
 using Terraria.Chat;
@@ -72,21 +72,21 @@ namespace ssm.Content.UI
         private void SpawnBoss(int type)
         {
             Player player = Main.LocalPlayer;
-            if (type != ModContent.NPCType<MutantEX>())
-            {
-                FargoSoulsUtil.SpawnBossNetcoded(player, type);
-            }
-            else if (type == ModContent.NPCType<MutantEX>())
-            {
+            //if (type != ModContent.NPCType<MutantEX>())
+            //{
+            //    FargoSoulsUtil.SpawnBossNetcoded(player, type);
+            //}
+            //else if (type == ModContent.NPCType<MutantEX>())
+            //{
                 FargoSoulsUtil.SpawnBossNetcoded(player, type);
                 //SpawnMonstrosity(player);
-            }
+            //}
             ssm.Instance._showBossSummonUI = false;
         }
 
-        public void SpawnMonstrosity(Player player)
-        {
-            Projectile.NewProjectile(player.GetSource_FromThis(), player.position, Vector2.Zero, ModContent.ProjectileType<SpawnCutsceneProj>(), 0, 0);
-        }
+        //public void SpawnMonstrosity(Player player)
+        //{
+        //    Projectile.NewProjectile(player.GetSource_FromThis(), player.position, Vector2.Zero, ModContent.ProjectileType<SpawnCutsceneProj>(), 0, 0);
+        //}
     }
 }

@@ -24,6 +24,7 @@ using ssm.Content.Items.Summons;
 using ssm.SoA.Enchantments;
 using static ssm.SoA.Enchantments.CosmicCommanderEnchant;
 using FargowiltasSouls.Core.AccessoryEffectSystem;
+using ssm.Content.NPCs.RealMutantEX;
 
 
 namespace ssm
@@ -52,6 +53,7 @@ namespace ssm
         public float monstrosityHits;
         private bool wasGhost = false;
         private int ghostTimer = 0;
+        internal int mutantEXHits;
         public void DiscordWhiteTheme(float duration, float sharpness)
         {
             blindDuration = duration;
@@ -67,6 +69,10 @@ namespace ssm
         }
         public override void UpdateEquips()
         {
+            if (NPC.AnyNPCs(ModContent.NPCType<RealMutantEX>()))
+            {
+                Player.FargoSouls().PrecisionSealNoDashNoJump = true;
+            }
             if (Player.name.ToLower().Contains("starlightcatt"))
             {
                 Player.manaRegenBuff = true;
@@ -197,6 +203,14 @@ namespace ssm
                 if (ModCompatibility.BeekeeperClass.Loaded) { Beekeeper(Player, 10); }
                 if (ModCompatibility.Calamity.Loaded) { ThrowerCal(Player, 0.7f); Player.GetDamage<GenericDamageClass>() += 0.05f;}
             }
+
+            if(mutantEXHits > (WorldSavingSystem.MasochistModeReal ? 10 : 20))
+            {
+                Player.statLife = 0;
+                Player.dead = true;
+                Player.ghost = true;
+                mutantEXHits = 0;
+            }
         }
         public override void SaveData(TagCompound tag)
         {
@@ -300,6 +314,13 @@ namespace ssm
                 Player.maxMinions = 0;
             }
 
+            if (ModLoader.TryGetMod("CalamityMod", out Mod kal) && NPC.AnyNPCs(ModContent.NPCType<RealMutantEX>()))
+            {
+                Player.buffImmune[ModContent.Find<ModBuff>("CalamityMod", "Enraged").Type] = true;
+                Player.buffImmune[ModContent.Find<ModBuff>("CalamityMod", "RageMode").Type] = true;
+                Player.buffImmune[ModContent.Find<ModBuff>("CalamityMod", "AdrenalineMode").Type] = true;
+            }
+
             //auto revive for ech, mutant and monstrosity
             //if (Player.ghost && !wasGhost && !(Player.difficulty == 2))
             //{
@@ -397,6 +418,7 @@ namespace ssm
         {
             blindTime = 0;
             monstrosityHits = 0;
+            mutantEXHits = 0;
         }
         public override void ResetEffects()
         {

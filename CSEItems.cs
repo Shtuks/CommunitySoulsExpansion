@@ -8,6 +8,7 @@ using FargowiltasSouls.Content.Items.Weapons.SwarmDrops;
 using FargowiltasSouls.Core.ItemDropRules.Conditions;
 using Microsoft.Xna.Framework;
 using ssm.Content.Items.Accessories;
+using ssm.Content.NPCs.RealMutantEX;
 using ssm.Core;
 using System;
 using System.Collections.Generic;
@@ -265,6 +266,25 @@ namespace ssm
                     tooltips.Add(new TooltipLine(Mod, "7m", "In first phase Mutant has Aura of Supression. After destroying aura second phase will start."));
                     tooltips.Add(new TooltipLine(Mod, "8m", "Aura can be destroyed only with Relic Weapons or Styx Armor set bonus. Mutant immune to damage if aura active."));
                 }
+            }
+            if (item.type == ModContent.ItemType<MutantsCurseEX>())
+            {
+                tooltips.Add(new TooltipLine(Mod, "1m", $"Current Max Life: {10000000 + Math.Round(CSENpcs.multiplierML, 1) * 10000000}, Current Damage: {500 + Math.Round(CSENpcs.multiplierMD, 1) * 100}"));
+                if (ModCompatibility.SacredTools.Loaded && CSEConfig.Instance.ExperimentalContent)
+                {
+                    tooltips.Add(new TooltipLine(Mod, "2m", "In first phase Mutant has Aura of Supression. After destroying aura second phase will start."));
+                    tooltips.Add(new TooltipLine(Mod, "3m", "Aura can be destroyed only with Relic Weapons or Styx Armor set bonus. Mutant immune to damage if aura active."));
+                    tooltips.Add(new TooltipLine(Mod, "3m", "Aura appears again after transition to second phase."));
+                }
+                if (ModCompatibility.Calamity.Loaded)
+                {
+                    tooltips.Add(new TooltipLine(Mod, "4m", "Rage and Adrenaline disabled during fight."));
+                }
+                tooltips.Add(new TooltipLine(Mod, "5m", "Transition to 2nd phase happens on 1/2 of HP instead of 2/3."));
+                tooltips.Add(new TooltipLine(Mod, "6m", "Arena will be acitve regardless of phase."));
+                tooltips.Add(new TooltipLine(Mod, "7m", "You will die immideately if you get more than 20 (10 if maso mode) hits."));
+                tooltips.Add(new TooltipLine(Mod, "8m", "Your hitbox always displayed during fight."));
+                tooltips.Add(new TooltipLine(Mod, "9m", "Masochism."));
             }
             if (item.damage < 100000 && item.damage > 10000 && !CSEUtils.IsModItem(item, "CalamityInheritance") && !CSEUtils.IsModItem(item, "SacredTools") && !CSEUtils.IsModItem(item, "FargowiltasSouls") && !CSEUtils.IsModItem(item, "ThoriumMod") && !CSEUtils.IsModItem(item, "CaamityMod"))
             {

@@ -1,13 +1,16 @@
 ﻿using CalamityMod.Items.Accessories;
+using ContinentOfJourney;
 using ContinentOfJourney.Items.Accessories;
 using ContinentOfJourney.Items.Accessories.MeleeExpansion;
 using ContinentOfJourney.Items.Accessories.SummonerRings;
+using FargowiltasSouls.Content.Bosses.MutantBoss;
 using FargowiltasSouls.Content.Items.Accessories.Essences;
 using FargowiltasSouls.Content.Items.Accessories.Souls;
 using FargowiltasSouls.Content.Items.Materials;
 using FargowiltasSouls.Core.AccessoryEffectSystem;
 using FargowiltasSouls.Core.Toggler.Content;
 using SacredTools.Content.Items.Accessories;
+using ssm.Content.NPCs.RealMutantEX;
 using ssm.Core;
 using System.Collections.Generic;
 using Terraria;
@@ -146,10 +149,13 @@ namespace ssm.CrossMod.SoulsRecipes
         {
             public override Header ToggleHeader => Header.GetHeader<UniverseHeader>();
             public override int ToggleItemType => ModContent.ItemType<PhilosophersStone>();
-
+            public override bool MutantsPresenceAffects => true;
             public override void PostUpdateEquips(Player player)
             {
-                ModCompatibility.Homeward.Mod.Find<ModItem>("PhilosophersStone").UpdateAccessory(player, true);
+                if (!NPC.AnyNPCs(ModContent.NPCType<RealMutantEX>()) && !NPC.AnyNPCs(ModContent.NPCType<MutantBoss>())) {
+                    TemplatePlayer modPlayer = player.GetModPlayer<TemplatePlayer>();
+                    modPlayer.GrindStone_Type = 4;
+                    modPlayer.GrindStone_Time = 480; }
             }
         }
         [ExtendsFromMod(ModCompatibility.Homeward.Name)]
