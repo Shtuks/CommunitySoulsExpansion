@@ -3,7 +3,7 @@ using FargowiltasSouls.Core.ItemDropRules.Conditions;
 using Luminance.Core.Graphics;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using ssm.Content.NPCs.MutantEX;
+//using ssm.Content.NPCs.MutantEX;
 using Terraria;
 using Terraria.GameContent.ItemDropRules;
 using Terraria.ModLoader;
@@ -20,7 +20,7 @@ namespace ssm.Content.Items.Consumables
 
         public override void ModifyItemLoot(ItemLoot itemLoot)
         {
-            itemLoot.Add(ItemDropRule.CoinsBasedOnNPCValue(ModContent.NPCType<MutantEX>()));
+            //itemLoot.Add(ItemDropRule.CoinsBasedOnNPCValue(ModContent.NPCType<MutantEX>()));
             itemLoot.Add(ItemDropRule.ByCondition(new EModeDropCondition(), ModContent.ItemType<Sadism>(), 1, 20, 30));
         }
 

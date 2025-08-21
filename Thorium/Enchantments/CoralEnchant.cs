@@ -8,7 +8,7 @@ using ssm.Core;
 using FargowiltasSouls.Content.Items.Accessories.Enchantments;
 using ThoriumMod.Items.Coral;
 using FargowiltasSouls.Core.AccessoryEffectSystem;
-using System.Collections.Generic;
+using ssm.Content.SoulToggles;
 
 namespace ssm.Thorium.Enchantments
 {
@@ -40,9 +40,8 @@ namespace ssm.Thorium.Enchantments
 
         public class CoralEffect : AccessoryEffect
         {
-            public override Header ToggleHeader => null;
+            public override Header ToggleHeader => Header.GetHeader<JotunheimForceHeader>();
             public override int ToggleItemType => ModContent.ItemType<CoralEnchant>();
-            public override bool ActiveSkill => true;
             public override void PostUpdate(Player player)
             {
                 player.wet = true; 

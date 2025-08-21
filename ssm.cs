@@ -18,7 +18,7 @@ using ssm.Redemption;
 using System.Linq;
 using Terraria.Localization;
 using ssm.Content.Items.Summons;
-using ssm.Content.NPCs.MutantEX;
+//using ssm.Content.NPCs.MutantEX;
 using ssm.Content.UI;
 using Terraria.UI;
 using ssm.CrossMod.CraftingStations;
@@ -37,8 +37,8 @@ using ssm.Content.Items.Accessories;
 using ssm.Content.NPCs.Guntera;
 using ssm.Content.NPCs.Ceiling;
 using FargowiltasSouls.Content.Items.Materials;
-using ssm.Content.NPCs.MutantEX.HitPlayer;
-using FargowiltasSouls.Content.NPCs.EternityModeNPCs;
+//using ssm.Content.NPCs.MutantEX.HitPlayer;
+//using FargowiltasSouls.Content.NPCs.EternityModeNPCs;
 using ssm.Thorium.Enchantments;
 
 namespace ssm
@@ -65,6 +65,8 @@ namespace ssm
         internal static ssm Instance;
         public static bool debug = CSEConfig.Instance.DebugMode;
 
+        public static float OldMusicFade;
+
         private delegate void UIModDelegate(object instance, SpriteBatch spriteBatch);
         public static bool amiactive;
         public static readonly BindingFlags UniversalBindingFlags = BindingFlags.Instance | BindingFlags.Static | BindingFlags.Public | BindingFlags.NonPublic;
@@ -83,6 +85,33 @@ namespace ssm
             Dictionary<int, int> list = (Dictionary<int, int>)info.GetValue(info);
             list.Add(id, item.Type);
             info.SetValue(info, list);
+        }
+
+        public static void ManageMusicTimestop(bool playMusicAgain)
+        {
+            if (Main.dedServ)
+                return;
+
+            if (playMusicAgain)
+            {
+                if (OldMusicFade > 0)
+                {
+                    Main.musicFade[Main.curMusic] = OldMusicFade;
+                    OldMusicFade = 0;
+                }
+            }
+            else
+            {
+                if (OldMusicFade == 0)
+                {
+                    OldMusicFade = Main.musicFade[Main.curMusic];
+                }
+                else
+                {
+                    for (int i = 0; i < Main.musicFade.Length; i++)
+                        Main.musicFade[i] = 0f;
+                }
+            }
         }
         public enum PacketID : byte
         {
@@ -142,25 +171,25 @@ namespace ssm
             byte playerId = reader.ReadByte();
             Player player = Main.player[playerId];
 
-            if (player.TryGetModPlayer(out MonstrHealthPlayer modPlayer))
-            {
-                modPlayer.OriginalMaxLife = reader.ReadInt32();
-                modPlayer.HealthReduction = reader.ReadInt32();
+            //if (player.TryGetModPlayer(out MonstrHealthPlayer modPlayer))
+            //{
+            //    modPlayer.OriginalMaxLife = reader.ReadInt32();
+            //    modPlayer.HealthReduction = reader.ReadInt32();
 
-                if (Main.netMode == NetmodeID.Server)
-                {
-                    modPlayer.SyncData();
-                }
+            //    if (Main.netMode == NetmodeID.Server)
+            //    {
+            //        modPlayer.SyncData();
+            //    }
 
-                if (Main.netMode == NetmodeID.MultiplayerClient)
-                {
-                    player.statLifeMax = modPlayer.OriginalMaxLife - modPlayer.HealthReduction;
-                    if (player.statLife > player.statLifeMax)
-                    {
-                        player.statLife = player.statLifeMax;
-                    }
-                }
-            }
+            //    if (Main.netMode == NetmodeID.MultiplayerClient)
+            //    {
+            //        player.statLifeMax = modPlayer.OriginalMaxLife - modPlayer.HealthReduction;
+            //        if (player.statLife > player.statLifeMax)
+            //        {
+            //            player.statLife = player.statLifeMax;
+            //        }
+            //    }
+            //}
         }
         public static int SwarmMinDamage
         {
@@ -370,20 +399,20 @@ namespace ssm
                     true
                 );
 
-                if (CSEConfig.Instance.AlternativeSiblings) {
-                    AddBCL("Boss",
-                        "MutantEX",
-                        float.MaxValue - 1,
-                        new List<int> { ModContent.NPCType<MutantEX>() },
-                        () => WorldSaveSystem.downedMutantEX,
-                        () => true,
-                        new List<int> {
-                        ModContent.ItemType<Sadism>(),
-                        },
-                        new List<int> { ModContent.ItemType<MutantsForgeItem>() },
-                        true
-                    );
-                }
+                //if (CSEConfig.Instance.AlternativeSiblings) {
+                //    AddBCL("Boss",
+                //        "MutantEX",
+                //        float.MaxValue - 1,
+                //        new List<int> { ModContent.NPCType<MutantEX>() },
+                //        () => WorldSaveSystem.downedMutantEX,
+                //        () => true,
+                //        new List<int> {
+                //        ModContent.ItemType<Sadism>(),
+                //        },
+                //        new List<int> { ModContent.ItemType<MutantsForgeItem>() },
+                //        true
+                //    );
+                //}
 
                 //Add("Boss",
                 //    "Echdeath",
@@ -433,6 +462,7 @@ namespace ssm
                 AlchemistNPCCaughtNpcs.AlchemistNPCCaughtNpcsRegisterItems();
             }
             SkyManager.Instance["ssm:MutantEX"] = new MutantEXSky();
+            SkyManager.Instance["ssm:RealMutantEX"] = new RealMutantEXSky();
             SkyManager.Instance["ssm:MutantMonolith"] = new MutantSkyMonolith();
         }
         public override void Unload()

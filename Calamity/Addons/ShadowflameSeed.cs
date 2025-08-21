@@ -1,4 +1,5 @@
-﻿using NoxusBoss.Content.Rarities;
+﻿using NoxusBoss.Content.Items.Legacy;
+using NoxusBoss.Content.Rarities;
 using NoxusBoss.Core.GlobalInstances;
 using SacredTools.Content.Items.Materials;
 using ssm.Core;
@@ -38,11 +39,16 @@ namespace ssm.Calamity.Addons
                 Register();
         }
     }
+    [ExtendsFromMod(ModCompatibility.SacredTools.Name, ModCompatibility.WrathoftheGods.Name)]
+    [JITWhenModsEnabled(ModCompatibility.SacredTools.Name, ModCompatibility.WrathoftheGods.Name)]
     public class SoAWotGItem : GlobalItem
     {
         public override void ModifyItemLoot(Item item, ItemLoot itemLoot)
         {
-            itemLoot.Add(new CommonDrop(ModContent.ItemType<ShadowflameSeed>(), 1));
+            if (item.type == ModContent.ItemType<ExoticSeedBag>())
+            {
+                itemLoot.Add(new CommonDrop(ModContent.ItemType<ShadowflameSeed>(), 1));
+            }
         }
     }
 }

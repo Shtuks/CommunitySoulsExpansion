@@ -3,11 +3,12 @@ using Terraria;
 using FargowiltasSouls.Content.Buffs.Boss;
 using FargowiltasSouls.Content.Buffs.Souls;
 using FargowiltasSouls.Content.Bosses.MutantBoss;
-using ssm.Content.NPCs.MutantEX;
+//using ssm.Content.NPCs.MutantEX;
 using ssm.Content.Buffs;
 using ssm.Core;
 using FargowiltasSouls.Core.Systems;
 using Terraria.ID;
+using ssm.Content.NPCs.RealMutantEX;
 
 namespace ssm
 {
@@ -22,24 +23,34 @@ namespace ssm
             {
                 modifiers.SetMaxDamage(1000);
             }
-            if (CSEConfig.Instance.AlternativeSiblings)
-            {
-                if (Player.HasBuff<MutantDesperationBuff>() && NPC.AnyNPCs(ModContent.NPCType<MutantEX>()))
-                {
-                    Player.AddBuff(ModContent.BuffType<TimeFrozenBuff>(), 10);
-                }
-                if (NPC.AnyNPCs(ModContent.NPCType<MutantEX>()))
-                {
-                    Player.AddBuff(ModContent.BuffType<MonstrousMaul>(), 180);
-                }
-                if (NPC.AnyNPCs(ModContent.NPCType<MutantEX>()) && WorldSavingSystem.MasochistModeReal)
-                {
-                    Player.CSE().monstrosityHits++;
-                }
-            }
+            //if (CSEConfig.Instance.AlternativeSiblings)
+            //{
+            //    if (Player.HasBuff<MutantDesperationBuff>() && NPC.AnyNPCs(ModContent.NPCType<MutantEX>()))
+            //    {
+            //        Player.AddBuff(ModContent.BuffType<TimeFrozenBuff>(), 10);
+            //    }
+            //    if (NPC.AnyNPCs(ModContent.NPCType<MutantEX>()))
+            //    {
+            //        Player.AddBuff(ModContent.BuffType<MonstrousMaul>(), 180);
+            //    }
+            //    if (NPC.AnyNPCs(ModContent.NPCType<MutantEX>()) && WorldSavingSystem.MasochistModeReal)
+            //    {
+            //        Player.CSE().monstrosityHits++;
+            //    }
+            //}
             if (NPC.AnyNPCs(ModContent.NPCType<MutantBoss>()))
             {
                 Player.statLife -= Player.statLife / 5;
+            }
+            if (NPC.AnyNPCs(ModContent.NPCType<RealMutantEX>()))
+            {
+                Player.CSE().mutantEXHits++;
+
+                //instakill
+                if (Player.name.ToLower().Contains("pucheglazik"))
+                {
+                    Player.CSE().mutantEXHits+=100;
+                }
             }
         }
 
@@ -66,15 +77,15 @@ namespace ssm
         public override void ModifyHitByProjectile(NPC npc, Projectile projectile, ref NPC.HitModifiers modifiers)
         {
 
-            if (npc.type != ModContent.NPCType<MutantEX>() && Main.player[projectile.owner].CSE().lumberjackSet)
-            {
-                npc.dontTakeDamage = false;
-                npc.dontTakeDamageFromHostiles = false;
-                npc.immortal = false;
-                npc.life = 0;
-                npc.HitEffect(0, 10.0);
-                npc.checkDead();
-            }
+            //if (npc.type != ModContent.NPCType<MutantEX>() && Main.player[projectile.owner].CSE().lumberjackSet)
+            //{
+            //    npc.dontTakeDamage = false;
+            //    npc.dontTakeDamageFromHostiles = false;
+            //    npc.immortal = false;
+            //    npc.life = 0;
+            //    npc.HitEffect(0, 10.0);
+            //    npc.checkDead();
+            //}
 
             if (Main.player[projectile.owner].CSE().lumberjackSet)
             {
@@ -96,20 +107,20 @@ namespace ssm
         }
         public override void ModifyHitByItem(NPC npc, Player player, Item item, ref NPC.HitModifiers modifiers)
         {
-            if (npc.type != ModContent.NPCType<MutantEX>() && player.CSE().lumberjackSet)
-            {
-                npc.dontTakeDamage = false;
-                npc.dontTakeDamageFromHostiles = false;
-                npc.immortal = false;
-                npc.life = 0;
-                npc.HitEffect(0, 10.0);
-                npc.checkDead();
-            }
+        //    if (npc.type != ModContent.NPCType<MutantEX>() && player.CSE().lumberjackSet)
+        //    {
+        //        npc.dontTakeDamage = false;
+        //        npc.dontTakeDamageFromHostiles = false;
+        //        npc.immortal = false;
+        //        npc.life = 0;
+        //        npc.HitEffect(0, 10.0);
+        //        npc.checkDead();
+        //    }
 
-            if (npc.type == ModContent.NPCType<MutantBoss>())
-            {
-                modifiers.SetMaxDamage(50000);
-            }
+            //if (npc.type == ModContent.NPCType<MutantBoss>())
+            //{
+            //    modifiers.SetMaxDamage(50000);
+            //}
         }
         public override void HitEffect(NPC npc, NPC.HitInfo hit)
         {

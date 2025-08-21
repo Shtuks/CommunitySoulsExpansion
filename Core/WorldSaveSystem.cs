@@ -15,6 +15,7 @@ namespace ssm.Systems
         public static bool downedEch = false;
         public static bool downedFish = false;
         public static bool downedMutantEX = false;
+        public static bool downedRealMutantEX = false;
 
         public static bool enragedMutantEX = false;
 

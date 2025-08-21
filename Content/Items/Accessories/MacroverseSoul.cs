@@ -100,7 +100,7 @@ namespace ssm.Content.Items.Accessories
             {
                 recipe.AddIngredient<NDMaterialPlaceholder>(1);
             }
-            if (ModCompatibility.Calamity.Loaded)
+            if (ModCompatibility.Calamity.Loaded && ModCompatibility.Crossmod.Loaded)
             {
                 recipe.AddIngredient(Mod.Find<ModItem>("CalamitySoul"), 1);
             }

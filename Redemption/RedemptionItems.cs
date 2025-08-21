@@ -66,7 +66,6 @@ namespace ssm.Redemption
                 player.accDivingHelm = true;
             }
         }
-
         public override void SetDefaults(Item entity)
         {
             if (ModCompatibility.Calamity.Loaded || ModCompatibility.SacredTools.Loaded)
@@ -109,6 +108,26 @@ namespace ssm.Redemption
                 if (item.type == ModContent.ItemType<PiercingNebulaWeapon>())
                 {
                     tooltips.Add(new TooltipLine(Mod, "rebalance", $"{Language.GetTextValue("Mods.ssm.Balance.Buff")} {Language.GetTextValue("Mods.ssm.Balance.DamageUP")} 50%"));
+                }
+            }
+            if (item.type == ModContent.ItemType<MutagenMelee>()
+                || item.type == ModContent.ItemType<MutagenMagic>()
+                || item.type == ModContent.ItemType<MutagenRitualist>()
+                || item.type == ModContent.ItemType<MutagenSummon>()
+                || item.type == ModContent.ItemType<MutagenRanged>())
+            {
+                tooltips.RemoveAll(line => line.Name.StartsWith("Tooltip"));
+
+                string tooltipKey = $"Mods.ssm.Mutagens.{item.ModItem.Name}.Tooltip";
+                string tooltipText = Language.GetTextValue(tooltipKey);
+                string[] lines = tooltipText.Split('\n');
+
+                for (int i = 0; i < lines.Length; i++)
+                {
+                    if (!string.IsNullOrWhiteSpace(lines[i]))
+                    {
+                        tooltips.Add(new TooltipLine(Mod, $"Tooltip{i}", lines[i].Trim()));
+                    }
                 }
             }
         }
