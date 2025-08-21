@@ -53,7 +53,7 @@ public class CosmosInvaderTime : CosmosInvader
 				Main.dust[index2].velocity *= 3f;
 			}
 		}
-		return PreAI();
+		return base.PreAI();
 	}
 
 	public override void AI()

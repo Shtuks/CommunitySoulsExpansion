@@ -1,10 +1,13 @@
 ﻿using ContinentOfJourney.Items.Accessories;
 using ContinentOfJourney.Items.Armor;
+using ssm.Core;
 using Terraria;
 using Terraria.ModLoader;
 
 namespace ssm.Homeward
 {
+    [ExtendsFromMod(ModCompatibility.Homeward.Name)]
+    [JITWhenModsEnabled(ModCompatibility.Homeward.Name)]
     public class HWJItems : GlobalItem
     {
         public override bool InstancePerEntity => true;

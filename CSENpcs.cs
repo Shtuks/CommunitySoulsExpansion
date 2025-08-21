@@ -111,7 +111,11 @@ namespace ssm
                 dukeEX = true;
                 EModeGlobalNPC.spawnFishronEX = false;
             }
-            if ((npc.type == ModContent.NPCType<MutantBoss>() || npc.type == ModContent.NPCType<RealMutantEX>()) && !Main.zenithWorld && CSEConfig.Instance.MutantWontShutUp)
+            if (npc.type == ModContent.NPCType<MutantBoss>() && !Main.zenithWorld && CSEConfig.Instance.MutantWontShutUp)
+            {
+                Projectile.NewProjectile(npc.GetSource_FromThis(), npc.Center, Vector2.Zero, ModContent.ProjectileType<MutantYap>(), 0, 0, -1, npc.whoAmI);
+            }
+            if (npc.type == ModContent.NPCType<RealMutantEX>())
             {
                 Projectile.NewProjectile(npc.GetSource_FromThis(), npc.Center, Vector2.Zero, ModContent.ProjectileType<MutantYap>(), 0, 0, -1, npc.whoAmI);
             }

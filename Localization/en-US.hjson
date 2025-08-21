@@ -3596,7 +3596,7 @@ Mods: {
 
 			MutantsCurseEX: {
 				DisplayName: Mutated Challenger
-				Tooltip: Eternity.
+				Tooltip: ""
 			}
 
 			ShadowflameSeed: {

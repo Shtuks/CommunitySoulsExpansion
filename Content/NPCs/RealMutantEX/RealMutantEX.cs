@@ -69,6 +69,7 @@ namespace ssm.Content.NPCs.RealMutantEX
         private bool makedSword;
         private int ShouldDoSword;
         public float[] NewAI = new float[4];
+        public float[] localAI2 = new float[4];
         private Vector2 swordTarget = Vector2.Zero;
         public override void SetStaticDefaults()
         {
@@ -144,7 +145,7 @@ namespace ssm.Content.NPCs.RealMutantEX
         {
             for (int i = 0; i < 4; i++)
             {
-                this.NewAI[i] = 0f;
+                NewAI[i] = 0f;
             }
         }
         public override void UpdateLifeRegen(ref int damage)
@@ -756,6 +757,7 @@ namespace ssm.Content.NPCs.RealMutantEX
                     break;
                 case 1922:
                     {
+                        ManagedScreenFilter filter = ShaderManager.GetFilter("FargowiltasSouls.Invert");
                         Vector2 targetPos = player.Center + NPC.DirectionFrom(player.Center) * 500f;
                         if (NewAI[1] < 130f || (NPC.Distance(player.Center) > 200f && NPC.Distance(player.Center) < 600f))
                         {
@@ -768,7 +770,6 @@ namespace ssm.Content.NPCs.RealMutantEX
                         }
                         if (NewAI[1] >= 10)
                         {
-                            ManagedScreenFilter filter = ShaderManager.GetFilter("FargowiltasSouls.Invert");
                             if (filter != null)
                             {
                                 if (Main.netMode != NetmodeID.Server && !ShaderManager.GetFilter("FargowiltasSouls.Invert").IsActive)
@@ -871,6 +872,7 @@ namespace ssm.Content.NPCs.RealMutantEX
                                 proj.Kill();
                             }
                         }
+                        filter.Deactivate();
                         NPC.TargetClosest();
                         ClearNewAI();
                         NPC.localAI[0] = 0f;
@@ -1563,10 +1565,11 @@ namespace ssm.Content.NPCs.RealMutantEX
                 AuraScale = MathHelper.Lerp(AuraScale, 1f, 0.1f);
             }
 
-            if (AttackChoice != 5 && AttackChoice != 6) 
+            if (AttackChoice != 5 && AttackChoice != 6 && AttackChoice != 1922) 
             {
                 AuraCenter = Vector2.Lerp(AuraCenter, NPC.Center, 0.3f);
             }
+
 
             if (AttackChoice < 0 || AttackChoice > 10 || AttackChoice == 10 && NPC.ai[1] > 150)
             {
@@ -4516,329 +4519,6 @@ namespace ssm.Content.NPCs.RealMutantEX
                 }
             }
         }
-
-        private void PrepareDeathrayRain()
-        {
-            if (NPC.ai[1] < 90 && !AliveCheck(player))
-                return;
-
-            if (NPC.ai[2] == 0 && NPC.ai[3] == 0)
-            {
-                NPC.ai[2] = NPC.Center.X + (player.Center.X < NPC.Center.X ? -1400 : 1400);
-            }
-
-            if (NPC.localAI[2] == 0)
-            {
-                NPC.localAI[2] = NPC.ai[2] > NPC.Center.X ? -1 : 1;
-            }
-
-            if (NPC.ai[1] > 90)
-            {
-                FancyFireballs((int)NPC.ai[1] - 90);
-            }
-            else
-            {
-                NPC.ai[3] = player.Center.Y - 300;
-            }
-
-            Vector2 targetPos = new Vector2(NPC.ai[2], NPC.ai[3]);
-            Movement(targetPos, 1.4f);
-
-            if (++NPC.ai[1] > 150)
-            {
-                SoundEngine.PlaySound(SoundID.Roar, NPC.Center);
-                NPC.netUpdate = true;
-                NPC.ai[0]++;
-                NPC.ai[1] = 0;
-                NPC.ai[2] = NPC.localAI[2];
-                NPC.ai[3] = 0;
-                NPC.localAI[2] = 0;
-            }
-        }
-  
-        private void DeathrayRain()
-        {
-            NPC.velocity.X = NPC.ai[2] * 18f;
-            MovementY(player.Center.Y - 250, Math.Abs(player.Center.Y - NPC.Center.Y) < 200 ? 2f : 0.7f);
-            NPC.direction = NPC.spriteDirection = Math.Sign(NPC.velocity.X);
-
-            if (++NPC.ai[3] > 5)
-            {
-                NPC.ai[3] = 0;
-
-                SoundEngine.PlaySound(SoundID.Item12, NPC.Center);
-
-                float timeLeft = 2400 / Math.Abs(NPC.velocity.X) * 2 - NPC.ai[1] + 120;
-                if (NPC.ai[1] <= 15)
-                {
-                    timeLeft = 0;
-                }
-                else
-                {
-                    if (NPC.localAI[2] != 0)
-                        timeLeft = 0;
-                    if (++NPC.localAI[2] > 2)
-                        NPC.localAI[2] = 0;
-                }
-
-                if (FargoSoulsUtil.HostCheck)
-                {
-                    Projectile.NewProjectile(NPC.GetSource_FromThis(), NPC.Center, Vector2.UnitY.RotatedBy(MathHelper.ToRadians(20) * (Main.rand.NextDouble() - 0.5)), ModContent.ProjectileType<FargowiltasSouls.Content.Bosses.AbomBoss.AbomDeathrayMark>(), FargoSoulsUtil.ScaledProjectileDamage(NPC.damage, 4f * 3 / 8), 0f, Main.myPlayer, timeLeft);
-                    Projectile.NewProjectile(NPC.GetSource_FromThis(), NPC.Center, -Vector2.UnitY.RotatedBy(MathHelper.ToRadians(20) * (Main.rand.NextDouble() - 0.5)), ModContent.ProjectileType<FargowiltasSouls.Content.Bosses.AbomBoss.AbomDeathrayMark>(), FargoSoulsUtil.ScaledProjectileDamage(NPC.damage, 4f * 3 / 8), 0f, Main.myPlayer, timeLeft);
-                }
-            }
-            if (++NPC.ai[1] > 2400 / Math.Abs(NPC.velocity.X))
-            {
-                NPC.netUpdate = true;
-                NPC.velocity.X = NPC.ai[2] * 18f;
-                NPC.ai[0]++;
-                NPC.ai[1] = 0;
-                NPC.ai[3] = 0;
-            }
-        }
-
-        private void PrepareDeathrayRain2()
-        {
-            if (NPC.ai[1] < 150 && !AliveCheck(player))
-                return;
-
-            NPC.velocity.Y = 0f;
-
-
-            NPC.velocity *= 0.947f;
-            NPC.ai[3] += NPC.velocity.Length();
-
-            if (NPC.ai[1] > 150)
-                FancyFireballs((int)NPC.ai[1] - 150);
-
-            if (++NPC.ai[1] > 210)
-            {
-                SoundEngine.PlaySound(SoundID.Roar, NPC.Center);
-                NPC.netUpdate = true;
-                NPC.ai[0]++;
-                NPC.ai[1] = 0;
-                NPC.ai[3] = 0;
-            }
-        }
-        
-        private void DeathrayRain2()
-        {
-            NPC.velocity.X = NPC.ai[2] * -18f;
-            MovementY(player.Center.Y - 250, Math.Abs(player.Center.Y - NPC.Center.Y) < 200 ? 2f : 0.7f);
-            NPC.direction = NPC.spriteDirection = Math.Sign(NPC.velocity.X);
-
-            if (++NPC.ai[3] > 5)
-            {
-                NPC.ai[3] = 0;
-
-                SoundEngine.PlaySound(SoundID.Item12, NPC.Center);
-
-                float timeLeft = 2400 / Math.Abs(NPC.velocity.X) * 2 - NPC.ai[1] + 120;
-                if (NPC.ai[1] <= 15)
-                {
-                    timeLeft = 0;
-                }
-                else
-                {
-                    if (NPC.localAI[2] != 0)
-                        timeLeft = 0;
-                    if (++NPC.localAI[2] > 2)
-                        NPC.localAI[2] = 0;
-                }
-
-                if (FargoSoulsUtil.HostCheck)
-                {
-                    Projectile.NewProjectile(NPC.GetSource_FromThis(), NPC.Center, Vector2.UnitY.RotatedBy(MathHelper.ToRadians(20) * (Main.rand.NextDouble() - 0.5)), ModContent.ProjectileType<FargowiltasSouls.Content.Bosses.AbomBoss.AbomDeathrayMark>(), FargoSoulsUtil.ScaledProjectileDamage(NPC.damage, 4f * 3 / 8), 0f, Main.myPlayer, timeLeft);
-                    Projectile.NewProjectile(NPC.GetSource_FromThis(), NPC.Center, -Vector2.UnitY.RotatedBy(MathHelper.ToRadians(20) * (Main.rand.NextDouble() - 0.5)), ModContent.ProjectileType<FargowiltasSouls.Content.Bosses.AbomBoss.AbomDeathrayMark>(), FargoSoulsUtil.ScaledProjectileDamage(NPC.damage, 4f * 3 / 8), 0f, Main.myPlayer, timeLeft);
-                }
-            }
-            if (++NPC.ai[1] > 2400 / Math.Abs(NPC.velocity.X))
-            {
-                NPC.netUpdate = true;
-                NPC.velocity.X = NPC.ai[2] * -18f;
-                ChooseNextAttack(13, 19, 20, 41, 44, 47, 49);
-            }
-        }
-      
-        private void AbomSword()
-        {
-            NPC.velocity *= 0.9f;
-
-            void FancyFireballs(int repeats)
-            {
-                float modifier = 0;
-                for (int i = 0; i < repeats; i++)
-                    modifier = MathHelper.Lerp(modifier, 1f, 0.08f);
-
-                float distance = 1400 * (1f - modifier);
-                float rotation = MathHelper.TwoPi * modifier;
-                const int max = 4;
-                for (int i = 0; i < max; i++)
-                {
-                    int d = Dust.NewDust(NPC.Center + distance * Vector2.UnitX.RotatedBy(rotation + MathHelper.TwoPi / max * i), 0, 0, DustID.PurpleCrystalShard, NPC.velocity.X * 0.3f, NPC.velocity.Y * 0.3f, newColor: Color.White);
-                    Main.dust[d].noGravity = true;
-                    Main.dust[d].scale = 6f - 4f * modifier;
-                }
-            }
-
-            if (NPC.ai[1] < 60)
-                FancyFireballs((int)NPC.ai[1]);
-
-            if (NPC.ai[1] == 0 && NPC.ai[2] != 2 && FargoSoulsUtil.HostCheck)
-            {
-                float ai1 = NPC.ai[2] == 1 ? -1 : 1;
-                ai1 *= MathHelper.ToRadians(270) / 120 * -1 * 60;
-                int p = Projectile.NewProjectile(NPC.GetSource_FromThis(), NPC.Center, Vector2.Zero, ModContent.ProjectileType<GlowLine>(), FargoSoulsUtil.ScaledProjectileDamage(NPC.damage), 0f, Main.myPlayer, 3, ai1);
-                if (p != Main.maxProjectiles)
-                {
-                    Main.projectile[p].localAI[1] = NPC.whoAmI;
-                    if (Main.netMode == NetmodeID.Server)
-                        NetMessage.SendData(MessageID.SyncProjectile, number: p);
-                }
-            }
-            if (++NPC.ai[1] > 90)
-            {
-                NPC.netUpdate = true;
-                NPC.ai[0]++;
-                NPC.ai[1] = 0;
-                NPC.velocity = NPC.SafeDirectionTo(player.Center) * 3f;
-            }
-            else if (NPC.ai[1] == 60 && FargoSoulsUtil.HostCheck)
-            {
-                NPC.netUpdate = true;
-                NPC.velocity = Vector2.Zero;
-
-                SoundEngine.PlaySound(SoundID.Roar, NPC.Center);
-                float ai0 = NPC.ai[2] == 1 ? -1 : 1;
-                ai0 *= MathHelper.ToRadians(270) / 120;
-                Vector2 vel = NPC.SafeDirectionTo(player.Center).RotatedBy(-ai0 * 60);
-                Projectile.NewProjectile(NPC.GetSource_FromThis(), NPC.Center, vel, ModContent.ProjectileType<AbomSword>(), FargoSoulsUtil.ScaledProjectileDamage(NPC.damage, 4f * 3 / 8), 0f, Main.myPlayer, ai0, NPC.whoAmI);
-                if (WorldSavingSystem.MasochistModeReal)
-                    Projectile.NewProjectile(NPC.GetSource_FromThis(), NPC.Center, -vel, ModContent.ProjectileType<AbomSword>(), FargoSoulsUtil.ScaledProjectileDamage(NPC.damage, 4f * 3 / 8), 0f, Main.myPlayer, ai0, NPC.whoAmI);
-            }
-        }
-        
-        private void AbomWhileDashing()
-        {
-            NPC.direction = NPC.spriteDirection = Math.Sign(NPC.velocity.X);
-            if (++NPC.ai[1] > 120)
-            {
-                NPC.netUpdate = true;
-                NPC.ai[0]++;
-                NPC.ai[1] = 0;
-            }
-        }
-
-        private void AbomWaitScyclesClear()
-        {
-            if (!AliveCheck(player))
-                return;
-
-            Vector2 targetPos = player.Center + player.SafeDirectionTo(NPC.Center) * 500;
-            if (NPC.Distance(targetPos) > 50)
-                Movement(targetPos, 0.7f);
-            if (++NPC.ai[1] > 60) 
-            {
-                NPC.netUpdate = true;
-                if (++NPC.ai[2] < 2)
-                {
-                    NPC.ai[0] -= 2;
-                }
-                else
-                {
-                    NPC.ai[0]++;
-                    NPC.ai[2] = 0;
-                }
-                NPC.ai[1] = 0;
-            }
-        }
-        
-        private void AbomBeginVerticalDash()
-        {
-            if (NPC.ai[1] < 90 && !AliveCheck(player))
-                return;
-
-
-            if (NPC.ai[2] == 0 && NPC.ai[3] == 0) 
-            {
-                NPC.netUpdate = true;
-                NPC.ai[2] = player.Center.X;
-                NPC.ai[3] = player.Center.Y;
-                if (FargoSoulsUtil.ProjectileExists(ritualProj, ModContent.ProjectileType<MutantRitual>()) != null)
-                {
-                    NPC.ai[2] = Main.projectile[ritualProj].Center.X;
-                    NPC.ai[3] = Main.projectile[ritualProj].Center.Y;
-                }
-
-                Vector2 offset;
-                offset.X = Math.Sign(player.Center.X - NPC.ai[2]);
-                offset.Y = Math.Sign(player.Center.Y - NPC.ai[3]);
-                NPC.localAI[2] = offset.ToRotation();
-            }
-
-            Vector2 actualTargetPositionOffset = (float)Math.Sqrt(2 * 1200 * 1200) * NPC.localAI[2].ToRotationVector2();
-            actualTargetPositionOffset.Y -= 450 * Math.Sign(actualTargetPositionOffset.Y);
-
-            Vector2 targetPos = new Vector2(NPC.ai[2], NPC.ai[3]) + actualTargetPositionOffset;
-            Movement(targetPos, 1f);
-
-            if (NPC.ai[1] == 0 && FargoSoulsUtil.HostCheck)
-            {
-                float horizontalModifier = Math.Sign(NPC.ai[2] - targetPos.X);
-                float verticalModifier = Math.Sign(NPC.ai[3] - targetPos.Y);
-
-                float startRotation = horizontalModifier > 0 ? MathHelper.ToRadians(0.1f) * -verticalModifier : MathHelper.Pi - MathHelper.ToRadians(0.1f) * -verticalModifier;
-                float ai1 = horizontalModifier > 0 ? MathHelper.Pi : 0;
-                int p = Projectile.NewProjectile(NPC.GetSource_FromThis(), NPC.Center, startRotation.ToRotationVector2(), ModContent.ProjectileType<GlowLine>(), FargoSoulsUtil.ScaledProjectileDamage(NPC.damage), 0f, Main.myPlayer, 4, ai1);
-                if (p != Main.maxProjectiles)
-                {
-                    Main.projectile[p].localAI[1] = NPC.whoAmI;
-                    if (Main.netMode == NetmodeID.Server)
-                        NetMessage.SendData(MessageID.SyncProjectile, number: p);
-                }
-            }
-
-            if (NPC.ai[1] > 90)
-                FancyFireballs((int)NPC.ai[1] - 90);
-
-            if (++NPC.ai[1] > 150)
-            {
-                NPC.netUpdate = true;
-                NPC.velocity = Vector2.Zero;
-                NPC.ai[0]++;
-                NPC.ai[1] = 0;
-            }
-        }
-
-        private void AbomPrepareToDash()
-        {
-            NPC.direction = NPC.spriteDirection = Math.Sign(NPC.ai[2] - NPC.Center.X);
-
-            if (NPC.ai[1] == 0)
-            {
-                if (FargoSoulsUtil.HostCheck)
-                {
-                    float horizontalModifier = Math.Sign(NPC.ai[2] - NPC.Center.X);
-                    float verticalModifier = Math.Sign(NPC.ai[3] - NPC.Center.Y);
-
-                    float ai0 = horizontalModifier * MathHelper.Pi / 60 * verticalModifier;
-                    Projectile.NewProjectile(NPC.GetSource_FromThis(), NPC.Center, Vector2.UnitX * -horizontalModifier, ModContent.ProjectileType<AbomSword>(), FargoSoulsUtil.ScaledProjectileDamage(NPC.damage, 4f * 3 / 8), 0f, Main.myPlayer, ai0, NPC.whoAmI);
-                    if (WorldSavingSystem.MasochistModeReal)
-                        Projectile.NewProjectile(NPC.GetSource_FromThis(), NPC.Center, -Vector2.UnitX * -horizontalModifier, ModContent.ProjectileType<AbomSword>(), FargoSoulsUtil.ScaledProjectileDamage(NPC.damage, 4f * 3 / 8), 0f, Main.myPlayer, ai0, NPC.whoAmI);
-                }
-            }
-
-            if (++NPC.ai[1] > 60)
-            {
-                NPC.netUpdate = true;
-                NPC.ai[0]++;
-                NPC.ai[1] = 0;
-
-                NPC.velocity.X = 0f;
-                NPC.velocity.Y = 24 * Math.Sign(NPC.ai[3] - NPC.Center.Y);
-            }
-        }
-
         #endregion
 
         #region p3
@@ -5040,6 +4720,7 @@ namespace ssm.Content.NPCs.RealMutantEX
             }
             int endTime = 360;
             endTime += 360;
+            endTime += 120;
             if ((NPC.ai[3] += 1f) > (float)endTime)
             {
                 NPC.ai[0] -= 1f;
@@ -5142,72 +4823,107 @@ namespace ssm.Content.NPCs.RealMutantEX
                 }
         }
 
-        private void FinalSpark()
+        void FinalSpark()
         {
-            if (NPC.localAI[2] > 30f)
+            void SpinLaser(bool useMasoSpeed)
             {
-                NPC.localAI[2] += 1f;
-                if (NPC.localAI[2] > 120f)
+                float newRotation = NPC.SafeDirectionTo(Main.player[NPC.target].Center).ToRotation();
+                float difference = MathHelper.WrapAngle(newRotation - NPC.ai[3]);
+                float rotationDirection = 2f * (float)Math.PI * 1f / 6f / 60f;
+                rotationDirection *= useMasoSpeed ? 1.1f : 1f;
+                float change = Math.Min(rotationDirection, Math.Abs(difference)) * Math.Sign(difference);
+                if (useMasoSpeed)
                 {
-                    AliveCheck(player, forceDespawn: true);
+                    change *= 1.1f;
+                    float angleLerp = NPC.ai[3].AngleLerp(newRotation, 0.015f) - NPC.ai[3];
+                    if (Math.Abs(MathHelper.WrapAngle(angleLerp)) > Math.Abs(MathHelper.WrapAngle(change)))
+                        change = angleLerp;
                 }
-                return;
+                NPC.ai[3] += change;
+
+                EdgyBossText(GFBQuote(31));
             }
-            if ((NPC.localAI[0] -= 1f) < 0f)
+
+            if (!AliveCheck(player))
+                return;
+
+            if (--NPC.localAI[0] < 0)
             {
                 NPC.localAI[0] = Main.rand.Next(30);
-                if (Main.netMode != 1)
+                if (FargoSoulsUtil.HostCheck)
                 {
                     Vector2 spawnPos = NPC.position + new Vector2(Main.rand.Next(NPC.width), Main.rand.Next(NPC.height));
-                    int type = ModContent.ProjectileType<PhantasmalBlast>();
-                    Projectile.NewProjectile(NPC.GetSource_FromThis(), spawnPos, Vector2.Zero, type, 0, 0f, Main.myPlayer, 0f, 0f);
+                    int type = ModContent.ProjectileType<MutantBombSmall>();
+                    Projectile.NewProjectile(NPC.GetSource_FromThis(), spawnPos, Vector2.Zero, type, 0, 0f, Main.myPlayer);
                 }
             }
-            int ringTime = (NPC.ai[2] >= 330f) ? 100 : 120;
-            if ((NPC.ai[1] += 1f) > (float)ringTime)
+
+            bool harderRings = NPC.ai[2] >= 420 - 90;
+            int ringTime = harderRings ? 100 : 120;
+            if (++NPC.ai[1] > ringTime)
             {
-                NPC.ai[1] = 0f;
+                NPC.ai[1] = 0;
+
                 EModeSpecialEffects();
-                if (Main.netMode != 1)
+
+                if (FargoSoulsUtil.HostCheck)
                 {
-                    int max = 10;
-                    int damage = FargoSoulsUtil.ScaledProjectileDamage(NPC.damage);
+                    int max = 11;
+                    int damage = FargoSoulsUtil.ScaledProjectileDamage(NPC.defDamage);
                     SpawnSphereRing(max, 6f, damage, 0.5f);
-                    SpawnSphereRing(max, 6f, damage, -0.5f);
+                    SpawnSphereRing(max, 6f, damage, -.5f);
                 }
             }
-            else if (NPC.ai[2] == 330f)
+
+            else if (NPC.ai[2] == 420 - 90)
             {
-                if (NPC.localAI[1] == 0f)
+                if (NPC.localAI[1] == 0)
                 {
-                    NPC.localAI[1] = 1f;
-                    NPC.ai[2] -= 780f;
-                    NPC.ai[3] -= MathHelper.ToRadians(20f);
-                    if (Main.netMode != 1)
+                    NPC.localAI[1] = 1;
+                    NPC.ai[2] -= 600 + 180;
+
+                    NPC.ai[3] -= MathHelper.ToRadians(20);
+
+                    if (FargoSoulsUtil.HostCheck)
                     {
-                        Projectile.NewProjectile(NPC.GetSource_FromThis(), NPC.Center, Vector2.UnitX.RotatedBy(NPC.ai[3]), ModContent.ProjectileType<MutantGiantDeathray2>(), FargoSoulsUtil.ScaledProjectileDamage(NPC.damage, 0.5f), 0f, Main.myPlayer, 0f, (float)NPC.whoAmI);
+                        Projectile.NewProjectile(NPC.GetSource_FromThis(), NPC.Center, Vector2.UnitX.RotatedBy(NPC.ai[3]),
+                            ModContent.ProjectileType<MutantGiantDeathray2>(), FargoSoulsUtil.ScaledProjectileDamage(NPC.defDamage, 0.5f), 0f, Main.myPlayer, 0, NPC.whoAmI);
+
+                        Projectile.NewProjectile(
+                            NPC.GetSource_FromThis(),
+                            NPC.Center,
+                            Vector2.UnitX.RotatedBy(NPC.ai[3] + MathHelper.Pi),
+                            ModContent.ProjectileType<MutantGiantDeathray2>(),
+                            FargoSoulsUtil.ScaledProjectileDamage(NPC.defDamage, 0.5f),
+                            0f,
+                            Main.myPlayer,
+                            0,
+                            NPC.whoAmI
+                        );
                     }
+
                     NPC.netUpdate = true;
                 }
                 else
                 {
                     SoundEngine.PlaySound(SoundID.Roar, NPC.Center);
-                    if (Main.netMode != 1)
+
+                    if (FargoSoulsUtil.HostCheck)
                     {
-                        for (int i = 0; i < 8; i++)
+                        const int max = 8;
+                        for (int i = 0; i < max; i++)
                         {
-                            float offset = (float)i - 0.5f;
-                            Projectile.NewProjectile(NPC.GetSource_FromThis(), NPC.Center, (NPC.ai[3] + (float)Math.PI / 4f * offset).ToRotationVector2(), ModContent.ProjectileType<GlowLine>(), 0, 0f, Main.myPlayer, 13f, (float)NPC.whoAmI);
+                            float offset = i - 0.5f;
+                            Projectile.NewProjectile(NPC.GetSource_FromThis(), NPC.Center, (NPC.ai[3] + MathHelper.TwoPi / max * offset).ToRotationVector2(), ModContent.ProjectileType<GlowLine>(), 0, 0f, Main.myPlayer, 13f, NPC.whoAmI);
                         }
                     }
                 }
             }
-            if (NPC.ai[2] < 420f)
+
+            if (NPC.ai[2] < 420)
             {
-                if (NPC.localAI[1] == 0f || NPC.ai[2] > 330f)
-                {
+                if (NPC.localAI[1] == 0 || NPC.ai[2] > 420 - 90)
                     NPC.ai[3] = NPC.DirectionFrom(player.Center).ToRotation();
-                }
             }
             else
             {
@@ -5218,114 +4934,82 @@ namespace ssm.Content.NPCs.RealMutantEX
                     if (Main.WaveQuality == 0)
                         Main.WaveQuality = 1;
                 }
-                if (NPC.ai[1] % 3f == 0f && Main.netMode != 1)
+
+                if (NPC.ai[1] % 3 == 0 && FargoSoulsUtil.HostCheck)
                 {
-                    Projectile.NewProjectile(NPC.GetSource_FromThis(), NPC.Center, 24f * Vector2.UnitX.RotatedBy(NPC.ai[3]), ModContent.ProjectileType<MutantEyeWavy>(), 0, 0f, Main.myPlayer, Main.rand.NextFloat(0.5f, 1.25f) * (float)((!Main.rand.NextBool()) ? 1 : (-1)), (float)Main.rand.Next(10, 60));
+                    Projectile.NewProjectile(NPC.GetSource_FromThis(), NPC.Center, 24f * Vector2.UnitX.RotatedBy(NPC.ai[3]), ModContent.ProjectileType<MutantEyeWavy>(), 0, 0f, Main.myPlayer,
+                      Main.rand.NextFloat(0.5f, 1.25f) * (Main.rand.NextBool() ? -1 : 1), Main.rand.Next(10, 60));
                 }
             }
+
             int endTime = 1020;
             endTime += 180;
-            if ((NPC.ai[2] += 1f) > (float)endTime)
+            if (++NPC.ai[2] > endTime && NPC.life <= 1)
             {
                 NPC.netUpdate = true;
-                NPC.ai[0] -= 1f;
-                NPC.ai[1] = 0f;
-                NPC.ai[2] = 0f;
+                AttackChoice--;
+                NPC.ai[1] = 0;
+                NPC.ai[2] = 0;
                 FargoSoulsUtil.ClearAllProjectiles(2, NPC.whoAmI);
             }
-            else if (NPC.ai[2] == 420f)
+            else if (NPC.ai[2] == 420)
             {
                 NPC.netUpdate = true;
 
-                if (Main.netMode != 1)
+                NPC.ai[3] += MathHelper.ToRadians(20);
+
+                if (FargoSoulsUtil.HostCheck)
                 {
-                    int count = 3;
-                    float spread = MathHelper.ToRadians(30f);
-                    for (int i = 0; i < count; i++)
-                    {
-                        float offset = spread * (i - (count - 1) / 2f);
-                        Projectile.NewProjectile(
-                            NPC.GetSource_FromThis(),
-                            NPC.Center,
-                            Vector2.UnitX.RotatedBy(NPC.ai[3] + offset),
-                            ModContent.ProjectileType<MutantGiantDeathray2>(),
-                            FargoSoulsUtil.ScaledProjectileDamage(NPC.damage, 0.5f),
-                            0f,
-                            Main.myPlayer,
-                            0f,
-                            (float)NPC.whoAmI
-                        );
-                    }
+                    Projectile.NewProjectile(NPC.GetSource_FromThis(), NPC.Center, Vector2.UnitX.RotatedBy(NPC.ai[3]),
+                        ModContent.ProjectileType<MutantGiantDeathray2>(), FargoSoulsUtil.ScaledProjectileDamage(NPC.defDamage, 0.5f), 0f, Main.myPlayer, 0, NPC.whoAmI);
+
+                    Projectile.NewProjectile(
+                        NPC.GetSource_FromThis(),
+                        NPC.Center,
+                        Vector2.UnitX.RotatedBy(NPC.ai[3] + MathHelper.Pi),
+                        ModContent.ProjectileType<MutantGiantDeathray2>(),
+                        FargoSoulsUtil.ScaledProjectileDamage(NPC.defDamage, 0.5f),
+                        0f,
+                        Main.myPlayer,
+                        0,
+                        NPC.whoAmI
+                    );
                 }
             }
-            else if (NPC.ai[2] < 300f && NPC.localAI[1] != 0f)
+            else if (NPC.ai[2] < 300 && NPC.localAI[1] != 0)
             {
                 float num1 = 0.99f;
-                if (NPC.ai[2] >= 60f)
-                {
+                if (NPC.ai[2] >= 60)
                     num1 = 0.79f;
-                }
-                if (NPC.ai[2] >= 120f)
-                {
+                if (NPC.ai[2] >= 120)
                     num1 = 0.58f;
-                }
-                if (NPC.ai[2] >= 180f)
-                {
+                if (NPC.ai[2] >= 180)
                     num1 = 0.43f;
-                }
-                if (NPC.ai[2] >= 240f)
-                {
+                if (NPC.ai[2] >= 240)
                     num1 = 0.33f;
-                }
-                for (int i = 0; i < 9; i++)
+                for (int i = 0; i < 9; ++i)
                 {
                     if (Main.rand.NextFloat() >= num1)
                     {
                         float f = Main.rand.NextFloat() * 6.283185f;
                         float num2 = Main.rand.NextFloat();
-                        Dust dust = Dust.NewDustPerfect(NPC.Center + f.ToRotationVector2() * (110f + 600f * num2), 60, (f - 3.141593f).ToRotationVector2() * (14f + 8f * num2));
+                        Dust dust = Dust.NewDustPerfect(NPC.Center + f.ToRotationVector2() * (110 + 600 * num2), 229, (f - 3.141593f).ToRotationVector2() * (14 + 8 * num2), 0, default, 1f);
                         dust.scale = 0.9f;
                         dust.fadeIn = 1.15f + num2 * 0.3f;
                         dust.noGravity = true;
                     }
                 }
             }
-            SpinLaser(NPC.ai[2] >= 420f);
-            if (AliveCheck(player))
-            {
-                NPC.localAI[2] = 0f;
-            }
-            else
-            {
-                NPC.localAI[2] += 1f;
-            }
-            NPC.velocity = Vector2.Zero;
-            void SpinLaser(bool useMasoSpeed)
-            {
-                if (NPC.ai[2] >= 420f)
-                {
-                    float newRotation = NPC.DirectionTo(Main.player[NPC.target].Center).ToRotation();
-                float difference = MathHelper.WrapAngle(newRotation - NPC.ai[3]);
-                float rotationDirection = (float)Math.PI / 180f;
-                rotationDirection *= (useMasoSpeed ? 0.45f : 0.5f);
-                NPC.ai[3] += Math.Min(rotationDirection, Math.Abs(difference)) * (float)Math.Sign(difference);
-                if (useMasoSpeed)
-                {
-                    NPC.ai[3] = NPC.ai[3].AngleLerp(newRotation, 0.015f);
-                }
-                }
-                else 
-                {
-                    float newRotation = NPC.DirectionTo(Main.player[NPC.target].Center).ToRotation();
-                    float difference = MathHelper.WrapAngle(newRotation - NPC.ai[3]);
-                    float rotationDirection = (float)Math.PI / 180f;
-                    rotationDirection *= 0.45f; 
-                    NPC.ai[3] += Math.Min(rotationDirection, Math.Abs(difference)) * Math.Sign(difference);
-                    NPC.ai[3] = NPC.ai[3].AngleLerp(newRotation, 0.015f);
-                }
-            }
-        }
 
+            SpinLaser(NPC.ai[2] >= 420);
+
+            if (AliveCheck(player))
+                NPC.localAI[2] = 0;
+            else
+                NPC.localAI[2]++;
+
+            NPC.velocity = Vector2.Zero;
+        }
         private void DyingDramaticPause()
         {
             if (!AliveCheck(player))
@@ -5381,8 +5065,7 @@ namespace ssm.Content.NPCs.RealMutantEX
                 if (Main.netMode != 1)
                 {
                     Vector2 spawnPos = NPC.Center + Main.rand.NextVector2Circular(240f, 240f);
-                    int type = ModContent.ProjectileType<PhantasmalBlast>();
-                    Projectile.NewProjectile(NPC.GetSource_FromThis(), spawnPos, Vector2.Zero, type, 0, 0f, Main.myPlayer, 0f, 0f);
+                    Projectile.NewProjectile(NPC.GetSource_FromThis(), spawnPos, Vector2.Zero, ModContent.ProjectileType<PhantasmalBlast>(), 0, 0f, Main.myPlayer, 0f, 0f);
                 }
             }
             if ((NPC.ai[1] += 1f) % 3f == 0f && Main.netMode != 1)
@@ -5396,7 +5079,7 @@ namespace ssm.Content.NPCs.RealMutantEX
             NPC.alpha = 255;
             NPC.life = 0;
             NPC.dontTakeDamage = false;
-            NPC.checkDead();
+            //NPC.checkDead();
             if (Main.netMode == 1 || !ModContent.TryFind<ModNPC>("Fargowiltas", "Mutant", out var modNPC) || NPC.AnyNPCs(modNPC.Type))
             {
                 return;
@@ -5410,6 +5093,7 @@ namespace ssm.Content.NPCs.RealMutantEX
                     NetMessage.SendData(23, -1, -1, null, n);
                 }
             }
+            EdgyBossText(GFBQuote(33));
         }
 
         #endregion

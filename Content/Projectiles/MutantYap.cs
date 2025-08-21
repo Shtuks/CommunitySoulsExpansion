@@ -1,6 +1,7 @@
 ﻿using FargowiltasSouls;
 using FargowiltasSouls.Content.Bosses.MutantBoss;
 using Microsoft.Xna.Framework;
+using ssm.Content.NPCs.RealMutantEX;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.Localization;
@@ -47,7 +48,7 @@ namespace ssm.Content.Projectiles
         {
             int ai0 = (int)Projectile.ai[0];
 
-            if (ai0 <= -1 || ai0 >= 200 || !Main.npc[ai0].active || Main.npc[ai0].type != ModContent.NPCType<MutantBoss>())
+            if (ai0 <= -1 || ai0 >= 200 || !Main.npc[ai0].active || (Main.npc[ai0].type != ModContent.NPCType<MutantBoss>() && Main.npc[ai0].type != ModContent.NPCType<RealMutantEX>()))
             {
                 Projectile.Kill();
                 return;

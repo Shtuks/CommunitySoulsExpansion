@@ -111,7 +111,7 @@ namespace ssm.SoA
             Player owner = Main.player[projectile.owner];
             if (!owner.active || owner.dead) return base.OnTileCollide(projectile, oldVelocity);
 
-            if (owner.HasEffect<FlariumEffect>() && Main.rand.NextFloat() < 0.15f && projectile.damage > 0 && !projectile.minion)
+            if (owner.HasEffect<FlariumEffect>() && Main.rand.NextFloat() < 0.15f && projectile.damage > 0 && !projectile.minion && projectile.tileCollide)
             {
                 Vector2 spawnPosition = projectile.Center;
                 Projectile.NewProjectile(

@@ -14,6 +14,7 @@ namespace ssm
 {
     public partial class CSEHit : ModPlayer
     {
+        public int hitsLeft = WorldSavingSystem.MasochistModeReal ? 10 : 20;
         public override void ModifyHurt(ref Player.HurtModifiers modifiers)
         {
             double damageMult = 1D;
@@ -46,10 +47,22 @@ namespace ssm
             {
                 Player.CSE().mutantEXHits++;
 
+                if (Player.name.ToLower().Contains("testificate"))
+                {
+                    Player.CSE().mutantEXHits--;
+                    CSEUtils.DisplayLocalizedText("Mutant EX hits cap test: You have been hit!");
+                }
+                else
+                {
+                    hitsLeft--;
+                    CSEUtils.DisplayLocalizedText(hitsLeft + " hits left.");
+                }
+
                 //instakill
                 if (Player.name.ToLower().Contains("pucheglazik"))
                 {
                     Player.CSE().mutantEXHits+=100;
+                    CSEUtils.DisplayLocalizedText("2222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222");
                 }
             }
         }
