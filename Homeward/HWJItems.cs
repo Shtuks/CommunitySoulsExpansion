@@ -4,13 +4,15 @@ using Terraria.ModLoader;
 
 namespace ssm.Homeward
 {
+    [ExtendsFromMod(ModCompatibility.Homeward.Name)]
+    [JITWhenModsEnabled(ModCompatibility.Homeward.Name)]
     public class HWJItems : GlobalItem
     {
         public override bool InstancePerEntity => true;
         public override void SetDefaults(Item entity)
         {
             //defense bloat removal
-            if(
+            if (
                 //equilibrium
                 entity.type == ModContent.ItemType<EquilibriumBreastplate>()
                 || entity.type == ModContent.ItemType<EquilibriumLeggings>()
