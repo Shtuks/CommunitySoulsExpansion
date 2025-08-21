@@ -1,6 +1,7 @@
 ﻿using ContinentOfJourney.Items.Accessories;
 using ContinentOfJourney.Items.Armor;
 using Terraria;
+using ssm.Core;
 using Terraria.ModLoader;
 
 namespace ssm.Homeward
