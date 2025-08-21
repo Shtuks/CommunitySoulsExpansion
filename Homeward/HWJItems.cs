@@ -2,6 +2,7 @@
 using ContinentOfJourney.Items.Armor;
 using ssm.Core;
 using Terraria;
+using ssm.Core;
 using Terraria.ModLoader;
 
 namespace ssm.Homeward
@@ -18,7 +19,7 @@ namespace ssm.Homeward
                 entity.defense = 5;
             }
             //defense bloat removal
-            if(
+            if (
                 //equilibrium
                 entity.type == ModContent.ItemType<EquilibriumBreastplate>()
                 || entity.type == ModContent.ItemType<EquilibriumLeggings>()
