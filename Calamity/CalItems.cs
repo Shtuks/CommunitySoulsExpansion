@@ -65,7 +65,7 @@ namespace ssm.Calamity
             if (item.type == ModContent.ItemType<IridescentExcalibur>())
             {
                 tooltips.Add(new TooltipLine(Mod, "rebalance", $"{Language.GetTextValue("Mods.ssm.Balance.Buff")} {Language.GetTextValue("Mods.ssm.Balance.CancelDebuff")}"));
-                tooltips.Add(new TooltipLine(Mod, "rebalance", $"{Language.GetTextValue("Mods.ssm.Balance.Buff")} {Language.GetTextValue("Mods.ssm.Balance.VelUp")} 50%"));
+                tooltips.Add(new TooltipLine(Mod, "rebalance", $"{Language.GetTextValue("Mods.ssm.Balance.Buff")} {Language.GetTextValue("Mods.ssm.Balance.VelUP")} 50%"));
             }
             if (item.type == ModContent.ItemType<Voidragon>())
             {

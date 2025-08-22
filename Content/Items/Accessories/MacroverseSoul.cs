@@ -56,33 +56,36 @@ namespace ssm.Content.Items.Accessories
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            ModContent.Find<ModItem>(Mod.Name, "MicroverseSoul").UpdateAccessory(player, false);
+            if (ModCompatibility.Redemption.Loaded || ModCompatibility.Polarities.Loaded || ModCompatibility.Spooky.Loaded || ModCompatibility.Homeward.Loaded)
+            {
+                ModContent.Find<ModItem>(Mod.Name, "MicroverseSoul").UpdateAccessory(player, false);
+            }
             ModContent.Find<ModItem>(ModCompatibility.SoulsMod.Name, "TerrariaSoul").UpdateAccessory(player, false);
 
             if (ModCompatibility.Calamity.Loaded && ModCompatibility.Crossmod.Loaded)
             {
                 ModContent.Find<ModItem>(Mod.Name, "CalamitySoul").UpdateAccessory(player, false);
             }
-            if (ModCompatibility.Spooky.Loaded)
+            if (ModCompatibility.Spooky.Loaded && CSEConfig.Instance.Spooky)
             {
                 ModContent.Find<ModItem>(Mod.Name, "HorrorForce").UpdateAccessory(player, false);
                 ModContent.Find<ModItem>(Mod.Name, "TerrorForce").UpdateAccessory(player, false);
             }
-            if (ModCompatibility.Polarities.Loaded)
+            if (ModCompatibility.Polarities.Loaded && CSEConfig.Instance.Polarities)
             {
                 ModContent.Find<ModItem>(Mod.Name, "SpacetimeForce").UpdateAccessory(player, false);
                 ModContent.Find<ModItem>(Mod.Name, "WildernessForce").UpdateAccessory(player, false);
             }
-            if (ModCompatibility.Redemption.Loaded)
+            if (ModCompatibility.Redemption.Loaded && CSEConfig.Instance.Redemption)
             {
                 ModContent.Find<ModItem>(Mod.Name, "AdvancementForce").UpdateAccessory(player, false);
                 //ModContent.Find<ModItem>(Mod.Name, "AchivementForce").UpdateAccessory(player, false);
             }
-            if (ModCompatibility.SacredTools.Loaded)
+            if (ModCompatibility.SacredTools.Loaded && CSEConfig.Instance.SacredTools)
             {
                 ModContent.Find<ModItem>(Mod.Name, "SoASoul").UpdateAccessory(player, false);
             }
-            if (ModCompatibility.Thorium.Loaded)
+            if (ModCompatibility.Thorium.Loaded && CSEConfig.Instance.Thorium)
             {
                 ModContent.Find<ModItem>(Mod.Name, "ThoriumSoul").UpdateAccessory(player, false);
             }
@@ -104,15 +107,15 @@ namespace ssm.Content.Items.Accessories
             {
                 recipe.AddIngredient(Mod.Find<ModItem>("CalamitySoul"), 1);
             }
-            if (ModCompatibility.Thorium.Loaded)
+            if (ModCompatibility.Thorium.Loaded && CSEConfig.Instance.Thorium)
             {
                 recipe.AddIngredient(Mod.Find<ModItem>("ThoriumSoul"), 1);
             }
-            if (ModCompatibility.SacredTools.Loaded)
+            if (ModCompatibility.SacredTools.Loaded && CSEConfig.Instance.SacredTools)
             {
                 recipe.AddIngredient(Mod.Find<ModItem>("SoASoul"), 1);
             }
-            if (ModCompatibility.Spirit.Loaded)
+            if (ModCompatibility.Spirit.Loaded && CSEConfig.Instance.SpiritMod)
             {
                 recipe.AddIngredient(Mod.Find<ModItem>("SpiritSoul"), 1);
             }

@@ -7,8 +7,11 @@ using FargowiltasSouls.Content.Bosses.Champions.Life;
 using FargowiltasSouls.Content.Buffs.Boss;
 using FargowiltasSouls.Content.Buffs.Masomode;
 using FargowiltasSouls.Content.Buffs.Souls;
+using FargowiltasSouls.Content.Items.Accessories.Souls;
+using FargowiltasSouls.Content.Items.Armor;
 using FargowiltasSouls.Content.Items.Materials;
 using FargowiltasSouls.Content.Items.Summons;
+using FargowiltasSouls.Content.Items.Weapons.FinalUpgrades;
 using FargowiltasSouls.Content.Projectiles;
 using FargowiltasSouls.Content.Projectiles.BossWeapons;
 using FargowiltasSouls.Content.Projectiles.Masomode;
@@ -758,16 +761,16 @@ namespace ssm.Content.NPCs.RealMutantEX
                 case 1922:
                     {
                         ManagedScreenFilter filter = ShaderManager.GetFilter("FargowiltasSouls.Invert");
-                        Vector2 targetPos = player.Center + NPC.DirectionFrom(player.Center) * 500f;
+                        //Vector2 targetPos = player.Center + NPC.DirectionFrom(player.Center) * 500f;
                         if (NewAI[1] < 130f || (NPC.Distance(player.Center) > 200f && NPC.Distance(player.Center) < 600f))
                         {
                             NPC.velocity *= 0.97f;
                         }
-                        else if (NPC.Distance(targetPos) > 50f)
-                        {
-                            Movement(targetPos, 0.8f);
-                            NPC.position += player.velocity / 4f;
-                        }
+                        //else if (NPC.Distance(targetPos) > 50f)
+                        //{
+                        //    Movement(targetPos, 0.8f);
+                        //    NPC.position += player.velocity / 4f;
+                        //}
                         if (NewAI[1] >= 10)
                         {
                             if (filter != null)
@@ -860,6 +863,10 @@ namespace ssm.Content.NPCs.RealMutantEX
                                 NewAI[3] += 1f;
                             }
                         }
+                        if (NewAI[1] == 300f)
+                        {
+                            filter.Deactivate();
+                        }
                         if (!((NewAI[1] += 1f) > 480f))
                         {
                             break;
@@ -872,7 +879,6 @@ namespace ssm.Content.NPCs.RealMutantEX
                                 proj.Kill();
                             }
                         }
-                        filter.Deactivate();
                         NPC.TargetClosest();
                         ClearNewAI();
                         NPC.localAI[0] = 0f;
@@ -1707,6 +1713,11 @@ namespace ssm.Content.NPCs.RealMutantEX
             void SpawnAxeHitbox(Vector2 spawnPos)
             {
                 Projectile.NewProjectile(NPC.GetSource_FromThis(), spawnPos, Vector2.Zero, ModContent.ProjectileType<DeviAxe>(), FargoSoulsUtil.ScaledProjectileDamage(NPC.damage, 2f), 0f, Main.myPlayer, (float)NPC.whoAmI, NPC.Distance(spawnPos));
+            }
+
+            if (!AliveCheck(player))
+            {
+                NPC.active = false;
             }
         }
 
@@ -2915,13 +2926,6 @@ namespace ssm.Content.NPCs.RealMutantEX
                 {
                     //Projectile.NewProjectile(NPC.GetSource_FromThis(), NPC.Center, Vector2.Zero, ModContent.ProjectileType<Projectiles.GlowRingHollow>(), 0, 0f, Main.myPlayer, 5);
                     //Projectile.NewProjectile(npc.GetSource_FromThis(), NPC.Center, Vector2.Zero, ModContent.ProjectileType<Projectiles.GlowRing>(), 0, 0f, Main.myPlayer, NPC.whoAmI, -22);
-                }
-
-                if (WorldSavingSystem.EternityMode && WorldSavingSystem.SkipMutantP1 <= 10)
-                {
-                    WorldSavingSystem.SkipMutantP1++;
-                    if (Main.netMode == NetmodeID.Server)
-                        NetMessage.SendData(MessageID.WorldData);
                 }
 
                 for (int i = 0; i < 50; i++)
@@ -5149,20 +5153,13 @@ namespace ssm.Content.NPCs.RealMutantEX
 
         public override void OnKill()
         {
-            OnKill();
-
-            Item.NewItem(NPC.GetSource_Loot(), NPC.Hitbox, ModContent.ItemType<PhantasmalEnergy>());
-
-            if (Main.LocalPlayer.active)
-            {
-                if (!Main.LocalPlayer.FargoSouls().Toggler.CanPlayMaso && Main.netMode != NetmodeID.Server)
-                    Main.NewText(Language.GetTextValue($"Mods.{Mod.Name}.Message.MasochistModeUnlocked"), new Color(51, 255, 191, 0));
-                Main.LocalPlayer.FargoSouls().Toggler.CanPlayMaso = true;
-            }
-            WorldSavingSystem.CanPlayMaso = true;
-
-            WorldSavingSystem.SkipMutantP1 = 0;
-
+            Item.NewItem(NPC.GetSource_Loot(), NPC.Hitbox, ModContent.ItemType<PhantasmalEnergy>(), 30);
+            Item.NewItem(NPC.GetSource_Loot(), NPC.Hitbox, ModContent.ItemType<EternalEnergy>(), 9999);
+            Item.NewItem(NPC.GetSource_Loot(), NPC.Hitbox, ModContent.ItemType<MutantMask>(), 1);
+            Item.NewItem(NPC.GetSource_Loot(), NPC.Hitbox, ModContent.ItemType<MutantBody>(), 1);
+            Item.NewItem(NPC.GetSource_Loot(), NPC.Hitbox, ModContent.ItemType<MutantPants>(), 1);
+            Item.NewItem(NPC.GetSource_Loot(), NPC.Hitbox, ModContent.ItemType<FargowiltasSouls.Content.Items.Weapons.FinalUpgrades.Penetrator>(), 1);
+            Item.NewItem(NPC.GetSource_Loot(), NPC.Hitbox, ModContent.ItemType<EternitySoul>(), 1);
             NPC.SetEventFlagCleared(ref WorldSaveSystem.downedRealMutantEX, -1);
         }
 

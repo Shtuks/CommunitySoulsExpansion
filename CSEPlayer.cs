@@ -25,6 +25,8 @@ using ssm.SoA.Enchantments;
 using static ssm.SoA.Enchantments.CosmicCommanderEnchant;
 using FargowiltasSouls.Core.AccessoryEffectSystem;
 using ssm.Content.NPCs.RealMutantEX;
+using FargowiltasSouls.Content.Buffs.Boss;
+using FargowiltasSouls.Content.Buffs.Souls;
 
 
 namespace ssm
@@ -72,6 +74,11 @@ namespace ssm
             if (NPC.AnyNPCs(ModContent.NPCType<RealMutantEX>()))
             {
                 Player.FargoSouls().PrecisionSealNoDashNoJump = true;
+            }
+            if (Player.HasBuff<MutantPresenceBuff>())
+            {
+                Player.mount.Dismount(Player);
+                Player.AddBuff(ModContent.BuffType<TimeStopCDBuff>(), 300);
             }
             if (Player.name.ToLower().Contains("starlightcatt"))
             {
@@ -432,6 +439,11 @@ namespace ssm
             CyclonicFin = false;
             lumberjackSet = false;
             eternalMonolith = false;
+
+            if (!NPC.AnyNPCs(ModContent.NPCType<RealMutantEX>()))
+            {
+                mutantEXHits = 0;
+            }
         }
     }
 }

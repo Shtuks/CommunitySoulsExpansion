@@ -14,7 +14,7 @@ using ThoriumMod.NPCs.BossQueenJellyfish;
 using ThoriumMod.NPCs.BossStarScouter;
 using ThoriumMod.NPCs.BossTheGrandThunderBird;
 using ThoriumMod.NPCs.BossViscount;
-using ssm.Thorium.EternityAccessories;
+using ssm.Thorium.Emode.Accessories;
 
 namespace ssm.Thorium
 {

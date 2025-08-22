@@ -46,6 +46,19 @@ namespace ssm.Content.NPCs.RealMutantEX
                 Main.spriteBatch.Begin(SpriteSortMode.Deferred, null, null, null, null, null, Main.UIScaleMatrix);
                 return false;
             }
+            if (line.Mod == "ssm" && line.Name == "9m")
+            {
+                Main.spriteBatch.End();
+                Main.spriteBatch.Begin(SpriteSortMode.Immediate, null, null, null, null, null, Main.UIScaleMatrix);
+                ManagedShader shader = ShaderManager.GetShader("FargowiltasSouls.Text");
+                shader.TrySetParameter("mainColor", new Color(42, 66, 99));
+                shader.TrySetParameter("secondaryColor", Main.DiscoColor);
+                shader.Apply("PulseUpwards");
+                Utils.DrawBorderString(Main.spriteBatch, line.Text, new Vector2(line.X, line.Y), Color.White, 1);
+                Main.spriteBatch.End();
+                Main.spriteBatch.Begin(SpriteSortMode.Deferred, null, null, null, null, null, Main.UIScaleMatrix);
+                return false;
+            }
             return true;
         }
         public override int NumFrames => 11;

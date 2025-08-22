@@ -21,6 +21,13 @@ namespace ssm.Content.Items.Materials
             Item.maxStack = 30;
             Item.rare = 11;
             Item.value = Item.sellPrice(100, 0, 0, 0);
+            Item.useAnimation = 17;
+            Item.useTime = 17;
+            Item.consumable = true;
+            Item.buffTime = 77777777;
+            Item.buffType = ModContent.BuffType<SadismEX>();
+            Item.UseSound = SoundID.Item3;
+            Item.useStyle = ItemUseStyleID.DrinkLiquid;
         }
 
         public override bool PreDrawTooltipLine(DrawableTooltipLine line, ref int yOffset)

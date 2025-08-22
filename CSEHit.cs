@@ -9,6 +9,8 @@ using ssm.Core;
 using FargowiltasSouls.Core.Systems;
 using Terraria.ID;
 using ssm.Content.NPCs.RealMutantEX;
+using ssm.Content.Items.Accessories;
+using ssm.Content.SoulToggles;
 
 namespace ssm
 {
@@ -67,6 +69,13 @@ namespace ssm
             }
         }
 
+        public override void ResetEffects()
+        {
+            if (!NPC.AnyNPCs(ModContent.NPCType<RealMutantEX>()))
+            {
+                hitsLeft = WorldSavingSystem.MasochistModeReal ? 10 : 20;
+            }
+        }
         public override void OnHitByProjectile(Projectile proj, Player.HurtInfo hurtInfo)
         {
             if (Player.HasBuff<MutantDesperationBuff>() && (proj.type == ModContent.ProjectileType<MutantGiantDeathray2>() || proj.type == ModContent.ProjectileType<MutantBomb>()))

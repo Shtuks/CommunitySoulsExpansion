@@ -12,6 +12,8 @@ using NoxusBoss.Content.NPCs.Bosses.Draedon;
 using NoxusBoss.Content.NPCs.Bosses.NamelessDeity;
 using ssm.Content.Items.Accessories;
 using ssm.Content.NPCs;
+using ssm.Content.NPCs.RealMutantEX;
+
 //using ssm.Content.NPCs.MutantEX;
 using ssm.Core;
 using Terraria;
@@ -36,11 +38,12 @@ namespace ssm.Calamity.Addons
             EmptinessSprayer.NPCsThatReflectSpray[ModContent.NPCType<Abominationn>()] = true;
             EmptinessSprayer.NPCsThatReflectSpray[ModContent.NPCType<Deviantt>()] = true;
 
+            EmptinessSprayer.NPCsThatReflectSpray[ModContent.NPCType<RealMutantEX>()] = true;
+            EmptinessSprayer.NPCsThatReflectSpray[ModContent.NPCType<MonocleCat>()] = true;
+            //EmptinessSprayer.NPCsThatReflectSpray[ModContent.NPCType<Industrialist>()] = true;
+
             if (CSEConfig.Instance.AlternativeSiblings)
             {
-                //EmptinessSprayer.NPCsThatReflectSpray[ModContent.NPCType<Industrialist>()] = true;
-                EmptinessSprayer.NPCsThatReflectSpray[ModContent.NPCType<MonocleCat>()] = true;
-
                 //EmptinessSprayer.NPCsThatReflectSpray[ModContent.NPCType<MutantEX>()] = true;
                 EmptinessSprayer.NPCsThatReflectSpray[ModContent.NPCType<Monstrosity>()] = true;
                 //EmptinessSprayer.NPCsThatReflectSpray[ModContent.NPCType<AmalgamBoss>()] = true;

@@ -55,22 +55,22 @@ namespace ssm.Content.Items.Accessories
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            if (ModCompatibility.Spooky.Loaded)
+            if (ModCompatibility.Spooky.Loaded && CSEConfig.Instance.Spooky)
             {
                 ModContent.Find<ModItem>(Mod.Name, "HorrorForce").UpdateAccessory(player, false);
                 ModContent.Find<ModItem>(Mod.Name, "TerrorForce").UpdateAccessory(player, false);
             }
-            if (ModCompatibility.Polarities.Loaded)
+            if (ModCompatibility.Polarities.Loaded && CSEConfig.Instance.Polarities)
             {
                 ModContent.Find<ModItem>(Mod.Name, "SpacetimeForce").UpdateAccessory(player, false);
                 ModContent.Find<ModItem>(Mod.Name, "WildernessForce").UpdateAccessory(player, false);
             }
-            if (ModCompatibility.Redemption.Loaded)
+            if (ModCompatibility.Redemption.Loaded && CSEConfig.Instance.Redemption)
             {
                 ModContent.Find<ModItem>(Mod.Name, "AdvancementForce").UpdateAccessory(player, false);
                 ModContent.Find<ModItem>(Mod.Name, "AchivementForce").UpdateAccessory(player, false);
             }
-            if (ModCompatibility.Homeward.Loaded)
+            if (ModCompatibility.Homeward.Loaded && CSEConfig.Instance.Homeward)
             {
                 //ModContent.Find<ModItem>(Mod.Name, "AdvancementForce").UpdateAccessory(player, false);
                 //ModContent.Find<ModItem>(Mod.Name, "AchivementForce").UpdateAccessory(player, false);
@@ -92,17 +92,17 @@ namespace ssm.Content.Items.Accessories
             {
                 recipe.AddIngredient(ModCompatibility.SacredTools.Mod.Find<ModItem>("EmberOfOmen"), 1);
             }
-            if (ModCompatibility.Redemption.Loaded)
+            if (ModCompatibility.Redemption.Loaded && CSEConfig.Instance.Redemption)
             {
                 recipe.AddIngredient(ModContent.Find<ModItem>(Mod.Name, "AdvancementForce"), 1);
                 recipe.AddIngredient(ModContent.Find<ModItem>(Mod.Name, "AchivementForce"), 1);
             }
-            if (ModCompatibility.Spooky.Loaded)
+            if (ModCompatibility.Spooky.Loaded && CSEConfig.Instance.Spooky)
             {
                 recipe.AddIngredient(ModContent.Find<ModItem>(Mod.Name, "HorrorForce"), 1);
                 recipe.AddIngredient(ModContent.Find<ModItem>(Mod.Name, "TerrorForce"), 1);
             }
-            if (ModCompatibility.Polarities.Loaded)
+            if (ModCompatibility.Polarities.Loaded && CSEConfig.Instance.Polarities)
             {
                 recipe.AddIngredient(ModContent.Find<ModItem>(Mod.Name, "SpacetimeForce"), 1);
                 recipe.AddIngredient(ModContent.Find<ModItem>(Mod.Name, "WildernessForce"), 1);

@@ -230,5 +230,26 @@ namespace ssm
                 ChatHelper.BroadcastChatMessage(NetworkText.FromKey(key, Array.Empty<object>()), textColor.Value, -1);
             }
         }
+        public static NPC FindClosestNPCForProj(float maxDetectDistance, Projectile proj)
+        {
+            NPC closestNPC = null;
+            float sqrMaxDetectDistance = maxDetectDistance * maxDetectDistance;
+
+            for (int k = 0; k < Main.maxNPCs; k++)
+            {
+                NPC npc = Main.npc[k];
+                if (npc.CanBeChasedBy())
+                {
+                    float sqrDistanceToTarget = Vector2.DistanceSquared(proj.Center, npc.Center);
+                    if (sqrDistanceToTarget < sqrMaxDetectDistance)
+                    {
+                        sqrMaxDetectDistance = sqrDistanceToTarget;
+                        closestNPC = npc;
+                    }
+                }
+            }
+
+            return closestNPC;
+        }
     }
 }

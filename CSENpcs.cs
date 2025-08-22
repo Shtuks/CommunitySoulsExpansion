@@ -71,17 +71,17 @@ namespace ssm
                     {
                         npc.DropItemInstanced(npc.position, npc.Size, ModContent.ItemType<CyclonicFin>());
                     }
-                    if (ModCompatibility.Goozma.Loaded)
-                    {
-                        if (!Main.LocalPlayer.GetModPlayer<CSEAuricSoulPlayer>().eternalSoul)
-                        {
-                            npc.DropItemInstanced(npc.position, npc.Size, ModContent.ItemType<EternalAuricSoul>());
-                        }
-                    }
-                    if (ModCompatibility.Calamity.Loaded)
-                    {
-                        npc.DropItemInstanced(npc.position, npc.Size, ModContent.ItemType<DukeEXLore>());
-                    }
+                    //if (ModCompatibility.Goozma.Loaded && ModCompatibility.Calamity.Loaded)
+                    //{
+                    //    if (!Main.LocalPlayer.GetModPlayer<CSEAuricSoulPlayer>().eternalSoul)
+                    //    {
+                    //        npc.DropItemInstanced(npc.position, npc.Size, ModContent.ItemType<EternalAuricSoul>());
+                    //    }
+                    //}
+                    //if (ModCompatibility.Calamity.Loaded)
+                    //{
+                    //    npc.DropItemInstanced(npc.position, npc.Size, ModContent.ItemType<DukeEXLore>());
+                    //}
                     int maxEX = Main.rand.Next(5) + 10;
                     for (int i = 0; i < maxEX; i++)
                         npc.DropItemInstanced(npc.position, npc.Size, ModContent.ItemType<EternalScale>());
