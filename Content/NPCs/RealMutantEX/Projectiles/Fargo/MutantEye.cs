@@ -140,7 +140,7 @@ public class MutantEye : ModProjectile
         Rectangle glowrectangle = new(0, rect2, glow.Width, rect1);
         Vector2 gloworigin2 = glowrectangle.Size() / 2f;
         Color glowcolor = Color.Lerp(
-            FargoSoulsUtil.AprilFools ? new Color(255, 0, 0, TrailAdditive) : new Color(31, 187, 192, TrailAdditive),
+            new Color(31, 187, 192, TrailAdditive),
             Color.Transparent,
             0.74f);
         Vector2 drawCenter = Projectile.Center - Projectile.velocity.SafeNormalize(Vector2.UnitX) * 14;

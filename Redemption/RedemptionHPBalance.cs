@@ -40,10 +40,10 @@ namespace ssm.Redemption
                     float multiplierD = 0;
                     float multiplierL = 0;
 
-                    if (ModCompatibility.Thorium.Loaded) { multiplierL += 0.7f; multiplierD += 2f; }
-                    if (ModCompatibility.SacredTools.Loaded) { multiplierL += 0.5f; multiplierD += 3f; }
-                    if (ModCompatibility.Calamity.Loaded) { multiplierL += 2f; multiplierD += 5f; }
-                    if (ModCompatibility.Homeward.Loaded) { multiplierL += 0.5f; multiplierD += 1f; }
+                    if (ModCompatibility.Thorium.Loaded) { multiplierL += 0.5f; multiplierD += 2f; }
+                    if (ModCompatibility.SacredTools.Loaded) { multiplierL += 0.3f; multiplierD += 3f; }
+                    if (ModCompatibility.Calamity.Loaded) { multiplierL += 1.5f; multiplierD += 5f; }
+                    if (ModCompatibility.Homeward.Loaded) { multiplierL += 0.3f; multiplierD += 1f; }
 
                     npc.lifeMax = (int)(1900000 + (1000000 * multiplierL));
                     npc.damage = (int)(300 + (10 * multiplierD));
@@ -54,10 +54,10 @@ namespace ssm.Redemption
                     float multiplierD = 0;
                     float multiplierL = 0;
 
-                    if (ModCompatibility.Thorium.Loaded) { multiplierL += 0.7f; multiplierD += 2f; }
-                    if (ModCompatibility.SacredTools.Loaded) { multiplierL += 0.5f; multiplierD += 3f; }
-                    if (ModCompatibility.Calamity.Loaded) { multiplierL += 2f; multiplierD += 5f; }
-                    if (ModCompatibility.Homeward.Loaded) { multiplierL += 0.5f; multiplierD += 1f; }
+                    if (ModCompatibility.Thorium.Loaded) { multiplierL += 0.5f; multiplierD += 2f; }
+                    if (ModCompatibility.SacredTools.Loaded) { multiplierL += 0.3f; multiplierD += 3f; }
+                    if (ModCompatibility.Calamity.Loaded) { multiplierL += 1.5f; multiplierD += 5f; }
+                    if (ModCompatibility.Homeward.Loaded) { multiplierL += 0.3f; multiplierD += 1f; }
 
                     npc.lifeMax = (int)(2600000 + (1000000 * multiplierL));
                     npc.damage = (int)(350 + (10 * multiplierD));

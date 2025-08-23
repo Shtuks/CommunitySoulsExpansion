@@ -73,6 +73,13 @@ namespace ssm.Calamity
                     recipe.RemoveIngredient(ModContent.ItemType<AscendantSpiritEssence>());
                 }
 
+                if (recipe.HasResult<AuricBar>() && recipe.HasIngredient<OceanEssence>())
+                {
+                    recipe.RemoveIngredient(ModContent.ItemType<OceanEssence>());
+                    recipe.RemoveIngredient(ModContent.ItemType<DeathEssence>());
+                    recipe.RemoveIngredient(ModContent.ItemType<InfernoEssence>());
+                }
+
                 if (ModContent.TryFind("EmpoweredGranite", out ModItem var) && ModContent.TryFind("EnchantedMarble", out ModItem var1))
                 {
                     if (recipe.HasResult<OverloadedSludge>() && recipe.HasIngredient(var))

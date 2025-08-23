@@ -123,9 +123,6 @@ namespace ssm.Content.NPCs.RealMutantEX
             }
 
             SceneEffectPriority = SceneEffectPriority.BossHigh;
-
-            if (FargoSoulsUtil.AprilFools)
-                NPC.GivenName = Language.GetTextValue("Mods.ssm.NPCs.RealMutantEX_April.DisplayName");
         }
 
         public override void ApplyDifficultyAndPlayerScaling(int numPlayers, float balance, float bossAdjustment)
@@ -2366,14 +2363,11 @@ namespace ssm.Content.NPCs.RealMutantEX
                     if (FargoSoulsUtil.HostCheck) 
                     {
                         int appearance = Main.rand.Next(2);
-                        if (FargoSoulsUtil.AprilFools)
-                            appearance = 0;
                         for (int j = 0; j < 8; j++)
                         {
                             Vector2 vel = NPC.DirectionFrom(player.Center).RotatedByRandom(MathHelper.ToRadians(120)) * 10f;
                             float ai1 = 0.8f + 0.4f * j / 5f;
                             int current = Projectile.NewProjectile(NPC.GetSource_FromThis(), NPC.Center, vel, ModContent.ProjectileType<MutantDestroyerHead>(), FargoSoulsUtil.ScaledProjectileDamage(NPC.defDamage), 0f, Main.myPlayer, NPC.target, ai1, appearance);
-                            //timeleft: remaining duration of this case + extra delay after + successive death
                             Main.projectile[current].timeLeft = 90 * ((int)NPC.ai[3] + 1) + 30 + j * 6;
                             int max = Main.rand.Next(8, 19);
                             for (int i = 0; i < max; i++)

@@ -131,7 +131,7 @@ namespace ssm.Content.NPCs.RealMutantEX.Projectiles
 
         public static Color ColorFunction(float trailInterpolant)
         {
-            Color color = FargoSoulsUtil.AprilFools ? Color.Red : Color.Cyan;//Color.Lerp(new(31, 187, 192), new(51, 255, 191), trailInterpolant) * Projectile.Opacity;
+            Color color = Color.Cyan;
             color.A = 100;
             return color;
         }
@@ -159,7 +159,7 @@ namespace ssm.Content.NPCs.RealMutantEX.Projectiles
             // GameShaders.Misc["FargoswiltasSouls:MutantDeathray"].UseImage1(); cannot be used due to only accepting vanilla paths.
             FargoSoulsUtil.SetTexture1(FargosTextureRegistry.MutantStreak.Value);
             // The laser should fade to this in the middle.
-            shader.TrySetParameter("mainColor", FargoSoulsUtil.AprilFools ? new Color(255, 255, 183, 100) : new Color(183, 252, 253, 100));
+            shader.TrySetParameter("mainColor", new Color(183, 252, 253, 100));
             shader.TrySetParameter("stretchAmount", 3);
             shader.TrySetParameter("scrollSpeed", 2f);
             shader.TrySetParameter("uColorFadeScaler", 1f);

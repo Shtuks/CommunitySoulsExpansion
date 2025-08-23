@@ -51,6 +51,12 @@ Mods: {
 			}
 		}
 
+		Infernum.RealMutantEX:
+			'''
+			Cruel Eternity God
+			Mutant EX
+			'''
+
 		Balance: {
 			Buff: "[c/00A36C:Cross-Mod Balance:]"
 			//green
@@ -3502,7 +3508,7 @@ Mods: {
 			}
 
 			tModLoadiumBar: {
-				DisplayName: tModBar
+				DisplayName: tModLoadium
 				Tooltip: ""
 			}
 
@@ -3606,6 +3612,26 @@ Mods: {
 					Must be planted on grass
 					[c/D22444:Its powers may be combined with the Frostblessed Seedling when placed near it]
 					'''
+			}
+
+			ChampionHeadband: {
+				DisplayName: Champion Headband
+				Tooltip: ""
+			}
+
+			GraniteMaterializer: {
+				DisplayName: Granite Materializer
+				Tooltip: ""
+			}
+
+			JellyfishCoil: {
+				DisplayName: Jellyfish Coil
+				Tooltip: ""
+			}
+
+			VampiresBlessing: {
+				DisplayName: Vampires Blessing
+				Tooltip: ""
 			}
 		}
 
@@ -4239,6 +4265,10 @@ Mods: {
 			WillFireball.DisplayName: Will Fireball
 			AbomRitual.DisplayName: Abom Ritual
 			MutantBigSting22.DisplayName: Mutant Big Sting22
+			BatProj.DisplayName: Bat Proj
+			BronzeSwordProj.DisplayName: Bronze Sword Proj
+			GraniteChunkProj.DisplayName: Granite Chunk Proj
+			GraniteShardProj.DisplayName: Granite Shard Proj
 		}
 
 		Bestiary: {
@@ -4254,7 +4284,7 @@ Mods: {
 					EnchantsLoad: Enchantments Loading
 					EmodeAccesLoad: Eternity Mode Accessories Loading
 					EmodeWeaponsLoad: Eternity Mode Weapons Loading
-					BossRush: Boss Rush Header
+					BossRush: Boss Rush
 				}
 
 				DisplayName: Mod Config
@@ -4400,32 +4430,32 @@ Mods: {
 				}
 
 				EmodeHWJ: {
-					Label: Emode H W J
+					Label: Homeward Journey
 					Tooltip: ""
 				}
 
 				EmodeHWJW: {
-					Label: Emode H W J W
+					Label: Homeward Journey
 					Tooltip: ""
 				}
 
 				ThoriumBR: {
-					Label: Thorium B R
+					Label: Thorium
 					Tooltip: ""
 				}
 
 				RedemptionBR: {
-					Label: Redemption B R
+					Label: Redemption
 					Tooltip: ""
 				}
 
 				SoABR: {
-					Label: So A B R
+					Label: Shadows of Abaddon
 					Tooltip: ""
 				}
 
 				HWJBR: {
-					Label: H W J B R
+					Label: Homeward Journey
 					Tooltip: ""
 				}
 

@@ -17,6 +17,10 @@ namespace ssm.Thorium.Items
     [JITWhenModsEnabled(ModCompatibility.Thorium.Name)]
     public class DreamEssence : ModItem
     {
+        public override void SetStaticDefaults()
+        {
+            Item.ResearchUnlockCount = 25;
+        }
         public override void SetDefaults()
         {
             Item.CloneDefaults(ModContent.ItemType<OceanEssence>());
@@ -46,8 +50,22 @@ namespace ssm.Thorium.Items
             {
                 Recipe recipe = Main.recipe[i];
 
-                if (recipe.createItem.type == ModContent.ItemType<DreamEssence>())
-                    continue;
+
+                if (ModCompatibility.Calamity.Loaded)
+                {
+                    if (recipe.createItem == ModCompatibility.Calamity.Mod.Find<ModItem>("AuricBar").Item ||
+                        recipe.createItem.type == ModContent.ItemType<DreamEssence>())
+                    {
+                        continue;
+                    }
+                }
+                else
+                {
+                    if (recipe.createItem.type == ModContent.ItemType<DreamEssence>())
+                    {
+                        continue;
+                    }
+                }
 
                 bool hasEssence = false;
 

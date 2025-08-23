@@ -122,6 +122,20 @@ namespace ssm
         }
         public override void SetDefaults(NPC npc)
         {
+            if (npc.type == ModContent.NPCType<MutantBoss>() || npc.type == ModContent.NPCType<RealMutantEX>())
+            {
+                npc.defense = 300;
+
+                npc.damage = Main.getGoodWorld ? 2000 : (int)((500 + (100 * Math.Round(multiplierMD, 1))) * (WorldSavingSystem.AngryMutant ? WorldSavingSystem.MasochistModeReal ? 15 : 10 : WorldSavingSystem.MasochistModeReal ? 1.5f : 1));
+                npc.lifeMax = (int)((10000000 + ((10000000 * Math.Round(multiplierML, 1))) / (Main.expertMode ? 1 : 2)) * (WorldSavingSystem.AngryMutant ? WorldSavingSystem.MasochistModeReal ? 15 : 10 : WorldSavingSystem.MasochistModeReal ? 1.5f : 1));
+
+                if (ModCompatibility.Inheritance.Loaded && !Main.zenithWorld && !Main.getGoodWorld)
+                {
+                    npc.damage = 3000;
+                    npc.lifeMax = 440000000;
+                }
+            }
+
             if (npc.type == NPCID.DukeFishron && (EModeGlobalNPC.spawnFishronEX || dukeEX))
             {
                 npc.defense = 0;

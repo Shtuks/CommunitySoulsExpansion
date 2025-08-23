@@ -96,7 +96,7 @@ namespace ssm.Content.NPCs.RealMutantEX.Projectiles.Fargo
             int rect2 = 0;
             Rectangle glowrectangle = new Rectangle(0, rect2, glow.Width, rect1);
             Vector2 gloworigin2 = glowrectangle.Size() / 2f;
-            Color glowcolor = Color.Lerp(FargoSoulsUtil.AprilFools ? Color.Red : new Color(196, 247, 255, 0), Color.Transparent, 0.8f);
+            Color glowcolor = Color.Lerp(new Color(196, 247, 255, 0), Color.Transparent, 0.8f);
             for (int x = 0; x < 7; x++)
             {
                 Vector2 drawOffset = new Vector2(350f * base.Projectile.scale / 2f, 0f).RotatedBy(base.Projectile.ai[0]);

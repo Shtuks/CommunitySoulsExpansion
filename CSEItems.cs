@@ -1,10 +1,14 @@
-﻿using FargowiltasSouls.Content.Items.Accessories.Souls;
+﻿using BombusApisBee;
+using FargowiltasSouls.Content.Bosses.MutantBoss;
+using FargowiltasSouls.Content.Buffs.Souls;
+using FargowiltasSouls.Content.Items.Accessories.Souls;
 using FargowiltasSouls.Content.Items.Armor;
 using FargowiltasSouls.Content.Items.BossBags;
 using FargowiltasSouls.Content.Items.Materials;
 using FargowiltasSouls.Content.Items.Summons;
 using FargowiltasSouls.Content.Items.Weapons.FinalUpgrades;
 using FargowiltasSouls.Content.Items.Weapons.SwarmDrops;
+using FargowiltasSouls.Core.AccessoryEffectSystem;
 using FargowiltasSouls.Core.ItemDropRules.Conditions;
 using Microsoft.Xna.Framework;
 using ssm.Content.Items.Accessories;
@@ -15,6 +19,7 @@ using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using Terraria;
 using Terraria.GameContent.ItemDropRules;
+using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
 
@@ -78,7 +83,7 @@ namespace ssm
             }
             if (entity.type == ModContent.ItemType<PhantasmalLeashOfCthulhu>())
             {
-                entity.damage = 7800;
+                entity.damage = 9000;
             }
             if (entity.type == ModContent.ItemType<SlimeRain>())
             {
@@ -107,6 +112,17 @@ namespace ssm
                     entity.damage = (int)(entity.damage * 1.2f);
                 }
             }
+        }
+
+        public override bool? UseItem(Item item, Player player)
+        {
+            if (item.type == ItemID.RodOfHarmony) {
+                if (NPC.AnyNPCs(ModContent.NPCType<MutantBoss>()) || NPC.AnyNPCs(ModContent.NPCType<RealMutantEX>()))
+                {
+                    player.AddBuff(ModContent.BuffType<TimeFrozenBuff>(), 6000);
+                }
+            }
+            return base.UseItem(item, player);
         }
         public override void ModifyItemLoot(Item item, ItemLoot itemLoot)
         {
@@ -208,13 +224,21 @@ namespace ssm
         {
             //just in case
             //no cal inheritance because mutant enrages
-            if (item.damage < 100000 && item.damage > 10000 && !CSEUtils.IsModItem(item, "CalamityInheritance") && !CSEUtils.IsModItem(item, "SacredTools") && !CSEUtils.IsModItem(item, "FargowiltasSouls") && !CSEUtils.IsModItem(item, "ThoriumMod") && !CSEUtils.IsModItem(item, "CaamityMod"))
+            //if (item.damage > 10000 && !CSEUtils.IsModItem(item, "CalamityHunt") && !CSEUtils.IsModItem(item, "CalamityInheritance") && !CSEUtils.IsModItem(item, "SacredTools") && !CSEUtils.IsModItem(item, "FargowiltasSouls") && !CSEUtils.IsModItem(item, "ThoriumMod") && !CSEUtils.IsModItem(item, "CaamityMod"))
+            //{
+            //    damage *= 0.1f;
+            //}
+            if (item.ModItem.Name == "StormMaidensRetribution")
+            {
+                damage *= 0.1f;
+            }
+            if (item.damage < 100000 && item.damage > 10000 && !CSEUtils.IsModItem(item, "CalamityHunt") && !CSEUtils.IsModItem(item, "CalamityInheritance") && !CSEUtils.IsModItem(item, "SacredTools") && !CSEUtils.IsModItem(item, "FargowiltasSouls") && !CSEUtils.IsModItem(item, "ThoriumMod") && !CSEUtils.IsModItem(item, "CaamityMod"))
             {
                 damage *= 0.1f;
             }
             if (item.damage > 100000 && !CSEUtils.IsModItem(item, "CalamityInheritance") && !CSEUtils.IsModItem(item, "SacredTools") && !CSEUtils.IsModItem(item, "FargowiltasSouls") && !CSEUtils.IsModItem(item, "ThoriumMod") && !CSEUtils.IsModItem(item, "CaamityMod"))
             {
-                damage *= 0.01f;
+                damage *= 0.05f;
             }
         }
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
@@ -254,7 +278,7 @@ namespace ssm
             {
                 if (item.type == ModContent.ItemType<SlimeRain>() || item.type == ModContent.ItemType<GuardianTome>() || item.type == ModContent.ItemType<TheBiggestSting>() || item.type == ModContent.ItemType<PhantasmalLeashOfCthulhu>() || item.type == ModContent.ItemType<TheBiggestSting>())
                 {
-                    tooltips.Add(new TooltipLine(Mod, "balance", $"{Language.GetTextValue("Mods.ssm.Balance.CancelDebuff")}"));
+                    tooltips.Add(new TooltipLine(Mod, "balance", $"{Language.GetTextValue("Mods.ssm.Balance.Buff")} {Language.GetTextValue("Mods.ssm.Balance.CancelDebuff")}"));
                 }
             }
             if (item.type == ModContent.ItemType<MutantsCurse>() || item.type == ModContent.ItemType<AbominationnVoodooDoll>())
@@ -293,7 +317,7 @@ namespace ssm
             }
             if (item.damage > 100000 && !CSEUtils.IsModItem(item, "CalamityInheritance") && !CSEUtils.IsModItem(item, "SacredTools") && !CSEUtils.IsModItem(item, "FargowiltasSouls") && !CSEUtils.IsModItem(item, "ThoriumMod") && !CSEUtils.IsModItem(item, "CaamityMod"))
             {
-                tooltips.Add(new TooltipLine(Mod, "rebalance", $"{Language.GetTextValue("Mods.ssm.Balance.Nerf")} {Language.GetTextValue("Mods.ssm.Balance.DamageDown")} 99%"));
+                tooltips.Add(new TooltipLine(Mod, "rebalance", $"{Language.GetTextValue("Mods.ssm.Balance.Nerf")} {Language.GetTextValue("Mods.ssm.Balance.DamageDown")} 95%"));
             }
             if (ModCompatibility.Thorium.Loaded)
             {

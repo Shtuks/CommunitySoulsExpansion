@@ -130,7 +130,7 @@ namespace ssm.Content.NPCs.RealMutantEX.Projectiles
 
         public override bool PreDraw(ref Color lightColor)
         {
-            Color outerColor = (FargoSoulsUtil.AprilFools ? Color.Red : Color.CadetBlue);
+            Color outerColor = (Color.CadetBlue);
             outerColor.A = 0;
             Color darkColor = outerColor;
             Color mediumColor = Color.Lerp(outerColor, Color.White, 0.75f);

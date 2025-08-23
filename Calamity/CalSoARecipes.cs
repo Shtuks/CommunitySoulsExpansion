@@ -11,6 +11,7 @@ using SacredTools.Content.Items.Placeable.Obelisks;
 using CalamityMod.Items;
 using FargowiltasSouls.Content.Items.Materials;
 using ssm.Content.Items.Materials;
+using ssm.Calamity.Addons;
 
 namespace ssm.Calamity
 {
@@ -31,6 +32,11 @@ namespace ssm.Calamity
                 //ieor ahh compat
                 if (recipe.HasIngredient<Rock>() && !recipe.HasIngredient<EmberOfOmen>() && !recipe.HasIngredient<EternalEnergy>() && !recipe.HasIngredient<tModLoadiumBar>())
                 {
+                    if (ModCompatibility.WrathoftheGods.Loaded)
+                    {
+                        recipe.RemoveIngredient(ModContent.ItemType<Rock>());
+                        recipe.AddIngredient<NDMaterialPlaceholder>(3);
+                    }
                     recipe.AddIngredient<EmberOfOmen>(3);
                 }
                 if (recipe.HasResult<SoASoul>() && !recipe.HasIngredient<ShadowspecBar>())

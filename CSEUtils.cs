@@ -6,6 +6,8 @@ using Terraria.Localization;
 using Terraria.DataStructures;
 using Terraria.ID;
 using System.Collections.Generic;
+using CalamityMod.Items;
+using Terraria.ModLoader;
 
 namespace ssm
 {
@@ -26,6 +28,18 @@ namespace ssm
             return distance;
         }
 
+        public static void RemoveItem(int type)
+        {
+            for (int j = 0; j < Main.player[Main.myPlayer].inventory.Length; j++)
+            {
+
+                if (Main.player[Main.myPlayer].inventory[j].type == type)
+                {
+                    int index = Main.LocalPlayer.FindItem(type);
+                    Main.LocalPlayer.inventory[index].TurnToAir();
+                }
+            }
+        }
         public static Point FindTileOrigin(int x, int y)
         {
             int originX = x;
@@ -223,7 +237,7 @@ namespace ssm
             }
             if (Main.netMode == 0)
             {
-                Main.NewText((object)Language.GetTextValue(key), (Color?)textColor.Value);
+                Main.NewText(Language.GetTextValue(key), (Color?)textColor.Value);
             }
             else if (Main.netMode == 2 || Main.netMode == 1)
             {

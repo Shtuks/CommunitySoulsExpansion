@@ -85,8 +85,8 @@ namespace ssm.Calamity
                 float multiplierD = 0;
                 float multiplierL = 0;
 
-                if (ModCompatibility.Thorium.Loaded) { multiplierL += 0.5f; multiplierD += 5f; }
-                if (ModCompatibility.Homeward.Loaded) { multiplierL += 0.4f; multiplierD += 5f; }
+                if (ModCompatibility.Thorium.Loaded) { multiplierL += 0.4f; multiplierD += 5f; }
+                if (ModCompatibility.Homeward.Loaded) { multiplierL += 0.3f; multiplierD += 5f; }
                 if (ModCompatibility.SacredTools.Loaded) { multiplierL += 0.2f; multiplierD += 5f; }
 
                 npc.lifeMax = (int)(2800000 + (1000000 * multiplierL));
@@ -100,9 +100,9 @@ namespace ssm.Calamity
                     float multiplierD = 0;
                     float multiplierL = 0;
 
-                    if (ModCompatibility.Thorium.Loaded) { multiplierL += 0.7f; multiplierD += 5f; }
-                    if (ModCompatibility.SacredTools.Loaded) { multiplierL += 0.9f; multiplierD += 7f; }
-                    if (ModCompatibility.Homeward.Loaded) { multiplierL += 0.3f; multiplierD += 3f; }
+                    if (ModCompatibility.Thorium.Loaded) { multiplierL += 0.5f; multiplierD += 5f; }
+                    if (ModCompatibility.SacredTools.Loaded) { multiplierL += 0.7f; multiplierD += 7f; }
+                    if (ModCompatibility.Homeward.Loaded) { multiplierL += 0.2f; multiplierD += 3f; }
 
                     npc.lifeMax = (int)(4300000 + (1000000 * multiplierL));
                     npc.damage = (int)(450 + (10 * multiplierD));
@@ -127,8 +127,8 @@ namespace ssm.Calamity
             {
                 float multiplier = 0;
 
-                if (ModCompatibility.Thorium.Loaded) { multiplier += 0.5f; }
-                if (ModCompatibility.SacredTools.Loaded) { multiplier += 0.3f; }
+                if (ModCompatibility.Thorium.Loaded) { multiplier += 0.4f; }
+                if (ModCompatibility.SacredTools.Loaded) { multiplier += 0.2f; }
                 if (ModCompatibility.Homeward.Loaded) { multiplier += 0.2f; }
 
                 npc.lifeMax = (int)((2400000 * 1.2) + (1000000 * multiplier));
@@ -138,8 +138,8 @@ namespace ssm.Calamity
             {
                 float multiplier = 0;
 
-                if (ModCompatibility.Thorium.Loaded) { multiplier += 0.5f; }
-                if (ModCompatibility.SacredTools.Loaded) { multiplier += 0.3f; }
+                if (ModCompatibility.Thorium.Loaded) { multiplier += 0.4f; }
+                if (ModCompatibility.SacredTools.Loaded) { multiplier += 0.2f; }
                 if (ModCompatibility.Homeward.Loaded) { multiplier += 0.2f; }
 
 
@@ -150,8 +150,8 @@ namespace ssm.Calamity
             {
                 float multiplier = 0;
 
-                if(ModCompatibility.Thorium.Loaded) { multiplier += 0.5f; }
-                if (ModCompatibility.SacredTools.Loaded) { multiplier += 0.3f; }
+                if(ModCompatibility.Thorium.Loaded) { multiplier += 0.4f; }
+                if (ModCompatibility.SacredTools.Loaded) { multiplier += 0.2f; }
                 if (ModCompatibility.Homeward.Loaded) { multiplier += 0.2f; }
 
                 npc.lifeMax = (int)((1800000 * 1.2) + (1000000 * multiplier));

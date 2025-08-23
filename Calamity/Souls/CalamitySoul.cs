@@ -39,8 +39,8 @@ namespace ssm.Calamity.Souls
             if (ModCompatibility.Catalyst.Loaded || ModCompatibility.Goozma.Loaded || ModCompatibility.Clamity.Loaded) { ModContent.GetInstance<AddonsForce>().UpdateAccessory(player, hideVisual); }
             ModContent.GetInstance<ShatteredCommunity>().UpdateAccessory(player, hideVisual);
             ModContent.GetInstance<TheCommunity>().UpdateAccessory(player, hideVisual);
-            ModContent.GetInstance<ElementalArtifact>().UpdateAccessory(player, hideVisual);
-            ModContent.GetInstance<PotJT>().UpdateAccessory(player, hideVisual);
+            //ModContent.GetInstance<ElementalArtifact>().UpdateAccessory(player, hideVisual);
+            //ModContent.GetInstance<PotJT>().UpdateAccessory(player, hideVisual);
             //if (ModCompatibility.WrathoftheGods.Loaded) { ModContent.GetInstance<SolynsSigil>().UpdateAccessory(player, hideVisual); }
 
             player.buffImmune[ModContent.Find<ModBuff>(this.FargoCross.Name, "CalamitousPresenceBuff").Type] = true;
@@ -53,7 +53,7 @@ namespace ssm.Calamity.Souls
             recipe.AddIngredient<GaleForce>();
             recipe.AddIngredient<ElementsForce>();
             recipe.AddIngredient<BrandoftheBrimstoneWitch>();
-            recipe.AddIngredient<PotJT>();
+            //recipe.AddIngredient<PotJT>();
             recipe.AddIngredient<DemonShadeEnchant>();
             recipe.AddIngredient<WulfrumEnchant>();
             recipe.AddIngredient<TitanHeartEnchant>();

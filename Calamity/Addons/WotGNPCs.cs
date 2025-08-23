@@ -60,7 +60,6 @@ namespace ssm.Calamity.Addons
                 modifiers.FinalDamage *= 3;
             }
         }
-
         public override void OnKill(NPC npc)
         {
             if (WorldSavingSystem.EternityMode)

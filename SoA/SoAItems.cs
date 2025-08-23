@@ -26,7 +26,7 @@ namespace ssm.SoA
         {
             if (entity.type == ModContent.ItemType<FlamesOfCondemnation>())
             {
-                entity.damage = (int)(entity.damage * (ModCompatibility.Calamity.Loaded ? 3f : 2.2f));
+                entity.damage = (int)(entity.damage * (ModCompatibility.Calamity.Loaded ? 4f : 3f));
             }
             if (entity.type == ModContent.ItemType<AsthralSaber>())
             {
@@ -123,9 +123,12 @@ namespace ssm.SoA
             {
                 tooltips.Add(new TooltipLine(Mod, "rebalance", $"{Language.GetTextValue("Mods.ssm.Balance.Buff")} {Language.GetTextValue("Mods.ssm.Balance.DamageUP")} {n}%"));
             }
-            if (CSESets.GetValue(CSESets.Items.AbomTierFargoWeapon, item.type))
+            if (!ModCompatibility.Calamity.Loaded)
             {
-                tooltips.Add(new TooltipLine(Mod, "buff", $"{Language.GetTextValue("Mods.ssm.Balance.Buff")} {Language.GetTextValue("Mods.ssm.Balance.DamageUP")} 100%"));
+                if (CSESets.GetValue(CSESets.Items.AbomTierFargoWeapon, item.type))
+                {
+                    tooltips.Add(new TooltipLine(Mod, "buff", $"{Language.GetTextValue("Mods.ssm.Balance.Buff")} {Language.GetTextValue("Mods.ssm.Balance.DamageUP")} 100%"));
+                }
             }
         }
     }

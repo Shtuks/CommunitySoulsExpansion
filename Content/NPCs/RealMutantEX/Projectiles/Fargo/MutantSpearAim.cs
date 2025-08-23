@@ -173,20 +173,6 @@ public class MutantSpearAim : ModProjectile
             Main.EntitySpriteDraw(texture2D13, value4 + positionOffset + base.Projectile.Size / 2f - Main.screenPosition + new Vector2(0f, base.Projectile.gfxOffY), rectangle, color27, num165, origin, base.Projectile.scale, SpriteEffects.None);
         }
         Main.EntitySpriteDraw(texture2D13, base.Projectile.Center + positionOffset - Main.screenPosition + new Vector2(0f, base.Projectile.gfxOffY), rectangle, base.Projectile.GetAlpha(lightColor), base.Projectile.rotation + rotationOffset, origin, base.Projectile.scale, SpriteEffects.None);
-        //just remember time window of throw!
-		//if (base.Projectile.ai[1] != 5f)
-        //{
-        //    Texture2D glow = ModContent.Request<Texture2D>("FargowiltasSouls/Content/Bosses/MutantBoss/MutantSpearAimGlow", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value;
-        //    float modifier = (float)base.Projectile.timeLeft / (60f - base.Projectile.localAI[1]);
-        //    Color glowColor = (FargoSoulsUtil.AprilFools ? new Color(255, 191, 51, 210) : new Color(51, 255, 191, 210));
-        //    if (base.Projectile.ai[1] > 1f)
-        //    {
-        //        glowColor = (FargoSoulsUtil.AprilFools ? new Color(255, 0, 0, 210) : new Color(0, 0, 255, 210));
-        //    }
-        //    glowColor *= 1f - modifier;
-        //    float glowScale = base.Projectile.scale * 8f * modifier;
-        //    Main.EntitySpriteDraw(glow, base.Projectile.Center - Main.screenPosition + new Vector2(0f, base.Projectile.gfxOffY), glow.Bounds, glowColor, 0f, glow.Bounds.Size() / 2f, glowScale, SpriteEffects.None);
-        //}
         return false;
     }
 }

@@ -1,6 +1,7 @@
 ﻿using Fargowiltas.Items.Tiles;
 using FargowiltasSouls.Content.Items.Accessories.Souls;
 using FargowiltasSouls.Content.Items.Materials;
+using FargowiltasSouls.Core;
 using ssm.Core;
 using System.Collections.Generic;
 using Terraria;
@@ -12,17 +13,20 @@ namespace ssm.Content.Items.Accessories
 {
     public class MicroverseSoul : BaseSoul
     {
-        public override string Texture => "ssm/Content/Items/SwarmDeactivatorDebug";
         public override bool IsLoadingEnabled(Mod mod)
         {
             return (ModCompatibility.Redemption.Loaded || ModCompatibility.Polarities.Loaded || ModCompatibility.Spooky.Loaded || ModCompatibility.Homeward.Loaded);
         }
         public override void SetStaticDefaults()
         {
+            Main.RegisterItemAnimation(Item.type, new DrawAnimationRectangularV(6, 8, 10));
+            ItemID.Sets.AnimatesAsSoul[Item.type] = true;
             ItemID.Sets.ItemNoGravity[Type] = true;
         }
         public override void SetDefaults()
         {
+            Item.width = 20;
+            Item.height = 25;
             Item.value = 1000000;
             Item.rare = 11;
             Item.accessory = true;

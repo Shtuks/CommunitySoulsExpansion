@@ -3,7 +3,6 @@ using FargowiltasSouls.Content.Items.Accessories.Souls;
 using Luminance.Core.Graphics;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Redemption.Items.Accessories.PreHM;
 using ssm.Calamity.Addons;
 using ssm.Content.Items.Materials;
 using ssm.Core;
@@ -79,7 +78,7 @@ namespace ssm.Content.Items.Accessories
             if (ModCompatibility.Redemption.Loaded && CSEConfig.Instance.Redemption)
             {
                 ModContent.Find<ModItem>(Mod.Name, "AdvancementForce").UpdateAccessory(player, false);
-                //ModContent.Find<ModItem>(Mod.Name, "AchivementForce").UpdateAccessory(player, false);
+                ModContent.Find<ModItem>(Mod.Name, "AchivementForce").UpdateAccessory(player, false);
             }
             if (ModCompatibility.SacredTools.Loaded && CSEConfig.Instance.SacredTools)
             {
@@ -101,7 +100,8 @@ namespace ssm.Content.Items.Accessories
             }
             if (ModCompatibility.WrathoftheGods.Loaded)
             {
-                recipe.AddIngredient<NDMaterialPlaceholder>(1);
+                recipe.AddIngredient<NDMaterialPlaceholder>(5);
+                recipe.AddIngredient(ModCompatibility.WrathoftheGods.Mod.Find<ModItem>("MetallicChunk"), 5);
             }
             if (ModCompatibility.Calamity.Loaded && ModCompatibility.Crossmod.Loaded)
             {

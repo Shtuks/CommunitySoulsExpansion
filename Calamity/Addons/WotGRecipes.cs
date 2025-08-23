@@ -16,13 +16,6 @@ namespace ssm.Calamity.Addons
             {
                 Recipe recipe = Main.recipe[i];
 
-                //if ((recipe.HasResult(ModContent.ItemType<DimensionSoul>())
-                //    || recipe.HasResult(ModContent.ItemType<MasochistSoul>())
-                //    || recipe.HasResult(ModContent.ItemType<UniverseSoul>())) && !recipe.HasIngredient<MetallicChunk>())
-                //{
-                //    recipe.AddIngredient<MetallicChunk>();
-                //}
-
                 if (!recipe.HasIngredient<NDMaterialPlaceholder>() && recipe.HasResult<AbominationnVoodooDoll>())
                 {
                     recipe.AddIngredient<NDMaterialPlaceholder>(1);
@@ -30,9 +23,7 @@ namespace ssm.Calamity.Addons
 
                 if (recipe.TryGetResult<ModItem>(out Item result) && result != null)
                 {
-                    bool hasRock = recipe.TryGetIngredient(ModContent.ItemType<Rock>(), out Item rockIngredient);
-
-                    if (hasRock &&
+                    if (recipe.HasIngredient<Rock>() &&
                         !CSEUtils.IsModItem(result, "ssm") &&
                         !CSEUtils.IsModItem(result, "FargowiltasSouls"))
                     {
