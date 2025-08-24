@@ -14,6 +14,9 @@ using Redemption.NPCs.Bosses.Cleaver;
 using Redemption.NPCs.Bosses.Gigapora;
 using Redemption.NPCs.Bosses.ADD;
 using Redemption.NPCs.Bosses.PatientZero;
+using Fargowiltas.NPCs;
+using Redemption.Items.Placeable.Tiles;
+using Redemption.Globals;
 
 namespace ssm.Redemption
 {
@@ -32,6 +35,15 @@ namespace ssm.Redemption
             return base.PreAI(npc);
         }
 
+        public override void ModifyShop(NPCShop shop)
+        {
+            if (shop.NpcType == NPCType<LumberJack>())
+            {
+                shop.Add(new Item(ItemType<ElderWood>()) { shopCustomPrice = Item.buyPrice(copper: 20) }, new Condition("Mods.ssm.Conditions.TheKeeperDowned", () => RedeBossDowned.downedKeeper));
+                shop.Add(new Item(ItemType<PetrifiedWood>()) { shopCustomPrice = Item.buyPrice(copper: 20) }, Condition.Hardmode);
+            }
+            base.ModifyShop(shop);
+        }
         public override void SetDefaults(NPC npc)
         {
             int num1 = ModCompatibility.Calamity.Loaded || ModCompatibility.SacredTools.Loaded ? 30000 : 20000;

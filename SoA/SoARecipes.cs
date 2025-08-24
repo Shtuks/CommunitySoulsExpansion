@@ -16,15 +16,19 @@ using Terraria.ID;
 using SacredTools.Content.Items.Armor.Oblivion;
 using SacredTools.Content.Items.Weapons.Relic;
 using FargowiltasSouls.Content.Items.Materials;
-using SacredTools.Content.Items.Accessories.Sigils;
-using ssm.Content.Items.DevItems;
-using ssm.Content.Items.Materials;
+using SacredTools.Items.Weapons.Relic;
+using SacredTools.Content.Items.Weapons.Dev;
 
 namespace ssm
 {
     [ExtendsFromMod(ModCompatibility.SacredTools.Name)]
     public class SoARecipes : ModSystem
     {
+        public static bool GetValue(bool[] set, int index) => set != null && set[index];
+        public class Items
+        {
+            public static bool[] RelicWeapon;
+        }
         public override void AddRecipeGroups()
         {
             RecipeGroup rec = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " Asthral Helmet", ModContent.ItemType<AsthralMage>(), ModContent.ItemType<AsthralRanged>(), ModContent.ItemType<AsthralMelee>(), ModContent.ItemType<AsthralSummon>(), ModContent.ItemType<AsthraltiteHelmetRevenant>());
@@ -35,6 +39,32 @@ namespace ssm
             RecipeGroup.RegisterGroup("ssm:VoidWardenChest", rec3);
         }
 
+        public override void PostSetupContent()
+        {
+            SetFactory itemFactory = ItemID.Sets.Factory;
+
+            Items.RelicWeapon = itemFactory.CreateBoolSet(false,
+                ModContent.ItemType<PaleRuin>(),
+                ModContent.ItemType<AshenWake>(),
+                ModContent.ItemType<RogueWave>(),
+                ModContent.ItemType<CeruleanCyclone>(),
+                ModContent.ItemType<Devilsknife>(),
+                ModContent.ItemType<NeedlerRelic>(),
+                ModContent.ItemType<DimensionalCrusher>(),
+                ModContent.ItemType<MaxDesertStaff>(),
+                ModContent.ItemType<BlindJusticeMK2>(),
+                ModContent.ItemType<FatesLament>(),
+                ModContent.ItemType<BlindJusticeMK2>(),
+                ModContent.ItemType<Malevolence>(),
+                ModContent.ItemType<EndOfTheWorld>(),
+                ModContent.ItemType<MightyTorch>(),
+                ModContent.ItemType<Avalanche>(),
+                ModContent.ItemType<Sharpshooter>(),
+                ModContent.ItemType<Gunblade>(),
+                ModContent.ItemType<QueenSwarm>(),
+                ModContent.ItemType<LampOfCinders>()
+            );
+        }
         public override void AddRecipes()
         {
             Recipe.Create(ModContent.ItemType<OblivionForge>(), 1).AddIngredient<BetaCoupon>(2).Register();

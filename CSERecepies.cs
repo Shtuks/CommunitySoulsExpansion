@@ -11,6 +11,10 @@ using FargowiltasSouls;
 using Fargowiltas.Items.Tiles;
 using ssm.CrossMod.CraftingStations;
 using ssm.Content.Items.Accessories;
+using ssm.Calamity.Souls;
+using ssm.SoA.Souls;
+using ssm.SpiritMod;
+using ssm.Thorium.Souls;
 
 namespace ssm
 {
@@ -70,7 +74,7 @@ namespace ssm
 
                 if (recipe.HasResult(ModContent.ItemType<EternitySoul>()))
                 {
-                    if (ModCompatibility.Calamity.Loaded || ModCompatibility.SacredTools.Loaded || ModCompatibility.Spirit.Loaded || ModCompatibility.Thorium.Loaded)
+                    if (ssm.shouldUseMacro)
                     {
                         recipe.AddIngredient<MacroverseSoul>(1);
                         recipe.RemoveIngredient(ModContent.ItemType<TerrariaSoul>());
@@ -78,6 +82,23 @@ namespace ssm
                     else if (ModCompatibility.Redemption.Loaded || ModCompatibility.Polarities.Loaded || ModCompatibility.Spooky.Loaded || ModCompatibility.Homeward.Loaded)
                     {
                         recipe.AddIngredient<MicroverseSoul>(1);
+                    }
+
+                    if(ModCompatibility.Calamity.Loaded && !ssm.shouldUseMacro)
+                    {
+                        recipe.AddIngredient<CalamitySoul>(1);
+                    }
+                    if (ModCompatibility.SacredTools.Loaded && !ssm.shouldUseMacro)
+                    {
+                        recipe.AddIngredient<SoASoul>(1);
+                    }
+                    if (ModCompatibility.SpiritMod.Loaded && !ssm.shouldUseMacro)
+                    {
+                        recipe.AddIngredient<SpiritSoul>(1);
+                    }
+                    if (ModCompatibility.Thorium.Loaded && !ssm.shouldUseMacro)
+                    {
+                        recipe.AddIngredient<ThoriumSoul>(1);
                     }
                 }
 

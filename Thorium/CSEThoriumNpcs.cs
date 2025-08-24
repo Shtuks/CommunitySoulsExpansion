@@ -20,6 +20,14 @@ using ThoriumMod;
 using FargowiltasSouls.Core.AccessoryEffectSystem;
 using static ssm.Thorium.Enchantments.FungusEnchant;
 using ssm.Content.Projectiles.Enchantments;
+using CalamityMod.Items.Placeables;
+using CalamityMod.Items.SummonItems;
+using Fargowiltas.NPCs;
+using FargowiltasCrossmod.Content.Calamity.Items.Summons;
+using FargowiltasCrossmod.Core.Calamity.Systems;
+using System.Linq;
+using ThoriumMod.Items.ArcaneArmor;
+using ThoriumMod.Items.Placeable;
 
 namespace ssm.Thorium
 {
@@ -160,9 +168,20 @@ namespace ssm.Thorium
                 }
             }
         }
+
+        public override void ModifyShop(NPCShop shop)
+        {
+            if (shop.NpcType == NPCType<LumberJack>())
+            {
+                shop.Add(new Item(ItemType<ThoriumMod.Items.Misc.Deadwood>()) { shopCustomPrice = Item.buyPrice(copper: 20) }, Condition.InGraveyard);
+                shop.Add(new Item(ItemType<EvergreenBlock>()) { shopCustomPrice = Item.buyPrice(copper: 20) }, Condition.DownedEverscream);
+                shop.Add(new Item(ItemType<YewWood>()) { shopCustomPrice = Item.buyPrice(copper: 20) }, Condition.DownedGoblinArmy);
+            }
+            base.ModifyShop(shop);
+        }
         public override void OnHitByItem(NPC target, Player player, Item item, NPC.HitInfo hit, int damageDone)
         {
-            if (item.DamageType == ModContent.GetInstance<HealerDamage>())
+            if (item.DamageType == GetInstance<HealerDamage>())
             {
                 switch (player.meleeEnchant)
                 {

@@ -71,6 +71,10 @@ namespace ssm.SoA
                     entity.damage = entity.damage * 2;
                 }
             }
+            if (SoARecipes.GetValue(SoARecipes.Items.RelicWeapon, entity.type) && ModCompatibility.Calamity.Loaded)
+            {
+                entity.damage = (int)(entity.damage * 1.2f);
+            }
         }
 
         public override void UpdateEquip(Item item, Player player)
@@ -129,6 +133,10 @@ namespace ssm.SoA
                 {
                     tooltips.Add(new TooltipLine(Mod, "buff", $"{Language.GetTextValue("Mods.ssm.Balance.Buff")} {Language.GetTextValue("Mods.ssm.Balance.DamageUP")} 100%"));
                 }
+            }
+            if (SoARecipes.GetValue(SoARecipes.Items.RelicWeapon, item.type) && ModCompatibility.Calamity.Loaded)
+            {
+                tooltips.Add(new TooltipLine(Mod, "buff", $"{Language.GetTextValue("Mods.ssm.Balance.Buff")} {Language.GetTextValue("Mods.ssm.Balance.DamageUP")} 20%"));
             }
         }
     }

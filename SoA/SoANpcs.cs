@@ -23,6 +23,11 @@ using SacredTools.NPCs.Boss.Abaddon;
 using SacredTools.NPCs.Boss.Araghur;
 using FargowiltasSouls.Core.Globals;
 using Terraria.ID;
+using Fargowiltas.NPCs;
+using Redemption.Globals;
+using Redemption.Items.Placeable.Tiles;
+using SacredTools.Content.Items.Placeable.Solid;
+using SacredTools.Common.Systems;
 
 namespace ssm.SoA
 {
@@ -44,6 +49,14 @@ namespace ssm.SoA
             summonedShieldOnce = reader.ReadBoolean();
         }
 
+        public override void ModifyShop(NPCShop shop)
+        {
+            if (shop.NpcType == NPCType<LumberJack>())
+            {
+                shop.Add(new Item(ItemType<Emberbark>()) { shopCustomPrice = Item.buyPrice(copper: 60) }, new Condition("Mods.ssm.Conditions.AbaddonDowned", () => DownedSystem.DownedAbaddon));
+            }
+            base.ModifyShop(shop);
+        }
         public override void SetDefaults(NPC npc)
         {
             int num1 = 30000;

@@ -21,9 +21,6 @@ using Terraria.DataStructures;
 using FargowiltasSouls.Core.Systems;
 using Terraria.Chat;
 using ssm.Content.Items.Summons;
-using ssm.SoA.Enchantments;
-using static ssm.SoA.Enchantments.CosmicCommanderEnchant;
-using FargowiltasSouls.Core.AccessoryEffectSystem;
 using ssm.Content.NPCs.RealMutantEX;
 using FargowiltasSouls.Content.Buffs.Boss;
 using FargowiltasSouls.Content.Buffs.Souls;
@@ -53,8 +50,6 @@ namespace ssm
         public bool equippedMonstrosityEnchantment;
 
         public float monstrosityHits;
-        private bool wasGhost = false;
-        private int ghostTimer = 0;
         internal int mutantEXHits;
         public void DiscordWhiteTheme(float duration, float sharpness)
         {
