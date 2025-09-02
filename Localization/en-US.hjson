@@ -2876,16 +2876,16 @@ Mods: {
 			}
 
 			MicroverseSoul: {
-				Tooltip: "Grants following effects:"
+				Tooltip: Grants following effects:
 				DisplayName: Microverse Soul
 				Redemption1: "[i:ssm/AchivementForce] Attacks inflict Pure Chill and Dragonblaze, immunity to elemental damage, drop twigs dealing elemental damage"
 				Redemption2: "[i:ssm/AdvancementForce] Hardlight drone minion, Mounted rocket launcher minion"
-				Homeward1: "WIP"
-				Homeward2: "WIP"
+				Homeward1: WIP
+				Homeward2: WIP
 				Spooky1: "[i:ssm/TerrorForce] Set bonuses from Spirit Horsemen, Flower, Gilded Mage, Spi-Ops, Root armor"
 				Spooky2: "[i:ssm/HorrorForce] Set bonuses from Gore, Old Wood, Rotten Gourd, Living Flesh armor"
-				Polarities1: "WIP"
-				Polarities2: "WIP"
+				Polarities1: WIP
+				Polarities2: WIP
 			}
 
 			MacroverseSoul: {

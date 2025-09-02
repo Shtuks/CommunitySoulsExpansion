@@ -8,7 +8,6 @@ namespace ssm.Content.Projectiles.Enchantments
 {
     public class MartianProbe : ModProjectile
     {
-        public override string Texture => "ssm/Content/Items/SwarmDeactivatorDebug";
 
         public bool shouldHome = false;
         public override void SetDefaults()
@@ -84,7 +83,6 @@ namespace ssm.Content.Projectiles.Enchantments
     }
     public class Shrapnel : ModProjectile
     {
-        public override string Texture => "ssm/Content/Items/SwarmDeactivatorDebug";
         public override void SetDefaults()
         {
             Projectile.width = 8;

@@ -10,7 +10,7 @@ namespace ssm.Content.Items.DevItems
     {
         public override bool IsLoadingEnabled(Mod mod)
         {
-            return CSEConfig.Instance.DevItems;
+            return CSEConfig.Instance.DevItems && CSEConfig.Instance.AlternativeSiblings;
         }
         public override string devName => "StarlightCat";
         public override bool isUpgradeable => true;

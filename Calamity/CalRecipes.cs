@@ -75,6 +75,16 @@ namespace ssm.Calamity
                         recipe.AddIngredient<MiracleMatter>();
                     }
                 }
+
+                if (recipe.HasIngredient<Rock>())
+                {
+                    if (ModCompatibility.WrathoftheGods.Loaded)
+                    {
+                        recipe.RemoveIngredient(ModContent.ItemType<Rock>());
+                        recipe.AddIngredient<NDMaterialPlaceholder>(3);
+                    }
+                }
+
                 //if (CSEConfig.Instance.DevItems)
                 //{
                 //    if (recipe.HasResult<Catlight>() && !recipe.HasIngredient<ShadowspecBar>())

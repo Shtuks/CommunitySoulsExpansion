@@ -1,18 +1,18 @@
-using System.Security.Cryptography.X509Certificates;
+using System.Collections.Generic;
 using Terraria;
 using Terraria.ModLoader;
 
 namespace ssm.Content.Buffs
 {
-    public class SadismEX : ModBuff
+    internal class SadismEX : ModBuff
     {
+        private List<int> debuffIndexes = new List<int>();
         public override void SetStaticDefaults()
         {
-            Main.buffNoTimeDisplay[this.Type] = true;
-            Main.buffNoSave[this.Type] = false;
-            Main.persistentBuff[this.Type] = true;
+            Main.buffNoTimeDisplay[Type] = true;
+            Main.buffNoSave[Type] = false;
+            Main.persistentBuff[Type] = true;
         }
-
         public override void Update(Player player, ref int buffIndex)
         {
             for (int index = 0; index < BuffLoader.BuffCount; ++index)
@@ -25,8 +25,19 @@ namespace ssm.Content.Buffs
                         player.buffImmune[ModContent.Find<ModBuff>("CalamityMod", "RageMode").Type] = false;
                         player.buffImmune[ModContent.Find<ModBuff>("CalamityMod", "AdrenalineMode").Type] = false;
                     }
-                    //player.buffImmune[this.mod.BuffType("ChtuxlagorInferno")] = false;
                 }
+            }
+            for (int i = 0; i < 100; i++)
+            {
+                if (player.buffType[i] > 0 && Main.debuff[player.buffType[i]])
+                {
+                    debuffIndexes.Add(i);
+                }
+            }
+
+            for (int i = debuffIndexes.Count - 1; i >= 0; i--)
+            {
+                player.DelBuff(debuffIndexes[i]);
             }
         }
     }

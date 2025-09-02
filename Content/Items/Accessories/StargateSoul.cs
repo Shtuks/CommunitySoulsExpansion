@@ -13,12 +13,14 @@ using FargowiltasSouls.Content.Items.Accessories.Masomode;
 using FargowiltasSouls.Core.AccessoryEffectSystem;
 using FargowiltasSouls;
 using FargowiltasSouls.Content.Items.Accessories.Enchantments;
+using System.Collections.Generic;
 
 namespace ssm.Content.Items.Accessories
 {
     [AutoloadEquip(EquipType.Wings)]
-    public class StargateSoul : ModItem
+    internal class StargateSoul : ModItem
     {
+        private List<int> debuffIndexes = new List<int>();
         public override bool IsLoadingEnabled(Mod mod)
         {
             return CSEConfig.Instance.AlternativeSiblings;
@@ -107,6 +109,19 @@ namespace ssm.Content.Items.Accessories
         public override void UpdateVanity(Player player) => PassiveEffect(player);
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
+            for (int i = 0; i < 100; i++)
+            {
+                if (player.buffType[i] > 0 && Main.debuff[player.buffType[i]])
+                {
+                    debuffIndexes.Add(i);
+                }
+            }
+
+            for (int i = debuffIndexes.Count - 1; i >= 0; i--)
+            {
+                player.DelBuff(debuffIndexes[i]);
+            }
+
             PassiveEffect(player);
 
             for (int index = 0; index < BuffLoader.BuffCount; ++index)

@@ -32,6 +32,7 @@ namespace ssm.Content.NPCs.RealMutantEX
                 || (line.Mod == "ssm" && line.Name == "6m")
                 || (line.Mod == "ssm" && line.Name == "7m")
                 || (line.Mod == "ssm" && line.Name == "8m")
+                || (line.Mod == "ssm" && line.Name == "9m")
                 || line.Name == "FlavorText"
                 || (line.Mod == "Terraria" && line.Name == "ItemName"))
             {

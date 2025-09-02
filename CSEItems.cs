@@ -228,17 +228,22 @@ namespace ssm
             //{
             //    damage *= 0.1f;
             //}
-            if (item.ModItem.Name == "StormMaidensRetribution")
-            {
-                damage *= 0.1f;
-            }
-            if (item.damage < 100000 && item.damage > 10000 && !CSEUtils.IsModItem(item, "CalamityHunt") && !CSEUtils.IsModItem(item, "CalamityInheritance") && !CSEUtils.IsModItem(item, "SacredTools") && !CSEUtils.IsModItem(item, "FargowiltasSouls") && !CSEUtils.IsModItem(item, "ThoriumMod") && !CSEUtils.IsModItem(item, "CaamityMod"))
-            {
-                damage *= 0.1f;
-            }
-            if (item.damage > 100000 && !CSEUtils.IsModItem(item, "CalamityInheritance") && !CSEUtils.IsModItem(item, "SacredTools") && !CSEUtils.IsModItem(item, "FargowiltasSouls") && !CSEUtils.IsModItem(item, "ThoriumMod") && !CSEUtils.IsModItem(item, "CaamityMod"))
-            {
-                damage *= 0.05f;
+            if (item.damage > 0) {
+                if (ModCompatibility.Infernum.Loaded)
+                {
+                    if (item.ModItem.Name == "StormMaidensRetribution")
+                    {
+                        damage *= 0.1f;
+                    }
+                }
+                if (item.damage < 100000 && item.damage > 10000 && !CSEUtils.IsModItem(item, "CalamityHunt") && !CSEUtils.IsModItem(item, "CalamityInheritance") && !CSEUtils.IsModItem(item, "SacredTools") && !CSEUtils.IsModItem(item, "FargowiltasSouls") && !CSEUtils.IsModItem(item, "ThoriumMod") && !CSEUtils.IsModItem(item, "CaamityMod"))
+                {
+                    damage *= 0.1f;
+                }
+                if (item.damage > 100000 && !CSEUtils.IsModItem(item, "CalamityInheritance") && !CSEUtils.IsModItem(item, "SacredTools") && !CSEUtils.IsModItem(item, "FargowiltasSouls") && !CSEUtils.IsModItem(item, "ThoriumMod") && !CSEUtils.IsModItem(item, "CaamityMod"))
+                {
+                    damage *= 0.05f;
+                }
             }
         }
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
@@ -309,7 +314,8 @@ namespace ssm
                 tooltips.Add(new TooltipLine(Mod, "6m", "Arena will be acitve regardless of phase."));
                 tooltips.Add(new TooltipLine(Mod, "7m", "You will die immideately if you get more than 20 (10 if maso mode) hits."));
                 tooltips.Add(new TooltipLine(Mod, "8m", "Your hitbox always displayed during fight."));
-                tooltips.Add(new TooltipLine(Mod, "9m", "Masochism."));
+                tooltips.Add(new TooltipLine(Mod, "9m", "Stardust and Gold enchantments abilities disabled."));
+                tooltips.Add(new TooltipLine(Mod, "10m", "Masochism."));
             }
             if (item.damage < 100000 && item.damage > 10000 && !CSEUtils.IsModItem(item, "CalamityInheritance") && !CSEUtils.IsModItem(item, "SacredTools") && !CSEUtils.IsModItem(item, "FargowiltasSouls") && !CSEUtils.IsModItem(item, "ThoriumMod") && !CSEUtils.IsModItem(item, "CaamityMod"))
             {

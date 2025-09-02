@@ -77,7 +77,7 @@ namespace ssm
         public static string filePath = "C:/Users/" + userName + "/Documents/My Games/Terraria/tModLoader/StarlightSouls";
 
         public static bool shouldUseMacro = false;
-        //public override uint ExtraPlayerBuffSlots => 300u;
+        public override uint ExtraPlayerBuffSlots => 100u;
         public static void Add(string internalName, int id)
         {
             CaughtNPCItem item = new(internalName, id);
@@ -432,6 +432,14 @@ namespace ssm
 
         public override void Load()
         {
+            int enabledCount = 0;
+            if (ModCompatibility.SpiritMod.Loaded) enabledCount++;
+            if (ModCompatibility.Thorium.Loaded) enabledCount++;
+            if (ModCompatibility.Calamity.Loaded) enabledCount++;
+            if (ModCompatibility.SacredTools.Loaded) enabledCount++;
+            if (ModCompatibility.Redemption.Loaded || ModCompatibility.Polarities.Loaded || ModCompatibility.Spooky.Loaded || ModCompatibility.Homeward.Loaded) enabledCount++;
+            shouldUseMacro = enabledCount >= 2;
+
             _bossSummonUI = new UserInterface();
             ModIntergationSystem.BossChecklist.AdjustValues();
 
@@ -482,14 +490,6 @@ namespace ssm
         }
         public override void PostSetupContent()
         {
-            int enabledCount = 0;
-            if (ModCompatibility.SpiritMod.Loaded) enabledCount++;
-            if (ModCompatibility.Thorium.Loaded) enabledCount++;
-            if (ModCompatibility.Calamity.Loaded) enabledCount++;
-            if (ModCompatibility.SacredTools.Loaded) enabledCount++;
-            if (ModCompatibility.Redemption.Loaded || ModCompatibility.Polarities.Loaded || ModCompatibility.Spooky.Loaded || ModCompatibility.Homeward.Loaded) enabledCount++;
-            shouldUseMacro = enabledCount >= 2;
-
             //if (!ModCompatibility.Inheritance.Loaded)
             //{
             //    DPSLimitGlobalNPC.BossDPSLimits.Add(ModContent.NPCType<MutantBoss>(), 600000);

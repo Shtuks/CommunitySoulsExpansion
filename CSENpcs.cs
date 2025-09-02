@@ -20,6 +20,7 @@ using ssm.Content.Items.Materials;
 using FargowiltasSouls.Content.Items.Materials;
 using ssm.Content.Projectiles;
 using ssm.Content.NPCs.RealMutantEX;
+using FargowiltasSouls.Content.Bosses.DeviBoss;
 
 namespace ssm
 {
@@ -52,7 +53,8 @@ namespace ssm
             if (ModCompatibility.SacredTools.Loaded) { multiplierML += 1f; multiplierMD += 1.5f; multiplierAL += 0.5f; multiplierAD += 2f; }
             if (ModCompatibility.Homeward.Loaded) { multiplierML += 0.5f; multiplierMD += 1f; multiplierAL += 0.5f; multiplierAD += 1f; }
             if (ModCompatibility.Calamity.Loaded && ModCompatibility.SacredTools.Loaded) { multiplierML += 0.5f;}
-            if (ModCompatibility.CatTech.Loaded) { multiplierML += 9f; multiplierMD += 10f; multiplierAL += 7f; multiplierAD += 7f; }
+            if (ModCompatibility.CatTech.Loaded) { multiplierML += 9f; multiplierMD += 10f; multiplierAL += 10f; multiplierAD += 15f; }
+            if (ModCompatibility.CatTech.Loaded && ModCompatibility.Calamity.Loaded) { multiplierAL += 5f; multiplierAD += 5f; }
 
             if (CSEConfig.Instance.SecretBosses) { multiplierML += 0.5f;}
             if (CSEConfig.Instance.DebugMode && ModCompatibility.Calamity.Loaded) { multiplierML += 1.5f; }
@@ -117,6 +119,12 @@ namespace ssm
             {
                 Projectile.NewProjectile(npc.GetSource_FromThis(), npc.Center, Vector2.Zero, ModContent.ProjectileType<MutantYap>(), 0, 0, -1, npc.whoAmI);
             }
+            if (npc.type == ModContent.NPCType<MutantBoss>() && Main.zenithWorld)
+            {
+                NPC.NewNPC(npc.GetSource_FromThis(), (int)npc.Center.X, (int)npc.Center.Y, ModContent.NPCType<RealMutantEX>());
+                npc.timeLeft = 10;
+                npc.active = false;
+            }
         }
         public override void SetDefaults(NPC npc)
         {
@@ -157,15 +165,15 @@ namespace ssm
         }
         public override void SetStaticDefaults()
         {
-            //NPCID.Sets.ImmuneToRegularBuffs[ModContent.NPCType<MutantBoss>()] = true;
-            //NPCID.Sets.ImmuneToRegularBuffs[ModContent.NPCType<MutantEX>()] = true;
-            //NPCID.Sets.ImmuneToRegularBuffs[ModContent.NPCType<DeviBoss>()] = true;
-            //NPCID.Sets.ImmuneToRegularBuffs[ModContent.NPCType<AbomBoss>()] = true;
+            NPCID.Sets.ImmuneToRegularBuffs[ModContent.NPCType<MutantBoss>()] = true;
+            NPCID.Sets.ImmuneToRegularBuffs[ModContent.NPCType<RealMutantEX>()] = true;
+            NPCID.Sets.ImmuneToRegularBuffs[ModContent.NPCType<DeviBoss>()] = true;
+            NPCID.Sets.ImmuneToRegularBuffs[ModContent.NPCType<AbomBoss>()] = true;
 
-            //if (EModeGlobalNPC.spawnFishronEX || dukeEX)
-            //{
-            //    NPCID.Sets.ImmuneToRegularBuffs[NPCID.DukeFishron] = true;
-            //}
+            if (EModeGlobalNPC.spawnFishronEX || dukeEX)
+            {
+                NPCID.Sets.ImmuneToRegularBuffs[NPCID.DukeFishron] = true;
+            }
         }
         public override void UpdateLifeRegen(NPC npc, ref int damage)
         {

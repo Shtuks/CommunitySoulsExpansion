@@ -8,10 +8,10 @@ namespace ssm.Content.Items.Materials
 {
     internal class tModLoadiumReplacement : ModSystem
     {
-        public override bool IsLoadingEnabled(Mod mod)
-        {
-            return CSEConfig.Instance.AlternativeSiblings;
-        }
+        //public override bool IsLoadingEnabled(Mod mod)
+        //{
+        //    return CSEConfig.Instance.AlternativeSiblings;
+        //}
         public override void PostAddRecipes()
         {
             for (int i = 0; i < Recipe.numRecipes; i++)

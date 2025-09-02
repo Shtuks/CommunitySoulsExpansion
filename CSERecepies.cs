@@ -11,10 +11,6 @@ using FargowiltasSouls;
 using Fargowiltas.Items.Tiles;
 using ssm.CrossMod.CraftingStations;
 using ssm.Content.Items.Accessories;
-using ssm.Calamity.Souls;
-using ssm.SoA.Souls;
-using ssm.SpiritMod;
-using ssm.Thorium.Souls;
 
 namespace ssm
 {
@@ -76,29 +72,29 @@ namespace ssm
                 {
                     if (ssm.shouldUseMacro)
                     {
-                        recipe.AddIngredient<MacroverseSoul>(1);
+                        recipe.AddIngredient(Mod.Find<ModItem>("MacroverseSoul"), 1);
                         recipe.RemoveIngredient(ModContent.ItemType<TerrariaSoul>());
                     }
                     else if (ModCompatibility.Redemption.Loaded || ModCompatibility.Polarities.Loaded || ModCompatibility.Spooky.Loaded || ModCompatibility.Homeward.Loaded)
                     {
-                        recipe.AddIngredient<MicroverseSoul>(1);
+                        recipe.AddIngredient(Mod.Find<ModItem>("MicroverseSoul"), 1);
                     }
 
                     if(ModCompatibility.Calamity.Loaded && !ssm.shouldUseMacro)
                     {
-                        recipe.AddIngredient<CalamitySoul>(1);
+                        recipe.AddIngredient(Mod.Find<ModItem>("CalamitySoul"), 1);
                     }
                     if (ModCompatibility.SacredTools.Loaded && !ssm.shouldUseMacro)
                     {
-                        recipe.AddIngredient<SoASoul>(1);
+                        recipe.AddIngredient(Mod.Find<ModItem>("SoASoul"), 1);
                     }
                     if (ModCompatibility.SpiritMod.Loaded && !ssm.shouldUseMacro)
                     {
-                        recipe.AddIngredient<SpiritSoul>(1);
+                        recipe.AddIngredient(Mod.Find<ModItem>("SpiritSoul"), 1);
                     }
                     if (ModCompatibility.Thorium.Loaded && !ssm.shouldUseMacro)
                     {
-                        recipe.AddIngredient<ThoriumSoul>(1);
+                        recipe.AddIngredient(Mod.Find<ModItem>("ThoriumSoul"), 1);
                     }
                 }
 
@@ -107,6 +103,8 @@ namespace ssm
                 {
                     recipe.RemoveIngredient(ModContent.ItemType<AbomEnergy>());
                 }
+
+                //radiance compat idk
             }
         }
     }

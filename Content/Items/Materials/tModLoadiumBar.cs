@@ -13,10 +13,10 @@ namespace ssm.Content.Items.Materials
 {
     public class tModLoadiumBar : ModItem
     {
-        public override bool IsLoadingEnabled(Mod mod)
-        {
-            return CSEConfig.Instance.AlternativeSiblings;
-        }
+        //public override bool IsLoadingEnabled(Mod mod)
+        //{
+        //    return CSEConfig.Instance.AlternativeSiblings;
+        //}
         public override bool PreDrawTooltipLine(DrawableTooltipLine line, ref int yOffset)
         {
             if ((line.Mod == "Terraria" && line.Name == "ItemName") || line.Name == "FlavorText")

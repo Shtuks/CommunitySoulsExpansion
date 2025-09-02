@@ -20,7 +20,13 @@ namespace ssm.Content.Items.Accessories
     {
         public override bool IsLoadingEnabled(Mod mod)
         {
-            return ssm.shouldUseMacro;
+            int enabledCount = 0;
+            if (ModCompatibility.SpiritMod.Loaded) enabledCount++;
+            if (ModCompatibility.Thorium.Loaded) enabledCount++;
+            if (ModCompatibility.Calamity.Loaded) enabledCount++;
+            if (ModCompatibility.SacredTools.Loaded) enabledCount++;
+            if (ModCompatibility.Redemption.Loaded || ModCompatibility.Polarities.Loaded || ModCompatibility.Spooky.Loaded || ModCompatibility.Homeward.Loaded) enabledCount++;
+            return enabledCount >= 2;
         }
         public override string Texture => "ssm/Content/Items/SwarmDeactivatorDebug";
         public override void SetStaticDefaults()
