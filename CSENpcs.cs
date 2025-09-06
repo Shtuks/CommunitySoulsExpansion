@@ -239,7 +239,7 @@ namespace ssm
 
         public override void AI(NPC npc)
         {
-            if (mayo == 20)
+            if (mayo == 10)
             {
                 if (npc.type == NPCID.DukeFishron && (EModeGlobalNPC.spawnFishronEX || dukeEX))
                 {
@@ -261,19 +261,13 @@ namespace ssm
                 {
                     npc.defense = 300;
 
-                    npc.damage = Main.getGoodWorld ? 2000 : (int)((500 + (100 * Math.Round(multiplierMD, 1))) * (WorldSavingSystem.AngryMutant ? WorldSavingSystem.MasochistModeReal ? 15 : 10 : WorldSavingSystem.MasochistModeReal ? 1.5f : 1));
-                    npc.lifeMax = (int)((10000000 + ((10000000 * Math.Round(multiplierML, 1))) / (Main.expertMode ? 1 : 2)) * (WorldSavingSystem.AngryMutant ? WorldSavingSystem.MasochistModeReal ? 15 : 10 : WorldSavingSystem.MasochistModeReal ? 1.5f : 1));
+                    npc.damage = Main.getGoodWorld ? 2000 : (int)((500 + (100 * Math.Round(multiplierMD, 1))) * (WorldSavingSystem.AngryMutant ? WorldSavingSystem.MasochistModeReal ? 15 : 10 : WorldSavingSystem.MasochistModeReal ? 1.5f : 1) * (WorldSavingSystem.AngryMutant ? 5 : 1));
+                    npc.lifeMax = (int)((10000000 + ((10000000 * Math.Round(multiplierML, 1))) / (Main.expertMode ? 1 : 2)) * (WorldSavingSystem.AngryMutant ? WorldSavingSystem.MasochistModeReal ? 15 : 10 : WorldSavingSystem.MasochistModeReal ? 1.5f : 1) * (WorldSavingSystem.AngryMutant ? 10 : 1));
 
                     if (ModCompatibility.Inheritance.Loaded && !Main.zenithWorld && !Main.getGoodWorld)
                     {
                         npc.damage = 3000;
                         npc.lifeMax = 440000000;
-                    }
-
-                    if (WorldSavingSystem.AngryMutant)
-                    {
-                        npc.damage *= 5;
-                        npc.lifeMax *= 10;
                     }
                 }
 
@@ -286,9 +280,46 @@ namespace ssm
                     npc.lifeMax = (int)(1800000 + (1000000 * multiplierAL)) / 10;
                 }
 
-                if (CSEUtils.GetPlayerCount() > 1)
-                {
-                    npc.lifeMax *= ((CSEUtils.GetPlayerCount() - 1) / 2);
+                if (npc.ModNPC.Mod.Name == ModCompatibility.SoulsMod.Name ||
+                    npc.ModNPC.Mod.Name == ModCompatibility.SacredTools.Name ||
+                    npc.ModNPC.Mod.Name == ModCompatibility.Thorium.Name ||
+                    npc.ModNPC.Mod.Name == ModCompatibility.Redemption.Name ||
+                    npc.ModNPC.Mod.Name == ModCompatibility.SpiritMod.Name ||
+                    npc.ModNPC.Mod.Name == ModCompatibility.Consolaria.Name) {
+                    
+                    if (Main.masterMode)
+                    {
+                        npc.lifeMax = (int)(npc.lifeMax * 1.5f);
+                        npc.damage = (int)(npc.damage * 1.3f);
+                    }
+
+                    if (Main.getGoodWorld)
+                    {
+                        npc.lifeMax *= 2;
+                        npc.damage *= 2;
+                    }
+
+                    int playerCount = CSEUtils.GetPlayerCount();
+                    if (playerCount > 1)
+                    {
+                        double multiplayerFactor = 1.0;
+                        double healthAdded = 0.35;
+
+                        for (int i = 2; i <= playerCount; i++)
+                        {
+                            multiplayerFactor += healthAdded;
+                            if (i < playerCount)
+                                healthAdded += (1 - healthAdded) / 3;
+                        }
+
+                        if (playerCount >= 10)
+                            multiplayerFactor = (multiplayerFactor * 2 + 8) / 3;
+
+                        if (multiplayerFactor > 1000)
+                            multiplayerFactor = 1000;
+
+                        npc.lifeMax = (int)(npc.lifeMax * multiplayerFactor);
+                    }
                 }
 
                 npc.life = npc.lifeMax;

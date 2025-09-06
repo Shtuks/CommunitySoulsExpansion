@@ -12,8 +12,8 @@ namespace ssm.Content.Projectiles.Enchantments
     {
         public override void SetDefaults()
         {
-            Projectile.width = 24;
-            Projectile.height = 24;
+            Projectile.width = 53;
+            Projectile.height = 47;
             Projectile.friendly = true;
             Projectile.hostile = false;
             Projectile.penetrate = 1;
@@ -35,13 +35,13 @@ namespace ssm.Content.Projectiles.Enchantments
             Projectile.rotation = Projectile.velocity.ToRotation() + MathHelper.PiOver2;
 
             // Homing for retaliation projectiles
-            if (Projectile.ai[0] != 0 && Main.npc[(int)Projectile.ai[0]].active)
-            {
-                NPC target = Main.npc[(int)Projectile.ai[0]];
-                Vector2 direction = target.Center - Projectile.Center;
-                direction.Normalize();
-                Projectile.velocity = (Projectile.velocity * 10f + direction * 5f) / 11f;
-            }
+            //if (Projectile.ai[0] != 0 && Main.npc[(int)Projectile.ai[0]].active)
+            //{
+            //    NPC target = Main.npc[(int)Projectile.ai[0]];
+            //    Vector2 direction = target.Center - Projectile.Center;
+            //    direction.Normalize();
+            //    Projectile.velocity = (Projectile.velocity * 10f + direction * 5f) / 11f;
+            //}
         }
 
         public override bool OnTileCollide(Vector2 oldVelocity)
@@ -80,7 +80,7 @@ namespace ssm.Content.Projectiles.Enchantments
         {
             ManagedShader shader = ShaderManager.GetShader("FargowiltasSouls.BlobTrail");
             FargoSoulsUtil.SetTexture1(FargosTextureRegistry.ColorNoiseMap.Value);
-            PrimitiveRenderer.RenderTrail(Projectile.oldPos, new(WidthFunction, ColorFunction, _ => Projectile.Size * 0.5f, Pixelate: true, Shader: shader), 25);
+            PrimitiveRenderer.RenderTrail(Projectile.oldPos, new(WidthFunction, ColorFunction, _ => Projectile.Size, Pixelate: true, Shader: shader), 25);
         }
 
         public override bool PreDraw(ref Color lightColor)

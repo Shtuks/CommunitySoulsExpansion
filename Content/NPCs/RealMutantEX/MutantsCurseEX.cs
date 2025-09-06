@@ -47,7 +47,7 @@ namespace ssm.Content.NPCs.RealMutantEX
                 Main.spriteBatch.Begin(SpriteSortMode.Deferred, null, null, null, null, null, Main.UIScaleMatrix);
                 return false;
             }
-            if (line.Mod == "ssm" && line.Name == "9m")
+            if (line.Mod == "ssm" && line.Name == "10m")
             {
                 Main.spriteBatch.End();
                 Main.spriteBatch.Begin(SpriteSortMode.Immediate, null, null, null, null, null, Main.UIScaleMatrix);

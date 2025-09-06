@@ -29,7 +29,7 @@ All things mod doing for now:
 
 Mods with hightest level of compatibility: Shadows of Abaddon, Thorium, Redemption
 Full list of supported mods: Calamity, Spooky, Polarities, Consolaria, Spirit, Homeward Journey
-Coming soon compatibility: Orchid, Vitality
+Coming soon compatibility: Orchid, Vitality, CatTech, 
 
 Coding: StarlightCat, Ropro0923
 Sprites: ma3allim, DanHameln, Dandel, Mr.Puzzles

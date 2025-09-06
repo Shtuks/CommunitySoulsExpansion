@@ -8,6 +8,7 @@ using SacredTools.Projectiles.Dreamscape;
 using SacredTools.Projectiles.Lunar;
 using ssm.Content.NPCs;
 using ssm.Content.Projectiles.Enchantments;
+using ssm.Content.Projectiles.Minions;
 using ssm.Core;
 using Terraria;
 using Terraria.ID;
@@ -106,24 +107,22 @@ namespace ssm.SoA
         }
         public override bool OnTileCollide(Projectile projectile, Vector2 oldVelocity)
         {
-            if (projectile.owner != Main.myPlayer) return base.OnTileCollide(projectile, oldVelocity);
-
-            Player owner = Main.player[projectile.owner];
-            if (!owner.active || owner.dead) return base.OnTileCollide(projectile, oldVelocity);
-
-            if (owner.HasEffect<FlariumEffect>() && Main.rand.NextFloat() < 0.15f && projectile.damage > 0 && !projectile.minion && projectile.tileCollide)
-            {
-                Vector2 spawnPosition = projectile.Center;
-                Projectile.NewProjectile(
-                    projectile.GetSource_FromThis(),
-                    spawnPosition,
-                    Vector2.Zero,
-                    ModContent.ProjectileType<FlariumGeyser>(),
-                    100, 
-                    0,
-                    projectile.owner
-                );
+            if(projectile.owner.ToPlayer().ownedProjectileCounts[ModContent.ProjectileType<FlariumTornado>()] < 6) {
+                if (projectile.owner.ToPlayer().HasEffect<FlariumEffect>() && Main.rand.NextFloat() < 0.15f && projectile.damage > 0 && !projectile.minion && projectile.tileCollide)
+                {
+                    Vector2 spawnPosition = projectile.Center;
+                    Projectile.NewProjectile(
+                        projectile.GetSource_FromThis(),
+                        spawnPosition,
+                        Vector2.Zero,
+                        ModContent.ProjectileType<FlariumTornado>(),
+                        100,
+                        0,
+                        projectile.owner
+                    );
+                }
             }
+
             return base.OnTileCollide(projectile, oldVelocity);
         }
 

@@ -61,7 +61,7 @@ namespace ssm.Content.Items.Accessories
             recipe.AddIngredient<DecrepitAirstrikeRemote>();
             recipe.AddIngredient<Lightslinger>();
             recipe.AddIngredient<EgyptianFlail>();
-            recipe.AddTile(TileID.CrystalBall);
+            recipe.AddTile(TileID.LunarCraftingStation);
             recipe.Register();
         }
 

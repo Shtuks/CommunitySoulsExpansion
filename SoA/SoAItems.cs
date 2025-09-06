@@ -96,7 +96,7 @@ namespace ssm.SoA
             int n = 0;
             if (item.type == ModContent.ItemType<VoidSpurs>())
             {
-                tooltips.Insert(13, new TooltipLine(Mod, "compat", $"{Language.GetTextValue("Mods.ssm.Items.AddedEffects.Aeolus")}"));
+                tooltips.Insert(13, new TooltipLine(Mod, "compat", $"{Language.GetTextValue("Mods.ssm.Aeolus")}"));
             }
             if (item.type == ModContent.ItemType<FlamesOfCondemnation>())
             {

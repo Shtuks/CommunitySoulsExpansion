@@ -156,9 +156,26 @@ namespace ssm.SoA
                         npc.damage *= 2;
                     }
 
-                    if (CSEUtils.GetPlayerCount() > 1)
+                    int playerCount = CSEUtils.GetPlayerCount();
+                    if (playerCount > 1)
                     {
-                        npc.lifeMax *= ((CSEUtils.GetPlayerCount() - 1) / 2);
+                        double multiplayerFactor = 1.0;
+                        double healthAdded = 0.35;
+
+                        for (int i = 2; i <= playerCount; i++)
+                        {
+                            multiplayerFactor += healthAdded;
+                            if (i < playerCount)
+                                healthAdded += (1 - healthAdded) / 3;
+                        }
+
+                        if (playerCount >= 10)
+                            multiplayerFactor = (multiplayerFactor * 2 + 8) / 3;
+
+                        if (multiplayerFactor > 1000)
+                            multiplayerFactor = 1000;
+
+                        npc.lifeMax = (int)(npc.lifeMax * multiplayerFactor);
                     }
                 }
 

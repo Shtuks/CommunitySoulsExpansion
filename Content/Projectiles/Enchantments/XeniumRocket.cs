@@ -7,7 +7,6 @@ namespace ssm.Content.Projectiles.Enchantments
 {
     public class XeniumRocket : ModProjectile
     {
-        public override string Texture => "ssm/Content/Items/SwarmDeactivatorDebug";
         public override void SetDefaults()
         {
             Projectile.width = 14;
@@ -23,6 +22,8 @@ namespace ssm.Content.Projectiles.Enchantments
 
         public override void AI()
         {
+            Projectile.rotation = Projectile.velocity.ToRotation() + MathHelper.PiOver2;
+
             Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.Chlorophyte, 0f, 0f);
 
             CSEUtils.HomeInOnNPC(Projectile, true, 800, 6, 2);

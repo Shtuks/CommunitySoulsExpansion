@@ -87,6 +87,10 @@ namespace ssm.CrossMod.SoulsRecipes
                 {
                     player.AddEffect<StarstreamVeilEffect>(Item);
                 }
+                if (ModCompatibility.Calamity.Loaded)
+                {
+                    player.AddEffect<PhantomicArtifactEffect>(Item);
+                }
             }
             if (ModCompatibility.Calamity.Loaded)
             {
@@ -97,7 +101,6 @@ namespace ssm.CrossMod.SoulsRecipes
                         player.AddEffect<DivineNecklaceEffect>(Item);
                     }
                 }
-                player.AddEffect<PhantomicArtifactEffect>(Item);
             }
         }
 

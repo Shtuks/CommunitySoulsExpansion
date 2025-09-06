@@ -28,8 +28,8 @@ namespace ssm.CrossMod.SoulsRecipes
 
                 if (recipe.HasResult(ModContent.ItemType<BerserkerSoul>()))
                 {
-                    if (ModCompatibility.SacredTools.Loaded) { recipe.AddIngredient(ModCompatibility.SacredTools.Mod.Find<ModItem>("TrueMoonEdgedPandolarra"), 1); recipe.AddIngredient(ModCompatibility.SacredTools.Mod.Find<ModItem>("SolarSigil"), 1); }
-                    if (ModCompatibility.Homeward.Loaded) { recipe.AddIngredient(ModCompatibility.Homeward.Mod.Find<ModItem>("PhilosophersStone"), 1); recipe.AddIngredient(ModCompatibility.Homeward.Mod.Find<ModItem>("TrueDawnsBorder"), 1); }
+                    if (ModCompatibility.SacredTools.Loaded) { recipe.AddIngredient(ModCompatibility.SacredTools.Mod.Find<ModItem>("TrueMoonEdgedPandolarra"), 1); recipe.AddIngredient(ModCompatibility.SacredTools.Mod.Find<ModItem>("SolarSigil"), 1); recipe.RemoveIngredient(ItemID.CelestialShell); }
+                    if (ModCompatibility.Homeward.Loaded) { recipe.AddIngredient(ModCompatibility.Homeward.Mod.Find<ModItem>("PhilosophersStone"), 1); recipe.AddIngredient(ModCompatibility.Homeward.Mod.Find<ModItem>("TrueDawnsBorder"), 1); recipe.RemoveIngredient(ItemID.CelestialShell); }
                     if (ModCompatibility.Redemption.Loaded) { recipe.AddIngredient(ModCompatibility.Redemption.Mod.Find<ModItem>("PZGauntlet"), 1); recipe.AddIngredient(ModCompatibility.Redemption.Mod.Find<ModItem>("MutagenMelee"), 1); recipe.RemoveIngredient(ModContent.ItemType<BarbariansEssence>()); }
                     if (ModCompatibility.Calamity.Loaded) { recipe.AddIngredient(ModCompatibility.Calamity.Mod.Find<ModItem>("ArkoftheCosmos"), 1); }
                     if (ModCompatibility.Thorium.Loaded) { recipe.AddIngredient(ModCompatibility.Thorium.Mod.Find<ModItem>("BlizzardPouch"), 1); recipe.AddIngredient(ModCompatibility.Thorium.Mod.Find<ModItem>("TerrariansLastKnife"), 1); }

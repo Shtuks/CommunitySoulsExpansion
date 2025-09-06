@@ -86,7 +86,7 @@ namespace ssm.CrossMod.SoulsRecipes
             {
                 if (item.type == ModCompatibility.Homeward.Mod.Find<ModItem>("Horizon").Type && !item.social)
                 {
-                    tooltips.Insert(5, new TooltipLine(Mod, "mayo3", Language.GetTextValue(key + "Aeolus")));
+                    tooltips.Insert(5, new TooltipLine(Mod, "mayo3", Language.GetTextValue("Mods.ssm.Aeolus")));
                 }
             }
         }

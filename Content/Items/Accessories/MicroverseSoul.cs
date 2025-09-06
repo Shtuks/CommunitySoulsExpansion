@@ -87,6 +87,7 @@ namespace ssm.Content.Items.Accessories
             if (ModCompatibility.Calamity.Loaded)
             {
                 recipe.AddIngredient(ModCompatibility.Calamity.Mod.Find<ModItem>("ShadowspecBar"), 5);
+                recipe.AddIngredient(ModCompatibility.Calamity.Mod.Find<ModItem>("MiracleMatter"), 1);
             }
             if (!ModCompatibility.Calamity.Loaded)
             {

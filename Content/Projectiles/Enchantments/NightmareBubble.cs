@@ -7,11 +7,15 @@ namespace ssm.Content.Projectiles.Enchantments
 {
     public class NightmareBubble : ModProjectile
     {
-        public override string Texture => "ssm/Content/Items/SwarmDeactivatorDebug";
+        public override void SetStaticDefaults()
+        {
+            Main.projFrames[Projectile.type] = 4;
+        }
+        
         public override void SetDefaults()
         {
-            Projectile.width = 24;
-            Projectile.height = 24;
+            Projectile.width = 13;
+            Projectile.height = 19;
             Projectile.friendly = true;
             Projectile.hostile = false;
             Projectile.penetrate = 1;
@@ -30,6 +34,13 @@ namespace ssm.Content.Projectiles.Enchantments
             {
                 Dust.NewDust(Projectile.position, Projectile.width, Projectile.height,
                              DustID.PurpleTorch, 0f, -0.5f);
+            }
+
+            if (++Projectile.frameCounter >= 5)
+            {
+                Projectile.frameCounter = 0;
+                if (++Projectile.frame >= Main.projFrames[Projectile.type])
+                    Projectile.frame = 0;
             }
         }
 

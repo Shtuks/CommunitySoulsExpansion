@@ -78,6 +78,8 @@ namespace ssm
 
         public static bool shouldUseMacro = false;
         public override uint ExtraPlayerBuffSlots => 100u;
+
+        public static List<int> DebuffsList;
         public static void Add(string internalName, int id)
         {
             CaughtNPCItem item = new(internalName, id);
@@ -88,6 +90,26 @@ namespace ssm
             info.SetValue(info, list);
         }
 
+        private void LoadAllDebuffs()
+        {
+            DebuffsList.Clear();
+
+            for (int i = 1; i < BuffID.Count; i++)
+            {
+                if (Main.debuff[i] && !BuffID.Sets.NurseCannotRemoveDebuff[i] && i != BuffID.Lovestruck)
+                {
+                    DebuffsList.Add(i);
+                }
+            }
+
+            for (int i = BuffID.Count; i < BuffLoader.BuffCount; i++)
+            {
+                if (Main.debuff[i])
+                {
+                    DebuffsList.Add(i);
+                }
+            }
+        }
         public static void ManageMusicTimestop(bool playMusicAgain)
         {
             if (Main.dedServ)
@@ -432,6 +454,8 @@ namespace ssm
 
         public override void Load()
         {
+            DebuffsList = new List<int>();
+
             int enabledCount = 0;
             if (ModCompatibility.SpiritMod.Loaded) enabledCount++;
             if (ModCompatibility.Thorium.Loaded) enabledCount++;
@@ -490,6 +514,7 @@ namespace ssm
         }
         public override void PostSetupContent()
         {
+            LoadAllDebuffs();
             //if (!ModCompatibility.Inheritance.Loaded)
             //{
             //    DPSLimitGlobalNPC.BossDPSLimits.Add(ModContent.NPCType<MutantBoss>(), 600000);
@@ -517,6 +542,7 @@ namespace ssm
                     ("Slime God", 18.7f),
                     ("3rd Omega Prototype", 18.99f),
                     ("Ordeals", 20.4f),
+                    ("Patient Zero", 20.0002f),
                     ("The Lifebringer", 19.57f),
                     ("The Overwatcher", 19.58f),
                     ("The Materealizer", 19.59f),

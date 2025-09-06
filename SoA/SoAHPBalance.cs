@@ -156,23 +156,6 @@ namespace ssm.SoA
                         npc.lifeMax = (int)(5900000 + (1000000 * multiplierL));
                         npc.lifeMax = (int)(680 + (100 * multiplierD));
                     }
-
-                    if (Main.masterMode)
-                    {
-                        npc.lifeMax = (int)(npc.lifeMax * 1.5f);
-                        npc.damage = (int)(npc.damage * 1.3f);
-                    }
-
-                    if (Main.getGoodWorld)
-                    {
-                        npc.lifeMax *= 2;
-                        npc.damage *= 2;
-                    }
-
-                    if (CSEUtils.GetPlayerCount() > 1)
-                    {
-                        npc.lifeMax *= ((CSEUtils.GetPlayerCount() - 1)/2);
-                    }
                 }
                 mayo2 = true;
             }
@@ -299,23 +282,6 @@ namespace ssm.SoA
                         if (ModCompatibility.Calamity.Loaded) { multiplierL += 2f; }
 
                         npc.lifeMax = (int)(5900000 + (1000000 * multiplierL));
-                    }
-
-                    if (Main.masterMode)
-                    {
-                        npc.lifeMax = (int)(npc.lifeMax * 1.5f);
-                        npc.damage = (int)(npc.damage * 1.3f);
-                    }
-
-                    if (Main.getGoodWorld)
-                    {
-                        npc.lifeMax *= 3;
-                        npc.damage *= 2;
-                    }
-
-                    if (CSEUtils.GetPlayerCount() > 1)
-                    {
-                        npc.lifeMax *= ((CSEUtils.GetPlayerCount() - 1) / 2);
                     }
                 }
 

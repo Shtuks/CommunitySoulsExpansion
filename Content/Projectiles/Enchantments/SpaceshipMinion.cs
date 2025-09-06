@@ -14,14 +14,18 @@ namespace ssm.Content.Projectiles.Enchantments
 {
     public class SpaceshipMinion : ModProjectile
     {
-        public override string Texture => "ssm/Content/Items/SwarmDeactivatorDebug";
+        public override void SetStaticDefaults()
+        {
+            Main.projFrames[Projectile.type] = 7;
+        }
+
         private int shootTimer = 0;
         private const int ShootInterval = 90;
 
         public override void SetDefaults()
         {
-            Projectile.width = 40;
-            Projectile.height = 40;
+            Projectile.width = 24;
+            Projectile.height = 16;
             Projectile.friendly = true;
             Projectile.penetrate = -1;
             Projectile.timeLeft = 18000;
@@ -41,11 +45,11 @@ namespace ssm.Content.Projectiles.Enchantments
                 return;
             }
 
-            Projectile.frameCounter++;
-            if (Projectile.frameCounter > 5)
+            if (++Projectile.frameCounter >= 5)
             {
                 Projectile.frameCounter = 0;
-                Projectile.frame = (Projectile.frame + 1) % Main.projFrames[Projectile.type];
+                if (++Projectile.frame >= Main.projFrames[Projectile.type])
+                    Projectile.frame = 0;
             }
 
             Vector2 targetPosition = owner.Center + new Vector2(0, -120);

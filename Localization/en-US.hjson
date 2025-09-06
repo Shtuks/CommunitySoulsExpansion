@@ -1,5 +1,6 @@
 Mods: {
 	ssm: {
+		Aeolus: Effects of Aeolus Boots
 		ModIcon.Name: Community Souls Expansion
 
 		Mutagens: {
@@ -212,17 +213,39 @@ Mods: {
 				}
 
 				DivergenttLore: {
-					Lore: What a calamity
+					Lore:
+						'''
+						The youngest "cousin" of those eternal siblings I met.
+						Despite his naive determination and youth, he has defeated not a few legends before even for a boy like him.
+						Battling him feels like he puts you in a frame of mind and makes you feel like you can't make your move until he attacks.
+						Divergent is driven by new challenges and even proclaims himself as a chosen one hero who soon will save these lands, even if he's only a novice in comparison. 
+						He... sometimes reminds me of myself in my youth.
+						I will watch his career with great interest. 
+						'''
 					DisplayName: Lore - Divergentt
 				}
 
 				AbomLore: {
-					Lore: What a calamity
+					Lore:
+						'''
+						The middle child of the eternal siblings, and one of the laziest people I've ever seen.
+						While the Abominationn has the ability to fully control the weather and fully turn away invaders, he truly is super lazy, going to the point of even fusing his weapons to his hands.
+						His weapon has the ability to divide the soul itself, and has the ability to use all supernatural phenomena. 
+						Good thing for you he choose not to use any celestial attacks, or else your victory might have not been possible.
+						'''
 					DisplayName: Lore - Abominationn
 				}
 
 				MutantLore: {
-					Lore: What a calamity
+					Lore:
+						'''
+						The oldest and strongest of the eternal siblings.
+						While the other siblings calls the Mutant their brother, he personally refuses to confirm his gender.
+						He is the keeper of eternity, with ultimate power incarnate.
+						Believed to come from another world beyond that dimensional rift, he was the strongest being to ever grace the land of Terraria, with master of dominion over every aspect to combat.
+						Even though he had all this power, he always was more interested in watching other battles in the world than partake in any himself. He always told people that he was looking for someone strong.
+						Looks like he found the person he was looking for. 
+						'''
 					DisplayName: Lore - Mutant
 				}
 
@@ -232,7 +255,14 @@ Mods: {
 				}
 
 				DeviLore: {
-					Lore: What a calamity
+					Lore:
+						'''
+						The youngest of the eternal siblings, and also the weakest.
+						She has collected a bunch of rare monster items throughout her journey and when in a helping mood, she will sell them to others.
+						However, when she isn't in a helping mood, she fully expresses her lovestruck sadism.
+						The Deviantt has the ability to cast spells using the both the primordial light and pure love, all while using a living axe made of evil.
+						Even though you bested her in combat, she seems to not fear death, and this is the first time I have ever seen her go all out in a fight.
+						'''
 					DisplayName: Lore - Deviantt
 				}
 			}
@@ -1211,8 +1241,7 @@ Mods: {
 					[i:ssm/BlazingBruteEnchant] Every time you kill an enemy in sniper state you gain a 75% increase this stacks up to 5 times
 					[i:ssm/QuasarEnchant] [i:ssm/FallenPrinceEnchant] Hitting enemies have chance to reate quasar that pull weak enemies
 					[i:ssm/FallenPrinceEnchant] [i:ssm/NebulousApprenticeEnchant] Upon death you will be revived in supernova explosion
-					[i:ssm/FallenPrinceEnchant] [i:ssm/NebulousApprenticeEnchant] After respawning Shadow of Nuba will protect you for few seconds
-					[i:ssm/StellarPriestEnchant] Minions have a chance to summon starstream worms
+					[i:ssm/StellarPriestEnchant] WIP
 					[i:ssm/NebulousApprenticeEnchant] Attacking enemies release buff wisps which can be picked up for different stacking buffs
 					'The true power of the Soraniti'
 					'''
@@ -3637,6 +3666,11 @@ Mods: {
 				DisplayName: Vampires Blessing
 				Tooltip: ""
 			}
+
+			MonstrosityEye: {
+				DisplayName: Monstrosity Eye
+				Tooltip: ""
+			}
 		}
 
 		WizardEffect: {
@@ -3995,6 +4029,7 @@ Mods: {
 			Enrage: Demonshade Enrage
 			DraculasCharmEffect: Dracula's Charm
 			EidolonAmuletEffect: Eidolon Amulet
+			PhantomicArtifactEffect: Phantomic Artifact
 			//other
 			EternalMonolithEffect: Mutant Sky
 			GaiaEffect: Attacking mode
@@ -4273,6 +4308,7 @@ Mods: {
 			BronzeSwordProj.DisplayName: Bronze Sword Proj
 			GraniteChunkProj.DisplayName: Granite Chunk Proj
 			GraniteShardProj.DisplayName: Granite Shard Proj
+			FlariumTornado.DisplayName: Flarium Tornado
 		}
 
 		Bestiary: {

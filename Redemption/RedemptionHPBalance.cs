@@ -143,23 +143,6 @@ namespace ssm.Redemption
                         npc.lifeMax = (int)(500000 * (ModCompatibility.Calamity.Loaded ? 2f : 1));
                         npc.damage = (int)(140 * 1.1f);
                     }
-
-                    if (Main.masterMode)
-                    {
-                        npc.lifeMax = (int)(npc.lifeMax * 1.4f);
-                        npc.damage = (int)(npc.damage * 1.3f);
-                    }
-                    if (Main.getGoodWorld)
-                    {
-                        npc.lifeMax *= 2;
-                        npc.damage *= 2;
-                    }
-
-                    if (CSEUtils.GetPlayerCount() > 1)
-                    {
-                        npc.lifeMax *= ((CSEUtils.GetPlayerCount() - 1) / 2);
-                    }
-
                 }
 
                 npc.life = npc.lifeMax;

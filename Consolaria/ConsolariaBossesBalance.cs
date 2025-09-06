@@ -53,22 +53,6 @@ namespace ssm.Consolaria
                         npc.lifeMax = (int)(7000 * (ModCompatibility.Calamity.Loaded ? 1.5f : 1.2f));
                         npc.damage = (int)(40 * 1.3f);
                     }
-
-                    if (Main.masterMode)
-                    {
-                        npc.lifeMax = (int)(npc.lifeMax * 1.4f);
-                        npc.damage = (int)(npc.damage * 1.3f);
-                    }
-                    if (Main.getGoodWorld)
-                    {
-                        npc.lifeMax *= 2;
-                        npc.damage *= 2;
-                    }
-
-                    if (CSEUtils.GetPlayerCount() > 1)
-                    {
-                        npc.lifeMax *= ((CSEUtils.GetPlayerCount() - 1) / 2);
-                    }
                 }
 
                 npc.life = npc.lifeMax;
