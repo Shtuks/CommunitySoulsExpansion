@@ -78,7 +78,7 @@ namespace ssm.Calamity
 
                 if (recipe.HasIngredient<Rock>())
                 {
-                    if (ModCompatibility.WrathoftheGods.Loaded)
+                    if (ModCompatibility.WrathoftheGods.Loaded && recipe.Mod.Name != "FargowiltasSouls")
                     {
                         recipe.RemoveIngredient(ModContent.ItemType<Rock>());
                         recipe.AddIngredient<NDMaterialPlaceholder>(3);

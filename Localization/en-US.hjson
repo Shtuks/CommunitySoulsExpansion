@@ -1,5 +1,7 @@
 Mods: {
 	ssm: {
+		ModIcon.Name: Community Souls Expansion
+
 		Mutagens: {
 			MutagenMagic: {
 				DisplayName: Sorcerer's Mutagen

@@ -94,7 +94,7 @@ namespace ssm.Content.Items.Accessories
             }
             if (ModCompatibility.SacredTools.Loaded)
             {
-                recipe.AddIngredient(ModCompatibility.SacredTools.Mod.Find<ModItem>("EmberOfOmen"), 1);
+                recipe.AddIngredient(ModCompatibility.SacredTools.Mod.Find<ModItem>("EmberOfOmen"), 5);
             }
             if (ModCompatibility.Redemption.Loaded && CSEConfig.Instance.Redemption)
             {

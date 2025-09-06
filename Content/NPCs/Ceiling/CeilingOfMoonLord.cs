@@ -52,6 +52,12 @@ namespace ssm.Content.NPCs.Ceiling
 
         public override void AI()
         {
+            if (!Main.zenithWorld)
+            {
+                NPC.active = false;
+                CSEUtils.DisplayLocalizedText("For The Worthy seed exclusive!");
+            }
+
             NPC.timeLeft = 60;
 
             if (!NPC.HasValidTarget)

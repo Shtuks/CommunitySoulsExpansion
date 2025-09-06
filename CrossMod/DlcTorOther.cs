@@ -2,8 +2,6 @@
 using Terraria.ModLoader;
 using ssm.Core;
 using FargowiltasCrossmod.Content.Calamity.Items.Accessories.Souls;
-using ssm.CrossMod.Accessories;
-using CalamityMod.Items.Accessories;
 using FargowiltasSouls.Content.Items.Accessories.Souls;
 using ssm.Content.Items.Accessories;
 using ThoriumMod.Items.ThrownItems;
@@ -31,12 +29,12 @@ namespace ssm.CrossMod
     public class DlcTorOtherItem : GlobalItem
     {
         public override bool InstancePerEntity => true;
-        public override void UpdateAccessory(Item item, Player player, bool hideVisual)
-        {
-            if (item.type == ModContent.ItemType<VagabondsSoul>() || item.type == ModContent.ItemType<UniverseSoul>() || item.type == ModContent.ItemType<EternitySoul>() || item.type == ModContent.ItemType<StargateSoul>())
-            {
-                ModContent.Find<ModItem>(this.Mod.Name, "GtTETFinal").UpdateAccessory(player, hideVisual);
-            }
-        }
+        //public override void UpdateAccessory(Item item, Player player, bool hideVisual)
+        //{
+        //    if (item.type == ModContent.ItemType<VagabondsSoul>() || item.type == ModContent.ItemType<UniverseSoul>() || item.type == ModContent.ItemType<EternitySoul>() || item.type == ModContent.ItemType<StargateSoul>())
+        //    {
+        //        ModContent.Find<ModItem>(this.Mod.Name, "GtTETFinal").UpdateAccessory(player, hideVisual);
+        //    }
+        //}
     }
 }

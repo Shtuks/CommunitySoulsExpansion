@@ -32,9 +32,9 @@ Full list of supported mods: Calamity, Spooky, Polarities, Consolaria, Spirit, H
 Coming soon compatibility: Orchid, Vitality
 
 Coding: StarlightCat, Ropro0923
-Sprites: ma3allim, DanHameln, Dandel
-Wiki: Soltan, magegor11
+Sprites: ma3allim, DanHameln, Dandel, Mr.Puzzles
+Wiki: Soltan, magegor11, ma3allim
 Testing: cheesenuggets, Mr.Puzzles
 Crafting trees: cheesenuggets, Mr.Puzzles
 
-Special thanks to Fargowilta, Javyz, Terry N Muse, Blushiemagic, DanYami, Jopojelly, ChickenBones, Jofairden, DivermanSam.
+Special thanks to Fargowilta, Javyz, Terry N Muse, Blushiemagic, DanYami, Jopojelly, ChickenBones, Jofairden, DivermanSam, Advantaje.

@@ -168,6 +168,11 @@ namespace ssm.SoA
                         npc.lifeMax *= 2;
                         npc.damage *= 2;
                     }
+
+                    if (CSEUtils.GetPlayerCount() > 1)
+                    {
+                        npc.lifeMax *= ((CSEUtils.GetPlayerCount() - 1)/2);
+                    }
                 }
                 mayo2 = true;
             }
@@ -306,6 +311,11 @@ namespace ssm.SoA
                     {
                         npc.lifeMax *= 3;
                         npc.damage *= 2;
+                    }
+
+                    if (CSEUtils.GetPlayerCount() > 1)
+                    {
+                        npc.lifeMax *= ((CSEUtils.GetPlayerCount() - 1) / 2);
                     }
                 }
 

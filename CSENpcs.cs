@@ -130,7 +130,7 @@ namespace ssm
         {
             if (npc.type == ModContent.NPCType<MutantBoss>() || npc.type == ModContent.NPCType<RealMutantEX>())
             {
-                npc.defense = 300;
+                //npc.defense = 300;
 
                 npc.damage = Main.getGoodWorld ? 2000 : (int)((500 + (100 * Math.Round(multiplierMD, 1))) * (WorldSavingSystem.AngryMutant ? WorldSavingSystem.MasochistModeReal ? 15 : 10 : WorldSavingSystem.MasochistModeReal ? 1.5f : 1));
                 npc.lifeMax = (int)((10000000 + ((10000000 * Math.Round(multiplierML, 1))) / (Main.expertMode ? 1 : 2)) * (WorldSavingSystem.AngryMutant ? WorldSavingSystem.MasochistModeReal ? 15 : 10 : WorldSavingSystem.MasochistModeReal ? 1.5f : 1));
@@ -269,6 +269,12 @@ namespace ssm
                         npc.damage = 3000;
                         npc.lifeMax = 440000000;
                     }
+
+                    if (WorldSavingSystem.AngryMutant)
+                    {
+                        npc.damage *= 5;
+                        npc.lifeMax *= 10;
+                    }
                 }
 
                 if (npc.type == ModContent.NPCType<Mutant>())
@@ -278,6 +284,11 @@ namespace ssm
                 if (npc.type == ModContent.NPCType<Abominationn>())
                 {
                     npc.lifeMax = (int)(1800000 + (1000000 * multiplierAL)) / 10;
+                }
+
+                if (CSEUtils.GetPlayerCount() > 1)
+                {
+                    npc.lifeMax *= ((CSEUtils.GetPlayerCount() - 1) / 2);
                 }
 
                 npc.life = npc.lifeMax;

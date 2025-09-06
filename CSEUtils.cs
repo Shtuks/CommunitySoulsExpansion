@@ -6,7 +6,7 @@ using Terraria.Localization;
 using Terraria.DataStructures;
 using Terraria.ID;
 using System.Collections.Generic;
-using CalamityMod.Items;
+using System.Linq;
 using Terraria.ModLoader;
 
 namespace ssm
@@ -28,6 +28,10 @@ namespace ssm
             return distance;
         }
 
+        public static int GetPlayerCount()
+        {
+            return Main.player.Count(p => p.active);
+        }
         public static void RemoveItem(int type)
         {
             for (int j = 0; j < Main.player[Main.myPlayer].inventory.Length; j++)

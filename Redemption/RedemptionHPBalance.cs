@@ -155,6 +155,11 @@ namespace ssm.Redemption
                         npc.damage *= 2;
                     }
 
+                    if (CSEUtils.GetPlayerCount() > 1)
+                    {
+                        npc.lifeMax *= ((CSEUtils.GetPlayerCount() - 1) / 2);
+                    }
+
                 }
 
                 npc.life = npc.lifeMax;

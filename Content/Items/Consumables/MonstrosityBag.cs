@@ -21,7 +21,7 @@ namespace ssm.Content.Items.Consumables
         public override void ModifyItemLoot(ItemLoot itemLoot)
         {
             //itemLoot.Add(ItemDropRule.CoinsBasedOnNPCValue(ModContent.NPCType<MutantEX>()));
-            itemLoot.Add(ItemDropRule.ByCondition(new EModeDropCondition(), ModContent.ItemType<Sadism>(), 1, 20, 30));
+            itemLoot.Add(ItemDropRule.ByCondition(new EModeDropCondition(), ModContent.ItemType<Sadism>(), 1, 30, 40));
         }
 
         public override bool PreDrawTooltipLine(DrawableTooltipLine line, ref int yOffset)

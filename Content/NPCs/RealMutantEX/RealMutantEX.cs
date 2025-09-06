@@ -5147,7 +5147,7 @@ namespace ssm.Content.NPCs.RealMutantEX
 
         public override void OnKill()
         {
-            Item.NewItem(NPC.GetSource_Loot(), NPC.Hitbox, ModContent.ItemType<PhantasmalEnergy>(), 30);
+            //Item.NewItem(NPC.GetSource_Loot(), NPC.Hitbox, ModContent.ItemType<PhantasmalEnergy>(), 30);
             Item.NewItem(NPC.GetSource_Loot(), NPC.Hitbox, ModContent.ItemType<EternalEnergy>(), 9999);
             Item.NewItem(NPC.GetSource_Loot(), NPC.Hitbox, ModContent.ItemType<MutantMask>(), 1);
             Item.NewItem(NPC.GetSource_Loot(), NPC.Hitbox, ModContent.ItemType<MutantBody>(), 1);

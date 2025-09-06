@@ -45,6 +45,12 @@ namespace ssm.Content.NPCs.Guntera
 
         public override void AI()
         {
+            if (!Main.zenithWorld)
+            {
+                NPC.active = false;
+                CSEUtils.DisplayLocalizedText("For The Worthy seed exclusive!");
+            }
+
             NPC.timeLeft = 60;
 
             NPC.TargetClosest(false);

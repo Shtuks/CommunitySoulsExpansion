@@ -1,8 +1,6 @@
-﻿using CalamityMod.Items.Accessories;
-using ContinentOfJourney;
+﻿using ContinentOfJourney;
 using ContinentOfJourney.Items.Accessories;
 using ContinentOfJourney.Items.Accessories.MeleeExpansion;
-using ContinentOfJourney.Items.Accessories.SummonerRings;
 using FargowiltasSouls.Content.Bosses.MutantBoss;
 using FargowiltasSouls.Content.Items.Accessories.Essences;
 using FargowiltasSouls.Content.Items.Accessories.Souls;
@@ -71,8 +69,7 @@ namespace ssm.CrossMod.SoulsRecipes
                     }
                     if (recipe.HasResult(ModCompatibility.Homeward.Mod.Find<ModItem>("DivineTouch")))
                     {
-                        recipe.RemoveIngredient(ItemID.FireGauntlet);
-                        if (ModCompatibility.SacredTools.Loaded) { recipe.AddIngredient(ModCompatibility.SacredTools.Mod.Find<ModItem>("FloraFist"), 1); }
+                        if (ModCompatibility.SacredTools.Loaded) { recipe.AddIngredient(ModCompatibility.SacredTools.Mod.Find<ModItem>("FloraFist"), 1); recipe.RemoveIngredient(ItemID.FireGauntlet); }
                     }
                 }
                 if (ModCompatibility.SacredTools.Loaded)

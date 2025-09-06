@@ -362,30 +362,30 @@ namespace ssm
             if (ModLoader.TryGetMod("BossChecklist", out Mod bossChecklist))
             {
 
-                AddBCL("Boss",
-                    "CeilingOfMoonlord",
-                    19.5f,
-                    new List<int> { ModContent.NPCType<CeilingOfMoonLord>() },
-                    () => WorldSavingSystem.DownedFishronEX,
-                    () => true,
-                    new List<int> {
-                        ModContent.ItemType<DeviatingEnergy>(),
-                    },
-                    new List<int> { /*ModContent.ItemType<TruffleWormEX>()*/ },
-                    true
-                );
-                AddBCL("Boss",
-                    "Guntera",
-                    22.91f,
-                    new List<int> { ModContent.NPCType<Guntera>() },
-                    () => WorldSavingSystem.DownedFishronEX,
-                    () => true,
-                    new List<int> {
-                        ModContent.ItemType<AbomEnergy>(),
-                    },
-                    new List<int> { /*ModContent.ItemType<TruffleWormEX>()*/ },
-                    true
-                );
+                //AddBCL("Boss",
+                //    "CeilingOfMoonlord",
+                //    19.5f,
+                //    new List<int> { ModContent.NPCType<CeilingOfMoonLord>() },
+                //    () => WorldSavingSystem.DownedFishronEX,
+                //    () => true,
+                //    new List<int> {
+                //        ModContent.ItemType<DeviatingEnergy>(),
+                //    },
+                //    new List<int> { /*ModContent.ItemType<TruffleWormEX>()*/ },
+                //    true
+                //);
+                //AddBCL("Boss",
+                //    "Guntera",
+                //    22.91f,
+                //    new List<int> { ModContent.NPCType<Guntera>() },
+                //    () => WorldSavingSystem.DownedFishronEX,
+                //    () => true,
+                //    new List<int> {
+                //        ModContent.ItemType<AbomEnergy>(),
+                //    },
+                //    new List<int> { /*ModContent.ItemType<TruffleWormEX>()*/ },
+                //    true
+                //);
 
                 AddBCL("Boss",
                     "DukeFishronEX",
@@ -517,6 +517,7 @@ namespace ssm
                     ("Slime God", 18.7f),
                     ("3rd Omega Prototype", 18.99f),
                     ("Ordeals", 20.4f),
+                    ("The Lifebringer", 19.57f),
                     ("The Overwatcher", 19.58f),
                     ("The Materealizer", 19.59f),
                     ("Scarab Belief", 20.9f),
