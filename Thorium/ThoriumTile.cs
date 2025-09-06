@@ -1,5 +1,6 @@
 ﻿using FargowiltasSouls.Core.AccessoryEffectSystem;
 using Microsoft.Xna.Framework;
+using ssm.Core;
 using System.Collections.Generic;
 using Terraria;
 using Terraria.DataStructures;
@@ -9,6 +10,8 @@ using static ssm.Thorium.Enchantments.GraniteEnchant;
 
 namespace ssm.Thorium
 {
+    [ExtendsFromMod(ModCompatibility.Thorium.Name)]
+    [JITWhenModsEnabled(ModCompatibility.Thorium.Name)]
     public class ThoriumTile : GlobalTile
     {
         public override void KillTile(int i, int j, int type, ref bool fail, ref bool effectOnly, ref bool noItem)
