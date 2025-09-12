@@ -59,7 +59,10 @@ namespace ssm.Content.Items.Materials
                 recipe.AddIngredient<EternalScale>(1);
             }
 
-
+            if (ModCompatibility.Entropy.Loaded)
+            {
+                recipe.AddIngredient(ModCompatibility.Entropy.Mod.Find<ModItem>("WyrmTooth"), 1);
+            }
             if (ModCompatibility.CatTech.Loaded)
             {
                 recipe.AddIngredient(ModCompatibility.CatTech.Mod.Find<ModItem>("NeutroniumBar"), 1);

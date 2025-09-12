@@ -115,8 +115,6 @@ namespace ssm
                 Player.pickSpeed -= 0.2f;
                 Player.moveSpeed += 0.2f;
                 Player.manaRegenBonus += 2;
-                Main.SceneMetrics.HasHeartLantern = true;
-                Main.SceneMetrics.HasCampfire = true;
                 ++Player.maxTurrets;
                 Player.GetDamage(DamageClass.Generic) += 0.1f;
                 Player.GetCritChance(DamageClass.Generic) += 0.1f;
@@ -126,6 +124,24 @@ namespace ssm
                 {
                     Player.thorns = 0.3333333f;
                 }
+                Player.findTreasure = true;
+                Player.nightVision = true;
+                Player.detectCreature = true;
+                Player.pickSpeed -= 0.25f;
+                Player.dangerSense = true;
+                Player.gills = true;
+                Player.waterWalk = true;
+                Player.ignoreWater = true;
+                Player.accFlipper = true;
+                Player.buffImmune[4] = true;
+                Player.buffImmune[15] = true;
+                Player.buffImmune[109] = true;
+                Player.buffImmune[9] = true;
+                Player.buffImmune[11] = true;
+                Player.buffImmune[12] = true;
+                Player.buffImmune[17] = true;
+                Player.buffImmune[104] = true;
+                Player.buffImmune[111] = true;
             }
             //Player.statLifeMax2 = (int)(Player.statLifeMax2 * (monstrosityHits / 10));
         }

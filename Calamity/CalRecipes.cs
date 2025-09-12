@@ -19,6 +19,9 @@ using FargowiltasSouls.Core.Systems;
 using SacredTools.Content.Items.Materials;
 using ssm.Content.Items.Materials;
 using ssm.Calamity.Addons;
+using FargowiltasSouls.Content.Items.Ammos;
+using FargowiltasSouls.Content.Items.Accessories.Masomode;
+using CalamityMod.Items.Accessories;
 
 namespace ssm.Calamity
 {
@@ -76,6 +79,16 @@ namespace ssm.Calamity
                     }
                 }
 
+                if (recipe.HasResult<FargoArrow>() || recipe.HasResult<FargoBullet>())
+                {
+                    recipe.RemoveIngredient(ModContent.ItemType<Rock>());
+                }
+
+                if (recipe.HasResult<AeolusBoots>() && recipe.HasResult<AngelTreads>())
+                {
+                    recipe.RemoveIngredient(ModContent.ItemType<AngelTreads>());
+                }
+
                 if (recipe.HasIngredient<Rock>())
                 {
                     if (ModCompatibility.WrathoftheGods.Loaded && recipe.Mod.Name != "FargowiltasSouls")
@@ -85,38 +98,39 @@ namespace ssm.Calamity
                     }
                 }
 
-                //if (CSEConfig.Instance.DevItems)
-                //{
-                //    if (recipe.HasResult<Catlight>() && !recipe.HasIngredient<ShadowspecBar>())
-                //    {
-                //        recipe.RemoveIngredient(ModContent.ItemType<AbomEnergy>());
-                //        recipe.AddIngredient<Rock>(1);
-                //        recipe.AddIngredient<ShadowspecBar>(5);
-                //    }
-                //}
 
-                //if (CSEConfig.Instance.AlternativeSiblings)
-                //{
-                //    if (recipe.HasResult<tModLoadiumBar>() && !recipe.HasIngredient<EmberOfOmen>())
-                //    {
-                //        recipe.AddIngredient<Rock>(1);
-                //        recipe.AddIngredient<ShadowspecBar>(1);
-                //    }
-                //}
+                    //if (CSEConfig.Instance.DevItems)
+                    //{
+                    //    if (recipe.HasResult<Catlight>() && !recipe.HasIngredient<ShadowspecBar>())
+                    //    {
+                    //        recipe.RemoveIngredient(ModContent.ItemType<AbomEnergy>());
+                    //        recipe.AddIngredient<Rock>(1);
+                    //        recipe.AddIngredient<ShadowspecBar>(5);
+                    //    }
+                    //}
 
-                //if (recipe.HasResult<ShadowspecBar>() && !recipe.HasResult<MiracleMatter>())
-                //{
-                //    recipe.RemoveIngredient(ModContent.ItemType<ExoPrism>());
-                //    recipe.RemoveIngredient(ModContent.ItemType<AuricBar>());
-                //    recipe.AddIngredient<MiracleMatter>();
-                //}
+                    //if (CSEConfig.Instance.AlternativeSiblings)
+                    //{
+                    //    if (recipe.HasResult<tModLoadiumBar>() && !recipe.HasIngredient<EmberOfOmen>())
+                    //    {
+                    //        recipe.AddIngredient<Rock>(1);
+                    //        recipe.AddIngredient<ShadowspecBar>(1);
+                    //    }
+                    //}
 
-                //if (CSEConfig.Instance.ExperimentalContent && !recipe.HasIngredient<Rock>() && recipe.HasResult<MacroverseSoul>())
-                //{
-                //    recipe.AddIngredient<Rock>(1);
-                //}
+                    //if (recipe.HasResult<ShadowspecBar>() && !recipe.HasResult<MiracleMatter>())
+                    //{
+                    //    recipe.RemoveIngredient(ModContent.ItemType<ExoPrism>());
+                    //    recipe.RemoveIngredient(ModContent.ItemType<AuricBar>());
+                    //    recipe.AddIngredient<MiracleMatter>();
+                    //}
 
-                if (recipe.HasResult<GalacticaSingularity>() && !recipe.DecraftDisabled)
+                    //if (CSEConfig.Instance.ExperimentalContent && !recipe.HasIngredient<Rock>() && recipe.HasResult<MacroverseSoul>())
+                    //{
+                    //    recipe.AddIngredient<Rock>(1);
+                    //}
+
+                    if (recipe.HasResult<GalacticaSingularity>() && !recipe.DecraftDisabled)
                 {
                     recipe.DisableRecipe();
                 }

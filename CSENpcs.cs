@@ -29,6 +29,7 @@ namespace ssm
         public override bool InstancePerEntity => true;
         public int genTimer = 0;
         public int mayo;
+        public bool mayo2;
 
         public int chtuxlagorInferno;
         public static int ECH = -1;
@@ -48,11 +49,13 @@ namespace ssm
         public bool dukeEX;
         public override void Load()
         {
-            if (ModCompatibility.Thorium.Loaded) { multiplierML += 0.5f; multiplierMD += 1f; multiplierAL += 0.7f; multiplierAD += 2f; }
-            if (ModCompatibility.Calamity.Loaded) { multiplierML += 3f; multiplierMD += 2.5f; multiplierAL += 5f; multiplierAD += 5f; }
+            if (ModCompatibility.Thorium.Loaded) { multiplierML += 0.5f; multiplierMD += 1f; multiplierAL += 0.8f; multiplierAD += 2f; }
+            if (ModCompatibility.Calamity.Loaded) { multiplierML += 3f; multiplierMD += 2.5f; multiplierAL += 5.5f; multiplierAD += 5f; }
             if (ModCompatibility.SacredTools.Loaded) { multiplierML += 1f; multiplierMD += 1.5f; multiplierAL += 0.5f; multiplierAD += 2f; }
             if (ModCompatibility.Homeward.Loaded) { multiplierML += 0.5f; multiplierMD += 1f; multiplierAL += 0.5f; multiplierAD += 1f; }
             if (ModCompatibility.Calamity.Loaded && ModCompatibility.SacredTools.Loaded) { multiplierML += 0.5f;}
+            if (ModCompatibility.Entropy.Loaded) { multiplierML += 1f;  }
+            if (ModCompatibility.BlushiePort.Loaded) { multiplierML += 1f; multiplierMD += 1f; }
             if (ModCompatibility.CatTech.Loaded) { multiplierML += 9f; multiplierMD += 10f; multiplierAL += 10f; multiplierAD += 15f; }
             if (ModCompatibility.CatTech.Loaded && ModCompatibility.Calamity.Loaded) { multiplierAL += 5f; multiplierAD += 5f; }
 
@@ -71,17 +74,6 @@ namespace ssm
                     {
                         npc.DropItemInstanced(npc.position, npc.Size, ModContent.ItemType<CyclonicFin>());
                     }
-                    //if (ModCompatibility.Goozma.Loaded && ModCompatibility.Calamity.Loaded)
-                    //{
-                    //    if (!Main.LocalPlayer.GetModPlayer<CSEAuricSoulPlayer>().eternalSoul)
-                    //    {
-                    //        npc.DropItemInstanced(npc.position, npc.Size, ModContent.ItemType<EternalAuricSoul>());
-                    //    }
-                    //}
-                    //if (ModCompatibility.Calamity.Loaded)
-                    //{
-                    //    npc.DropItemInstanced(npc.position, npc.Size, ModContent.ItemType<DukeEXLore>());
-                    //}
                     int maxEX = Main.rand.Next(5) + 10;
                     for (int i = 0; i < maxEX; i++)
                         npc.DropItemInstanced(npc.position, npc.Size, ModContent.ItemType<EternalScale>());
@@ -96,13 +88,6 @@ namespace ssm
                 }
             }
             return base.CheckDead(npc);
-        }
-        public override void OnHitNPC(NPC npc, NPC target, NPC.HitInfo hit)
-        {
-            //if (npc.type == NPCID.DukeFishron && dukeEX && CSEConfig.Instance.AlternativeSiblings)
-            //{
-            //    target.AddBuff(ModContent.BuffType<MonstrousMaul>(), 180);
-            //}
         }
         public override void OnSpawn(NPC npc, IEntitySource source)
         {
@@ -128,32 +113,30 @@ namespace ssm
         }
         public override void SetDefaults(NPC npc)
         {
-            if (npc.type == ModContent.NPCType<MutantBoss>() || npc.type == ModContent.NPCType<RealMutantEX>())
-            {
-                //npc.defense = 300;
-
-                npc.damage = Main.getGoodWorld ? 2000 : (int)((500 + (100 * Math.Round(multiplierMD, 1))) * (WorldSavingSystem.AngryMutant ? WorldSavingSystem.MasochistModeReal ? 15 : 10 : WorldSavingSystem.MasochistModeReal ? 1.5f : 1));
-                npc.lifeMax = (int)((10000000 + ((10000000 * Math.Round(multiplierML, 1))) / (Main.expertMode ? 1 : 2)) * (WorldSavingSystem.AngryMutant ? WorldSavingSystem.MasochistModeReal ? 15 : 10 : WorldSavingSystem.MasochistModeReal ? 1.5f : 1));
-
-                if (ModCompatibility.Inheritance.Loaded && !Main.zenithWorld && !Main.getGoodWorld)
-                {
-                    npc.damage = 3000;
-                    npc.lifeMax = 440000000;
-                }
-            }
-
             if (npc.type == NPCID.DukeFishron && (EModeGlobalNPC.spawnFishronEX || dukeEX))
             {
                 npc.defense = 0;
                 npc.defDefense = 0;
 
                 npc.damage = (Main.getGoodWorld ? 2000 : (int)((500 + (100 * Math.Round(multiplierMD, 1))) * (WorldSavingSystem.MasochistModeReal ? 1.5f : 1))) / 2;
-                npc.lifeMax = ((int)((10000000 + ((10000000 * Math.Round(multiplierML, 1))) / (Main.expertMode ? 1 : 2)) * (WorldSavingSystem.MasochistModeReal ? 1.5f : 1))) / 2;
+                npc.lifeMax = ((int)((10000000 + (10000000 * Math.Round(multiplierML, 1))) * (WorldSavingSystem.MasochistModeReal ? 1.5f : 1))) / 2;
 
                 if (ModCompatibility.Inheritance.Loaded && !Main.zenithWorld && !Main.getGoodWorld)
                 {
-                    npc.damage = 2000;
-                    npc.lifeMax = 300000000;
+                    npc.damage = 1500;
+                    npc.lifeMax = 220000000;
+                }
+            }
+
+            if (npc.type == ModContent.NPCType<MutantBoss>() || npc.type == ModContent.NPCType<RealMutantEX>())
+            {
+                npc.damage = Main.getGoodWorld ? 2000 : (int)((500 + (100 * Math.Round(multiplierMD, 1))) * (WorldSavingSystem.AngryMutant ? WorldSavingSystem.MasochistModeReal ? 15 : 10 : WorldSavingSystem.MasochistModeReal ? 1.5f : 1));
+                npc.lifeMax = (int)(10000000 + (10000000 * Math.Round(multiplierML, 1) * (WorldSavingSystem.AngryMutant ? WorldSavingSystem.MasochistModeReal ? 15 : 10 : WorldSavingSystem.MasochistModeReal ? 1.5f : 1)));
+
+                if (ModCompatibility.Inheritance.Loaded && !Main.zenithWorld && !Main.getGoodWorld)
+                {
+                    npc.damage = 3000;
+                    npc.lifeMax = 440000000;
                 }
             }
 
@@ -219,11 +202,6 @@ namespace ssm
         {
             LeadingConditionRule emodeRule = new(new EModeDropCondition());
             npcLoot.Add(emodeRule);
-
-            //if (npc.type == NPCID.DukeFishron && WorldSavingSystem.DownedAbom)
-            //{
-            //    emodeRule.OnSuccess(FargoSoulsUtil.BossBagDropCustom(ModContent.ItemType<CyclonicFin>(), 1));
-            //}
         }
         public override void PostAI(NPC npc)
         {
@@ -239,6 +217,7 @@ namespace ssm
 
         public override void AI(NPC npc)
         {
+            mayo++;
             if (mayo == 10)
             {
                 if (npc.type == NPCID.DukeFishron && (EModeGlobalNPC.spawnFishronEX || dukeEX))
@@ -247,22 +226,19 @@ namespace ssm
                     npc.defDefense = 0;
 
                     npc.damage = (Main.getGoodWorld ? 2000 : (int)((500 + (100 * Math.Round(multiplierMD, 1))) * (WorldSavingSystem.MasochistModeReal ? 1.5f : 1))) / 2;
-                    npc.lifeMax = ((int)((10000000 + ((10000000 * Math.Round(multiplierML, 1))) / (Main.expertMode ? 1 : 2)) * (WorldSavingSystem.MasochistModeReal ? 1.5f : 1))) / 2;
+                    npc.lifeMax = ((int)((10000000 + (10000000 * Math.Round(multiplierML, 1))) * (WorldSavingSystem.MasochistModeReal ? 1.5f : 1))) / 2;
 
                     if (ModCompatibility.Inheritance.Loaded && !Main.zenithWorld && !Main.getGoodWorld)
                     {
-                        npc.damage = 2000;
-                        npc.lifeMax = 300000000;
+                        npc.damage = 1500;
+                        npc.lifeMax = 220000000;
                     }
                 }
 
-                //here because maso breaks scaling for some reason
                 if (npc.type == ModContent.NPCType<MutantBoss>() || npc.type == ModContent.NPCType<RealMutantEX>())
                 {
-                    npc.defense = 300;
-
                     npc.damage = Main.getGoodWorld ? 2000 : (int)((500 + (100 * Math.Round(multiplierMD, 1))) * (WorldSavingSystem.AngryMutant ? WorldSavingSystem.MasochistModeReal ? 15 : 10 : WorldSavingSystem.MasochistModeReal ? 1.5f : 1) * (WorldSavingSystem.AngryMutant ? 5 : 1));
-                    npc.lifeMax = (int)((10000000 + ((10000000 * Math.Round(multiplierML, 1))) / (Main.expertMode ? 1 : 2)) * (WorldSavingSystem.AngryMutant ? WorldSavingSystem.MasochistModeReal ? 15 : 10 : WorldSavingSystem.MasochistModeReal ? 1.5f : 1) * (WorldSavingSystem.AngryMutant ? 10 : 1));
+                    npc.lifeMax = (int)(10000000 + (10000000 * Math.Round(multiplierML, 1) * (WorldSavingSystem.AngryMutant ? WorldSavingSystem.MasochistModeReal ? 15 : 10 : WorldSavingSystem.MasochistModeReal ? 1.5f : 1) * (WorldSavingSystem.AngryMutant ? 10 : 1)));
 
                     if (ModCompatibility.Inheritance.Loaded && !Main.zenithWorld && !Main.getGoodWorld)
                     {
@@ -271,61 +247,8 @@ namespace ssm
                     }
                 }
 
-                if (npc.type == ModContent.NPCType<Mutant>())
-                {
-                    npc.lifeMax = (int)(10000000 + (10000000 * Math.Round(multiplierML, 1))) / (Main.expertMode ? 1 : 2) / 10;
-                }
-                if (npc.type == ModContent.NPCType<Abominationn>())
-                {
-                    npc.lifeMax = (int)(1800000 + (1000000 * multiplierAL)) / 10;
-                }
-
-                if (npc.ModNPC.Mod.Name == ModCompatibility.SoulsMod.Name ||
-                    npc.ModNPC.Mod.Name == ModCompatibility.SacredTools.Name ||
-                    npc.ModNPC.Mod.Name == ModCompatibility.Thorium.Name ||
-                    npc.ModNPC.Mod.Name == ModCompatibility.Redemption.Name ||
-                    npc.ModNPC.Mod.Name == ModCompatibility.SpiritMod.Name ||
-                    npc.ModNPC.Mod.Name == ModCompatibility.Consolaria.Name) {
-                    
-                    if (Main.masterMode)
-                    {
-                        npc.lifeMax = (int)(npc.lifeMax * 1.5f);
-                        npc.damage = (int)(npc.damage * 1.3f);
-                    }
-
-                    if (Main.getGoodWorld)
-                    {
-                        npc.lifeMax *= 2;
-                        npc.damage *= 2;
-                    }
-
-                    int playerCount = CSEUtils.GetPlayerCount();
-                    if (playerCount > 1)
-                    {
-                        double multiplayerFactor = 1.0;
-                        double healthAdded = 0.35;
-
-                        for (int i = 2; i <= playerCount; i++)
-                        {
-                            multiplayerFactor += healthAdded;
-                            if (i < playerCount)
-                                healthAdded += (1 - healthAdded) / 3;
-                        }
-
-                        if (playerCount >= 10)
-                            multiplayerFactor = (multiplayerFactor * 2 + 8) / 3;
-
-                        if (multiplayerFactor > 1000)
-                            multiplayerFactor = 1000;
-
-                        npc.lifeMax = (int)(npc.lifeMax * multiplayerFactor);
-                    }
-                }
-
                 npc.life = npc.lifeMax;
             }
-            mayo++;
-
             if (npc.type == ModContent.NPCType<MutantBoss>() && Main.npc[EModeGlobalNPC.mutantBoss].ai[0] > 10)
             {
                 genTimer++;
@@ -383,8 +306,21 @@ namespace ssm
                     npc.position = position;
                 }
             }
+            if(!mayo2)
+            {
+                if (npc.type == ModContent.NPCType<Mutant>())
+                {
+                    npc.lifeMax = (int)(10000000 + (10000000 * Math.Round(multiplierML, 1))) / 10;
+                }
+                if (npc.type == ModContent.NPCType<Abominationn>())
+                {
+                    npc.lifeMax = (int)(1800000 + (1000000 * multiplierAL)) / 10;
+                }
 
-            return true;
+                npc.life = npc.lifeMax;
+                mayo2 = true;
+            }
+            return base.PreAI(npc);
         }
 
         public override bool PreDraw(NPC npc, SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)

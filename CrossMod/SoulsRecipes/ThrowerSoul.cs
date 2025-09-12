@@ -32,6 +32,7 @@ namespace ssm.CrossMod.SoulsRecipes
                     if (ModCompatibility.Redemption.Loaded) { recipe.AddIngredient(ModContent.ItemType<MutagenThrowingCal>(), 1); recipe.RemoveIngredient(ModContent.ItemType<OutlawsEssence>()); }
                     if (ModCompatibility.Clamity.Loaded) { recipe.AddIngredient(ModCompatibility.Clamity.Mod.Find<ModItem>("DraculasCharm"), 1); }
                     if (ModCompatibility.Thorium.Loaded) { recipe.AddIngredient(ModCompatibility.Thorium.Mod.Find<ModItem>("PiratesPurse"), 1); recipe.AddIngredient(ModCompatibility.Thorium.Mod.Find<ModItem>("TerrariumRippleKnife"), 1); }
+                    if (ModCompatibility.Entropy.Loaded) { recipe.AddIngredient(ModCompatibility.Entropy.Mod.Find<ModItem>("ThiefsPocketwatchOfEclipse"), 1); }
                 }
                 if (ModCompatibility.Calamity.Loaded)
                 {
@@ -73,6 +74,10 @@ namespace ssm.CrossMod.SoulsRecipes
                 {
                     player.AddEffect<DraculasCharmEffect>(Item);
                 }
+                //if (ModCompatibility.Entropy.Loaded)
+                //{
+                //    ModCompatibility.Entropy.Mod.Find<ModItem>("ThiefsPocketwatchOfEclipse").UpdateAccessory(player, true);
+                //}
             }
         }
 

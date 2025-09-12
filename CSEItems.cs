@@ -229,7 +229,7 @@ namespace ssm
             //    damage *= 0.1f;
             //}
             if (item.damage > 0) {
-                if (ModCompatibility.Infernum.Loaded)
+                if (ModCompatibility.Infernum.Loaded && item.ModItem is ModItem)
                 {
                     if (item.ModItem.Name == "StormMaidensRetribution")
                     {
