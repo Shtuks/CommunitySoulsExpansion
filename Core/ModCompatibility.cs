@@ -23,6 +23,18 @@ public static class ModCompatibility
         public static bool Loaded => ModLoader.HasMod(Name);
         public static Mod Mod => ModLoader.GetMod(Name);
     }
+    public static class BlushiePort
+    {
+        public const string Name = "Bluemagic";
+        public static bool Loaded => ModLoader.HasMod(Name);
+        public static Mod Mod => ModLoader.GetMod(Name);
+    }
+    public static class Entropy
+    {
+        public const string Name = "CalamityEntropy";
+        public static bool Loaded => ModLoader.HasMod(Name);
+        public static Mod Mod => ModLoader.GetMod(Name);
+    }
     public static class WHummus
     {
         public const string Name = "WHummusMultiModBalancing";

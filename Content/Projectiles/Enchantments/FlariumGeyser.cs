@@ -10,6 +10,8 @@ using System;
 using Terraria.GameContent;
 using Terraria.Graphics.Shaders;
 using SacredTools.Content.Buffs;
+using FargowiltasSouls.Core.AccessoryEffectSystem;
+using static ssm.SoA.Forces.SyranForce;
 
 namespace ssm.Content.Projectiles.Enchantments
 {
@@ -19,6 +21,7 @@ namespace ssm.Content.Projectiles.Enchantments
     {
         private static readonly Point _textureSize = new Point(200, 300);
 
+        public bool boo => Projectile.owner.ToPlayer().HasEffect<SyranEffect>();
         public override void SetStaticDefaults()
         {
             Main.projFrames[Projectile.type] = 6;
@@ -67,7 +70,7 @@ namespace ssm.Content.Projectiles.Enchantments
             Main.spriteBatch.End();
             Main.spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, SamplerState.LinearClamp, DepthStencilState.Default, RasterizerState.CullNone, null, Main.GameViewMatrix.ZoomMatrix);
             MiscShaderData miscShaderData = GameShaders.Misc["SacredTools:OutlineShader"];
-            miscShaderData.UseOpacity(1f);
+            miscShaderData.UseOpacity(boo ? 1f : 0);
             miscShaderData.UseColor(Color.Black);
             miscShaderData.UseSecondaryColor(SoAColors.ColorUnblockable);
             DrawData drawData = new DrawData(texture, Projectile.position, texture.Bounds, Color.White);

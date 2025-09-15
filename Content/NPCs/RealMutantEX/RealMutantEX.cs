@@ -11,7 +11,6 @@ using FargowiltasSouls.Content.Items.Accessories.Souls;
 using FargowiltasSouls.Content.Items.Armor;
 using FargowiltasSouls.Content.Items.Materials;
 using FargowiltasSouls.Content.Items.Summons;
-using FargowiltasSouls.Content.Items.Weapons.FinalUpgrades;
 using FargowiltasSouls.Content.Projectiles;
 using FargowiltasSouls.Content.Projectiles.BossWeapons;
 using FargowiltasSouls.Content.Projectiles.Masomode;
@@ -3276,6 +3275,10 @@ namespace ssm.Content.NPCs.RealMutantEX
             }
             if (NPC.ai[1] == 0f)
             {
+                if (WorldSavingSystem.MasochistModeReal)
+                {
+                    player.AddBuff(BuffID.Confused, 60 * 10);
+                }
                 float ai1 = 30f;
                 NPC.ai[1] = 30f;
                 if (Main.netMode != 1)
@@ -3333,6 +3336,7 @@ namespace ssm.Content.NPCs.RealMutantEX
             }
             if ((NPC.ai[1] += 1f) > 450f)
             {
+                player.DelBuff(BuffID.Confused);
                 ChooseNextAttack(11, 13, 16, 21, 26, 29, 31, 33, 35, 37, 41, 44, 45, 47, 49);
             }
             void LaserSpread(Vector2 spawn)

@@ -1,11 +1,12 @@
-﻿using Microsoft.Xna.Framework;
+﻿using FargowiltasSouls.Core.AccessoryEffectSystem;
+using Microsoft.Xna.Framework;
 using SacredTools;
-using SacredTools.Buffs;
 using ssm.Content.Buffs;
+using ssm.Content.Projectiles.Enchantments;
 using ssm.Core;
 using Terraria;
-using Terraria.DataStructures;
 using Terraria.ModLoader;
+using static ssm.SoA.Enchantments.FlariumEnchant;
 
 namespace ssm.SoA
 {
@@ -31,6 +32,25 @@ namespace ssm.SoA
             }
         }
 
+        public override void OnHitNPCWithProj(Projectile proj, NPC target, NPC.HitInfo hit, int damageDone)
+        {
+            if (proj.owner.ToPlayer().ownedProjectileCounts[ModContent.ProjectileType<FlariumTornado>()] < 6)
+            {
+                if (proj.owner.ToPlayer().HasEffect<FlariumEffect>() && Main.rand.NextFloat() < 0.05f && proj.damage > 0 && !proj.minion)
+                {
+                    Vector2 spawnPosition = proj.Center;
+                    Projectile.NewProjectile(
+                    proj.GetSource_FromThis(),
+                    spawnPosition,
+                    Vector2.Zero,
+                    ModContent.ProjectileType<FlariumTornado>(),
+                    100,
+                    0,
+                        proj.owner
+                    );
+                }
+            }
+        }
         public override void UpdateEquips()
         {
             if (Player.GetModPlayer<ModdedPlayer>().DragonSetEffect)

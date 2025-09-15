@@ -14,6 +14,12 @@ using System;
 using static ssm.SoA.Forces.GenerationsForce;
 using Microsoft.Xna.Framework.Graphics;
 using FargowiltasSouls.Content.UI.Elements;
+using CalamityMod.Items.Potions.Alcohol;
+using FargowiltasSouls.Assets.Sounds;
+using FargowiltasSouls.Content.Projectiles.Souls;
+using FargowiltasSouls;
+using Terraria.Audio;
+using FargowiltasSouls.Core.ModPlayers;
 
 namespace ssm.SoA.Enchantments
 {
@@ -47,7 +53,6 @@ namespace ssm.SoA.Enchantments
         {
             public override Header ToggleHeader => Header.GetHeader<SyranForceHeader>();
             public override int ToggleItemType => ModContent.ItemType<SpaceJunkEnchant>();
-
             public override void OnHitByEither(Player player, NPC npc, Projectile proj)
             {
                 if (Main.rand.NextFloat() < 0.33f)
@@ -100,19 +105,35 @@ namespace ssm.SoA.Enchantments
 
                     if (nearestEnemy != null)
                     {
-                        CSEUtils.ProjectileRain(Main.LocalPlayer.GetSource_FromThis(), nearestEnemy.Center, 400, 100, 500, 800, 15, ModContent.ProjectileType<SpaceJunkProj>(), (int)Main.LocalPlayer.GetDamage<GenericDamageClass>().ApplyTo(player.HasEffect<GenerationsEffect>() ? 500 : 50), 1, Main.LocalPlayer.whoAmI);
+                        FargoSoulsPlayer fargoSoulsPlayer = player.FargoSouls();
+                        bool num = fargoSoulsPlayer.ForceEffect<MeteorEnchant>();
+                        int num2 = (num ? 400 : 70);
+
+                        Vector2 vector = new Vector2(player.Center.X + Main.rand.NextFloat(-1000f, 1000f), player.Center.Y - 1000f);
+                        Vector2 velocity = new Vector2(Main.rand.NextFloat(-2f, 2f), Main.rand.NextFloat(8f, 12f));
+                        vector.X = nearestEnemy.Center.X + Main.rand.NextFloat(-320f, 320f);
+                        Vector2 vector2 = Main.rand.NextFloat(10f, 30f) * nearestEnemy.velocity;
+                        vector.X += vector2.X;
+                        Vector2 center = nearestEnemy.Center;
+                        if (vector.Y < center.Y)
+                        {
+                            velocity = FargoSoulsUtil.PredictiveAim(vector, center, nearestEnemy.velocity / 3f, 12f);
+                        }
+
+                        SoundEngine.PlaySound(in FargosSoundRegistry.ThrowShort, vector);
+                        int num3 = (num ? 1 : 0);
+                        Projectile.NewProjectile(GetSource_EffectItem(player), vector, velocity, ModContent.ProjectileType<SpaceJunkProj>(), (int)((float)num2 * player.ActualClassDamage(DamageClass.Throwing)), 0.5f, player.whoAmI, num3);
+
+                        SpaceJunkAbilityCooldown += 60 * 15;
                     }
                 }
             }
-
             public override void PostUpdateEquips(Player player)
             {
                 CooldownBarManager.Activate("SpaceJunkEnchantCooldown", ModContent.Request<Texture2D>("ssm/SoA/Enchantments/SpaceJunkEnchant").Value, new(237, 73, 78),
                     () => SpaceJunkAbilityCooldown / (60f * 15), true, activeFunction: player.HasEffect<SpaceJunkEffect>);
 
             }
-
-            
         }
 
         public override void AddRecipes()

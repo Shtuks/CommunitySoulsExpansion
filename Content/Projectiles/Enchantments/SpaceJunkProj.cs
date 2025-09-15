@@ -5,11 +5,90 @@ using FargowiltasSouls.Assets.ExtraTextures;
 using FargowiltasSouls;
 using Luminance.Core.Graphics;
 using Microsoft.Xna.Framework.Graphics;
+using System;
+using Terraria.DataStructures;
+using Terraria.ID;
 
 namespace ssm.Content.Projectiles.Enchantments
 {
     public class SpaceJunkProj : ModProjectile, IPixelatedPrimitiveRenderer
     {
+        public static readonly Color colorr = Color.Lerp(Color.OrangeRed, Color.Orange, 0.4f);
+
+        public ref float Force => ref Projectile.ai[0];
+
+        public override void SetStaticDefaults()
+        {
+            ProjectileID.Sets.TrailCacheLength[Type] = 60;
+            ProjectileID.Sets.TrailingMode[Type] = 2;
+        }
+
+        public override void OnSpawn(IEntitySource source)
+        {
+            if (Force != 0f)
+            {
+                Projectile.position = Projectile.Center;
+                Projectile.width = 120;
+                Projectile.height = 120;
+                Projectile.Center = Projectile.position;
+            }
+        }
+
+        public override void AI()
+        {
+            if (Projectile.timeLeft < 150f)
+            {
+                Projectile.tileCollide = true;
+            }
+
+            if (Projectile.localAI[1] == 0f)
+            {
+                Projectile.localAI[1] = (Main.rand.NextBool() ? 1 : (-1));
+            }
+
+            Projectile.rotation += Projectile.localAI[1] * (MathF.PI * 2f) / 24f;
+            if ((Projectile.localAI[0] += 1f) % 2f == 1f)
+            {
+                int num = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, 6, Projectile.velocity.X, Projectile.velocity.Y);
+                Main.dust[num].noGravity = true;
+                int num2 = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, 31, Projectile.velocity.X, Projectile.velocity.Y);
+                Main.dust[num2].noGravity = true;
+            }
+
+            if (Main.rand.NextBool(2))
+            {
+                float num3 = 0.4f;
+                int num4 = Gore.NewGore(Projectile.GetSource_FromThis(), Projectile.position + Main.rand.NextVector2FromRectangle(new Rectangle(0, 0, Projectile.width, Projectile.height)) * 0.75f, default(Vector2), Main.rand.Next(61, 64));
+                Gore obj = Main.gore[num4];
+                obj.position -= Projectile.velocity * 4f;
+                obj.velocity *= num3;
+                obj.velocity = -Projectile.velocity * Main.rand.NextFloat(0.5f, 0.9f);
+            }
+        }
+
+        public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox)
+        {
+            return Projectile.Distance(FargoSoulsUtil.ClosestPointInHitbox(targetHitbox, Projectile.Center)) < (float)(projHitbox.Width / 2);
+        }
+
+        public float WidthFunction(float completionRatio)
+        {
+            return MathHelper.SmoothStep(Projectile.scale * (float)Projectile.width * 1.1f, amount: MathF.Pow(completionRatio, 1.5f), value2: 25f * Projectile.scale);
+        }
+
+        public static Color ColorFunction(float completionRatio)
+        {
+            Color color = Color.Lerp(colorr, Color.SkyBlue, completionRatio);
+            float num = 0.7f;
+            return color * num;
+        }
+
+        public void RenderPixelatedPrimitives(SpriteBatch spriteBatch)
+        {
+            ManagedShader shader = ShaderManager.GetShader("FargowiltasSouls.BlobTrail");
+            FargosTextureRegistry.FadedStreak.Value.SetTexture1();
+            PrimitiveRenderer.RenderTrail(Projectile.oldPos, new PrimitiveSettings(WidthFunction, ColorFunction, (float _) => Projectile.Size * 0.5f, Smoothen: true, Pixelate: true, shader), 44);
+        }
         public override void SetDefaults()
         {
             Projectile.width = 53;
@@ -20,28 +99,6 @@ namespace ssm.Content.Projectiles.Enchantments
             Projectile.timeLeft = 300;
             Projectile.tileCollide = true;
             Projectile.DamageType = DamageClass.Generic;
-        }
-
-        public override void AI()
-        {
-            // Gravity
-            Projectile.velocity.Y += 0.2f;
-            if (Projectile.velocity.Y > 16f)
-            {
-                Projectile.velocity.Y = 16f;
-            }
-
-            // Rotation
-            Projectile.rotation = Projectile.velocity.ToRotation() + MathHelper.PiOver2;
-
-            // Homing for retaliation projectiles
-            //if (Projectile.ai[0] != 0 && Main.npc[(int)Projectile.ai[0]].active)
-            //{
-            //    NPC target = Main.npc[(int)Projectile.ai[0]];
-            //    Vector2 direction = target.Center - Projectile.Center;
-            //    direction.Normalize();
-            //    Projectile.velocity = (Projectile.velocity * 10f + direction * 5f) / 11f;
-            //}
         }
 
         public override bool OnTileCollide(Vector2 oldVelocity)
@@ -64,23 +121,6 @@ namespace ssm.Content.Projectiles.Enchantments
                 Main.projectile[shard].rotation = Main.rand.NextFloat(MathHelper.TwoPi);
             }
             return true; 
-        }
-
-        public float WidthFunction(float completionRatio)
-        {
-            float baseWidth = Projectile.scale * Projectile.width * 1.3f;
-            return MathHelper.SmoothStep(baseWidth, 3.5f, completionRatio);
-        }
-
-        public Color ColorFunction(float completionRatio)
-        {
-            return Color.Lerp(Color.Yellow, Color.Transparent, completionRatio) * 0.7f;
-        }
-        public void RenderPixelatedPrimitives(SpriteBatch spriteBatch)
-        {
-            ManagedShader shader = ShaderManager.GetShader("FargowiltasSouls.BlobTrail");
-            FargoSoulsUtil.SetTexture1(FargosTextureRegistry.ColorNoiseMap.Value);
-            PrimitiveRenderer.RenderTrail(Projectile.oldPos, new(WidthFunction, ColorFunction, _ => Projectile.Size, Pixelate: true, Shader: shader), 25);
         }
 
         public override bool PreDraw(ref Color lightColor)

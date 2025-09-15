@@ -12,6 +12,8 @@ using FargowiltasSouls.Content.Items.Accessories.Souls;
 using FargowiltasCrossmod.Content.Calamity.Items.Accessories.Souls;
 using CalamityMod.Items.SummonItems;
 using Terraria.Localization;
+using ssm.Content.NPCs.RealMutantEX;
+using FargowiltasSouls.Content.Bosses.MutantBoss;
 
 namespace ssm.Calamity
 {
@@ -41,7 +43,7 @@ namespace ssm.Calamity
             }
             if (entity.type == ModContent.ItemType<Supernova>())
             {
-                entity.damage = (int)(entity.damage * 0.7f);
+                entity.damage = (int)(entity.damage * 0.8f);
             }
             if (entity.type == ModContent.ItemType<NanoblackReaper>())
             {
@@ -81,7 +83,7 @@ namespace ssm.Calamity
             }
             if (item.type == ModContent.ItemType<Supernova>())
             {
-                tooltips.Add(new TooltipLine(Mod, "rebalance", $"{Language.GetTextValue("Mods.ssm.Balance.Nerf")} {Language.GetTextValue("Mods.ssm.Balance.DamageDown")} 30%"));
+                tooltips.Add(new TooltipLine(Mod, "rebalance", $"{Language.GetTextValue("Mods.ssm.Balance.Nerf")} {Language.GetTextValue("Mods.ssm.Balance.DamageDown")} 20%"));
             }
             if (item.type == ModContent.ItemType<Ataraxia>())
             {
@@ -110,6 +112,16 @@ namespace ssm.Calamity
             }
         }
 
+        public override void ModifyWeaponDamage(Item item, Player player, ref StatModifier damage)
+        {
+            if (NPC.AnyNPCs(ModContent.NPCType<RealMutantEX>()) || NPC.AnyNPCs(ModContent.NPCType<MutantBoss>()))
+            {
+                if (item.type == ItemID.Zenith)
+                {
+                    damage /= 2;
+                }
+            }
+        }
         public override void UpdateAccessory(Item item, Player player, bool hideVisual)
         {
             if (item.type == ModContent.ItemType<VagabondsSoul>())

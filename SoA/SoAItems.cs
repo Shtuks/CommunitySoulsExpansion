@@ -7,6 +7,7 @@ using SacredTools.Content.Items.Armor.Lunar.Vortex;
 using SacredTools.Content.Items.Potions.Recovery;
 using SacredTools.Content.Items.Weapons.Asthraltite;
 using SacredTools.Content.Items.Weapons.Dreamscape.Nihilus;
+using SacredTools.Content.Items.Weapons.Relic;
 using SacredTools.Items.Weapons.Lunatic;
 using ssm.Core;
 using System.Collections.Generic;
@@ -47,6 +48,10 @@ namespace ssm.SoA
             if (entity.type == ModContent.ItemType<Eschaton>())
             {
                 entity.damage = (int)(entity.damage * (ModCompatibility.Calamity.Loaded ? 2f : 1.7f));
+            }
+            if (entity.type == ModContent.ItemType<SwordOfGreed>())
+            {
+                entity.damage = (int)(entity.damage * (ModCompatibility.Calamity.Loaded ? 2f : 1.5f));
             }
             if (entity.type == ModContent.ItemType<AsthraltiteHealingPotion>() && ModCompatibility.Calamity.Loaded)
             {
@@ -110,6 +115,11 @@ namespace ssm.SoA
             {
                 n = ModCompatibility.Calamity.Loaded ? 50 : 10;
                 tooltips.Add(new TooltipLine(Mod, "homing", $"{Language.GetTextValue("Mods.ssm.Balance.Buff")} {Language.GetTextValue("Mods.ssm.Balance.Homing")}"));
+            }
+            if (item.type == ModContent.ItemType<SwordOfGreed>())
+            {
+                n = ModCompatibility.Calamity.Loaded ? 100 : 50;
+                tooltips.Add(new TooltipLine(Mod, "rebalance", $"{Language.GetTextValue("Mods.ssm.Balance.Buff")} {Language.GetTextValue("Mods.ssm.Balance.DamageUP")} {n}%"));
             }
             if (item.type == ModContent.ItemType<Desperatio>())
             {
