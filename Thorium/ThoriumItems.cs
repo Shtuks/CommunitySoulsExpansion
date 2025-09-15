@@ -108,12 +108,5 @@ namespace ssm.Thorium
                 tooltips.Add(new TooltipLine(Mod, "buff", $"{Language.GetTextValue("Mods.ssm.Balance.Buff")} {Language.GetTextValue("Mods.ssm.Balance.VelUP")} 50%"));
             }
         }
-        public override void OnHitNPC(Item item, Player player, NPC target, NPC.HitInfo hit, int damageDone)
-        {
-            if (player.GetModPlayer<CSEThoriumPlayer>().ThunderTalonEternity)
-            {
-                target.AddBuff(BuffID.BoneJavelin, 300);
-            }
-        }
     }
 }

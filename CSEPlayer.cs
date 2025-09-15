@@ -103,7 +103,7 @@ namespace ssm
                 Player.buffImmune[6] = true;
                 Player.buffImmune[7] = true;
                 Player.buffImmune[14] = true;
-                Player.maxMinions+=2;
+                Player.maxMinions += 2;
                 Player.statDefense += 10;
                 Player.lifeRegen += 5;
                 Player.lifeForce = true;
@@ -144,13 +144,13 @@ namespace ssm
                         Main.projectile[i].ai[0] = 2f;
                         Main.projectile[i].netUpdate = true;
 
-                        if (!spawned && Main.projectile[i].wet && WorldSavingSystem.EternityMode && !NPC.AnyNPCs(NPCID.DukeFishron)) 
+                        if (!spawned && Main.projectile[i].wet && WorldSavingSystem.EternityMode && !NPC.AnyNPCs(NPCID.DukeFishron))
                         {
                             spawned = true;
-                            if (Main.netMode == NetmodeID.SinglePlayer) 
+                            if (Main.netMode == NetmodeID.SinglePlayer)
                             {
                                 EModeGlobalNPC.spawnFishronEX = true;
-                                NPC.NewNPC(Main.projectile[i].GetSource_FromThis(),(int)Main.projectile[i].Center.X, (int)Main.projectile[i].Center.Y + 100,NPCID.DukeFishron, 0, 0f, 0f, 0f, 0f, Player.whoAmI);
+                                NPC.NewNPC(Main.projectile[i].GetSource_FromThis(), (int)Main.projectile[i].Center.X, (int)Main.projectile[i].Center.Y + 100, NPCID.DukeFishron, 0, 0f, 0f, 0f, 0f, Player.whoAmI);
                                 Main.NewText("Duke Fishron EX has awoken!", 50, 100, 255);
                             }
                             else if (Main.netMode == NetmodeID.MultiplayerClient)
@@ -203,10 +203,10 @@ namespace ssm
                 Player.CSE().throwerVelocity += 0.05f;
                 if (ModCompatibility.Thorium.Loaded) { BardAndHealer(Player, 0.5f, 100, 0.1f, 0.25f, 10, 5, 1, 180); }
                 if (ModCompatibility.BeekeeperClass.Loaded) { Beekeeper(Player, 10); }
-                if (ModCompatibility.Calamity.Loaded) { ThrowerCal(Player, 0.7f); Player.GetDamage<GenericDamageClass>() += 0.05f;}
+                if (ModCompatibility.Calamity.Loaded) { ThrowerCal(Player, 0.7f); Player.GetDamage<GenericDamageClass>() += 0.05f; }
             }
 
-            if(mutantEXHits > (WorldSavingSystem.MasochistModeReal ? 10 : 20))
+            if (mutantEXHits > (WorldSavingSystem.MasochistModeReal ? 10 : 20))
             {
                 Player.statLife = 0;
                 Player.dead = true;
@@ -262,7 +262,7 @@ namespace ssm
             {
                 Main.NewText(Language.GetTextValue($"Mods.ssm.Message.NoRework"), Color.LimeGreen);
             }
-            if (ModCompatibility.Calamity.Loaded && ModCompatibility.Thorium.Loaded && !ModLoader.TryGetMod("WHummusMultiModBalancing", out Mod _))
+            if (ModCompatibility.Calamity.Loaded && ModCompatibility.Thorium.Loaded && (!ModLoader.TryGetMod("WHummusMultiModBalancing", out Mod _) || !ModCompatibility.IEoR.Loaded))
             {
                 Main.NewText(Language.GetTextValue($"Mods.ssm.Message.NoBalancing"), Color.LimeGreen);
             }

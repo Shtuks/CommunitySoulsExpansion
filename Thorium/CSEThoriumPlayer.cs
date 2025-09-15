@@ -11,16 +11,10 @@ namespace ssm.Thorium
 
     public partial class CSEThoriumPlayer : ModPlayer
     {
-        public bool ThunderTalonEternity;
-        public bool DarkenedCloak;
-
         public bool tripleDamageNextHit;
         public bool illumiteNightVision;
         public override void ResetEffects()
         {
-            ThunderTalonEternity = false;
-            DarkenedCloak = false;
-
             tripleDamageNextHit = false;
             if (!Player.HasEffect<IllumiteEffect>())
             {
