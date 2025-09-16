@@ -240,9 +240,9 @@ namespace ssm
                 {
                     damage *= 0.1f;
                 }
-                if (item.damage > 100000 && !CSEUtils.IsModItem(item, "CalamityInheritance") && !CSEUtils.IsModItem(item, "SacredTools") && !CSEUtils.IsModItem(item, "FargowiltasSouls") && !CSEUtils.IsModItem(item, "ThoriumMod") && !CSEUtils.IsModItem(item, "CaamityMod"))
+                if (item.damage > 100000 && !CSEUtils.IsModItem(item, "CalamityHunt") && !CSEUtils.IsModItem(item, "CalamityInheritance") && !CSEUtils.IsModItem(item, "SacredTools") && !CSEUtils.IsModItem(item, "FargowiltasSouls") && !CSEUtils.IsModItem(item, "ThoriumMod") && !CSEUtils.IsModItem(item, "CaamityMod"))
                 {
-                    damage *= 0.05f;
+                    damage *= 0.04f;
                 }
             }
         }

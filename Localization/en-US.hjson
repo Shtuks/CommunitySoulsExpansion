@@ -155,10 +155,35 @@ Mods: {
 		CodebreakerOptions.Mutant: Mutant
 
 		ActiveSkills: {
-			MarstechEffect.DisplayName: Marstech Probe
-			DreadfireEffect.DisplayName: Dreadfire
-			CosmicCommanderEffect.DisplayName: Sniper's state
-			XenomiteEffect.DisplayName: Xenomite Clouds
+			SpaceJunkEffect: {
+				DisplayName: Falling Satellite
+				Tooltip: Sends a falling satellite from sky that explodes into multiple damaging shrapnels
+			}
+
+			DreadfireEffect: {
+				Tooltip: Inflict Dreadfire buff on yourself
+				DisplayName: Dreadfire
+			}
+
+			MarstechEffect: {
+				DisplayName: Marstech Probe
+				Tooltip: Ssends out a homing martian probe that explodes into multiple damaging shrapnels
+			}
+
+			CosmicCommanderEffect: {
+				DisplayName: Sniper's state
+				Tooltip: Activate Sniper's State
+			}
+
+			CommonGuardEffect: {
+				DisplayName: Guard breaking
+				Tooltip: Halves guard points for every enemy on screen with short cooldown
+			}
+
+			XenomiteEffect: {
+				DisplayName: Xenomite Clouds
+				Tooltips: Unleash toxic gas in a radius around the player, inflicting Burning Acid
+			}
 		}
 
 		SetBonus: {
@@ -766,11 +791,7 @@ Mods: {
 
 			XenomiteEnchant: {
 				DisplayName: Xenomite Enchantment
-				Tooltip:
-					'''
-					Ability unleash toxic gas in a radius around the player, inflicting Burning Acid
-					'This will definitely give you some form of cancer'
-					'''
+				Tooltip: "'This will definitely give you some form of cancer'"
 			}
 
 			AdvancementForce: {
@@ -1008,9 +1029,9 @@ Mods: {
 				DisplayName: Asthraltite Enchantment
 				Tooltip:
 					'''
-					'Asph-... Asthath-... How are you meant to pronounce this?'
 					Allows crits, and super crits to have a 50% chance to ignore any type of defense
 					All attacks inflict Draconic Blaze
+					'Asph-... Asthath-... How are you meant to pronounce this?'
 					'''
 			}
 
@@ -1018,9 +1039,9 @@ Mods: {
 				DisplayName: Bismuth Enchantment
 				Tooltip:
 					'''
-					'It takes every color to make a rainbow'
 					While standing you will form bismuth crystals that can absorb 5% of damage from enemies, and 2% from bosses 
 					It takes 5 seconds to form and has three stages that can only absorb up to 90 damage
+					'It takes every color to make a rainbow'
 					'''
 			}
 
@@ -1028,10 +1049,10 @@ Mods: {
 				DisplayName: Unrelenting Rival Enchantment
 				Tooltip:
 					'''
-					'Your spirit ignites like the brightest flame. Soon, your enemies will too'
 					Killing enemies creates a kill streak
 					The more enemies you kill increases damage by 30% 
 					Maximum streak is limited by 5
+					'Your spirit ignites like the brightest flame. Soon, your enemies will too'
 					'''
 			}
 
@@ -1039,9 +1060,9 @@ Mods: {
 				DisplayName: Blightbone Enchantment
 				Tooltip:
 					'''
-					'Your spooks and scares will send shivers down your enemies' spines'
 					Adds a 10% chance for a blightbone to be thrown out alongside your thrown weapon, applying ‘On Fire!’ for 2 seconds
-					Empowers bone type weapons, making them apply the ‘On Fire!’ debuff for 3 seconds.
+					Empowers bone type weapons, making them apply the ‘On Fire!’ debuff for 5 seconds.
+					'Your spooks and scares will send shivers down your enemies' spines'
 					'''
 			}
 
@@ -1049,11 +1070,11 @@ Mods: {
 				DisplayName: Soran Forces Enchantment
 				Tooltip:
 					'''
-					'Make Soran great again'
 					Makes enemies less likely to hit you
 					You deal 125% more damage but your defense is reduced by 25% in sniper state
 					This state lasts for 15 seconds and after you will deal 25% less damage but with 30% increased defense 
 					Getting hit while in sniper state will instantly end it
+					'Make Soran great again'
 					'''
 			}
 
@@ -1061,9 +1082,10 @@ Mods: {
 				DisplayName: Dreadfire Enchantment
 				Tooltip:
 					'''
-					'Ralnek's spirit guides you'
 					Surrounds player with Dreadfire Aura that inflicts Dreadfire buff
-					Dreadfire buff increases damage by 20%
+					For players: Dreadfire buff increases damage by 20%
+					For enemies: Lose 5 life each second
+					'Ralnek's spirit guides you'
 					'''
 			}
 
@@ -1071,9 +1093,9 @@ Mods: {
 				DisplayName: Eerie Enchantment
 				Tooltip:
 					'''
-					'Creeper? Aw man…'
 					After taking damage create pulses that grants a damage buff to minions, sentries, and nearby players
 					The strength of the buff depends on the user's health 
+					'Creeper? Aw man…'
 					'''
 			}
 
@@ -1081,8 +1103,8 @@ Mods: {
 				DisplayName: Exitum Lux Enchantment
 				Tooltip:
 					'''
-					'Does something soon'TM
 					Using relic weapons multiply most of stats by 1.1
+					'Does something soon'TM
 					'''
 			}
 
@@ -1090,10 +1112,10 @@ Mods: {
 				DisplayName: Fallen Prince Enchantment
 				Tooltip:
 					'''
-					'Give up your heritage, gain power'
 					When throwing a weapon enemies are pulled closer to it by gravity 
 					The strength of the gravity is based on the weapons damage
 					Before death you will explode into a supernova
+					'Give up your heritage, gain power'
 					'''
 			}
 
@@ -1101,9 +1123,10 @@ Mods: {
 				DisplayName: Flarium Enchantment
 				Tooltip:
 					'''
+					Projectiles that hit the ground have a chance to create spurring flame tornado
+					Tornados lasts for 5 seconds 
+					Only 5 tornados can exist at the same time
 					'Raze your enemies with Araghur's flames'
-					Projectiles that hit the ground have a chance to create spurring flame geysers
-					Geysers lasts for 5 seconds 
 					'''
 			}
 
@@ -1111,9 +1134,9 @@ Mods: {
 				DisplayName: Frosthunter Enchantment
 				Tooltip:
 					'''
-					'The hunter now hunted, the prey now predator'
 					When shooting an enemy, cause a small frost explosion that damages enemies in a radius
 					With a 2 second cooldown, the frost explosion becomes a cluster explosion, causing multiple small frost explosions to come after it
+					'The hunter now hunted, the prey now predator'
 					'''
 			}
 
@@ -1121,10 +1144,10 @@ Mods: {
 				DisplayName: Lapis Enchantment
 				Tooltip:
 					'''
-					'Gotta go fast'
 					15% increased movement speed
 					Additional 25% movement speed for 2 seconds after being damaged
 					Every 5 attacks, give the Lapis Shield, increasing your defense by 3/6/9, depending on how many stacks you have
+					'Gotta go fast'
 					'''
 			}
 
@@ -1132,10 +1155,9 @@ Mods: {
 				DisplayName: Marstech Enchantment
 				Tooltip:
 					'''
-					'Who needs magic when you have technology?'
-					Pressing the ability key sends out a homing martian probe that explodes into multiple damaging shrapnels
 					Shrapnels stay on grounds/platforms and disappear after a few seconds
 					When being damaged, there is a 50% chance for 2-4 shrapnels to fall off your armor
+					'Who needs magic when you have technology?'
 					'''
 			}
 
@@ -1143,9 +1165,8 @@ Mods: {
 				DisplayName: Saving Grace Enchantment
 				Tooltip:
 					'''
-					'Nuba would be proud'
 					Attacking enemies release buff wisps which can be picked up for different stacking buffs
-					Effects of Nuba's Blessing
+					'Nuba would be proud'
 					'''
 			}
 
@@ -1153,8 +1174,8 @@ Mods: {
 				DisplayName: Prairie Enchantment
 				Tooltip:
 					'''
-					'Subdued Serenity'
 					Depending on the wind speed all speed stats are increased by 5%-15%
+					'Subdued Serenity'
 					'''
 			}
 
@@ -1162,21 +1183,19 @@ Mods: {
 				DisplayName: Quasar Enchantment
 				Tooltip:
 					'''
-					'It's time to shine'
 					When throwing a weapon enemies are pulled closer to it by gravity 
+					'It's time to shine'
 					'''
 			}
 
 			SpaceJunkEnchant: {
 				DisplayName: Space Junk Enchantment
-				Tooltip1:
+				Tooltip:
 					'''
-					'I'm da spaceman!'
-					Pressing the ability key sends a falling satellite from sky that explodes into multiple damaging shrapnels
 					Shrapnels stay on grounds/platforms and disappear after a few seconds
 					When being damaged, there is a 33% chance for 1-2 shrapnels to fall off your armor
+					'I'm da spaceman!'
 					'''
-				Tooltip: ""
 			}
 
 			StellarPriestEnchant: {
@@ -1228,7 +1247,6 @@ Mods: {
 					[i:ssm/DreadfireEnchant] You have aura that inflict dreadfire on nearby enemies and allies
 					[i:ssm/BismuthEnchant] Anyone standing inside of aura get bismuth crystal that reduces damage by 10% 
 					[i:ssm/EerieEnchant] After shield breaks for next 10 seconds you will release eerie pulses that buff minions and allies
-					[i:ssm/MarstechEnchant]
 					'Through all this world's years, none have seen anything quite like you'
 					'''
 			}
@@ -1240,7 +1258,7 @@ Mods: {
 					[i:ssm/CosmicCommanderEnchant] In sniper state you deal 300% more damage but defense is reduced by 15%
 					[i:ssm/BlazingBruteEnchant] Every time you kill an enemy in sniper state you gain a 75% increase this stacks up to 5 times
 					[i:ssm/QuasarEnchant] [i:ssm/FallenPrinceEnchant] Hitting enemies have chance to reate quasar that pull weak enemies
-					[i:ssm/FallenPrinceEnchant] [i:ssm/NebulousApprenticeEnchant] Upon death you will be revived in supernova explosion
+					[i:ssm/FallenPrinceEnchant] Upon death you will be revived in supernova explosion
 					[i:ssm/StellarPriestEnchant] WIP
 					[i:ssm/NebulousApprenticeEnchant] Attacking enemies release buff wisps which can be picked up for different stacking buffs
 					'The true power of the Soraniti'
@@ -2927,6 +2945,7 @@ Mods: {
 					Effects: Grants following effects:
 					StartsWithFilter: "'"
 					ContainsFilter: Following effects|Grants togglable
+					Flavor: Ech
 				}
 			}
 
@@ -4063,13 +4082,10 @@ Mods: {
 			CuteFishEXEffect: Fishron Ritual
 			EridanusEffect: Eridanus blessing
 			//redemption
+			XeniumEffect: Rocket Launcher Minion
+			ElderWoodEffect: Elemental damage
 			AdvancementHeader: Force of Advancement
-			CommonGuardBauble: Soul Bauble
-			PureIronCross: Holy Shield
-			XenomiteNecklace: Necklace of Perception
-			XenomiteArmorEffect: Toxic Gas
-			HardlightEffect: Drones Summon
-			XeniumConcoction: Beelzebub Concoction
+			HardlightEffect: Drone Minion
 			InfectionShieldEffect: Infected Thornshield Dash
 			HEVEffect: H.E.V Suit
 			//spirit

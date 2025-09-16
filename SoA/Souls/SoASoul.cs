@@ -34,6 +34,7 @@ using static ssm.SoA.Enchantments.PrairieEnchant;
 using static ssm.SoA.Forces.FoundationsForce;
 using static ssm.SoA.Enchantments.QuasarEnchant;
 using Terraria.DataStructures;
+using System.Collections.Generic;
 
 namespace ssm.SoA.Souls
 {
@@ -41,10 +42,12 @@ namespace ssm.SoA.Souls
     [JITWhenModsEnabled(ModCompatibility.SacredTools.Name)]
     public class SoASoul : BaseSoul
     {
+        public override List<AccessoryEffect> ActiveSkillTooltips =>
+            [AccessoryEffectLoader.GetEffect<MarstechEffect>(), AccessoryEffectLoader.GetEffect<DreadfireEffect>(), AccessoryEffectLoader.GetEffect<CosmicCommanderEffect>()];
         public override void SetStaticDefaults()
         {
             base.SetStaticDefaults();
-            Main.RegisterItemAnimation(Item.type, new DrawAnimationHorizontal(6, 60));
+            Main.RegisterItemAnimation(Item.type, new DrawAnimationHorizontal(60, 6));
             ItemID.Sets.AnimatesAsSoul[Item.type] = true;
         }
 

@@ -6,7 +6,6 @@ namespace ssm.Core
 {
     public class DrawAnimationHorizontal : DrawAnimation
     {
-        public int FrameCount;
         public int FrameSpeed;
         private int _frameCounter; 
 

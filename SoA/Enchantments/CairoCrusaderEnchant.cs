@@ -53,7 +53,7 @@ namespace ssm.SoA.Enchantments
                 player.GetModPlayer<ModdedPlayer>().cairoCrusader = true;
                 if (player.ownedProjectileCounts[ModContent.ProjectileType<EternalOasis>()] <= 0 && player.whoAmI == Main.myPlayer)
                 {
-                    Projectile.NewProjectile(player.GetSource_FromThis("SetBonus_CairoCrusader"), player.Center, Vector2.Zero, ModContent.ProjectileType<EternalOasis>(), (int)player.GetTotalDamage<ThrowingDamageClass>().ApplyTo(player.HasEffect<FoundationsEffect>() ? 1000f : 100f), 0f, player.whoAmI);
+                    Projectile.NewProjectile(player.GetSource_FromThis("SetBonus_CairoCrusader"), player.Center, Vector2.Zero, ModContent.ProjectileType<EternalOasis>(), (int)player.GetTotalDamage<ThrowingDamageClass>().ApplyTo(player.HasEffect<FoundationsEffect>() ? 500f : 50f), 0f, player.whoAmI);
                 }
             }
         }

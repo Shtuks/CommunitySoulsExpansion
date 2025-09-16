@@ -31,7 +31,7 @@ namespace ssm.Content.Projectiles.Enchantments
             }
             if (shouldHome) 
             {
-                CSEUtils.HomeInOnNPC(Projectile, true, 9000, 8, 2);
+                CSEUtils.HomeInOnNPC(Projectile, true, 9000, 12, 2);
             }
         }
 
@@ -43,6 +43,7 @@ namespace ssm.Content.Projectiles.Enchantments
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
             Explode();
+            Projectile.Kill();
         }
 
         private void Explode()

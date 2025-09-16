@@ -51,7 +51,7 @@ namespace ssm.SoA.Enchantments
             public override void PostUpdate(Player player)
             {
                 bubbleTimer++;
-                if (player.velocity.X != 0 && bubbleTimer >= 15)
+                if (player.velocity.X != 0 && bubbleTimer >= 20)
                 {
                     SpawnBubble(player);
                     bubbleTimer = 0;

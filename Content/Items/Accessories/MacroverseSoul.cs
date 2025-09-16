@@ -181,9 +181,12 @@ namespace ssm.Content.Items.Accessories
         }
         public override void PostAddRecipes()
         {
+            var macroverseSoulType = typeof(MacroverseSoul);
             string[] startsWithFilter = Language.GetTextValue("Mods.ssm.Items.MacroverseSoul.Extra.StartsWithFilter").Split("|", StringSplitOptions.RemoveEmptyEntries);
             string[] containsFilter = Language.GetTextValue("Mods.ssm.Items.MacroverseSoul.Extra.ContainsFilter").Split("|", StringSplitOptions.RemoveEmptyEntries);
-            foreach (Recipe item in Main.recipe.Where((Recipe r) => r.createItem != null && r.createItem.ModItem is BaseSoul))
+            foreach (Recipe item in Main.recipe.Where(r =>
+            r.createItem != null &&
+            r.createItem.ModItem?.GetType() == macroverseSoulType))
             {
                 foreach (Item item2 in item.requiredItem)
                 {

@@ -20,6 +20,8 @@ using FargowiltasSouls.Content.Projectiles.Souls;
 using FargowiltasSouls;
 using Terraria.Audio;
 using FargowiltasSouls.Core.ModPlayers;
+using static ssm.SoA.Enchantments.MarstechEnchant;
+using System.Collections.Generic;
 
 namespace ssm.SoA.Enchantments
 {
@@ -27,6 +29,8 @@ namespace ssm.SoA.Enchantments
     [JITWhenModsEnabled(ModCompatibility.SacredTools.Name)]
     public class SpaceJunkEnchant : BaseEnchant
     {
+        public override List<AccessoryEffect> ActiveSkillTooltips =>
+            [AccessoryEffectLoader.GetEffect<SpaceJunkEffect>()];
         public override bool IsLoadingEnabled(Mod mod)
         {
             return CSEConfig.Instance.SacredTools;
@@ -124,7 +128,7 @@ namespace ssm.SoA.Enchantments
                         int num3 = (num ? 1 : 0);
                         Projectile.NewProjectile(GetSource_EffectItem(player), vector, velocity, ModContent.ProjectileType<SpaceJunkProj>(), (int)((float)num2 * player.ActualClassDamage(DamageClass.Throwing)), 0.5f, player.whoAmI, num3);
 
-                        SpaceJunkAbilityCooldown += 60 * 15;
+                        SpaceJunkAbilityCooldown += 60 * 5;
                     }
                 }
             }

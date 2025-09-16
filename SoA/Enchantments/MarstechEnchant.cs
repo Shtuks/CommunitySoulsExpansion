@@ -68,13 +68,13 @@ namespace ssm.SoA.Enchantments
                     Projectile.NewProjectile(
                         player.GetSource_GiftOrReward(),
                         player.Center,
-                        new Vector2(0, -5f),
+                        new Vector2(0, -9f),
                         ModContent.ProjectileType<MartianProbe>(),
                         50,
                         5f,
                         player.whoAmI
                     );
-                    cd += 15 * 60;
+                    cd += 7 * 60;
                 }
             }
         }

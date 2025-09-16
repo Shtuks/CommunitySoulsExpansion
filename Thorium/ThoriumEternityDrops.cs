@@ -15,6 +15,8 @@ using ThoriumMod.NPCs.BossStarScouter;
 using ThoriumMod.NPCs.BossTheGrandThunderBird;
 using ThoriumMod.NPCs.BossViscount;
 using ssm.Thorium.Emode.Accessories;
+using ThoriumMod.NPCs.BossGraniteEnergyStorm;
+using ThoriumMod.NPCs.BossBuriedChampion;
 
 namespace ssm.Thorium
 {
@@ -33,23 +35,33 @@ namespace ssm.Thorium
             {
                 emodeRule.OnSuccess(FargoSoulsUtil.BossBagDropCustom(ModContent.ItemType<StrangeCrate>(), 5));
             }
-            else if (npc.type == ModContent.NPCType<QueenJellyfish>())
+            if (npc.type == ModContent.NPCType<GraniteEnergyStorm>())
+            {
+                emodeRule.OnSuccess(FargoSoulsUtil.BossBagDropCustom(ModContent.ItemType<GraniteMaterializer>(), 1));
+            }
+            if (npc.type == ModContent.NPCType<BuriedChampion>())
+            {
+                emodeRule.OnSuccess(FargoSoulsUtil.BossBagDropCustom(ModContent.ItemType<ChampionHeadband>(), 1));
+            }
+            if (npc.type == ModContent.NPCType<QueenJellyfish>())
             {
                 emodeRule.OnSuccess(FargoSoulsUtil.BossBagDropCustom(ModContent.ItemType<AquaticDepthsCrate>(), 5));
+                emodeRule.OnSuccess(FargoSoulsUtil.BossBagDropCustom(ModContent.ItemType<JellyfishCoil>(), 1));
             }
-            else if (npc.type == ModContent.NPCType<Viscount>())
+            if (npc.type == ModContent.NPCType<Viscount>())
             {
                 emodeRule.OnSuccess(FargoSoulsUtil.BossBagDropCustom(ModContent.ItemType<ScarletCrate>(), 5));
+                emodeRule.OnSuccess(FargoSoulsUtil.BossBagDropCustom(ModContent.ItemType<VampiresBlessing>(), 1));
             }
-            else if (npc.type == ModContent.NPCType<Lich>())
+            if (npc.type == ModContent.NPCType<Lich>())
             {
                 emodeRule.OnSuccess(FargoSoulsUtil.BossBagDropCustom(ModContent.ItemType<WondrousCrate>(), 5));
             }
-            else if (npc.type == ModContent.NPCType<ForgottenOne>())
+            if (npc.type == ModContent.NPCType<ForgottenOne>())
             {
                 emodeRule.OnSuccess(FargoSoulsUtil.BossBagDropCustom(ModContent.ItemType<AbyssalCrate>(), 5));
             }
-            else if (npc.type == ModContent.NPCType<StarScouter>())
+            if (npc.type == ModContent.NPCType<StarScouter>())
             {
                 emodeRule.OnSuccess(FargoSoulsUtil.BossBagDropCustom(ItemID.FloatingIslandFishingCrate, 5));
             }
