@@ -26,7 +26,6 @@ namespace ssm.Thorium.Emode.Accessories
             Item.accessory = true;
             Item.value = Item.sellPrice(0, 1);
             Item.rare = 3;
-            Item.defense = 2;
         }
 
         public override void UpdateAccessory(Player player, bool hideVisual)

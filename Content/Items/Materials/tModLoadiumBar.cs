@@ -63,6 +63,10 @@ namespace ssm.Content.Items.Materials
             {
                 recipe.AddIngredient(ModCompatibility.Entropy.Mod.Find<ModItem>("WyrmTooth"), 1);
             }
+            if (ModCompatibility.NoxusPort.Loaded)
+            {
+                recipe.AddIngredient(ModCompatibility.NoxusPort.Mod.Find<ModItem>("EntropicBar"), 1);
+            }
             if (ModCompatibility.CatTech.Loaded)
             {
                 recipe.AddIngredient(ModCompatibility.CatTech.Mod.Find<ModItem>("NeutroniumBar"), 1);

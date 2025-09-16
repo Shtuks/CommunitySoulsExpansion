@@ -10,6 +10,7 @@ using SacredTools.Content.Items.Accessories;
 using ContinentOfJourney.Items.Accessories;
 using Redemption.Items.Accessories.HM;
 using ThoriumMod.Items.BossThePrimordials;
+using Terraria.ID;
 
 namespace ssm.CrossMod.SoulsRecipes
 {
@@ -25,7 +26,8 @@ namespace ssm.CrossMod.SoulsRecipes
                 {
                     if (ModCompatibility.SacredTools.Loaded) { recipe.AddIngredient(ModCompatibility.SacredTools.Mod.Find<ModItem>("MilinticaDash"), 1); recipe.AddIngredient(ModCompatibility.SacredTools.Mod.Find<ModItem>("HeartOfThePlough"), 1); }
                     if (ModCompatibility.Homeward.Loaded) { recipe.AddIngredient(ModCompatibility.Homeward.Mod.Find<ModItem>("HourHand"), 1); recipe.AddIngredient(ModCompatibility.Homeward.Mod.Find<ModItem>("Edgewalker"), 1); }
-                    if (ModCompatibility.Redemption.Loaded) { recipe.AddIngredient(ModCompatibility.Redemption.Mod.Find<ModItem>("InfectionShield"), 1); }
+                    if (ModCompatibility.Redemption.Loaded) { recipe.AddIngredient(ModCompatibility.Redemption.Mod.Find<ModItem>("InfectionShield"), 1); recipe.RemoveIngredient(ItemID.EoCShield); }
+                    if (ModCompatibility.Thorium.Loaded) { recipe.AddIngredient(ModCompatibility.Thorium.Mod.Find<ModItem>("SweetVengeance"), 1); recipe.RemoveIngredient(ItemID.SweetheartNecklace); }
                 }
             }
         }

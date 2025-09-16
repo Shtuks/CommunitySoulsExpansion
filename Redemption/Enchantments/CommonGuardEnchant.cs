@@ -14,6 +14,8 @@ using FargowiltasSouls;
 using FargowiltasSouls.Content.UI.Elements;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
+using Redemption.Items.Weapons.PreHM.Melee;
+using Redemption.Items.Weapons.PreHM.Magic;
 
 namespace ssm.Redemption.Enchantments
 {
@@ -82,9 +84,9 @@ namespace ssm.Redemption.Enchantments
             recipe.AddRecipeGroup("ssm:CommonGuardHelms");
             recipe.AddIngredient(ModContent.ItemType<CommonGuardPlateMail>());
             recipe.AddIngredient(ModContent.ItemType<CommonGuardGreaves>());
-            recipe.AddIngredient(ModContent.ItemType<Wardbreaker>());
-            recipe.AddIngredient(ModContent.ItemType<KeepersCirclet>());
-            recipe.AddIngredient(ModContent.ItemType<TrappedSoulBauble>());
+            recipe.AddIngredient(ModContent.ItemType<NoblesHalberd>());
+            recipe.AddIngredient(ModContent.ItemType<CalciteWand>());
+            recipe.AddIngredient(ModContent.ItemType<ChompingChains>());
 
             recipe.AddTile(26);
             recipe.Register();

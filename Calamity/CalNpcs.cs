@@ -37,30 +37,30 @@ namespace ssm.Calamity
             return base.PreAI(npc);
         }
 
-        //public override void PostAI(NPC npc)
-        //{
-        //    if (!appliedBRScale && BossRushEvent.BossRushActive && CSEConfig.Instance.BossRushPostMutant)
-        //    {
-        //        if (npc.lifeMax < 10000000)
-        //        {
-        //            npc.lifeMax = npc.lifeMax * 5;
-        //        }
-        //        else if (npc.lifeMax > 10000000 && npc.lifeMax < 10000000)
-        //        {
-        //            npc.lifeMax = npc.lifeMax * 3;
-        //        }
-        //        else if (npc.lifeMax > 20000000 && npc.lifeMax < 30000000)
-        //        {
-        //            npc.lifeMax = npc.lifeMax * 2;
-        //        }
-        //        else if (npc.lifeMax > 30000000 && npc.type != ModContent.NPCType<MutantBoss>())
-        //        {
-        //            npc.lifeMax = (int)(npc.lifeMax * 1.5f);
-        //        }
-        //        npc.life = npc.lifeMax;
-        //        appliedBRScale = true;
-        //    }
-        //}
+        public override void PostAI(NPC npc)
+        {
+            if (!appliedBRScale && BossRushEvent.BossRushActive && CSEConfig.Instance.BossRushPostMutant)
+            {
+                if (npc.lifeMax < 10000000)
+                {
+                    npc.lifeMax = npc.lifeMax * 5;
+                }
+                else if (npc.lifeMax > 10000000 && npc.lifeMax < 20000000)
+                {
+                    npc.lifeMax = npc.lifeMax * 3;
+                }
+                else if (npc.lifeMax > 20000000 && npc.lifeMax < 30000000)
+                {
+                    npc.lifeMax = npc.lifeMax * 2;
+                }
+                else if (npc.lifeMax > 30000000 && npc.type != ModContent.NPCType<MutantBoss>())
+                {
+                    npc.lifeMax = (int)(npc.lifeMax * 1.5f);
+                }
+                npc.life = npc.lifeMax;
+                appliedBRScale = true;
+            }
+        }
         public override void ModifyIncomingHit(NPC npc, ref NPC.HitModifiers modifiers)
         {
             if (npc.type == ModContent.NPCType<AbomBoss>() && npc.target.ToPlayer().HeldItem.type == ModContent.ItemType<HalibutCannon>())
@@ -106,6 +106,15 @@ namespace ssm.Calamity
 
                     npc.lifeMax = (int)(4300000 + (1000000 * multiplierL));
                     npc.damage = (int)(450 + (10 * multiplierD));
+                }
+            }
+
+            if (ModCompatibility.NoxusPort.Loaded)
+            {
+                if (npc.type == ModCompatibility.NoxusPort.NoxusBoss1.Type ||
+                    npc.type == ModCompatibility.NoxusPort.NoxusBoss2.Type)
+                {
+                    npc.lifeMax = (int)(npc.lifeMax * 1.9f);
                 }
             }
 

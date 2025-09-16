@@ -8,6 +8,8 @@ using Terraria.DataStructures;
 using Terraria.ID;
 using Luminance.Core.Graphics;
 using Microsoft.Xna.Framework.Graphics;
+using ssm.Calamity.Addons;
+using ssm.Core;
 
 namespace ssm.CrossMod.CraftingStations
 {
@@ -79,6 +81,11 @@ namespace ssm.CrossMod.CraftingStations
             if (ModLoader.HasMod("Redemption"))
             {
                 recipe.AddIngredient<RedemptionCraftingStationItem>();
+            }
+
+            if (ModCompatibility.WrathoftheGods.Loaded)
+            {
+                recipe.AddIngredient(ModCompatibility.WrathoftheGods.Mod.Find<ModItem>("StarlitForge"), 1);
             }
 
             recipe.AddIngredient<EternalEnergy>(30);

@@ -5,6 +5,7 @@ using Microsoft.Xna.Framework;
 using ssm.Core;
 using FargowiltasSouls.Content.Items.Accessories.Enchantments;
 using Redemption.Items.Armor.PreHM.ElderWood;
+using Redemption.Items.Weapons.PreHM.Magic;
 using Redemption.Items.Weapons.PreHM.Summon;
 using FargowiltasSouls.Core.AccessoryEffectSystem;
 using ssm.Content.SoulToggles;
@@ -77,7 +78,7 @@ namespace ssm.Redemption.Enchantments
             recipe.AddIngredient<ElderWoodBreastplate>();
             recipe.AddIngredient<ElderWoodGreaves>();
             recipe.AddIngredient<ElderWoodSword>();
-            recipe.AddIngredient<NoblesHalberd>();
+            recipe.AddIngredient<ElderWoodStaff>();
             recipe.AddIngredient<GathicCryoFurnace>();
             recipe.AddTile(26);
 

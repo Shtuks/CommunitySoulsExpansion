@@ -17,6 +17,16 @@ public static class ModCompatibility
         public static bool Loaded => ModLoader.HasMod(Name);
         public static Mod Mod => ModLoader.GetMod(Name);
     }
+
+    public static class NoxusPort
+    {
+        public const string Name = "NoxusPort";
+        public static bool Loaded => ModLoader.HasMod(Name);
+        public static Mod Mod => ModLoader.GetMod(Name);
+
+        public static ModNPC NoxusBoss1 = Mod.Find<ModNPC>("NoxusEgg");
+        public static ModNPC NoxusBoss2 = Mod.Find<ModNPC>("EntropicGod");
+    }
     public static class CalLegacy
     {
         public const string Name = "CalamityLegacy";

@@ -50,7 +50,7 @@ namespace ssm
                 }
                 if (entity.type == ModContent.ItemType<MutantBody>())
                 {
-                    entity.defense = 100;
+                    entity.defense = 90;
                 }
                 if (entity.type == ModContent.ItemType<MutantMask>())
                 {

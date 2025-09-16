@@ -6,6 +6,7 @@ using Terraria.ModLoader;
 using Terraria;
 using ssm.Core;
 using Fargowiltas.Items.Tiles;
+using FargowiltasSouls.Core;
 
 namespace ssm.SpiritMod
 {
@@ -17,10 +18,17 @@ namespace ssm.SpiritMod
         {
             return CSEConfig.Instance.SpiritMod;
         }
+
+        public override void SetStaticDefaults()
+        {
+            base.SetStaticDefaults();
+            Main.RegisterItemAnimation(Item.type, new DrawAnimationRectangularV(6, 4, 5));
+            ItemID.Sets.AnimatesAsSoul[Item.type] = true;
+        }
         public override void SetDefaults()
         {
-            Item.width = 20;
-            Item.height = 20;
+            Item.width = 29;
+            Item.height = 38;
             Item.accessory = true;
             ItemID.Sets.ItemNoGravity[Item.type] = true;
             Item.value = 5000000;

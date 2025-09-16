@@ -7,6 +7,8 @@ using FargowiltasSouls.Content.Items.Materials;
 using ThoriumMod.Buffs.Bard;
 using ssm.CrossMod.CraftingStations;
 using FargowiltasSouls.Core.AccessoryEffectSystem;
+using FargowiltasSouls.Core;
+using Terraria.DataStructures;
 
 namespace ssm.Thorium.Souls
 {
@@ -18,10 +20,17 @@ namespace ssm.Thorium.Souls
         {
             return CSEConfig.Instance.Thorium;
         }
+
+        public override void SetStaticDefaults()
+        {
+            base.SetStaticDefaults();
+            Main.RegisterItemAnimation(Item.type, new DrawAnimationVertical(6, 61));
+            ItemID.Sets.AnimatesAsSoul[Item.type] = true;
+        }
         public override void SetDefaults()
         {
-            Item.width = 20;
-            Item.height = 20;
+            Item.width = 50;
+            Item.height = 52;
             Item.accessory = true;
             ItemID.Sets.ItemNoGravity[Item.type] = true;
             Item.value = 5000000;

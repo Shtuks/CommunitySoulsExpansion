@@ -23,6 +23,7 @@ namespace ssm.CatTech
 
                 if ((recipe.HasResult<VagabondsSoul>()
                     || recipe.HasResult<BerserkerSoul>()
+                    || recipe.HasResult<ColossusSoul>()
                     || recipe.HasResult<SnipersSoul>()
                     || recipe.HasResult<ConjuristsSoul>()
                     || recipe.HasResult<ArchWizardsSoul>()) && !recipe.HasIngredient<ShadowspecBar>())

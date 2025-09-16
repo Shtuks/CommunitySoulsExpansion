@@ -21,7 +21,7 @@ namespace ssm.Content.Items.Accessories
     {
         public override bool IsLoadingEnabled(Mod mod)
         {
-            return CSEConfig.Instance.AlternativeSiblings;
+            return CSEConfig.Instance.AlternativeSiblings && CSEConfig.Instance.ExperimentalContent;
         }
 
         public override void SetStaticDefaults() => ItemID.Sets.ItemNoGravity[this.Type] = true;

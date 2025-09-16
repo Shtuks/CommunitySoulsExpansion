@@ -33,6 +33,7 @@ using static ssm.SoA.Enchantments.LapisEnchant;
 using static ssm.SoA.Enchantments.PrairieEnchant;
 using static ssm.SoA.Forces.FoundationsForce;
 using static ssm.SoA.Enchantments.QuasarEnchant;
+using Terraria.DataStructures;
 
 namespace ssm.SoA.Souls
 {
@@ -40,6 +41,13 @@ namespace ssm.SoA.Souls
     [JITWhenModsEnabled(ModCompatibility.SacredTools.Name)]
     public class SoASoul : BaseSoul
     {
+        public override void SetStaticDefaults()
+        {
+            base.SetStaticDefaults();
+            Main.RegisterItemAnimation(Item.type, new DrawAnimationHorizontal(6, 60));
+            ItemID.Sets.AnimatesAsSoul[Item.type] = true;
+        }
+
         public override bool IsLoadingEnabled(Mod mod)
         {
             return CSEConfig.Instance.SacredTools;
@@ -47,8 +55,8 @@ namespace ssm.SoA.Souls
 
         public override void SetDefaults()
         {
-            Item.width = 20;
-            Item.height = 20;
+            Item.width = 59;
+            Item.height = 51;
             Item.defense = 40;
             Item.accessory = true;
             ItemID.Sets.ItemNoGravity[Item.type] = true;

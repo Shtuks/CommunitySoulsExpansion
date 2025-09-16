@@ -551,6 +551,7 @@ namespace ssm
                     ("Nebuleus", 26f),
                     ("ThePrimordials", 19.5f),
                     ("Nihilus", 26.99f),
+                    ("The Entropic God, Noxus", 27.001f),
                     ("Erazor", 25f),
                     ("Abaddon, the Source of the Affliction", 18.9f),
                     ("Araghur, the Flare Serpent", 19.9f),

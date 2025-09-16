@@ -207,6 +207,10 @@ namespace ssm.Content.NPCs
         public override bool CheckActive() => shoulBeGone;
         public override void AI()
         {
+            if (!shoulBeGone)
+            {
+                NPC.active = true;
+            }
             NPC.breath = 200;
             NPC.breathCounter = 0;
             NPC.immortal = true;

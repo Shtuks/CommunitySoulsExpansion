@@ -15,6 +15,7 @@ using SacredTools.Content.Items.Materials;
 using ssm.Content.Items.Armor;
 using Redemption.Items.Materials.PreHM;
 using ssm.CrossMod.CraftingStations;
+using Fargowiltas.Items.Tiles;
 
 namespace ssm.Redemption
 {
@@ -34,11 +35,11 @@ namespace ssm.Redemption
         {
             Recipe.Create(ModContent.ItemType<PureIronAlloy>())
                 .AddIngredient<DragonLeadAlloy>()
-                .AddTile<RedemptionCraftingStationTile>()
+                .AddTile<CrucibleCosmosSheet>()
                 .Register();
             Recipe.Create(ModContent.ItemType<DragonLeadAlloy>())
                 .AddIngredient<PureIronAlloy>()
-                .AddTile<RedemptionCraftingStationTile>()
+                .AddTile<CrucibleCosmosSheet>()
                 .Register();
         }
         public override void PostAddRecipes()

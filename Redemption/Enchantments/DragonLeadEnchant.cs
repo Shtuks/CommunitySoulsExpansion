@@ -11,6 +11,7 @@ using Redemption.Items.Weapons.PreHM.Ranged;
 using FargowiltasSouls.Core.AccessoryEffectSystem;
 using ssm.Content.SoulToggles;
 using Redemption.Buffs.NPCBuffs;
+using Redemption.Items.Weapons.PreHM.Magic;
 
 namespace ssm.Redemption.Enchantments
 {
@@ -68,7 +69,7 @@ namespace ssm.Redemption.Enchantments
             recipe.AddIngredient(ModContent.ItemType<DragonLeadSkull>());
             recipe.AddIngredient(ModContent.ItemType<DragonLeadRibplate>());
             recipe.AddIngredient(ModContent.ItemType<DragonLeadGreaves>());
-            recipe.AddIngredient(ModContent.ItemType<HeartInsignia>());
+            recipe.AddIngredient(ModContent.ItemType<DragonSlayersStaff>());
             recipe.AddIngredient<DragonCleaver>();
             recipe.AddIngredient<DragonSlayersBow>();
 

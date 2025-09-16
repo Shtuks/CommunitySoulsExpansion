@@ -45,24 +45,39 @@ namespace ssm.Thorium.Enchantments
             public override Header ToggleHeader => Header.GetHeader<SvartalfheimForceHeader>();
             public override int ToggleItemType => ModContent.ItemType<TideHunterEnchant>();
             public override bool ExtraAttackEffect => true;
+
+            //even with 1 in 100 chance spam weapons break this ench
+            public int cd;
+
+            public override void PostUpdate(Player player)
+            {
+                if(cd > 1)
+                {
+                    cd--;
+                }
+            }
             public override void TryAdditionalAttacks(Player player, int damage, DamageClass damageType)
             {
-                Vector2 center = player.Center;
-                Vector2 vector = Vector2.Normalize(Main.MouseWorld - center);
-
-                if (Main.rand.Next(player.ForceEffect<YewWoodEffect>() ? 75 : 100) != 0)
+                if (cd < 0)
                 {
-                    Projectile.NewProjectile(
-                        player.GetSource_FromThis(),
-                        player.Center,
-                        vector,
-                        ModContent.ProjectileType<VileArrow>(),
-                        1,
-                        0f,
-                        player.whoAmI
-                    );
-                }
+                    Vector2 center = player.Center;
+                    Vector2 vector = Vector2.Normalize(Main.MouseWorld - center);
 
+                    if (Main.rand.Next(player.ForceEffect<YewWoodEffect>() ? 75 : 100) != 0)
+                    {
+                        Projectile.NewProjectile(
+                            player.GetSource_FromThis(),
+                            player.Center,
+                            vector,
+                            ModContent.ProjectileType<VileArrow>(),
+                            1,
+                            0f,
+                            player.whoAmI
+                        );
+                        //1 sec
+                        cd += 60;
+                    }
+                }
             }
         }
         public override void AddRecipes()

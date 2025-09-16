@@ -87,7 +87,7 @@ namespace ssm.Thorium.Enchantments
                     Vector2 center = player.Center;
                     Vector2 vector = Vector2.Normalize(Main.MouseWorld - center);
 
-                    if (Main.rand.Next(20) != 0)
+                    if (Main.rand.Next(30) != 0)
                     {
                         Projectile.NewProjectile(
                             player.GetSource_FromThis(),

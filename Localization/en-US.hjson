@@ -1154,7 +1154,7 @@ Mods: {
 				Tooltip:
 					'''
 					'Subdued Serenity'
-					Depending on the wind speed all speed stats are increased by 5%-10%
+					Depending on the wind speed all speed stats are increased by 5%-15%
 					'''
 			}
 
@@ -3016,7 +3016,13 @@ Mods: {
 			}
 
 			Catlight: {
-				Tooltip: Becomes stronger with bosses defeated: Mutant, Monstrosity
+				Tooltip:
+					'''
+					Don't benefit from offensive accessories or armor
+					Ignores more i-frames as you progress
+					Damage increases with each major boss defeated
+					'Great for impersonating CSE devs'
+					'''
 				DisplayName: Catlight
 			}
 
@@ -3649,27 +3655,50 @@ Mods: {
 
 			ChampionHeadband: {
 				DisplayName: Champion Headband
-				Tooltip: ""
+				Tooltip:
+					'''
+					Grants immunity to Petrified
+					Grants a weak ram dash
+					Dashing spawns a sword that cuts through nearby enemies in the direction you dash in
+					“Champion.. like Fargo’s champions? Haha! Hah.. uh.”
+					'''
 			}
 
 			GraniteMaterializer: {
 				DisplayName: Granite Materializer
-				Tooltip: ""
+				Tooltip:
+					'''
+					Grants immunity to Granite Surge
+					Allows the player to throw a chunk of granite at their cursor position every 30 seconds exploding into charged shards on contact with anything which home into enemies
+					“At least it's not diorite.”
+					'''
 			}
 
 			JellyfishCoil: {
 				DisplayName: Jellyfish Coil
-				Tooltip: ""
+				Tooltip:
+					'''
+					Grants immunity to Bubbled
+					Allows you to spawn a protective bubble around yourself
+					The bubble breaks after absorbing 300 damage or after 60 seconds have passed, whichever first
+					“Get the jellyfish net, Patrick.”
+					'''
 			}
 
 			VampiresBlessing: {
 				DisplayName: Vampires Blessing
-				Tooltip: ""
+				Tooltip:
+					'''
+					Grants immunity to Vampire’s Curse
+					Spawns 3 bats after taking more than 150 damage in a single hit
+					The bats deal 20 damage each can inflict bleeding onto one enemy before disappearing
+					“Vlad the Impaler ain’t got nothing on this!”
+					'''
 			}
 
 			MonstrosityEye: {
 				DisplayName: Monstrosity Eye
-				Tooltip: ""
+				Tooltip: Your attacks inflict random loaded debuff
 			}
 		}
 
@@ -3831,6 +3860,8 @@ Mods: {
 					LikeNPC_Princess: I like {NPCName}.
 					Princess_LovesNPC: I like {NPCName}.
 				}
+
+				Census.SpawnCondition: Conditions unknown
 			}
 
 			DukeFishronEX: {
@@ -3882,6 +3913,8 @@ Mods: {
 					LikeNPC_Princess: I like {NPCName}.
 					Princess_LovesNPC: I like {NPCName}.
 				}
+
+				Census.SpawnCondition: Conditions unknown
 			}
 
 			CeilingOfMoonLord.DisplayName: Ceiling Of Moon Lord
@@ -4309,6 +4342,8 @@ Mods: {
 			GraniteChunkProj.DisplayName: Granite Chunk Proj
 			GraniteShardProj.DisplayName: Granite Shard Proj
 			FlariumTornado.DisplayName: Flarium Tornado
+			CatlightDeathrayJR.DisplayName: Catlight Deathray J R
+			CatlightDeathrayJRR.DisplayName: Catlight Deathray J R R
 		}
 
 		Bestiary: {
@@ -4512,7 +4547,10 @@ Mods: {
 			NoRework: It is recomended to play Thorium with Thorium Bosses Rework to enhance your experience
 		}
 
-		DamageClasses.CSEFullDamage.DisplayName: C S E Full Damage
+		DamageClasses: {
+			CSEFullDamage.DisplayName: C S E Full Damage
+			CatlightDamage.DisplayName: Catlight Damage
+		}
 
 		Conditions: {
 			TheKeeperDowned: Mods.ssm.Conditions.TheKeeperDowned

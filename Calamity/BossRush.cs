@@ -63,11 +63,19 @@ namespace ssm.Calamity
                 if (Bosses[i].EntityID == NPCType<MutantBoss>())
                 {
                     Bosses.Insert(i, new Boss(NPCType<AvatarRift>()));
-                    Bosses.RemoveAt(i + 1);
+                    if (ModCompatibility.NoxusPort.Loaded)
+                    {
+                        Bosses.Insert(i, new Boss(ModCompatibility.NoxusPort.NoxusBoss1.Type));
+                    }
+                    Bosses.RemoveAt(i + (ModCompatibility.NoxusPort.Loaded ? 2 : 1));
                 }
             }
 
             BossIDsAfterDeath.Add(NPCType<AvatarRift>(), [NPCType<AvatarOfEmptiness>()]);
+            if (ModCompatibility.NoxusPort.Loaded)
+            {
+                BossIDsAfterDeath.Add(ModCompatibility.NoxusPort.NoxusBoss1.Type, [ModCompatibility.NoxusPort.NoxusBoss2.Type]);
+            }
             Bosses.Add(new Boss(NPCType<NamelessDeityBoss>()));
             //BossDeathEffects.Add(NPCType<NamelessDeityBoss>(), npc => { BossRushDialogueSystem.StartDialogue(DownedBossSystem.downedBossRush ? BossRushDialoguePhase.EndRepeat : BossRushDialoguePhase.End); });
             Bosses.Add(new Boss(NPCType<MutantBoss>()));
