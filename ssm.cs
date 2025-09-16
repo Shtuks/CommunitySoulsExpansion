@@ -20,13 +20,15 @@ using Terraria.Localization;
 using ssm.Content.Items.Summons;
 //using ssm.Content.NPCs.MutantEX;
 using ssm.Content.UI;
+using ssm.Calamity.Addons.CalamityAmmo;
 using Terraria.UI;
 using ssm.CrossMod.CraftingStations;
 using ssm.gunrightsmod;
 using ssm.SpiritMod;
 using Fargowiltas.Items.CaughtNPCs;
 using System.Collections;
-using ssm.AlchemistNPC;
+ using ssm.AlchemistNPC;
+using ssm.Consolaria;
 using ssm.Content.Items.Consumables;
 using System.IO;
 using FargowiltasSouls.Core.Globals;
@@ -490,9 +492,21 @@ namespace ssm
             {
                 SpiritModCaughtNpcs.SpiritModRegisterItems();
             }
-            if (ModLoader.TryGetMod("AlchemistNPC", out Mod alch))
+          if (ModLoader.TryGetMod("AlchemistNPC", out Mod alch))
+          {
+              AlchemistNPCCaughtNpcs.AlchemistNPCCaughtNpcsRegisterItems();
+          }
+            if (ModLoader.TryGetMod("Consolaria", out Mod _))
             {
-                AlchemistNPCCaughtNpcs.AlchemistNPCCaughtNpcsRegisterItems();
+                ConsolariaCaughtNpcs.ConsolariaRegisterItems();
+            }
+            if (ModLoader.TryGetMod("XDContentMod", out Mod _))
+            {
+                XDContentModCaughtNPCs.XDContentModRegisterItems();
+            }
+            if (ModLoader.TryGetMod("CalamityAmmo", out Mod _))
+            {
+                CalamityAmmoCaughtNPCs.CalamityAmmoRegisterItems();
             }
             SkyManager.Instance["ssm:MutantEX"] = new MutantEXSky();
             SkyManager.Instance["ssm:RealMutantEX"] = new RealMutantEXSky();

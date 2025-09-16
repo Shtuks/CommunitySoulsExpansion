@@ -972,20 +972,20 @@ Mods: {
 				Tooltip:
 					'''
 					[i:ssm/NekomiEnchant] [i:ssm/StyxEnchant] Increases life regeneration and damage resistance when damaged at the cost of some energy
-					[i:ssm/NekomiEnchant] [i:ssm/StyxEnchant] Double tap down key to release energy as life draining heart or homing scythes
+					[i:ssm/NekomiEnchant] [i:ssm/StyxEnchant] Double tap DOWN to release energy as life draining heart or homing scythes
 					[i:ssm/NekomiEnchant] [i:ssm/StyxEnchant] Wield a demon axe of love and justice or brandish a blade of infernal magic when fully charged
-					[i:ssm/GaiaEnchant] Press DOWN double times activate Attacking mode
-					[i:ssm/EridanusEnchant] Press DOWN double times activate Eridanus' blessing
+					[i:ssm/GaiaEnchant] Double tap DOWN to activate offensive mode
+					[i:ssm/EridanusEnchant] Double tap DOWN activate Eridanus' blessing
 					[i:ssm/EridanusEnchant] Your critical strikes can critically strike
-					[i:ssm/StyxEnchant] Can endure any attack and survive with one life, endurance recovers when you reach max life
-					[i:ssm/StyxEnchant] Attack enemies to charge energy, Your attacks inflict Abominable Fang
-					[i:ssm/PhantaplazmalEnchant] Press the bomb key to unleash a wave of spheres and destroy most hostile projectiles, it has 60 second cooldown
-					[i:ssm/PhantaplazmalEnchant] Phantasmal eyes will shoot phantasmal deathray at nearby enemies
-					[i:ssm/PhantaplazmalEnchant] Summons spectral abomination, you erupt into a massive deathray when revived
+					[i:ssm/StyxEnchant] You can endure any attack with one life. Your endurance recovers when you reach max life
+					[i:ssm/StyxEnchant] Attack enemies to charge energy, your attacks inflict Abominable Fang
+					[i:ssm/PhantaplazmalEnchant] Unleash a wave of spheres and destroy most hostile projectiles with a 60 second cooldown
+					[i:ssm/PhantaplazmalEnchant] Phantasmal eyes will shoot phantasmal deathrays at nearby enemies
+					[i:ssm/PhantaplazmalEnchant] You summon a spectral abominationn and erupt into a massive deathray when revived
 					[i:ssm/NekomiEnchant] Graze attacks to gain up to x1.25 increased damage
 					[i:ssm/NekomiEnchant] Damage bonus decreases over time and is fully lost on hit
-					[i:ssm/NekomiEnchant] Your attacks periodically summon life draining heart
-					[i:ssm/EternityForce] Phantasmal Siblings minions protect you
+					[i:ssm/NekomiEnchant] Your attacks periodically summon life draining hearts
+					[i:ssm/EternityForce] Phantasmal Siblings protect you
 					'''
 			}
 
@@ -3066,35 +3066,6 @@ Mods: {
 				Tooltip: ""
 			}
 
-			RottingFingernail: {
-				DisplayName: Rotting Fingernail
-				Tooltip:
-					'''
-					Grants immunity to Cryptic Grasp
-					Spawns 2 friendly Grave Limbs which latch onto enemies dealing 5 dps each
-					“Utterly revolting.”
-					'''
-			}
-
-			ThunderTalonEternity: {
-				DisplayName: Thunder Talon
-				Tooltip:
-					'''
-					Your attacks apply petrified on hit.
-					“Do you hear lightning or see thunder?”
-					'''
-			}
-
-			DarkenedCloak: {
-				DisplayName: Darkened Cloak
-				Tooltip: ""
-			}
-
-			Dumbass: {
-				DisplayName: Dumbass
-				Tooltip: ""
-			}
-
 			CrystalQuiver: {
 				DisplayName: Crystal Quiver
 				Tooltip: Confuses hit enemies and deals increased damage to movement impaired enemies
@@ -3699,6 +3670,21 @@ Mods: {
 			MonstrosityEye: {
 				DisplayName: Monstrosity Eye
 				Tooltip: Your attacks inflict random loaded debuff
+			}
+
+			StarMerchant: {
+				DisplayName: Star Merchant
+				Tooltip: ""
+			}
+
+			AmmoDealer: {
+				Tooltip: ""
+				DisplayName: Ammo Dealer
+			}
+
+			McMoneypants: {
+				Tooltip: ""
+				DisplayName: Mc Moneypants
 			}
 		}
 
@@ -4542,19 +4528,19 @@ Mods: {
 		}
 
 		Message: {
-			NoThrower: WARNING! In the latest update, the thrower merge was moved to Thrower Unification mod
-			NoBalancing: If you playing Calamity with Thorium, you should install WHummus' Calamity/Thorium Balancing mod
+			NoThrower: WARNING! The thrower merge was moved to Thrower Unification mod
+			NoBalancing: Since you are playing Calamity with Thorium, WHummus' Calamity and Thorium Balancing mod is recommended
 			NoRework: It is recomended to play Thorium with Thorium Bosses Rework to enhance your experience
 		}
 
 		DamageClasses: {
-			CSEFullDamage.DisplayName: C S E Full Damage
+			CSEFullDamage.DisplayName: CSE Full Damage
 			CatlightDamage.DisplayName: Catlight Damage
 		}
 
 		Conditions: {
-			TheKeeperDowned: Mods.ssm.Conditions.TheKeeperDowned
-			AbaddonDowned: Mods.ssm.Conditions.AbaddonDowned
+			TheKeeperDowned: The Keeper had been defeated
+			AbaddonDowned: Abaddon has been defeated
 		}
 	}
 }
