@@ -3632,6 +3632,20 @@ Mods: {
 			MutantsCurseEX: {
 				DisplayName: Mutated Challenger
 				Tooltip: ""
+				Mayo1: Mutant max life and damage scales with ammount of supported mods.
+				Mayo21: Current Max Life:
+				Mayo22: ", Current Damage:"
+				Mayo3: If Masochist mode enabled, stats multiplied by 1.5
+				Mayo4: In first phase Mutant has Aura of Supression. After destroying aura second phase will start.
+				Mayo5: Aura can be destroyed only with Relic Weapons or Styx Armor set bonus. Mutant immune to damage if aura active.
+				Mayo6: Aura appears again after transition to second phase.
+				Mayo7: Rage and Adrenaline disabled during fight.
+				Mayo8: Transition to 2nd phase happens on 1/2 of HP instead of 2/3.
+				Mayo9: Arena will be acitve regardless of phase.
+				Mayo10: You will die immideately if you get more than 20 (10 if maso mode) hits.
+				Mayo11: Your hitbox always displayed during fight.
+				Mayo12: Stardust and Gold enchantments abilities disabled.
+				Mayo13: Masochism.
 			}
 
 			ShadowflameSeed: {

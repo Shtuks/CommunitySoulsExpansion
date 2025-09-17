@@ -288,13 +288,13 @@ namespace ssm
             }
             if (item.type == ModContent.ItemType<MutantsCurse>() || item.type == ModContent.ItemType<AbominationnVoodooDoll>())
             {
-                tooltips.Add(new TooltipLine(Mod, "1m", "Mutant max life and damage scales with ammount of supported mods."));
-                tooltips.Add(new TooltipLine(Mod, "2m", $"Current Max Life: {10000000 + Math.Round(CSENpcs.multiplierML, 1) * 10000000}, Current Damage: {500 + Math.Round(CSENpcs.multiplierMD, 1) * 100}"));
-                tooltips.Add(new TooltipLine(Mod, "5m", "If Masochist mode enabled, stats multiplied by 1.5"));
+                tooltips.Add(new TooltipLine(Mod, "1m", $"{Language.GetTextValue("Mods.ssm.Items.MutantsCurseEX.Mayo1")}"));
+                tooltips.Add(new TooltipLine(Mod, "2m", $"{Language.GetTextValue("Mods.ssm.Items.MutantsCurseEX.Mayo21")} {10000000 + Math.Round(CSENpcs.multiplierML, 1) * 10000000}{Language.GetTextValue("Mods.ssm.Items.MutantsCurseEX.Mayo22")} {500 + Math.Round(CSENpcs.multiplierMD, 1) * 100}"));
+                tooltips.Add(new TooltipLine(Mod, "5m", $"{Language.GetTextValue("Mods.ssm.Items.MutantsCurseEX.Mayo3")}"));
                 if (ModCompatibility.SacredTools.Loaded && CSEConfig.Instance.ExperimentalContent)
                 {
-                    tooltips.Add(new TooltipLine(Mod, "7m", "In first phase Mutant has Aura of Supression. After destroying aura second phase will start."));
-                    tooltips.Add(new TooltipLine(Mod, "8m", "Aura can be destroyed only with Relic Weapons or Styx Armor set bonus. Mutant immune to damage if aura active."));
+                    tooltips.Add(new TooltipLine(Mod, "7m", $"{Language.GetTextValue("Mods.ssm.Items.MutantsCurseEX.Mayo4")}"));
+                    tooltips.Add(new TooltipLine(Mod, "8m", $"{Language.GetTextValue("Mods.ssm.Items.MutantsCurseEX.Mayo5")}"));
                 }
             }
             if (item.type == ModContent.ItemType<MutantsCurseEX>())
@@ -302,20 +302,20 @@ namespace ssm
                 tooltips.Add(new TooltipLine(Mod, "1m", $"Current Max Life: {10000000 + Math.Round(CSENpcs.multiplierML, 1) * 10000000}, Current Damage: {500 + Math.Round(CSENpcs.multiplierMD, 1) * 100}"));
                 if (ModCompatibility.SacredTools.Loaded && CSEConfig.Instance.ExperimentalContent)
                 {
-                    tooltips.Add(new TooltipLine(Mod, "2m", "In first phase Mutant has Aura of Supression. After destroying aura second phase will start."));
-                    tooltips.Add(new TooltipLine(Mod, "3m", "Aura can be destroyed only with Relic Weapons or Styx Armor set bonus. Mutant immune to damage if aura active."));
-                    tooltips.Add(new TooltipLine(Mod, "3m", "Aura appears again after transition to second phase."));
+                    tooltips.Add(new TooltipLine(Mod, "2m", $"{Language.GetTextValue("Mods.ssm.Items.MutantsCurseEX.Mayo4")}")); ;
+                    tooltips.Add(new TooltipLine(Mod, "3m", $"{Language.GetTextValue("Mods.ssm.Items.MutantsCurseEX.Mayo5")}"));
+                    tooltips.Add(new TooltipLine(Mod, "3m", $"{Language.GetTextValue("Mods.ssm.Items.MutantsCurseEX.Mayo6")}"));
                 }
                 if (ModCompatibility.Calamity.Loaded)
                 {
-                    tooltips.Add(new TooltipLine(Mod, "4m", "Rage and Adrenaline disabled during fight."));
+                    tooltips.Add(new TooltipLine(Mod, "4m", $"{Language.GetTextValue("Mods.ssm.Items.MutantsCurseEX.Mayo7")}"));
                 }
-                tooltips.Add(new TooltipLine(Mod, "5m", "Transition to 2nd phase happens on 1/2 of HP instead of 2/3."));
-                tooltips.Add(new TooltipLine(Mod, "6m", "Arena will be acitve regardless of phase."));
-                tooltips.Add(new TooltipLine(Mod, "7m", "You will die immideately if you get more than 20 (10 if maso mode) hits."));
-                tooltips.Add(new TooltipLine(Mod, "8m", "Your hitbox always displayed during fight."));
-                tooltips.Add(new TooltipLine(Mod, "9m", "Stardust and Gold enchantments abilities disabled."));
-                tooltips.Add(new TooltipLine(Mod, "10m", "Masochism."));
+                tooltips.Add(new TooltipLine(Mod, "5m", $"{Language.GetTextValue("Mods.ssm.Items.MutantsCurseEX.Mayo8")}"));
+                tooltips.Add(new TooltipLine(Mod, "6m", $"{Language.GetTextValue("Mods.ssm.Items.MutantsCurseEX.Mayo9")}"));
+                tooltips.Add(new TooltipLine(Mod, "7m", $"{Language.GetTextValue("Mods.ssm.Items.MutantsCurseEX.Mayo10")}"));
+                tooltips.Add(new TooltipLine(Mod, "8m", $"{Language.GetTextValue("Mods.ssm.Items.MutantsCurseEX.Mayo11")}"));
+                tooltips.Add(new TooltipLine(Mod, "9m", $"{Language.GetTextValue("Mods.ssm.Items.MutantsCurseEX.Mayo12")}"));
+                tooltips.Add(new TooltipLine(Mod, "10m", $"{Language.GetTextValue("Mods.ssm.Items.MutantsCurseEX.Mayo13")}"));
             }
             if (item.damage < 100000 && item.damage > 10000 && !CSEUtils.IsModItem(item, "CalamityInheritance") && !CSEUtils.IsModItem(item, "SacredTools") && !CSEUtils.IsModItem(item, "FargowiltasSouls") && !CSEUtils.IsModItem(item, "ThoriumMod") && !CSEUtils.IsModItem(item, "CaamityMod"))
             {
