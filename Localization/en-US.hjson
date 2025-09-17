@@ -3703,7 +3703,12 @@ Mods: {
 
 			McMoneypants: {
 				Tooltip: ""
-				DisplayName: Mc Moneypants
+				DisplayName: McMoneypants
+			}
+
+			StarMerchantNPC: {
+				DisplayName: Star Merchant
+				Tooltip: ""
 			}
 		}
 

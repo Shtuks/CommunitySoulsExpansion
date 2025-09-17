@@ -23,7 +23,7 @@ namespace ssm.Consolaria
         {
             if (ModLoader.TryGetMod("XDContentMod", out Mod XD))
             {
-                ssm.Add("StarMerchant", XD.Find<ModNPC>("StarMerchantNPC").Type);
+                ssm.Add("StarMerchantNPC", XD.Find<ModNPC>("StarMerchantNPC").Type);
             }
         }
     }
