@@ -47,11 +47,11 @@ namespace ssm.Content.NPCs.RealMutantEX.Projectiles
 
                 targetRotation = -realRotation / 2;
             }
-            if (npc.ai[0] == 1922)
+            else if (npc.ai[0] == 1922)
             {
                 Projectile.velocity = Vector2.Zero;
 
-                targetRotation = realRotation;
+                targetRotation = -realRotation / 2;
             }
             else if (npc.ai[0] == 49)
             {

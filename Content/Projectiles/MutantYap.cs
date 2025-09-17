@@ -58,7 +58,7 @@ namespace ssm.Content.Projectiles
             Projectile.Center = npc.Center;
             Projectile.timeLeft = 10;
 
-            if (npc.ai[0] < 0f && (Projectile.localAI[1] += 1f) > 20f)
+            if (npc.ai[0] < 0f && (Projectile.localAI[1] += 1f) > 25f)
             {
                 Projectile.localAI[1] = 0f;
                 if (Projectile.ai[1] < enterP3.Length)

@@ -55,7 +55,7 @@ namespace ssm
             if (ModCompatibility.Homeward.Loaded) { multiplierML += 0.5f; multiplierMD += 1f; multiplierAL += 0.5f; multiplierAD += 1f; }
             if (ModCompatibility.Calamity.Loaded && ModCompatibility.SacredTools.Loaded) { multiplierML += 0.5f;}
             if (ModCompatibility.Entropy.Loaded) { multiplierML += 1f;  }
-            if (ModCompatibility.BlushiePort.Loaded) { multiplierML += 1f; multiplierMD += 1f; }
+            if (ModCompatibility.BlushiePort.Loaded) { multiplierML += 1f; multiplierMD += 2f; }
             if (ModCompatibility.CatTech.Loaded) { multiplierML += 9f; multiplierMD += 10f; multiplierAL += 10f; multiplierAD += 15f; }
             if (ModCompatibility.CatTech.Loaded && ModCompatibility.Calamity.Loaded) { multiplierAL += 5f; multiplierAD += 5f; }
 
