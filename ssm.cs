@@ -492,10 +492,10 @@ namespace ssm
             {
                 SpiritModCaughtNpcs.SpiritModRegisterItems();
             }
-          if (ModLoader.TryGetMod("AlchemistNPC", out Mod alch))
-          {
-              AlchemistNPCCaughtNpcs.AlchemistNPCCaughtNpcsRegisterItems();
-          }
+              if (ModLoader.TryGetMod("AlchemistNPC", out Mod alch))
+              {
+                  AlchemistNPCCaughtNpcs.AlchemistNPCCaughtNpcsRegisterItems();
+              }
             if (ModLoader.TryGetMod("Consolaria", out Mod _))
             {
                 ConsolariaCaughtNpcs.ConsolariaRegisterItems();
