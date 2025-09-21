@@ -18,7 +18,7 @@ using System.Collections.Generic;
 namespace ssm.Content.Items.Accessories
 {
     [AutoloadEquip(EquipType.Wings)]
-    internal class StargateSoul : ModItem
+    public class StargateSoul : ModItem
     {
         private List<int> debuffIndexes = new List<int>();
         public override bool IsLoadingEnabled(Mod mod)
