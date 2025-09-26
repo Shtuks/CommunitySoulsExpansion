@@ -1,0 +1,2519 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Stubble.Core</name>
+    </assembly>
+    <members>
+        <member name="T:Stubble.Core.Builders.ParserPipelineBuilder">
+            <summary>
+            This class allows modification of the parser pipeline for use in
+            parsing a Mustache template
+            </summary>
+        </member>
+        <member name="M:Stubble.Core.Builders.ParserPipelineBuilder.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Stubble.Core.Builders.ParserPipelineBuilder"/> class.
+            </summary>
+        </member>
+        <member name="P:Stubble.Core.Builders.ParserPipelineBuilder.InlineParsers">
+            <summary>
+            Gets the inline parsers
+            </summary>
+        </member>
+        <member name="P:Stubble.Core.Builders.ParserPipelineBuilder.BlockParsers">
+            <summary>
+            Gets the block parsers
+            </summary>
+        </member>
+        <member name="M:Stubble.Core.Builders.ParserPipelineBuilder.Build">
+            <summary>
+            Builds a pipeline instance and caches it so once it's built it
+            can't be modified.
+            </summary>
+            <returns>A pipeline for use in parsing</returns>
+        </member>
+        <member name="M:Stubble.Core.Builders.ParserPipelineBuilder.Replace``1(Stubble.Core.Parser.Interfaces.InlineParser)">
+            <summary>
+            Finds a parser with the provided type and replaces it with the new parser
+            </summary>
+            <typeparam name="T">The type to replace</typeparam>
+            <param name="parser">The parser to replace the provided one with</param>
+            <returns>The builder for chaining</returns>
+        </member>
+        <member name="M:Stubble.Core.Builders.ParserPipelineBuilder.Replace``1(Stubble.Core.Parser.Interfaces.BlockParser)">
+            <summary>
+            Finds a parser with the provided type and replaces it with the new parser
+            </summary>
+            <typeparam name="T">The type to replace</typeparam>
+            <param name="parser">The parser to replace the provided one with</param>
+            <returns>The builder for chaining</returns>
+        </member>
+        <member name="M:Stubble.Core.Builders.ParserPipelineBuilder.AddAfter``1(Stubble.Core.Parser.Interfaces.InlineParser)">
+            <summary>
+            Finds a parser with the provided type and adds the new parser after it
+            </summary>
+            <typeparam name="T">The type to replace</typeparam>
+            <param name="parser">The parser to add after</param>
+            <returns>The builder for chaining</returns>
+        </member>
+        <member name="M:Stubble.Core.Builders.ParserPipelineBuilder.AddAfter``1(Stubble.Core.Parser.Interfaces.BlockParser)">
+            <summary>
+            Finds a parser with the provided type and adds the new parser after it
+            </summary>
+            <typeparam name="T">The type to replace</typeparam>
+            <param name="parser">The parser to add after</param>
+            <returns>The builder for chaining</returns>
+        </member>
+        <member name="M:Stubble.Core.Builders.ParserPipelineBuilder.AddBefore``1(Stubble.Core.Parser.Interfaces.InlineParser)">
+            <summary>
+            Finds a parser with the provided type and adds the new parser before it
+            </summary>
+            <typeparam name="T">The type to replace</typeparam>
+            <param name="parser">The parser to add before</param>
+            <returns>The builder for chaining</returns>
+        </member>
+        <member name="M:Stubble.Core.Builders.ParserPipelineBuilder.AddBefore``1(Stubble.Core.Parser.Interfaces.BlockParser)">
+            <summary>
+            Finds a parser with the provided type and adds the new parser before it
+            </summary>
+            <typeparam name="T">The type to replace</typeparam>
+            <param name="parser">The parser to add before</param>
+            <returns>The builder for chaining</returns>
+        </member>
+        <member name="M:Stubble.Core.Builders.ParserPipelineBuilder.Remove``1">
+            <summary>
+            Finds and remove a parser with the provided type
+            </summary>
+            <typeparam name="T">The type to remove</typeparam>
+            <returns>The builder for chaining</returns>
+        </member>
+        <member name="T:Stubble.Core.Builders.StubbleBuilder">
+            <summary>
+            A builder for configuring and building a <see cref="T:Stubble.Core.StubbleVisitorRenderer"/>
+            </summary>
+        </member>
+        <member name="P:Stubble.Core.Builders.StubbleBuilder.ConfigureSettings">
+            <summary>
+            Gets the action for configuring settings for the renderer
+            </summary>
+        </member>
+        <member name="M:Stubble.Core.Builders.StubbleBuilder.Build">
+            <inheritdoc/>
+        </member>
+        <member name="M:Stubble.Core.Builders.StubbleBuilder.Configure(System.Action{Stubble.Core.Settings.RendererSettingsBuilder})">
+            <summary>
+            Configures the builder with the provided action
+            </summary>
+            <param name="configureSettings">The action to configure the builder with</param>
+            <returns>The builder to continue chaining with</returns>
+        </member>
+        <member name="T:Stubble.Core.Classes.EncodingFunctions">
+            <summary>
+            Contains some default implementations for encoding html
+            </summary>
+        </member>
+        <member name="P:Stubble.Core.Classes.EncodingFunctions.WebUtilityHtmlEncoding">
+            <summary>
+            Gets the web utility implementation of Html Encode
+            </summary>
+        </member>
+        <member name="T:Stubble.Core.Classes.LimitedSizeConcurrentDictionary`2">
+            <summary>
+            Represents a generic concurent dictionary which has a limited size
+            </summary>
+            <typeparam name="TKey">The key for the dictionary</typeparam>
+            <typeparam name="TValue">The value for the dictionary</typeparam>
+        </member>
+        <member name="M:Stubble.Core.Classes.LimitedSizeConcurrentDictionary`2.#ctor(System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Stubble.Core.Classes.LimitedSizeConcurrentDictionary`2"/> class
+            with a max size.
+            </summary>
+            <param name="maxSize">The max size to set for the dictionary</param>
+        </member>
+        <member name="P:Stubble.Core.Classes.LimitedSizeConcurrentDictionary`2.Item(`0)">
+            <summary>
+            Gets or Sets a value in the concurrent dictionary. If would be over
+            the max size then dump the first item in the dictionary
+            </summary>
+            <param name="key">The key to use to lookup in the dictionary</param>
+            <returns>The looked up value</returns>
+        </member>
+        <member name="T:Stubble.Core.Classes.Tags">
+            <summary>
+            Represents a set of tags used to identify tokens
+            </summary>
+        </member>
+        <member name="M:Stubble.Core.Classes.Tags.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Stubble.Core.Classes.Tags"/> class.
+            </summary>
+            <param name="startTag">Start tag</param>
+            <param name="endTag">End tag</param>
+        </member>
+        <member name="P:Stubble.Core.Classes.Tags.StartTag">
+            <summary>
+            Gets the start tag value
+            </summary>
+        </member>
+        <member name="P:Stubble.Core.Classes.Tags.EndTag">
+            <summary>
+            Gets the end tag value
+            </summary>
+        </member>
+        <member name="M:Stubble.Core.Classes.Tags.op_Equality(Stubble.Core.Classes.Tags,Stubble.Core.Classes.Tags)">
+            <summary>
+            Compares if two tags are equal
+            </summary>
+            <param name="left">left tag</param>
+            <param name="right">other</param>
+            <returns>If the tags are equal</returns>
+        </member>
+        <member name="M:Stubble.Core.Classes.Tags.op_Inequality(Stubble.Core.Classes.Tags,Stubble.Core.Classes.Tags)">
+            <summary>
+            Compares two tags and returns if they're not equal
+            </summary>
+            <param name="left">tag</param>
+            <param name="right">other</param>
+            <returns>If the tags are not equal</returns>
+        </member>
+        <member name="M:Stubble.Core.Classes.Tags.ToString">
+            <summary>
+            Returns a visual representation of the tags
+            </summary>
+            <returns>The start tag and end tag</returns>
+        </member>
+        <member name="M:Stubble.Core.Classes.Tags.Equals(Stubble.Core.Classes.Tags)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Stubble.Core.Classes.Tags.Equals(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Stubble.Core.Classes.Tags.GetHashCode">
+            <inheritdoc/>
+        </member>
+        <member name="T:Stubble.Core.Classes.TypeBySubclassAndAssignableImpl">
+            <summary>
+            TypeBySubclassAndAssignable Comparer for Type
+            </summary>
+        </member>
+        <member name="P:Stubble.Core.Classes.TypeBySubclassAndAssignableImpl.Default">
+            <summary>
+            Gets an instance of TypeBySubclassAndAssignable Comparer for Type.
+            </summary>
+            <returns>an IComparer</returns>
+        </member>
+        <member name="M:Stubble.Core.Classes.TypeBySubclassAndAssignableImpl.Compare(System.Type,System.Type)">
+            <summary>
+            Compares two types using standard comparisions,
+            subclass and assignable from
+            </summary>
+            <param name="x">The first type to compare</param>
+            <param name="y">The second type</param>
+            <returns>If an element is the same, before or after another</returns>
+        </member>
+        <member name="T:Stubble.Core.Contexts.BaseContext`1">
+            <summary>
+            Represents the abstract base of any renderer context
+            </summary>
+            <typeparam name="TContext">The type of the actual context</typeparam>
+        </member>
+        <member name="M:Stubble.Core.Contexts.BaseContext`1.#ctor(Stubble.Core.Interfaces.IStubbleLoader,`0)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Stubble.Core.Contexts.BaseContext`1"/> class.
+            </summary>
+            <param name="partialLoader">A reference to loader for partials</param>
+            <param name="parentContext">The parent context for the new context</param>
+        </member>
+        <member name="P:Stubble.Core.Contexts.BaseContext`1.ParentContext">
+            <summary>
+            Gets the parent context of the current context
+            </summary>
+        </member>
+        <member name="P:Stubble.Core.Contexts.BaseContext`1.PartialLoader">
+            <summary>
+            Gets the partial loader for the context
+            </summary>
+        </member>
+        <member name="M:Stubble.Core.Contexts.BaseContext`1.Push(System.Object)">
+            <summary>
+            Returns a new <see cref="T:Stubble.Core.Contexts.BaseContext`1"/> with the given view and it's
+            parent set as the current context
+            </summary>
+            <param name="newView">The data view to create the new context with</param>
+            <returns>A new child data context of the current context</returns>
+        </member>
+        <member name="T:Stubble.Core.Contexts.Context">
+            <summary>
+            Represents the context for a template
+            </summary>
+        </member>
+        <member name="M:Stubble.Core.Contexts.Context.#ctor(System.Object,Stubble.Core.Settings.RendererSettings,Stubble.Core.Settings.RenderSettings)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Stubble.Core.Contexts.Context"/> class.
+            </summary>
+            <param name="view">The data view to create the context with</param>
+            <param name="rendererSettings">A reference to the a registry instance</param>
+            <param name="settings">The render settings </param>
+        </member>
+        <member name="M:Stubble.Core.Contexts.Context.#ctor(System.Object,Stubble.Core.Settings.RendererSettings,Stubble.Core.Interfaces.IStubbleLoader,Stubble.Core.Settings.RenderSettings)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Stubble.Core.Contexts.Context"/> class.
+            </summary>
+            <param name="view">The data view to create the context with</param>
+            <param name="rendererSettings">A reference to the a registry instance</param>
+            <param name="partialLoader">A reference to loader for partials</param>
+            <param name="settings">The render settings </param>
+        </member>
+        <member name="M:Stubble.Core.Contexts.Context.#ctor(System.Object,Stubble.Core.Settings.RendererSettings,Stubble.Core.Interfaces.IStubbleLoader,Stubble.Core.Contexts.Context,Stubble.Core.Settings.RenderSettings)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Stubble.Core.Contexts.Context"/> class.
+            </summary>
+            <param name="view">The data view to create the context with</param>
+            <param name="rendererSettings">A reference to the a registry instance</param>
+            <param name="partialLoader">A reference to loader for partials</param>
+            <param name="parentContext">The parent context for the new context</param>
+            <param name="settings">The render settings </param>
+        </member>
+        <member name="P:Stubble.Core.Contexts.Context.View">
+            <summary>
+            Gets the data view of the context
+            </summary>
+        </member>
+        <member name="P:Stubble.Core.Contexts.Context.RenderSettings">
+            <summary>
+            Gets the render settings for the context
+            </summary>
+        </member>
+        <member name="P:Stubble.Core.Contexts.Context.RendererSettings">
+            <summary>
+            Gets the registry for the context
+            </summary>
+        </member>
+        <member name="P:Stubble.Core.Contexts.Context.Cache">
+            <summary>
+            Gets the value cache to avoid multiple lookups
+            </summary>
+        </member>
+        <member name="M:Stubble.Core.Contexts.Context.Lookup(System.String)">
+            <summary>
+            Looks up a value by name from the context
+            </summary>
+            <param name="name">The name of the value to lookup</param>
+            <exception cref="T:Stubble.Core.Exceptions.StubbleDataMissException">If ThrowOnDataMiss set then thrown on value not found</exception>
+            <returns>The value if found or null if not</returns>
+        </member>
+        <member name="M:Stubble.Core.Contexts.Context.IsTruthyValue(System.Object)">
+            <summary>
+            Checks if the passed value is Truthy
+            </summary>
+            <param name="value">The value to check</param>
+            <returns>If the value is truthy</returns>
+        </member>
+        <member name="M:Stubble.Core.Contexts.Context.Push(System.Object)">
+            <summary>
+            Returns a new <see cref="T:Stubble.Core.Contexts.Context"/> with the given view and it's
+            parent set as the current context
+            </summary>
+            <param name="newView">The data view to create the new context with</param>
+            <returns>A new child data context of the current context</returns>
+        </member>
+        <member name="M:Stubble.Core.Contexts.Context.GetValueFromRegistry(System.Object,System.String)">
+            <summary>
+            Gets a value from the registry using the initalized value getters
+            </summary>
+            <param name="value">The value to lookup the value within</param>
+            <param name="key">The key to lookup in the value</param>
+            <returns>The value if found or null if not</returns>
+        </member>
+        <member name="M:Stubble.Core.Contexts.Context.TryEnumerationConversionIfRequired(System.Object)">
+            <summary>
+            Tries to convert an object into an Enumeration if possible
+            </summary>
+            <param name="value">The object to try convert</param>
+            <returns>The passed value or the value after conversion</returns>
+        </member>
+        <member name="T:Stubble.Core.Exceptions.StubbleAmbigousMatchException">
+            <summary>
+            Represents errors that occur when data an ambiguous match is found when rendering a template
+            </summary>
+        </member>
+        <member name="M:Stubble.Core.Exceptions.StubbleAmbigousMatchException.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Stubble.Core.Exceptions.StubbleAmbigousMatchException"/> class.
+            </summary>
+        </member>
+        <member name="M:Stubble.Core.Exceptions.StubbleAmbigousMatchException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Stubble.Core.Exceptions.StubbleAmbigousMatchException"/> class with
+            a specified error message.
+            </summary>
+            <param name="message">The message that describes the error.</param>
+        </member>
+        <member name="M:Stubble.Core.Exceptions.StubbleAmbigousMatchException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Stubble.Core.Exceptions.StubbleAmbigousMatchException"/> class with
+            a specified error message and a reference to the inner exception that is the cause of
+            this exception.
+            </summary>
+            <param name="message">The message that describes the error.</param>
+            <param name="innerException">The exception that is the cause of the current exception, or a null reference if no inner exception is specified.</param>
+        </member>
+        <member name="T:Stubble.Core.Exceptions.StubbleDataMissException">
+            <summary>
+            Represents errors that occur when data is not found when rendering a template
+            </summary>
+        </member>
+        <member name="M:Stubble.Core.Exceptions.StubbleDataMissException.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Stubble.Core.Exceptions.StubbleDataMissException"/> class.
+            </summary>
+        </member>
+        <member name="M:Stubble.Core.Exceptions.StubbleDataMissException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Stubble.Core.Exceptions.StubbleDataMissException"/> class with
+            a specified error message.
+            </summary>
+            <param name="message">The message that describes the error.</param>
+        </member>
+        <member name="M:Stubble.Core.Exceptions.StubbleDataMissException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Stubble.Core.Exceptions.StubbleDataMissException"/> class with
+            a specified error message and a reference to the inner exception that is the cause of
+            this exception.
+            </summary>
+            <param name="message">The message that describes the error.</param>
+            <param name="innerException">The exception that is the cause of the current exception, or a null reference if no inner exception is specified.</param>
+        </member>
+        <member name="T:Stubble.Core.Exceptions.StubbleException">
+            <summary>
+            Represents a general error coming from Stubble
+            </summary>
+        </member>
+        <member name="M:Stubble.Core.Exceptions.StubbleException.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Stubble.Core.Exceptions.StubbleException"/> class.
+            </summary>
+        </member>
+        <member name="M:Stubble.Core.Exceptions.StubbleException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Stubble.Core.Exceptions.StubbleException"/> class with
+            a specified error message.
+            </summary>
+            <param name="message">The message that describes the error.</param>
+        </member>
+        <member name="M:Stubble.Core.Exceptions.StubbleException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Stubble.Core.Exceptions.StubbleException"/> class with
+            a specified error message and a reference to the inner exception that is the cause of
+            this exception.
+            </summary>
+            <param name="message">The message that describes the error.</param>
+            <param name="innerException">The exception that is the cause of the current exception, or a null reference if no inner exception is specified.</param>
+        </member>
+        <member name="T:Stubble.Core.Exceptions.UnknownTemplateException">
+            <summary>
+            Represents an exception coming from discovering a template using a <see cref="T:Stubble.Core.Interfaces.IStubbleLoader"/>
+            </summary>
+        </member>
+        <member name="M:Stubble.Core.Exceptions.UnknownTemplateException.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Stubble.Core.Exceptions.UnknownTemplateException"/> class.
+            </summary>
+        </member>
+        <member name="M:Stubble.Core.Exceptions.UnknownTemplateException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Stubble.Core.Exceptions.UnknownTemplateException"/> class with
+            a specified error message.
+            </summary>
+            <param name="message">The message that describes the error.</param>
+        </member>
+        <member name="M:Stubble.Core.Exceptions.UnknownTemplateException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Stubble.Core.Exceptions.UnknownTemplateException"/> class with
+            a specified error message and a reference to the inner exception that is the cause of
+            this exception.
+            </summary>
+            <param name="message">The message that describes the error.</param>
+            <param name="innerException">The exception that is the cause of the current exception, or a null reference if no inner exception is specified.</param>
+        </member>
+        <member name="T:Stubble.Core.Helpers.Helpers">
+            <summary>
+            A class of static extension methods
+            </summary>
+        </member>
+        <member name="M:Stubble.Core.Helpers.Helpers.MergeLeft``2(System.Collections.Generic.IDictionary{``0,``1},System.Collections.Generic.IDictionary{``0,``1}[])">
+            <summary>
+            A way to merge IDictionaries together with the right most keys overriding the left keys.
+            Found here: http://stackoverflow.com/questions/294138/merging-dictionaries-in-c-sharp
+            </summary>
+            <typeparam name="TK">The type of the key</typeparam>
+            <typeparam name="TV">The type of the value</typeparam>
+            <param name="me">The left dictionry to merge in to</param>
+            <param name="others">The other dictionaries to merge left</param>
+            <returns>Returns a new dictionary with all the dictionaries keys merged left-wise.</returns>
+        </member>
+        <member name="T:Stubble.Core.Helpers.ReflectionHelper">
+            <summary>
+            A collection of helpers for reflecting upon types
+            </summary>
+        </member>
+        <member name="M:Stubble.Core.Helpers.ReflectionHelper.GetMemberFunctionLookup(System.Type)">
+            <summary>
+            Returns a lookup of a types members returning lazy Func accessors
+            </summary>
+            <param name="objectType">The type to lookup members from</param>
+            <returns>A lookup of membername to lazy accessor func</returns>
+        </member>
+        <member name="M:Stubble.Core.Helpers.ReflectionHelper.GetExpressionFromMemberInfo(System.Reflection.MemberInfo,System.Linq.Expressions.Expression)">
+            <summary>
+            Gets Expression to call a <see cref="T:System.Reflection.MemberInfo"/>
+            </summary>
+            <param name="m">The member info to call</param>
+            <param name="instance">The instance to call the member on</param>
+            <returns>An expression to call the member info using</returns>
+        </member>
+        <member name="T:Stubble.Core.Helpers.SliceHelpers">
+            <summary>
+            Helpers for the <see cref="T:Stubble.Core.Imported.StringSlice"/> class
+            </summary>
+        </member>
+        <member name="M:Stubble.Core.Helpers.SliceHelpers.SplitSliceToLines(Stubble.Core.Imported.StringSlice)">
+            <summary>
+            Splits a slice into an IEnumerable of slices split on newlines
+            </summary>
+            <param name="slice">The slice to split</param>
+            <returns>The line split into lines</returns>
+        </member>
+        <member name="T:Stubble.Core.Helpers.TaskHelpers">
+            <summary>
+            Helpers for tasks
+            </summary>
+        </member>
+        <member name="P:Stubble.Core.Helpers.TaskHelpers.CompletedTask">
+            <summary>
+            Gets a static completed task
+            </summary>
+        </member>
+        <member name="T:Stubble.Core.Imported.ICharIterator">
+            <summary>
+            Provides a common interface for iterating characters
+            over a <see cref="T:Stubble.Core.Imported.StringSlice"/>.
+            </summary>
+        </member>
+        <member name="P:Stubble.Core.Imported.ICharIterator.Start">
+            <summary>
+            Gets the current start character position.
+            </summary>
+        </member>
+        <member name="P:Stubble.Core.Imported.ICharIterator.CurrentChar">
+            <summary>
+            Gets the current character.
+            </summary>
+        </member>
+        <member name="P:Stubble.Core.Imported.ICharIterator.End">
+            <summary>
+            Gets the end character position.
+            </summary>
+        </member>
+        <member name="M:Stubble.Core.Imported.ICharIterator.NextChar">
+            <summary>
+            Goes to the next character, incrementing the <see cref="P:Stubble.Core.Imported.ICharIterator.Start"/> position.
+            </summary>
+            <returns>The next character. `\0` is end of the iteration.</returns>
+        </member>
+        <member name="P:Stubble.Core.Imported.ICharIterator.IsEmpty">
+            <summary>
+            Gets a value indicating whether this instance is empty.
+            </summary>
+        </member>
+        <member name="M:Stubble.Core.Imported.ICharIterator.TrimStart">
+            <summary>
+            Trims whitespaces at the beginning of this slice starting from <see cref="P:Stubble.Core.Imported.ICharIterator.Start"/> position.
+            </summary>
+            <returns><c>true</c> if it has reaches the end of the iterator</returns>
+        </member>
+        <member name="T:Stubble.Core.Imported.MethodImplOptionPortable">
+            <summary>
+            Internal helper to allow to declare a method using AggressiveInlining without being .NET 4.0+
+            </summary>
+        </member>
+        <member name="T:Stubble.Core.Imported.OrderedList`1">
+            <summary>
+            A List that provides methods for inserting/finding before/after. See remarks.
+            </summary>
+            <typeparam name="T">Type of the list item</typeparam>
+            <seealso cref="T:System.Collections.Generic.List`1" />
+            <remarks>We use a typed list and don't use extension methods because it would pollute all list implemts and the top level namespace.</remarks>
+        </member>
+        <member name="M:Stubble.Core.Imported.OrderedList`1.Replace``1(`0)">
+            <summary>
+            Replaces <typeparamref name="TElement"/> with <paramref name="replacement"/>.
+            </summary>
+            <typeparam name="TElement">Element type to find in the list</typeparam>
+            <param name="replacement">Object to replace this element with</param>
+            <returns><c>true</c> if a replacement was made; otherwise <c>false</c>.</returns>
+        </member>
+        <member name="T:Stubble.Core.Imported.StringSlice">
+            <summary>
+            A lightweight struct that represents a slice of a string.
+            </summary>
+            <seealso cref="T:Stubble.Core.Imported.ICharIterator" />
+        </member>
+        <member name="F:Stubble.Core.Imported.StringSlice.Empty">
+            <summary>
+            An empty string slice.
+            </summary>
+        </member>
+        <member name="M:Stubble.Core.Imported.StringSlice.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Stubble.Core.Imported.StringSlice"/> struct.
+            </summary>
+            <param name="text">The text.</param>
+        </member>
+        <member name="M:Stubble.Core.Imported.StringSlice.#ctor(System.String,System.Int32,System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Stubble.Core.Imported.StringSlice"/> struct.
+            </summary>
+            <param name="text">The text.</param>
+            <param name="start">The start.</param>
+            <param name="end">The end.</param>
+            <exception cref="T:System.ArgumentNullException"></exception>
+        </member>
+        <member name="F:Stubble.Core.Imported.StringSlice.Text">
+            <summary>
+            The text of this slice.
+            </summary>
+        </member>
+        <member name="P:Stubble.Core.Imported.StringSlice.Start">
+            <summary>
+            Gets or sets the start position within <see cref="F:Stubble.Core.Imported.StringSlice.Text"/>.
+            </summary>
+        </member>
+        <member name="P:Stubble.Core.Imported.StringSlice.End">
+            <summary>
+            Gets or sets the end position (inclusive) within <see cref="F:Stubble.Core.Imported.StringSlice.Text"/>.
+            </summary>
+        </member>
+        <member name="P:Stubble.Core.Imported.StringSlice.Length">
+            <summary>
+            Gets the length.
+            </summary>
+        </member>
+        <member name="P:Stubble.Core.Imported.StringSlice.CurrentChar">
+            <summary>
+            Gets the current character.
+            </summary>
+        </member>
+        <member name="P:Stubble.Core.Imported.StringSlice.IsEmpty">
+            <summary>
+            Gets a value indicating whether this instance is empty.
+            </summary>
+        </member>
+        <member name="P:Stubble.Core.Imported.StringSlice.Item(System.Int32)">
+            <summary>
+            Gets the <see cref="T:System.Char"/> at the specified index.
+            </summary>
+            <param name="index">The index.</param>
+            <returns>A character in the slice at the specified index (not from <see cref="P:Stubble.Core.Imported.StringSlice.Start"/> but from the begining of the slice)</returns>
+        </member>
+        <member name="M:Stubble.Core.Imported.StringSlice.NextChar">
+            <summary>
+            Goes to the next character, incrementing the <see cref="P:Stubble.Core.Imported.StringSlice.Start" /> position.
+            </summary>
+            <returns>
+            The next character. `\0` is end of the iteration.
+            </returns>
+        </member>
+        <member name="M:Stubble.Core.Imported.StringSlice.PeekChar(System.Int32)">
+            <summary>
+            Peeks a character at the specified offset from the current <see cref="P:Stubble.Core.Imported.StringSlice.Start"/> position
+            inside the range <see cref="P:Stubble.Core.Imported.StringSlice.Start"/> and <see cref="P:Stubble.Core.Imported.StringSlice.End"/>, returns `\0` if outside this range.
+            </summary>
+            <param name="offset">The offset.</param>
+            <returns>The character at offset, returns `\0` if none.</returns>
+        </member>
+        <member name="M:Stubble.Core.Imported.StringSlice.PeekCharAbsolute(System.Int32)">
+            <summary>
+            Peeks a character at the specified offset from the current beginning of the string, without taking into account <see cref="P:Stubble.Core.Imported.StringSlice.Start"/> and <see cref="P:Stubble.Core.Imported.StringSlice.End"/>
+            </summary>
+            <returns>The character at offset, returns `\0` if none.</returns>
+        </member>
+        <member name="M:Stubble.Core.Imported.StringSlice.PeekCharExtra(System.Int32)">
+            <summary>
+            Peeks a character at the specified offset from the current begining of the slice
+            without using the range <see cref="P:Stubble.Core.Imported.StringSlice.Start"/> or <see cref="P:Stubble.Core.Imported.StringSlice.End"/>, returns `\0` if outside the <see cref="F:Stubble.Core.Imported.StringSlice.Text"/>.
+            </summary>
+            <param name="offset">The offset.</param>
+            <returns>The character at offset, returns `\0` if none.</returns>
+        </member>
+        <member name="M:Stubble.Core.Imported.StringSlice.Match(System.String,System.Int32)">
+            <summary>
+            Matches the specified text.
+            </summary>
+            <param name="text">The text.</param>
+            <param name="offset">The offset.</param>
+            <returns><c>true</c> if the text matches; <c>false</c> otherwise</returns>
+        </member>
+        <member name="M:Stubble.Core.Imported.StringSlice.Match(System.String,System.Int32,System.Int32)">
+            <summary>
+            Matches the specified text.
+            </summary>
+            <param name="text">The text.</param>
+            <param name="end">The end.</param>
+            <param name="offset">The offset.</param>
+            <returns><c>true</c> if the text matches; <c>false</c> otherwise</returns>
+        </member>
+        <member name="M:Stubble.Core.Imported.StringSlice.MatchLowercase(System.String,System.Int32,System.Int32)">
+            <summary>
+            Matches the specified text using lowercase comparison.
+            </summary>
+            <param name="text">The text.</param>
+            <param name="end">The end.</param>
+            <param name="offset">The offset.</param>
+            <returns><c>true</c> if the text matches; <c>false</c> otherwise</returns>
+        </member>
+        <member name="M:Stubble.Core.Imported.StringSlice.IndexOf(System.String,System.Int32,System.Boolean)">
+            <summary>
+            Searches the specified text within this slice.
+            </summary>
+            <param name="text">The text.</param>
+            <param name="offset">The offset.</param>
+            <param name="ignoreCase">true if ignore case</param>
+            <returns><c>true</c> if the text was found; <c>false</c> otherwise</returns>
+        </member>
+        <member name="M:Stubble.Core.Imported.StringSlice.IndexOf(System.Char)">
+            <summary>
+            Searches for the specified character within this slice.
+            </summary>
+            <returns>A value >= 0 if the character was found, otherwise &lt; 0</returns>
+        </member>
+        <member name="M:Stubble.Core.Imported.StringSlice.TrimStart">
+            <summary>
+            Trims whitespaces at the beginning of this slice starting from <see cref="P:Stubble.Core.Imported.StringSlice.Start"/> position.
+            </summary>
+            <returns>
+              <c>true</c> if it has reaches the end of the iterator
+            </returns>
+        </member>
+        <member name="M:Stubble.Core.Imported.StringSlice.TrimStart(System.Int32@)">
+            <summary>
+            Trims whitespaces at the beginning of this slice starting from <see cref="P:Stubble.Core.Imported.StringSlice.Start"/> position.
+            </summary>
+            <param name="spaceCount">The number of spaces trimmed.</param>
+        </member>
+        <member name="M:Stubble.Core.Imported.StringSlice.TrimEnd">
+            <summary>
+            Trims whitespaces at the end of this slice, starting from <see cref="P:Stubble.Core.Imported.StringSlice.End"/> position.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Stubble.Core.Imported.StringSlice.Trim">
+            <summary>
+            Trims whitespaces from both the start and end of this slice.
+            </summary>
+        </member>
+        <member name="M:Stubble.Core.Imported.StringSlice.ToString">
+            <summary>
+            Returns a <see cref="T:System.String" /> that represents this instance.
+            </summary>
+            <returns>
+            A <see cref="T:System.String" /> that represents this instance.
+            </returns>
+        </member>
+        <member name="M:Stubble.Core.Imported.StringSlice.IsEmptyOrWhitespace">
+            <summary>
+            Determines whether this slice is empty or made only of whitespaces.
+            </summary>
+            <returns><c>true</c> if this slice is empty or made only of whitespaces; <c>false</c> otherwise</returns>
+        </member>
+        <member name="T:Stubble.Core.Interfaces.IAsyncStubbleRenderer">
+            <summary>
+            The main interface for Async stubble renderers
+            </summary>
+        </member>
+        <member name="M:Stubble.Core.Interfaces.IAsyncStubbleRenderer.RenderAsync(System.String,System.Object)">
+            <summary>
+            Renders the template with the given view using the writer.
+            </summary>
+            <param name="template">The mustache teplate to render</param>
+            <param name="view">The data to use for rendering</param>
+            <returns>A mustache rendered string</returns>
+        </member>
+        <member name="M:Stubble.Core.Interfaces.IAsyncStubbleRenderer.RenderAsync(System.String,System.Object,Stubble.Core.Settings.RenderSettings)">
+            <summary>
+            Renders the template with the given view using the writer
+            and the given render settings.
+            </summary>
+            <param name="template">The mustache teplate to render</param>
+            <param name="view">The data to use for rendering</param>
+            <param name="settings">Any settings you wish to override the defaults with</param>
+            <returns>A mustache rendered string</returns>
+        </member>
+        <member name="M:Stubble.Core.Interfaces.IAsyncStubbleRenderer.RenderAsync(System.String,System.Object,System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+            Renders the template with the given view and partials using
+            the writer.
+            </summary>
+            <param name="template">The mustache teplate to render</param>
+            <param name="view">The data to use for rendering</param>
+            <param name="partials">A hash of Partials</param>
+            <returns>A mustache rendered string</returns>
+        </member>
+        <member name="M:Stubble.Core.Interfaces.IAsyncStubbleRenderer.RenderAsync(System.String,System.Object,System.Collections.Generic.IDictionary{System.String,System.String},Stubble.Core.Settings.RenderSettings)">
+            <summary>
+            Renders the template with the given view and partials using
+            the writer and the given Render Settings
+            </summary>
+            <param name="template">The mustache teplate to render</param>
+            <param name="view">The data to use for rendering</param>
+            <param name="partials">A hash of Partials</param>
+            <param name="settings">Any settings you wish to override the defaults with</param>
+            <returns>A mustache rendered string</returns>
+        </member>
+        <member name="T:Stubble.Core.Interfaces.IStubbleBuilder`1">
+            <summary>
+            A non-generic interface for IStubbleBuilders
+            </summary>
+            <typeparam name="TRenderer">The type of renderer built</typeparam>
+        </member>
+        <member name="M:Stubble.Core.Interfaces.IStubbleBuilder`1.Build">
+            <summary>
+            Builds and configures the renderer
+            </summary>
+            <returns>The built renderer</returns>
+        </member>
+        <member name="T:Stubble.Core.Interfaces.IStubbleLoader">
+            <summary>
+            Represents the interface for loading a template by name from a source
+            </summary>
+        </member>
+        <member name="M:Stubble.Core.Interfaces.IStubbleLoader.Load(System.String)">
+             <summary>
+             Loads a template with the given name.
+            
+             Returns null if the template is not found
+             </summary>
+             <param name="name">The name of the template to load</param>
+             <returns>A Mustache Template</returns>
+        </member>
+        <member name="M:Stubble.Core.Interfaces.IStubbleLoader.LoadAsync(System.String)">
+             <summary>
+             Loads a template asynchronously with the given name.
+            
+             Returns null if the template is not found
+             </summary>
+             <param name="name">The name of the template to load</param>
+             <returns>The musatche template or null</returns>
+        </member>
+        <member name="M:Stubble.Core.Interfaces.IStubbleLoader.Clone">
+            <summary>
+            Should return a new instance of the loader with the same internals
+            </summary>
+            <returns>A new <see cref="T:Stubble.Core.Interfaces.IStubbleLoader"/> with the same internals</returns>
+        </member>
+        <member name="T:Stubble.Core.Interfaces.IStubbleRenderer">
+            <summary>
+            This is the main interface for all Stubble renderers
+            </summary>
+        </member>
+        <member name="M:Stubble.Core.Interfaces.IStubbleRenderer.Render(System.String,System.Object)">
+            <summary>
+            Renders the template with the given view using the writer.
+            </summary>
+            <param name="template">The mustache teplate to render</param>
+            <param name="view">The data to use for rendering</param>
+            <returns>A mustache rendered string</returns>
+        </member>
+        <member name="M:Stubble.Core.Interfaces.IStubbleRenderer.Render(System.String,System.Object,Stubble.Core.Settings.RenderSettings)">
+            <summary>
+            Renders the template with the given view using the writer
+            and the given render settings.
+            </summary>
+            <param name="template">The mustache teplate to render</param>
+            <param name="view">The data to use for rendering</param>
+            <param name="settings">Any settings you wish to override the defaults with</param>
+            <returns>A mustache rendered string</returns>
+        </member>
+        <member name="M:Stubble.Core.Interfaces.IStubbleRenderer.Render(System.String,System.Object,System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+            Renders the template with the given view and partials using
+            the writer.
+            </summary>
+            <param name="template">The mustache teplate to render</param>
+            <param name="view">The data to use for rendering</param>
+            <param name="partials">A hash of Partials</param>
+            <returns>A mustache rendered string</returns>
+        </member>
+        <member name="M:Stubble.Core.Interfaces.IStubbleRenderer.Render(System.String,System.Object,System.Collections.Generic.IDictionary{System.String,System.String},Stubble.Core.Settings.RenderSettings)">
+            <summary>
+            Renders the template with the given view and partials using
+            the writer and the given Render Settings
+            </summary>
+            <param name="template">The mustache teplate to render</param>
+            <param name="view">The data to use for rendering</param>
+            <param name="partials">A hash of Partials</param>
+            <param name="settings">Any settings you wish to override the defaults with</param>
+            <returns>A mustache rendered string</returns>
+        </member>
+        <member name="T:Stubble.Core.Loaders.CompositeLoader">
+            <summary>
+            An <see cref="T:Stubble.Core.Interfaces.IStubbleLoader"/> with child loaders
+            </summary>
+        </member>
+        <member name="M:Stubble.Core.Loaders.CompositeLoader.#ctor(Stubble.Core.Interfaces.IStubbleLoader[])">
+            <summary>
+            Initializes a new instance of the <see cref="T:Stubble.Core.Loaders.CompositeLoader"/> class
+            with child loaders.
+            </summary>
+            <param name="loaders">A list of child loaders to initalise with</param>
+        </member>
+        <member name="P:Stubble.Core.Loaders.CompositeLoader.Loaders">
+            <summary>
+            Gets the loaders the composite loader will try to load
+            </summary>
+        </member>
+        <member name="M:Stubble.Core.Loaders.CompositeLoader.AddLoader(Stubble.Core.Interfaces.IStubbleLoader)">
+            <summary>
+            Adds a new loader to the composite loader.
+            </summary>
+            <param name="loader">The loader to add</param>
+            <returns>The composite loader instance</returns>
+        </member>
+        <member name="M:Stubble.Core.Loaders.CompositeLoader.AddLoaders(Stubble.Core.Interfaces.IStubbleLoader[])">
+            <summary>
+            Adds multiple loaders to the composite loader.
+            </summary>
+            <param name="newLoaders">The loaders to add</param>
+            <returns>The composite loader instance</returns>
+        </member>
+        <member name="M:Stubble.Core.Loaders.CompositeLoader.Clone">
+            <inheritdoc/>
+        </member>
+        <member name="M:Stubble.Core.Loaders.CompositeLoader.Load(System.String)">
+            <summary>
+            Loads a template with the given name.
+            </summary>
+            <param name="name">The name of the template to load</param>
+            <exception cref="T:Stubble.Core.Exceptions.UnknownTemplateException">When a template is not found in the loader</exception>
+            <returns>A Mustache Template</returns>
+        </member>
+        <member name="M:Stubble.Core.Loaders.CompositeLoader.LoadAsync(System.String)">
+            <summary>
+            Loads a template asynchronously with the given name
+            </summary>
+            <param name="name">The name of the template to load</param>
+            <exception cref="T:Stubble.Core.Exceptions.UnknownTemplateException">When a template is not found in the loader</exception>
+            <returns>The mustache template with the given name</returns>
+        </member>
+        <member name="T:Stubble.Core.Loaders.DictionaryLoader">
+            <summary>
+            An <see cref="T:Stubble.Core.Interfaces.IStubbleLoader"/> for mapping strings to templates
+            </summary>
+        </member>
+        <member name="M:Stubble.Core.Loaders.DictionaryLoader.#ctor(System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Stubble.Core.Loaders.DictionaryLoader"/> class.
+            </summary>
+            <param name="templates">The templates to cache</param>
+        </member>
+        <member name="P:Stubble.Core.Loaders.DictionaryLoader.TemplateCache">
+            <summary>
+            Gets the template cache for the loader
+            </summary>
+        </member>
+        <member name="M:Stubble.Core.Loaders.DictionaryLoader.Clone">
+            <inheritdoc/>
+        </member>
+        <member name="M:Stubble.Core.Loaders.DictionaryLoader.Load(System.String)">
+            <summary>
+            Loads the template from the dictionary cache
+            </summary>
+            <param name="name">The name of the template</param>
+            <returns>The template or null if not found</returns>
+        </member>
+        <member name="M:Stubble.Core.Loaders.DictionaryLoader.LoadAsync(System.String)">
+            <summary>
+            Loads the template from a local dictionary cache
+            </summary>
+            <param name="name">The name of the template to load</param>
+            <returns>The template or null if not found</returns>
+        </member>
+        <member name="T:Stubble.Core.Loaders.StringLoader">
+            <summary>
+            A noop loader
+            </summary>
+        </member>
+        <member name="M:Stubble.Core.Loaders.StringLoader.Clone">
+            <inheritdoc/>
+        </member>
+        <member name="M:Stubble.Core.Loaders.StringLoader.Load(System.String)">
+            <summary>
+            Returns the passed string the parse as a template
+            </summary>
+            <param name="name">The name of the template to load</param>
+            <returns>A Mustache Template</returns>
+        </member>
+        <member name="M:Stubble.Core.Loaders.StringLoader.LoadAsync(System.String)">
+            <summary>
+            Returns the passed string as the template
+            </summary>
+            <param name="name">The template</param>
+            <returns>The template as a task</returns>
+        </member>
+        <member name="T:Stubble.Core.Parser.CachedMustacheParser">
+            <summary>
+            A mustache parser that caches the results with the same templates
+            </summary>
+        </member>
+        <member name="M:Stubble.Core.Parser.CachedMustacheParser.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Stubble.Core.Parser.CachedMustacheParser"/> class.
+            </summary>
+        </member>
+        <member name="M:Stubble.Core.Parser.CachedMustacheParser.#ctor(System.UInt32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Stubble.Core.Parser.CachedMustacheParser"/> class.
+            with a given cache limit
+            </summary>
+            <param name="cacheLimit">The cache limit</param>
+        </member>
+        <member name="P:Stubble.Core.Parser.CachedMustacheParser.Cache">
+            <summary>
+            Gets the Template Token Cache
+            </summary>
+        </member>
+        <member name="M:Stubble.Core.Parser.CachedMustacheParser.Parse(System.String,Stubble.Core.Classes.Tags,System.Int32,Stubble.Core.Parser.ParserPipeline)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Stubble.Core.Parser.CachedMustacheParser.TemplateKey">
+            <summary>
+            A composite key of template parameters for storage in the cached dictionary
+            </summary>
+        </member>
+        <member name="M:Stubble.Core.Parser.CachedMustacheParser.TemplateKey.#ctor(System.String,Stubble.Core.Classes.Tags,System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Stubble.Core.Parser.CachedMustacheParser.TemplateKey"/> struct.
+            </summary>
+            <param name="template">The template for the key</param>
+            <param name="startingTags">The starting tags for the key</param>
+            <param name="lineIndent">The line indent for the key</param>
+        </member>
+        <member name="M:Stubble.Core.Parser.CachedMustacheParser.TemplateKey.GetHashCode">
+            <inheritdoc/>
+        </member>
+        <member name="M:Stubble.Core.Parser.CachedMustacheParser.TemplateKey.Equals(System.Object)">
+            <summary>
+            Checks the equality of the object with the TemplateKey
+            </summary>
+            <param name="obj">The object to compare</param>
+            <returns>If the object is equal to the template key</returns>
+        </member>
+        <member name="M:Stubble.Core.Parser.CachedMustacheParser.TemplateKey.Equals(Stubble.Core.Parser.CachedMustacheParser.TemplateKey)">
+            <summary>
+            Checks the equality of one template key to another
+            </summary>
+            <param name="other">The other template key</param>
+            <returns>If the other key is equal to this key</returns>
+        </member>
+        <member name="T:Stubble.Core.Parser.InstanceMustacheParser">
+            <summary>
+            Represents wrapper to the static mustache parse call
+            </summary>
+        </member>
+        <member name="M:Stubble.Core.Parser.InstanceMustacheParser.Parse(System.String,Stubble.Core.Classes.Tags,System.Int32,Stubble.Core.Parser.ParserPipeline)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Stubble.Core.Parser.Interfaces.BlockParser">
+            <summary>
+            A Base class for all Block Parsers
+            </summary>
+        </member>
+        <member name="M:Stubble.Core.Parser.Interfaces.BlockParser.TryOpenBlock(Stubble.Core.Parser.Processor,Stubble.Core.Imported.StringSlice@)">
+            <summary>
+            Tries to open a block tag
+            </summary>
+            <param name="processor">The processor being used</param>
+            <param name="slice">The string slice to parse</param>
+            <returns>The result of trying to open the block</returns>
+        </member>
+        <member name="M:Stubble.Core.Parser.Interfaces.BlockParser.TryClose(Stubble.Core.Parser.Processor,Stubble.Core.Imported.StringSlice@,Stubble.Core.Tokens.BlockToken)">
+            <summary>
+            Tries to close a block tag
+            </summary>
+            <param name="processor">The processor</param>
+            <param name="slice">The string slice to parse</param>
+            <param name="token">The tag to try and close</param>
+            <returns>If the block was closed or not</returns>
+        </member>
+        <member name="M:Stubble.Core.Parser.Interfaces.BlockParser.EndBlock(Stubble.Core.Parser.Processor,Stubble.Core.Tokens.BlockToken,Stubble.Core.Tokens.BlockCloseToken,Stubble.Core.Imported.StringSlice)">
+            <summary>
+            Ends a block tag
+            </summary>
+            <param name="processor">The processor</param>
+            <param name="token">The opening tag</param>
+            <param name="closeToken">The closing tag</param>
+            <param name="content">The contents the tag was parsed from</param>
+        </member>
+        <member name="T:Stubble.Core.Parser.Interfaces.IMustacheParser">
+            <summary>
+            Represents a parser for a <see cref="T:Stubble.Core.Tokens.MustacheTemplate"/>
+            </summary>
+        </member>
+        <member name="M:Stubble.Core.Parser.Interfaces.IMustacheParser.Parse(System.String,Stubble.Core.Classes.Tags,System.Int32,Stubble.Core.Parser.ParserPipeline)">
+            <summary>
+            Parses a string with the provided tags, indent and pipeline
+            </summary>
+            <param name="text">The string to parse</param>
+            <param name="startingTags">The tags to start with</param>
+            <param name="lineIndent">The indent to start at</param>
+            <param name="pipeline">The pipeline to use</param>
+            <returns>The parsed template</returns>
+        </member>
+        <member name="T:Stubble.Core.Parser.Interfaces.InlineParser">
+            <summary>
+            A base class for all inline parsers
+            </summary>
+        </member>
+        <member name="M:Stubble.Core.Parser.Interfaces.InlineParser.Match(Stubble.Core.Parser.Processor,Stubble.Core.Imported.StringSlice@)">
+            <summary>
+            Try to match a tag from the current slice
+            </summary>
+            <param name="processor">The processor</param>
+            <param name="slice">The slice</param>
+            <returns>If the parser matched a tag</returns>
+        </member>
+        <member name="T:Stubble.Core.Parser.LiteralTagResult">
+            <summary>
+            A result of a literal tag match
+            </summary>
+        </member>
+        <member name="F:Stubble.Core.Parser.LiteralTagResult.NewLine">
+            <summary>
+            The match ended in a newline
+            </summary>
+        </member>
+        <member name="F:Stubble.Core.Parser.LiteralTagResult.EndOfFile">
+            <summary>
+            The match ended at the end of file
+            </summary>
+        </member>
+        <member name="F:Stubble.Core.Parser.LiteralTagResult.TagStart">
+            <summary>
+            The match ended at the start of another tag
+            </summary>
+        </member>
+        <member name="F:Stubble.Core.Parser.LiteralTagResult.NoContent">
+            <summary>
+            The match ended and their was no content
+            </summary>
+        </member>
+        <member name="T:Stubble.Core.Parser.MustacheParser">
+            <summary>
+            A parser which takes a template and converts it into a list of Tags
+            </summary>
+        </member>
+        <member name="M:Stubble.Core.Parser.MustacheParser.Parse(System.String,Stubble.Core.Classes.Tags,System.Int32,Stubble.Core.Parser.ParserPipeline)">
+            <summary>
+            Parse a template and return a <see cref="T:Stubble.Core.Tokens.MustacheTemplate"/>
+            </summary>
+            <param name="text">The text to be parsed</param>
+            <param name="startingTags">The starting tag description</param>
+            <param name="lineIndent">The default line indent for the template</param>
+            <param name="pipeline">The pipeline to use for parsing</param>
+            <returns>The string converted to Tags</returns>
+        </member>
+        <member name="T:Stubble.Core.Parser.ParserPipeline">
+            <summary>
+            This is used to configure the inline and block parsers
+            </summary>
+        </member>
+        <member name="M:Stubble.Core.Parser.ParserPipeline.#ctor(System.Collections.Generic.List{Stubble.Core.Parser.Interfaces.InlineParser},System.Collections.Generic.List{Stubble.Core.Parser.Interfaces.BlockParser})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Stubble.Core.Parser.ParserPipeline"/> class.
+            </summary>
+            <param name="inlineParsers">The inline parsers</param>
+            <param name="blockParsers">The block parsers</param>
+        </member>
+        <member name="P:Stubble.Core.Parser.ParserPipeline.InlineParsers">
+            <summary>
+            Gets a readonly list of inline parsers
+            </summary>
+        </member>
+        <member name="P:Stubble.Core.Parser.ParserPipeline.BlockParsers">
+            <summary>
+            Gets a readonly list of block parsers
+            </summary>
+        </member>
+        <member name="T:Stubble.Core.Parser.ParserState">
+            <summary>
+            The result of a block parsing attempt
+            </summary>
+        </member>
+        <member name="F:Stubble.Core.Parser.ParserState.None">
+            <summary>
+            No block parsed
+            </summary>
+        </member>
+        <member name="F:Stubble.Core.Parser.ParserState.Skip">
+            <summary>
+            Skip the block
+            </summary>
+        </member>
+        <member name="F:Stubble.Core.Parser.ParserState.Continue">
+            <summary>
+            Continue parsing the block
+            </summary>
+        </member>
+        <member name="F:Stubble.Core.Parser.ParserState.Break">
+            <summary>
+            Break the current line
+            </summary>
+        </member>
+        <member name="T:Stubble.Core.Parser.Processor">
+            <summary>
+            A processor for turning a StringSlice into tags
+            </summary>
+        </member>
+        <member name="F:Stubble.Core.Parser.Processor.content">
+            <summary>
+            The content to be parsed and its state
+            </summary>
+        </member>
+        <member name="M:Stubble.Core.Parser.Processor.#ctor(System.Collections.Generic.List{Stubble.Core.Parser.Interfaces.InlineParser},System.Collections.Generic.List{Stubble.Core.Parser.Interfaces.BlockParser})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Stubble.Core.Parser.Processor"/> class.
+            </summary>
+            <param name="inlineParsers">The inline parsers</param>
+            <param name="blockParsers">The block parsers</param>
+        </member>
+        <member name="P:Stubble.Core.Parser.Processor.CurrentTags">
+            <summary>
+            Gets or sets the CurrentTags in scope
+            </summary>
+        </member>
+        <member name="P:Stubble.Core.Parser.Processor.CurrentToken">
+            <summary>
+            Gets or sets the CurrentTag that was read
+            </summary>
+        </member>
+        <member name="P:Stubble.Core.Parser.Processor.HasTagOnLine">
+            <summary>
+            Gets or sets a value indicating whether a tag has been seen on the current line
+            </summary>
+        </member>
+        <member name="P:Stubble.Core.Parser.Processor.HasSeenNonSpaceOnLine">
+            <summary>
+            Gets or sets a value indicating whether a non space characters has been seen on the line
+            </summary>
+        </member>
+        <member name="P:Stubble.Core.Parser.Processor.LineIndent">
+            <summary>
+            Gets or sets a value indicating the indent for the current line
+            </summary>
+        </member>
+        <member name="P:Stubble.Core.Parser.Processor.DefaultLineIndent">
+            <summary>
+            Gets or sets a value for the default line indent
+            </summary>
+        </member>
+        <member name="P:Stubble.Core.Parser.Processor.DefaultLineIndentSlice">
+            <summary>
+            Gets or sets the slice to use to the default line indent
+            </summary>
+        </member>
+        <member name="P:Stubble.Core.Parser.Processor.Document">
+            <summary>
+            Gets the document that has been parsed from the content string
+            </summary>
+        </member>
+        <member name="M:Stubble.Core.Parser.Processor.ProcessTemplate(Stubble.Core.Imported.StringSlice)">
+            <summary>
+            Processes a slice and updates the Document to contain the parsed tags
+            </summary>
+            <param name="content">The slice to parse</param>
+        </member>
+        <member name="T:Stubble.Core.Parser.TokenParsers.CommentTagParser">
+            <summary>
+            A parser for <see cref="T:Stubble.Core.Tokens.CommentToken"/>
+            </summary>
+        </member>
+        <member name="M:Stubble.Core.Parser.TokenParsers.CommentTagParser.Match(Stubble.Core.Parser.Processor,Stubble.Core.Imported.StringSlice@)">
+            <summary>
+            Tries to match a comment tag from the provided slice
+            </summary>
+            <param name="processor">The processor</param>
+            <param name="slice">The slice</param>
+            <returns>If a comment tag was matched</returns>
+        </member>
+        <member name="T:Stubble.Core.Parser.TokenParsers.DelimiterTagParser">
+            <summary>
+            A parser for Delimiter Tags
+            </summary>
+        </member>
+        <member name="M:Stubble.Core.Parser.TokenParsers.DelimiterTagParser.Match(Stubble.Core.Parser.Processor,Stubble.Core.Imported.StringSlice@)">
+            <summary>
+            Tries to match delimiter tags from the current slice
+            </summary>
+            <param name="processor">The processor</param>
+            <param name="slice">The slice</param>
+            <returns>If the match was successful</returns>
+        </member>
+        <member name="T:Stubble.Core.Parser.TokenParsers.InterpolationTagParser">
+            <summary>
+            A parser for Interpolation Tags
+            </summary>
+        </member>
+        <member name="M:Stubble.Core.Parser.TokenParsers.InterpolationTagParser.Match(Stubble.Core.Parser.Processor,Stubble.Core.Imported.StringSlice@)">
+            <summary>
+            Tries to match interpolation tags from the current slice
+            </summary>
+            <param name="processor">The processor</param>
+            <param name="slice">The slice</param>
+            <returns>If the match was successful</returns>
+        </member>
+        <member name="T:Stubble.Core.Parser.TokenParsers.InvertedSectionParser">
+            <summary>
+            A parser for inverted section tags
+            </summary>
+        </member>
+        <member name="M:Stubble.Core.Parser.TokenParsers.InvertedSectionParser.TryOpenBlock(Stubble.Core.Parser.Processor,Stubble.Core.Imported.StringSlice@)">
+            <summary>
+            Tries to open an inverted section tag using the slice
+            </summary>
+            <param name="processor">The processor</param>
+            <param name="slice">The slice</param>
+            <returns>The result of the match</returns>
+        </member>
+        <member name="M:Stubble.Core.Parser.TokenParsers.InvertedSectionParser.EndBlock(Stubble.Core.Parser.Processor,Stubble.Core.Tokens.BlockToken,Stubble.Core.Tokens.BlockCloseToken,Stubble.Core.Imported.StringSlice)">
+            <summary>
+            Closes the block using the provided close tag
+            </summary>
+            <param name="processor">The processor</param>
+            <param name="token">The open tag</param>
+            <param name="closeToken">the closing tag</param>
+            <param name="content">the content the tags were parsed from</param>
+        </member>
+        <member name="M:Stubble.Core.Parser.TokenParsers.InvertedSectionParser.TryClose(Stubble.Core.Parser.Processor,Stubble.Core.Imported.StringSlice@,Stubble.Core.Tokens.BlockToken)">
+            <summary>
+            Try to create a block close tag
+            </summary>
+            <param name="processor">The processor</param>
+            <param name="slice">the slice</param>
+            <param name="token">the current block tag</param>
+            <returns>If the close was successful</returns>
+        </member>
+        <member name="T:Stubble.Core.Parser.TokenParsers.LiteralTagParser">
+            <summary>
+            Parses literal characters
+            </summary>
+        </member>
+        <member name="M:Stubble.Core.Parser.TokenParsers.LiteralTagParser.Match(Stubble.Core.Parser.Processor,Stubble.Core.Imported.StringSlice@)">
+            <summary>
+            Parse a literal tag from the slice
+            </summary>
+            <param name="processor">The processor</param>
+            <param name="slice">The slice</param>
+            <returns>The result of the match</returns>
+        </member>
+        <member name="T:Stubble.Core.Parser.TokenParsers.PartialTagParser">
+            <summary>
+            A parser for partial tags
+            </summary>
+        </member>
+        <member name="M:Stubble.Core.Parser.TokenParsers.PartialTagParser.Match(Stubble.Core.Parser.Processor,Stubble.Core.Imported.StringSlice@)">
+            <summary>
+            Tries to match partial tag from the current slice
+            </summary>
+            <param name="processor">The processor</param>
+            <param name="slice">The slice</param>
+            <returns>If a match was found</returns>
+        </member>
+        <member name="T:Stubble.Core.Parser.TokenParsers.SectionTagParser">
+            <summary>
+            A parser for section tags
+            </summary>
+        </member>
+        <member name="M:Stubble.Core.Parser.TokenParsers.SectionTagParser.TryOpenBlock(Stubble.Core.Parser.Processor,Stubble.Core.Imported.StringSlice@)">
+            <summary>
+            Tries to open a section tag using the slice
+            </summary>
+            <param name="processor">The processor</param>
+            <param name="slice">The slice</param>
+            <returns>The result of the match</returns>
+        </member>
+        <member name="M:Stubble.Core.Parser.TokenParsers.SectionTagParser.EndBlock(Stubble.Core.Parser.Processor,Stubble.Core.Tokens.BlockToken,Stubble.Core.Tokens.BlockCloseToken,Stubble.Core.Imported.StringSlice)">
+            <summary>
+            Close the block with the given block close tag
+            </summary>
+            <param name="processor">The processor</param>
+            <param name="token">The open tag</param>
+            <param name="closeToken">the closing tag</param>
+            <param name="content">the content the tags were parsed from</param>
+        </member>
+        <member name="M:Stubble.Core.Parser.TokenParsers.SectionTagParser.TryClose(Stubble.Core.Parser.Processor,Stubble.Core.Imported.StringSlice@,Stubble.Core.Tokens.BlockToken)">
+            <summary>
+            Try to create a block close tag
+            </summary>
+            <param name="processor">The processor</param>
+            <param name="slice">the slice</param>
+            <param name="token">the current block tag</param>
+            <returns>If the close was successful</returns>
+        </member>
+        <member name="T:Stubble.Core.Renderers.Interfaces.ITokenRenderer`1">
+            <summary>
+            An interface representing a TokenRenderer
+            </summary>
+            <typeparam name="TContext">The context type for the TokenRenderer</typeparam>
+        </member>
+        <member name="M:Stubble.Core.Renderers.Interfaces.ITokenRenderer`1.Accept(Stubble.Core.Renderers.RendererBase{`0},Stubble.Core.Tokens.MustacheToken)">
+            <summary>
+            Does the renderer accept the current tag
+            </summary>
+            <param name="renderer">The renderer</param>
+            <param name="obj">The current tag</param>
+            <returns>If the renderer accepts the tag</returns>
+        </member>
+        <member name="M:Stubble.Core.Renderers.Interfaces.ITokenRenderer`1.Write(Stubble.Core.Renderers.RendererBase{`0},Stubble.Core.Tokens.MustacheToken,`0)">
+            <summary>
+            Writes the tag using the renderer
+            </summary>
+            <param name="renderer">The renderer to write with</param>
+            <param name="objectToRender">The tag to write</param>
+            <param name="context">The context to write the token</param>
+        </member>
+        <member name="M:Stubble.Core.Renderers.Interfaces.ITokenRenderer`1.WriteAsync(Stubble.Core.Renderers.RendererBase{`0},Stubble.Core.Tokens.MustacheToken,`0)">
+            <summary>
+            Writes the tag using the renderer
+            </summary>
+            <param name="renderer">The renderer to write with</param>
+            <param name="objectToRender">The tag to write</param>
+            <param name="context">The context to write the token</param>
+            <returns>A <see cref="T:System.Threading.Tasks.Task"/> representing the asynchronous operation.</returns>
+        </member>
+        <member name="T:Stubble.Core.Renderers.MustacheTokenRenderer`3">
+            <summary>
+            A base class representing a mustache tag renderer
+            </summary>
+            <typeparam name="TRenderer">The type of the renderer</typeparam>
+            <typeparam name="TToken">The type of tag that it renders</typeparam>
+            <typeparam name="TContext">The type of the context used during rendering</typeparam>
+        </member>
+        <member name="M:Stubble.Core.Renderers.MustacheTokenRenderer`3.Accept(Stubble.Core.Renderers.RendererBase{`2},Stubble.Core.Tokens.MustacheToken)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Stubble.Core.Renderers.MustacheTokenRenderer`3.Write(Stubble.Core.Renderers.RendererBase{`2},Stubble.Core.Tokens.MustacheToken,`2)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Stubble.Core.Renderers.MustacheTokenRenderer`3.WriteAsync(Stubble.Core.Renderers.RendererBase{`2},Stubble.Core.Tokens.MustacheToken,`2)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Stubble.Core.Renderers.MustacheTokenRenderer`3.Write(`0,`1,`2)">
+            <summary>
+            Write the tag using the given renderer
+            </summary>
+            <param name="renderer">The renderer to use</param>
+            <param name="obj">The tag to write</param>
+            <param name="context">The context to write the tag with</param>
+        </member>
+        <member name="M:Stubble.Core.Renderers.MustacheTokenRenderer`3.WriteAsync(`0,`1,`2)">
+            <summary>
+            Write the tag using the given renderer
+            </summary>
+            <param name="renderer">The renderer to use</param>
+            <param name="obj">The tag to write</param>
+            <param name="context">The context to write the tag with</param>
+            <returns>A <see cref="T:System.Threading.Tasks.Task"/> representing the asynchronous operation.</returns>
+        </member>
+        <member name="T:Stubble.Core.Renderers.RendererBase`1">
+            <summary>
+            A base class representing a StubbleRenderer
+            </summary>
+            <typeparam name="TContext">The type of the context for the renderer</typeparam>
+        </member>
+        <member name="M:Stubble.Core.Renderers.RendererBase`1.#ctor(Stubble.Core.Renderers.TokenRendererPipeline{`0})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Stubble.Core.Renderers.RendererBase`1"/> class.
+            </summary>
+            <param name="rendererPipeline">The renderer pipeline to use for rendering</param>
+        </member>
+        <member name="M:Stubble.Core.Renderers.RendererBase`1.Render(Stubble.Core.Tokens.BlockToken,`0)">
+            <summary>
+            Renders a block tag
+            </summary>
+            <param name="token">The block tag to render</param>
+            <param name="context">The context to write the tag with</param>
+            <returns>The current renderer</returns>
+        </member>
+        <member name="M:Stubble.Core.Renderers.RendererBase`1.RenderAsync(Stubble.Core.Tokens.BlockToken,`0)">
+            <summary>
+            Renders a block tag
+            </summary>
+            <param name="token">The block tag to render</param>
+            <param name="context">The context to write the tag with</param>
+            <returns>The current renderer</returns>
+        </member>
+        <member name="M:Stubble.Core.Renderers.RendererBase`1.Write``1(``0,`0)">
+            <summary>
+            Write the current tag to the renderer
+            </summary>
+            <typeparam name="T">The type of tag</typeparam>
+            <param name="obj">The tag to write</param>
+            <param name="context">The context to write the tag with</param>
+        </member>
+        <member name="M:Stubble.Core.Renderers.RendererBase`1.WriteAsync``1(``0,`0)">
+            <summary>
+            Write the current tag to the renderer
+            </summary>
+            <typeparam name="T">The type of tag</typeparam>
+            <param name="obj">The tag to write</param>
+            <param name="context">The context to write the tag with</param>
+            <returns>A <see cref="T:System.Threading.Tasks.Task"/> representing the asynchronous operation.</returns>
+        </member>
+        <member name="T:Stubble.Core.Renderers.StringRenderer.StringObjectRenderer`1">
+            <summary>
+            A renderer which takes a tag and turns it into a string
+            </summary>
+            <typeparam name="TToken">The tag type</typeparam>
+        </member>
+        <member name="T:Stubble.Core.Renderers.StringRenderer.StringRender">
+            <summary>
+            A string renderer which renders tokens to strings
+            </summary>
+        </member>
+        <member name="M:Stubble.Core.Renderers.StringRenderer.StringRender.#ctor(System.IO.TextWriter,Stubble.Core.Renderers.TokenRendererPipeline{Stubble.Core.Contexts.Context})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Stubble.Core.Renderers.StringRenderer.StringRender"/> class
+            with the provided text writer and the default depth
+            </summary>
+            <param name="writer">The writer to use</param>
+            <param name="rendererPipeline">The renderer pipeline to use</param>
+        </member>
+        <member name="M:Stubble.Core.Renderers.StringRenderer.StringRender.#ctor(System.IO.TextWriter,Stubble.Core.Renderers.TokenRendererPipeline{Stubble.Core.Contexts.Context},System.UInt32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Stubble.Core.Renderers.StringRenderer.StringRender"/> class
+            with the provided text writer and a given depth
+            </summary>
+            <param name="writer">The writer to use</param>
+            <param name="rendererPipeline">The renderer pipeline to use</param>
+            <param name="maxDepth">The max recursion depth for the renderer</param>
+        </member>
+        <member name="T:Stubble.Core.Renderers.StringRenderer.TextRendererBase">
+            <summary>
+            A base class for a text renderer
+            </summary>
+        </member>
+        <member name="M:Stubble.Core.Renderers.StringRenderer.TextRendererBase.#ctor(System.IO.TextWriter,Stubble.Core.Renderers.TokenRendererPipeline{Stubble.Core.Contexts.Context},System.UInt32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Stubble.Core.Renderers.StringRenderer.TextRendererBase"/> class.
+            </summary>
+            <param name="writer">The text writer to use</param>
+            <param name="rendererPipeline">The renderer pipeline to use</param>
+            <param name="maxDepth">The max recursion depth for the renderer</param>
+        </member>
+        <member name="P:Stubble.Core.Renderers.StringRenderer.TextRendererBase.Writer">
+            <summary>
+            Gets or sets the text writer
+            </summary>
+        </member>
+        <member name="M:Stubble.Core.Renderers.StringRenderer.TextRendererBase.Render(Stubble.Core.Tokens.BlockToken,Stubble.Core.Contexts.Context)">
+            <summary>
+            Renders a block tag and its children
+            </summary>
+            <param name="block">The tag to render</param>
+            <param name="context">The context to write the tag with</param>
+            <returns>The writer</returns>
+        </member>
+        <member name="M:Stubble.Core.Renderers.StringRenderer.TextRendererBase.RenderAsync(Stubble.Core.Tokens.BlockToken,Stubble.Core.Contexts.Context)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Stubble.Core.Renderers.StringRenderer.TextRendererBase`1">
+            <summary>
+            A base class for a generic TextRenderer
+            </summary>
+            <typeparam name="T">The type of the renderer</typeparam>
+        </member>
+        <member name="M:Stubble.Core.Renderers.StringRenderer.TextRendererBase`1.#ctor(System.IO.TextWriter,Stubble.Core.Renderers.TokenRendererPipeline{Stubble.Core.Contexts.Context},System.UInt32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Stubble.Core.Renderers.StringRenderer.TextRendererBase`1"/> class.
+            </summary>
+            <param name="writer">The writer to initalize with</param>
+            <param name="rendererPipeline">The renderer pipeline to use</param>
+            <param name="maxDepth">The max recursion depth for the renderer</param>
+        </member>
+        <member name="M:Stubble.Core.Renderers.StringRenderer.TextRendererBase`1.Write(System.String)">
+            <summary>
+            Writes the content to the writer
+            </summary>
+            <param name="content">The content</param>
+            <returns>The current text renderer</returns>
+        </member>
+        <member name="M:Stubble.Core.Renderers.StringRenderer.TextRendererBase`1.Write(Stubble.Core.Imported.StringSlice@)">
+            <summary>
+            Writes the specified slice to the writer
+            </summary>
+            <param name="slice">the slice</param>
+            <returns>The renderer</returns>
+        </member>
+        <member name="M:Stubble.Core.Renderers.StringRenderer.TextRendererBase`1.Write(System.Char,System.Int32)">
+            <summary>
+            Writes the character a specified number of times to the writer.
+            </summary>
+            <param name="character">The character to repeat</param>
+            <param name="repeat">The number of times to repeat the character</param>
+            <returns>The renderer</returns>
+        </member>
+        <member name="M:Stubble.Core.Renderers.StringRenderer.TextRendererBase`1.Write(System.String,System.Int32,System.Int32)">
+            <summary>
+            Writes the specified content to the writer
+            </summary>
+            <param name="content">The content.</param>
+            <param name="offset">The offset.</param>
+            <param name="length">The length.</param>
+            <returns>The renderer</returns>
+        </member>
+        <member name="T:Stubble.Core.Renderers.StringRenderer.TokenRenderers.InterpolationTokenRenderer">
+            <summary>
+            A <see cref="T:Stubble.Core.Renderers.StringRenderer.StringObjectRenderer`1"/> for rendering <see cref="T:Stubble.Core.Tokens.InterpolationToken"/>s
+            </summary>
+        </member>
+        <member name="M:Stubble.Core.Renderers.StringRenderer.TokenRenderers.InterpolationTokenRenderer.ConvertToStringInCulture(System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            Renders the value to string using a locale.
+            </summary>
+            <param name="obj">The object to convert</param>
+            <param name="culture">The culture to use</param>
+            <returns>The object stringified into the locale</returns>
+        </member>
+        <member name="M:Stubble.Core.Renderers.StringRenderer.TokenRenderers.InterpolationTokenRenderer.Write(Stubble.Core.Renderers.StringRenderer.StringRender,Stubble.Core.Tokens.InterpolationToken,Stubble.Core.Contexts.Context)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Stubble.Core.Renderers.StringRenderer.TokenRenderers.InterpolationTokenRenderer.WriteAsync(Stubble.Core.Renderers.StringRenderer.StringRender,Stubble.Core.Tokens.InterpolationToken,Stubble.Core.Contexts.Context)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Stubble.Core.Renderers.StringRenderer.TokenRenderers.InvertedSectionTokenRenderer">
+            <summary>
+            A <see cref="T:Stubble.Core.Renderers.StringRenderer.StringObjectRenderer`1"/> for rendering section tokens
+            </summary>
+        </member>
+        <member name="M:Stubble.Core.Renderers.StringRenderer.TokenRenderers.InvertedSectionTokenRenderer.Write(Stubble.Core.Renderers.StringRenderer.StringRender,Stubble.Core.Tokens.InvertedSectionToken,Stubble.Core.Contexts.Context)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Stubble.Core.Renderers.StringRenderer.TokenRenderers.InvertedSectionTokenRenderer.WriteAsync(Stubble.Core.Renderers.StringRenderer.StringRender,Stubble.Core.Tokens.InvertedSectionToken,Stubble.Core.Contexts.Context)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Stubble.Core.Renderers.StringRenderer.TokenRenderers.LiteralTokenRenderer">
+            <summary>
+            A renderer for RawValueTokens
+            </summary>
+        </member>
+        <member name="M:Stubble.Core.Renderers.StringRenderer.TokenRenderers.LiteralTokenRenderer.Write(Stubble.Core.Renderers.StringRenderer.StringRender,Stubble.Core.Tokens.LiteralToken,Stubble.Core.Contexts.Context)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Stubble.Core.Renderers.StringRenderer.TokenRenderers.LiteralTokenRenderer.WriteAsync(Stubble.Core.Renderers.StringRenderer.StringRender,Stubble.Core.Tokens.LiteralToken,Stubble.Core.Contexts.Context)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Stubble.Core.Renderers.StringRenderer.TokenRenderers.PartialTokenRenderer">
+            <summary>
+            A renderer for <see cref="T:Stubble.Core.Tokens.PartialToken"/>
+            </summary>
+        </member>
+        <member name="M:Stubble.Core.Renderers.StringRenderer.TokenRenderers.PartialTokenRenderer.Write(Stubble.Core.Renderers.StringRenderer.StringRender,Stubble.Core.Tokens.PartialToken,Stubble.Core.Contexts.Context)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Stubble.Core.Renderers.StringRenderer.TokenRenderers.PartialTokenRenderer.WriteAsync(Stubble.Core.Renderers.StringRenderer.StringRender,Stubble.Core.Tokens.PartialToken,Stubble.Core.Contexts.Context)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Stubble.Core.Renderers.StringRenderer.TokenRenderers.SectionTokenRenderer">
+            <summary>
+            A <see cref="T:Stubble.Core.Renderers.StringRenderer.StringObjectRenderer`1"/> for rendering section tokens
+            </summary>
+        </member>
+        <member name="M:Stubble.Core.Renderers.StringRenderer.TokenRenderers.SectionTokenRenderer.Write(Stubble.Core.Renderers.StringRenderer.StringRender,Stubble.Core.Tokens.SectionToken,Stubble.Core.Contexts.Context)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Stubble.Core.Renderers.StringRenderer.TokenRenderers.SectionTokenRenderer.WriteAsync(Stubble.Core.Renderers.StringRenderer.StringRender,Stubble.Core.Tokens.SectionToken,Stubble.Core.Contexts.Context)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Stubble.Core.Renderers.TokenRendererPipeline`1">
+            <summary>
+            An internal pipeline of token renderers for use by all render operations
+            </summary>
+            <typeparam name="TContext">The type of the context for the renderers</typeparam>
+        </member>
+        <member name="M:Stubble.Core.Renderers.TokenRendererPipeline`1.#ctor(System.Collections.Generic.List{Stubble.Core.Renderers.Interfaces.ITokenRenderer{`0}})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Stubble.Core.Renderers.TokenRendererPipeline`1"/> class
+            with some inital token renderers
+            </summary>
+            <param name="initalRenderers">The renderers to initalise with</param>
+        </member>
+        <member name="M:Stubble.Core.Renderers.TokenRendererPipeline`1.TryGetTokenRenderer``1(Stubble.Core.Renderers.RendererBase{`0},``0)">
+            <summary>
+            Tries to get a token renderer for a given tag type
+            </summary>
+            <typeparam name="T">The type of the tag</typeparam>
+            <param name="renderer">The base renderer being used to render</param>
+            <param name="obj">The tag to get the renderer for</param>
+            <returns>The tag renderer that matches or null</returns>
+        </member>
+        <member name="T:Stubble.Core.Settings.BaseSettings">
+            <summary>
+            Represents the root settings for a <see cref="T:Stubble.Core.Interfaces.IStubbleRenderer"/>
+            </summary>
+        </member>
+        <member name="M:Stubble.Core.Settings.BaseSettings.#ctor(Stubble.Core.Interfaces.IStubbleLoader,Stubble.Core.Interfaces.IStubbleLoader,System.UInt32,System.Boolean,Stubble.Core.Parser.Interfaces.IMustacheParser,Stubble.Core.Classes.Tags,Stubble.Core.Parser.ParserPipeline,System.Collections.Generic.HashSet{System.Type})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Stubble.Core.Settings.BaseSettings"/> class.
+            </summary>
+            <param name="templateLoader">The template loader</param>
+            <param name="partialLoader">The partial loader</param>
+            <param name="maxRecursionDepth">The max recursion depth</param>
+            <param name="ignoreCaseOnLookup">Should case be ignored on lookup</param>
+            <param name="parser">The mustache parser to use</param>
+            <param name="defaultTags">The default tags to use during parsing</param>
+            <param name="parserPipeline">The parser pipeline to use during parsing</param>
+            <param name="sectionBlacklistTypes">The blacklisted section types</param>
+        </member>
+        <member name="P:Stubble.Core.Settings.BaseSettings.TemplateLoader">
+            <summary>
+            Gets the primary Template loader
+            </summary>
+        </member>
+        <member name="P:Stubble.Core.Settings.BaseSettings.PartialTemplateLoader">
+            <summary>
+            Gets the partial Template Loader
+            </summary>
+        </member>
+        <member name="P:Stubble.Core.Settings.BaseSettings.MaxRecursionDepth">
+            <summary>
+            Gets the MaxRecursionDepth
+            </summary>
+        </member>
+        <member name="P:Stubble.Core.Settings.BaseSettings.IgnoreCaseOnKeyLookup">
+            <summary>
+            Gets a value indicating whether keys should be looked up with case sensitivity
+            </summary>
+        </member>
+        <member name="P:Stubble.Core.Settings.BaseSettings.Parser">
+            <summary>
+            Gets the parser for mustache templates
+            </summary>
+        </member>
+        <member name="P:Stubble.Core.Settings.BaseSettings.ParserPipeline">
+            <summary>
+            Gets the parser pipeline to be used when parsing
+            </summary>
+        </member>
+        <member name="P:Stubble.Core.Settings.BaseSettings.DefaultTags">
+            <summary>
+            Gets the default tags to be used during parsing
+            </summary>
+        </member>
+        <member name="P:Stubble.Core.Settings.BaseSettings.SectionBlacklistTypes">
+            <summary>
+            Gets the blacklisted types for sections
+            </summary>
+        </member>
+        <member name="T:Stubble.Core.Settings.BaseSettingsBuilder`2">
+            <summary>
+            A base class for creating setting instances
+            </summary>
+            <typeparam name="TBuilder">The builder instance to return</typeparam>
+            <typeparam name="TSettings">The settings type the builder creates</typeparam>
+        </member>
+        <member name="P:Stubble.Core.Settings.BaseSettingsBuilder`2.ParserPipelineBuilder">
+            <summary>
+            Gets the parser pipeline builder.
+            </summary>
+        </member>
+        <member name="P:Stubble.Core.Settings.BaseSettingsBuilder`2.TemplateLoader">
+            <summary>
+            Gets the Template Loader
+            </summary>
+        </member>
+        <member name="P:Stubble.Core.Settings.BaseSettingsBuilder`2.PartialTemplateLoader">
+            <summary>
+            Gets the partial Template Loader
+            </summary>
+        </member>
+        <member name="P:Stubble.Core.Settings.BaseSettingsBuilder`2.MaxRecursionDepth">
+            <summary>
+            Gets or sets the MaxRecursionDepth
+            </summary>
+        </member>
+        <member name="P:Stubble.Core.Settings.BaseSettingsBuilder`2.IgnoreCaseOnKeyLookup">
+            <summary>
+            Gets or sets a value indicating whether keys should be looked up with case sensitivity
+            </summary>
+        </member>
+        <member name="P:Stubble.Core.Settings.BaseSettingsBuilder`2.Parser">
+            <summary>
+            Gets or sets the mustache parser to use
+            </summary>
+        </member>
+        <member name="P:Stubble.Core.Settings.BaseSettingsBuilder`2.DefaultTags">
+            <summary>
+            Gets or sets the default tags to use during parsing
+            </summary>
+        </member>
+        <member name="P:Stubble.Core.Settings.BaseSettingsBuilder`2.SectionBlacklistTypes">
+            <summary>
+            Gets or sets the types blacklisted from sections
+            </summary>
+        </member>
+        <member name="M:Stubble.Core.Settings.BaseSettingsBuilder`2.BuildSettings">
+            <summary>
+            Builds a RegistrySettings class with all the provided details
+            </summary>
+            <returns>The registry settings</returns>
+        </member>
+        <member name="M:Stubble.Core.Settings.BaseSettingsBuilder`2.AddToTemplateLoader(Stubble.Core.Interfaces.IStubbleLoader)">
+            <summary>
+            Adds a loader to the Template Loader. If the Template Loader is a <see cref="T:Stubble.Core.Loaders.CompositeLoader"/> then
+            the loader is added. If not then the Template Loader is updated with a <see cref="T:Stubble.Core.Loaders.CompositeLoader"/>
+            combining the Template Loader and loader parameter.
+            </summary>
+            <param name="loader">The loader to add to the Template Loader</param>
+            <returns>The <see cref="T:Stubble.Core.Settings.RendererSettingsBuilder"/> for chaining</returns>
+        </member>
+        <member name="M:Stubble.Core.Settings.BaseSettingsBuilder`2.SetTemplateLoader(Stubble.Core.Interfaces.IStubbleLoader)">
+            <summary>
+            Sets the Template Loader to be the passed loader
+            </summary>
+            <param name="loader">The loader to set as the Template Loader</param>
+            <returns>The <see cref="T:Stubble.Core.Settings.RendererSettingsBuilder"/> for chaining</returns>
+        </member>
+        <member name="M:Stubble.Core.Settings.BaseSettingsBuilder`2.AddToPartialTemplateLoader(Stubble.Core.Interfaces.IStubbleLoader)">
+            <summary>
+            Adds a loader to the Partial Template Loader. If the Partial Template Loader is a <see cref="T:Stubble.Core.Loaders.CompositeLoader"/> then
+            the loader is added. If not then the Partial Template Loader is updated with a <see cref="T:Stubble.Core.Loaders.CompositeLoader"/>
+            combining the Partial Template Loader and loader parameter.
+            </summary>
+            <param name="loader">The loader to add to the Partial Template Loader</param>
+            <returns>The <see cref="T:Stubble.Core.Settings.RendererSettingsBuilder"/> for chaining</returns>
+        </member>
+        <member name="M:Stubble.Core.Settings.BaseSettingsBuilder`2.ConfigureParserPipeline(System.Action{Stubble.Core.Builders.ParserPipelineBuilder})">
+            <summary>
+            Configure the parser pipeline.
+            </summary>
+            <param name="builder">The parser pipeline builder.</param>
+            <returns>The <see cref="T:Stubble.Core.Settings.RendererSettingsBuilder"/> for chaining.</returns>
+        </member>
+        <member name="M:Stubble.Core.Settings.BaseSettingsBuilder`2.SetPartialTemplateLoader(Stubble.Core.Interfaces.IStubbleLoader)">
+            <summary>
+            Sets the Partial Template Loader to be the passed loader
+            </summary>
+            <param name="loader">The loader to set as the Partial Template Loader</param>
+            <returns>The <see cref="T:Stubble.Core.Settings.RendererSettingsBuilder"/> for chaining</returns>
+        </member>
+        <member name="M:Stubble.Core.Settings.BaseSettingsBuilder`2.SetMaxRecursionDepth(System.UInt32)">
+            <summary>
+            Sets the Max Recursion Depth for recursive templates. A value of zero will set to uint.MaxValue
+            </summary>
+            <param name="maxRecursionDepth">the max depth for the recursion</param>
+            <returns>The <see cref="T:Stubble.Core.Settings.RendererSettingsBuilder"/> for chaining</returns>
+        </member>
+        <member name="M:Stubble.Core.Settings.BaseSettingsBuilder`2.SetIgnoreCaseOnKeyLookup(System.Boolean)">
+            <summary>
+            Sets if the case should be ignored when looking up keys in the context
+            </summary>
+            <param name="ignoreCaseOnKeyLookup">if the case should be ignored on key lookup</param>
+            <returns>The <see cref="T:Stubble.Core.Settings.RendererSettingsBuilder"/> for chaining</returns>
+        </member>
+        <member name="M:Stubble.Core.Settings.BaseSettingsBuilder`2.SetMustacheParser(Stubble.Core.Parser.Interfaces.IMustacheParser)">
+            <summary>
+            Sets the mustache parser to use for the renderer settings
+            </summary>
+            <param name="parser">The parser to use</param>
+            <returns>The <see cref="T:Stubble.Core.Settings.RendererSettingsBuilder"/> for chaining</returns>
+        </member>
+        <member name="M:Stubble.Core.Settings.BaseSettingsBuilder`2.SetDefaultTags(Stubble.Core.Classes.Tags)">
+            <summary>
+            Sets the default tags to be used during parsing
+            </summary>
+            <param name="tags">The tags</param>
+            <returns>The IRendererSettingsBuilder for chaining</returns>
+        </member>
+        <member name="M:Stubble.Core.Settings.BaseSettingsBuilder`2.SetParserPipeline(Stubble.Core.Parser.ParserPipeline)">
+            <summary>
+            Sets the parser pipeline to be used during parsing
+            </summary>
+            <param name="pipeline">The pipeline to use</param>
+            <returns>The IRendererSettingsBuilder for chaining</returns>
+        </member>
+        <member name="M:Stubble.Core.Settings.BaseSettingsBuilder`2.SetSectionBlacklistTypes(System.Collections.Generic.HashSet{System.Type})">
+            <summary>
+            Sets the blacklisted types for sections
+            </summary>
+            <param name="types">The types to be blacklisted</param>
+            <returns>The IRendererSettingsBuilder for chaining</returns>
+        </member>
+        <member name="M:Stubble.Core.Settings.BaseSettingsBuilder`2.AddSectionBlacklistType(System.Type)">
+            <summary>
+            Adds the specified type to the section blacklist
+            </summary>
+            <param name="type">The type to blacklist for section iteration</param>
+            <returns>The builder instance for chaining</returns>
+        </member>
+        <member name="T:Stubble.Core.Settings.RendererSettings">
+            <summary>
+            Contains all of the immutable settings for the renderer
+            </summary>
+        </member>
+        <member name="M:Stubble.Core.Settings.RendererSettings.#ctor(System.Collections.Generic.Dictionary{System.Type,Stubble.Core.Settings.RendererSettingsDefaults.ValueGetterDelegate},System.Collections.Generic.Dictionary{System.Type,System.Collections.Generic.List{System.Func{System.Object,System.Boolean}}},Stubble.Core.Interfaces.IStubbleLoader,Stubble.Core.Interfaces.IStubbleLoader,System.UInt32,Stubble.Core.Settings.RenderSettings,System.Collections.Generic.Dictionary{System.Type,System.Func{System.Object,System.Collections.IEnumerable}},System.Boolean,Stubble.Core.Parser.Interfaces.IMustacheParser,Stubble.Core.Renderers.TokenRendererPipeline{Stubble.Core.Contexts.Context},Stubble.Core.Classes.Tags,Stubble.Core.Parser.ParserPipeline,System.Collections.Generic.HashSet{System.Type},System.Func{System.String,System.String})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Stubble.Core.Settings.RendererSettings"/> class.
+            </summary>
+            <param name="valueGetters">The value getters</param>
+            <param name="truthyChecks">The truthy checks</param>
+            <param name="templateLoader">The template loader</param>
+            <param name="partialLoader">The partial loader</param>
+            <param name="maxRecursionDepth">The max recursion depth</param>
+            <param name="renderSettings">The render settings</param>
+            <param name="enumerationConverters">The enumeration converters</param>
+            <param name="ignoreCaseOnLookup">Should case be ignored on lookup</param>
+            <param name="parser">The mustache parser to use</param>
+            <param name="rendererPipeline">The renderer pipeline to use</param>
+            <param name="defaultTags">The default tags to use during parsing</param>
+            <param name="parserPipeline">The parser pipeline to use during parsing</param>
+            <param name="sectionBlacklistTypes">The blacklisted section types</param>
+            <param name="encodingFunction">A function for encoding strings</param>
+        </member>
+        <member name="P:Stubble.Core.Settings.RendererSettings.OrderedValueGetters">
+            <summary>
+            Gets an array of value getters ordered by lookup order
+            </summary>
+        </member>
+        <member name="P:Stubble.Core.Settings.RendererSettings.ValueGetters">
+            <summary>
+            Gets a map of Types to Value getter functions
+            </summary>
+        </member>
+        <member name="P:Stubble.Core.Settings.RendererSettings.TruthyChecks">
+            <summary>
+            Gets a map of types to truthy checks
+            </summary>
+        </member>
+        <member name="P:Stubble.Core.Settings.RendererSettings.RenderSettings">
+            <summary>
+            Gets the RenderSettings
+            </summary>
+        </member>
+        <member name="P:Stubble.Core.Settings.RendererSettings.EnumerationConverters">
+            <summary>
+            Gets a map of Types to Enumeration convert functions
+            </summary>
+        </member>
+        <member name="P:Stubble.Core.Settings.RendererSettings.RendererPipeline">
+            <summary>
+            Gets the renderer pipeline to be used when rendering
+            </summary>
+        </member>
+        <member name="P:Stubble.Core.Settings.RendererSettings.EncodingFuction">
+            <summary>
+            Gets the encoding function used by the renderer
+            </summary>
+        </member>
+        <member name="T:Stubble.Core.Settings.RendererSettingsBuilder">
+            <summary>
+            A builder class for creating a <see cref="T:Stubble.Core.Settings.RendererSettings"/> instance
+            </summary>
+        </member>
+        <member name="P:Stubble.Core.Settings.RendererSettingsBuilder.TokenRenderers">
+            <summary>
+            Gets the token renderers to be used by the renderer
+            </summary>
+        </member>
+        <member name="P:Stubble.Core.Settings.RendererSettingsBuilder.ValueGetters">
+            <summary>
+            Gets or sets a map of Types to Value getter functions
+            </summary>
+        </member>
+        <member name="P:Stubble.Core.Settings.RendererSettingsBuilder.TruthyChecks">
+            <summary>
+            Gets or sets a readonly list of TruthyChecks
+            </summary>
+        </member>
+        <member name="P:Stubble.Core.Settings.RendererSettingsBuilder.RenderSettings">
+            <summary>
+            Gets or sets the RenderSettings
+            </summary>
+        </member>
+        <member name="P:Stubble.Core.Settings.RendererSettingsBuilder.EncodingFunction">
+            <summary>
+            Gets or sets the encoding function for string escaping
+            </summary>
+        </member>
+        <member name="P:Stubble.Core.Settings.RendererSettingsBuilder.EnumerationConverters">
+            <summary>
+            Gets or sets a map of Types to Enumeration convert functions
+            </summary>
+        </member>
+        <member name="M:Stubble.Core.Settings.RendererSettingsBuilder.BuildSettings">
+            <summary>
+            Builds a RegistrySettings class with all the provided details
+            </summary>
+            <returns>The registry settings</returns>
+        </member>
+        <member name="M:Stubble.Core.Settings.RendererSettingsBuilder.AddValueGetter(System.Type,Stubble.Core.Settings.RendererSettingsDefaults.ValueGetterDelegate)">
+            <summary>
+            Adds a given type and value getter function to the Value Getters
+            </summary>
+            <param name="type">The type to add the value getter function for</param>
+            <param name="valueGetter">A value getter function</param>
+            <returns>The <see cref="T:Stubble.Core.Settings.RendererSettingsBuilder"/> for chaining</returns>
+        </member>
+        <member name="M:Stubble.Core.Settings.RendererSettingsBuilder.AddEnumerationConversion(System.Type,System.Func{System.Object,System.Collections.IEnumerable})">
+            <summary>
+            Adds a enumeration conversion to the Enumeration Convertions
+            </summary>
+            <param name="type">The type to add an enumeration conversion function for</param>
+            <param name="enumerationConversion">An enumeration conversion</param>
+            <returns>The <see cref="T:Stubble.Core.Settings.RendererSettingsBuilder"/> for chaining</returns>
+        </member>
+        <member name="M:Stubble.Core.Settings.RendererSettingsBuilder.AddTruthyCheck``1(System.Func{``0,System.Boolean})">
+            <summary>
+            Adds a truthy check
+            </summary>
+            <param name="truthyCheck">A truthy check</param>
+            <returns>The <see cref="T:Stubble.Core.Settings.RendererSettingsBuilder"/> for chaining</returns>
+            <typeparam name="T">The type the truthy check is for</typeparam>
+        </member>
+        <member name="M:Stubble.Core.Settings.RendererSettingsBuilder.SetEncodingFunction(System.Func{System.String,System.String})">
+            <summary>
+            Sets the encoding function for escaping strings
+            </summary>
+            <param name="encodingFunction">the encoding function to use</param>
+            <returns>The <see cref="T:Stubble.Core.Settings.RendererSettingsBuilder"/> for chaining</returns>
+        </member>
+        <member name="T:Stubble.Core.Settings.RendererSettingsDefaults">
+            <summary>
+            Contains the renderer settings defaults
+            </summary>
+        </member>
+        <member name="T:Stubble.Core.Settings.RendererSettingsDefaults.ValueGetterDelegate">
+            <summary>
+            Delegate type for value getters
+            </summary>
+            <param name="value">The value to lookup the key within</param>
+            <param name="key">The key to lookup</param>
+            <param name="ignoreCase">If case should be ignored when looking up value</param>
+            <returns>The value if found or null if not found</returns>
+        </member>
+        <member name="M:Stubble.Core.Settings.RendererSettingsDefaults.DefaultValueGetters">
+            <summary>
+            Returns the default value getters
+            </summary>
+            <returns>The default value getters</returns>
+        </member>
+        <member name="M:Stubble.Core.Settings.RendererSettingsDefaults.DefaultTokenRenderers">
+            <summary>
+            Returns the default token renderers
+            </summary>
+            <returns>A list of the default token renderers</returns>
+        </member>
+        <member name="M:Stubble.Core.Settings.RendererSettingsDefaults.DefaultSectionBlacklistTypes">
+            <summary>
+            Returns the default blacklisted types for sections
+            </summary>
+            <returns>A hashset of default blacklisted types for sections</returns>
+        </member>
+        <member name="T:Stubble.Core.Settings.RenderSettings">
+            <summary>
+            The settings to be used when Rendering a Mustache Template
+            </summary>
+        </member>
+        <member name="P:Stubble.Core.Settings.RenderSettings.SkipRecursiveLookup">
+            <summary>
+            Gets or sets a value indicating whether values should be recursively
+            looked up in the render context. (faster without)
+            </summary>
+        </member>
+        <member name="P:Stubble.Core.Settings.RenderSettings.ThrowOnDataMiss">
+            <summary>
+            Gets or sets a value indicating whether exceptions should be thrown if
+            tags are defined which don't exist in the context
+            </summary>
+        </member>
+        <member name="P:Stubble.Core.Settings.RenderSettings.SkipHtmlEncoding">
+            <summary>
+            Gets or sets a value indicating whether interpolation tokens should be html encoded by default
+            </summary>
+        </member>
+        <member name="P:Stubble.Core.Settings.RenderSettings.CultureInfo">
+            <summary>
+            Gets or sets the CultureInfo to use for rendering format-dependent values (doubles, etc.).
+            </summary>
+        </member>
+        <member name="M:Stubble.Core.Settings.RenderSettings.GetDefaultRenderSettings">
+            <summary>
+            Gets the default render settings
+            </summary>
+            <returns>the default <see cref="T:Stubble.Core.Settings.RenderSettings"/></returns>
+        </member>
+        <member name="T:Stubble.Core.StaticStubbleRenderer">
+            <summary>
+            Represents a Static wrapper for a standard StubbleStringRenderer instance
+            </summary>
+        </member>
+        <member name="P:Stubble.Core.StaticStubbleRenderer.Instance">
+            <summary>
+            Gets the wrapped Stubble Instance that is Lazily Instantiated
+            </summary>
+        </member>
+        <member name="M:Stubble.Core.StaticStubbleRenderer.Render(System.String,System.Object)">
+            <summary>
+            Renders the template with the given view using the writer.
+            </summary>
+            <param name="template">The mustache teplate to render</param>
+            <param name="view">The data to use for rendering</param>
+            <returns>A mustache rendered string</returns>
+        </member>
+        <member name="M:Stubble.Core.StaticStubbleRenderer.Render(System.String,System.Object,Stubble.Core.Settings.RenderSettings)">
+            <summary>
+            Renders the template with the given view using the writer
+            and the given render settings.
+            </summary>
+            <param name="template">The mustache teplate to render</param>
+            <param name="view">The data to use for rendering</param>
+            <param name="settings">Any settings you wish to override the defaults with</param>
+            <returns>A mustache rendered string</returns>
+        </member>
+        <member name="M:Stubble.Core.StaticStubbleRenderer.Render(System.String,System.Object,System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+            Renders the template with the given view and partials using
+            the writer.
+            </summary>
+            <param name="template">The mustache teplate to render</param>
+            <param name="view">The data to use for rendering</param>
+            <param name="partials">A hash of Partials</param>
+            <returns>A mustache rendered string</returns>
+        </member>
+        <member name="M:Stubble.Core.StaticStubbleRenderer.Render(System.String,System.Object,System.Collections.Generic.IDictionary{System.String,System.String},Stubble.Core.Settings.RenderSettings)">
+            <summary>
+            Renders the template with the given view and partials using
+            the writer and the given Render Settings
+            </summary>
+            <param name="template">The mustache teplate to render</param>
+            <param name="view">The data to use for rendering</param>
+            <param name="partials">A hash of Partials</param>
+            <param name="settings">Any settings you wish to override the defaults with</param>
+            <returns>A mustache rendered string</returns>
+        </member>
+        <member name="T:Stubble.Core.StubbleVisitorRenderer">
+            <summary>
+            A renderer which renders a string using visitors
+            </summary>
+        </member>
+        <member name="M:Stubble.Core.StubbleVisitorRenderer.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Stubble.Core.StubbleVisitorRenderer"/> class
+            with a default registry
+            </summary>
+        </member>
+        <member name="M:Stubble.Core.StubbleVisitorRenderer.#ctor(Stubble.Core.Settings.RendererSettings)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Stubble.Core.StubbleVisitorRenderer"/> class
+            with the provided registry
+            </summary>
+            <param name="registry">The registry</param>
+        </member>
+        <member name="P:Stubble.Core.StubbleVisitorRenderer.RendererSettings">
+            <summary>
+            Gets the core Registry instance for the Renderer
+            </summary>
+        </member>
+        <member name="M:Stubble.Core.StubbleVisitorRenderer.Render(System.String,System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Stubble.Core.StubbleVisitorRenderer.Render(System.String,System.Object,Stubble.Core.Settings.RenderSettings)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Stubble.Core.StubbleVisitorRenderer.Render(System.String,System.Object,System.Collections.Generic.IDictionary{System.String,System.String})">
+            <inheritdoc/>
+        </member>
+        <member name="M:Stubble.Core.StubbleVisitorRenderer.Render(System.String,System.Object,System.Collections.Generic.IDictionary{System.String,System.String},Stubble.Core.Settings.RenderSettings)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Stubble.Core.StubbleVisitorRenderer.RenderAsync(System.String,System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Stubble.Core.StubbleVisitorRenderer.RenderAsync(System.String,System.Object,Stubble.Core.Settings.RenderSettings)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Stubble.Core.StubbleVisitorRenderer.RenderAsync(System.String,System.Object,System.Collections.Generic.IDictionary{System.String,System.String})">
+            <inheritdoc/>
+        </member>
+        <member name="M:Stubble.Core.StubbleVisitorRenderer.RenderAsync(System.String,System.Object,System.Collections.Generic.IDictionary{System.String,System.String},Stubble.Core.Settings.RenderSettings)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Stubble.Core.Tokens.BlockCloseToken">
+            <summary>
+            An abstract mustache tag reprsenting a block close
+            </summary>
+        </member>
+        <member name="T:Stubble.Core.Tokens.BlockToken">
+            <summary>
+            The base class for a non generic BlockTag
+            </summary>
+        </member>
+        <member name="P:Stubble.Core.Tokens.BlockToken.Identifier">
+            <summary>
+            Gets the identifier for the block
+            </summary>
+        </member>
+        <member name="P:Stubble.Core.Tokens.BlockToken.Parser">
+            <summary>
+            Gets or sets the parser used to parse the block
+            </summary>
+        </member>
+        <member name="P:Stubble.Core.Tokens.BlockToken.Children">
+            <summary>
+            Gets or sets the children of the block.
+            </summary>
+        </member>
+        <member name="P:Stubble.Core.Tokens.BlockToken.ContentStartPosition">
+            <summary>
+            Gets or sets the tags content start position
+            </summary>
+        </member>
+        <member name="P:Stubble.Core.Tokens.BlockToken.ContentEndPosition">
+            <summary>
+            Gets or sets the tags content end position
+            </summary>
+        </member>
+        <member name="T:Stubble.Core.Tokens.BlockToken`1">
+            <summary>
+            The base class for a generic BlockTag
+            </summary>
+            <typeparam name="T">The block tag type</typeparam>
+        </member>
+        <member name="P:Stubble.Core.Tokens.BlockToken`1.Tags">
+            <summary>
+            Gets or sets the tags used to parse the block
+            </summary>
+        </member>
+        <member name="M:Stubble.Core.Tokens.BlockToken`1.Equals(`0)">
+            <summary>
+            Is the block tag equal to another
+            </summary>
+            <param name="other">The other</param>
+            <returns>If the blocks are equal</returns>
+        </member>
+        <member name="M:Stubble.Core.Tokens.BlockToken`1.Equals(System.Object)">
+            <summary>
+            Is the block tag equal to another object
+            </summary>
+            <param name="obj">The other object</param>
+            <returns>If the object is equal to the block</returns>
+        </member>
+        <member name="M:Stubble.Core.Tokens.BlockToken`1.GetHashCode">
+            <summary>
+            Gets the hashcode for the block
+            </summary>
+            <returns>The hash code</returns>
+        </member>
+        <member name="T:Stubble.Core.Tokens.CommentToken">
+            <summary>
+            An inline tag representing a comment
+            </summary>
+        </member>
+        <member name="M:Stubble.Core.Tokens.CommentToken.Equals(Stubble.Core.Tokens.CommentToken)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Stubble.Core.Tokens.CommentToken.Equals(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Stubble.Core.Tokens.CommentToken.GetHashCode">
+            <inheritdoc/>
+        </member>
+        <member name="T:Stubble.Core.Tokens.DelimiterToken">
+            <summary>
+            An inline tag reprsenting a tag delimiter change
+            </summary>
+        </member>
+        <member name="P:Stubble.Core.Tokens.DelimiterToken.StartTag">
+            <summary>
+            Gets or sets the starting tag delimiters
+            </summary>
+        </member>
+        <member name="P:Stubble.Core.Tokens.DelimiterToken.EndTag">
+            <summary>
+            Gets or sets the ending tag delimiters
+            </summary>
+        </member>
+        <member name="M:Stubble.Core.Tokens.DelimiterToken.Equals(Stubble.Core.Tokens.DelimiterToken)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Stubble.Core.Tokens.DelimiterToken.Equals(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Stubble.Core.Tokens.DelimiterToken.GetHashCode">
+            <inheritdoc/>
+        </member>
+        <member name="T:Stubble.Core.Tokens.InlineToken">
+            <summary>
+            A base class for inline tags
+            </summary>
+        </member>
+        <member name="P:Stubble.Core.Tokens.InlineToken.TagStartPosition">
+            <summary>
+            Gets or sets the tags start position
+            </summary>
+        </member>
+        <member name="P:Stubble.Core.Tokens.InlineToken.TagEndPosition">
+            <summary>
+            Gets or sets the tags end position
+            </summary>
+        </member>
+        <member name="P:Stubble.Core.Tokens.InlineToken.ContentStartPosition">
+            <summary>
+            Gets or sets the tags content start position
+            </summary>
+        </member>
+        <member name="P:Stubble.Core.Tokens.InlineToken.ContentEndPosition">
+            <summary>
+            Gets or sets the tags content end position
+            </summary>
+        </member>
+        <member name="P:Stubble.Core.Tokens.InlineToken.Content">
+            <summary>
+            Gets or sets the tag content
+            </summary>
+        </member>
+        <member name="T:Stubble.Core.Tokens.InlineToken`1">
+            <summary>
+            A base class for a generic InlineTag
+            </summary>
+            <typeparam name="T">The type of the tag</typeparam>
+        </member>
+        <member name="M:Stubble.Core.Tokens.InlineToken`1.Equals(`0)">
+            <summary>
+            Is the tag equal to the other tag
+            </summary>
+            <param name="other">The other tag</param>
+            <returns>If they are equal</returns>
+        </member>
+        <member name="M:Stubble.Core.Tokens.InlineToken`1.Equals(System.Object)">
+            <summary>
+            Is the tag equal to the object
+            </summary>
+            <param name="obj">the object</param>
+            <returns>If they are equal</returns>
+        </member>
+        <member name="M:Stubble.Core.Tokens.InlineToken`1.GetHashCode">
+            <summary>
+            The hashcode for the tag
+            </summary>
+            <returns>The hashcode</returns>
+        </member>
+        <member name="T:Stubble.Core.Tokens.INonSpace">
+            <summary>
+            Represents a Token that is a NonSpace token
+            </summary>
+        </member>
+        <member name="T:Stubble.Core.Tokens.InterpolationToken">
+            <summary>
+            An inline tag representing an InterpolationTag
+            </summary>
+        </member>
+        <member name="P:Stubble.Core.Tokens.InterpolationToken.EscapeResult">
+            <summary>
+            Gets or sets a value indicating whether the contents should be escaped
+            </summary>
+        </member>
+        <member name="M:Stubble.Core.Tokens.InterpolationToken.Equals(Stubble.Core.Tokens.InterpolationToken)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Stubble.Core.Tokens.InterpolationToken.Equals(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Stubble.Core.Tokens.InterpolationToken.GetHashCode">
+            <inheritdoc/>
+        </member>
+        <member name="T:Stubble.Core.Tokens.InvertedSectionToken">
+            <summary>
+            A block tag representing an inverted section token
+            </summary>
+        </member>
+        <member name="P:Stubble.Core.Tokens.InvertedSectionToken.SectionName">
+            <summary>
+            Gets or sets the sections name
+            </summary>
+        </member>
+        <member name="P:Stubble.Core.Tokens.InvertedSectionToken.StartPosition">
+            <summary>
+            Gets or sets the starting position of the tag
+            </summary>
+        </member>
+        <member name="P:Stubble.Core.Tokens.InvertedSectionToken.EndPosition">
+            <summary>
+            Gets or sets the end position of the tag
+            </summary>
+        </member>
+        <member name="P:Stubble.Core.Tokens.InvertedSectionToken.Identifier">
+            <inheritdoc/>
+        </member>
+        <member name="M:Stubble.Core.Tokens.InvertedSectionToken.Equals(Stubble.Core.Tokens.InvertedSectionToken)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Stubble.Core.Tokens.InvertedSectionToken.Equals(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Stubble.Core.Tokens.InvertedSectionToken.GetHashCode">
+            <summary>
+            Gets the hash code for the tag
+            </summary>
+            <returns>The hashcode</returns>
+        </member>
+        <member name="T:Stubble.Core.Tokens.LiteralToken">
+            <summary>
+            An inline tag reprsenting a string of characters
+            </summary>
+        </member>
+        <member name="P:Stubble.Core.Tokens.LiteralToken.ContentStartPosition">
+            <summary>
+            Gets or sets the tags content start position
+            </summary>
+        </member>
+        <member name="P:Stubble.Core.Tokens.LiteralToken.ContentEndPosition">
+            <summary>
+            Gets or sets the tags content end position
+            </summary>
+        </member>
+        <member name="P:Stubble.Core.Tokens.LiteralToken.Content">
+            <summary>
+            Gets or sets the tag content
+            </summary>
+        </member>
+        <member name="P:Stubble.Core.Tokens.LiteralToken.IsWhitespace">
+            <summary>
+            Gets or sets a value indicating whether the content of the tag is just whitespace or empty
+            </summary>
+        </member>
+        <member name="M:Stubble.Core.Tokens.LiteralToken.Equals(Stubble.Core.Tokens.LiteralToken)">
+            <summary>
+            Is the tag equal to the other literal tag
+            </summary>
+            <param name="other">the object</param>
+            <returns>If they are equal</returns>
+        </member>
+        <member name="M:Stubble.Core.Tokens.LiteralToken.Equals(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Stubble.Core.Tokens.LiteralToken.GetHashCode">
+            <inheritdoc/>
+        </member>
+        <member name="T:Stubble.Core.Tokens.MustacheTemplate">
+            <summary>
+            The root of a mustache template
+            </summary>
+        </member>
+        <member name="P:Stubble.Core.Tokens.MustacheTemplate.Identifier">
+            <inheritdoc/>
+        </member>
+        <member name="T:Stubble.Core.Tokens.MustacheToken">
+            <summary>
+            An abstract class representing any MustacheTag
+            </summary>
+        </member>
+        <member name="P:Stubble.Core.Tokens.MustacheToken.IsClosed">
+            <summary>
+            Gets or sets a value indicating whether the tag has been closed
+            </summary>
+        </member>
+        <member name="P:Stubble.Core.Tokens.MustacheToken.Indent">
+            <summary>
+            Gets or sets the current indent for the tag
+            </summary>
+        </member>
+        <member name="T:Stubble.Core.Tokens.PartialToken">
+            <summary>
+            An inline tag representing a partial template
+            </summary>
+        </member>
+        <member name="P:Stubble.Core.Tokens.PartialToken.LineIndent">
+            <summary>
+            Gets or sets the line indent for the partial tag
+            </summary>
+        </member>
+        <member name="M:Stubble.Core.Tokens.PartialToken.Equals(Stubble.Core.Tokens.PartialToken)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Stubble.Core.Tokens.PartialToken.Equals(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Stubble.Core.Tokens.PartialToken.GetHashCode">
+            <inheritdoc/>
+        </member>
+        <member name="T:Stubble.Core.Tokens.SectionEndToken">
+            <summary>
+            A block close tag representing the end of a section
+            </summary>
+        </member>
+        <member name="P:Stubble.Core.Tokens.SectionEndToken.SectionName">
+            <summary>
+            Gets or sets the name of the section being closed
+            </summary>
+        </member>
+        <member name="P:Stubble.Core.Tokens.SectionEndToken.EndPosition">
+            <summary>
+            Gets or sets the end position of the close tag
+            </summary>
+        </member>
+        <member name="P:Stubble.Core.Tokens.SectionEndToken.ContentEndPosition">
+            <summary>
+            Gets or sets the end position for the content
+            </summary>
+        </member>
+        <member name="T:Stubble.Core.Tokens.SectionToken">
+            <summary>
+            A block tag representing a Section
+            </summary>
+        </member>
+        <member name="P:Stubble.Core.Tokens.SectionToken.StartPosition">
+            <summary>
+            Gets or sets the starting position of the tag
+            </summary>
+        </member>
+        <member name="P:Stubble.Core.Tokens.SectionToken.EndPosition">
+            <summary>
+            Gets or sets the end position of the tag
+            </summary>
+        </member>
+        <member name="P:Stubble.Core.Tokens.SectionToken.SectionName">
+            <summary>
+            Gets or sets the sections name
+            </summary>
+        </member>
+        <member name="P:Stubble.Core.Tokens.SectionToken.Identifier">
+            <inheritdoc/>
+        </member>
+        <member name="P:Stubble.Core.Tokens.SectionToken.SectionContent">
+            <summary>
+            Gets or sets the string definition of the section content
+            </summary>
+        </member>
+        <member name="M:Stubble.Core.Tokens.SectionToken.Equals(Stubble.Core.Tokens.SectionToken)">
+            <summary>
+            Checks if one section tag is equal to another
+            </summary>
+            <param name="other">The other section tag</param>
+            <returns>If the section tags are equal</returns>
+        </member>
+        <member name="M:Stubble.Core.Tokens.SectionToken.Equals(System.Object)">
+            <summary>
+            Checks if an object is equal to this section tag
+            </summary>
+            <param name="obj">The object to check</param>
+            <returns>If the object is equal to this tag</returns>
+        </member>
+        <member name="M:Stubble.Core.Tokens.SectionToken.GetHashCode">
+            <summary>
+            Gets the hash code for the tag
+            </summary>
+            <returns>The hashcode</returns>
+        </member>
+    </members>
+</doc>

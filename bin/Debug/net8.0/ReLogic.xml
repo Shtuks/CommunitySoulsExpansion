@@ -1,0 +1,91 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ReLogic</name>
+    </assembly>
+    <members>
+        <member name="T:ReLogic.Content.Asset`1">
+            <summary>
+            A class wrapping assets such as textures (<see cref="T:Microsoft.Xna.Framework.Graphics.Texture2D"/>), shaders (<see cref="T:Microsoft.Xna.Framework.Graphics.Effect"/>), fonts (<see cref="T:ReLogic.Graphics.DynamicSpriteFont"/>), and sounds (<see cref="T:Microsoft.Xna.Framework.Audio.SoundEffect"/>). This class provides on-demand (asynchronous) loading and resource pack support. Modders should strive to always use this class when working with assets rather than the contained data for performance and compatibility.
+            <para/> Read the <see href="https://github.com/tModLoader/tModLoader/wiki/Assets">Assets guide on the wiki</see> for more information on properly using the Asset class.
+            </summary>
+        </member>
+        <member name="P:ReLogic.Content.Asset`1.Value">
+            <summary>
+            Retrieves the actual asset contained within.
+            <para/> If the asset has not yet been loaded (<see cref="P:ReLogic.Content.Asset`1.IsLoaded"/>), then <see langword="null"/> is returned instead. For <c>Texture2D</c> specifically, however, a 1x1 transparent texture is returned to simplify logic drawing textures that might not be loaded yet.
+            </summary>
+        </member>
+        <member name="T:ReLogic.Content.AssetRepository">
+             <summary>
+             Async loading has been fully integrated into AssetRepository
+             Assets which are asynchronously loaded will:
+            	- be deserialized on the thread pool
+            	- return to the main thread if the asset can only be created there (for assets requiring GraphicsDevice)
+            	- become loaded at a defined time:
+            		- at the end of a frame or
+            		- when content sources are changing or
+            		- when requested by ImmediateLoad on the main thread
+            
+             Assets which require main thread creation, but are requested via ImmediateLoad on a worker thread will:
+            	- be deserialized immediately on the worker thread
+            	- transition to asynchronous loading for creation
+            
+             </summary>
+        </member>
+        <member name="T:ReLogic.Content.AssetRequestMode">
+            <summary>
+            Read the <see href="https://github.com/tModLoader/tModLoader/wiki/Assets#assetrequestmode">AssetRequestMode section of the Assets guide on the wiki</see> for information on when to use each AssetRequestMode.
+            </summary>
+        </member>
+        <member name="M:ReLogic.Content.IAssetRepository.Request``1(System.String,ReLogic.Content.AssetRequestMode)">
+            <summary>
+            <b><see cref="F:ReLogic.Content.AssetRequestMode.AsyncLoad"/> is recommended to avoid blocking the main or mod loading threads.</b>
+            <para/>
+            Assets loaded via <see cref="F:ReLogic.Content.AssetRequestMode.AsyncLoad"/> will only finish loading at the end of a frame, unless forced to finish immediately by a <see cref="F:ReLogic.Content.AssetRequestMode.ImmediateLoad"/> or <see cref="P:ReLogic.Content.Asset`1.Wait"/> call.
+            <para/>
+            Any assets requested asynchronously during mod loading will be transferred at the end of <see cref="M:Terraria.ModLoader.Mod.PostSetupContent"/> and will remain fully loaded for the duration of the game.
+            <br/><see cref="P:ReLogic.Content.Asset`1.Wait"/> can be used to ensure an asynchronously loaded asset has finished loading before accessing <see cref="P:ReLogic.Content.Asset`1.Value"/>
+            <para/>
+            <seealso cref="T:Microsoft.Xna.Framework.Graphics.Texture2D"/> assets have a default <see cref="P:ReLogic.Content.Asset`1.Value"/> containing a transparent 1x1 texture that can be used while the asset loads.
+            <para/>
+            Can be safely called on the server despite the server not loading assets, so there is no need to add checks for <c>Main.dedServ</c>. Assets loaded on the server will always be returned as if loaded via <see cref="F:ReLogic.Content.AssetRequestMode.DoNotLoad"/>.
+            <para/> Read the <see href="https://github.com/tModLoader/tModLoader/wiki/Assets">Assets guide on the wiki</see> for more information.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="assetName"></param>
+            <param name="mode"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ReLogic.Content.Sources.IContentSource.GetExtension(System.String)">
+            <summary>
+            Must be threadsafe! 
+            </summary>
+            <returns>null if the asset does not exist</returns>
+        </member>
+        <member name="M:ReLogic.Content.Sources.IContentSource.OpenStream(System.String)">
+            <summary>
+            Must be threadsafe! 
+            </summary>
+        </member>
+        <member name="M:ReLogic.Content.Sources.IContentSource.HasAsset(System.String)">
+            <summary>
+            Checks Rejections and GetExtension to determine if an asset exists
+            </summary>
+            <param name="assetName"></param>
+            <returns></returns>
+        </member>
+        <member name="T:ReLogic.Reflection.IdDictionary">
+            <summary>
+            Maps the ID numbers of content to their internal names. Internal names are used for data that needs to persist between gameplay sessions since ID numbers are not consistent between gameplay sessions. Modders will typically use the ItemDefinition or similar classes to work with persistent content identification, but using IdDictionary directly is also sometimes useful.
+            <para/> For example <c>string name = ItemID.Search.GetName(item.netID);</c> can be used to get the internal name of an item type while <c>int npcId = NPCID.Search.GetId(name)</c> could be used to get the ID value of an NPC from an internal name string.
+            <para/> Vanilla ID names are defined in their corresponding ID class in the Terraria.ID namespace, such as ItemID or ProjectileID. Modded ID names are ModType.FullName, meaning they are in the form of "ModName/Name". (for example "ExampleMod/ExampleItem")
+            </summary>
+        </member>
+        <member name="M:ReLogic.Reflection.IdDictionary.GetId(System.String)">
+            <summary> Gets the ID value of content with the provided internal name. Remember that vanilla internal names are the field names in the corresponding ID class and modded internal names are <c>ModType.FullName</c>, which are in the form of "ModName/Name". </summary>
+            <param name="name"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>
