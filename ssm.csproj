@@ -16,7 +16,7 @@
 	</ItemGroup>
 	<ItemGroup>
 	  <Reference Include="AlchemistNPCLite">
-	    <HintPath>..\..\ModReader\AlchemistNPCLite\AlchemistNPCLite.dll</HintPath>
+	    <HintPath>lib\AlchemistNPCLite.dll</HintPath>
 	  </Reference>
 	  <Reference Include="BombusApisBee">
 	    <HintPath>lib\BombusApisBee.dll</HintPath>
@@ -25,19 +25,19 @@
 	    <HintPath>lib\CalamityBardHealer.dll</HintPath>
 	  </Reference>
 	  <Reference Include="CalamityEntropy">
-	    <HintPath>..\..\ModReader\CalamityEntropy\CalamityEntropy.dll</HintPath>
+	    <HintPath>lib\CalamityEntropy.dll</HintPath>
 	  </Reference>
 	  <Reference Include="CalamityHunt">
 	    <HintPath>lib\CalamityHunt.dll</HintPath>
 	  </Reference>
 	  <Reference Include="CalamityInheritance">
-	    <HintPath>..\..\ModReader\CalamityInheritance\CalamityInheritance.dll</HintPath>
+	    <HintPath>lib\CalamityInheritance.dll</HintPath>
 	  </Reference>
 	  <Reference Include="CalamityLegacy">
-	    <HintPath>..\..\ModReader\CalamityLegacy\CalamityLegacy.dll</HintPath>
+	    <HintPath>lib\CalamityLegacy.dll</HintPath>
 	  </Reference>
 	  <Reference Include="CalamityMod">
-	    <HintPath>..\..\ModReader\CalamityMod\CalamityMod.dll</HintPath>
+	    <HintPath>lib\CalamityMod.dll</HintPath>
 	  </Reference>
 	  <Reference Include="CatalystMod">
 	    <HintPath>lib\CatalystMod.dll</HintPath>
@@ -58,16 +58,13 @@
 	    <HintPath>..\..\ModReader\ContinentOfJourney\ContinentOfJourney.dll</HintPath>
 	  </Reference>
 	  <Reference Include="Daybreak">
-	    <HintPath>..\..\ModReader\Daybreak\Daybreak.dll</HintPath>
+	    <HintPath>lib\Daybreak.dll</HintPath>
 	  </Reference>
 	  <Reference Include="DragonLens">
 	    <HintPath>lib\DragonLens.dll</HintPath>
 	  </Reference>
 	  <Reference Include="FargoMoreSoulsCompat">
-	    <HintPath>Libraries\FargoMoreSoulsCompat_v0.4.2.dll</HintPath>
-	  </Reference>
-	  <Reference Include="FargoMoreSoulsCompat">
-	    <HintPath>Libraries\FargoMoreSoulsCompat_v0.4.2.dll</HintPath>
+	    <HintPath>lib\FargoMoreSoulsCompat.dll</HintPath>
 	  </Reference>
 	  <Reference Include="Fargowiltas">
 	    <HintPath>lib\Fargowiltas.dll</HintPath>
@@ -94,7 +91,7 @@
 	    <HintPath>lib\Polarities.dll</HintPath>
 	  </Reference>
 	  <Reference Include="Redemption">
-	    <HintPath>Libraries\Redemption.dll</HintPath>
+	    <HintPath>lib\Redemption.dll</HintPath>
 	  </Reference>
 	  <Reference Include="SacredTools">
 	    <HintPath>Libraries\SacredTools.dll</HintPath>
@@ -108,23 +105,11 @@
 	  <Reference Include="SubworldLibrary">
 	    <HintPath>Libraries\SubworldLibrary.dll</HintPath>
 	  </Reference>
-	  <Reference Include="ThoriumMod">
-	    <HintPath>Libraries\ThoriumMod_v1.7.1.6.dll</HintPath>
-	  </Reference>
-	  <Reference Include="ThoriumMod">
-	    <HintPath>Libraries\ThoriumMod_v1.7.1.6.dll</HintPath>
-	  </Reference>
-	  <Reference Include="ThoriumMod">
-	    <HintPath>Libraries\ThoriumMod_v1.7.1.6.dll</HintPath>
-	  </Reference>
-	  <Reference Include="ThoriumMod">
-	    <HintPath>Libraries\ThoriumMod_v1.7.1.6.dll</HintPath>
-	  </Reference>
-	  <Reference Include="ThoriumMod">
-	    <HintPath>Libraries\ThoriumMod_v1.7.1.6.dll</HintPath>
-	  </Reference>
 	  <Reference Include="ThoriumRework">
 	    <HintPath>lib\ThoriumRework.dll</HintPath>
+	  </Reference>
+	  <Reference Include="ThoriumMod">
+	    <HintPath>lib\ThoriumMod.dll</HintPath>
 	  </Reference>
 	</ItemGroup>
 

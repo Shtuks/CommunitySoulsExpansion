@@ -58,13 +58,13 @@ namespace ssm.Redemption.Forces
     {
         public override void SetStaticDefaults()
         {
-            Enchants[Type] = new int[4]
-            {
+            Enchants[Type] =
+            [
                 ModContent.ItemType<LivingWoodEnchant2>(),
                 ModContent.ItemType<PureIronEnchant>(),
                 ModContent.ItemType<DragonLeadEnchant>(),
                 ModContent.ItemType<ElderWoodEnchant>()
-            };
+            ];
         }
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
@@ -76,7 +76,6 @@ namespace ssm.Redemption.Forces
 
             player.AddEffect<AchivementEffect>(Item);
         }
-
         public class AchivementEffect : AccessoryEffect
         {
             public override Header ToggleHeader => null;
@@ -84,12 +83,8 @@ namespace ssm.Redemption.Forces
         public override void AddRecipes()
         {
             Recipe recipe = CreateRecipe();
-            int[] array = Enchants[Type];
-            foreach (int itemID in array)
-            {
-                recipe.AddIngredient(itemID);
-            }
-
+            foreach (int ench in Enchants[Type])
+            recipe.AddIngredient(ench);
             recipe.AddTile(ModContent.Find<ModTile>("Fargowiltas", "CrucibleCosmosSheet"));
             recipe.Register();
         }
