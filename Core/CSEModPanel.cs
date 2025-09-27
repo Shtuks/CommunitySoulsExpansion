@@ -11,8 +11,10 @@ using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.UI;
 
-namespace ssm.Core
-{
+// This looks really ugly right now, if I'm being honest. And I don't want to be the one to push to newer builds until it doesn't look this way. You can though.
+
+//namespace ssm.Core
+//{
     //    internal sealed class CSEModPanel : ModPanelStyleExt
     //    {
     //        public sealed class ModName : UIText
@@ -198,6 +200,7 @@ namespace ssm.Core
     //            return new Vector4(value, vec2.X, vec2.Y);
     //        }
     //    }
+    /*
     [Autoload(Side = ModSide.Client)]
     public class CustomModPanel : ModPanelStyle
     {
@@ -383,3 +386,4 @@ namespace ssm.Core
         }
     }
 }
+*/
