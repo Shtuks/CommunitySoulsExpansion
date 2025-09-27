@@ -1567,7 +1567,7 @@ namespace ssm.Content.NPCs.RealMutantEX
                 AuraScale = MathHelper.Lerp(AuraScale, 1f, 0.1f);
             }
 
-            if (AttackChoice != 5 && AttackChoice != 6 && AttackChoice != 1922) 
+            if (AttackChoice != 5 && AttackChoice != 6 && AttackChoice != 1922 && AttackChoice != 19) 
             {
                 AuraCenter = Vector2.Lerp(AuraCenter, NPC.Center, 0.3f);
             }

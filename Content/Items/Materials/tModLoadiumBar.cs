@@ -67,10 +67,10 @@ namespace ssm.Content.Items.Materials
             {
                 recipe.AddIngredient(ModCompatibility.NoxusPort.Mod.Find<ModItem>("EntropicBar"), 1);
             }
-            if (ModCompatibility.CatTech.Loaded)
-            {
-                recipe.AddIngredient(ModCompatibility.CatTech.Mod.Find<ModItem>("NeutroniumBar"), 1);
-            }
+            //if (ModCompatibility.CatTech.Loaded)
+            //{
+            //    recipe.AddIngredient(ModCompatibility.CatTech.Mod.Find<ModItem>("NeutroniumBar"), 1);
+            //}
             if (ModCompatibility.WrathoftheGods.Loaded)
             {
                 recipe.AddIngredient(ModCompatibility.WrathoftheGods.Mod.Find<ModItem>("MetallicChunk"), 1);
