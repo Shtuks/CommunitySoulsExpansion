@@ -82,8 +82,7 @@ namespace ssm
                         {
                             recipe.AddIngredient(Mod.Find<ModItem>("MicroverseSoul"), 1);
                         }
-
-                        if (ModCompatibility.Calamity.Loaded && !ssm.shouldUseMacro)
+                        if (ModCompatibility.Calamity.Loaded && ModCompatibility.Crossmod.Loaded && !ssm.shouldUseMacro)
                         {
                             recipe.AddIngredient(Mod.Find<ModItem>("CalamitySoul"), 1);
                         }
