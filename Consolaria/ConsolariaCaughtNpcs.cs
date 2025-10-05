@@ -21,10 +21,9 @@ namespace ssm.Consolaria
     {
         public static void XDContentModRegisterItems()
         {
-            if (ModLoader.TryGetMod("XDContentMod", out Mod XD))
-            {
-                ssm.Add("StarMerchantNPC", XD.Find<ModNPC>("StarMerchantNPC").Type);
-            }
+            if (!ModLoader.TryGetMod("XDContentMod", out Mod XD))
+                return;
+            ssm.Add("StarMerchantNPC", XD.Find<ModNPC>("StarMerchantNPC").Type);
         }
     }
 }

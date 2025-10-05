@@ -492,18 +492,18 @@ namespace ssm
             {
                 SpiritModCaughtNpcs.SpiritModRegisterItems();
             }
-              if (ModLoader.TryGetMod("AlchemistNPC", out Mod alch))
-              {
-                  AlchemistNPCCaughtNpcs.AlchemistNPCCaughtNpcsRegisterItems();
-              }
+            if (ModLoader.TryGetMod("AlchemistNPC", out Mod alch))
+            {
+                AlchemistNPCCaughtNpcs.AlchemistNPCCaughtNpcsRegisterItems();
+            }
             if (ModLoader.TryGetMod("Consolaria", out Mod _))
             {
                 ConsolariaCaughtNpcs.ConsolariaRegisterItems();
             }
-            if (ModLoader.TryGetMod("XDContentMod", out Mod _))
-            {
-                XDContentModCaughtNPCs.XDContentModRegisterItems();
-            }
+        //    if (ModLoader.TryGetMod("XDContentMod", out Mod XD))
+        //    {
+        //        XDContentModCaughtNPCs.XDContentModRegisterItems();
+        //    }
             if (ModLoader.TryGetMod("CalamityAmmo", out Mod _))
             {
                 CalamityAmmoCaughtNPCs.CalamityAmmoRegisterItems();
