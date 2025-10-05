@@ -10,7 +10,7 @@ using Microsoft.Xna.Framework.Graphics;
 using gunrightsmod.Content.Items;
 using ssm.Core;
 using ssm.Content.SoulToggles;
-
+/*
 namespace ssm.gunrightsmod.Enchantments
 {
     [ExtendsFromMod(ModCompatibility.Gunrightsmod.Name)]
@@ -57,3 +57,4 @@ namespace ssm.gunrightsmod.Enchantments
         }
     }
 }
+*/

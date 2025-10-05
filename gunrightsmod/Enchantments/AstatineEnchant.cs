@@ -12,7 +12,7 @@ using FargowiltasSouls.Content.UI.Elements;
 using gunrightsmod.Content.Projectiles;
 using FargowiltasSouls;
 
-
+/*
 namespace ssm.gunrightsmod.Enchantments
 {
     [ExtendsFromMod(ModCompatibility.Gunrightsmod.Name)]
@@ -86,3 +86,4 @@ namespace ssm.gunrightsmod.Enchantments
         }
     }
 }
+*/

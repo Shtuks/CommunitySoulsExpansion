@@ -1,5 +1,6 @@
 using Terraria;
 using Terraria.ID;
+/*
 using Terraria.ModLoader;
 using FargowiltasSouls.Content.Items.Accessories.Forces;
 using ssm.gunrightsmod.Enchantments;
@@ -55,3 +56,4 @@ namespace ssm.gunrightsmod.Forces
         }
     }
 }
+*/

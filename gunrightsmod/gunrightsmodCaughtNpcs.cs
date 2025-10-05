@@ -1,7 +1,7 @@
 using Terraria.ModLoader;
 using ssm.Core;
 using gunrightsmod.Content.NPCs;
-
+/*
 namespace ssm.gunrightsmod
 {
     [ExtendsFromMod(ModCompatibility.Gunrightsmod.Name)]
@@ -16,3 +16,4 @@ namespace ssm.gunrightsmod
         }
     }
 }
+*/

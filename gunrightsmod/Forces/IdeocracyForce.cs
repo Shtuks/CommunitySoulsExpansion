@@ -2,14 +2,12 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using FargowiltasSouls.Content.Items.Accessories.Forces;
-using ssm.gunrightsmod.Enchantments;
 using ssm.Core;
 using FargowiltasSouls.Content.Items.Accessories.Enchantments;
 using FargowiltasSouls.Content.Items.Materials;
 using FargowiltasSouls.Core.AccessoryEffectSystem;
-using static ssm.gunrightsmod.Enchantments.PlasticEnchant;
 
-
+/*
 namespace ssm.gunrightsmod.Forces
 {
     [ExtendsFromMod(ModCompatibility.Gunrightsmod.Name)]
@@ -56,3 +54,4 @@ namespace ssm.gunrightsmod.Forces
         }
     }
 }
+*/

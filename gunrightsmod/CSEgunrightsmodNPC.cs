@@ -23,7 +23,7 @@ using SacredTools.NPCs.Boss.Abaddon;
 using SacredTools.NPCs.Boss.Araghur;
 using FargowiltasSouls.Core.Globals;
 using Terraria.ID;
-
+/*
 namespace ssm.gunrightsmod
 {
     [ExtendsFromMod(ModCompatibility.Gunrightsmod.Name)]
@@ -66,3 +66,4 @@ namespace ssm.gunrightsmod
         }
     }
 }
+*/

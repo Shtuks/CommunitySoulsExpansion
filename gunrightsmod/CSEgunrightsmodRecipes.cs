@@ -4,7 +4,7 @@ using ssm.Core;
 using Terraria.Localization;
 using FargowiltasSouls.Content.Items.Accessories.Souls;
 using gunrightsmod.Content.Items;
-
+/*
 namespace ssm.gunrightsmod
 {
     [ExtendsFromMod(ModCompatibility.Gunrightsmod.Name)]
@@ -23,3 +23,4 @@ namespace ssm.gunrightsmod
         }
     }
 }   
+*/

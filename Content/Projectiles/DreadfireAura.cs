@@ -13,8 +13,8 @@ using Microsoft.Xna.Framework;
 using static ssm.SoA.Enchantments.DreadfireEnchant;
 using FargowiltasSouls.Core.AccessoryEffectSystem;
 using ssm.Core;
-using ssm.gunrightsmod.Forces;
-using ssm.gunrightsmod.Enchantments;
+//using ssm.gunrightsmod.Forces;
+//using ssm.gunrightsmod.Enchantments;
 
 namespace ssm.Content.Projectiles
 {

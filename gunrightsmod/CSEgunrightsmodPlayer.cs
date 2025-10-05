@@ -1,6 +1,7 @@
 using Terraria;
 using Terraria.ModLoader;
 using ssm.Core;
+/*
 using ssm.gunrightsmod.Enchantments;
 using FargowiltasSouls;
 using FargowiltasSouls.Core.AccessoryEffectSystem;
@@ -90,3 +91,4 @@ namespace ssm.gunrightsmod
         }
     }
 }
+*/

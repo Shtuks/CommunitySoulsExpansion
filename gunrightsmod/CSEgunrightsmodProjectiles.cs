@@ -6,6 +6,7 @@ using Microsoft.Xna.Framework;
 using FargowiltasSouls.Content.Items.Accessories.Enchantments;
 using FargowiltasSouls.Core.AccessoryEffectSystem;
 using ssm.Core;
+/*
 using gunrightsmod.Content.Items;
 using ssm.Content.SoulToggles;
 using Microsoft.Xna.Framework.Graphics;
@@ -32,3 +33,4 @@ namespace ssm.gunrightsmod
         }
     }
 }
+*/

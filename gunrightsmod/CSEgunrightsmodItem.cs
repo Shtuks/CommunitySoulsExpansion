@@ -2,7 +2,7 @@ using Terraria;
 using Terraria.ModLoader;
 using ssm.Core;
 using Microsoft.Xna.Framework;
-
+/*
 namespace ssm.gunrightsmod
 {
     [ExtendsFromMod(ModCompatibility.Gunrightsmod.Name)]
@@ -23,3 +23,4 @@ namespace ssm.gunrightsmod
         }
     }
 }
+*/

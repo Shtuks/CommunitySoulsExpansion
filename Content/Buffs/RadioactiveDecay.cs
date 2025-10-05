@@ -3,8 +3,8 @@ using FargowiltasSouls.Core.AccessoryEffectSystem;
 using ssm.Core;
 using Terraria;
 using Terraria.ModLoader;
-using ssm.gunrightsmod.Enchantments;
-
+//using ssm.gunrightsmod.Enchantments;
+/*
 namespace ssm.Content.Buffs
 {
     [ExtendsFromMod(ModCompatibility.Gunrightsmod.Name)]
@@ -28,3 +28,4 @@ namespace ssm.Content.Buffs
         }
     }
 }
+*/

@@ -4,11 +4,11 @@ using Terraria.ModLoader;
 using System;
 using ssm.Core;
 using FargowiltasSouls.Core.AccessoryEffectSystem;
-using ssm.gunrightsmod.Enchantments;
-using ssm.gunrightsmod;
-using System.Collections.Generic;
-using static ssm.gunrightsmod.Enchantments.FaradayEnchant;
-
+//using ssm.gunrightsmod.Enchantments;
+//using ssm.gunrightsmod;
+//using System.Collections.Generic;
+//using static ssm.gunrightsmod.Enchantments.FaradayEnchant;
+/*
 
 namespace ssm.Content.Projectiles.Enchantments
 {
@@ -52,3 +52,4 @@ namespace ssm.Content.Projectiles.Enchantments
         }
     }
 }
+*/

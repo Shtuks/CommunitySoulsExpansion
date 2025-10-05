@@ -23,7 +23,7 @@ using ssm.Content.UI;
 using ssm.Calamity.Addons.CalamityAmmo;
 using Terraria.UI;
 using ssm.CrossMod.CraftingStations;
-using ssm.gunrightsmod;
+// using ssm.gunrightsmod;
 using ssm.SpiritMod;
 using Fargowiltas.Items.CaughtNPCs;
 using System.Collections;
@@ -484,10 +484,10 @@ namespace ssm
             {
                 RedemptionCaughtNpcs.RedemptionRegisterItems();
             }
-            if (ModLoader.TryGetMod("gunrightsmod", out Mod grm))
-            {
-                gunrightsmodCaughtNpcs.gunrightsmodRegisterItems();
-            }
+        //    if (ModLoader.TryGetMod("gunrightsmod", out Mod grm))
+        //    {
+        //        gunrightsmodCaughtNpcs.gunrightsmodRegisterItems();
+        //    }
             if (ModLoader.TryGetMod("SpiritMod", out Mod spr))
             {
                 SpiritModCaughtNpcs.SpiritModRegisterItems();
